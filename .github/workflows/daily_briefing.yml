@@ -1,45 +1,69 @@
-name: Generate Daily STEM Briefing
+name: Daily STEM Briefing
 
 on:
   schedule:
-    # GitHub crons are in UTC.
-    # Runs at 02:30 UTC (8:00 AM IST) and 10:30 UTC (4:00 PM IST)
-    - cron: '30 2 * * *'
-    - cron: '30 10 * * *'
-  workflow_dispatch: # Allows manual trigger from the Actions tab anytime
+    # GitHub cron is in UTC. India = UTC + 5:30.
+    - cron: '30 2 * * *'    # 08:00 IST  morning edition
+    - cron: '30 3 * * *'    # 09:00 IST  morning backup (skips if already made)
+    - cron: '30 10 * * *'   # 16:00 IST  evening edition
+    - cron: '30 11 * * *'   # 17:00 IST  evening backup (skips if already made)
+  workflow_dispatch:
+    inputs:
+      edition:
+        description: 'Which edition to make'
+        type: choice
+        options: [auto, morning, evening]
+        default: auto
+      force:
+        description: 'Re-make it even if this edition already exists today'
+        type: boolean
+        default: false
 
 permissions:
-  contents: write
+  contents: write          # commit podcast.xml + upload audio to the release
+
+concurrency:
+  group: daily-briefing    # never let two runs push at the same time
+  cancel-in-progress: false
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
+    timeout-minutes: 40
     steps:
-      - name: Checkout Repository
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Python
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.12'
           cache: 'pip'
 
-      - name: Install Dependencies
-        run: |
-          pip install -r requirements.txt
+      - name: Install dependencies
+        run: pip install -U -r requirements.txt
 
-      - name: Run Briefing Generator
+      - name: Generate briefing
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODELS: ${{ vars.GEMINI_MODELS }}
+          GH_TOKEN: ${{ github.token }}
           GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
           GITHUB_REPOSITORY: ${{ github.repository }}
-        run: |
-          python generate_briefing.py
+          EDITION: ${{ inputs.edition || 'auto' }}
+          FORCE: ${{ inputs.force || 'false' }}
+        run: python generate_briefing.py
 
-      - name: Commit and Push Audio & RSS Feed
+      - name: Commit feed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add audio/ podcast.xml
-          git commit -m "chore: automated STEM briefing update [skip ci]" || exit 0
+          git rm -r -q --ignore-unmatch audio        # old storage folder, no longer used
+          git add -A podcast.xml episodes.json 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "Nothing new to commit."
+            exit 0
+          fi
+          git commit -m "Briefing update $(date -u +%Y-%m-%dT%H:%MZ) [skip ci]"
+          git pull --rebase origin main
           git push origin main
