@@ -1,0 +1,22 @@
+# News sources for the briefing - one per line:   Name | RSS URL
+# Lines starting with # are ignored. Add or remove sources any time.
+# The run log shows "OK" or "FAIL" for each feed, so you can spot dead links.
+
+# --- Space ---
+NASA News Releases | https://www.nasa.gov/news-release/feed/
+ESA Top News | https://www.esa.int/rssfeed/TopNews
+Spaceflight Now | https://spaceflightnow.com/feed/
+
+# --- Mathematics, physics, computing ---
+Quanta Magazine | https://api.quantamagazine.org/feed/
+Google DeepMind Blog | https://deepmind.google/blog/rss.xml
+
+# --- Science journals (news sections) ---
+Nature | https://www.nature.com/nature.rss
+Science News | https://www.science.org/rss/news_current.xml
+Ars Technica Science | https://feeds.arstechnica.com/arstechnica/science
+
+# --- Medicine, approvals, disease control ---
+NIH News Releases | https://www.nih.gov/news-releases/feed.xml
+FDA Press Releases | https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/press-releases/rss.xml
+WHO News | https://www.who.int/rss-feeds/news-english.xml
