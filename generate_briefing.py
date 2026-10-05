@@ -52,7 +52,7 @@ def fetch_feed_data():
             print(f"Failed to fetch {feed_url}: {e}")
     return "\n---\n".join(raw_articles)
 
-# ----------------- 3. GEMINI SCRIPT SYNTHESIS -----------------
+# ----------------- 3. GEMINI SCRIPT SYNTHESIS (CASCADE) -----------------
 def generate_broadcast_script(raw_content):
     prompt = f"""
 You are a senior science and engineering correspondent for a factual, long-form audio broadcast.
@@ -66,15 +66,55 @@ STRICT EDITORIAL RULES:
 RAW MATERIAL:
 {raw_content}
 """
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key={GEMINI_API_KEY}"
-    payload = {
-        "contents": [{"parts": [{"text": prompt}]}],
-        "generationConfig": {"temperature": 0.2}
-    }
-    res = requests.post(url, json=payload, timeout=120)
-    res.raise_for_status()
-    data = res.json()
-    return data["candidates"][0]["content"]["parts"][0]["text"]
+
+    # Ranked hierarchy from highest reasoning quality to lightweight baseline
+    model_cascade = [
+        "gemini-3.1-pro-preview",
+        "gemini-3.8-flash",
+        "gemini-3.7-flash",
+        "gemini-3.6-flash",
+        "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.1-flash-lite",
+        "gemini-3-flash-preview",
+    ]
+
+    for model in model_cascade:
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={GEMINI_API_KEY}"
+        payload = {
+            "contents": [{"parts": [{"text": prompt}]}],
+            "generationConfig": {
+                "temperature": 0.2,
+                "maxOutputTokens": 8192
+            }
+        }
+
+        print(f"Attempting generation with: {model}...")
+        for attempt in range(1, 3):
+            try:
+                res = requests.post(url, json=payload, timeout=120)
+
+                if res.status_code == 200:
+                    data = res.json()
+                    candidates = data.get("candidates", [])
+                    if candidates and "content" in candidates[0]:
+                        print(f"Successfully generated script via {model}.")
+                        return candidates[0]["content"]["parts"][0]["text"]
+
+                # If server is overloaded (503/500) or rate-limited (429), pause and retry
+                if res.status_code in (500, 503, 429):
+                    wait = attempt * 8
+                    print(f"{model} returned HTTP {res.status_code}. Retrying in {wait}s...")
+                    time.sleep(wait)
+                else:
+                    print(f"{model} unavailable (HTTP {res.status_code}). Falling back to next tier...")
+                    break
+
+            except requests.exceptions.RequestException as err:
+                print(f"Connection issue on {model} (Attempt {attempt}): {err}")
+                time.sleep(5)
+
+    raise RuntimeError("All Gemini candidate models in the fallback chain were unavailable.")
 
 # ----------------- 4. TTS AUDIO GENERATION -----------------
 async def text_to_audio(script_text, output_path):
