@@ -4,13 +4,11 @@ import time
 import datetime
 import email.utils
 import xml.etree.ElementTree as ET
-import feedparser
 import requests
 import asyncio
 import edge_tts
 
 # ----------------- CONFIGURATION -----------------
-# Replace with your actual GitHub username and repository name
 GITHUB_USERNAME = os.getenv("GITHUB_REPOSITORY_OWNER", "your-username")
 REPO_NAME = os.getenv("GITHUB_REPOSITORY", "your-username/daily-briefing").split("/")[-1]
 BASE_URL = f"https://{GITHUB_USERNAME}.github.io/{REPO_NAME}"
@@ -19,15 +17,7 @@ GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 AUDIO_DIR = "audio"
 PODCAST_FILE = "podcast.xml"
 RETENTION_DAYS = 7
-VOICE = "en-US-ChristopherNeural"  # Authoritative, natural broadcast voice
-
-# Primary, peer-reviewed, and institutional RSS feeds
-FEEDS = [
-    "https://api.quantamagazine.org/feed/",              # Settled Math, Physics & Computer Science
-    "https://www.nasa.gov/news-release/feed/",           # Confirmed Space Missions & Operations
-    "https://www.esa.int/rssfeed/Our_Activities/Space_News",
-    "https://www.nature.com/nature.rss",                 # Completed research milestones
-]
+VOICE = "en-US-ChristopherNeural"
 
 # ----------------- 1. PRUNE OLD FILES -----------------
 def cleanup_old_episodes(audio_dir=AUDIO_DIR, max_days=RETENTION_DAYS):
@@ -38,91 +28,85 @@ def cleanup_old_episodes(audio_dir=AUDIO_DIR, max_days=RETENTION_DAYS):
             print(f"Deleting expired episode: {path}")
             os.remove(path)
 
-# ----------------- 2. FETCH RAW STEM FEEDS -----------------
-def fetch_feed_data():
-    raw_articles = []
-    for feed_url in FEEDS:
-        try:
-            parsed = feedparser.parse(feed_url)
-            for entry in parsed.entries[:5]:  # Take top 5 latest per feed
-                title = entry.get("title", "")
-                summary = entry.get("summary", entry.get("description", ""))
-                raw_articles.append(f"Title: {title}\nSummary: {summary}\n")
-        except Exception as e:
-            print(f"Failed to fetch {feed_url}: {e}")
-    return "\n---\n".join(raw_articles)
-
-# ----------------- 3. GEMINI SCRIPT SYNTHESIS (CASCADE) -----------------
-def generate_broadcast_script(raw_content):
+# ----------------- 2. SEARCH & SYNTHESIZE SCRIPT -----------------
+def generate_broadcast_script():
+    today_str = datetime.date.today().strftime("%B %d, %Y")
+    
     prompt = f"""
-You are a senior science and engineering correspondent for a factual, long-form audio broadcast.
-Synthesize the provided STEM raw items into a continuous, highly detailed ~2,800 to 3,000 word spoken radio script (roughly 20 minutes when read aloud).
+Today is {today_str}.
+Act as a senior science and engineering investigative broadcaster. Conduct live Google searches to find the most significant STEM milestones completed or deployed in the past 48 hours.
 
-STRICT EDITORIAL RULES:
-1. HARD EXCLUSION: Completely discard and skip any story involving mouse models, animal studies, in-vitro laboratory assays, theoretical molecules, or early-stage preclinical ideas. If an item lacks a completed real-world endpoint (e.g., full human Phase III completion, actual space hardware launched/concluded, settled mathematical theorem, or operational industrial system), omit it entirely. Do not mention hope or potential.
-2. HISTORICAL RETROSPECTIVE: When reporting on an engineering, space, or scientific project completed today, trace its trajectory. Detail what was anticipated when it was first conceived 10 to 20 years ago, what mechanical or computational compromises occurred over the decades, and what concrete capability is delivered right now.
-3. TONE & STYLE: Crisp, direct, analytical BBC/NPR World Service style. Use short, impactful sentences built for the ear. Avoid conversational greetings, filler, sound-effect cues, and sign-offs. Jump straight into the first story.
+Select exactly 4 distinct completed milestones across:
+- Aerospace / Space Exploration (actual hardware launched, docked, landed, or mission concluded)
+- Mathematics / Computing (formally published/settled theorems, operational industrial silicon, deployed open models)
+- Medicine / Public Health (completed human Phase 3/4 trial results, approved therapies, or major public health containment campaigns)
+- Physical Sciences / Energy (grid-connected power, completed particle physics data runs, or verified material manufacturing)
 
-RAW MATERIAL:
-{raw_content}
+EDITORIAL FILTER:
+1. HARD EXCLUSION: Do NOT cover mouse/animal models, in-vitro lab assays, theoretical compounds, conceptual designs, or speculative "could pave the way" promises. If it is not a finished, real-world deployment or verified result, ignore it.
+2. HISTORICAL RETROSPECTIVE (Mandatory): For each of the 4 stories, do a web search on its origin:
+   - When this initiative was first conceived/funded 10 to 20 years ago, what was the original thesis and timeline?
+   - What mechanical, computational, or political roadblocks caused delays or design pivots along the way?
+   - What concrete capability, hardware, or proof was delivered today?
+
+LENGTH & FORMAT REQUIREMENTS:
+- Write a long-form spoken radio script of roughly 2,800 to 3,200 words (~700 words per story) so it lasts ~20 minutes when read aloud.
+- Write in a dense, crisp, authoritative broadcast style (BBC World Service / NPR style).
+- Do NOT include markdown bolding, section titles, episode intros, greeting chit-chat, or sign-offs. Jump straight into the first sentence of story 1.
 """
 
-    # Ranked hierarchy from highest reasoning quality to lightweight baseline
     model_cascade = [
         "gemini-3.1-pro-preview",
         "gemini-3.8-flash",
         "gemini-3.7-flash",
         "gemini-3.6-flash",
         "gemini-3.5-flash",
-        "gemini-3.5-flash-lite",
-        "gemini-3.1-flash-lite",
-        "gemini-3-flash-preview",
     ]
 
     for model in model_cascade:
         url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={GEMINI_API_KEY}"
         payload = {
             "contents": [{"parts": [{"text": prompt}]}],
+            "tools": [{"google_search": {}}],  # Enables real-time web search grounding
             "generationConfig": {
                 "temperature": 0.2,
                 "maxOutputTokens": 8192
             }
         }
 
-        print(f"Attempting generation with: {model}...")
+        print(f"Querying {model} with live Google Search...")
         for attempt in range(1, 3):
             try:
-                res = requests.post(url, json=payload, timeout=120)
-
+                res = requests.post(url, json=payload, timeout=180)
                 if res.status_code == 200:
                     data = res.json()
                     candidates = data.get("candidates", [])
                     if candidates and "content" in candidates[0]:
-                        print(f"Successfully generated script via {model}.")
-                        return candidates[0]["content"]["parts"][0]["text"]
-
-                # If server is overloaded (503/500) or rate-limited (429), pause and retry
+                        text = candidates[0]["content"]["parts"][0]["text"]
+                        word_count = len(text.split())
+                        print(f"Generated {word_count} words via {model}.")
+                        return text
+                
                 if res.status_code in (500, 503, 429):
-                    wait = attempt * 8
-                    print(f"{model} returned HTTP {res.status_code}. Retrying in {wait}s...")
+                    wait = attempt * 10
+                    print(f"{model} returned {res.status_code}. Retrying in {wait}s...")
                     time.sleep(wait)
                 else:
-                    print(f"{model} unavailable (HTTP {res.status_code}). Falling back to next tier...")
+                    print(f"{model} status {res.status_code}. Falling back...")
                     break
-
-            except requests.exceptions.RequestException as err:
-                print(f"Connection issue on {model} (Attempt {attempt}): {err}")
+            except Exception as e:
+                print(f"Error on {model}: {e}")
                 time.sleep(5)
 
-    raise RuntimeError("All Gemini candidate models in the fallback chain were unavailable.")
+    raise RuntimeError("All models failed to generate content.")
 
-# ----------------- 4. TTS AUDIO GENERATION -----------------
+# ----------------- 3. TTS GENERATION -----------------
 async def text_to_audio(script_text, output_path):
     communicate = edge_tts.Communicate(script_text, voice=VOICE, rate="+0%")
     await communicate.save(output_path)
 
-# ----------------- 5. UPDATE RSS FEED -----------------
-def update_podcast_rss(new_audio_file, briefing_title):
+# ----------------- 4. RSS FEED UPDATE -----------------
+def update_podcast_rss(new_audio_file):
     audio_files = sorted(glob.glob(os.path.join(AUDIO_DIR, "*.mp3")), key=os.path.getmtime, reverse=True)
     
     rss = ET.Element("rss", {
@@ -130,9 +114,9 @@ def update_podcast_rss(new_audio_file, briefing_title):
         "xmlns:itunes": "http://www.itunes.com/dtds/podcast-1.0.dtd"
     })
     channel = ET.SubElement(rss, "channel")
-    ET.SubElement(channel, "title").text = "Daily STEM Executive Briefing"
+    ET.SubElement(channel, "title").text = "Daily STEM Retrospective Briefing"
     ET.SubElement(channel, "link").text = BASE_URL
-    ET.SubElement(channel, "description").text = "Automated non-speculative STEM briefing."
+    ET.SubElement(channel, "description").text = "Non-speculative STEM journalism tracing completed milestones from origin to completion."
     ET.SubElement(channel, "language").text = "en-us"
 
     for file_path in audio_files:
@@ -150,32 +134,28 @@ def update_podcast_rss(new_audio_file, briefing_title):
             "length": file_size,
             "type": "audio/mpeg"
         })
-        ET.SubElement(item, "itunes:duration").text = "1200"
 
     tree = ET.ElementTree(rss)
     tree.write(PODCAST_FILE, encoding="utf-8", xml_declaration=True)
 
 # ----------------- MAIN PIPELINE -----------------
 def main():
-    print("Pruning old episodes...")
+    print("1. Cleaning old briefings...")
     cleanup_old_episodes()
 
-    print("Fetching raw feeds...")
-    raw_data = fetch_feed_data()
-
-    print("Synthesizing script with Gemini...")
-    script_text = generate_broadcast_script(raw_data)
+    print("2. Searching Google and generating 20-minute script...")
+    script_text = generate_broadcast_script()
 
     timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H%M")
     audio_filename = f"briefing_{timestamp}.mp3"
     audio_path = os.path.join(AUDIO_DIR, audio_filename)
 
-    print(f"Generating audio: {audio_path}...")
+    print(f"3. Synthesizing audio to {audio_path}...")
     asyncio.run(text_to_audio(script_text, audio_path))
 
-    print("Updating podcast.xml...")
-    update_podcast_rss(audio_filename, f"STEM Briefing - {timestamp}")
-    print("Complete.")
+    print("4. Updating podcast.xml feed...")
+    update_podcast_rss(audio_filename)
+    print("Done! Briefing generated and feed updated.")
 
 if __name__ == "__main__":
     main()
