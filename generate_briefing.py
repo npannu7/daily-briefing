@@ -97,10 +97,32 @@ def env_true(name):
 
 
 # ============================ GEMINI ============================
+def _stream_once(url, payload, headers):
+    """One streaming request. Returns (status, text, grounding, finish, error_body).
+    Streaming keeps the connection alive while long, search-grounded answers are
+    written, so a slow answer no longer looks like a timeout."""
+    with requests.post(url, json=payload, headers=headers, stream=True, timeout=(20, 180)) as r:
+        if r.status_code != 200:
+            return r.status_code, "", {}, None, r.text[:400].replace("\n", " "), r.headers
+        parts, meta, finish = [], {}, None
+        for line in r.iter_lines(decode_unicode=True):
+            if not line or not line.startswith("data:"):
+                continue
+            chunk = json.loads(line[5:].strip())
+            cand = (chunk.get("candidates") or [{}])[0]
+            for p in cand.get("content", {}).get("parts", []):
+                if p.get("text") and not p.get("thought"):
+                    parts.append(p["text"])
+            if cand.get("groundingMetadata"):
+                meta = cand["groundingMetadata"]
+            finish = cand.get("finishReason") or finish
+        return 200, "".join(parts).strip(), meta, finish, "", r.headers
+
+
 def call_gemini(prompt, use_search=False, json_mode=False, min_words=0):
     """Try each model in MODELS. Returns (text, grounding_metadata)."""
     if not GEMINI_API_KEY:
-        raise RuntimeError("GEMINI_API_KEY is not set")
+        raise RuntimeError("GEMINI_API_KEY secret is missing or empty")
 
     gen_cfg = {"temperature": 0.3, "maxOutputTokens": 16384}
     if json_mode:
@@ -110,42 +132,44 @@ def call_gemini(prompt, use_search=False, json_mode=False, min_words=0):
         payload["tools"] = [{"google_search": {}}]
     headers = {"x-goog-api-key": GEMINI_API_KEY, "Content-Type": "application/json"}
 
+    errors = []
     for model in MODELS:
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
-        for attempt in range(1, 4):
+        url = (f"https://generativelanguage.googleapis.com/v1beta/models/"
+               f"{model}:streamGenerateContent?alt=sse")
+        for attempt in range(1, 3):
+            t0 = time.time()
             try:
-                r = requests.post(url, json=payload, headers=headers, timeout=300)
-            except requests.RequestException as e:
-                log(f"  {model}: network error ({e}); retrying")
-                time.sleep(15 * attempt)
+                status, text, meta, finish, body, hdrs = _stream_once(url, payload, headers)
+            except (requests.RequestException, ValueError) as e:
+                log(f"  {model}: connection problem after {time.time() - t0:.0f}s ({e})")
+                errors.append(f"{model}: connection/timeout")
+                time.sleep(10)
                 continue
 
-            if r.status_code == 200:
-                data = r.json()
-                cand = (data.get("candidates") or [{}])[0]
-                parts = cand.get("content", {}).get("parts", [])
-                text = "".join(p.get("text", "") for p in parts if not p.get("thought")).strip()
-                finish = cand.get("finishReason")
+            if status == 200:
                 words = len(text.split())
-                log(f"  {model}: {words} words, finish={finish}")
+                log(f"  {model}: {words} words in {time.time() - t0:.0f}s, finish={finish}")
                 if text and words >= min_words:
-                    return text, cand.get("groundingMetadata", {}) or {}
-                break  # empty / too short / blocked -> next model
+                    return text, meta or {}
+                errors.append(f"{model}: empty/short answer (finish={finish})")
+                break  # empty / blocked -> next model
 
-            body = r.text[:300].replace("\n", " ")
-            if r.status_code == 429 and "PerDay" in r.text:
+            if status == 429 and "PerDay" in body:
                 log(f"  {model}: daily quota used up -> next model")
+                errors.append(f"{model}: daily quota used up")
                 break
-            if r.status_code in (429, 500, 502, 503, 504):
-                wait = r.headers.get("Retry-After")
-                wait = int(wait) if wait and wait.isdigit() else 20 * attempt
-                log(f"  {model}: HTTP {r.status_code}; waiting {wait}s (attempt {attempt}/3)")
+            if status in (429, 500, 502, 503, 504):
+                wait = hdrs.get("Retry-After")
+                wait = min(int(wait), 60) if wait and wait.isdigit() else 20 * attempt
+                log(f"  {model}: HTTP {status}; waiting {wait}s (attempt {attempt}/2)")
+                errors.append(f"{model}: HTTP {status}")
                 time.sleep(wait)
                 continue
-            log(f"  {model}: HTTP {r.status_code} {body} -> next model")
+            log(f"  {model}: HTTP {status} {body} -> next model")
+            errors.append(f"{model}: HTTP {status} {body[:120]}")
             break  # 400/403/404: model not available on this key
 
-    raise RuntimeError("All Gemini models failed. See log above.")
+    raise RuntimeError("All Gemini models failed -> " + " | ".join(errors[-6:]))
 
 
 def parse_json(text):
@@ -219,6 +243,7 @@ def fetch_items():
             log(f"  OK   {name}: {n} items")
         except Exception as ex:  # one bad feed must not stop the run
             log(f"  FAIL {name}: {ex}")
+            print(f"::warning title=Feed failed::{name}: {str(ex)[:150]}", flush=True)
     return items
 
 
@@ -497,7 +522,7 @@ def main():
         log(f"  + [{s['domain']}] {s['headline']}  ({s['source']})")
 
     log("3/5 Writing stories (with Google Search)")
-    per_story = max(500, min(TARGET_WORDS // len(stories), 2800))
+    per_story = max(500, min(TARGET_WORDS // len(stories), 1600))
     today_str = now.strftime("%A %d %B %Y")
     written = []
     for s in stories:
@@ -569,6 +594,8 @@ def main():
     save_state(state)
     build_rss(keep)
     log(f"Done. Feed: {PAGES_URL}/podcast.xml")
+    print(f"::notice title=Episode ready::{filename} - {fmt_ts(duration)} - "
+          f"{len(written)} stories", flush=True)
 
 
 if __name__ == "__main__":
@@ -576,4 +603,6 @@ if __name__ == "__main__":
         main()
     except Exception as exc:
         log(f"ERROR: {exc}")
+        # shows on the run's Summary page, readable without opening the logs
+        print(f"::error title=Briefing failed::{str(exc)[:900]}", flush=True)
         sys.exit(1)
