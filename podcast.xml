@@ -1,2 +1,27 @@
-<?xml version='1.0' encoding='utf-8'?>
-<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"><channel><title>Daily STEM Executive Briefing</title><link>https://npannu7.github.io/daily-briefing</link><description>Automated non-speculative STEM briefing.</description><language>en-us</language><item><title>Briefing 2026-10-05 1127</title><pubDate>Mon, 05 Oct 2026 11:27:27 -0000</pubDate><guid>https://npannu7.github.io/daily-briefing/audio/briefing_2026-10-05_1127.mp3</guid><enclosure url="https://npannu7.github.io/daily-briefing/audio/briefing_2026-10-05_1127.mp3" length="661104" type="audio/mpeg" /><itunes:duration>1200</itunes:duration></item></channel></rss>
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+<title>Daily STEM Briefing</title>
+<link>https://npannu7.github.io/daily-briefing</link>
+<description>Completed, verified milestones in AI, space, mathematics, biology and disease control - traced from the original promise to what was actually delivered.</description>
+<language>en</language>
+<itunes:author>Daily STEM Briefing</itunes:author>
+<itunes:explicit>false</itunes:explicit>
+<atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
+<lastBuildDate>Mon, 05 Oct 2026 12:58:05 GMT</lastBuildDate>
+<itunes:image href="https://npannu7.github.io/daily-briefing/cover.jpg"/>
+<image><url>https://npannu7.github.io/daily-briefing/cover.jpg</url><title>Daily STEM Briefing</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Evening Edition - 5 Oct 2026</title>
+<description>Evening edition - Monday, 5 October 2026
+
+00:07  Nobel Prize awarded for the development of optogenetics
+   Source: Science News - https://www.science.org/content/article/method-controlling-brain-cells-light-wins-nobel</description>
+<pubDate>Mon, 05 Oct 2026 18:23:16 +0530</pubDate>
+<guid isPermaLink="false">briefing_2026-10-05_evening_1823.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/briefing_2026-10-05_evening_1823.mp3" length="2167488" type="audio/mpeg"/>
+<itunes:duration>361</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
+</channel>
+</rss>

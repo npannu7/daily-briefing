@@ -1,0 +1,25 @@
+{
+  "episodes": [
+    {
+      "file": "briefing_2026-10-05_evening_1823.mp3",
+      "date": "2026-10-05",
+      "edition": "evening",
+      "title": "Evening Edition - 5 Oct 2026",
+      "published": "2026-10-05T18:23:16.004660+05:30",
+      "pubDate": "Mon, 05 Oct 2026 18:23:16 +0530",
+      "size": 2167488,
+      "duration": 361,
+      "description": "Evening edition - Monday, 5 October 2026\n\n00:07  Nobel Prize awarded for the development of optogenetics\n   Source: Science News - https://www.science.org/content/article/method-controlling-brain-cells-light-wins-nobel",
+      "headlines": [
+        "Nobel Prize awarded for the development of optogenetics"
+      ]
+    }
+  ],
+  "history": [
+    {
+      "date": "2026-10-05",
+      "headline": "Nobel Prize awarded for the development of optogenetics",
+      "link": "https://www.science.org/content/article/method-controlling-brain-cells-light-wins-nobel"
+    }
+  ]
+}
