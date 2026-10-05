@@ -1,0 +1,45 @@
+name: Generate Daily STEM Briefing
+
+on:
+  schedule:
+    # GitHub crons are in UTC.
+    # Runs at 02:30 UTC (8:00 AM IST) and 10:30 UTC (4:00 PM IST)
+    - cron: '30 2 * * *'
+    - cron: '30 10 * * *'
+  workflow_dispatch: # Allows manual trigger from the Actions tab anytime
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run Briefing Generator
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: |
+          python generate_briefing.py
+
+      - name: Commit and Push Audio & RSS Feed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add audio/ podcast.xml
+          git commit -m "chore: automated STEM briefing update [skip ci]" || exit 0
+          git push origin main
