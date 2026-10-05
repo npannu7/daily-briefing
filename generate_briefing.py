@@ -154,9 +154,11 @@ def call_gemini(prompt, use_search=False, json_mode=False, min_words=0):
                 errors.append(f"{model}: empty/short answer (finish={finish})")
                 break  # empty / blocked -> next model
 
-            if status == 429 and "PerDay" in body:
-                log(f"  {model}: daily quota used up -> next model")
-                errors.append(f"{model}: daily quota used up")
+            if status == 429 and ("PerDay" in body or use_search):
+                # daily quota gone, or Google Search grounding not allowed / used up:
+                # waiting will not help, so move on at once
+                log(f"  {model}: HTTP 429 quota -> next model | {body[:220]}")
+                errors.append(f"{model}: 429 quota")
                 break
             if status in (429, 500, 502, 503, 504):
                 wait = hdrs.get("Retry-After")
@@ -318,6 +320,9 @@ ITEMS:
 
 
 # ============================ 3. WRITE ============================
+SEARCH_OK = True  # switched off for the rest of the run if Search is refused
+
+
 def write_story(story, words, today_str):
     prompt = f"""Today is {today_str}. You are a senior science correspondent writing for radio
 (BBC World Service quality: precise, crisp, well-constructed sentences, written for the ear).
@@ -348,7 +353,23 @@ STRICT RULES
 - Expand abbreviations the first time they appear. Write numbers the way a presenter would say them.
 - No greeting, no sign-off, no "in this story". Start with the first fact.
 """
-    text, meta = call_gemini(prompt, use_search=True, min_words=1)
+    global SEARCH_OK
+    text = meta = None
+    if SEARCH_OK:
+        try:
+            text, meta = call_gemini(prompt, use_search=True, min_words=1)
+        except RuntimeError as e:
+            SEARCH_OK = False  # don't keep hitting Search for the remaining stories
+            log(f"  Google Search unavailable ({e}); writing without Search")
+            print("::warning title=Google Search not available::Stories written from the "
+                  "feed item and the model's own knowledge (no live search).", flush=True)
+    if text is None:
+        prompt = prompt.replace(
+            "Use Google Search to verify this story and research its history.",
+            "Live search is not available. Use the story details below and your own knowledge. "
+            "Include only historical facts you are highly confident are accurate; when unsure, "
+            "leave the detail out rather than guess.")
+        text, meta = call_gemini(prompt, use_search=False, min_words=1)
     if text.strip().upper().startswith("SKIP") and len(text.split()) < 10:
         return None, []
     if len(text.split()) < words * 0.35:
