@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weights &amp; Measures · Quiz</title>
+<link rel="icon" href="artwork.jpg">
+<style>
+:root{
+  --bg:#F6F4EE; --card:#FFFFFF; --ink:#141A2B; --muted:#5E6A82; --line:#E3E0D7;
+  --accent:#C77A00; --accent-ink:#FFFFFF; --soft:#FFF4DF; --good:#1F8A5B; --good-soft:#E3F4EC;
+  --bad:#C2413B; --bad-soft:#FBE9E7; --chip:#EFEDE6;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0A0F1E; --card:#121A2E; --ink:#F1EEE6; --muted:#9AA8C4; --line:#24304A;
+    --accent:#FFB547; --accent-ink:#0A0F1E; --soft:#2A2312; --good:#4CC38A; --good-soft:#0F2A1F;
+    --bad:#FF7A70; --bad-soft:#2E1414; --chip:#1B2540;
+  }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+.wrap{max-width:720px;margin:0 auto;padding:20px 16px 80px}
+header{display:flex;gap:14px;align-items:center;margin:4px 0 18px}
+header img{width:64px;height:64px;border-radius:12px;flex:none}
+header h1{font-size:22px;margin:0;line-height:1.2}
+header p{margin:2px 0 0;color:var(--muted);font-size:14px}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;margin-bottom:14px}
+.tab{flex:none;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;
+  padding:7px 14px;font-size:14px;cursor:pointer}
+.tab[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin:0 0 16px}
+.ep-head h2{font-size:19px;margin:0 0 4px;line-height:1.3}
+.meta{color:var(--muted);font-size:13px}
+.theme{margin:10px 0 0;font-size:15px}
+.sec{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:22px 0 10px;font-weight:600}
+.q{border-top:1px solid var(--line);padding:14px 0 4px}
+.q:first-of-type{border-top:0;padding-top:0}
+.q p{margin:0 0 10px;font-weight:600}
+.q .seg{display:block;font-weight:400;color:var(--muted);font-size:12px;margin-bottom:4px}
+.opt{display:block;width:100%;text-align:left;border:1px solid var(--line);background:transparent;color:var(--ink);
+  border-radius:10px;padding:10px 12px;margin:0 0 8px;font:inherit;cursor:pointer}
+.opt:hover{border-color:var(--muted)}
+.opt.pick{border-color:var(--accent);background:var(--soft)}
+.opt.right{border-color:var(--good);background:var(--good-soft)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.explain{display:none;font-size:14px;color:var(--muted);margin:4px 0 8px}
+.checked .explain{display:block}
+.checked .opt{cursor:default}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 12px}
+.field{margin:0 0 12px}
+.flabel{color:var(--muted);font-size:14px;margin:0 0 6px}
+.field .row{margin:0}
+.chip{border:1px solid var(--line);background:var(--chip);color:var(--ink);border-radius:999px;padding:6px 12px;
+  font:inherit;font-size:14px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.segrow{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:8px 0;border-top:1px solid var(--line)}
+.segrow span{font-size:14px}
+.segrow .row{margin:0;flex:none}
+textarea{width:100%;min-height:90px;border:1px solid var(--line);border-radius:10px;padding:10px;font:inherit;
+  background:transparent;color:var(--ink)}
+.btn{display:inline-block;border:0;border-radius:12px;padding:12px 18px;font:inherit;font-weight:600;cursor:pointer;
+  background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.score{font-weight:600;margin-left:10px}
+.footer{position:sticky;bottom:0;background:var(--bg);padding:12px 0;border-top:1px solid var(--line);
+  display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.hint{color:var(--muted);font-size:13px}
+a{color:var(--accent)}
+.empty{color:var(--muted);text-align:center;padding:40px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img src="artwork.jpg" alt="">
+    <div><h1 id="show">Weights &amp; Measures</h1><p id="sub">Quiz and feedback</p></div>
+  </header>
+  <div class="tabs" id="tabs" role="toolbar" aria-label="Episodes"></div>
+  <div id="list"><p class="empty">Loading episodes…</p></div>
+  <div class="footer">
+    <button class="btn" id="send">Send feedback</button>
+    <span class="hint" id="hint">Opens GitHub with your feedback filled in. Press “Create” there to submit.</span>
+  </div>
+</div>
+<script>
+(function(){
+  var store = {
+    get: function(k, d){ try { var v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch(e){ return d; } },
+    set: function(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
+  };
+  var DATA = null, selected = [], state = {};
+
+  function el(tag, attrs, kids){
+    var n = document.createElement(tag);
+    for (var k in (attrs||{})) {
+      if (k === 'text') n.textContent = attrs[k];
+      else if (k === 'on') for (var ev in attrs.on) n.addEventListener(ev, attrs.on[ev]);
+      else n.setAttribute(k, attrs[k]);
+    }
+    (kids||[]).forEach(function(c){ if (c) n.appendChild(c); });
+    return n;
+  }
+  function fmtDur(s){ s = +s||0; return Math.floor(s/60) + ' min'; }
+  function st(file){
+    if (!state[file]) state[file] = store.get('wm:' + file, {answers:{}, checked:false, ratings:{}, segments:{}, comment:''});
+    return state[file];
+  }
+  function save(file){ store.set('wm:' + file, state[file]); }
+
+  function chips(file, group, options, key){
+    var s = st(file), row = el('div', {class:'row'});
+    options.forEach(function(o){
+      var b = el('button', {class:'chip', type:'button', 'aria-pressed': String(s[key][group] === o.v), text:o.t});
+      b.addEventListener('click', function(){
+        s[key][group] = (s[key][group] === o.v) ? undefined : o.v; save(file);
+        Array.prototype.forEach.call(row.querySelectorAll('.chip'), function(c){ c.setAttribute('aria-pressed', 'false'); });
+        if (s[key][group] !== undefined) b.setAttribute('aria-pressed', 'true');
+      });
+      row.appendChild(b);
+    });
+    return row;
+  }
+
+  function renderEpisode(ep){
+    var s = st(ep.file), card = el('section', {class:'card'});
+    card.appendChild(el('div', {class:'ep-head'}, [
+      el('h2', {text: ep.title}),
+      el('div', {class:'meta', text: ep.label + ' · ' + fmtDur(ep.duration)}),
+      ep.theme ? el('p', {class:'theme', text: ep.theme}) : null
+    ]));
+
+    // Quiz
+    if (ep.quiz && ep.quiz.length){
+      card.appendChild(el('div', {class:'sec', text:'Quiz'}));
+      var qbox = el('div', {class: s.checked ? 'checked' : ''});
+      ep.quiz.forEach(function(q, qi){
+        var wrap = el('div', {class:'q'});
+        var p = el('p'); p.appendChild(el('span', {class:'seg', text: q.segment || ''})); p.appendChild(document.createTextNode(q.q));
+        wrap.appendChild(p);
+        q.options.forEach(function(o, oi){
+          var b = el('button', {class:'opt', type:'button', text:o});
+          if (s.answers[qi] === oi) b.classList.add('pick');
+          if (s.checked){
+            if (oi === q.answer) b.classList.add('right');
+            else if (s.answers[qi] === oi) b.classList.add('wrong');
+          }
+          b.addEventListener('click', function(){
+            if (s.checked) return;
+            s.answers[qi] = oi; save(ep.file);
+            Array.prototype.forEach.call(wrap.querySelectorAll('.opt'), function(x){ x.classList.remove('pick'); });
+            b.classList.add('pick');
+          });
+          wrap.appendChild(b);
+        });
+        wrap.appendChild(el('div', {class:'explain', text: q.explain || ''}));
+        qbox.appendChild(wrap);
+      });
+      card.appendChild(qbox);
+      var scoreEl = el('span', {class:'score'});
+      var check = el('button', {class:'btn ghost', type:'button', text: s.checked ? 'Answers shown' : 'Check answers'});
+      function showScore(){
+        var n = 0; ep.quiz.forEach(function(q, i){ if (s.answers[i] === q.answer) n++; });
+        scoreEl.textContent = n + ' / ' + ep.quiz.length;
+      }
+      if (s.checked) showScore();
+      check.addEventListener('click', function(){ if (s.checked) return; s.checked = true; save(ep.file); render(); });
+      card.appendChild(el('div', {class:'row', style:'margin-top:8px'}, [check, scoreEl]));
+    }
+
+    // Feedback
+    card.appendChild(el('div', {class:'sec', text:'Feedback'}));
+    function field(label, row){ return el('div', {class:'field'}, [el('div', {class:'flabel', text:label}), row]); }
+    card.appendChild(field('Overall', chips(ep.file, 'overall', [1,2,3,4,5].map(function(n){ return {v:n, t:n + ' ★'}; }), 'ratings')));
+    card.appendChild(field('Depth', chips(ep.file, 'depth', [{v:'too basic',t:'Too basic'},{v:'right',t:'Right'},{v:'too technical',t:'Too technical'}], 'ratings')));
+    card.appendChild(field('Pace', chips(ep.file, 'pace', [{v:'too slow',t:'Too slow'},{v:'right',t:'Right'},{v:'too fast',t:'Too fast'}], 'ratings')));
+    card.appendChild(field('Voices', chips(ep.file, 'voices', [{v:'good',t:'Good'},{v:'ok',t:'OK'},{v:'poor',t:'Poor'}], 'ratings')));
+
+    if (ep.segments && ep.segments.length){
+      card.appendChild(el('div', {class:'sec', text:'Segments — more or less of this?'}));
+      ep.segments.forEach(function(sg){
+        var r = el('div', {class:'segrow'}, [el('span', {text: sg.title})]);
+        r.appendChild(chips(ep.file, sg.title, [{v:'more',t:'More'},{v:'ok',t:'OK'},{v:'less',t:'Less'}], 'segments'));
+        card.appendChild(r);
+      });
+    }
+    card.appendChild(el('div', {class:'sec', text:'Anything else?'}));
+    var ta = el('textarea', {placeholder:'Topics you want, things that were unclear, what to drop…'});
+    ta.value = s.comment || '';
+    ta.addEventListener('input', function(){ s.comment = ta.value; save(ep.file); });
+    card.appendChild(ta);
+    if (ep.transcript) card.appendChild(el('p', {class:'hint'}, [el('a', {href: ep.transcript, target:'_blank', rel:'noopener', text:'Read the transcript'})]));
+    return card;
+  }
+
+  function render(){
+    var list = document.getElementById('list'); list.innerHTML = '';
+    var eps = DATA.episodes.filter(function(e){ return selected.indexOf(e.file) >= 0; });
+    if (!eps.length) list.appendChild(el('p', {class:'empty', text:'Pick an episode above.'}));
+    eps.forEach(function(ep){ list.appendChild(renderEpisode(ep)); });
+  }
+
+  function renderTabs(){
+    var tabs = document.getElementById('tabs'); tabs.innerHTML = '';
+    DATA.episodes.forEach(function(ep){
+      var on = selected.indexOf(ep.file) >= 0;
+      var b = el('button', {class:'tab', type:'button', 'aria-pressed': String(on), text: ep.label});
+      b.addEventListener('click', function(){
+        var i = selected.indexOf(ep.file);
+        if (i >= 0) selected.splice(i, 1); else selected.push(ep.file);
+        renderTabs(); render();
+      });
+      tabs.appendChild(b);
+    });
+  }
+
+  function buildFeedback(){
+    var out = [];
+    DATA.episodes.filter(function(e){ return selected.indexOf(e.file) >= 0; }).forEach(function(ep){
+      var s = st(ep.file), quiz = null;
+      if (ep.quiz && ep.quiz.length && Object.keys(s.answers).length){
+        var n = 0, missed = [];
+        ep.quiz.forEach(function(q, i){
+          if (s.answers[i] === q.answer) n++; else missed.push((q.segment ? q.segment + ': ' : '') + q.q);
+        });
+        quiz = {score:n, total:ep.quiz.length, missed:missed};
+      }
+      var segs = {}; Object.keys(s.segments).forEach(function(k){ if (s.segments[k]) segs[k] = s.segments[k]; });
+      var r = {}; Object.keys(s.ratings).forEach(function(k){ if (s.ratings[k] !== undefined) r[k] = s.ratings[k]; });
+      if (!quiz && !Object.keys(segs).length && !Object.keys(r).length && !(s.comment||'').trim()) return;
+      out.push({episode:ep.file, date:ep.date, edition:ep.edition, quiz:quiz, ratings:r, segments:segs,
+                comment:(s.comment||'').trim().slice(0, 1500)});
+    });
+    return out;
+  }
+
+  document.getElementById('send').addEventListener('click', function(){
+    if (!DATA) return;
+    var fb = buildFeedback(), hint = document.getElementById('hint');
+    if (!fb.length){ hint.textContent = 'Answer a question or rate something first.'; return; }
+    var lines = fb.map(function(f){
+      return '- ' + f.date + ' ' + f.edition + (f.quiz ? ' · quiz ' + f.quiz.score + '/' + f.quiz.total : '') +
+        (f.ratings.overall ? ' · ' + f.ratings.overall + '★' : '') + (f.comment ? ' · "' + f.comment.slice(0, 120) + '"' : '');
+    });
+    var body = 'Feedback from the quiz page.\n\n' + lines.join('\n') + '\n\n```json\n' +
+      JSON.stringify({feedback: fb}) + '\n```\n';
+    var title = 'Feedback: ' + fb.map(function(f){ return f.date + ' ' + f.edition; }).join(', ');
+    var url = 'https://github.com/' + DATA.repo + '/issues/new?labels=feedback&title=' +
+      encodeURIComponent(title) + '&body=' + encodeURIComponent(body);
+    window.open(url, '_blank', 'noopener');
+    hint.textContent = 'GitHub opened in a new tab — press “Create” to submit.';
+  });
+
+  fetch('quiz.json?t=' + Date.now()).then(function(r){ return r.json(); }).then(function(d){
+    DATA = d;
+    DATA.episodes.sort(function(a, b){ return a.published < b.published ? 1 : -1; });
+    document.getElementById('show').textContent = d.show || 'Weights & Measures';
+    document.getElementById('sub').textContent = 'Quiz and feedback for ' + (d.listener || 'you');
+    selected = DATA.episodes.slice(0, 2).map(function(e){ return e.file; });
+    if (!DATA.episodes.length){ document.getElementById('list').innerHTML = '<p class="empty">No episodes with a quiz yet.</p>'; return; }
+    renderTabs(); render();
+  }).catch(function(){
+    document.getElementById('list').innerHTML = '<p class="empty">Could not load quiz.json.</p>';
+  });
+})();
+</script>
+</body>
+</html>
