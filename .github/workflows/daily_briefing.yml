@@ -1,4 +1,4 @@
-name: Daily STEM Briefing
+name: Daily AI Briefing
 
 on:
   schedule:
@@ -18,18 +18,23 @@ on:
         description: 'Re-make it even if this edition already exists today'
         type: boolean
         default: false
+      tts:
+        description: 'Voice engine'
+        type: choice
+        options: [auto, gemini, edge]
+        default: auto
 
 permissions:
-  contents: write          # commit podcast.xml + upload audio to the release
+  contents: write
 
 concurrency:
-  group: daily-briefing    # never let two runs push at the same time
+  group: daily-briefing
   cancel-in-progress: false
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 60
     steps:
       - name: Checkout
         uses: actions/checkout@v5
@@ -41,24 +46,30 @@ jobs:
           cache: 'pip'
 
       - name: Install dependencies
-        run: pip install -U -r requirements.txt
+        run: |
+          pip install -U -r requirements.txt
+          which ffmpeg || (sudo apt-get update -q && sudo apt-get install -y -q ffmpeg)
 
       - name: Generate briefing
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           GEMINI_MODELS: ${{ vars.GEMINI_MODELS }}
+          OPENROUTER_MODELS: ${{ vars.OPENROUTER_MODELS }}
+          GEMINI_TTS_MODEL: ${{ vars.GEMINI_TTS_MODEL }}
           GH_TOKEN: ${{ github.token }}
           GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
           GITHUB_REPOSITORY: ${{ github.repository }}
           EDITION: ${{ inputs.edition || 'auto' }}
           FORCE: ${{ inputs.force || 'false' }}
+          TTS_ENGINE: ${{ inputs.tts || 'auto' }}
         run: python generate_briefing.py
 
       - name: Commit feed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git rm -r -q --ignore-unmatch audio        # old storage folder, no longer used
+          git rm -r -q --ignore-unmatch audio
           git add -A podcast.xml episodes.json 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "Nothing new to commit."
