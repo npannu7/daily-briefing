@@ -91,6 +91,8 @@ DEFAULT_GEMINI = "gemini-3.8-flash,gemini-3.7-flash,gemini-3.5-flash-lite,gemini
 GEMINI_MODELS = [m.strip() for m in (os.getenv("GEMINI_MODELS") or DEFAULT_GEMINI).split(",") if m.strip()]
 GEMINI_TTS_MODEL = os.getenv("GEMINI_TTS_MODEL") or "gemini-3.8-flash-tts"
 TTS_ENGINE = (os.getenv("TTS_ENGINE") or "auto").lower()
+GEMINI_TTS_DAILY = int(os.getenv("GEMINI_TTS_DAILY") or 10)        # free tier: 10 requests/day
+TTS_CHUNK_WORDS = int(os.getenv("TTS_CHUNK_WORDS") or 700)        # bigger chunks = fewer requests
 
 ROOT = Path(__file__).resolve().parent
 FEEDS_FILE = ROOT / "feeds.txt"
@@ -887,7 +889,7 @@ def edge_tts_chunk(turns):
     return bytes(pcm)
 
 
-def voice_episode(sections):
+def voice_episode(sections, state):
     """sections: list of (label, turns). Returns (pcm, marks, engine).
     Turns from all sections are packed into ~420-word chunks (fewer TTS requests);
     section start times are estimated from word position inside a chunk."""
@@ -895,7 +897,7 @@ def voice_episode(sections):
     chunks, cur, n = [], [], 0
     for row in flat:
         w = words(row[2])
-        if cur and n + w > 420:
+        if cur and n + w > TTS_CHUNK_WORDS:
             chunks.append(cur)
             cur, n = [], 0
         cur.append(row)
@@ -907,12 +909,26 @@ def voice_episode(sections):
     for engine in engines:
         if engine == "gemini" and not GEMINI_API_KEY:
             continue
+        if engine == "gemini":
+            day_ago = (dt.datetime.now(TZ) - dt.timedelta(hours=24)).isoformat()
+            state["tts_log"] = [t for t in state.get("tts_log", []) if t >= day_ago]
+            used = len(state["tts_log"])
+            if TTS_ENGINE == "auto" and used + len(chunks) > GEMINI_TTS_DAILY:
+                log(f"  Gemini TTS budget: {used} used in last 24h, need {len(chunks)} "
+                    f"(limit {GEMINI_TTS_DAILY}) -> Edge voices for this episode")
+                gh_note("notice", "Edge voices", f"Gemini TTS daily budget would be exceeded "
+                                                 f"({used}+{len(chunks)}>{GEMINI_TTS_DAILY}).")
+                continue
         try:
             pcm, marks, seen_labels = bytearray(), [], set()
             for i, chunk in enumerate(chunks, 1):
                 turns = [(spk, text) for _, spk, text in chunk]
                 log(f"  {engine} TTS chunk {i}/{len(chunks)} ({turns_words(turns)} words)")
-                audio = gemini_tts_chunk(turns) if engine == "gemini" else edge_tts_chunk(turns)
+                if engine == "gemini":
+                    audio = gemini_tts_chunk(turns)
+                    state["tts_log"].append(dt.datetime.now(TZ).isoformat())
+                else:
+                    audio = edge_tts_chunk(turns)
                 start, total_w, acc = len(pcm) / BYTES_PER_SEC, max(1, turns_words(turns)), 0
                 for label, _, text in chunk:
                     if label not in seen_labels:
@@ -924,6 +940,7 @@ def voice_episode(sections):
                     time.sleep(8)  # gentle on free-tier per-minute limits
             return bytes(pcm), marks, engine
         except TTSQuotaError as e:
+            state["tts_log"] = state.get("tts_log", []) + [dt.datetime.now(TZ).isoformat()] * GEMINI_TTS_DAILY
             log(f"  Gemini TTS quota reached -> switching whole episode to Edge voices | {str(e)[:160]}")
             gh_note("warning", "Gemini TTS quota reached", "This episode uses the free Edge voices.")
         except Exception as e:
@@ -1125,7 +1142,7 @@ def main():
 
     log("6/7 Voicing")
     sections = [("Welcome", greeting)] + [(s["title"], t) for s, t in written] + [("Close", closing)]
-    pcm, marks, engine = voice_episode(sections)
+    pcm, marks, engine = voice_episode(sections, state)
     BUILD_DIR.mkdir(exist_ok=True)
     filename = f"ai_{date_key}_{edition}_{now:%H%M}.mp3"
     mp3 = BUILD_DIR / filename
@@ -1176,7 +1193,8 @@ def main():
 
     fb_cut = (now - dt.timedelta(days=FEEDBACK_DAYS)).isoformat()
     feedback = [f for f in state["feedback"] if f.get("received", "") >= fb_cut]
-    save_state({"episodes": keep, "memory": memory, "seen": seen, "feedback": feedback})
+    save_state({"episodes": keep, "memory": memory, "seen": seen, "feedback": feedback,
+                "tts_log": state.get("tts_log", [])})
 
     log("  writing quiz")
     quiz = make_quiz(written, greeting, theme)
