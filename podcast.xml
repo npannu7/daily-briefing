@@ -8,9 +8,21 @@
 <itunes:author>Daily STEM Briefing</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Mon, 05 Oct 2026 12:58:05 GMT</lastBuildDate>
+<lastBuildDate>Tue, 06 Oct 2026 03:44:15 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/cover.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/cover.jpg</url><title>Daily STEM Briefing</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Morning Edition - 6 Oct 2026</title>
+<description>Morning edition - Tuesday, 6 October 2026
+
+00:07  2026 Nobel Prize in Physiology or Medicine awarded for optogenetics
+   Source: Nature - https://www.nature.com/articles/d41586-026-03091-2</description>
+<pubDate>Tue, 06 Oct 2026 09:09:05 +0530</pubDate>
+<guid isPermaLink="false">briefing_2026-10-06_morning_0909.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/briefing_2026-10-06_morning_0909.mp3" length="2198880" type="audio/mpeg"/>
+<itunes:duration>366</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Evening Edition - 5 Oct 2026</title>
 <description>Evening edition - Monday, 5 October 2026
