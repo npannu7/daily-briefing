@@ -59,10 +59,10 @@ except ImportError:  # optional: better article extraction
 
 # =============================== SETTINGS ===============================
 LISTENER = "Nikhil"
-SHOW_TITLE = "The AI Briefing"
-SHOW_DESC = ("A two-host daily briefing on what is actually happening in AI: industry moves, new open "
-             "models, new research, and what we are learning about how LLMs work - how things are "
-             "built and how they evolved, without hype.")
+SHOW_TITLE = "Weights & Measures"
+SHOW_DESC = ("AI, as it actually works. A two-host daily show on what is really happening in AI: "
+             "industry moves, new open models, new research, and what we are learning about how LLMs "
+             "work - how things are built and how they evolved, measured against the evidence.")
 
 # Hosts: name, Gemini voice, Edge voice, delivery style
 HOST_A = {"name": "Maya", "gemini": "Kore", "edge": "en-US-AvaNeural",
@@ -268,11 +268,86 @@ def load_state():
     data.setdefault("episodes", [])   # audio currently in the feed
     data.setdefault("memory", [])     # summaries of past episodes (longer retention)
     data.setdefault("seen", [])       # links already covered
+    data.setdefault("feedback", [])   # quiz scores and listener feedback from quiz.html
     return data
 
 
 def save_state(state):
     EPISODES_FILE.write_text(json.dumps(state, indent=2, ensure_ascii=False), encoding="utf-8")
+
+
+FEEDBACK_DAYS = 60
+QUIZ_FILE = ROOT / "quiz.json"
+TRANSCRIPT_DIR = ROOT / "transcripts"
+
+
+def ingest_feedback(state):
+    """Read feedback issues opened from quiz.html. Returns issue numbers to close later."""
+    res = gh("issue", "list", "--state", "open", "--limit", "50",
+             "--json", "number,title,body,labels", check=False)
+    if res.returncode != 0:
+        log(f"  could not read feedback issues: {res.stderr.strip()[:200]}")
+        return []
+    done = []
+    for iss in json.loads(res.stdout or "[]"):
+        labels = {l.get("name") for l in iss.get("labels", [])}
+        if "feedback" not in labels and not iss.get("title", "").lower().startswith("feedback"):
+            continue
+        m = re.search(r"```json\s*(\{.*?\})\s*```", iss.get("body") or "", flags=re.S)
+        if not m:
+            continue
+        try:
+            data = json.loads(m.group(1))
+        except json.JSONDecodeError:
+            continue
+        for fb in data.get("feedback", [data]):
+            fb["received"] = dt.datetime.now(TZ).isoformat()
+            state["feedback"].append(fb)
+        done.append(iss["number"])
+        log(f"  feedback issue #{iss['number']}: {iss.get('title', '')}")
+    return done
+
+
+def pace_shift(state):
+    recent = [f.get("ratings", {}).get("pace") for f in state["feedback"][-6:]]
+    fast, slow = recent.count("too fast"), recent.count("too slow")
+    return 1 if slow > fast else -1 if fast > slow else 0
+
+
+def feedback_text(state, short=False):
+    fb = state["feedback"][-12:]
+    if not fb:
+        return f"(No feedback from {LISTENER} yet.)"
+    more, less, notes, missed = [], [], [], []
+    depth, pace = [], []
+    for f in fb:
+        for seg, v in (f.get("segments") or {}).items():
+            (more if v == "more" else less if v == "less" else []).append(seg)
+        r = f.get("ratings") or {}
+        if r.get("depth"):
+            depth.append(r["depth"])
+        if r.get("pace"):
+            pace.append(r["pace"])
+        if f.get("comment"):
+            notes.append(f"{f.get('date', '')} {f.get('edition', '')}: {f['comment'][:400]}")
+        q = f.get("quiz") or {}
+        missed += q.get("missed", [])
+    out = [f"LISTENER FEEDBACK from {LISTENER} (most recent last; follow it):"]
+    if depth:
+        out.append(f"- Depth votes: {', '.join(depth[-6:])}")
+    if pace:
+        out.append(f"- Pace votes: {', '.join(pace[-6:])}")
+    if notes:
+        out.append("- His comments: " + " | ".join(notes[-5:]))
+    if not short:
+        if more:
+            out.append(f"- Wanted MORE like: {'; '.join(more[-8:])}")
+        if less:
+            out.append(f"- Wanted LESS like: {'; '.join(less[-8:])}")
+        if missed:
+            out.append(f"- Quiz questions he missed (concepts that may need clearer explanation): "
+                       f"{'; '.join(missed[-6:])}")
+    return "\n".join(out)
 
 
 def memory_text(state, n=8):
@@ -475,6 +550,9 @@ PAST EPISODES (most recent last) - continue open threads where today's items con
 not repeat a story unless there is genuinely new information:
 {memory_text(state)}
 
+{feedback_text(state)}
+Use this feedback to choose topics and the balance between categories.
+
 CANDIDATE ITEMS:
 {listing}
 
@@ -562,6 +640,8 @@ Angle: {seg.get('angle', '')}
 PAST EPISODES (for continuity; mention one naturally only if it genuinely connects):
 {memory_text(state, 5)}
 
+{feedback_text(state, short=True)}
+
 SOURCES:
 {sources_block(items)}
 
@@ -607,6 +687,7 @@ def clean_speech(t):
     t = re.sub(r"\bet al\.", "and colleagues", t)
     t = re.sub(r"\be\.g\.", "for example", t)
     t = re.sub(r"\bi\.e\.", "that is", t)
+    t = t.replace(" & ", " and ")
     return re.sub(r"\s+", " ", t).strip()
 
 
@@ -626,6 +707,8 @@ Theme: {theme}
 PAST EPISODES (most recent last):
 {memory_text(state)}
 
+{feedback_text(state)}
+
 Return JSON only:
 {{"greeting": [["{A}", "..."], ["{B}", "..."], ...],
   "closing": [["{A}", "..."], ["{B}", "..."]],
@@ -636,6 +719,8 @@ Greeting: 90-150 words, 4-6 turns. Greet {LISTENER} by name, naturally (not ever
 Link today to past episodes where it truly connects (e.g. "on Thursday we looked at X - today
 there is a follow-up"). If there are no past episodes, welcome him to the first episode.
 Then preview today's segments briefly. Vary the wording - never a fixed formula.
+If there is recent feedback, acknowledge it in one natural sentence (what you changed because of it).
+If he missed a quiz question recently, one host may add a one-line plain-language recap of that concept.
 Closing: 2-3 short turns, 30-60 words, no hype, no "stay tuned for the future of AI".
 """
     data = parse_json(llm(prompt, json_mode=True, label="greeting"))
@@ -657,6 +742,9 @@ Closing: 2-3 short turns, 30-60 words, no hype, no "stay tuned for the future of
 # =============================== 6. VOICE ===============================
 class TTSQuotaError(Exception):
     pass
+
+
+PACE_NOTE, EDGE_RATE = "", "+0%"  # adjusted from listener feedback in main()
 
 
 def pcm_from_audio(raw):
@@ -713,7 +801,7 @@ def _extract_audio_b64(data):
 
 def gemini_tts_chunk(turns):
     headers = {"x-goog-api-key": GEMINI_API_KEY, "Content-Type": "application/json"}
-    style = {A: HOST_A["style"], B: HOST_B["style"]}
+    style = {A: HOST_A["style"] + PACE_NOTE, B: HOST_B["style"] + PACE_NOTE}
     interactions = {
         "model": GEMINI_TTS_MODEL,
         "input": [{"type": "user_input", "content": [
@@ -778,7 +866,7 @@ async def _edge_turn(text, voice):
     for attempt in range(1, 5):
         try:
             buf = bytearray()
-            async for part in edge_tts.Communicate(text, voice).stream():
+            async for part in edge_tts.Communicate(text, voice, rate=EDGE_RATE).stream():
                 if part["type"] == "audio":
                     buf.extend(part["data"])
             if buf:
@@ -846,6 +934,50 @@ def voice_episode(sections):
     raise RuntimeError("No TTS engine succeeded")
 
 
+def make_quiz(written, greeting, theme):
+    script = "\n\n".join(f"[SEGMENT: {s['title']}]\n" + "\n".join(f"{spk}: {t}" for spk, t in turns)
+                         for s, turns in written)
+    prompt = f"""Write a short quiz for {LISTENER} about today's episode of "{SHOW_TITLE}".
+Theme: {theme}
+
+EPISODE SCRIPT:
+{script[:60000]}
+
+Return JSON only:
+{{"questions": [{{"q": "...", "options": ["...", "...", "...", "..."], "answer": <index 0-3>,
+                 "explain": "<1-2 sentences>", "segment": "<segment title>"}}]}}
+Rules: 4 questions, one per major segment. Test understanding of HOW things work and WHY they
+matter (mechanisms, trade-offs, evidence), not dates or trivia. Every answer must be stated in the
+script. Distractors must be plausible. Vary the position of the correct answer."""
+    try:
+        data = parse_json(llm(prompt, json_mode=True, label="quiz"))
+        out = []
+        for q in data.get("questions", [])[:5]:
+            opts = [str(o) for o in q.get("options", [])][:4]
+            ans = int(q.get("answer", -1))
+            if q.get("q") and len(opts) >= 3 and 0 <= ans < len(opts):
+                out.append({"q": str(q["q"]), "options": opts, "answer": ans,
+                            "explain": str(q.get("explain", "")), "segment": str(q.get("segment", ""))})
+        return out
+    except Exception as e:
+        log(f"  quiz skipped: {e}")
+        return []
+
+
+def write_quiz_files(keep, entry, transcript_text):
+    TRANSCRIPT_DIR.mkdir(exist_ok=True)
+    (TRANSCRIPT_DIR / (Path(entry["file"]).stem + ".txt")).write_text(transcript_text, encoding="utf-8")
+    old = json.loads(QUIZ_FILE.read_text(encoding="utf-8")).get("episodes", []) if QUIZ_FILE.exists() else []
+    files = {e["file"] for e in keep}
+    eps = [e for e in old if e["file"] in files and e["file"] != entry["file"]] + [entry]
+    eps.sort(key=lambda e: e["published"], reverse=True)
+    QUIZ_FILE.write_text(json.dumps({"show": SHOW_TITLE, "listener": LISTENER, "repo": REPO_FULL,
+                                     "episodes": eps}, indent=1, ensure_ascii=False), encoding="utf-8")
+    for t in TRANSCRIPT_DIR.glob("*.txt"):  # keep transcripts only for episodes still in the feed
+        if t.stem + ".mp3" not in files:
+            t.unlink()
+
+
 def encode_mp3(pcm, out_path):
     res = subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-f", "s16le",
                           "-ar", str(RATE), "-ac", "1", "-i", "pipe:0", "-codec:a", "libmp3lame",
@@ -884,7 +1016,7 @@ def fmt_ts(sec):
 
 
 def build_rss(episodes):
-    cover = next((n for n in ("cover.jpg", "cover.png") if (ROOT / n).exists()), None)
+    cover = next((n for n in ("artwork.jpg", "cover.jpg", "cover.png") if (ROOT / n).exists()), None)
     out = ['<?xml version="1.0" encoding="UTF-8"?>',
            '<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" '
            'xmlns:atom="http://www.w3.org/2005/Atom">', "<channel>",
@@ -922,9 +1054,17 @@ def main():
     log(f"{SHOW_TITLE} | {edition} {date_key} | force={force} dry_run={dry} | TTS={TTS_ENGINE}")
 
     state = load_state()
+    global PACE_NOTE, EDGE_RATE
     if any(e["date"] == date_key and e["edition"] == edition for e in state["episodes"]) and not force:
         log("This edition already exists - nothing to do (backup run).")
         return
+
+    close_issues = [] if dry else ingest_feedback(state)
+    shift = pace_shift(state)
+    if shift:
+        PACE_NOTE = "; slightly slower, unhurried pace" if shift < 0 else "; slightly brisker pace"
+        EDGE_RATE = "-8%" if shift < 0 else "+8%"
+        log(f"  listener pace preference applied: {PACE_NOTE.strip('; ')}")
 
     log("1/7 Collecting sources")
     cands = collect(state)
@@ -1004,6 +1144,7 @@ def main():
         for j in seg["item_ids"]:
             notes.append(f"   {by_id[j]['source']}: {by_id[j]['link']}")
     notes.append("")
+    notes.append(f"Quiz and feedback: {PAGES_URL}/quiz.html")
     notes.append(f"Voices: {'Gemini TTS' if engine == 'gemini' else 'Edge TTS'}")
 
     episode = {"file": filename, "date": date_key, "edition": edition,
@@ -1033,7 +1174,22 @@ def main():
         gh("release", "upload", RELEASE_TAG, str(mp3), "--clobber")
         sync_release_assets({e["file"] for e in keep})
 
-    save_state({"episodes": keep, "memory": memory, "seen": seen})
+    fb_cut = (now - dt.timedelta(days=FEEDBACK_DAYS)).isoformat()
+    feedback = [f for f in state["feedback"] if f.get("received", "") >= fb_cut]
+    save_state({"episodes": keep, "memory": memory, "seen": seen, "feedback": feedback})
+
+    log("  writing quiz")
+    quiz = make_quiz(written, greeting, theme)
+    transcript = "\n\n".join(f"## {label}\n" + "\n".join(f"{spk}: {t}" for spk, t in turns)
+                              for label, turns in sections)
+    write_quiz_files(keep, {
+        "file": filename, "title": episode["title"], "label": label, "date": date_key, "edition": edition,
+        "published": now.isoformat(), "duration": duration, "theme": theme,
+        "segments": [{"title": s["title"], "category": s.get("category", "")} for s, _ in written],
+        "quiz": quiz, "transcript": f"transcripts/{Path(filename).stem}.txt"}, transcript)
+    for n in close_issues:
+        gh("issue", "close", str(n), "--comment",
+           "Thanks - recorded. It will shape the next episodes.", check=False)
     build_rss(keep)
     log(f"Done. Feed: {PAGES_URL}/podcast.xml")
     gh_note("notice", "Episode ready", f"{filename} - {fmt_ts(duration)} - {len(written)} segments - "
