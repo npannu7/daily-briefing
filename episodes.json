@@ -27,18 +27,92 @@
       "headlines": [
         "2026 Nobel Prize in Physiology or Medicine awarded for optogenetics"
       ]
+    },
+    {
+      "file": "ai_2026-10-06_evening_1306.mp3",
+      "date": "2026-10-06",
+      "edition": "evening",
+      "title": "Evening - 6 Oct: RealCompanion and the Architecture of Long-Horizon Memory",
+      "published": "2026-10-06T13:06:32.879359+05:30",
+      "pubDate": "Tue, 06 Oct 2026 13:06:32 +0530",
+      "size": 10914285,
+      "duration": 1364,
+      "description": "Evening edition - Tuesday, 6 October 2026\nEvaluating agentic robustness, new open architectures, and the realities of automated inference across real-world deployments.\n\n00:36  RealCompanion and the Architecture of Long-Horizon Memory\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.01780\n   Hugging Face Daily Papers: https://arxiv.org/abs/2609.38839\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.02521\n07:57  Kandinsky 6.0 Video and Synchronized Audio-Visual Diffusion\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.05608\n   Hugging Face Daily Papers: https://arxiv.org/abs/2609.38123\n11:34  Open Weights and Distributed Inference: Reflection's Beam and Qwen3.8 Updates\n   Latent Space: https://www.latent.space/p/ainews-reflection-beam-501b-a23b\n   Hacker News: https://reflection.ai/blog/introducing-beam\n   Hacker News: https://github.com/Niko1221/Strata\n15:44  Agent Protocols, Security, and Enterprise Realities\n   Ars Technica AI: https://arstechnica.com/security/2026/10/vulnerability-in-agents-from-google-and-others-exposes-structural-flaw-in-mcp/\n   OpenAI News: https://openai.com/index/new-chatgpt-ads-format-and-measurement\n   Simon Willison: https://simonwillison.net/2026/Oct/3/default-hard-budget-caps/\n19:36  Does Learning Protein Folding Generalize to Broader Reasoning?\n   Hugging Face Daily Papers: https://arxiv.org/abs/2609.38879\n   Hugging Face Daily Papers: https://arxiv.org/abs/2609.38078\n\nVoices: Gemini TTS"
     }
   ],
-  "history": [
+  "memory": [
     {
-      "date": "2026-10-05",
-      "headline": "Nobel Prize awarded for the development of optogenetics",
-      "link": "https://www.science.org/content/article/method-controlling-brain-cells-light-wins-nobel"
+      "label": "Tuesday 06 Oct evening",
+      "date": "2026-10-06",
+      "edition": "evening",
+      "published": "2026-10-06T13:06:32.879359+05:30",
+      "summary": "The inaugural episode covered longitudinal memory architectures in systems like RealCompanion and multimodal synchronization in Kandinsky 6.0. It analyzed large open-weight distributed inference via Reflection's 501B-A23B and Qwen3.8 Flash Next on consumer hardware. Finally, it examined security boundaries and budget caps for the Model Context Protocol (MCP) and evaluated whether structural learning in protein folding transfers to general reasoning.",
+      "threads": [
+        "Community benchmarking and distributed inference stability for Reflection 501B-A23B and Qwen3.8 Flash Next on consumer hardware",
+        "Enterprise adoption, authorization boundaries, and budget enforcement mechanisms for Model Context Protocol (MCP) agents",
+        "Follow-up research on domain-transfer capabilities of biological and scientific foundation models to general logic"
+      ],
+      "segments": [
+        "RealCompanion and the Architecture of Long-Horizon Memory",
+        "Kandinsky 6.0 Video and Synchronized Audio-Visual Diffusion",
+        "Open Weights and Distributed Inference: Reflection's Beam and Qwen3.8 Updates",
+        "Agent Protocols, Security, and Enterprise Realities",
+        "Does Learning Protein Folding Generalize to Broader Reasoning?"
+      ]
+    }
+  ],
+  "seen": [
+    {
+      "date": "2026-10-06",
+      "link": "https://arxiv.org/abs/2610.01780"
     },
     {
       "date": "2026-10-06",
-      "headline": "2026 Nobel Prize in Physiology or Medicine awarded for optogenetics",
-      "link": "https://www.nature.com/articles/d41586-026-03091-2"
+      "link": "https://reflection.ai/blog/introducing-beam"
+    },
+    {
+      "date": "2026-10-06",
+      "link": "https://arxiv.org/abs/2609.38839"
+    },
+    {
+      "date": "2026-10-06",
+      "link": "https://arxiv.org/abs/2609.38879"
+    },
+    {
+      "date": "2026-10-06",
+      "link": "https://arxiv.org/abs/2609.38078"
+    },
+    {
+      "date": "2026-10-06",
+      "link": "https://arxiv.org/abs/2610.05608"
+    },
+    {
+      "date": "2026-10-06",
+      "link": "https://openai.com/index/new-chatgpt-ads-format-and-measurement"
+    },
+    {
+      "date": "2026-10-06",
+      "link": "https://arxiv.org/abs/2610.02521"
+    },
+    {
+      "date": "2026-10-06",
+      "link": "https://simonwillison.net/2026/Oct/3/default-hard-budget-caps/"
+    },
+    {
+      "date": "2026-10-06",
+      "link": "https://www.latent.space/p/ainews-reflection-beam-501b-a23b"
+    },
+    {
+      "date": "2026-10-06",
+      "link": "https://arxiv.org/abs/2609.38123"
+    },
+    {
+      "date": "2026-10-06",
+      "link": "https://arstechnica.com/security/2026/10/vulnerability-in-agents-from-google-and-others-exposes-structural-flaw-in-mcp/"
+    },
+    {
+      "date": "2026-10-06",
+      "link": "https://github.com/Niko1221/Strata"
     }
   ]
 }

@@ -1,16 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-<title>Daily STEM Briefing</title>
+<title>The AI Briefing</title>
 <link>https://npannu7.github.io/daily-briefing</link>
-<description>Completed, verified milestones in AI, space, mathematics, biology and disease control - traced from the original promise to what was actually delivered.</description>
+<description>A two-host daily briefing on what is actually happening in AI: industry moves, new open models, new research, and what we are learning about how LLMs work - how things are built and how they evolved, without hype.</description>
 <language>en</language>
-<itunes:author>Daily STEM Briefing</itunes:author>
+<itunes:author>The AI Briefing</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Tue, 06 Oct 2026 03:44:15 GMT</lastBuildDate>
+<lastBuildDate>Tue, 06 Oct 2026 07:50:23 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/cover.jpg"/>
-<image><url>https://npannu7.github.io/daily-briefing/cover.jpg</url><title>Daily STEM Briefing</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<image><url>https://npannu7.github.io/daily-briefing/cover.jpg</url><title>The AI Briefing</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Evening - 6 Oct: RealCompanion and the Architecture of Long-Horizon Memory</title>
+<description>Evening edition - Tuesday, 6 October 2026
+Evaluating agentic robustness, new open architectures, and the realities of automated inference across real-world deployments.
+
+00:36  RealCompanion and the Architecture of Long-Horizon Memory
+   Hugging Face Daily Papers: https://arxiv.org/abs/2610.01780
+   Hugging Face Daily Papers: https://arxiv.org/abs/2609.38839
+   Hugging Face Daily Papers: https://arxiv.org/abs/2610.02521
+07:57  Kandinsky 6.0 Video and Synchronized Audio-Visual Diffusion
+   Hugging Face Daily Papers: https://arxiv.org/abs/2610.05608
+   Hugging Face Daily Papers: https://arxiv.org/abs/2609.38123
+11:34  Open Weights and Distributed Inference: Reflection's Beam and Qwen3.8 Updates
+   Latent Space: https://www.latent.space/p/ainews-reflection-beam-501b-a23b
+   Hacker News: https://reflection.ai/blog/introducing-beam
+   Hacker News: https://github.com/Niko1221/Strata
+15:44  Agent Protocols, Security, and Enterprise Realities
+   Ars Technica AI: https://arstechnica.com/security/2026/10/vulnerability-in-agents-from-google-and-others-exposes-structural-flaw-in-mcp/
+   OpenAI News: https://openai.com/index/new-chatgpt-ads-format-and-measurement
+   Simon Willison: https://simonwillison.net/2026/Oct/3/default-hard-budget-caps/
+19:36  Does Learning Protein Folding Generalize to Broader Reasoning?
+   Hugging Face Daily Papers: https://arxiv.org/abs/2609.38879
+   Hugging Face Daily Papers: https://arxiv.org/abs/2609.38078
+
+Voices: Gemini TTS</description>
+<pubDate>Tue, 06 Oct 2026 13:06:32 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-10-06_evening_1306.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-06_evening_1306.mp3" length="10914285" type="audio/mpeg"/>
+<itunes:duration>1364</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Morning Edition - 6 Oct 2026</title>
 <description>Morning edition - Tuesday, 6 October 2026
