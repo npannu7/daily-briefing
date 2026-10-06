@@ -1,22 +1,23 @@
-# News sources for the briefing - one per line:   Name | RSS URL
-# Lines starting with # are ignored. Add or remove sources any time.
-# The run log shows "OK" or "FAIL" for each feed, so you can spot dead links.
+# AI news sources - one per line:   Name | RSS URL
+# (Hugging Face Daily Papers, new trending open models and Hacker News are built in.)
+# The run log shows OK / FAIL per feed; remove any that keep failing.
 
-# --- Space ---
-NASA News Releases | https://www.nasa.gov/news-release/feed/
-ESA Top News | https://www.esa.int/rssfeed/TopNews
-Spaceflight Now | https://spaceflightnow.com/feed/
-
-# --- Mathematics, physics, computing ---
-Quanta Magazine | https://api.quantamagazine.org/feed/
+# --- Labs and research groups ---
 Google DeepMind Blog | https://deepmind.google/blog/rss.xml
+Google Research Blog | https://research.google/blog/rss/
+OpenAI News | https://openai.com/news/rss.xml
+Hugging Face Blog | https://huggingface.co/blog/feed.xml
+BAIR Blog | https://bair.berkeley.edu/blog/feed.xml
 
-# --- Science journals (news sections) ---
-Nature | https://www.nature.com/nature.rss
-Science News | https://www.science.org/rss/news_current.xml
-Ars Technica Science | https://feeds.arstechnica.com/arstechnica/science
+# --- Careful, low-hype analysis ---
+Simon Willison | https://simonwillison.net/atom/everything/
+Import AI (Jack Clark) | https://importai.substack.com/feed
+Interconnects (Nathan Lambert) | https://www.interconnects.ai/feed
+Ahead of AI (Sebastian Raschka) | https://magazine.sebastianraschka.com/feed
+Latent Space | https://www.latent.space/feed
+Lil'Log (Lilian Weng) | https://lilianweng.github.io/index.xml
+The Gradient | https://thegradient.pub/rss/
 
-# --- Medicine, approvals, disease control ---
-NIH News Releases | https://www.nih.gov/news-releases/feed.xml
-FDA Press Releases | https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/press-releases/rss.xml
-WHO News | https://www.who.int/rss-feeds/news-english.xml
+# --- Industry news ---
+Ars Technica AI | https://arstechnica.com/ai/feed/
+MIT Technology Review AI | https://www.technologyreview.com/topic/artificial-intelligence/feed
