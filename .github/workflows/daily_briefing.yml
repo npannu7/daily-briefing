@@ -25,7 +25,8 @@ on:
         default: auto
 
 permissions:
-  contents: write
+  contents: write      # commit feed, quiz and cover; upload audio
+  issues: write        # read and close feedback sent from quiz.html
 
 concurrency:
   group: daily-briefing
@@ -50,6 +51,13 @@ jobs:
           pip install -U -r requirements.txt
           which ffmpeg || (sudo apt-get update -q && sudo apt-get install -y -q ffmpeg)
 
+      - name: Draw cover art (first run only)
+        run: |
+          if [ ! -f artwork.jpg ]; then
+            pip install -q matplotlib numpy
+            python make_cover.py
+          fi
+
       - name: Generate briefing
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
@@ -70,7 +78,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git rm -r -q --ignore-unmatch audio
-          git add -A podcast.xml episodes.json 2>/dev/null || true
+          git add -A podcast.xml episodes.json quiz.json transcripts artwork.jpg 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "Nothing new to commit."
             exit 0
