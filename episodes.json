@@ -15,20 +15,6 @@
       ]
     },
     {
-      "file": "briefing_2026-10-06_morning_0909.mp3",
-      "date": "2026-10-06",
-      "edition": "morning",
-      "title": "Morning Edition - 6 Oct 2026",
-      "published": "2026-10-06T09:09:05.831435+05:30",
-      "pubDate": "Tue, 06 Oct 2026 09:09:05 +0530",
-      "size": 2198880,
-      "duration": 366,
-      "description": "Morning edition - Tuesday, 6 October 2026\n\n00:07  2026 Nobel Prize in Physiology or Medicine awarded for optogenetics\n   Source: Nature - https://www.nature.com/articles/d41586-026-03091-2",
-      "headlines": [
-        "2026 Nobel Prize in Physiology or Medicine awarded for optogenetics"
-      ]
-    },
-    {
       "file": "ai_2026-10-06_evening_1306.mp3",
       "date": "2026-10-06",
       "edition": "evening",
@@ -38,6 +24,17 @@
       "size": 10914285,
       "duration": 1364,
       "description": "Evening edition - Tuesday, 6 October 2026\nEvaluating agentic robustness, new open architectures, and the realities of automated inference across real-world deployments.\n\n00:36  RealCompanion and the Architecture of Long-Horizon Memory\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.01780\n   Hugging Face Daily Papers: https://arxiv.org/abs/2609.38839\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.02521\n07:57  Kandinsky 6.0 Video and Synchronized Audio-Visual Diffusion\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.05608\n   Hugging Face Daily Papers: https://arxiv.org/abs/2609.38123\n11:34  Open Weights and Distributed Inference: Reflection's Beam and Qwen3.8 Updates\n   Latent Space: https://www.latent.space/p/ainews-reflection-beam-501b-a23b\n   Hacker News: https://reflection.ai/blog/introducing-beam\n   Hacker News: https://github.com/Niko1221/Strata\n15:44  Agent Protocols, Security, and Enterprise Realities\n   Ars Technica AI: https://arstechnica.com/security/2026/10/vulnerability-in-agents-from-google-and-others-exposes-structural-flaw-in-mcp/\n   OpenAI News: https://openai.com/index/new-chatgpt-ads-format-and-measurement\n   Simon Willison: https://simonwillison.net/2026/Oct/3/default-hard-budget-caps/\n19:36  Does Learning Protein Folding Generalize to Broader Reasoning?\n   Hugging Face Daily Papers: https://arxiv.org/abs/2609.38879\n   Hugging Face Daily Papers: https://arxiv.org/abs/2609.38078\n\nVoices: Gemini TTS"
+    },
+    {
+      "file": "ai_2026-10-06_morning_1347.mp3",
+      "date": "2026-10-06",
+      "edition": "morning",
+      "title": "Morning - 6 Oct: Network Topologies and Storage Trade-offs in AI Infrastructure",
+      "published": "2026-10-06T13:47:42.306742+05:30",
+      "pubDate": "Tue, 06 Oct 2026 13:47:42 +0530",
+      "size": 13721133,
+      "duration": 1715,
+      "description": "Morning edition - Tuesday, 6 October 2026\nNavigating infrastructure bottlenecks, advanced distillation techniques, and security governance for agentic deployments.\n\n00:40  Network Topologies and Storage Trade-offs in AI Infrastructure\n   Hacker News: https://www.youtube.com/watch?v=eZ8WWZzoaR0\n   Ars Technica AI: https://arstechnica.com/apple/2026/10/command-line-tool-quickly-removes-apple-intelligence-from-macos-27/\n07:01  Scaling Representation-Level Distillation and On-Policy Parameter Updates\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.02381\n   Hugging Face Daily Papers: https://arxiv.org/abs/2609.36659\n12:41  Recursive Self-Rewrite and Adaptive Diffusion Language Models\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.02826\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.04198\n18:24  Enterprise Authorization Boundaries and Real-World Agent Validation\n   Simon Willison: https://simonwillison.net/2026/Oct/5/felix-rieseberg/\n   Hugging Face Blog: https://huggingface.co/blog/microsoft/thinkingbox\n   Hacker News: https://diff.wikimedia.org/2026/10/05/openai-rogue-agent-activities-found-on-wikimedia-projects/\n24:14  Benchmarking Web-Browsing Stress Tests and Simulink Code Generation\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.03574\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.02304\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nVoices: Edge TTS"
     }
   ],
   "memory": [
@@ -58,6 +55,25 @@
         "Open Weights and Distributed Inference: Reflection's Beam and Qwen3.8 Updates",
         "Agent Protocols, Security, and Enterprise Realities",
         "Does Learning Protein Folding Generalize to Broader Reasoning?"
+      ]
+    },
+    {
+      "label": "Tuesday 06 Oct morning",
+      "date": "2026-10-06",
+      "edition": "morning",
+      "published": "2026-10-06T13:47:42.306742+05:30",
+      "summary": "Today's episode examined Homa protocols for AI cluster infrastructure and macOS storage reclamation tactics, analyzed Latent-MOPD representation-level distillation and on-policy parameter updates, broke down Recursive Self-Rewrite and ALoDLM architectures, investigated VM-isolated tool execution like Cowork alongside Wikimedia agent security, and evaluated HyperBrowseComp and SimuVerity benchmarks.",
+      "threads": [
+        "Enterprise adoption, authorization boundaries, and budget enforcement mechanisms for Model Context Protocol (MCP) agents",
+        "Real-world agent security governance and VM-isolated tool execution models like Cowork",
+        "Performance and stability of Recursive Self-Rewrite (RSR) and adaptive diffusion language models (ALoDLM)"
+      ],
+      "segments": [
+        "Network Topologies and Storage Trade-offs in AI Infrastructure",
+        "Scaling Representation-Level Distillation and On-Policy Parameter Updates",
+        "Recursive Self-Rewrite and Adaptive Diffusion Language Models",
+        "Enterprise Authorization Boundaries and Real-World Agent Validation",
+        "Benchmarking Web-Browsing Stress Tests and Simulink Code Generation"
       ]
     }
   ],
@@ -113,6 +129,51 @@
     {
       "date": "2026-10-06",
       "link": "https://github.com/Niko1221/Strata"
+    },
+    {
+      "date": "2026-10-06",
+      "link": "https://arxiv.org/abs/2610.02826"
+    },
+    {
+      "date": "2026-10-06",
+      "link": "https://arxiv.org/abs/2609.36659"
+    },
+    {
+      "date": "2026-10-06",
+      "link": "https://arxiv.org/abs/2610.02381"
+    },
+    {
+      "date": "2026-10-06",
+      "link": "https://arxiv.org/abs/2610.03574"
+    },
+    {
+      "date": "2026-10-06",
+      "link": "https://huggingface.co/blog/microsoft/thinkingbox"
+    },
+    {
+      "date": "2026-10-06",
+      "link": "https://simonwillison.net/2026/Oct/5/felix-rieseberg/"
+    },
+    {
+      "date": "2026-10-06",
+      "link": "https://arxiv.org/abs/2610.02304"
+    },
+    {
+      "date": "2026-10-06",
+      "link": "https://arstechnica.com/apple/2026/10/command-line-tool-quickly-removes-apple-intelligence-from-macos-27/"
+    },
+    {
+      "date": "2026-10-06",
+      "link": "https://arxiv.org/abs/2610.04198"
+    },
+    {
+      "date": "2026-10-06",
+      "link": "https://diff.wikimedia.org/2026/10/05/openai-rogue-agent-activities-found-on-wikimedia-projects/"
+    },
+    {
+      "date": "2026-10-06",
+      "link": "https://www.youtube.com/watch?v=eZ8WWZzoaR0"
     }
-  ]
+  ],
+  "feedback": []
 }

@@ -1,16 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-<title>The AI Briefing</title>
+<title>Weights &amp; Measures</title>
 <link>https://npannu7.github.io/daily-briefing</link>
-<description>A two-host daily briefing on what is actually happening in AI: industry moves, new open models, new research, and what we are learning about how LLMs work - how things are built and how they evolved, without hype.</description>
+<description>AI, as it actually works. A two-host daily show on what is really happening in AI: industry moves, new open models, new research, and what we are learning about how LLMs work - how things are built and how they evolved, measured against the evidence.</description>
 <language>en</language>
-<itunes:author>The AI Briefing</itunes:author>
+<itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Tue, 06 Oct 2026 07:50:23 GMT</lastBuildDate>
-<itunes:image href="https://npannu7.github.io/daily-briefing/cover.jpg"/>
-<image><url>https://npannu7.github.io/daily-briefing/cover.jpg</url><title>The AI Briefing</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<lastBuildDate>Tue, 06 Oct 2026 08:34:10 GMT</lastBuildDate>
+<itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
+<image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Morning - 6 Oct: Network Topologies and Storage Trade-offs in AI Infrastructure</title>
+<description>Morning edition - Tuesday, 6 October 2026
+Navigating infrastructure bottlenecks, advanced distillation techniques, and security governance for agentic deployments.
+
+00:40  Network Topologies and Storage Trade-offs in AI Infrastructure
+   Hacker News: https://www.youtube.com/watch?v=eZ8WWZzoaR0
+   Ars Technica AI: https://arstechnica.com/apple/2026/10/command-line-tool-quickly-removes-apple-intelligence-from-macos-27/
+07:01  Scaling Representation-Level Distillation and On-Policy Parameter Updates
+   Hugging Face Daily Papers: https://arxiv.org/abs/2610.02381
+   Hugging Face Daily Papers: https://arxiv.org/abs/2609.36659
+12:41  Recursive Self-Rewrite and Adaptive Diffusion Language Models
+   Hugging Face Daily Papers: https://arxiv.org/abs/2610.02826
+   Hugging Face Daily Papers: https://arxiv.org/abs/2610.04198
+18:24  Enterprise Authorization Boundaries and Real-World Agent Validation
+   Simon Willison: https://simonwillison.net/2026/Oct/5/felix-rieseberg/
+   Hugging Face Blog: https://huggingface.co/blog/microsoft/thinkingbox
+   Hacker News: https://diff.wikimedia.org/2026/10/05/openai-rogue-agent-activities-found-on-wikimedia-projects/
+24:14  Benchmarking Web-Browsing Stress Tests and Simulink Code Generation
+   Hugging Face Daily Papers: https://arxiv.org/abs/2610.03574
+   Hugging Face Daily Papers: https://arxiv.org/abs/2610.02304
+
+Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
+Voices: Edge TTS</description>
+<pubDate>Tue, 06 Oct 2026 13:47:42 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-10-06_morning_1347.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-06_morning_1347.mp3" length="13721133" type="audio/mpeg"/>
+<itunes:duration>1715</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Evening - 6 Oct: RealCompanion and the Architecture of Long-Horizon Memory</title>
 <description>Evening edition - Tuesday, 6 October 2026
@@ -40,18 +70,6 @@ Voices: Gemini TTS</description>
 <guid isPermaLink="false">ai_2026-10-06_evening_1306.mp3</guid>
 <enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-06_evening_1306.mp3" length="10914285" type="audio/mpeg"/>
 <itunes:duration>1364</itunes:duration>
-<itunes:episodeType>full</itunes:episodeType>
-</item>
-<item>
-<title>Morning Edition - 6 Oct 2026</title>
-<description>Morning edition - Tuesday, 6 October 2026
-
-00:07  2026 Nobel Prize in Physiology or Medicine awarded for optogenetics
-   Source: Nature - https://www.nature.com/articles/d41586-026-03091-2</description>
-<pubDate>Tue, 06 Oct 2026 09:09:05 +0530</pubDate>
-<guid isPermaLink="false">briefing_2026-10-06_morning_0909.mp3</guid>
-<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/briefing_2026-10-06_morning_0909.mp3" length="2198880" type="audio/mpeg"/>
-<itunes:duration>366</itunes:duration>
 <itunes:episodeType>full</itunes:episodeType>
 </item>
 <item>
