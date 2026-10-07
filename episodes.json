@@ -35,6 +35,17 @@
       "size": 13721133,
       "duration": 1715,
       "description": "Morning edition - Tuesday, 6 October 2026\nNavigating infrastructure bottlenecks, advanced distillation techniques, and security governance for agentic deployments.\n\n00:40  Network Topologies and Storage Trade-offs in AI Infrastructure\n   Hacker News: https://www.youtube.com/watch?v=eZ8WWZzoaR0\n   Ars Technica AI: https://arstechnica.com/apple/2026/10/command-line-tool-quickly-removes-apple-intelligence-from-macos-27/\n07:01  Scaling Representation-Level Distillation and On-Policy Parameter Updates\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.02381\n   Hugging Face Daily Papers: https://arxiv.org/abs/2609.36659\n12:41  Recursive Self-Rewrite and Adaptive Diffusion Language Models\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.02826\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.04198\n18:24  Enterprise Authorization Boundaries and Real-World Agent Validation\n   Simon Willison: https://simonwillison.net/2026/Oct/5/felix-rieseberg/\n   Hugging Face Blog: https://huggingface.co/blog/microsoft/thinkingbox\n   Hacker News: https://diff.wikimedia.org/2026/10/05/openai-rogue-agent-activities-found-on-wikimedia-projects/\n24:14  Benchmarking Web-Browsing Stress Tests and Simulink Code Generation\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.03574\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.02304\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nVoices: Edge TTS"
+    },
+    {
+      "file": "ai_2026-10-07_morning_0812.mp3",
+      "date": "2026-10-07",
+      "edition": "morning",
+      "title": "Morning - 7 Oct: Mistral Large 4 'Le Chonk'",
+      "published": "2026-10-07T08:12:56.406933+05:30",
+      "pubDate": "Wed, 07 Oct 2026 08:12:56 +0530",
+      "size": 12165549,
+      "duration": 1520,
+      "description": "Morning edition - Wednesday, 7 October 2026\nNew scaling frontiers in 1-trillion parameter open-weight architectures, multimodal embedding efficiency, and the operational realities of agentic security boundaries.\n\n00:39  Mistral Large 4 'Le Chonk'\n   Simon Willison: https://simonwillison.net/2026/Oct/6/le-chonk/\n   Hacker News: https://mistral.ai/news/mistral-large-4/\n06:31  EmbeddingGemma 2\n   Google DeepMind Blog: https://deepmind.google/blog/embeddinggemma-2-an-open-lightweight-multimodal-embedding-model/\n   Simon Willison: https://simonwillison.net/2026/Oct/6/hn-49983751/\n11:05  Agentic Security Boundaries and Wikimedia Incidents\n   Simon Willison: https://simonwillison.net/2026/Oct/7/openai-rogue-agents-wikimedia/\n   Ars Technica AI: https://arstechnica.com/security/2026/10/openai-agents-tried-to-hack-wikipedia-tools-and-flooded-it-with-traffic/\n15:54  Pivot-SD: Efficient Self-Distillation for Masked Diffusion Language Models\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.03665\n20:38  World Action Modeling and Progressive Visual Planning\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.02508\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.03391\n21:45  Science or Slop?: Benchmarking and Mitigating Scientific Slop in AI-Generated Pa\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.00531\n   Hugging Face Daily Papers: https://arxiv.org/abs/2609.34715\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nVoices: Edge TTS"
     }
   ],
   "memory": [
@@ -74,6 +85,26 @@
         "Recursive Self-Rewrite and Adaptive Diffusion Language Models",
         "Enterprise Authorization Boundaries and Real-World Agent Validation",
         "Benchmarking Web-Browsing Stress Tests and Simulink Code Generation"
+      ]
+    },
+    {
+      "label": "Wednesday 07 Oct morning",
+      "date": "2026-10-07",
+      "edition": "morning",
+      "published": "2026-10-07T08:12:56.406933+05:30",
+      "summary": "Today's episode examined Mistral Large 4 'Le Chonk' and its 1 trillion parameter architecture, Google DeepMind's open-weight EmbeddingGemma 2, and real-world agentic security boundary incidents involving Wikimedia. We also analyzed Pivot-SD for masked diffusion models, world action models for robotic control, and scientific slop benchmarking.",
+      "threads": [
+        "Community reception and operational stability of Mistral Large 4's 1-trillion parameter architecture on Grace Blackwell clusters",
+        "Enterprise adoption and governance impact of agentic security boundary incidents on platforms like Wikimedia",
+        "Performance and credit-assignment effectiveness of Pivot-SD in masked diffusion language models"
+      ],
+      "segments": [
+        "Mistral Large 4 'Le Chonk'",
+        "EmbeddingGemma 2",
+        "Agentic Security Boundaries and Wikimedia Incidents",
+        "Pivot-SD: Efficient Self-Distillation for Masked Diffusion Language Models",
+        "World Action Modeling and Progressive Visual Planning",
+        "Science or Slop?: Benchmarking and Mitigating Scientific Slop in AI-Generated Pa"
       ]
     }
   ],
@@ -173,7 +204,64 @@
     {
       "date": "2026-10-06",
       "link": "https://www.youtube.com/watch?v=eZ8WWZzoaR0"
+    },
+    {
+      "date": "2026-10-07",
+      "link": "https://arxiv.org/abs/2610.02508"
+    },
+    {
+      "date": "2026-10-07",
+      "link": "https://deepmind.google/blog/embeddinggemma-2-an-open-lightweight-multimodal-embedding-model/"
+    },
+    {
+      "date": "2026-10-07",
+      "link": "https://arxiv.org/abs/2610.03391"
+    },
+    {
+      "date": "2026-10-07",
+      "link": "https://arxiv.org/abs/2610.03665"
+    },
+    {
+      "date": "2026-10-07",
+      "link": "https://arxiv.org/abs/2610.00531"
+    },
+    {
+      "date": "2026-10-07",
+      "link": "https://arxiv.org/abs/2609.34715"
+    },
+    {
+      "date": "2026-10-07",
+      "link": "https://simonwillison.net/2026/Oct/7/openai-rogue-agents-wikimedia/"
+    },
+    {
+      "date": "2026-10-07",
+      "link": "https://simonwillison.net/2026/Oct/6/hn-49983751/"
+    },
+    {
+      "date": "2026-10-07",
+      "link": "https://simonwillison.net/2026/Oct/6/le-chonk/"
+    },
+    {
+      "date": "2026-10-07",
+      "link": "https://arstechnica.com/security/2026/10/openai-agents-tried-to-hack-wikipedia-tools-and-flooded-it-with-traffic/"
+    },
+    {
+      "date": "2026-10-07",
+      "link": "https://mistral.ai/news/mistral-large-4/"
     }
   ],
-  "feedback": []
+  "feedback": [],
+  "tts_log": [
+    "2026-10-07T08:17:13.699480+05:30",
+    "2026-10-07T08:17:21.877282+05:30",
+    "2026-10-07T08:17:21.877282+05:30",
+    "2026-10-07T08:17:21.877282+05:30",
+    "2026-10-07T08:17:21.877282+05:30",
+    "2026-10-07T08:17:21.877282+05:30",
+    "2026-10-07T08:17:21.877282+05:30",
+    "2026-10-07T08:17:21.877282+05:30",
+    "2026-10-07T08:17:21.877282+05:30",
+    "2026-10-07T08:17:21.877282+05:30",
+    "2026-10-07T08:17:21.877282+05:30"
+  ]
 }

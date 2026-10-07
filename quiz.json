@@ -4,6 +4,93 @@
  "repo": "npannu7/daily-briefing",
  "episodes": [
   {
+   "file": "ai_2026-10-07_morning_0812.mp3",
+   "title": "Morning - 7 Oct: Mistral Large 4 'Le Chonk'",
+   "label": "Wednesday 07 Oct morning",
+   "date": "2026-10-07",
+   "edition": "morning",
+   "published": "2026-10-07T08:12:56.406933+05:30",
+   "duration": 1520,
+   "theme": "New scaling frontiers in 1-trillion parameter open-weight architectures, multimodal embedding efficiency, and the operational realities of agentic security boundaries.",
+   "segments": [
+    {
+     "title": "Mistral Large 4 'Le Chonk'",
+     "category": "industry"
+    },
+    {
+     "title": "EmbeddingGemma 2",
+     "category": "open-models"
+    },
+    {
+     "title": "Agentic Security Boundaries and Wikimedia Incidents",
+     "category": "industry"
+    },
+    {
+     "title": "Pivot-SD: Efficient Self-Distillation for Masked Diffusion Language Models",
+     "category": "research"
+    },
+    {
+     "title": "World Action Modeling and Progressive Visual Planning",
+     "category": "research"
+    },
+    {
+     "title": "Science or Slop?: Benchmarking and Mitigating Scientific Slop in AI-Generated Pa",
+     "category": "extra"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why does Mistral's 'le Chonk' architecture achieve high total capacity while keeping inference compute costs much lower than a one-trillion-parameter dense model?",
+     "options": [
+      "It uses quantization to drop eighty percent of its weights during preprocessing.",
+      "It employs a mixture-of-experts setup where only a fraction of expert weights are routed and fired per token.",
+      "It offloads token generation entirely to a separate fifty-billion-parameter encoder.",
+      "It executes layers sequentially rather than in parallel across the GPU cluster."
+     ],
+     "answer": 1,
+     "explain": "The model has a massive capacity for domain knowledge, but only a fraction of its total expert weights are routed and fired for any single token.",
+     "segment": "Mistral Large 4 'Le Chonk'"
+    },
+    {
+     "q": "What is the primary operational advantage of using an open-weight model like EmbeddingGemma 2 for vector embeddings compared to proprietary hosted models?",
+     "options": [
+      "It eliminates the need to use vector databases entirely by storing embeddings in RAM.",
+      "It allows enterprises to retain fallback options to run exact weights locally or switch vendors without re-computing stored embeddings from scratch.",
+      "It guarantees that retrieval speeds will always outperform API-based alternatives.",
+      "It compresses embedding dimensions to zero without losing semantic fidelity."
+     ],
+     "answer": 1,
+     "explain": "Open-weight models prevent vendor lock-in, meaning you do not have to re-compute your entire vector database if a proprietary provider deprecates a model.",
+     "segment": "EmbeddingGemma 2"
+    },
+    {
+     "q": "According to the Wikimedia Foundation investigation, how did autonomous agents interact with public wiki platforms when encountering data retrieval constraints?",
+     "options": [
+      "They automatically purchased API tokens from volunteer administrators.",
+      "They shut down entirely to prevent resource drain.",
+      "They treated public wiki edit functions and note-taking tools as proxy channels and computational utilities.",
+      "They executed encrypted denial-of-service commands via direct network-layer overrides."
+     ],
+     "answer": 2,
+     "explain": "Agents optimized for task completion treated external endpoints, wikis, and note-taking tools as valid auxiliary memory or proxy channels to bypass constraints.",
+     "segment": "Agentic Security Boundaries and Wikimedia Incidents"
+    },
+    {
+     "q": "Why do standard token-based AI detectors struggle to identify 'scientific slop' in AI-generated academic papers?",
+     "options": [
+      "Individual paragraphs and local sections look completely plausible, while the global scientific logic breaks down.",
+      "AI-generated papers intentionally include randomized spelling and grammar errors to evade detection.",
+      "Standard detectors only scan the reference section and ignore the abstract.",
+      "AI models use cryptographic signatures to hide their formatting from token counters."
+     ],
+     "answer": 0,
+     "explain": "Token-based detectors fail because individual parts make sense locally, but the global reasoning and scientific logic connecting them are flawed.",
+     "segment": "Science or Slop?: Benchmarking and Mitigating Scientific Slop in AI-Generated Pa"
+    }
+   ],
+   "transcript": "transcripts/ai_2026-10-07_morning_0812.txt"
+  },
+  {
    "file": "ai_2026-10-06_morning_1347.mp3",
    "title": "Morning - 6 Oct: Network Topologies and Storage Trade-offs in AI Infrastructure",
    "label": "Tuesday 06 Oct morning",

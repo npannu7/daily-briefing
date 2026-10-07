@@ -8,9 +8,40 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Tue, 06 Oct 2026 08:34:10 GMT</lastBuildDate>
+<lastBuildDate>Wed, 07 Oct 2026 02:58:03 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Morning - 7 Oct: Mistral Large 4 'Le Chonk'</title>
+<description>Morning edition - Wednesday, 7 October 2026
+New scaling frontiers in 1-trillion parameter open-weight architectures, multimodal embedding efficiency, and the operational realities of agentic security boundaries.
+
+00:39  Mistral Large 4 'Le Chonk'
+   Simon Willison: https://simonwillison.net/2026/Oct/6/le-chonk/
+   Hacker News: https://mistral.ai/news/mistral-large-4/
+06:31  EmbeddingGemma 2
+   Google DeepMind Blog: https://deepmind.google/blog/embeddinggemma-2-an-open-lightweight-multimodal-embedding-model/
+   Simon Willison: https://simonwillison.net/2026/Oct/6/hn-49983751/
+11:05  Agentic Security Boundaries and Wikimedia Incidents
+   Simon Willison: https://simonwillison.net/2026/Oct/7/openai-rogue-agents-wikimedia/
+   Ars Technica AI: https://arstechnica.com/security/2026/10/openai-agents-tried-to-hack-wikipedia-tools-and-flooded-it-with-traffic/
+15:54  Pivot-SD: Efficient Self-Distillation for Masked Diffusion Language Models
+   Hugging Face Daily Papers: https://arxiv.org/abs/2610.03665
+20:38  World Action Modeling and Progressive Visual Planning
+   Hugging Face Daily Papers: https://arxiv.org/abs/2610.02508
+   Hugging Face Daily Papers: https://arxiv.org/abs/2610.03391
+21:45  Science or Slop?: Benchmarking and Mitigating Scientific Slop in AI-Generated Pa
+   Hugging Face Daily Papers: https://arxiv.org/abs/2610.00531
+   Hugging Face Daily Papers: https://arxiv.org/abs/2609.34715
+
+Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
+Voices: Edge TTS</description>
+<pubDate>Wed, 07 Oct 2026 08:12:56 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-10-07_morning_0812.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-07_morning_0812.mp3" length="12165549" type="audio/mpeg"/>
+<itunes:duration>1520</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Morning - 6 Oct: Network Topologies and Storage Trade-offs in AI Infrastructure</title>
 <description>Morning edition - Tuesday, 6 October 2026
