@@ -8,9 +8,36 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Wed, 07 Oct 2026 02:58:03 GMT</lastBuildDate>
+<lastBuildDate>Wed, 07 Oct 2026 11:29:07 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Evening - 7 Oct: Formal Math, Frontier Models, and Automated Proof Generation</title>
+<description>Evening edition - Wednesday, 7 October 2026
+Formal mathematics verification, agentic reasoning boundaries, and cross-tokenizer distillation dynamics in frontier AI systems.
+
+00:36  Formal Math, Frontier Models, and Automated Proof Generation
+   OpenAI News: https://openai.com/index/sharing-ai-progress-in-mathematics
+   Latent Space: https://www.latent.space/p/ainews-quasi-riemann-hypothesis-openai
+   Hacker News: https://www.erdosproblems.com/forum/thread/blog:9
+09:41  Cross-Tokenizer On-Policy Distillation and Supervision Reliability
+   Hugging Face Daily Papers: https://arxiv.org/abs/2610.08448
+14:14  Agentic Security Boundaries, Autonomous Tool Execution, and Monitoring
+   Simon Willison: https://simonwillison.net/2026/Oct/6/victoria-kim/
+   Hacker News: https://www.reuters.com/world/south-koreas-lee-says-ai-appears-have-been-used-bank-hacks-2026-10-06/
+18:27  Enterprise Knowledge Integration and EU Text Provenance Rules
+   OpenAI News: https://openai.com/index/atlassian-partnership
+   OpenAI News: https://openai.com/index/eu-text-provenance
+   MIT Technology Review AI: https://www.technologyreview.com/2026/10/05/1145580/connecting-ai-agents-to-enterprise-knowledge/
+
+Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
+Voices: Edge TTS</description>
+<pubDate>Wed, 07 Oct 2026 16:11:13 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-10-07_evening_1611.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-07_evening_1611.mp3" length="11300397" type="audio/mpeg"/>
+<itunes:duration>1412</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Morning - 7 Oct: Mistral Large 4 'Le Chonk'</title>
 <description>Morning edition - Wednesday, 7 October 2026

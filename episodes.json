@@ -46,6 +46,17 @@
       "size": 12165549,
       "duration": 1520,
       "description": "Morning edition - Wednesday, 7 October 2026\nNew scaling frontiers in 1-trillion parameter open-weight architectures, multimodal embedding efficiency, and the operational realities of agentic security boundaries.\n\n00:39  Mistral Large 4 'Le Chonk'\n   Simon Willison: https://simonwillison.net/2026/Oct/6/le-chonk/\n   Hacker News: https://mistral.ai/news/mistral-large-4/\n06:31  EmbeddingGemma 2\n   Google DeepMind Blog: https://deepmind.google/blog/embeddinggemma-2-an-open-lightweight-multimodal-embedding-model/\n   Simon Willison: https://simonwillison.net/2026/Oct/6/hn-49983751/\n11:05  Agentic Security Boundaries and Wikimedia Incidents\n   Simon Willison: https://simonwillison.net/2026/Oct/7/openai-rogue-agents-wikimedia/\n   Ars Technica AI: https://arstechnica.com/security/2026/10/openai-agents-tried-to-hack-wikipedia-tools-and-flooded-it-with-traffic/\n15:54  Pivot-SD: Efficient Self-Distillation for Masked Diffusion Language Models\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.03665\n20:38  World Action Modeling and Progressive Visual Planning\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.02508\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.03391\n21:45  Science or Slop?: Benchmarking and Mitigating Scientific Slop in AI-Generated Pa\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.00531\n   Hugging Face Daily Papers: https://arxiv.org/abs/2609.34715\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nVoices: Edge TTS"
+    },
+    {
+      "file": "ai_2026-10-07_evening_1611.mp3",
+      "date": "2026-10-07",
+      "edition": "evening",
+      "title": "Evening - 7 Oct: Formal Math, Frontier Models, and Automated Proof Generation",
+      "published": "2026-10-07T16:11:13.315840+05:30",
+      "pubDate": "Wed, 07 Oct 2026 16:11:13 +0530",
+      "size": 11300397,
+      "duration": 1412,
+      "description": "Evening edition - Wednesday, 7 October 2026\nFormal mathematics verification, agentic reasoning boundaries, and cross-tokenizer distillation dynamics in frontier AI systems.\n\n00:36  Formal Math, Frontier Models, and Automated Proof Generation\n   OpenAI News: https://openai.com/index/sharing-ai-progress-in-mathematics\n   Latent Space: https://www.latent.space/p/ainews-quasi-riemann-hypothesis-openai\n   Hacker News: https://www.erdosproblems.com/forum/thread/blog:9\n09:41  Cross-Tokenizer On-Policy Distillation and Supervision Reliability\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.08448\n14:14  Agentic Security Boundaries, Autonomous Tool Execution, and Monitoring\n   Simon Willison: https://simonwillison.net/2026/Oct/6/victoria-kim/\n   Hacker News: https://www.reuters.com/world/south-koreas-lee-says-ai-appears-have-been-used-bank-hacks-2026-10-06/\n18:27  Enterprise Knowledge Integration and EU Text Provenance Rules\n   OpenAI News: https://openai.com/index/atlassian-partnership\n   OpenAI News: https://openai.com/index/eu-text-provenance\n   MIT Technology Review AI: https://www.technologyreview.com/2026/10/05/1145580/connecting-ai-agents-to-enterprise-knowledge/\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nVoices: Edge TTS"
     }
   ],
   "memory": [
@@ -105,6 +116,24 @@
         "Pivot-SD: Efficient Self-Distillation for Masked Diffusion Language Models",
         "World Action Modeling and Progressive Visual Planning",
         "Science or Slop?: Benchmarking and Mitigating Scientific Slop in AI-Generated Pa"
+      ]
+    },
+    {
+      "label": "Wednesday 07 Oct evening",
+      "date": "2026-10-07",
+      "edition": "evening",
+      "published": "2026-10-07T16:11:13.315840+05:30",
+      "summary": "This episode examined OpenAI's formal mathematics verification and Lean proof formalizations on open mathematical conjectures, alongside cross-tokenizer on-policy distillation architectures that align models across disparate vocabularies. It also covered emerging agentic security risks, including autonomous agent bank exploits and OpenAI's real-time human intervention monitoring for tool-enabled models. Finally, the discussion covered Atlassian's enterprise knowledge integrations and the practical limitations of EU text provenance watermarking.",
+      "threads": [
+        "Community formalization and verification of frontier model proofs for ErdÅs and quasi-Riemann conjectures in Lean",
+        "Empirical performance and loss dynamics of cross-tokenizer on-policy distillation across heterogeneous model architectures",
+        "Real-world efficacy of human-in-the-loop intervention protocols for agentic tool use and financial security boundaries"
+      ],
+      "segments": [
+        "Formal Math, Frontier Models, and Automated Proof Generation",
+        "Cross-Tokenizer On-Policy Distillation and Supervision Reliability",
+        "Agentic Security Boundaries, Autonomous Tool Execution, and Monitoring",
+        "Enterprise Knowledge Integration and EU Text Provenance Rules"
       ]
     }
   ],
@@ -248,9 +277,72 @@
     {
       "date": "2026-10-07",
       "link": "https://mistral.ai/news/mistral-large-4/"
+    },
+    {
+      "date": "2026-10-07",
+      "link": "https://arxiv.org/abs/2610.08448"
+    },
+    {
+      "date": "2026-10-07",
+      "link": "https://openai.com/index/atlassian-partnership"
+    },
+    {
+      "date": "2026-10-07",
+      "link": "https://openai.com/index/eu-text-provenance"
+    },
+    {
+      "date": "2026-10-07",
+      "link": "https://simonwillison.net/2026/Oct/6/victoria-kim/"
+    },
+    {
+      "date": "2026-10-07",
+      "link": "https://www.latent.space/p/ainews-quasi-riemann-hypothesis-openai"
+    },
+    {
+      "date": "2026-10-07",
+      "link": "https://www.technologyreview.com/2026/10/05/1145580/connecting-ai-agents-to-enterprise-knowledge/"
+    },
+    {
+      "date": "2026-10-07",
+      "link": "https://www.erdosproblems.com/forum/thread/blog:9"
+    },
+    {
+      "date": "2026-10-07",
+      "link": "https://www.reuters.com/world/south-koreas-lee-says-ai-appears-have-been-used-bank-hacks-2026-10-06/"
+    },
+    {
+      "date": "2026-10-07",
+      "link": "https://openai.com/index/sharing-ai-progress-in-mathematics"
     }
   ],
-  "feedback": [],
+  "feedback": [
+    {
+      "episode": "ai_2026-10-07_morning_0812.mp3",
+      "date": "2026-10-07",
+      "edition": "morning",
+      "quiz": {
+        "score": 4,
+        "total": 4,
+        "missed": []
+      },
+      "ratings": {
+        "depth": "right",
+        "overall": 5,
+        "pace": "right",
+        "voices": "ok"
+      },
+      "segments": {
+        "Mistral Large 4 'Le Chonk'": "ok",
+        "EmbeddingGemma 2": "ok",
+        "Agentic Security Boundaries and Wikimedia Incidents": "ok",
+        "Pivot-SD: Efficient Self-Distillation for Masked Diffusion Language Models": "ok",
+        "World Action Modeling and Progressive Visual Planning": "ok",
+        "Science or Slop?: Benchmarking and Mitigating Scientific Slop in AI-Generated Pa": "ok"
+      },
+      "comment": "",
+      "received": "2026-10-07T16:11:15.557984+05:30"
+    }
+  ],
   "tts_log": [
     "2026-10-07T08:17:13.699480+05:30",
     "2026-10-07T08:17:21.877282+05:30",
