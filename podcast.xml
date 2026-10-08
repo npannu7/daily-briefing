@@ -8,9 +8,33 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Thu, 08 Oct 2026 02:52:32 GMT</lastBuildDate>
+<lastBuildDate>Thu, 08 Oct 2026 10:55:51 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Evening - 8 Oct: Delta-Rule Recurrent State Quantization</title>
+<description>Evening edition - Thursday, 8 October 2026
+Navigating memory constraints in linear attention, context scaling in robotics, and production trade-offs in small frontier models
+
+01:03  Delta-Rule Recurrent State Quantization
+   Hugging Face Daily Papers: https://arxiv.org/abs/2609.38169
+11:17  Scaling Context in World-Action Models
+   Hugging Face Daily Papers: https://arxiv.org/abs/2610.10528
+14:35  Claude Haiku 5.5 and Edge Decision Models
+   Latent Space: https://www.latent.space/p/ainews-claude-haiku-55-better-than
+   Hacker News: https://www.anthropic.com/claude-haiku-5-5
+   Hugging Face Blog: https://huggingface.co/blog/LiquidAI/open-d1
+18:19  Autonomous Agent Workspace Interactions
+   Hugging Face Daily Papers: https://arxiv.org/abs/2610.10444
+
+Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
+Voices: Gemini TTS</description>
+<pubDate>Thu, 08 Oct 2026 16:12:43 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-10-08_evening_1612.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-08_evening_1612.mp3" length="11310381" type="audio/mpeg"/>
+<itunes:duration>1413</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Morning - 8 Oct: Frontier Latency Shifts: Claude Haiku 5.5 and Structured Decisions APIs</title>
 <description>Morning edition - Thursday, 8 October 2026

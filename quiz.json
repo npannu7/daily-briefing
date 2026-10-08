@@ -4,6 +4,85 @@
  "repo": "npannu7/daily-briefing",
  "episodes": [
   {
+   "file": "ai_2026-10-08_evening_1612.mp3",
+   "title": "Evening - 8 Oct: Delta-Rule Recurrent State Quantization",
+   "label": "Thursday 08 Oct evening",
+   "date": "2026-10-08",
+   "edition": "evening",
+   "published": "2026-10-08T16:12:43.455098+05:30",
+   "duration": 1413,
+   "theme": "Navigating memory constraints in linear attention, context scaling in robotics, and production trade-offs in small frontier models",
+   "segments": [
+    {
+     "title": "Delta-Rule Recurrent State Quantization",
+     "category": "deep-dive"
+    },
+    {
+     "title": "Scaling Context in World-Action Models",
+     "category": "research"
+    },
+    {
+     "title": "Claude Haiku 5.5 and Edge Decision Models",
+     "category": "industry"
+    },
+    {
+     "title": "Autonomous Agent Workspace Interactions",
+     "category": "research"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why does naive uniform quantization fail when applied to delta-rule recurrent states in linear attention models?",
+     "options": [
+      "Because recurrent states are static weights that require complex calibration datasets.",
+      "Because initial quantization errors are multiplied and compounded over time through the recurrence relation.",
+      "Because linear attention models do not support matrix-based state representations.",
+      "Because four-bit quantization completely destroys the underlying hidden dimension size."
+     ],
+     "answer": 1,
+     "explain": "Recurrent states are dynamic and updated iteratively at every decoding step. A small rounding error at step one gets carried forward and multiplied over subsequent steps, causing the noise to snowball.",
+     "segment": "Delta-Rule Recurrent State Quantization"
+    },
+    {
+     "q": "According to the Long-WAM study, why do autoregressively pretrained models benefit more from longer visual history than bidirectionally pretrained models?",
+     "options": [
+      "Autoregressive models learn a strict causal timeline from past to future, aligning with how history structures action tasks.",
+      "Bidirectional models process fewer frames per second during robotic control loops.",
+      "Autoregressive models eliminate all video prediction latency on edge hardware like the RTX 5090.",
+      "Bidirectional models lack support for action labels during the two-step training recipe."
+     ],
+     "answer": 0,
+     "explain": "Autoregressive models predict tokens sequentially from left to right, making longer histories valuable for preserving temporal structure, whereas bidirectional models look at the whole sequence at once without a strict causal timeline.",
+     "segment": "Scaling Context in World-Action Models"
+    },
+    {
+     "q": "How do Liquid AI's open d-one decision models achieve high performance for classification and extraction without using standard token generation?",
+     "options": [
+      "By utilizing a massive autoregressive KV cache combined with sparse mixture-of-experts routing.",
+      "By relying exclusively on cloud-based API loops with computer use tools.",
+      "By answering in a single forward pass instead of generating text step by step.",
+      "By restricting all inputs to text-only prompts under one hundred thousand tokens."
+     ],
+     "answer": 2,
+     "explain": "Unlike generative models that produce tokens step by step through autoregressive decoding, these specialized decision models are non-autoregressive and answer in a single forward pass.",
+     "segment": "Claude Haiku 5.5 and Edge Decision Models"
+    },
+    {
+     "q": "What core memory limitation of agents does the RunningTab framework solve during direct workspace interaction?",
+     "options": [
+      "Agents run out of persistent local disk space when storing large vector indexes.",
+      "Agent working memory gets filled with raw shell outputs, causing earlier context and discovered files to wash out.",
+      "Agents are unable to execute terminal shell utilities like grep, find, and cat inside containerized sandboxes.",
+      "Agents lack the ability to generate python and typescript SDK support for computer use."
+     ],
+     "answer": 1,
+     "explain": "Long terminal interactions fill the agent's context window with raw shell outputs, causing earlier tasks and unopened candidate files to slip out of active attention as history lengthens.",
+     "segment": "Autonomous Agent Workspace Interactions"
+    }
+   ],
+   "transcript": "transcripts/ai_2026-10-08_evening_1612.txt"
+  },
+  {
    "file": "ai_2026-10-08_morning_0811.mp3",
    "title": "Morning - 8 Oct: Frontier Latency Shifts: Claude Haiku 5.5 and Structured Decisions APIs",
    "label": "Thursday 08 Oct morning",

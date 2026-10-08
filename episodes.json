@@ -68,6 +68,17 @@
       "size": 15414765,
       "duration": 1926,
       "description": "Morning edition - Thursday, 8 October 2026\nGrounding execution in empirical constraints: from low-precision RL rollouts and diffusion language representations to verifying evidence chains in tool-calling agents.\n\n00:46  Frontier Latency Shifts: Claude Haiku 5.5 and Structured Decisions APIs\n   Simon Willison: https://simonwillison.net/2026/Oct/7/claude-haiku-5-5/\n   OpenAI News: https://openai.com/index/gpt-6-for-everyone\n   Simon Willison: https://simonwillison.net/2026/Oct/6/llm-openai-decisions/\n07:16  Edge Quantization at Scale: Qwen3.8-Flash-Next Coder and GEV-26B FP4\n   Hugging Face trending: https://huggingface.co/ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-Coder-GGUF\n   Hugging Face trending: https://huggingface.co/autotrust/GEV-26B-Decide\n   Hugging Face trending: https://huggingface.co/autotrust/GEV-26B-Decide-NVFP4\n09:24  Scaling RL Post-Training: TRACE FP4 MoE Rollouts and LoGRA Gradient Sketches\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.07767\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.06647\n16:04  Representation-Space MMD: Stabilizing Diffusion Language Models\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.06648\n21:30  The Evidence-to-Action Disconnect and Memory-Induced Sycophancy\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.07753\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.05162\n25:41  Sandboxing Enterprise Computer-Use: From OSWorld-Pro to Cloud-Native Harnesses\n   OpenAI News: https://openai.com/index/advancing-computer-use-with-ironclad\n   Latent Space: https://www.latent.space/p/stacklok\n   Hugging Face Daily Papers: https://arxiv.org/abs/2609.24890\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nVoices: Edge TTS"
+    },
+    {
+      "file": "ai_2026-10-08_evening_1612.mp3",
+      "date": "2026-10-08",
+      "edition": "evening",
+      "title": "Evening - 8 Oct: Delta-Rule Recurrent State Quantization",
+      "published": "2026-10-08T16:12:43.455098+05:30",
+      "pubDate": "Thu, 08 Oct 2026 16:12:43 +0530",
+      "size": 11310381,
+      "duration": 1413,
+      "description": "Evening edition - Thursday, 8 October 2026\nNavigating memory constraints in linear attention, context scaling in robotics, and production trade-offs in small frontier models\n\n01:03  Delta-Rule Recurrent State Quantization\n   Hugging Face Daily Papers: https://arxiv.org/abs/2609.38169\n11:17  Scaling Context in World-Action Models\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.10528\n14:35  Claude Haiku 5.5 and Edge Decision Models\n   Latent Space: https://www.latent.space/p/ainews-claude-haiku-55-better-than\n   Hacker News: https://www.anthropic.com/claude-haiku-5-5\n   Hugging Face Blog: https://huggingface.co/blog/LiquidAI/open-d1\n18:19  Autonomous Agent Workspace Interactions\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.10444\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nVoices: Gemini TTS"
     }
   ],
   "memory": [
@@ -165,6 +176,25 @@
         "Representation-Space MMD: Stabilizing Diffusion Language Models",
         "The Evidence-to-Action Disconnect and Memory-Induced Sycophancy",
         "Sandboxing Enterprise Computer-Use: From OSWorld-Pro to Cloud-Native Harnesses"
+      ]
+    },
+    {
+      "label": "Thursday 08 Oct evening",
+      "date": "2026-10-08",
+      "edition": "evening",
+      "published": "2026-10-08T16:12:43.455098+05:30",
+      "summary": "This Thursday evening episode examined Delta-Rule Recurrent State Quantization via STEPQuant to address linear attention memory bottlenecks, analyzed context scaling in world-action models using Long-WAM, reviewed production benchmarks for Claude Haiku 5.5 against edge decision models, and explored RunningTab's direct corpus interaction for autonomous LLM agents.",
+      "threads": [
+        "Production throughput and routing latency benchmarks for Claude Haiku 5.5 against small multimodal edge decision models",
+        "Operational stability and precision error margins of STEPQuant in linear attention architectures",
+        "Real-time robot control constraints and action latency balancing in Long-WAM world-action models",
+        "Workspace tab efficiency and terminal-based file reading performance for autonomous LLM agents using RunningTab"
+      ],
+      "segments": [
+        "Delta-Rule Recurrent State Quantization",
+        "Scaling Context in World-Action Models",
+        "Claude Haiku 5.5 and Edge Decision Models",
+        "Autonomous Agent Workspace Interactions"
       ]
     }
   ],
@@ -400,6 +430,30 @@
     {
       "date": "2026-10-08",
       "link": "https://huggingface.co/autotrust/GEV-26B-Decide-NVFP4"
+    },
+    {
+      "date": "2026-10-08",
+      "link": "https://arxiv.org/abs/2609.38169"
+    },
+    {
+      "date": "2026-10-08",
+      "link": "https://arxiv.org/abs/2610.10528"
+    },
+    {
+      "date": "2026-10-08",
+      "link": "https://www.anthropic.com/claude-haiku-5-5"
+    },
+    {
+      "date": "2026-10-08",
+      "link": "https://huggingface.co/blog/LiquidAI/open-d1"
+    },
+    {
+      "date": "2026-10-08",
+      "link": "https://arxiv.org/abs/2610.10444"
+    },
+    {
+      "date": "2026-10-08",
+      "link": "https://www.latent.space/p/ainews-claude-haiku-55-better-than"
     }
   ],
   "feedback": [
@@ -428,19 +482,63 @@
       },
       "comment": "",
       "received": "2026-10-07T16:11:15.557984+05:30"
+    },
+    {
+      "episode": "ai_2026-10-08_morning_0811.mp3",
+      "date": "2026-10-08",
+      "edition": "morning",
+      "quiz": null,
+      "ratings": {
+        "depth": "too technical",
+        "overall": 3,
+        "pace": "right",
+        "voices": "ok"
+      },
+      "segments": {
+        "Frontier Latency Shifts: Claude Haiku 5.5 and Structured Decisions APIs": "ok",
+        "Edge Quantization at Scale: Qwen3.8-Flash-Next Coder and GEV-26B FP4": "less",
+        "Representation-Space MMD: Stabilizing Diffusion Language Models": "less",
+        "Scaling RL Post-Training: TRACE FP4 MoE Rollouts and LoGRA Gradient Sketches": "less",
+        "The Evidence-to-Action Disconnect and Memory-Induced Sycophancy": "less",
+        "Sandboxing Enterprise Computer-Use: From OSWorld-Pro to Cloud-Native Harnesses": "less"
+      },
+      "comment": "",
+      "received": "2026-10-08T16:12:43.966872+05:30"
+    },
+    {
+      "episode": "ai_2026-10-07_evening_1611.mp3",
+      "date": "2026-10-07",
+      "edition": "evening",
+      "quiz": {
+        "score": 2,
+        "total": 4,
+        "missed": [
+          "Cross-Tokenizer On-Policy Distillation and Supervision Reliability: Why did adding full coverage span log probability supervision drop accuracy in cross-tokenizer distillation experiments?",
+          "Enterprise Knowledge Integration and EU Text Provenance Rules: What is a primary limitation of the textGrain watermarking mechanism when applied to generated text?"
+        ]
+      },
+      "ratings": {
+        "overall": 4,
+        "depth": "too technical",
+        "pace": "right",
+        "voices": "ok"
+      },
+      "segments": {
+        "Formal Math, Frontier Models, and Automated Proof Generation": "ok",
+        "Cross-Tokenizer On-Policy Distillation and Supervision Reliability": "less",
+        "Enterprise Knowledge Integration and EU Text Provenance Rules": "ok",
+        "Agentic Security Boundaries, Autonomous Tool Execution, and Monitoring": "ok"
+      },
+      "comment": "",
+      "received": "2026-10-08T16:12:43.966890+05:30"
     }
   ],
   "tts_log": [
-    "2026-10-07T08:17:13.699480+05:30",
-    "2026-10-07T08:17:21.877282+05:30",
-    "2026-10-07T08:17:21.877282+05:30",
-    "2026-10-07T08:17:21.877282+05:30",
-    "2026-10-07T08:17:21.877282+05:30",
-    "2026-10-07T08:17:21.877282+05:30",
-    "2026-10-07T08:17:21.877282+05:30",
-    "2026-10-07T08:17:21.877282+05:30",
-    "2026-10-07T08:17:21.877282+05:30",
-    "2026-10-07T08:17:21.877282+05:30",
-    "2026-10-07T08:17:21.877282+05:30"
+    "2026-10-08T16:21:46.133671+05:30",
+    "2026-10-08T16:22:26.649145+05:30",
+    "2026-10-08T16:23:03.573784+05:30",
+    "2026-10-08T16:23:38.000147+05:30",
+    "2026-10-08T16:24:11.027301+05:30",
+    "2026-10-08T16:24:33.088983+05:30"
   ]
 }
