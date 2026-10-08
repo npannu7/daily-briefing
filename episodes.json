@@ -57,6 +57,17 @@
       "size": 11300397,
       "duration": 1412,
       "description": "Evening edition - Wednesday, 7 October 2026\nFormal mathematics verification, agentic reasoning boundaries, and cross-tokenizer distillation dynamics in frontier AI systems.\n\n00:36  Formal Math, Frontier Models, and Automated Proof Generation\n   OpenAI News: https://openai.com/index/sharing-ai-progress-in-mathematics\n   Latent Space: https://www.latent.space/p/ainews-quasi-riemann-hypothesis-openai\n   Hacker News: https://www.erdosproblems.com/forum/thread/blog:9\n09:41  Cross-Tokenizer On-Policy Distillation and Supervision Reliability\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.08448\n14:14  Agentic Security Boundaries, Autonomous Tool Execution, and Monitoring\n   Simon Willison: https://simonwillison.net/2026/Oct/6/victoria-kim/\n   Hacker News: https://www.reuters.com/world/south-koreas-lee-says-ai-appears-have-been-used-bank-hacks-2026-10-06/\n18:27  Enterprise Knowledge Integration and EU Text Provenance Rules\n   OpenAI News: https://openai.com/index/atlassian-partnership\n   OpenAI News: https://openai.com/index/eu-text-provenance\n   MIT Technology Review AI: https://www.technologyreview.com/2026/10/05/1145580/connecting-ai-agents-to-enterprise-knowledge/\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nVoices: Edge TTS"
+    },
+    {
+      "file": "ai_2026-10-08_morning_0811.mp3",
+      "date": "2026-10-08",
+      "edition": "morning",
+      "title": "Morning - 8 Oct: Frontier Latency Shifts: Claude Haiku 5.5 and Structured Decisions APIs",
+      "published": "2026-10-08T08:11:47.227336+05:30",
+      "pubDate": "Thu, 08 Oct 2026 08:11:47 +0530",
+      "size": 15414765,
+      "duration": 1926,
+      "description": "Morning edition - Thursday, 8 October 2026\nGrounding execution in empirical constraints: from low-precision RL rollouts and diffusion language representations to verifying evidence chains in tool-calling agents.\n\n00:46  Frontier Latency Shifts: Claude Haiku 5.5 and Structured Decisions APIs\n   Simon Willison: https://simonwillison.net/2026/Oct/7/claude-haiku-5-5/\n   OpenAI News: https://openai.com/index/gpt-6-for-everyone\n   Simon Willison: https://simonwillison.net/2026/Oct/6/llm-openai-decisions/\n07:16  Edge Quantization at Scale: Qwen3.8-Flash-Next Coder and GEV-26B FP4\n   Hugging Face trending: https://huggingface.co/ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-Coder-GGUF\n   Hugging Face trending: https://huggingface.co/autotrust/GEV-26B-Decide\n   Hugging Face trending: https://huggingface.co/autotrust/GEV-26B-Decide-NVFP4\n09:24  Scaling RL Post-Training: TRACE FP4 MoE Rollouts and LoGRA Gradient Sketches\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.07767\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.06647\n16:04  Representation-Space MMD: Stabilizing Diffusion Language Models\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.06648\n21:30  The Evidence-to-Action Disconnect and Memory-Induced Sycophancy\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.07753\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.05162\n25:41  Sandboxing Enterprise Computer-Use: From OSWorld-Pro to Cloud-Native Harnesses\n   OpenAI News: https://openai.com/index/advancing-computer-use-with-ironclad\n   Latent Space: https://www.latent.space/p/stacklok\n   Hugging Face Daily Papers: https://arxiv.org/abs/2609.24890\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nVoices: Edge TTS"
     }
   ],
   "memory": [
@@ -134,6 +145,26 @@
         "Cross-Tokenizer On-Policy Distillation and Supervision Reliability",
         "Agentic Security Boundaries, Autonomous Tool Execution, and Monitoring",
         "Enterprise Knowledge Integration and EU Text Provenance Rules"
+      ]
+    },
+    {
+      "label": "Thursday 08 Oct morning",
+      "date": "2026-10-08",
+      "edition": "morning",
+      "published": "2026-10-08T08:11:47.227336+05:30",
+      "summary": "Today's episode analyzed the release of Claude Haiku 5.5 alongside OpenAI's structured Decisions APIs for deterministic micro-routing. We evaluated edge quantization benchmarks for Qwen3.8-Flash-Next Coder and GEV-26B in NVFP4, followed by RL post-training memory optimizations using TRACE MoE rollouts and LoGRA gradient sketches. Finally, we explored stabilizing diffusion language models via representation-space MMD, diagnosed evidence disconnects and memory-induced sycophancy in autonomous agents, and reviewed enterprise sandboxing harnesses on OSWorld-Pro.",
+      "threads": [
+        "Production throughput and routing latency benchmarks for Claude Haiku 5.5 against standardized Decisions APIs",
+        "Empirical training stability and rollout memory savings of TRACE FP4 MoE and LoGRA gradient sketching in reinforcement learning post-training",
+        "Enterprise validation metrics and containerized sandbox isolation for multi-step computer-use agents on OSWorld-Pro"
+      ],
+      "segments": [
+        "Frontier Latency Shifts: Claude Haiku 5.5 and Structured Decisions APIs",
+        "Edge Quantization at Scale: Qwen3.8-Flash-Next Coder and GEV-26B FP4",
+        "Scaling RL Post-Training: TRACE FP4 MoE Rollouts and LoGRA Gradient Sketches",
+        "Representation-Space MMD: Stabilizing Diffusion Language Models",
+        "The Evidence-to-Action Disconnect and Memory-Induced Sycophancy",
+        "Sandboxing Enterprise Computer-Use: From OSWorld-Pro to Cloud-Native Harnesses"
       ]
     }
   ],
@@ -313,6 +344,62 @@
     {
       "date": "2026-10-07",
       "link": "https://openai.com/index/sharing-ai-progress-in-mathematics"
+    },
+    {
+      "date": "2026-10-08",
+      "link": "https://arxiv.org/abs/2610.07767"
+    },
+    {
+      "date": "2026-10-08",
+      "link": "https://huggingface.co/ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-Coder-GGUF"
+    },
+    {
+      "date": "2026-10-08",
+      "link": "https://arxiv.org/abs/2610.06647"
+    },
+    {
+      "date": "2026-10-08",
+      "link": "https://arxiv.org/abs/2610.05162"
+    },
+    {
+      "date": "2026-10-08",
+      "link": "https://arxiv.org/abs/2610.07753"
+    },
+    {
+      "date": "2026-10-08",
+      "link": "https://openai.com/index/gpt-6-for-everyone"
+    },
+    {
+      "date": "2026-10-08",
+      "link": "https://arxiv.org/abs/2610.06648"
+    },
+    {
+      "date": "2026-10-08",
+      "link": "https://openai.com/index/advancing-computer-use-with-ironclad"
+    },
+    {
+      "date": "2026-10-08",
+      "link": "https://arxiv.org/abs/2609.24890"
+    },
+    {
+      "date": "2026-10-08",
+      "link": "https://simonwillison.net/2026/Oct/7/claude-haiku-5-5/"
+    },
+    {
+      "date": "2026-10-08",
+      "link": "https://simonwillison.net/2026/Oct/6/llm-openai-decisions/"
+    },
+    {
+      "date": "2026-10-08",
+      "link": "https://huggingface.co/autotrust/GEV-26B-Decide"
+    },
+    {
+      "date": "2026-10-08",
+      "link": "https://www.latent.space/p/stacklok"
+    },
+    {
+      "date": "2026-10-08",
+      "link": "https://huggingface.co/autotrust/GEV-26B-Decide-NVFP4"
     }
   ],
   "feedback": [

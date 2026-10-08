@@ -4,6 +4,44 @@
  "repo": "npannu7/daily-briefing",
  "episodes": [
   {
+   "file": "ai_2026-10-08_morning_0811.mp3",
+   "title": "Morning - 8 Oct: Frontier Latency Shifts: Claude Haiku 5.5 and Structured Decisions APIs",
+   "label": "Thursday 08 Oct morning",
+   "date": "2026-10-08",
+   "edition": "morning",
+   "published": "2026-10-08T08:11:47.227336+05:30",
+   "duration": 1926,
+   "theme": "Grounding execution in empirical constraints: from low-precision RL rollouts and diffusion language representations to verifying evidence chains in tool-calling agents.",
+   "segments": [
+    {
+     "title": "Frontier Latency Shifts: Claude Haiku 5.5 and Structured Decisions APIs",
+     "category": "industry"
+    },
+    {
+     "title": "Edge Quantization at Scale: Qwen3.8-Flash-Next Coder and GEV-26B FP4",
+     "category": "open-models"
+    },
+    {
+     "title": "Scaling RL Post-Training: TRACE FP4 MoE Rollouts and LoGRA Gradient Sketches",
+     "category": "research"
+    },
+    {
+     "title": "Representation-Space MMD: Stabilizing Diffusion Language Models",
+     "category": "research"
+    },
+    {
+     "title": "The Evidence-to-Action Disconnect and Memory-Induced Sycophancy",
+     "category": "understanding"
+    },
+    {
+     "title": "Sandboxing Enterprise Computer-Use: From OSWorld-Pro to Cloud-Native Harnesses",
+     "category": "industry"
+    }
+   ],
+   "quiz": [],
+   "transcript": "transcripts/ai_2026-10-08_morning_0811.txt"
+  },
+  {
    "file": "ai_2026-10-07_evening_1611.mp3",
    "title": "Evening - 7 Oct: Formal Math, Frontier Models, and Automated Proof Generation",
    "label": "Wednesday 07 Oct evening",

@@ -8,9 +8,43 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Wed, 07 Oct 2026 11:29:07 GMT</lastBuildDate>
+<lastBuildDate>Thu, 08 Oct 2026 02:52:32 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Morning - 8 Oct: Frontier Latency Shifts: Claude Haiku 5.5 and Structured Decisions APIs</title>
+<description>Morning edition - Thursday, 8 October 2026
+Grounding execution in empirical constraints: from low-precision RL rollouts and diffusion language representations to verifying evidence chains in tool-calling agents.
+
+00:46  Frontier Latency Shifts: Claude Haiku 5.5 and Structured Decisions APIs
+   Simon Willison: https://simonwillison.net/2026/Oct/7/claude-haiku-5-5/
+   OpenAI News: https://openai.com/index/gpt-6-for-everyone
+   Simon Willison: https://simonwillison.net/2026/Oct/6/llm-openai-decisions/
+07:16  Edge Quantization at Scale: Qwen3.8-Flash-Next Coder and GEV-26B FP4
+   Hugging Face trending: https://huggingface.co/ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-Coder-GGUF
+   Hugging Face trending: https://huggingface.co/autotrust/GEV-26B-Decide
+   Hugging Face trending: https://huggingface.co/autotrust/GEV-26B-Decide-NVFP4
+09:24  Scaling RL Post-Training: TRACE FP4 MoE Rollouts and LoGRA Gradient Sketches
+   Hugging Face Daily Papers: https://arxiv.org/abs/2610.07767
+   Hugging Face Daily Papers: https://arxiv.org/abs/2610.06647
+16:04  Representation-Space MMD: Stabilizing Diffusion Language Models
+   Hugging Face Daily Papers: https://arxiv.org/abs/2610.06648
+21:30  The Evidence-to-Action Disconnect and Memory-Induced Sycophancy
+   Hugging Face Daily Papers: https://arxiv.org/abs/2610.07753
+   Hugging Face Daily Papers: https://arxiv.org/abs/2610.05162
+25:41  Sandboxing Enterprise Computer-Use: From OSWorld-Pro to Cloud-Native Harnesses
+   OpenAI News: https://openai.com/index/advancing-computer-use-with-ironclad
+   Latent Space: https://www.latent.space/p/stacklok
+   Hugging Face Daily Papers: https://arxiv.org/abs/2609.24890
+
+Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
+Voices: Edge TTS</description>
+<pubDate>Thu, 08 Oct 2026 08:11:47 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-10-08_morning_0811.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-08_morning_0811.mp3" length="15414765" type="audio/mpeg"/>
+<itunes:duration>1926</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Evening - 7 Oct: Formal Math, Frontier Models, and Automated Proof Generation</title>
 <description>Evening edition - Wednesday, 7 October 2026
