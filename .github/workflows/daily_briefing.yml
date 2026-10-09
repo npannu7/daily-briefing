@@ -86,7 +86,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git rm -r -q --ignore-unmatch audio
-          git add -A podcast.xml episodes.json quiz.json transcripts artwork.jpg 2>/dev/null || true
+          git add -A podcast.xml episodes.json quiz.json transcripts artwork.jpg voices 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "Nothing new to commit."
             exit 0
