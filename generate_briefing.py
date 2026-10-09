@@ -191,15 +191,18 @@ def _gemini_stream(model, prompt, json_mode):
         r.encoding = "utf-8"   # SSE has no charset header; without this, dashes became 'â€”'
         if r.status_code != 200:
             return r.status_code, "", r.text[:300].replace("\n", " ")
-        parts = []
+        parts, finish = [], ""
         for line in r.iter_lines(decode_unicode=True):
             if not line or not line.startswith("data:"):
                 continue
             chunk = json.loads(line[5:].strip())
             cand = (chunk.get("candidates") or [{}])[0]
+            finish = cand.get("finishReason") or finish
             for p in cand.get("content", {}).get("parts", []):
                 if p.get("text") and not p.get("thought"):
                     parts.append(p["text"])
+        if finish and finish != "STOP":
+            log(f"    {model}: stopped early ({finish})")
         return 200, "".join(parts).strip(), ""
 
 
@@ -292,6 +295,13 @@ def llm(prompt, json_mode=False, min_words=0, label="", role="writer"):
                 text = fix_text(text)
                 n = words(text)
                 log(f"    {label} {prov}:{model}: {n} words in {time.time() - t0:.0f}s")
+                if json_mode and text:
+                    try:
+                        parse_json(text)
+                    except (ValueError, TypeError):
+                        log(f"    {model}: reply was not complete JSON" + ("; retrying" if attempt == 1 else "; next model"))
+                        errors.append(f"{model}: bad JSON")
+                        continue
                 if text and n >= min_words:
                     return text, model
                 errors.append(f"{model}: short ({n})")
