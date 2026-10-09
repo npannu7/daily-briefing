@@ -92,7 +92,7 @@ WRITER_CHAIN = os.getenv("WRITER_MODELS") or (
     "gemini:gemini-3.8-flash,openrouter:google/gemini-3.8-flash,openrouter:anthropic/claude-haiku-5.5,"
     "gemini:gemini-3.7-flash,gemini:gemini-3.5-flash-lite,openrouter:free")
 HELPER_CHAIN = os.getenv("HELPER_MODELS") or (
-    "openrouter:free,gemini:gemini-3.5-flash-lite,gemini:gemini-3.1-flash-lite,"
+    "gemini:gemini-3.5-flash-lite,openrouter:free,gemini:gemini-3.1-flash-lite,"
     "openrouter:anthropic/claude-haiku-5.5")
 DECISION_MODELS = [m.strip() for m in (os.getenv("DECISION_MODELS") or
                    "openai/gpt-6-luna-decisions,~typesafe/jev-latest").split(",") if m.strip()]
@@ -245,7 +245,7 @@ def _openrouter(model, prompt, json_mode):
         body["reasoning"] = {"effort": "low"}
     if json_mode:
         body["response_format"] = {"type": "json_object"}
-    r = requests.post("https://openrouter.ai/api/v1/chat/completions", json=body, timeout=(20, 400),
+    r = requests.post("https://openrouter.ai/api/v1/chat/completions", json=body, timeout=(20, 400 if paid else 150),
                       headers={"Authorization": f"Bearer {OPENROUTER_API_KEY}",
                                "HTTP-Referer": PAGES_URL, "X-Title": SHOW_TITLE})
     if r.status_code != 200:
@@ -299,9 +299,12 @@ def llm(prompt, json_mode=False, min_words=0, label="", role="writer"):
                     try:
                         parse_json(text)
                     except (ValueError, TypeError):
-                        log(f"    {model}: reply was not complete JSON" + ("; retrying" if attempt == 1 else "; next model"))
+                        quick = attempt == 1 and time.time() - t0 < 90
+                        log(f"    {model}: reply was not complete JSON" + ("; retrying" if quick else "; next model"))
                         errors.append(f"{model}: bad JSON")
-                        continue
+                        if quick:
+                            continue
+                        break
                 if text and n >= min_words:
                     return text, model
                 errors.append(f"{model}: short ({n})")
