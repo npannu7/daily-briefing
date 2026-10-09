@@ -3,14 +3,44 @@
 <channel>
 <title>Weights &amp; Measures</title>
 <link>https://npannu7.github.io/daily-briefing</link>
-<description>AI, as it actually works. A two-host daily show on what is really happening in AI: industry moves, new open models, new research, and what we are learning about how LLMs work - how things are built and how they evolved, measured against the evidence.</description>
+<description>AI, as it actually works. Two hosts take what the AI community on Reddit is discussing, check it against the evidence, and explain it for curious engineers - with deep dives when a story has built up over days.</description>
 <language>en</language>
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Fri, 09 Oct 2026 03:54:25 GMT</lastBuildDate>
+<lastBuildDate>Fri, 09 Oct 2026 08:22:20 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Evening - 9 Oct: Cross-Tokenizer Distillation and Distribution Drift</title>
+<description>Evening edition - Friday, 9 October 2026
+Evaluating micro-routing decision models against full coding LLMs, real-world agent security exploits, and the engineering mechanics of model distillation.
+
+00:37  Cross-Tokenizer Distillation and Distribution Drift
+   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x0sm1b/jevman_ai_decision_models_play_pacman/
+   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x0wg85/running_decision_model_locally_on_an_rtx_4090_to/
+09:14  Benchmarking Specialized Decision Models: Jev, Clef, and Laya on the Edge
+   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x0sm1b/jevman_ai_decision_models_play_pacman/
+   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x0wg85/running_decision_model_locally_on_an_rtx_4090_to/
+16:08  Haiku 5.5 vs. Flagship Coding Agents in Real-World Mixed Codebases
+   ClaudeCode: https://www.reddit.com/r/ClaudeCode/comments/1x132yy/is_haiku_55_good_enough_to_be_your_main_coding/
+   DeepSeek: https://www.reddit.com/r/DeepSeek/comments/1x0nv07/deepseek_better_releasing_a_new_model_as_soon_as/
+22:14  Multi-Model Tool Stacks in Autonomous Financial Cyberattacks
+   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x0n4pt/last_week_some_of_south_koreas_biggest_banks_were/
+   Source: https://www.reddit.com/gallery/1x0n4pt
+   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1x0rz3u/a_guy_asked_models_to_maximize_company_value/
+26:28  Hardware Arbitrage: Multi-GPU RDNA2 Clusters for High-Throughput Open Weights
+   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x0wnz1/2800_rig_with_8x_radeon_pro_v620_256_gb_vram/
+   LocalLLM: https://www.reddit.com/r/LocalLLM/comments/1x0tfuh/i_just_looked_at_my_monthly_token_usage_on_claude/
+
+Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
+Written by: Gemini 3.8 Flash · Voices: Edge TTS · Discussions: Reddit (collected directly)</description>
+<pubDate>Fri, 09 Oct 2026 13:30:24 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-10-09_evening_1330.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-09_evening_1330.mp3" length="15446060" type="audio/mpeg"/>
+<itunes:duration>1930</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Morning - 9 Oct: OpenAI Retracts Formal Math Results: Verification Limits and Lean Boundary Failures</title>
 <description>Morning edition - Friday, 9 October 2026

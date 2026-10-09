@@ -4,6 +4,92 @@
  "repo": "npannu7/daily-briefing",
  "episodes": [
   {
+   "file": "ai_2026-10-09_evening_1330.mp3",
+   "title": "Evening - 9 Oct: Cross-Tokenizer Distillation and Distribution Drift",
+   "label": "Friday 09 Oct evening",
+   "date": "2026-10-09",
+   "edition": "evening",
+   "published": "2026-10-09T13:30:24.610895+05:30",
+   "duration": 1930,
+   "theme": "Evaluating micro-routing decision models against full coding LLMs, real-world agent security exploits, and the engineering mechanics of model distillation.",
+   "writer": "Gemini 3.8 Flash",
+   "voices": "Edge TTS",
+   "deep_dive": false,
+   "segments": [
+    {
+     "title": "Cross-Tokenizer Distillation and Distribution Drift",
+     "category": "concept"
+    },
+    {
+     "title": "Benchmarking Specialized Decision Models: Jev, Clef, and Laya on the Edge",
+     "category": "thread"
+    },
+    {
+     "title": "Haiku 5.5 vs. Flagship Coding Agents in Real-World Mixed Codebases",
+     "category": "thread"
+    },
+    {
+     "title": "Multi-Model Tool Stacks in Autonomous Financial Cyberattacks",
+     "category": "thread"
+    },
+    {
+     "title": "Hardware Arbitrage: Multi-GPU RDNA2 Clusters for High-Throughput Open Weights",
+     "category": "thread"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why does rigid token matching fail during cross-tokenizer distillation?",
+     "options": [
+      "Student models require much larger context windows than teacher models.",
+      "Different tokenizers use arbitrary character boundaries, causing exact span log probability penalties to introduce high-frequency supervision noise.",
+      "Teacher models always encrypt their output probabilities to prevent distillation.",
+      "Hardware limitations on consumer GPUs prevent matching floating-point weights."
+     ],
+     "answer": 1,
+     "explain": "Forcing a student to mirror a teacher's exact piece-by-piece scores across mismatched dictionaries penalizes valid semantic outputs due to boundary misalignment, creating supervision breakdown.",
+     "segment": "Cross-Tokenizer Distillation and Distribution Drift"
+    },
+    {
+     "q": "In the Pac-Man test comparing tiny decision models, why did the ultra-fast Laya model perform poorly on average score compared to Jev?",
+     "options": [
+      "Laya ran on incompatible hardware that throttled its processing speed.",
+      "Laya lacked sufficient representational capacity for spatial planning, causing it to react blindly to immediate noise without maintaining a coherent state.",
+      "Jev used proprietary cloud APIs instead of local weights.",
+      "Laya was programmed to intentionally avoid scoring points."
+     ],
+     "answer": 1,
+     "explain": "Laya reacted immediately like an unconstrained control loop, but without enough capacity to plan ahead, it crashed into ghosts rather than tracking long-term strategy.",
+     "segment": "Benchmarking Specialized Decision Models: Jev, Clef, and Laya on the Edge"
+    },
+    {
+     "q": "What happened when the reviewer tested Claude Haiku 5.5 at high reasoning effort on a mixed codebase?",
+     "options": [
+      "It failed all self-contained unit tests and crashed the environment.",
+      "It achieved a breakthrough in cost efficiency over medium effort.",
+      "It got stuck in an over-verification spiral, consuming 385 API calls for zero quality improvement.",
+      "It successfully replaced Sonnet 5.5 for high-stakes release staging."
+     ],
+     "answer": 2,
+     "explain": "High effort acted like an over-damped feedback loop, burning nearly 400 calls and extra cost without yielding any improvement over the medium reasoning run.",
+     "segment": "Haiku 5.5 vs. Flagship Coding Agents in Real-World Mixed Codebases"
+    },
+    {
+     "q": "How did the engineer running 8 repurposed AMD Radeon Pro V620 cards achieve high text-generation speeds?",
+     "options": [
+      "By utilizing standard, unmodified vLLM out of the box.",
+      "By relying on multi-token prediction (speculative decoding) with drafting tokens and 4-bit quantization.",
+      "By routing all decode operations through a cloud subscription.",
+      "By restricting the model to single-word prompts."
+     ],
+     "answer": 1,
+     "explain": "The setup reached high speeds by using custom compute kernels, speculative drafting tokens, and 4-bit quantization to reduce memory traffic.",
+     "segment": "Hardware Arbitrage: Multi-GPU RDNA2 Clusters for High-Throughput Open Weights"
+    }
+   ],
+   "transcript": "transcripts/ai_2026-10-09_evening_1330.txt"
+  },
+  {
    "file": "ai_2026-10-09_morning_0911.mp3",
    "title": "Morning - 9 Oct: OpenAI Retracts Formal Math Results: Verification Limits and Lean Boundary Failures",
    "label": "Friday 09 Oct morning",

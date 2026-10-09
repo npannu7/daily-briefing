@@ -90,6 +90,17 @@
       "size": 14784045,
       "duration": 1847,
       "description": "Morning edition - Friday, 9 October 2026\nGrounding frontier claims in verifiable mechanics: from retracted formal proofs to collapse-resistant reasoning self-evolution and agent deception benchmarks.\n\n00:45  OpenAI Retracts Formal Math Results: Verification Limits and Lean Boundary Failures\n   Hacker News: https://github.com/openai/math/blob/main/history.md\n   Hacker News: https://twitter.com/danintheory/status/2108065033070789090\n   Hacker News: https://karagila.org/2026/openai-pp/\n07:34  nanoMuse: An Open-Source Local Agent Architecture for Multi-Device Continuity\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.08699\n10:24  UniWAM and Kinematic MeanFlow: Unifying World Dynamics and Low-Latency Robot Actions\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.02054\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.00864\n15:33  Questioning the Questions: Diagnosing and Preventing Collapse in Reasoning Self-Evolution\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.04299\n   Hugging Face Daily Papers: https://arxiv.org/abs/2609.39306\n23:43  DecepEval: Benchmarking Goal-Directed Deception in Autonomous Agents\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.07967\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nVoices: Edge TTS"
+    },
+    {
+      "file": "ai_2026-10-09_evening_1330.mp3",
+      "date": "2026-10-09",
+      "edition": "evening",
+      "title": "Evening - 9 Oct: Cross-Tokenizer Distillation and Distribution Drift",
+      "published": "2026-10-09T13:30:24.610895+05:30",
+      "pubDate": "Fri, 09 Oct 2026 13:30:24 +0530",
+      "size": 15446060,
+      "duration": 1930,
+      "description": "Evening edition - Friday, 9 October 2026\nEvaluating micro-routing decision models against full coding LLMs, real-world agent security exploits, and the engineering mechanics of model distillation.\n\n00:37  Cross-Tokenizer Distillation and Distribution Drift\n   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x0sm1b/jevman_ai_decision_models_play_pacman/\n   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x0wg85/running_decision_model_locally_on_an_rtx_4090_to/\n09:14  Benchmarking Specialized Decision Models: Jev, Clef, and Laya on the Edge\n   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x0sm1b/jevman_ai_decision_models_play_pacman/\n   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x0wg85/running_decision_model_locally_on_an_rtx_4090_to/\n16:08  Haiku 5.5 vs. Flagship Coding Agents in Real-World Mixed Codebases\n   ClaudeCode: https://www.reddit.com/r/ClaudeCode/comments/1x132yy/is_haiku_55_good_enough_to_be_your_main_coding/\n   DeepSeek: https://www.reddit.com/r/DeepSeek/comments/1x0nv07/deepseek_better_releasing_a_new_model_as_soon_as/\n22:14  Multi-Model Tool Stacks in Autonomous Financial Cyberattacks\n   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x0n4pt/last_week_some_of_south_koreas_biggest_banks_were/\n   Source: https://www.reddit.com/gallery/1x0n4pt\n   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1x0rz3u/a_guy_asked_models_to_maximize_company_value/\n26:28  Hardware Arbitrage: Multi-GPU RDNA2 Clusters for High-Throughput Open Weights\n   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x0wnz1/2800_rig_with_8x_radeon_pro_v620_256_gb_vram/\n   LocalLLM: https://www.reddit.com/r/LocalLLM/comments/1x0tfuh/i_just_looked_at_my_monthly_token_usage_on_claude/\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nWritten by: Gemini 3.8 Flash · Voices: Edge TTS · Discussions: Reddit (collected directly)"
     }
   ],
   "memory": [
@@ -226,6 +237,29 @@
         "UniWAM and Kinematic MeanFlow: Unifying World Dynamics and Low-Latency Robot Actions",
         "Questioning the Questions: Diagnosing and Preventing Collapse in Reasoning Self-Evolution",
         "DecepEval: Benchmarking Goal-Directed Deception in Autonomous Agents"
+      ]
+    },
+    {
+      "label": "Friday 09 Oct evening",
+      "date": "2026-10-09",
+      "edition": "evening",
+      "published": "2026-10-09T13:30:24.610895+05:30",
+      "file": "ai_2026-10-09_evening_1330.mp3",
+      "writer": "Gemini 3.8 Flash",
+      "voices": "Edge TTS",
+      "summary": "This Friday evening episode broke down cross-tokenizer distillation using sensor downsampling analogies to explain why rigid span-level token probability enforcement degrades student performance across mismatched vocabularies. We evaluated dedicated edge decision models including Clef-Flash, Lev, and Liquid D1 against Claude Haiku 5.5 and flagship coding models across mixed legacy codebases. Finally, the discussion analyzed an autonomous multi-model financial attack orchestrated through specification gaming and evaluated the cost economics of clustering repurposed RDNA2 enterprise GPUs for high-throughput local inference.",
+      "threads": [
+        "Empirical stability and loss dynamics of semantic cross-tokenizer distillation across heterogeneous model vocabularies",
+        "Production routing latency and control task benchmarks for edge decision models like Clef-Flash, Lev, and Liquid D1",
+        "Security defenses and specification constraint enforcement against multi-model autonomous attack toolchains",
+        "Kernel performance and memory bandwidth efficiency of custom vLLM forks on repurposed RDNA2 enterprise GPU clusters"
+      ],
+      "segments": [
+        "Cross-Tokenizer Distillation and Distribution Drift",
+        "Benchmarking Specialized Decision Models: Jev, Clef, and Laya on the Edge",
+        "Haiku 5.5 vs. Flagship Coding Agents in Real-World Mixed Codebases",
+        "Multi-Model Tool Stacks in Autonomous Financial Cyberattacks",
+        "Hardware Arbitrage: Multi-GPU RDNA2 Clusters for High-Throughput Open Weights"
       ]
     }
   ],
@@ -521,6 +555,42 @@
     {
       "date": "2026-10-09",
       "link": "https://karagila.org/2026/openai-pp/"
+    },
+    {
+      "date": "2026-10-09",
+      "link": "https://www.reddit.com/r/ClaudeAI/comments/1x0rz3u/a_guy_asked_models_to_maximize_company_value/"
+    },
+    {
+      "date": "2026-10-09",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1x0wnz1/2800_rig_with_8x_radeon_pro_v620_256_gb_vram/"
+    },
+    {
+      "date": "2026-10-09",
+      "link": "https://www.reddit.com/r/DeepSeek/comments/1x0nv07/deepseek_better_releasing_a_new_model_as_soon_as/"
+    },
+    {
+      "date": "2026-10-09",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1x0n4pt/last_week_some_of_south_koreas_biggest_banks_were/"
+    },
+    {
+      "date": "2026-10-09",
+      "link": "https://www.reddit.com/gallery/1x0n4pt"
+    },
+    {
+      "date": "2026-10-09",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1x0sm1b/jevman_ai_decision_models_play_pacman/"
+    },
+    {
+      "date": "2026-10-09",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1x0wg85/running_decision_model_locally_on_an_rtx_4090_to/"
+    },
+    {
+      "date": "2026-10-09",
+      "link": "https://www.reddit.com/r/LocalLLM/comments/1x0tfuh/i_just_looked_at_my_monthly_token_usage_on_claude/"
+    },
+    {
+      "date": "2026-10-09",
+      "link": "https://www.reddit.com/r/ClaudeCode/comments/1x132yy/is_haiku_55_good_enough_to_be_your_main_coding/"
     }
   ],
   "feedback": [
@@ -607,5 +677,784 @@
     "2026-10-08T16:23:38.000147+05:30",
     "2026-10-08T16:24:11.027301+05:30",
     "2026-10-08T16:24:33.088983+05:30"
-  ]
+  ],
+  "or_spend": [
+    [
+      "2026-10-09T13:41:02.601904+05:30",
+      0.0001356
+    ],
+    [
+      "2026-10-09T13:41:02.859969+05:30",
+      0.0001145
+    ],
+    [
+      "2026-10-09T13:41:02.864568+05:30",
+      0.0001109
+    ],
+    [
+      "2026-10-09T13:41:02.871842+05:30",
+      0.0001104
+    ],
+    [
+      "2026-10-09T13:41:03.023689+05:30",
+      0.0001025
+    ],
+    [
+      "2026-10-09T13:41:03.055015+05:30",
+      0.0001571
+    ],
+    [
+      "2026-10-09T13:41:03.088902+05:30",
+      0.0001139
+    ],
+    [
+      "2026-10-09T13:41:03.101495+05:30",
+      8.85e-05
+    ],
+    [
+      "2026-10-09T13:41:03.119741+05:30",
+      0.0001351
+    ],
+    [
+      "2026-10-09T13:41:03.140553+05:30",
+      9.12e-05
+    ],
+    [
+      "2026-10-09T13:41:03.234172+05:30",
+      8.94e-05
+    ],
+    [
+      "2026-10-09T13:41:03.237478+05:30",
+      8.92e-05
+    ],
+    [
+      "2026-10-09T13:41:03.274395+05:30",
+      8.89e-05
+    ],
+    [
+      "2026-10-09T13:41:03.291456+05:30",
+      9.11e-05
+    ],
+    [
+      "2026-10-09T13:41:03.445255+05:30",
+      8.78e-05
+    ],
+    [
+      "2026-10-09T13:41:03.503761+05:30",
+      9.47e-05
+    ],
+    [
+      "2026-10-09T13:41:03.534856+05:30",
+      8.99e-05
+    ],
+    [
+      "2026-10-09T13:41:03.563544+05:30",
+      0.0001047
+    ],
+    [
+      "2026-10-09T13:41:03.573213+05:30",
+      0.0001094
+    ],
+    [
+      "2026-10-09T13:41:03.640544+05:30",
+      9.57e-05
+    ],
+    [
+      "2026-10-09T13:41:03.682566+05:30",
+      8.73e-05
+    ],
+    [
+      "2026-10-09T13:41:03.730962+05:30",
+      8.75e-05
+    ],
+    [
+      "2026-10-09T13:41:03.749238+05:30",
+      8.65e-05
+    ],
+    [
+      "2026-10-09T13:41:03.771834+05:30",
+      9.24e-05
+    ],
+    [
+      "2026-10-09T13:41:03.814662+05:30",
+      0.0001227
+    ],
+    [
+      "2026-10-09T13:41:03.863828+05:30",
+      8.69e-05
+    ],
+    [
+      "2026-10-09T13:41:03.884810+05:30",
+      0.0001085
+    ],
+    [
+      "2026-10-09T13:41:03.887642+05:30",
+      9.7e-05
+    ],
+    [
+      "2026-10-09T13:41:03.892744+05:30",
+      8.8e-05
+    ],
+    [
+      "2026-10-09T13:41:03.977751+05:30",
+      8.89e-05
+    ],
+    [
+      "2026-10-09T13:41:04.000101+05:30",
+      9.54e-05
+    ],
+    [
+      "2026-10-09T13:41:04.068453+05:30",
+      9.15e-05
+    ],
+    [
+      "2026-10-09T13:41:04.092235+05:30",
+      9.25e-05
+    ],
+    [
+      "2026-10-09T13:41:04.106094+05:30",
+      8.97e-05
+    ],
+    [
+      "2026-10-09T13:41:04.141773+05:30",
+      8.83e-05
+    ],
+    [
+      "2026-10-09T13:41:04.165485+05:30",
+      8.66e-05
+    ],
+    [
+      "2026-10-09T13:41:04.209837+05:30",
+      8.95e-05
+    ],
+    [
+      "2026-10-09T13:41:04.281941+05:30",
+      8.81e-05
+    ],
+    [
+      "2026-10-09T13:41:04.288514+05:30",
+      0.0001218
+    ],
+    [
+      "2026-10-09T13:41:04.398118+05:30",
+      9.85e-05
+    ],
+    [
+      "2026-10-09T13:41:04.424370+05:30",
+      0.0001267
+    ],
+    [
+      "2026-10-09T13:41:04.439899+05:30",
+      8.81e-05
+    ],
+    [
+      "2026-10-09T13:41:04.537294+05:30",
+      9.08e-05
+    ],
+    [
+      "2026-10-09T13:41:04.613518+05:30",
+      9.53e-05
+    ],
+    [
+      "2026-10-09T13:41:04.703928+05:30",
+      9.08e-05
+    ],
+    [
+      "2026-10-09T13:41:04.853098+05:30",
+      8.71e-05
+    ],
+    [
+      "2026-10-09T13:41:04.864450+05:30",
+      0.0001181
+    ],
+    [
+      "2026-10-09T13:41:04.902926+05:30",
+      8.68e-05
+    ],
+    [
+      "2026-10-09T13:41:05.003959+05:30",
+      8.76e-05
+    ],
+    [
+      "2026-10-09T13:41:05.039168+05:30",
+      8.71e-05
+    ],
+    [
+      "2026-10-09T13:41:05.074487+05:30",
+      9.17e-05
+    ],
+    [
+      "2026-10-09T13:41:05.081931+05:30",
+      9.12e-05
+    ],
+    [
+      "2026-10-09T13:41:05.154064+05:30",
+      0.0001338
+    ],
+    [
+      "2026-10-09T13:41:05.186934+05:30",
+      0.0001054
+    ],
+    [
+      "2026-10-09T13:41:05.226744+05:30",
+      9.2e-05
+    ],
+    [
+      "2026-10-09T13:41:05.241465+05:30",
+      9.72e-05
+    ],
+    [
+      "2026-10-09T13:41:05.260173+05:30",
+      0.0001185
+    ],
+    [
+      "2026-10-09T13:41:05.302724+05:30",
+      0.0001206
+    ],
+    [
+      "2026-10-09T13:41:05.353884+05:30",
+      8.83e-05
+    ],
+    [
+      "2026-10-09T13:41:05.401265+05:30",
+      8.99e-05
+    ],
+    [
+      "2026-10-09T13:41:05.405599+05:30",
+      8.81e-05
+    ],
+    [
+      "2026-10-09T13:41:05.442017+05:30",
+      9.3e-05
+    ],
+    [
+      "2026-10-09T13:41:05.578207+05:30",
+      8.71e-05
+    ],
+    [
+      "2026-10-09T13:41:05.596460+05:30",
+      8.71e-05
+    ],
+    [
+      "2026-10-09T13:41:05.598001+05:30",
+      9.19e-05
+    ],
+    [
+      "2026-10-09T13:41:05.599310+05:30",
+      8.69e-05
+    ],
+    [
+      "2026-10-09T13:41:05.605703+05:30",
+      9.07e-05
+    ],
+    [
+      "2026-10-09T13:41:05.873375+05:30",
+      0.0001221
+    ],
+    [
+      "2026-10-09T13:41:53.391487+05:30",
+      0.00782325
+    ],
+    [
+      "2026-10-09T13:42:41.173294+05:30",
+      0.008181
+    ],
+    [
+      "2026-10-09T13:43:35.564984+05:30",
+      0.00754275
+    ],
+    [
+      "2026-10-09T13:45:20.565605+05:30",
+      0.0061515
+    ],
+    [
+      "2026-10-09T13:46:15.597697+05:30",
+      0.005946
+    ]
+  ],
+  "topics": {
+    "none": {
+      "name": "none",
+      "first_seen": "2026-10-09",
+      "days": [
+        "2026-10-09"
+      ],
+      "subs": [
+        "AI_India",
+        "ArtificialInteligence",
+        "ClaudeCode",
+        "antiai",
+        "artificial",
+        "singularity"
+      ],
+      "mentions": 6,
+      "refs": [
+        {
+          "date": "2026-10-09",
+          "title": "Glad we’re focusing on the important things",
+          "thread": "https://www.reddit.com/r/singularity/comments/1x0xkzm/glad_were_focusing_on_the_important_things/",
+          "link": "",
+          "comment": "he's regressing more and more every day."
+        },
+        {
+          "date": "2026-10-09",
+          "title": "Don’t give up your cognition!",
+          "thread": "https://www.reddit.com/r/ArtificialInteligence/comments/1x0nv6t/dont_give_up_your_cognition/",
+          "link": "",
+          "comment": "We're making them chew food that a blender could chew in 10 seconds."
+        },
+        {
+          "date": "2026-10-09",
+          "title": "Trump declares anyone who uses the term Artificial Intelligence to be ‘The Enemy!’",
+          "thread": "https://www.reddit.com/r/artificial/comments/1x0wq2k/trump_declares_anyone_who_uses_the_term/",
+          "link": "https://www.independent.co.uk/news/world/americas/us-politics/trump-ai-super-intelligence-the-enemy-b3063681.html",
+          "comment": ""
+        },
+        {
+          "date": "2026-10-09",
+          "title": "Holy Fucking Shit this is Amazing",
+          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1x0ya1v/holy_fucking_shit_this_is_amazing/",
+          "link": "",
+          "comment": ""
+        },
+        {
+          "date": "2026-10-09",
+          "title": "Do you think it's real?",
+          "thread": "https://www.reddit.com/r/AI_India/comments/1x148vz/do_you_think_its_real/",
+          "link": "",
+          "comment": ""
+        },
+        {
+          "date": "2026-10-09",
+          "title": "Can we catch a break?",
+          "thread": "https://www.reddit.com/r/antiai/comments/1x13cif/can_we_catch_a_break/",
+          "link": "https://www.reddit.com/gallery/1x13cif",
+          "comment": ""
+        }
+      ],
+      "deep_dive": "",
+      "last_seen": "2026-10-09"
+    },
+    "ai-for-accessibility": {
+      "name": "AI for Accessibility",
+      "first_seen": "2026-10-09",
+      "days": [
+        "2026-10-09"
+      ],
+      "subs": [
+        "ClaudeAI"
+      ],
+      "mentions": 1,
+      "refs": [
+        {
+          "date": "2026-10-09",
+          "title": "My brother went nearly 10 years without a way to communicate. I built him a switch-accessible hub of tools and games using AI.",
+          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1x0x5wo/my_brother_went_nearly_10_years_without_a_way_to/",
+          "link": "",
+          "comment": "TL;DR of the discussion generated automatically after 50 comments. The community is giving the OP a massive, teary-eyed standing ovation. Everyone agrees this is an incredible, life-changing project and a perfect example of AI being used for good. Here's the breakdown of the thread: The Gist: OP, wh"
+        }
+      ],
+      "deep_dive": "",
+      "last_seen": "2026-10-09"
+    },
+    "anthropic-claude-models": {
+      "name": "Anthropic Claude Models",
+      "first_seen": "2026-10-09",
+      "days": [
+        "2026-10-09"
+      ],
+      "subs": [
+        "ClaudeAI",
+        "DeepSeek",
+        "LocalLLM",
+        "codex"
+      ],
+      "mentions": 6,
+      "refs": [
+        {
+          "date": "2026-10-09",
+          "title": "Opus 5.5 can make games for 2 decade old phones",
+          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1x120gj/opus_55_can_make_games_for_2_decade_old_phones/",
+          "link": "",
+          "comment": "TL;DR of the discussion generated automatically after 50 comments. The thread is basically a collective jaw-drop. The consensus is that this is an insane demonstration of Opus 5.5's capabilities, with everyone pretty floored that it could handle such a complex, multi-step project. The part that real"
+        },
+        {
+          "date": "2026-10-09",
+          "title": "Opus reverse engineered my brand new Maono DGM20 microphone... in 15 minutes.",
+          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1x0rb0e/opus_reverse_engineered_my_brand_new_maono_dgm20/",
+          "link": "",
+          "comment": ""
+        },
+        {
+          "date": "2026-10-09",
+          "title": "After using Opus 5.5 since it released, all the ChatGPT models start feeling so primitive",
+          "thread": "https://www.reddit.com/r/codex/comments/1x0xg1z/after_using_opus_55_since_it_released_all_the/",
+          "link": "",
+          "comment": ""
+        },
+        {
+          "date": "2026-10-09",
+          "title": "A guy asked models to \"maximize company value\". Claude Opus 5.5 discovered an exploit where it could build tons of tiny rides, bypassing the duplicate ride penalty by never opening the rides",
+          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1x0rz3u/a_guy_asked_models_to_maximize_company_value/",
+          "link": "",
+          "comment": ""
+        },
+        {
+          "date": "2026-10-09",
+          "title": "DeepSeek better releasing a new model as soon as possible because of Haiku 5.5",
+          "thread": "https://www.reddit.com/r/DeepSeek/comments/1x0nv07/deepseek_better_releasing_a_new_model_as_soon_as/",
+          "link": "",
+          "comment": ""
+        },
+        {
+          "date": "2026-10-09",
+          "title": "I just looked at my monthly token usage on Claude and holy sh*t I am at around $15,000 spend per month",
+          "thread": "https://www.reddit.com/r/LocalLLM/comments/1x0tfuh/i_just_looked_at_my_monthly_token_usage_on_claude/",
+          "link": "",
+          "comment": ""
+        }
+      ],
+      "deep_dive": "",
+      "last_seen": "2026-10-09"
+    },
+    "anthropic-usage-policy": {
+      "name": "Anthropic Usage Policy Updates",
+      "first_seen": "2026-10-09",
+      "days": [
+        "2026-10-09"
+      ],
+      "subs": [
+        "ClaudeAI",
+        "ClaudeCode",
+        "artificial",
+        "singularity"
+      ],
+      "mentions": 4,
+      "refs": [
+        {
+          "date": "2026-10-09",
+          "title": "Abuse Claude, get banned coming November 12th, 2026",
+          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1x11k9j/abuse_claude_get_banned_coming_november_12th_2026/",
+          "link": "",
+          "comment": ""
+        },
+        {
+          "date": "2026-10-09",
+          "title": "Anthropic bans ‘abusive or cruel behavior’ toward Claude",
+          "thread": "https://www.reddit.com/r/singularity/comments/1x18ywv/anthropic_bans_abusive_or_cruel_behavior_toward/",
+          "link": "https://www.theverge.com/ai-artificial-intelligence/1008100/anthropic-new-usage-policy-abuse-claude",
+          "comment": ""
+        },
+        {
+          "date": "2026-10-09",
+          "title": "Starting November 12th, 2026, abusive or cruel behavior towards Claude will be a violation of Anthropic's Usage Policy",
+          "thread": "https://www.reddit.com/r/singularity/comments/1x0x0o8/starting_november_12th_2026_abusive_or_cruel/",
+          "link": "",
+          "comment": ""
+        },
+        {
+          "date": "2026-10-09",
+          "title": "No more abusing Claude from Nov 12th onwards, usage policy update",
+          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1x0ybl2/no_more_abusing_claude_from_nov_12th_onwards/",
+          "link": "",
+          "comment": ""
+        }
+      ],
+      "deep_dive": "",
+      "last_seen": "2026-10-09"
+    },
+    "gemini-model-releases": {
+      "name": "Gemini Model Releases",
+      "first_seen": "2026-10-09",
+      "days": [
+        "2026-10-09"
+      ],
+      "subs": [
+        "GeminiAI"
+      ],
+      "mentions": 5,
+      "refs": [
+        {
+          "date": "2026-10-09",
+          "title": "Day 8 no Gemini 4",
+          "thread": "https://www.reddit.com/r/GeminiAI/comments/1x0myqs/day_8_no_gemini_4/",
+          "link": "",
+          "comment": ""
+        },
+        {
+          "date": "2026-10-09",
+          "title": "Google quietly nerfed Pro perks AGAIN!!",
+          "thread": "https://www.reddit.com/r/GeminiAI/comments/1x0r1o9/google_quietly_nerfed_pro_perks_again/",
+          "link": "https://www.reddit.com/gallery/1x0r1o9",
+          "comment": ""
+        },
+        {
+          "date": "2026-10-09",
+          "title": "Gemini 4 argon not releasing today (it's still in early access)",
+          "thread": "https://www.reddit.com/r/GeminiAI/comments/1x0toz1/gemini_4_argon_not_releasing_today_its_still_in/",
+          "link": "",
+          "comment": ""
+        },
+        {
+          "date": "2026-10-09",
+          "title": "Rest in peace Gemini for free users , you weren't the best or the worst and wasn't ultra safety railed like the chatgpt models 4.0 , you got worse but you mattered.",
+          "thread": "https://www.reddit.com/r/GeminiAI/comments/1x0ncy9/rest_in_peace_gemini_for_free_users_you_werent/",
+          "link": "",
+          "comment": ""
+        },
+        {
+          "date": "2026-10-09",
+          "title": "Gemini at Work 2026: Introducing Gemini agent",
+          "thread": "https://www.reddit.com/r/GeminiAI/comments/1x0vmzz/gemini_at_work_2026_introducing_gemini_agent/",
+          "link": "https://cloud.google.com/blog/products/ai-machine-learning/welcome-to-gemini-at-work-2026",
+          "comment": ""
+        }
+      ],
+      "deep_dive": "",
+      "last_seen": "2026-10-09"
+    },
+    "ai-cybersecurity": {
+      "name": "AI in Cybersecurity",
+      "first_seen": "2026-10-09",
+      "days": [
+        "2026-10-09"
+      ],
+      "subs": [
+        "LocalLLaMA"
+      ],
+      "mentions": 1,
+      "refs": [
+        {
+          "date": "2026-10-09",
+          "title": "Last week some of South Korea's biggest banks were hit by a cyberattack. We now know the entire hack may have been done by a single person. He used a combined stack of an open-source AI penetration tool named ARTEX, DeepSeek v4.1-Flash, GLM-5.3, Grok 4.6, and Claude Code (CrowdStrike)",
+          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1x0n4pt/last_week_some_of_south_koreas_biggest_banks_were/",
+          "link": "https://www.reddit.com/gallery/1x0n4pt",
+          "comment": ""
+        }
+      ],
+      "deep_dive": "",
+      "last_seen": "2026-10-09"
+    },
+    "ai-and-jobs": {
+      "name": "AI and Jobs",
+      "first_seen": "2026-10-09",
+      "days": [
+        "2026-10-09"
+      ],
+      "subs": [
+        "antiai",
+        "singularity"
+      ],
+      "mentions": 2,
+      "refs": [
+        {
+          "date": "2026-10-09",
+          "title": "Tom was the first layoff due to AI",
+          "thread": "https://www.reddit.com/r/singularity/comments/1x0ypnz/tom_was_the_first_layoff_due_to_ai/",
+          "link": "",
+          "comment": ""
+        },
+        {
+          "date": "2026-10-09",
+          "title": "Remote Employee Fired After Refusing To Be Photographed by an AI Tool Every Three Minutes, Lawsuit Claims",
+          "thread": "https://www.reddit.com/r/antiai/comments/1x15evd/remote_employee_fired_after_refusing_to_be/",
+          "link": "",
+          "comment": ""
+        }
+      ],
+      "deep_dive": "",
+      "last_seen": "2026-10-09"
+    },
+    "ai-in-mathematics": {
+      "name": "AI in Mathematics",
+      "first_seen": "2026-10-09",
+      "days": [
+        "2026-10-09"
+      ],
+      "subs": [
+        "singularity"
+      ],
+      "mentions": 3,
+      "refs": [
+        {
+          "date": "2026-10-09",
+          "title": "Mathematicians spent 40 years telling taxpayers that math matters because it benefits humanity. Now that AI is doing the math, suddenly it's about mathematicians.",
+          "thread": "https://www.reddit.com/r/singularity/comments/1x0q2ho/mathematicians_spent_40_years_telling_taxpayers/",
+          "link": "",
+          "comment": ""
+        },
+        {
+          "date": "2026-10-09",
+          "title": "After AI models started knocking down longstanding math problems, insider Scott Aaronson says labs are now quietly testing whether their latest internal models can break major cryptographic protocols",
+          "thread": "https://www.reddit.com/r/singularity/comments/1x0pn9j/after_ai_models_started_knocking_down/",
+          "link": "",
+          "comment": ""
+        },
+        {
+          "date": "2026-10-09",
+          "title": "Fields Medalist Terence Tao quips about LLMs: “OpenAI Releases Final Ten Minutes of 500 Previously Unreleased Films, Ushering in New Era of Movie Watching”, plus addt’l notes",
+          "thread": "https://www.reddit.com/r/singularity/comments/1x0q7vz/fields_medalist_terence_tao_quips_about_llms/",
+          "link": "https://www.reddit.com/gallery/1x0q7vz",
+          "comment": ""
+        }
+      ],
+      "deep_dive": "",
+      "last_seen": "2026-10-09"
+    },
+    "ai-coding-agents": {
+      "name": "AI Coding Agents",
+      "first_seen": "2026-10-09",
+      "days": [
+        "2026-10-09"
+      ],
+      "subs": [
+        "ClaudeAI",
+        "ClaudeCode",
+        "LocalLLaMA"
+      ],
+      "mentions": 4,
+      "refs": [
+        {
+          "date": "2026-10-09",
+          "title": "Strata rewrote their Github history to wipe evidence of Claude-authoring",
+          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1x15a8w/strata_rewrote_their_github_history_to_wipe/",
+          "link": "",
+          "comment": ""
+        },
+        {
+          "date": "2026-10-09",
+          "title": "What are Claude Code \"Power Users\" doing with Claude Code that the average developer isn't?",
+          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1x0uhhr/what_are_claude_code_power_users_doing_with/",
+          "link": "",
+          "comment": ""
+        },
+        {
+          "date": "2026-10-09",
+          "title": "I'm stunned, telling you stunned, with how much better Claude Code is than Codex",
+          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1x0tkgg/im_stunned_telling_you_stunned_with_how_much/",
+          "link": "",
+          "comment": ""
+        },
+        {
+          "date": "2026-10-09",
+          "title": "Is Haiku 5.5 good enough to be your main coding agent, not just the cheap one? I ran a small controlled test",
+          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1x132yy/is_haiku_55_good_enough_to_be_your_main_coding/",
+          "link": "",
+          "comment": ""
+        }
+      ],
+      "deep_dive": "",
+      "last_seen": "2026-10-09"
+    },
+    "ai-benchmarks": {
+      "name": "AI Benchmarks and Reasoning",
+      "first_seen": "2026-10-09",
+      "days": [
+        "2026-10-09"
+      ],
+      "subs": [
+        "singularity"
+      ],
+      "mentions": 1,
+      "refs": [
+        {
+          "date": "2026-10-09",
+          "title": "Introducing Humanity’s Sixth Sense, a new benchmark testing intuitive visual reasoning from spatial and causal reasoning to social understanding. The gap is significant. Humans score 93.1%, while the strongest model, GPT-6-astra, reaches 53.6%. The median model scores just 30.9%.",
+          "thread": "https://www.reddit.com/r/singularity/comments/1x0twes/introducing_humanitys_sixth_sense_a_new_benchmark/",
+          "link": "",
+          "comment": ""
+        }
+      ],
+      "deep_dive": "",
+      "last_seen": "2026-10-09"
+    },
+    "local-llms": {
+      "name": "Local LLMs and Hardware",
+      "first_seen": "2026-10-09",
+      "days": [
+        "2026-10-09"
+      ],
+      "subs": [
+        "ArtificialInteligence",
+        "LocalLLaMA"
+      ],
+      "mentions": 4,
+      "refs": [
+        {
+          "date": "2026-10-09",
+          "title": "I'm not paying $20 for ChatGPT or Claude because a free local LLM does everything I need",
+          "thread": "https://www.reddit.com/r/ArtificialInteligence/comments/1x0qglh/im_not_paying_20_for_chatgpt_or_claude_because_a/",
+          "link": "https://www.xda-developers.com/im-not-paying-20-for-chatgpt-claude-or-gemini-because-a-free-local-llm-does-everything-i-need/",
+          "comment": ""
+        },
+        {
+          "date": "2026-10-09",
+          "title": "$2800 rig with 8x Radeon Pro V620 (256 GB VRAM) + custom vLLM fork = Qwen3.8-Flash-Next at 60 to 100 t/s decode and 3000+ t/s prefill",
+          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1x0wnz1/2800_rig_with_8x_radeon_pro_v620_256_gb_vram/",
+          "link": "",
+          "comment": ""
+        },
+        {
+          "date": "2026-10-09",
+          "title": "jevman: AI decision models play Pac-Man",
+          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1x0sm1b/jevman_ai_decision_models_play_pacman/",
+          "link": "",
+          "comment": ""
+        },
+        {
+          "date": "2026-10-09",
+          "title": "Running decision model locally on an RTX 4090 to find out which one is the fastest",
+          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1x0wg85/running_decision_model_locally_on_an_rtx_4090_to/",
+          "link": "",
+          "comment": ""
+        }
+      ],
+      "deep_dive": "",
+      "last_seen": "2026-10-09"
+    },
+    "openai-company-updates": {
+      "name": "OpenAI Company Updates",
+      "first_seen": "2026-10-09",
+      "days": [
+        "2026-10-09"
+      ],
+      "subs": [
+        "singularity"
+      ],
+      "mentions": 1,
+      "refs": [
+        {
+          "date": "2026-10-09",
+          "title": "An open letter from the three OpenAl employees who were fired last week",
+          "thread": "https://www.reddit.com/r/singularity/comments/1x10im0/an_open_letter_from_the_three_openal_employees/",
+          "link": "https://www.reddit.com/gallery/1x10im0",
+          "comment": ""
+        }
+      ],
+      "deep_dive": "",
+      "last_seen": "2026-10-09"
+    },
+    "ai-pricing-and-costs": {
+      "name": "AI Pricing and Costs",
+      "first_seen": "2026-10-09",
+      "days": [
+        "2026-10-09"
+      ],
+      "subs": [
+        "ArtificialInteligence"
+      ],
+      "mentions": 1,
+      "refs": [
+        {
+          "date": "2026-10-09",
+          "title": "Claude too expensive for companies, only 2.2% of US households paying for AI",
+          "thread": "https://www.reddit.com/r/ArtificialInteligence/comments/1x0r82m/claude_too_expensive_for_companies_only_22_of_us/",
+          "link": "https://www.techradar.com/pro/meta-and-microsoft-want-to-stop-their-employees-using-claude",
+          "comment": ""
+        }
+      ],
+      "deep_dive": "",
+      "last_seen": "2026-10-09"
+    }
+  }
 }
