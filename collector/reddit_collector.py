@@ -13,7 +13,7 @@ Standard library only - no pip installs needed.
 
 Usage
   python reddit_collector.py            collect + upload (uses collector_config.json)
-  python reddit_collector.py --test     collect 2 subreddits, print a summary, no upload
+  python reddit_collector.py --test     collect 3 subreddits, print a summary, no upload
 """
 import base64
 import datetime as dt
@@ -35,10 +35,14 @@ DEFAULT_REPO = "npannu7/daily-briefing"
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) WeightsAndMeasuresCollector/1.0 (personal podcast)"
 ATOM = {"a": "http://www.w3.org/2005/Atom"}
 
-POSTS_PER_SUB = 8          # top posts of the day per subreddit
-COMMENT_POSTS = 2          # how many of those get their comments fetched (weight >= 2 subs)
+# Reddit's public feeds allow very few requests (often about one per minute), so subreddits are
+# fetched together as combined feeds (r/A+B+C), one per weight tier, and comments are read only
+# for the most promising threads.
+GROUP_SIZE = 15            # subreddits per combined feed
+TIER_LIMIT = {3: 30, 2: 25, 1: 15}   # posts per combined feed, by weight
+COMMENT_LIMIT = 20         # threads whose comments are read (best first)
 MAX_COMMENTS = 12
-PAUSE = 6.5                # seconds between requests (Reddit allows ~10 per minute without login)
+PAUSE = 2.0                # extra pause between requests; Reddit's own rate headers are obeyed too
 
 
 class Blocked(Exception):
@@ -65,8 +69,10 @@ def http_get(url, tries=4):
                 body = r.read()
                 if remaining is not None and reset is not None:
                     try:
-                        if float(remaining) < 2:
-                            time.sleep(min(float(reset) + 1, 120))
+                        if float(remaining) < 1:
+                            wait = min(float(reset) + 1, 120)
+                            log(f"  Reddit rate limit: waiting {wait:.0f}s")
+                            time.sleep(wait)
                     except ValueError:
                         pass
                 return body
@@ -95,7 +101,7 @@ def strip_html(s, limit=None):
     s = re.sub(r"(?is)<(script|style).*?</\1>", " ", s or "")
     s = html.unescape(re.sub(r"<[^>]+>", " ", s))
     s = re.sub(r"\s+", " ", s).strip()
-    s = s.replace("submitted by /u/", "").replace("[link] [comments]", "").strip()
+    s = re.sub(r"submitted by\s+/u/\S+", "", s).replace("[link]", "").replace("[comments]", "").strip()
     return s[:limit] if limit else s
 
 
@@ -108,7 +114,9 @@ def parse_entries(xml_bytes):
     for e in root.findall("a:entry", ATOM):
         content = e.findtext("a:content", default="", namespaces=ATOM)
         link_el = e.find("a:link", ATOM)
+        cat = e.find("a:category", ATOM)
         out.append({
+            "sub": cat.get("term", "") if cat is not None else "",
             "id": e.findtext("a:id", default="", namespaces=ATOM),
             "title": html.unescape(e.findtext("a:title", default="", namespaces=ATOM)),
             "url": link_el.get("href") if link_el is not None else "",
@@ -151,39 +159,55 @@ def read_subreddits(repo):
     return subs
 
 
-def collect(subs, pause=PAUSE, log=log):
-    posts, errors = [], 0
-    for i, (sub, weight) in enumerate(subs):
-        body = http_get(f"https://www.reddit.com/r/{sub}/top/.rss?t=day&limit={POSTS_PER_SUB}")
+def collect(subs, pause=PAUSE, log=log, budget_s=None, comment_limit=COMMENT_LIMIT):
+    t0, posts, errors = time.time(), [], 0
+    weight_of = {name.lower(): w for name, w in subs}
+
+    def out_of_time():
+        return budget_s is not None and time.time() - t0 > budget_s
+
+    tiers = {}
+    for name, w in subs:
+        tiers.setdefault(w, []).append(name)
+    for weight in sorted(tiers, reverse=True):
+        names = tiers[weight]
+        for i in range(0, len(names), GROUP_SIZE):
+            if posts and out_of_time():
+                break
+            group = names[i:i + GROUP_SIZE]
+            limit = TIER_LIMIT.get(int(weight), 15)
+            body = http_get(f"https://www.reddit.com/r/{'+'.join(group)}/top/.rss?t=day&limit={limit}")
+            time.sleep(pause)
+            if body is None:
+                errors += 1
+                log(f"  weight {weight:g} group ({len(group)} subreddits): no data")
+                continue
+            entries = [e for e in parse_entries(body) if "/comments/" in e["url"]]
+            log(f"  weight {weight:g} group ({len(group)} subreddits): {len(entries)} posts")
+            for rank, e in enumerate(entries):
+                sub = e["sub"] or group[0]
+                posts.append({
+                    "sub": sub, "weight": weight_of.get(sub.lower(), weight), "rank": rank,
+                    "id": e["id"].replace("t3_", ""), "title": e["title"], "url": e["url"], "date": e["date"],
+                    "link": external_link(e["content"]), "text": strip_html(e["content"], 2500), "comments": [],
+                })
+    best = sorted(posts, key=lambda p: -p["weight"] / (1 + p["rank"]))[:comment_limit]
+    for n, p in enumerate(best, 1):
+        if out_of_time():
+            log(f"  time budget reached after {n - 1} comment threads")
+            break
+        cbody = http_get(f"https://www.reddit.com/r/{p['sub']}/comments/{p['id']}/.rss?sort=top&limit={MAX_COMMENTS + 1}")
         time.sleep(pause)
-        if body is None:
-            errors += 1
-            log(f"  r/{sub}: no data")
+        if not cbody:
             continue
-        entries = [e for e in parse_entries(body) if "/comments/" in e["url"]]
-        log(f"  r/{sub}: {len(entries)} posts")
-        for rank, e in enumerate(entries):
-            pid = e["id"].replace("t3_", "")
-            posts.append({
-                "sub": sub, "weight": weight, "rank": rank, "id": pid,
-                "title": e["title"], "url": e["url"], "date": e["date"],
-                "link": external_link(e["content"]),
-                "text": strip_html(e["content"], 2500),
-                "comments": [],
-            })
-        if weight >= 2:
-            for p in [p for p in posts if p["sub"] == sub][:COMMENT_POSTS]:
-                cbody = http_get(f"https://www.reddit.com/r/{sub}/comments/{p['id']}/.rss?sort=top&limit={MAX_COMMENTS + 1}")
-                time.sleep(pause)
-                if not cbody:
-                    continue
-                for c in parse_entries(cbody):
-                    if c["id"].startswith("t3_"):
-                        continue  # the post itself
-                    text = strip_html(c["content"], 700)
-                    if text and text.lower() not in ("[deleted]", "[removed]"):
-                        p["comments"].append(text)
-                p["comments"] = p["comments"][:MAX_COMMENTS]
+        for c in parse_entries(cbody):
+            if c["id"].startswith("t3_"):
+                continue  # the post itself
+            text = strip_html(c["content"], 700)
+            if text and text.lower() not in ("[deleted]", "[removed]"):
+                p["comments"].append(text)
+        p["comments"] = p["comments"][:MAX_COMMENTS]
+    log(f"  comments read for {sum(1 for p in posts if p['comments'])} threads")
     return {"collected_at": dt.datetime.now(dt.timezone.utc).isoformat(), "source": "reddit-rss",
             "subreddits": len(subs), "errors": errors, "posts": posts}
 
@@ -215,10 +239,10 @@ def main():
     repo = cfg.get("repo", DEFAULT_REPO)
     subs = read_subreddits(repo)
     if test:
-        subs = subs[:2]
+        subs = subs[:3]
     log(f"Collecting {len(subs)} subreddits{' (test)' if test else ''}")
     try:
-        snap = collect(subs)
+        snap = collect(subs, comment_limit=2 if test else COMMENT_LIMIT)
     except Blocked as e:
         log(f"STOPPED: Reddit refused this connection ({e}).")
         sys.exit(2)
