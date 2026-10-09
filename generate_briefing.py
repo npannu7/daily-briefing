@@ -217,7 +217,7 @@ def free_models():
     _FREE = []
     try:
         data = requests.get("https://openrouter.ai/api/v1/models", headers=UA, timeout=30).json()["data"]
-        free = [m for m in data if m.get("id", "").endswith(":free")
+        free = [m for m in data if m.get("id", "").endswith(":free") and "inkling" not in m["id"]
                 and (m.get("context_length") or 0) >= 64000
                 and "text" in ((m.get("architecture") or {}).get("output_modalities") or ["text"])]
         pref = ["gemini", "deepseek", "qwen", "kimi", "glm", "gemma", "inkling", "llama", "mistral", "gpt-oss"]
@@ -320,6 +320,13 @@ def parse_json(text):
         if m:
             return json.loads(m.group(0))
         raise
+
+
+def as_obj(data, key):
+    """Models sometimes return the inner list instead of {key: [...]}; accept both."""
+    if isinstance(data, list):
+        return {key: data}
+    return data if isinstance(data, dict) else {}
 
 
 def decide(state_obj, questions):
@@ -626,7 +633,7 @@ needs_check = makes checkable factual claims. hype = speculative or sensational 
     try:
         text, _ = llm(prompt, json_mode=True, label="scoring", role="helper")
         out = {}
-        for it in parse_json(text).get("items", []):
+        for it in as_obj(parse_json(text), "items").get("items", []):
             out[int(it["id"])] = {"relevant": {"noul": float(it.get("relevant", 0))},
                                   "substance": {"score": float(it.get("substance", 1))},
                                   "level": {"choice": it.get("level", "technical")},
@@ -658,7 +665,7 @@ THREADS:
 Return JSON only: {{"assign": [{{"id": <thread id>, "topic": "<key>", "name": "<readable topic name>"}}]}}"""
     try:
         text, _ = llm(prompt, json_mode=True, label="topics", role="helper")
-        assign = parse_json(text).get("assign", [])
+        assign = as_obj(parse_json(text), "assign").get("assign", [])
     except Exception as e:
         log(f"  topic tracking skipped: {e}")
         return
@@ -762,7 +769,7 @@ Return JSON only:
                  "claims_to_check": ["<claim from the thread>", "..."], "connects_to": "<past episode or empty>",
                  "words": <number>}}]}}"""
     text, _ = llm(prompt, json_mode=True, label="editor")
-    plan = parse_json(text)
+    plan = as_obj(parse_json(text), "segments")
     ids = {s["id"] for s in stories}
     segs = []
     for s in plan.get("segments", []):
@@ -961,7 +968,7 @@ truly connects. Briefly preview the segments. If there is recent feedback, say i
 because of it. {'For a deep dive, say why this topic is ready now (it built up over several days).' if deep_dive else ''}
 Vary the wording every time. Closing: 2-3 short turns, 30-60 words, no hype."""
     text, _ = llm(prompt, json_mode=True, label="greeting")
-    data = parse_json(text)
+    data = as_obj(parse_json(text), "greeting")
 
     def norm(lst):
         out = []
@@ -1251,7 +1258,7 @@ Plausible distractors; vary the position of the correct answer."""
     try:
         text, _ = llm(prompt, json_mode=True, label="quiz", role="helper")
         out = []
-        for q in parse_json(text).get("questions", [])[:5]:
+        for q in as_obj(parse_json(text), "questions").get("questions", [])[:5]:
             opts = [str(o) for o in q.get("options", [])][:4]
             ans = int(q.get("answer", -1))
             if q.get("q") and len(opts) >= 3 and 0 <= ans < len(opts):
