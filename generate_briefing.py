@@ -1126,22 +1126,44 @@ def fish_voices():
             male = next((v["id"] for v in en if re.search(r"\bmale\b|\bman\b", v["text"])), None)
             picks = [fem, male] if fem and male else [v["id"] for v in en[:2]]
             _FISH = [p for p in picks if p][:2]
-            log(f"  Fish Audio voices: {_FISH or 'none found'} (set FISH_VOICE_A/B to choose)")
+            log(f"  Fish Audio voices: {_FISH or 'none listed - cloning the hosts from short reference clips'}")
         except Exception as e:
             log(f"  Fish Audio voice list failed: {e}")
     return _FISH
 
 
+REF_TEXT = {
+    A: "Good evening, and welcome back. Today we are weighing what people are saying against what the evidence shows.",
+    B: "Right, and before we get carried away, let's look at the numbers, the method, and what was actually measured.",
+}
+_REFS = {}
+
+
+def fish_reference(spk):
+    """A short spoken sample for each host (made once with Edge TTS, kept in voices/) that Fish Audio clones."""
+    if spk in _REFS:
+        return _REFS[spk]
+    path = ROOT / "voices" / f"host_{'a' if spk == A else 'b'}.mp3"
+    if not path.exists():
+        path.parent.mkdir(exist_ok=True)
+        path.write_bytes(asyncio.run(_edge_turn(REF_TEXT[spk], (HOST_A if spk == A else HOST_B)["edge"])))
+    _REFS[spk] = [{"type": "input_audio",
+                   "input_audio": {"data": "data:audio/mpeg;base64," + base64.b64encode(path.read_bytes()).decode()}},
+                  {"type": "text", "text": REF_TEXT[spk]}]
+    return _REFS[spk]
+
+
 def fish_tts_chunk(turns):
     voices = fish_voices()
-    if len(voices) < 2:
-        raise RuntimeError("no Fish Audio voices available")
-    vmap = {A: voices[0], B: voices[1]}
     pcm = bytearray()
     for spk, text in turns:
+        body = {"model": FISH_MODEL, "input": text, "response_format": "mp3"}
+        if len(voices) == 2:
+            body["voice"] = {A: voices[0], B: voices[1]}[spk]
+        else:
+            body["input_references"] = fish_reference(spk)
         for attempt in range(1, 4):
-            r = requests.post("https://openrouter.ai/api/v1/audio/speech", timeout=(20, 180),
-                              json={"model": FISH_MODEL, "input": text, "voice": vmap[spk], "response_format": "mp3"},
+            r = requests.post("https://openrouter.ai/api/v1/audio/speech", timeout=(20, 180), json=body,
                               headers={"Authorization": f"Bearer {OPENROUTER_API_KEY}",
                                        "HTTP-Referer": PAGES_URL, "X-Title": SHOW_TITLE})
             if r.status_code == 200 and r.content:
@@ -1200,13 +1222,15 @@ def voice_episode(sections, state, edition):
         if engine == "gemini":
             if not GEMINI_API_KEY:
                 continue
-            day_ago = (dt.datetime.now(TZ) - dt.timedelta(hours=24)).isoformat()
-            state["tts_log"] = [t for t in state.get("tts_log", []) if t >= day_ago]
+            # Google's free daily quota resets at midnight Pacific time. The morning run (08:00 IST) and the
+            # evening run (16:00 IST) fall on different Pacific days, so each edition gets the full quota.
+            pt = ZoneInfo("America/Los_Angeles")
+            day_start = dt.datetime.now(pt).replace(hour=0, minute=0, second=0, microsecond=0)
+            state["tts_log"] = [t for t in state.get("tts_log", [])
+                                if dt.datetime.fromisoformat(t) >= day_start]
             used = len(state["tts_log"])
-            reserve = len(chunks) if edition == "morning" else 0   # keep the best voices for the evening
-            if TTS_ENGINE == "auto" and used + len(chunks) + reserve > GEMINI_TTS_DAILY:
-                log(f"  Gemini TTS: {used} used in 24 h, need {len(chunks)}"
-                    f"{f' + {reserve} kept for the evening' if reserve else ''} (limit {GEMINI_TTS_DAILY}) -> next voice")
+            if TTS_ENGINE == "auto" and used + len(chunks) > GEMINI_TTS_DAILY:
+                log(f"  Gemini TTS: {used} used today (Pacific), need {len(chunks)} (limit {GEMINI_TTS_DAILY}) -> next voice")
                 continue
         if engine == "fish" and not OPENROUTER_API_KEY:
             continue
