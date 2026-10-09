@@ -8,9 +8,37 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Thu, 08 Oct 2026 10:55:51 GMT</lastBuildDate>
+<lastBuildDate>Fri, 09 Oct 2026 03:54:25 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Morning - 9 Oct: OpenAI Retracts Formal Math Results: Verification Limits and Lean Boundary Failures</title>
+<description>Morning edition - Friday, 9 October 2026
+Grounding frontier claims in verifiable mechanics: from retracted formal proofs to collapse-resistant reasoning self-evolution and agent deception benchmarks.
+
+00:45  OpenAI Retracts Formal Math Results: Verification Limits and Lean Boundary Failures
+   Hacker News: https://github.com/openai/math/blob/main/history.md
+   Hacker News: https://twitter.com/danintheory/status/2108065033070789090
+   Hacker News: https://karagila.org/2026/openai-pp/
+07:34  nanoMuse: An Open-Source Local Agent Architecture for Multi-Device Continuity
+   Hugging Face Daily Papers: https://arxiv.org/abs/2610.08699
+10:24  UniWAM and Kinematic MeanFlow: Unifying World Dynamics and Low-Latency Robot Actions
+   Hugging Face Daily Papers: https://arxiv.org/abs/2610.02054
+   Hugging Face Daily Papers: https://arxiv.org/abs/2610.00864
+15:33  Questioning the Questions: Diagnosing and Preventing Collapse in Reasoning Self-Evolution
+   Hugging Face Daily Papers: https://arxiv.org/abs/2610.04299
+   Hugging Face Daily Papers: https://arxiv.org/abs/2609.39306
+23:43  DecepEval: Benchmarking Goal-Directed Deception in Autonomous Agents
+   Hugging Face Daily Papers: https://arxiv.org/abs/2610.07967
+
+Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
+Voices: Edge TTS</description>
+<pubDate>Fri, 09 Oct 2026 09:11:22 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-10-09_morning_0911.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-09_morning_0911.mp3" length="14784045" type="audio/mpeg"/>
+<itunes:duration>1847</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Evening - 8 Oct: Delta-Rule Recurrent State Quantization</title>
 <description>Evening edition - Thursday, 8 October 2026

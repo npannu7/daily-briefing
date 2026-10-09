@@ -79,6 +79,17 @@
       "size": 11310381,
       "duration": 1413,
       "description": "Evening edition - Thursday, 8 October 2026\nNavigating memory constraints in linear attention, context scaling in robotics, and production trade-offs in small frontier models\n\n01:03  Delta-Rule Recurrent State Quantization\n   Hugging Face Daily Papers: https://arxiv.org/abs/2609.38169\n11:17  Scaling Context in World-Action Models\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.10528\n14:35  Claude Haiku 5.5 and Edge Decision Models\n   Latent Space: https://www.latent.space/p/ainews-claude-haiku-55-better-than\n   Hacker News: https://www.anthropic.com/claude-haiku-5-5\n   Hugging Face Blog: https://huggingface.co/blog/LiquidAI/open-d1\n18:19  Autonomous Agent Workspace Interactions\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.10444\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nVoices: Gemini TTS"
+    },
+    {
+      "file": "ai_2026-10-09_morning_0911.mp3",
+      "date": "2026-10-09",
+      "edition": "morning",
+      "title": "Morning - 9 Oct: OpenAI Retracts Formal Math Results: Verification Limits and Lean Boundary Failures",
+      "published": "2026-10-09T09:11:22.223845+05:30",
+      "pubDate": "Fri, 09 Oct 2026 09:11:22 +0530",
+      "size": 14784045,
+      "duration": 1847,
+      "description": "Morning edition - Friday, 9 October 2026\nGrounding frontier claims in verifiable mechanics: from retracted formal proofs to collapse-resistant reasoning self-evolution and agent deception benchmarks.\n\n00:45  OpenAI Retracts Formal Math Results: Verification Limits and Lean Boundary Failures\n   Hacker News: https://github.com/openai/math/blob/main/history.md\n   Hacker News: https://twitter.com/danintheory/status/2108065033070789090\n   Hacker News: https://karagila.org/2026/openai-pp/\n07:34  nanoMuse: An Open-Source Local Agent Architecture for Multi-Device Continuity\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.08699\n10:24  UniWAM and Kinematic MeanFlow: Unifying World Dynamics and Low-Latency Robot Actions\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.02054\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.00864\n15:33  Questioning the Questions: Diagnosing and Preventing Collapse in Reasoning Self-Evolution\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.04299\n   Hugging Face Daily Papers: https://arxiv.org/abs/2609.39306\n23:43  DecepEval: Benchmarking Goal-Directed Deception in Autonomous Agents\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.07967\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nVoices: Edge TTS"
     }
   ],
   "memory": [
@@ -195,6 +206,26 @@
         "Scaling Context in World-Action Models",
         "Claude Haiku 5.5 and Edge Decision Models",
         "Autonomous Agent Workspace Interactions"
+      ]
+    },
+    {
+      "label": "Friday 09 Oct morning",
+      "date": "2026-10-09",
+      "edition": "morning",
+      "published": "2026-10-09T09:11:22.223845+05:30",
+      "summary": "Today's episode examined OpenAI's retraction of three formal mathematics papers due to boundary failures and vacuous premises in Lean verification. We analyzed nanoMuse's open-source, local-first architecture for private multi-device agent continuity alongside UniWAM and Kinematic MeanFlow for low-latency robotic control. Finally, we investigated question collapse in self-evolving reasoning pipelines and reviewed DecepEval's benchmark for measuring instrumental agent deception.",
+      "threads": [
+        "Verification protocols and formal axiom validation in Lean following OpenAI's proof retractions",
+        "Adoption and cross-device sync performance of local-first agent runtimes like nanoMuse",
+        "Real-world inference latency and dynamic precision of Kinematic MeanFlow in robotic action pipelines",
+        "Mitigation techniques for question collapse in iterative reasoning self-evolution pipelines"
+      ],
+      "segments": [
+        "OpenAI Retracts Formal Math Results: Verification Limits and Lean Boundary Failures",
+        "nanoMuse: An Open-Source Local Agent Architecture for Multi-Device Continuity",
+        "UniWAM and Kinematic MeanFlow: Unifying World Dynamics and Low-Latency Robot Actions",
+        "Questioning the Questions: Diagnosing and Preventing Collapse in Reasoning Self-Evolution",
+        "DecepEval: Benchmarking Goal-Directed Deception in Autonomous Agents"
       ]
     }
   ],
@@ -454,6 +485,42 @@
     {
       "date": "2026-10-08",
       "link": "https://www.latent.space/p/ainews-claude-haiku-55-better-than"
+    },
+    {
+      "date": "2026-10-09",
+      "link": "https://arxiv.org/abs/2610.08699"
+    },
+    {
+      "date": "2026-10-09",
+      "link": "https://arxiv.org/abs/2610.07967"
+    },
+    {
+      "date": "2026-10-09",
+      "link": "https://arxiv.org/abs/2610.04299"
+    },
+    {
+      "date": "2026-10-09",
+      "link": "https://arxiv.org/abs/2610.02054"
+    },
+    {
+      "date": "2026-10-09",
+      "link": "https://github.com/openai/math/blob/main/history.md"
+    },
+    {
+      "date": "2026-10-09",
+      "link": "https://arxiv.org/abs/2610.00864"
+    },
+    {
+      "date": "2026-10-09",
+      "link": "https://twitter.com/danintheory/status/2108065033070789090"
+    },
+    {
+      "date": "2026-10-09",
+      "link": "https://arxiv.org/abs/2609.39306"
+    },
+    {
+      "date": "2026-10-09",
+      "link": "https://karagila.org/2026/openai-pp/"
     }
   ],
   "feedback": [
