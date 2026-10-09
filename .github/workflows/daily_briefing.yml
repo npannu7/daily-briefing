@@ -1,4 +1,4 @@
-name: Daily AI Briefing
+name: Weights and Measures
 
 on:
   schedule:
@@ -21,8 +21,12 @@ on:
       tts:
         description: 'Voice engine'
         type: choice
-        options: [auto, gemini, edge]
+        options: [auto, gemini, fish, edge]
         default: auto
+      deep_dive:
+        description: 'Make this a deep dive on the most built-up topic'
+        type: boolean
+        default: false
 
 permissions:
   contents: write      # commit feed, quiz and cover; upload audio
@@ -35,7 +39,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 75
     steps:
       - name: Checkout
         uses: actions/checkout@v5
@@ -62,8 +66,12 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-          GEMINI_MODELS: ${{ vars.GEMINI_MODELS }}
-          OPENROUTER_MODELS: ${{ vars.OPENROUTER_MODELS }}
+          WRITER_MODELS: ${{ vars.WRITER_MODELS }}
+          HELPER_MODELS: ${{ vars.HELPER_MODELS }}
+          DECISION_MODELS: ${{ vars.DECISION_MODELS }}
+          OPENROUTER_DAILY_USD: ${{ vars.OPENROUTER_DAILY_USD }}
+          FISH_VOICE_A: ${{ vars.FISH_VOICE_A }}
+          FISH_VOICE_B: ${{ vars.FISH_VOICE_B }}
           GEMINI_TTS_MODEL: ${{ vars.GEMINI_TTS_MODEL }}
           GH_TOKEN: ${{ github.token }}
           GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
@@ -71,6 +79,7 @@ jobs:
           EDITION: ${{ inputs.edition || 'auto' }}
           FORCE: ${{ inputs.force || 'false' }}
           TTS_ENGINE: ${{ inputs.tts || 'auto' }}
+          DEEP_DIVE: ${{ inputs.deep_dive || 'false' }}
         run: python generate_briefing.py
 
       - name: Commit feed
