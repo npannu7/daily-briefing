@@ -14,7 +14,7 @@ Pipeline
   4. PLAN     - morning: "the thread vs the evidence"; evening: follow-ups + a concept from
                 scratch, or a deep dive.
   5. RESEARCH - the linked article / paper / repo behind each thread is fetched.
-  6. WRITE    - two hosts (Maya, Leo) in dialogue, pitched at an engineer outside CS.
+  6. WRITE    - two hosts (Sarah, Laura) in dialogue, pitched at an engineer outside CS.
   7. GREET    - personal greeting linked to past episodes; summary saved as memory.
   8. VOICE    - Gemini TTS (free quota, reserved for the evening) -> Fish Audio free (OpenRouter)
                 -> Edge voices.
@@ -63,10 +63,16 @@ SHOW_DESC = ("AI, as it actually works. Two hosts take what the AI community on 
              "check it against the evidence, and explain it for curious engineers - with deep dives "
              "when a story has built up over days.")
 
-HOST_A = {"name": "Maya", "gemini": "Kore", "edge": "en-US-AvaNeural",
-          "style": "warm, clear and measured radio presenter; natural pace"}
-HOST_B = {"name": "Leo", "gemini": "Charon", "edge": "en-US-AndrewNeural",
-          "style": "thoughtful technical analyst; precise, curious, conversational"}
+HOST_A = {"name": "Sarah", "gemini": "Leda", "edge": "en-US-AvaNeural",
+          "style": "young woman in her late twenties; bright, quick and curious, lively but clear",
+          "persona": "late twenties, grew up online and lives in these communities; quick, enthusiastic and funny, "
+                     "knows the slang and the drama, gets excited by new tools - but is honest when she was wrong "
+                     "and genuinely wants to understand how things work"}
+HOST_B = {"name": "Laura", "gemini": "Gacrux", "edge": "en-US-JennyNeural",
+          "style": "woman in her late forties; warm, grounded and unhurried, with dry humour",
+          "persona": "late forties, an engineer who has lived through several hype cycles; warm, dry sense of "
+                     "humour, asks what was actually measured and how, explains mechanisms patiently - but is "
+                     "not cynical, and says so when something really is new"}
 
 MIN_WORDS = 3300
 TARGET_WORDS = 3800
@@ -103,7 +109,9 @@ TTS_ENGINE = (os.getenv("TTS_ENGINE") or "auto").lower()   # auto | gemini | fis
 GEMINI_TTS_DAILY = int(os.getenv("GEMINI_TTS_DAILY") or 10)
 TTS_CHUNK_WORDS = int(os.getenv("TTS_CHUNK_WORDS") or 700)
 FISH_MODEL = os.getenv("FISH_MODEL") or "fish-audio/s2.1-pro-free:free"
-FISH_VOICES = [v for v in (os.getenv("FISH_VOICE_A", ""), os.getenv("FISH_VOICE_B", "")) if v]
+# Fish Audio library voices (via OpenRouter's free Fish model): Sarah, Laura
+FISH_VOICES = [os.getenv("FISH_VOICE_A") or "933563129e564b19a115bedd57b7406a",
+               os.getenv("FISH_VOICE_B") or "e3cd384158934cc9a01029cd7d278634"]
 
 ROOT = Path(__file__).resolve().parent
 EPISODES_FILE = ROOT / "episodes.json"
@@ -866,11 +874,14 @@ def sources_block(items, topic=None):
 A, B = HOST_A["name"], HOST_B["name"]
 LINE_RE = re.compile(rf"^\s*\**\s*({A}|{B})\s*\**\s*:\s*(.+)$", re.I)
 FORMATS = {
-    "thread": f"""Structure (keep it conversational, not a checklist):
-1. The post: what was posted and why people cared.
-2. The thread: the strongest arguments on different sides, paraphrased.
-3. The evidence: what the linked source actually says; check the claims listed above against it.
-4. The verdict: does the claim hold up, partly hold up, not hold up, or is it too early to tell - and why.""",
+    "thread": f"""Flow (keep it conversational, not a checklist):
+1. The find: the presenter brings the thread as something she came across ("I was going through the
+   LocalLLaMA subreddit and there was this post...") - what was posted and why people cared.
+2. The argument: the strongest views in the comments, paraphrased, including the confident ones.
+3. Myth vs mechanism: what people believed, then how the technology actually works, using the linked
+   source; check the claims listed above against it.
+4. The verdict: right, half-right, wrong, or too early to tell - and why.
+5. Close with a one-line takeaway the listener can remember.""",
     "quickfire": "Cover each thread briefly: one or two exchanges each - what it is, and one honest sentence on "
                  "whether it holds up. Clear verbal transitions between items.",
     "concept": "Teach the concept from first principles: the problem, the mechanism, an engineering analogy, how "
@@ -886,11 +897,18 @@ def write_segment(seg, items, state, position, total, theme):
     fmt = seg.get("format", "thread")
     topic = state["topics"].get(seg.get("topic", "")) if fmt == "deepdive" else None
     claims = "; ".join(seg.get("claims_to_check") or []) or "(identify them from the thread)"
+    presenter, asker = (A, B) if position % 2 == 1 else (B, A)   # the hosts take turns bringing stories
     prompt = f"""You are writing one segment of "{SHOW_TITLE}", a two-host audio podcast built from AI
 discussions on Reddit, for {LISTENER} to hear while driving.
-Hosts:
-- {A}: the anchor. Brings the community's view and asks the questions a curious engineer would ask.
-- {B}: the analyst. Explains how things work and weighs claims against the evidence.
+Hosts (two women with different ages and temperaments):
+- {A}: {HOST_A['persona']}.
+- {B}: {HOST_B['persona']}.
+In THIS segment {presenter} brings the story she found and leads; {asker} reacts and asks the questions a
+curious engineer would ask (with mechanical-engineering analogies where they fit), and sometimes pushes back
+in a friendly way. They do not always agree. Let their ages show in how they read the thread: {A} is closer to
+the community's excitement, {B} has seen similar claims before.
+Humour: light and natural, coming from the material or gentle teasing between them - one or two genuine
+laughs, never forced jokes or puns in every line. It stays educational first.
 
 {EDITORIAL}
 
