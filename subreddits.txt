@@ -1,0 +1,62 @@
+# Subreddits the show listens to.   Format:  name | weight
+#   weight 3 = core source, 2 = regular (comments are read), 1 = light (titles only), 0 = off
+# Remove the "#" in front of a line to switch a subreddit back on. Changes apply on the next collection.
+
+# --- Core: substantive technical discussion ---
+LocalLLaMA | 3
+LocalLLM | 2
+LLMDevs | 3
+machinelearningnews | 2
+TheMachineLearning | 2
+singularity | 3
+artificial | 2
+ArtificialInteligence | 2
+
+# --- Labs and products (one sub per family; duplicates are merged automatically anyway) ---
+OpenAI | 3
+ClaudeAI | 3
+ClaudeCode | 2
+GeminiAI | 2
+Bard | 1
+DeepSeek | 2
+perplexity_ai | 1
+openrouter | 1
+GoogleAIStudio | 1
+AntigravityGoogle | 1
+codex | 2
+ChatGPTCoding | 2
+ChatGPT | 1
+ChatGPTPro | 1
+
+# --- Agents, tools, building ---
+AI_Agents | 2
+AgentsOfAI | 1
+LangChain | 1
+Rag | 2
+MCPservers | 1
+ollama | 1
+
+# --- Big picture, safety and counterpoints ---
+agi | 1
+accelerate | 1
+ControlProblem | 2
+antiai | 1
+AI_India | 2
+robotics | 2
+3Blue1Brown | 1
+
+# --- Switched off (mostly duplicates, showcases or off-topic) ---
+# claude | 1              same discussions as ClaudeAI
+# ClaudeCoding | 1        overlaps ClaudeCode
+# ClaudeDesign | 1        design showcases
+# ClaudeHomies | 1        social chat
+# GoogleGeminiAI | 1      overlaps GeminiAI
+# GPT | 1                 overlaps OpenAI / ChatGPT
+# GenAI4all | 1           low signal
+# AIAssisted | 1          tool showcases
+# ArtificialSentience | 1 speculation
+# ChatGPTPromptGenius | 1 prompt sharing
+# aiArt | 1               image showcases
+# aivideo | 1             video showcases
+# GraphicsProgramming | 1 not AI-specific
+# kurzgesagt | 1          not AI-specific
