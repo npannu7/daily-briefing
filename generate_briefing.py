@@ -34,6 +34,7 @@ import io
 import json
 import os
 import re
+import shutil
 import subprocess
 import sys
 import time
@@ -115,6 +116,11 @@ BUILD_DIR = ROOT / "build"
 RATE = 24000
 BYTES_PER_SEC = RATE * 2
 UA = {"User-Agent": "Mozilla/5.0 (WeightsAndMeasures podcast bot)"}
+try:   # ffmpeg is no longer preinstalled on GitHub runners; imageio-ffmpeg ships a ready binary
+    import imageio_ffmpeg
+    FFMPEG = shutil.which("ffmpeg") or imageio_ffmpeg.get_ffmpeg_exe()
+except ImportError:
+    FFMPEG = "ffmpeg"
 FEEDBACK_DAYS = 60
 
 AI_WORDS = re.compile(
@@ -464,11 +470,11 @@ def direct_reddit():
     try:
         import reddit_collector as rc
         subs = rc.read_subreddits(REPO_FULL)
-        body = rc.http_get(f"https://www.reddit.com/r/{subs[0][0]}/top/.rss?t=day&limit=2", tries=1)
-        if not body or b"<entry" not in body:
-            raise RuntimeError("no feed returned")
-        log("  direct Reddit access works from this server - collecting")
-        return rc.collect(subs, pause=6.5, log=log)
+        snap = rc.collect(subs, pause=2, log=log, budget_s=600, comment_limit=10)   # max ~10 minutes
+        if not snap["posts"]:
+            raise RuntimeError("no posts returned")
+        log(f"  direct Reddit: {len(snap['posts'])} posts")
+        return snap
     except Exception as e:
         log(f"  direct Reddit not available here: {str(e)[:120]}")
         return None
@@ -979,7 +985,7 @@ PACE_NOTE, EDGE_RATE = "", "+0%"
 
 
 def ffmpeg_to_pcm(data):
-    res = subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-i", "pipe:0",
+    res = subprocess.run([FFMPEG, "-hide_banner", "-loglevel", "error", "-i", "pipe:0",
                           "-f", "s16le", "-ar", str(RATE), "-ac", "1", "pipe:1"], input=data, capture_output=True)
     if res.returncode != 0:
         raise RuntimeError(f"ffmpeg decode failed: {res.stderr[:200]}")
@@ -1218,7 +1224,7 @@ def voice_episode(sections, state, edition):
 
 
 def encode_mp3(pcm, out_path):
-    res = subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-f", "s16le", "-ar", str(RATE),
+    res = subprocess.run([FFMPEG, "-hide_banner", "-loglevel", "error", "-y", "-f", "s16le", "-ar", str(RATE),
                           "-ac", "1", "-i", "pipe:0", "-codec:a", "libmp3lame", "-b:a", "64k", str(out_path)],
                          input=pcm, capture_output=True)
     if res.returncode != 0:
