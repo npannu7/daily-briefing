@@ -127,7 +127,7 @@ a{color:var(--accent)}
     var s = st(ep.file), card = el('section', {class:'card'});
     card.appendChild(el('div', {class:'ep-head'}, [
       el('h2', {text: ep.title}),
-      el('div', {class:'meta', text: ep.label + ' · ' + fmtDur(ep.duration)}),
+      el('div', {class:'meta', text: ep.label + ' · ' + fmtDur(ep.duration) + (ep.writer ? ' · written by ' + ep.writer : '') + (ep.voices ? ' · voices: ' + ep.voices : '')}),
       ep.theme ? el('p', {class:'theme', text: ep.theme}) : null
     ]));
 
