@@ -8,9 +8,42 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Fri, 09 Oct 2026 08:22:20 GMT</lastBuildDate>
+<lastBuildDate>Sat, 10 Oct 2026 03:00:12 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Morning - 10 Oct: The Fields Medalist Quote and the Ground Truth of AI Proofs</title>
+<description>Morning edition - Saturday, 10 October 2026
+From physical mechatronics and motorcycle dynamics to formal mathematics claims and modular memory updates
+
+00:42  The Fields Medalist Quote and the Ground Truth of AI Proofs
+   singularity: https://www.reddit.com/r/singularity/comments/1x1mzkn/hugo_duminilcopin_2022_fields_medalist_openais/
+   Source: https://x.com/Fabien_Mikol/status/2108296559666634818
+   singularity: https://www.reddit.com/r/singularity/comments/1x1cfnt/some_thoughts_on_the_recent_ai_progress_in_math/
+07:05  Lamp at Two Months: Ground Loops, Bus Servos, and Embodied Control
+   robotics: https://www.reddit.com/r/robotics/comments/1x1hyx6/lamp_two_months_later_it_talks_with_more_feeling/
+13:50  EngramEdit: Patching Model Memory Without Recasting the Block
+   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x1eb7w/paper_engramedit_decoupled_knowledge_updates_in/
+   Source: https://www.reddit.com/gallery/1x1eb7w
+20:13  Vehicle Physics in Code: Why Models Ace Cars but Crash Motorcycles
+   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1x1mb45/opus_55_built_the_vehicles_and_physics_for_my/
+26:45  Subagent Routing Realities, Sunset Startup Credits, and Edge Runtimes
+   ClaudeCode: https://www.reddit.com/r/ClaudeCode/comments/1x1e7ts/i_tested_haiku_55_sonnet_55_and_opus_55_as/
+   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1x1nnkn/i_made_a_claude_code_mod_that_uses_haiku_55_or/
+   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1x1af87/claude_startup_program_no_longer_offering_a_year/
+   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x1owzm/github_googleaiedgemldrift_gpuaccelerated_aiml/
+   Source: https://github.com/google-ai-edge/ml-drift
+   ArtificialInteligence, singularity: https://www.reddit.com/r/singularity/comments/1x1igx2/top_executives_at_anthropic_openai_and_other_ai/
+   Source: https://www.axios.com/2026/10/09/ai-companies-day-after-major-attack
+
+Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
+Written by: Gemini 3.8 Flash · Voices: Gemini TTS · Discussions: Reddit (collected directly)</description>
+<pubDate>Sat, 10 Oct 2026 08:12:25 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-10-10_morning_0812.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-10_morning_0812.mp3" length="14892140" type="audio/mpeg"/>
+<itunes:duration>1861</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Evening - 9 Oct: Cross-Tokenizer Distillation and Distribution Drift</title>
 <description>Evening edition - Friday, 9 October 2026

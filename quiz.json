@@ -4,6 +4,92 @@
  "repo": "npannu7/daily-briefing",
  "episodes": [
   {
+   "file": "ai_2026-10-10_morning_0812.mp3",
+   "title": "Morning - 10 Oct: The Fields Medalist Quote and the Ground Truth of AI Proofs",
+   "label": "Saturday 10 Oct morning",
+   "date": "2026-10-10",
+   "edition": "morning",
+   "published": "2026-10-10T08:12:25.463086+05:30",
+   "duration": 1861,
+   "theme": "From physical mechatronics and motorcycle dynamics to formal mathematics claims and modular memory updates",
+   "writer": "Gemini 3.8 Flash",
+   "voices": "Gemini TTS",
+   "deep_dive": false,
+   "segments": [
+    {
+     "title": "The Fields Medalist Quote and the Ground Truth of AI Proofs",
+     "category": "thread"
+    },
+    {
+     "title": "Lamp at Two Months: Ground Loops, Bus Servos, and Embodied Control",
+     "category": "thread"
+    },
+    {
+     "title": "EngramEdit: Patching Model Memory Without Recasting the Block",
+     "category": "thread"
+    },
+    {
+     "title": "Vehicle Physics in Code: Why Models Ace Cars but Crash Motorcycles",
+     "category": "thread"
+    },
+    {
+     "title": "Subagent Routing Realities, Sunset Startup Credits, and Edge Runtimes",
+     "category": "quickfire"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why is generating formal Lean code with an AI model prone to fundamental flaws, similar to an automated interference check in mechanical design?",
+     "options": [
+      "Lean always uses outdated mathematical libraries that conflict with modern neural network weights.",
+      "A model can satisfy the logical syntax checker by formulating a vacuous premise, much like a design tool passing an impossible physical constraint.",
+      "AI models inherently lack floating-point precision for basic arithmetic.",
+      "Automated theorem provers require manual human translation for every single deductive step."
+     ],
+     "answer": 1,
+     "explain": "Just like a CAD interference check passes if geometry rules are met without guaranteeing the gearbox will run, an AI model can find a syntax trick or vacuous premise that satisfies the Lean verification engine while missing the actual math.",
+     "segment": "The Fields Medalist Quote and the Ground Truth of AI Proofs"
+    },
+    {
+     "q": "What is the primary electrical mechanism that causes speaker hum or ground noise when driving multiple serial bus servos on a shared power line?",
+     "options": [
+      "Radio frequency interference emitted directly from the servo's internal magnetic encoder.",
+      "High-frequency square wave switching from the controller's pulse-width modulation output.",
+      "Heavy current spikes from accelerating motors creating a voltage drop along the shared ground line via Ohm's law, shifting the reference ground plane.",
+      "Improper impedance matching between the microcontroller and the USB digital-to-analog converter."
+     ],
+     "answer": 2,
+     "explain": "Servos draw heavy current spikes that flow back through the shared ground wire, and because copper has resistance and inductance, Ohm's law causes a voltage drop that bounces the reference ground plane and introduces audible hum.",
+     "segment": "Lamp at Two Months: Ground Loops, Bus Servos, and Embodied Control"
+    },
+    {
+     "q": "How does EngramEdit update a language model's factual memory without triggering catastrophic forgetting or smearing collateral damage across unrelated topics?",
+     "options": [
+      "It fine-tunes all transformer layer weights simultaneously using a low-rank adaptation matrix.",
+      "It decouples factual lookup by querying an external n-gram embedding table while keeping the transformer backbone frozen, and applies a regularizer that heavily penalizes updates to frequently reused embeddings.",
+      "It completely re-melts and rewrites the core tokenization dictionary for every updated fact.",
+      "It relies entirely on multi-step chain-of-thought prompting to override stale pre-trained weights at runtime."
+     ],
+     "answer": 1,
+     "explain": "EngramEdit decouples factual lookup from general computation using an external n-gram table and protects shared, load-bearing embeddings by heavily penalizing updates to frequently reused word combinations.",
+     "segment": "EngramEdit: Patching Model Memory Without Recasting the Block"
+    },
+    {
+     "q": "Why did AI models struggle to code a stable two-wheeled dirt bike physics engine compared to a four-wheeled rally car?",
+     "options": [
+      "Cars rely on non-minimum phase steering, whereas motorcycles use simple linear feedback loops.",
+      "Motorcycles are statically stable and do not generate slip angles like four-wheeled vehicles.",
+      "Motorcycles involve complex single-track dynamics like countersteering and non-linear roll-steer coupling, whereas cars sit stably on four independent spring-mass-damper corners.",
+      "Language models lack the token context window required to parse differential equations for rotating bodies."
+     ],
+     "answer": 2,
+     "explain": "A four-wheeled car is statically stable on independent corners with familiar slip angles, whereas a motorcycle is an inverted pendulum requiring non-minimum phase countersteering and complex roll-steer coupling.",
+     "segment": "Vehicle Physics in Code: Why Models Ace Cars but Crash Motorcycles"
+    }
+   ],
+   "transcript": "transcripts/ai_2026-10-10_morning_0812.txt"
+  },
+  {
    "file": "ai_2026-10-09_evening_1330.mp3",
    "title": "Evening - 9 Oct: Cross-Tokenizer Distillation and Distribution Drift",
    "label": "Friday 09 Oct evening",
