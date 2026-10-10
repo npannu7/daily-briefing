@@ -8,9 +8,40 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Sat, 10 Oct 2026 03:00:12 GMT</lastBuildDate>
+<lastBuildDate>Sat, 10 Oct 2026 11:18:20 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Evening - 10 Oct: Speculative Expert Prefetching: Breaking Memory Bottlenecks in Mixture-of-Experts</title>
+<description>Evening edition - Saturday, 10 October 2026
+Edge routing economics, MoE speculative scheduling, and verification hygiene across local and frontier deployments
+
+00:46  Speculative Expert Prefetching: Breaking Memory Bottlenecks in Mixture-of-Experts
+   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x1tclb/qwen_38_flash_nextgsqrcoiq2_xs_at_21_toks_on_just/
+09:21  The Edge Routing Reality: Haiku 5.5 Versus Heavyweights in Production Codebases
+   codex: https://www.reddit.com/r/codex/comments/1x1ilzd/after_years_on_the_200_tier_even_haiku_is/
+   singularity: https://www.reddit.com/r/singularity/comments/1x1z0um/introducing_microsoftdecision1_our_model_for_fast/
+   Source: https://commandline.microsoft.com/microsoft-decision-1-model-foundry/
+   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x1rwof/glm_53_flash_opensource_the_top_of_artificial/
+15:36  Lean Verification and Scientific Slop: Boundary Failures in Automated Discovery
+   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x1rk4o/openais_math_findings_built_on_stolen_user_data/
+   Source: https://youtu.be/GweKOBSJvEY?is=bRO2MbQcJFA_B5As
+   singularity: https://www.reddit.com/r/singularity/comments/1x22o0b/a_mathematicians_perspective/
+   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1x1lo40/i_pointed_claude_at_400_years_of_historical/
+   Source: https://jessewaites.com/blog/post/i-pointed-ai-at-400-years-of-archives
+21:54  The Operator Shift: Agent Workflow Reliability and Local Tool Sandboxing
+   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1x1xcus/is_it_just_me_or_did_everyone_quietly_stop_being/
+   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x1zlxh/my_anthropicchatgpt_in_a_box_is_now_open_source/
+   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1x22sap/i_built_20_free_opensource_html_pages_you_can_use/
+
+Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
+Written by: Gemini 3.8 Flash · Voices: Gemini TTS · Discussions: Reddit (collected directly)</description>
+<pubDate>Sat, 10 Oct 2026 16:09:57 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-10-10_evening_1609.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-10_evening_1609.mp3" length="13295084" type="audio/mpeg"/>
+<itunes:duration>1661</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Morning - 10 Oct: The Fields Medalist Quote and the Ground Truth of AI Proofs</title>
 <description>Morning edition - Saturday, 10 October 2026

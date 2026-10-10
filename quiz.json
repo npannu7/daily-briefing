@@ -4,6 +4,88 @@
  "repo": "npannu7/daily-briefing",
  "episodes": [
   {
+   "file": "ai_2026-10-10_evening_1609.mp3",
+   "title": "Evening - 10 Oct: Speculative Expert Prefetching: Breaking Memory Bottlenecks in Mixture-of-Experts",
+   "label": "Saturday 10 Oct evening",
+   "date": "2026-10-10",
+   "edition": "evening",
+   "published": "2026-10-10T16:09:57.858484+05:30",
+   "duration": 1661,
+   "theme": "Edge routing economics, MoE speculative scheduling, and verification hygiene across local and frontier deployments",
+   "writer": "Gemini 3.8 Flash",
+   "voices": "Gemini TTS",
+   "deep_dive": false,
+   "segments": [
+    {
+     "title": "Speculative Expert Prefetching: Breaking Memory Bottlenecks in Mixture-of-Experts",
+     "category": "concept"
+    },
+    {
+     "title": "The Edge Routing Reality: Haiku 5.5 Versus Heavyweights in Production Codebases",
+     "category": "thread"
+    },
+    {
+     "title": "Lean Verification and Scientific Slop: Boundary Failures in Automated Discovery",
+     "category": "thread"
+    },
+    {
+     "title": "The Operator Shift: Agent Workflow Reliability and Local Tool Sandboxing",
+     "category": "thread"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "How does speculative expert prefetching allow a budget GPU to run a massive Mixture-of-Experts model without dropping active weights?",
+     "options": [
+      "By permanently storing all 512 experts in the 12GB of VRAM using lossless compression",
+      "By using a tiny auxiliary predictor to guess required experts and load them over the bus during idle math cycles",
+      "By completely bypassing system memory and streaming weights directly from an NVMe solid-state drive at high speeds",
+      "By executing only a single expert per layer instead of the traditional top-ten routing network"
+     ],
+     "answer": 1,
+     "explain": "The auxiliary predictor guesses which experts are needed ahead of time, using the idle bus window while the GPU calculates the current token to stage weights into cache.",
+     "segment": "Speculative Expert Prefetching: Breaking Memory Bottlenecks in Mixture-of-Experts"
+    },
+    {
+     "q": "Why did Microsoft Decision-1 outperform massive conversational models when deployed for tasks like routing incoming issues or grading rubrics?",
+     "options": [
+      "It generates a detailed natural language paragraph explaining the historical context of each ticket before routing it.",
+      "It features a 500-gigabyte parameter count that allows it to reason through complex coding syntax constraints.",
+      "It is a 9-billion parameter model post-trained strictly for single-pass decision scoring, offering high speed and stability against input noise.",
+      "It relies entirely on high-displacement frontier reasoning tokens to evaluate every edge case in an issue queue."
+     ],
+     "answer": 2,
+     "explain": "Microsoft Decision-1 is purpose-built as a classifier for calibrated probabilities across fixed options, making it fast and stable for coarse screening instead of using expensive conversational models.",
+     "segment": "The Edge Routing Reality: Haiku 5.5 Versus Heavyweights in Production Codebases"
+    },
+    {
+     "q": "What core vulnerability did automated formal verification in Lean expose when frontier math models were used for automated discovery?",
+     "options": [
+      "The software completely crashes when it encounters seventeenth-century Dutch East India Company historical archives.",
+      "A prover verifies internal syntactic consistency relative to inputs, meaning it can certify vacuous premises if an impossible assumption is fed into it.",
+      "Formal provers automatically check the physical manufacturing tolerances of computer numerical control machines.",
+      "Lean requires continuous human terminal approvals for every single mathematical line of code."
+     ],
+     "answer": 1,
+     "explain": "Lean checks internal syntactic consistency, meaning if an impossible or unanchored assumption is fed into the premise, it will certify pure nonsense as an ironclad theorem.",
+     "segment": "Lean Verification and Scientific Slop: Boundary Failures in Automated Discovery"
+    },
+    {
+     "q": "What security distinction did the hosts emphasize regarding open-source runtime orchestrators like LumaBrowser?",
+     "options": [
+      "They act as physical pressure relief valves that automatically shut down power to local servers during a prompt injection.",
+      "They function as an engineered security sandbox that strictly isolates process memory and network traffic from the host machine.",
+      "They provide a hardened containerized environment built directly into the computer's single-channel DDR4 memory bus.",
+      "They are application managers and orchestrators, not engineered security sandboxes, meaning uncontained execution can still touch the host environment."
+     ],
+     "answer": 3,
+     "explain": "LumaBrowser manages models and interfaces, but it is not a containerized security sandbox, so running arbitrary agent actions without tools like Docker still exposes the host machine.",
+     "segment": "The Operator Shift: Agent Workflow Reliability and Local Tool Sandboxing"
+    }
+   ],
+   "transcript": "transcripts/ai_2026-10-10_evening_1609.txt"
+  },
+  {
    "file": "ai_2026-10-10_morning_0812.mp3",
    "title": "Morning - 10 Oct: The Fields Medalist Quote and the Ground Truth of AI Proofs",
    "label": "Saturday 10 Oct morning",
