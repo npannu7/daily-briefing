@@ -8,9 +8,47 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Sun, 11 Oct 2026 03:19:56 GMT</lastBuildDate>
+<lastBuildDate>Sun, 11 Oct 2026 11:02:14 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Deep dive - 11 Oct: none</title>
+<description>Deep dive - Sunday, 11 October 2026
+Deep dive: none
+
+00:45  none: Why everyone is talking about it
+   singularity: https://www.reddit.com/r/singularity/comments/1x2hl29/computer_scientist_david_silver_where_are_we/
+   Source: https://www.ft.com/content/462c303b-b96c-4262-a7ca-e9ae7e440828?shareType%3Dnongift
+   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1x2srd4/can_we_please_start_building_apps_and_systems_to/
+   singularity: https://www.reddit.com/r/singularity/comments/1x2kc61/cmu_graphics_professor_uses_astra_to_create_a/
+   codex: https://www.reddit.com/r/codex/comments/1x2mgjh/28_days_i_was_hoping_the_stakes_would_be_higher/
+08:39  none: The foundations, from scratch
+   singularity: https://www.reddit.com/r/singularity/comments/1x2hl29/computer_scientist_david_silver_where_are_we/
+   Source: https://www.ft.com/content/462c303b-b96c-4262-a7ca-e9ae7e440828?shareType%3Dnongift
+   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1x2srd4/can_we_please_start_building_apps_and_systems_to/
+   singularity: https://www.reddit.com/r/singularity/comments/1x2kc61/cmu_graphics_professor_uses_astra_to_create_a/
+   codex: https://www.reddit.com/r/codex/comments/1x2mgjh/28_days_i_was_hoping_the_stakes_would_be_higher/
+19:57  none: How we got here
+   singularity: https://www.reddit.com/r/singularity/comments/1x2hl29/computer_scientist_david_silver_where_are_we/
+   Source: https://www.ft.com/content/462c303b-b96c-4262-a7ca-e9ae7e440828?shareType%3Dnongift
+   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1x2srd4/can_we_please_start_building_apps_and_systems_to/
+   singularity: https://www.reddit.com/r/singularity/comments/1x2kc61/cmu_graphics_professor_uses_astra_to_create_a/
+   codex: https://www.reddit.com/r/codex/comments/1x2mgjh/28_days_i_was_hoping_the_stakes_would_be_higher/
+31:07  none: Reality check
+   singularity: https://www.reddit.com/r/singularity/comments/1x2hl29/computer_scientist_david_silver_where_are_we/
+   Source: https://www.ft.com/content/462c303b-b96c-4262-a7ca-e9ae7e440828?shareType%3Dnongift
+   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1x2srd4/can_we_please_start_building_apps_and_systems_to/
+   singularity: https://www.reddit.com/r/singularity/comments/1x2kc61/cmu_graphics_professor_uses_astra_to_create_a/
+   codex: https://www.reddit.com/r/codex/comments/1x2mgjh/28_days_i_was_hoping_the_stakes_would_be_higher/
+
+Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
+Written by: Gemini 3.8 Flash · Voices: Gemini TTS · Discussions: Reddit (collected directly)</description>
+<pubDate>Sun, 11 Oct 2026 16:10:34 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-10-11_evening_1610.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-11_evening_1610.mp3" length="19902764" type="audio/mpeg"/>
+<itunes:duration>2487</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Morning - 11 Oct: Prince Rupert’s Polyhedron and Claude</title>
 <description>Morning edition - Sunday, 11 October 2026

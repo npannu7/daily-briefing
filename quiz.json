@@ -4,6 +4,88 @@
  "repo": "npannu7/daily-briefing",
  "episodes": [
   {
+   "file": "ai_2026-10-11_evening_1610.mp3",
+   "title": "Deep dive - 11 Oct: none",
+   "label": "Sunday 11 Oct evening deep dive",
+   "date": "2026-10-11",
+   "edition": "evening",
+   "published": "2026-10-11T16:10:34.679547+05:30",
+   "duration": 2487,
+   "theme": "Deep dive: none",
+   "writer": "Gemini 3.8 Flash",
+   "voices": "Gemini TTS",
+   "deep_dive": true,
+   "segments": [
+    {
+     "title": "none: Why everyone is talking about it",
+     "category": "deepdive"
+    },
+    {
+     "title": "none: The foundations, from scratch",
+     "category": "deepdive"
+    },
+    {
+     "title": "none: How we got here",
+     "category": "deepdive"
+    },
+    {
+     "title": "none: Reality check",
+     "category": "deepdive"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What is David Silver's central thesis regarding the current limitations of large language models?",
+     "options": [
+      "They require too much electrical power to operate efficiently at scale.",
+      "They are fundamentally bounded by human data, which he compares to an exhausted fossil fuel.",
+      "They lack access to modern GPU hardware to process massive tokens.",
+      "They fail to process code as effectively as they process natural human speech."
+     ],
+     "answer": 1,
+     "explain": "Silver argues that modern models learn by imitating human text and feedback, meaning they are capped by human history and cannot discover principles beyond what humans have already written.",
+     "segment": "none: Why everyone is talking about it"
+    },
+    {
+     "q": "Why was AlphaZero able to successfully learn chess and Go from absolute zero, unlike real-world simulation challenges?",
+     "options": [
+      "It was pre-trained on millions of human master matches to build intuition.",
+      "It relied on a closed system with a deterministic board, static rules, and a binary win condition.",
+      "It utilized physical robotic arms to manipulate actual wooden pieces on a real board.",
+      "It operated without any objective function or reward signal."
+     ],
+     "answer": 1,
+     "explain": "AlphaZero succeeded because chess is a pristine closed system with zero sensor noise and a perfect mathematical simulator where the evaluation metric is absolute.",
+     "segment": "none: The foundations, from scratch"
+    },
+    {
+     "q": "What significant technical hurdle did early versions of AlphaGo face before transitioning to pure self-play?",
+     "options": [
+      "They inherited human cognitive biases and blind spots because they were initialized with human master games.",
+      "They were too computationally heavy to run on modern hardware.",
+      "They failed to recognize legal moves on the Go board.",
+      "They were unable to store more than a few thousand game states in memory."
+     ],
+     "answer": 0,
+     "explain": "The first version of AlphaGo started with supervised learning on human games, which caused the system to inherit human flaws and spend compute mimicking moves humans thought were clever.",
+     "segment": "none: How we got here"
+    },
+    {
+     "q": "From an engineering perspective, what happens when an optimization algorithm runs inside a flawed or unanchored simulation?",
+     "options": [
+      "The model automatically pauses and asks for human intervention.",
+      "The algorithm exploits mathematical glitches, roundoff errors, or simulation shortcuts (specification gaming) rather than solving reality.",
+      "The neural network's weights completely reset to zero.",
+      "The computation speed increases exponentially without side effects."
+     ],
+     "answer": 1,
+     "explain": "As Laura points out using finite element analysis analogies, if a physics engine or simulator has a mathematical leak, an optimization algorithm will immediately exploit it instead of solving the actual physics.",
+     "segment": "none: Reality check"
+    }
+   ],
+   "transcript": "transcripts/ai_2026-10-11_evening_1610.txt"
+  },
+  {
    "file": "ai_2026-10-11_morning_0813.mp3",
    "title": "Morning - 11 Oct: Prince Rupert’s Polyhedron and Claude",
    "label": "Sunday 11 Oct morning",
