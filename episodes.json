@@ -123,6 +123,17 @@
       "size": 13295084,
       "duration": 1661,
       "description": "Evening edition - Saturday, 10 October 2026\nEdge routing economics, MoE speculative scheduling, and verification hygiene across local and frontier deployments\n\n00:46  Speculative Expert Prefetching: Breaking Memory Bottlenecks in Mixture-of-Experts\n   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x1tclb/qwen_38_flash_nextgsqrcoiq2_xs_at_21_toks_on_just/\n09:21  The Edge Routing Reality: Haiku 5.5 Versus Heavyweights in Production Codebases\n   codex: https://www.reddit.com/r/codex/comments/1x1ilzd/after_years_on_the_200_tier_even_haiku_is/\n   singularity: https://www.reddit.com/r/singularity/comments/1x1z0um/introducing_microsoftdecision1_our_model_for_fast/\n   Source: https://commandline.microsoft.com/microsoft-decision-1-model-foundry/\n   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x1rwof/glm_53_flash_opensource_the_top_of_artificial/\n15:36  Lean Verification and Scientific Slop: Boundary Failures in Automated Discovery\n   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x1rk4o/openais_math_findings_built_on_stolen_user_data/\n   Source: https://youtu.be/GweKOBSJvEY?is=bRO2MbQcJFA_B5As\n   singularity: https://www.reddit.com/r/singularity/comments/1x22o0b/a_mathematicians_perspective/\n   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1x1lo40/i_pointed_claude_at_400_years_of_historical/\n   Source: https://jessewaites.com/blog/post/i-pointed-ai-at-400-years-of-archives\n21:54  The Operator Shift: Agent Workflow Reliability and Local Tool Sandboxing\n   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1x1xcus/is_it_just_me_or_did_everyone_quietly_stop_being/\n   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x1zlxh/my_anthropicchatgpt_in_a_box_is_now_open_source/\n   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1x22sap/i_built_20_free_opensource_html_pages_you_can_use/\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nWritten by: Gemini 3.8 Flash · Voices: Gemini TTS · Discussions: Reddit (collected directly)"
+    },
+    {
+      "file": "ai_2026-10-11_morning_0813.mp3",
+      "date": "2026-10-11",
+      "edition": "morning",
+      "title": "Morning - 11 Oct: Prince Rupert’s Polyhedron and Claude",
+      "published": "2026-10-11T08:13:17.268793+05:30",
+      "pubDate": "Sun, 11 Oct 2026 08:13:17 +0530",
+      "size": 16007468,
+      "duration": 2000,
+      "description": "Morning edition - Sunday, 11 October 2026\nGrounding frontier models through rigorous geometric verification, isolated evaluation sandboxes, and hardware-level memory optimization.\n\n00:45  Prince Rupert’s Polyhedron and Claude\n   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1x2eybb/im_a_9th_grader_and_i_used_claude_to_prove_a/\n   Source: https://www.reddit.com/gallery/1x2eybb\n07:40  Cutting the Cord on Agentic Evaluations\n   artificial: https://www.reddit.com/r/artificial/comments/1x2h9it/anthropic_cut_live_internet_access_from_every/\n   Source: https://techcrunch.com/2026/10/09/anthropic-cant-reliably-control-its-ai-agents-its-cutting-off-its-internal-evals-from-the-live-internet-instead/\n13:57  Fusing Kernels for Edge Inference\n   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x2erdj/qwen3827b_on_a_single_3090_140_toks_on_code_with/\n21:11  Local Multimodal Retrieval with DigUp\n   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x2eeds/opensource_mac_app_that_runs_embeddinggemma_2/\n28:07  Hardware Economics, Agent Observability, and Edge Decisions\n   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x28zr9/created_laya_now_introducing_a_new_800_million/\n   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x29q4a/what_are_people_doing_with_decisions_jevlike/\n   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x2u742/building_a_4x_r9700_setup_for_a_10_person_startup/\n   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x2bt6r/nvidia_reportedly_discontinuing_rtx_5090_gb202/\n   Source: https://videocardz.com/newz/nvidia-reportedly-discontinuing-rtx-5090-gb202-gpus-to-be-reserved-for-rtx-pro-series\n   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1x2f59x/i_made_my_claude_code_subagents_a_video_call/\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nWritten by: Gemini 3.8 Flash · Voices: Fish Audio (free) · Discussions: Reddit (collected directly)"
     }
   ],
   "memory": [
@@ -327,6 +338,29 @@
         "The Edge Routing Reality: Haiku 5.5 Versus Heavyweights in Production Codebases",
         "Lean Verification and Scientific Slop: Boundary Failures in Automated Discovery",
         "The Operator Shift: Agent Workflow Reliability and Local Tool Sandboxing"
+      ]
+    },
+    {
+      "label": "Sunday 11 Oct morning",
+      "date": "2026-10-11",
+      "edition": "morning",
+      "published": "2026-10-11T08:13:17.268793+05:30",
+      "file": "ai_2026-10-11_morning_0813.mp3",
+      "writer": "Gemini 3.8 Flash",
+      "voices": "Fish Audio (free)",
+      "summary": "Today's episode evaluated a viral claim that Claude solved Prince Rupert's property for the rhombicosidodecahedron, detailing why rigid spatial clearances require symbolic geometric engines or Lean rather than pure natural language. We analyzed Anthropic severing live network access in automated eval harnesses to prevent specification gaming and benchmark leakage. Finally, we covered a 140 tok/s Qwen3.8-27B CUDA megakernel on an RTX 3090, local multimodal search with DigUp running EmbeddingGemma 2 on Apple Silicon, and edge economics across four undervolted AMD R9700 GPUs.",
+      "threads": [
+        "Formal verification and symbolic computational geometry validation of Prince Rupert's property claims for Archimedean solids",
+        "Benchmark isolation practices and synthetic local network mock designs following Anthropic's agentic eval sandboxing",
+        "Reproducibility and memory bus efficiency of LLM-generated CUDA megakernels against standard runtimes like llama.cpp",
+        "On-device memory bandwidth and indexing latency of unified multimodal embedding models on consumer Apple Silicon"
+      ],
+      "segments": [
+        "Prince Rupert’s Polyhedron and Claude",
+        "Cutting the Cord on Agentic Evaluations",
+        "Fusing Kernels for Edge Inference",
+        "Local Multimodal Retrieval with DigUp",
+        "Hardware Economics, Agent Observability, and Edge Decisions"
       ]
     }
   ],
@@ -770,6 +804,54 @@
     {
       "date": "2026-10-10",
       "link": "https://www.reddit.com/r/LocalLLaMA/comments/1x1rwof/glm_53_flash_opensource_the_top_of_artificial/"
+    },
+    {
+      "date": "2026-10-11",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1x28zr9/created_laya_now_introducing_a_new_800_million/"
+    },
+    {
+      "date": "2026-10-11",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1x2u742/building_a_4x_r9700_setup_for_a_10_person_startup/"
+    },
+    {
+      "date": "2026-10-11",
+      "link": "https://www.reddit.com/r/ClaudeAI/comments/1x2eybb/im_a_9th_grader_and_i_used_claude_to_prove_a/"
+    },
+    {
+      "date": "2026-10-11",
+      "link": "https://www.reddit.com/gallery/1x2eybb"
+    },
+    {
+      "date": "2026-10-11",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1x2eeds/opensource_mac_app_that_runs_embeddinggemma_2/"
+    },
+    {
+      "date": "2026-10-11",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1x2bt6r/nvidia_reportedly_discontinuing_rtx_5090_gb202/"
+    },
+    {
+      "date": "2026-10-11",
+      "link": "https://videocardz.com/newz/nvidia-reportedly-discontinuing-rtx-5090-gb202-gpus-to-be-reserved-for-rtx-pro-series"
+    },
+    {
+      "date": "2026-10-11",
+      "link": "https://www.reddit.com/r/ClaudeAI/comments/1x2f59x/i_made_my_claude_code_subagents_a_video_call/"
+    },
+    {
+      "date": "2026-10-11",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1x29q4a/what_are_people_doing_with_decisions_jevlike/"
+    },
+    {
+      "date": "2026-10-11",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1x2erdj/qwen3827b_on_a_single_3090_140_toks_on_code_with/"
+    },
+    {
+      "date": "2026-10-11",
+      "link": "https://www.reddit.com/r/artificial/comments/1x2h9it/anthropic_cut_live_internet_access_from_every/"
+    },
+    {
+      "date": "2026-10-11",
+      "link": "https://techcrunch.com/2026/10/09/anthropic-cant-reliably-control-its-ai-agents-its-cutting-off-its-internal-evals-from-the-live-internet-instead/"
     }
   ],
   "feedback": [
@@ -1418,6 +1500,302 @@
     [
       "2026-10-10T16:32:11.473490+05:30",
       0.00354525
+    ],
+    [
+      "2026-10-11T08:24:02.695394+05:30",
+      0.000149
+    ],
+    [
+      "2026-10-11T08:24:02.724764+05:30",
+      0.0001123
+    ],
+    [
+      "2026-10-11T08:24:02.724961+05:30",
+      0.0001085
+    ],
+    [
+      "2026-10-11T08:24:02.730020+05:30",
+      0.0001046
+    ],
+    [
+      "2026-10-11T08:24:02.778138+05:30",
+      0.0001556
+    ],
+    [
+      "2026-10-11T08:24:02.794036+05:30",
+      0.0001153
+    ],
+    [
+      "2026-10-11T08:24:02.945282+05:30",
+      0.0001069
+    ],
+    [
+      "2026-10-11T08:24:02.984954+05:30",
+      8.8e-05
+    ],
+    [
+      "2026-10-11T08:24:03.026901+05:30",
+      0.0001195
+    ],
+    [
+      "2026-10-11T08:24:03.032056+05:30",
+      8.75e-05
+    ],
+    [
+      "2026-10-11T08:24:03.049133+05:30",
+      9.05e-05
+    ],
+    [
+      "2026-10-11T08:24:03.171506+05:30",
+      9.05e-05
+    ],
+    [
+      "2026-10-11T08:24:03.217510+05:30",
+      0.0001214
+    ],
+    [
+      "2026-10-11T08:24:03.258335+05:30",
+      8.67e-05
+    ],
+    [
+      "2026-10-11T08:24:03.290110+05:30",
+      9.03e-05
+    ],
+    [
+      "2026-10-11T08:24:03.292040+05:30",
+      9.59e-05
+    ],
+    [
+      "2026-10-11T08:24:03.391722+05:30",
+      9.19e-05
+    ],
+    [
+      "2026-10-11T08:24:03.490799+05:30",
+      9.03e-05
+    ],
+    [
+      "2026-10-11T08:24:03.494054+05:30",
+      8.67e-05
+    ],
+    [
+      "2026-10-11T08:24:03.561545+05:30",
+      0.0001145
+    ],
+    [
+      "2026-10-11T08:24:03.610333+05:30",
+      0.000118
+    ],
+    [
+      "2026-10-11T08:24:03.631929+05:30",
+      9.14e-05
+    ],
+    [
+      "2026-10-11T08:24:03.633683+05:30",
+      0.0001153
+    ],
+    [
+      "2026-10-11T08:24:03.746805+05:30",
+      8.67e-05
+    ],
+    [
+      "2026-10-11T08:24:03.785577+05:30",
+      0.0001149
+    ],
+    [
+      "2026-10-11T08:24:03.848785+05:30",
+      8.71e-05
+    ],
+    [
+      "2026-10-11T08:24:03.859983+05:30",
+      9.91e-05
+    ],
+    [
+      "2026-10-11T08:24:03.862297+05:30",
+      9.3e-05
+    ],
+    [
+      "2026-10-11T08:24:03.883071+05:30",
+      0.0001122
+    ],
+    [
+      "2026-10-11T08:24:04.050753+05:30",
+      8.74e-05
+    ],
+    [
+      "2026-10-11T08:24:04.072775+05:30",
+      0.0001098
+    ],
+    [
+      "2026-10-11T08:24:04.113762+05:30",
+      8.67e-05
+    ],
+    [
+      "2026-10-11T08:24:04.127118+05:30",
+      0.0001227
+    ],
+    [
+      "2026-10-11T08:24:04.164700+05:30",
+      9.29e-05
+    ],
+    [
+      "2026-10-11T08:24:04.178172+05:30",
+      8.86e-05
+    ],
+    [
+      "2026-10-11T08:24:04.279665+05:30",
+      8.81e-05
+    ],
+    [
+      "2026-10-11T08:24:04.313474+05:30",
+      8.79e-05
+    ],
+    [
+      "2026-10-11T08:24:04.318392+05:30",
+      8.72e-05
+    ],
+    [
+      "2026-10-11T08:24:04.412330+05:30",
+      0.0001069
+    ],
+    [
+      "2026-10-11T08:24:04.414922+05:30",
+      0.0001124
+    ],
+    [
+      "2026-10-11T08:24:04.451876+05:30",
+      0.0001095
+    ],
+    [
+      "2026-10-11T08:24:04.527039+05:30",
+      0.0001
+    ],
+    [
+      "2026-10-11T08:24:04.542642+05:30",
+      9.3e-05
+    ],
+    [
+      "2026-10-11T08:24:04.647700+05:30",
+      8.78e-05
+    ],
+    [
+      "2026-10-11T08:24:04.718469+05:30",
+      0.0001096
+    ],
+    [
+      "2026-10-11T08:24:04.747295+05:30",
+      0.0001195
+    ],
+    [
+      "2026-10-11T08:24:04.773661+05:30",
+      8.71e-05
+    ],
+    [
+      "2026-10-11T08:24:04.835117+05:30",
+      0.0001149
+    ],
+    [
+      "2026-10-11T08:24:04.930717+05:30",
+      8.83e-05
+    ],
+    [
+      "2026-10-11T08:24:04.979598+05:30",
+      9.69e-05
+    ],
+    [
+      "2026-10-11T08:24:04.981617+05:30",
+      0.0001194
+    ],
+    [
+      "2026-10-11T08:24:04.983220+05:30",
+      8.84e-05
+    ],
+    [
+      "2026-10-11T08:24:05.087648+05:30",
+      9.05e-05
+    ],
+    [
+      "2026-10-11T08:24:05.155397+05:30",
+      8.8e-05
+    ],
+    [
+      "2026-10-11T08:24:05.202803+05:30",
+      9.44e-05
+    ],
+    [
+      "2026-10-11T08:24:05.210622+05:30",
+      8.73e-05
+    ],
+    [
+      "2026-10-11T08:24:05.236349+05:30",
+      0.000118
+    ],
+    [
+      "2026-10-11T08:24:05.267789+05:30",
+      8.89e-05
+    ],
+    [
+      "2026-10-11T08:24:05.403699+05:30",
+      8.69e-05
+    ],
+    [
+      "2026-10-11T08:24:05.417445+05:30",
+      8.89e-05
+    ],
+    [
+      "2026-10-11T08:24:05.452111+05:30",
+      9.22e-05
+    ],
+    [
+      "2026-10-11T08:24:05.461786+05:30",
+      8.72e-05
+    ],
+    [
+      "2026-10-11T08:24:05.480884+05:30",
+      0.0001146
+    ],
+    [
+      "2026-10-11T08:24:05.606562+05:30",
+      8.83e-05
+    ],
+    [
+      "2026-10-11T08:24:05.675368+05:30",
+      8.93e-05
+    ],
+    [
+      "2026-10-11T08:24:05.680807+05:30",
+      0.000113
+    ],
+    [
+      "2026-10-11T08:24:05.738721+05:30",
+      8.76e-05
+    ],
+    [
+      "2026-10-11T08:24:06.019627+05:30",
+      8.92e-05
+    ],
+    [
+      "2026-10-11T08:24:06.904887+05:30",
+      8.68e-05
+    ],
+    [
+      "2026-10-11T08:25:06.292104+05:30",
+      0.00757275
+    ],
+    [
+      "2026-10-11T08:25:57.061485+05:30",
+      0.00746775
+    ],
+    [
+      "2026-10-11T08:26:28.099776+05:30",
+      0.0074145
+    ],
+    [
+      "2026-10-11T08:26:54.152522+05:30",
+      0.00696525
+    ],
+    [
+      "2026-10-11T08:27:20.725594+05:30",
+      0.0039015
     ]
   ],
   "topics": {
@@ -1426,122 +1804,126 @@
       "first_seen": "2026-10-09",
       "days": [
         "2026-10-09",
-        "2026-10-10"
+        "2026-10-10",
+        "2026-10-11"
       ],
       "subs": [
         "AI_India",
         "ArtificialInteligence",
+        "ClaudeAI",
         "ClaudeCode",
         "LocalLLM",
         "LocalLLaMA",
+        "OpenAI",
+        "accelerate",
         "antiai",
         "artificial",
         "codex",
         "singularity"
       ],
-      "mentions": 31,
+      "mentions": 46,
       "refs": [
         {
-          "date": "2026-10-10",
-          "title": "tencent/Youtu-Parsing-Omni · Hugging Face",
-          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1x1jk9z/tencentyoutuparsingomni_hugging_face/",
-          "link": "https://huggingface.co/tencent/Youtu-Parsing-Omni",
+          "date": "2026-10-11",
+          "title": "Computer scientist David Silver: ‘Where are we going without AI?’",
+          "thread": "https://www.reddit.com/r/singularity/comments/1x2hl29/computer_scientist_david_silver_where_are_we/",
+          "link": "https://www.ft.com/content/462c303b-b96c-4262-a7ca-e9ae7e440828?shareType%3Dnongift",
           "comment": ""
         },
         {
-          "date": "2026-10-10",
-          "title": "My \"Anthropic/ChatGPT in a box\" is... now open source and publicly hosted on Github.",
-          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1x1zlxh/my_anthropicchatgpt_in_a_box_is_now_open_source/",
+          "date": "2026-10-11",
+          "title": "Created laya : Now Introducing a new 800 Million Param physics-based typed decision model with 73k context and image support",
+          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1x28zr9/created_laya_now_introducing_a_new_800_million/",
           "link": "",
           "comment": ""
         },
         {
-          "date": "2026-10-10",
-          "title": "Anyone else not using Fable AT ALL recently?",
-          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1x1poui/anyone_else_not_using_fable_at_all_recently/",
+          "date": "2026-10-11",
+          "title": "Can we please start building apps and systems to save humanity from scarcity and corruption, instead of endless video game clones and billions of repetitive SaaS apps??",
+          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1x2srd4/can_we_please_start_building_apps_and_systems_to/",
           "link": "",
           "comment": ""
         },
         {
-          "date": "2026-10-10",
-          "title": "Kasparov's response to Trump's super intelligence",
-          "thread": "https://www.reddit.com/r/ArtificialInteligence/comments/1x1j4hq/kasparovs_response_to_trumps_super_intelligence/",
-          "link": "",
-          "comment": "https://giphy.com/gifs/ZUwjT4TrkElu8"
-        },
-        {
-          "date": "2026-10-10",
-          "title": "We are in a critical phase if we look at the AI 2027 paper futures model",
-          "thread": "https://www.reddit.com/r/singularity/comments/1x1wadm/we_are_in_a_critical_phase_if_we_look_at_the_ai/",
+          "date": "2026-10-11",
+          "title": "On Excel there is still all the world finance",
+          "thread": "https://www.reddit.com/r/ArtificialInteligence/comments/1x28wvb/on_excel_there_is_still_all_the_world_finance/",
           "link": "",
           "comment": ""
         },
         {
-          "date": "2026-10-10",
-          "title": "new prediction feature",
-          "thread": "https://www.reddit.com/r/codex/comments/1x1towq/new_prediction_feature/",
-          "link": "",
-          "comment": ""
-        },
-        {
-          "date": "2026-10-10",
+          "date": "2026-10-11",
           "title": "A startup built an 8,000-square-foot lab in just 30 days to test molecules proposed by AI, it can now measure how often they work in living organisms in about 72 hours",
           "thread": "https://www.reddit.com/r/singularity/comments/1x2812g/a_startup_built_an_8000squarefoot_lab_in_just_30/",
           "link": "",
           "comment": ""
         },
         {
-          "date": "2026-10-10",
-          "title": "Qwen3.8 27B political compass",
-          "thread": "https://www.reddit.com/r/LocalLLM/comments/1x1ic6u/qwen38_27b_political_compass/",
+          "date": "2026-10-11",
+          "title": "28 days - I was hoping the stakes would be higher",
+          "thread": "https://www.reddit.com/r/codex/comments/1x2mgjh/28_days_i_was_hoping_the_stakes_would_be_higher/",
           "link": "",
           "comment": ""
         },
         {
-          "date": "2026-10-10",
-          "title": "Qwen-Image-2.1-Turbo released!",
-          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1x1lclx/qwenimage21turbo_released/",
-          "link": "https://www.reddit.com/gallery/1x1lclx",
-          "comment": ""
-        },
-        {
-          "date": "2026-10-10",
-          "title": "Introducing Microsoft-Decision-1, our model for fast decision-making",
-          "thread": "https://www.reddit.com/r/singularity/comments/1x1z0um/introducing_microsoftdecision1_our_model_for_fast/",
-          "link": "https://commandline.microsoft.com/microsoft-decision-1-model-foundry/",
-          "comment": ""
-        },
-        {
-          "date": "2026-10-10",
-          "title": "The Pope's views on data, algorithms and the human mind are always important food for thought",
-          "thread": "https://www.reddit.com/r/ArtificialInteligence/comments/1x1jv5e/the_popes_views_on_data_algorithms_and_the_human/",
+          "date": "2026-10-11",
+          "title": "How tf do these businesses not see that these look terrible??",
+          "thread": "https://www.reddit.com/r/antiai/comments/1x2epza/how_tf_do_these_businesses_not_see_that_these/",
           "link": "",
           "comment": ""
         },
         {
-          "date": "2026-10-10",
-          "title": "Qwen/Qwen-Image-2.1-Turbo · Hugging Face",
-          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1x1ldef/qwenqwenimage21turbo_hugging_face/",
-          "link": "https://huggingface.co/Qwen/Qwen-Image-2.1-Turbo",
-          "comment": ""
-        },
-        {
-          "date": "2026-10-10",
-          "title": "“It’s too hard to be a Parent so I am having my phone do it for me”",
-          "thread": "https://www.reddit.com/r/antiai/comments/1x21a5n/its_too_hard_to_be_a_parent_so_i_am_having_my/",
+          "date": "2026-10-11",
+          "title": "being alive in this day and age is the best thing about my life",
+          "thread": "https://www.reddit.com/r/singularity/comments/1x2l1g9/being_alive_in_this_day_and_age_is_the_best_thing/",
           "link": "",
           "comment": ""
         },
         {
-          "date": "2026-10-10",
-          "title": "AIforce is now SIforce according to the Salesforce CEO",
-          "thread": "https://www.reddit.com/r/ArtificialInteligence/comments/1x1z6tw/aiforce_is_now_siforce_according_to_the/",
+          "date": "2026-10-11",
+          "title": "Nicolas Cage Says He’s ‘Probably Not’ Working With Amazon Again After Refusing to Sign AI Waiver for ‘Spider-Noir,’ “I am not an AI-friendly actor.”",
+          "thread": "https://www.reddit.com/r/antiai/comments/1x2ku5s/nicolas_cage_says_hes_probably_not_working_with/",
+          "link": "https://variety.com/2026/tv/news/nicolas-cage-ai-waiver-amazon-spider-noir-1236907564/",
+          "comment": ""
+        },
+        {
+          "date": "2026-10-11",
+          "title": "The man is smooth. We’re not ready for fake videos",
+          "thread": "https://www.reddit.com/r/OpenAI/comments/1x2eq0n/the_man_is_smooth_were_not_ready_for_fake_videos/",
+          "link": "",
+          "comment": ""
+        },
+        {
+          "date": "2026-10-11",
+          "title": "What are people doing with decisions Jev-like models?",
+          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1x29q4a/what_are_people_doing_with_decisions_jevlike/",
+          "link": "",
+          "comment": ""
+        },
+        {
+          "date": "2026-10-11",
+          "title": "Dots is the next Sora",
+          "thread": "https://www.reddit.com/r/codex/comments/1x2d5fi/dots_is_the_next_sora/",
+          "link": "",
+          "comment": ""
+        },
+        {
+          "date": "2026-10-11",
+          "title": "Normies are incapable of long term thinking.",
+          "thread": "https://www.reddit.com/r/accelerate/comments/1x2gpnz/normies_are_incapable_of_long_term_thinking/",
+          "link": "",
+          "comment": ""
+        },
+        {
+          "date": "2026-10-11",
+          "title": "Pillaging is profitable for them, not us.",
+          "thread": "https://www.reddit.com/r/antiai/comments/1x2i0xb/pillaging_is_profitable_for_them_not_us/",
           "link": "",
           "comment": ""
         }
       ],
       "deep_dive": "",
-      "last_seen": "2026-10-10"
+      "last_seen": "2026-10-11"
     },
     "ai-for-accessibility": {
       "name": "AI for Accessibility",
@@ -1570,40 +1952,21 @@
       "first_seen": "2026-10-09",
       "days": [
         "2026-10-09",
-        "2026-10-10"
+        "2026-10-10",
+        "2026-10-11"
       ],
       "subs": [
         "ClaudeAI",
         "ClaudeCode",
         "DeepSeek",
         "LocalLLM",
+        "artificial",
         "codex",
         "robotics",
         "singularity"
       ],
-      "mentions": 19,
+      "mentions": 22,
       "refs": [
-        {
-          "date": "2026-10-09",
-          "title": "I just looked at my monthly token usage on Claude and holy sh*t I am at around $15,000 spend per month",
-          "thread": "https://www.reddit.com/r/LocalLLM/comments/1x0tfuh/i_just_looked_at_my_monthly_token_usage_on_claude/",
-          "link": "",
-          "comment": ""
-        },
-        {
-          "date": "2026-10-10",
-          "title": "I Pointed Claude at 400 Years of Historical Archives. It Found a Forgotten Meteorite, Lost Rhinos, and Unrecorded Volcanic Eruptions.",
-          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1x1lo40/i_pointed_claude_at_400_years_of_historical/",
-          "link": "https://jessewaites.com/blog/post/i-pointed-ai-at-400-years-of-archives",
-          "comment": "TL;DR of the discussion generated automatically after 50 comments. The consensus is that this is an absolutely awesome project and a fantastic use of AI. The thread is overwhelmingly positive about OP's work digging through historical archives. However, a major theme is the feeling that amazing disc"
-        },
-        {
-          "date": "2026-10-10",
-          "title": "I tested Haiku 5.5, Sonnet 5.5 and Opus 5.5 as subagents on 6 real tasks",
-          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1x1e7ts/i_tested_haiku_55_sonnet_55_and_opus_55_as/",
-          "link": "",
-          "comment": ""
-        },
         {
           "date": "2026-10-10",
           "title": "Opus 5.5 built the vehicles and physics for my Road Rash x DiRT mashup in about 3 days. It couldn’t crack the dirt bike",
@@ -1680,17 +2043,39 @@
           "thread": "https://www.reddit.com/r/ClaudeCode/comments/1x1iwa4/introduction_claude_dashboards_and_claude_motion/",
           "link": "https://youtu.be/en0GuyhieQk",
           "comment": ""
+        },
+        {
+          "date": "2026-10-11",
+          "title": "Claude Opus 5.5 decompiles a PS2-era game overnight, and hundreds of them now run in browser tabs",
+          "thread": "https://www.reddit.com/r/artificial/comments/1x2tq6s/claude_opus_55_decompiles_a_ps2era_game_overnight/",
+          "link": "https://kotaku.com/we-might-be-cooked-as-these-vibe-coded-web-browser-ports-of-halo-the-simpsons-hit-and-run-and-gta-vice-city-seem-to-work-perfectly-2000743300",
+          "comment": ""
+        },
+        {
+          "date": "2026-10-11",
+          "title": "I used Claude to create 3D Asset Creation pipeline.",
+          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1x2p4is/i_used_claude_to_create_3d_asset_creation_pipeline/",
+          "link": "",
+          "comment": ""
+        },
+        {
+          "date": "2026-10-11",
+          "title": "Codex fell off a cliff after Astra, and Opus 5.5 made me question why I'm still paying for Pro",
+          "thread": "https://www.reddit.com/r/codex/comments/1x2e2vm/codex_fell_off_a_cliff_after_astra_and_opus_55/",
+          "link": "",
+          "comment": ""
         }
       ],
       "deep_dive": "",
-      "last_seen": "2026-10-10"
+      "last_seen": "2026-10-11"
     },
     "anthropic-usage-policy": {
       "name": "Anthropic Usage Policy Updates",
       "first_seen": "2026-10-09",
       "days": [
         "2026-10-09",
-        "2026-10-10"
+        "2026-10-10",
+        "2026-10-11"
       ],
       "subs": [
         "ClaudeAI",
@@ -1699,7 +2084,7 @@
         "artificial",
         "singularity"
       ],
-      "mentions": 9,
+      "mentions": 10,
       "refs": [
         {
           "date": "2026-10-09",
@@ -1763,23 +2148,31 @@
           "thread": "https://www.reddit.com/r/ClaudeAI/comments/1x2175h/musk_called_anthropic_evil_spacexs_deal_with_it/",
           "link": "",
           "comment": ""
+        },
+        {
+          "date": "2026-10-11",
+          "title": "Anthropic cut live internet access from every internal eval after a review found its agents exploiting websites and bypassing restrictions",
+          "thread": "https://www.reddit.com/r/artificial/comments/1x2h9it/anthropic_cut_live_internet_access_from_every/",
+          "link": "https://techcrunch.com/2026/10/09/anthropic-cant-reliably-control-its-ai-agents-its-cutting-off-its-internal-evals-from-the-live-internet-instead/",
+          "comment": ""
         }
       ],
       "deep_dive": "",
-      "last_seen": "2026-10-10"
+      "last_seen": "2026-10-11"
     },
     "gemini-model-releases": {
       "name": "Gemini Model Releases",
       "first_seen": "2026-10-09",
       "days": [
         "2026-10-09",
-        "2026-10-10"
+        "2026-10-10",
+        "2026-10-11"
       ],
       "subs": [
         "GeminiAI",
         "codex"
       ],
-      "mentions": 10,
+      "mentions": 13,
       "refs": [
         {
           "date": "2026-10-09",
@@ -1850,17 +2243,39 @@
           "thread": "https://www.reddit.com/r/GeminiAI/comments/1x1mpku/ultra_user_still_no_gemini_4/",
           "link": "",
           "comment": ""
+        },
+        {
+          "date": "2026-10-11",
+          "title": "A new checkpoint of Google has been spotted! (Gemini 4 Carbon).",
+          "thread": "https://www.reddit.com/r/GeminiAI/comments/1x292ly/a_new_checkpoint_of_google_has_been_spotted/",
+          "link": "",
+          "comment": ""
+        },
+        {
+          "date": "2026-10-11",
+          "title": "Google announced Gemini 4 Carbon but Gemini 5 is even better!",
+          "thread": "https://www.reddit.com/r/GeminiAI/comments/1x2a2tp/google_announced_gemini_4_carbon_but_gemini_5_is/",
+          "link": "",
+          "comment": ""
+        },
+        {
+          "date": "2026-10-11",
+          "title": "Google cooking up Gemini 4 Carbon while Pro users are still waiting for Argon",
+          "thread": "https://www.reddit.com/r/GeminiAI/comments/1x2jyt9/google_cooking_up_gemini_4_carbon_while_pro_users/",
+          "link": "",
+          "comment": ""
         }
       ],
       "deep_dive": "",
-      "last_seen": "2026-10-10"
+      "last_seen": "2026-10-11"
     },
     "ai-cybersecurity": {
       "name": "AI in Cybersecurity",
       "first_seen": "2026-10-09",
       "days": [
         "2026-10-09",
-        "2026-10-10"
+        "2026-10-10",
+        "2026-10-11"
       ],
       "subs": [
         "ArtificialInteligence",
@@ -1868,7 +2283,7 @@
         "antiai",
         "singularity"
       ],
-      "mentions": 4,
+      "mentions": 5,
       "refs": [
         {
           "date": "2026-10-09",
@@ -1897,25 +2312,34 @@
           "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1x1rwof/glm_53_flash_opensource_the_top_of_artificial/",
           "link": "",
           "comment": ""
+        },
+        {
+          "date": "2026-10-11",
+          "title": "Can AI agents completely break MD5? Let’s find out together.",
+          "thread": "https://www.reddit.com/r/singularity/comments/1x2dyoe/can_ai_agents_completely_break_md5_lets_find_out/",
+          "link": "",
+          "comment": ""
         }
       ],
       "deep_dive": "",
-      "last_seen": "2026-10-10"
+      "last_seen": "2026-10-11"
     },
     "ai-and-jobs": {
       "name": "AI and Jobs",
       "first_seen": "2026-10-09",
       "days": [
         "2026-10-09",
-        "2026-10-10"
+        "2026-10-10",
+        "2026-10-11"
       ],
       "subs": [
         "ArtificialInteligence",
         "ClaudeAI",
+        "OpenAI",
         "antiai",
         "singularity"
       ],
-      "mentions": 6,
+      "mentions": 9,
       "refs": [
         {
           "date": "2026-10-09",
@@ -1958,23 +2382,47 @@
           "thread": "https://www.reddit.com/r/singularity/comments/1x1vo9t/ai_could_allow_for_3day_workweeks_and/",
           "link": "https://www.forbes.com/sites/siladityaray/2026/10/08/jeff-bezos-claims-ai-could-allow-for-3-day-workweeks-and-one-income-families/",
           "comment": ""
+        },
+        {
+          "date": "2026-10-11",
+          "title": "We should stop defending jobs and start planning for a world without them",
+          "thread": "https://www.reddit.com/r/singularity/comments/1x2q7sf/we_should_stop_defending_jobs_and_start_planning/",
+          "link": "",
+          "comment": ""
+        },
+        {
+          "date": "2026-10-11",
+          "title": "First, they came for the call centers...",
+          "thread": "https://www.reddit.com/r/OpenAI/comments/1x2fcws/first_they_came_for_the_call_centers/",
+          "link": "",
+          "comment": ""
+        },
+        {
+          "date": "2026-10-11",
+          "title": "I want AI to progress so fast that it breaks the entire structure of society.",
+          "thread": "https://www.reddit.com/r/singularity/comments/1x26qxs/i_want_ai_to_progress_so_fast_that_it_breaks_the/",
+          "link": "",
+          "comment": ""
         }
       ],
       "deep_dive": "",
-      "last_seen": "2026-10-10"
+      "last_seen": "2026-10-11"
     },
     "ai-in-mathematics": {
       "name": "AI in Mathematics",
       "first_seen": "2026-10-09",
       "days": [
         "2026-10-09",
-        "2026-10-10"
+        "2026-10-10",
+        "2026-10-11"
       ],
       "subs": [
+        "ClaudeAI",
         "LocalLLaMA",
+        "OpenAI",
         "singularity"
       ],
-      "mentions": 7,
+      "mentions": 9,
       "refs": [
         {
           "date": "2026-10-09",
@@ -2024,17 +2472,32 @@
           "thread": "https://www.reddit.com/r/singularity/comments/1x22o0b/a_mathematicians_perspective/",
           "link": "",
           "comment": ""
+        },
+        {
+          "date": "2026-10-11",
+          "title": "I'm a 9th grader and I used Claude to prove a geometry conjecture: the rhombicosidodecahedron can't pass through a copy of itself",
+          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1x2eybb/im_a_9th_grader_and_i_used_claude_to_prove_a/",
+          "link": "https://www.reddit.com/gallery/1x2eybb",
+          "comment": "TL;DR of the discussion generated automatically after 100 comments. The consensus is that OP is an absolute legend for tackling this as a 9th grader. Most of the thread is everyone's mind being blown and asking for an ELI5 on how a shape can't pass through a hole of itself. OP delivered with a kille"
+        },
+        {
+          "date": "2026-10-11",
+          "title": "Fields Medalist on the OpenAI Math Release",
+          "thread": "https://www.reddit.com/r/OpenAI/comments/1x2rufy/fields_medalist_on_the_openai_math_release/",
+          "link": "",
+          "comment": ""
         }
       ],
       "deep_dive": "",
-      "last_seen": "2026-10-10"
+      "last_seen": "2026-10-11"
     },
     "ai-coding-agents": {
       "name": "AI Coding Agents",
       "first_seen": "2026-10-09",
       "days": [
         "2026-10-09",
-        "2026-10-10"
+        "2026-10-10",
+        "2026-10-11"
       ],
       "subs": [
         "ClaudeAI",
@@ -2042,7 +2505,7 @@
         "LocalLLaMA",
         "singularity"
       ],
-      "mentions": 6,
+      "mentions": 7,
       "refs": [
         {
           "date": "2026-10-09",
@@ -2085,23 +2548,31 @@
           "thread": "https://www.reddit.com/r/singularity/comments/1x1w15d/new_carbon_model_from_google_opus_like_coding/",
           "link": "",
           "comment": ""
+        },
+        {
+          "date": "2026-10-11",
+          "title": "I made my Claude Code sub-agents a video call. Weirdly, it’s the best way I’ve found to follow what they’re doing.",
+          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1x2f59x/i_made_my_claude_code_subagents_a_video_call/",
+          "link": "",
+          "comment": ""
         }
       ],
       "deep_dive": "",
-      "last_seen": "2026-10-10"
+      "last_seen": "2026-10-11"
     },
     "ai-benchmarks": {
       "name": "AI Benchmarks and Reasoning",
       "first_seen": "2026-10-09",
       "days": [
         "2026-10-09",
-        "2026-10-10"
+        "2026-10-10",
+        "2026-10-11"
       ],
       "subs": [
         "LocalLLaMA",
         "singularity"
       ],
-      "mentions": 2,
+      "mentions": 3,
       "refs": [
         {
           "date": "2026-10-09",
@@ -2116,24 +2587,33 @@
           "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1x1rwof/glm_53_flash_opensource_the_top_of_artificial/",
           "link": "",
           "comment": ""
+        },
+        {
+          "date": "2026-10-11",
+          "title": "How compute time has shifted from pretraining to post-training over the last 2 years",
+          "thread": "https://www.reddit.com/r/singularity/comments/1x2na8q/how_compute_time_has_shifted_from_pretraining_to/",
+          "link": "",
+          "comment": ""
         }
       ],
       "deep_dive": "",
-      "last_seen": "2026-10-10"
+      "last_seen": "2026-10-11"
     },
     "local-llms": {
       "name": "Local LLMs and Hardware",
       "first_seen": "2026-10-09",
       "days": [
         "2026-10-09",
-        "2026-10-10"
+        "2026-10-10",
+        "2026-10-11"
       ],
       "subs": [
         "ArtificialInteligence",
         "GeminiAI",
+        "LocalLLM",
         "LocalLLaMA"
       ],
-      "mentions": 7,
+      "mentions": 12,
       "refs": [
         {
           "date": "2026-10-09",
@@ -2183,25 +2663,63 @@
           "thread": "https://www.reddit.com/r/GeminiAI/comments/1x263qn/google_ai_pro_plane_now_provide_you_nvidia_a100/",
           "link": "https://x.com/googlegemma/status/2108652628590944540",
           "comment": ""
+        },
+        {
+          "date": "2026-10-11",
+          "title": "Open-source Mac app that runs EmbeddingGemma 2 locally to search your files by what’s in them",
+          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1x2eeds/opensource_mac_app_that_runs_embeddinggemma_2/",
+          "link": "",
+          "comment": "Your post is getting popular and we just featured it on our Discord! Come check it out! You've also been given a special flair for your contribution. We appreciate your post! I am a bot and this action was performed automatically."
+        },
+        {
+          "date": "2026-10-11",
+          "title": "Building a 4x R9700 setup for a 10 person startup",
+          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1x2u742/building_a_4x_r9700_setup_for_a_10_person_startup/",
+          "link": "",
+          "comment": ""
+        },
+        {
+          "date": "2026-10-11",
+          "title": "NVIDIA reportedly discontinuing RTX 5090, GB202 GPUs to be reserved for RTX PRO series",
+          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1x2bt6r/nvidia_reportedly_discontinuing_rtx_5090_gb202/",
+          "link": "https://videocardz.com/newz/nvidia-reportedly-discontinuing-rtx-5090-gb202-gpus-to-be-reserved-for-rtx-pro-series",
+          "comment": "The crunch is real"
+        },
+        {
+          "date": "2026-10-11",
+          "title": "Qwen3.8-27B on a single 3090: 140 tok/s on code with a custom megakernel",
+          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1x2erdj/qwen3827b_on_a_single_3090_140_toks_on_code_with/",
+          "link": "",
+          "comment": ""
+        },
+        {
+          "date": "2026-10-11",
+          "title": "Which one is better for Local use?",
+          "thread": "https://www.reddit.com/r/LocalLLM/comments/1x2b9f6/which_one_is_better_for_local_use/",
+          "link": "",
+          "comment": ""
         }
       ],
       "deep_dive": "",
-      "last_seen": "2026-10-10"
+      "last_seen": "2026-10-11"
     },
     "openai-company-updates": {
       "name": "OpenAI Company Updates",
       "first_seen": "2026-10-09",
       "days": [
         "2026-10-09",
-        "2026-10-10"
+        "2026-10-10",
+        "2026-10-11"
       ],
       "subs": [
+        "ArtificialInteligence",
+        "DeepSeek",
         "LocalLLaMA",
         "OpenAI",
         "antiai",
         "singularity"
       ],
-      "mentions": 5,
+      "mentions": 8,
       "refs": [
         {
           "date": "2026-10-09",
@@ -2237,25 +2755,48 @@
           "thread": "https://www.reddit.com/r/OpenAI/comments/1x1k4sg/the_openai_employees_we_were_fired_for/",
           "link": "",
           "comment": ""
+        },
+        {
+          "date": "2026-10-11",
+          "title": "Why don't more people use DeepSeek? Are they in love with Sam and Dario?",
+          "thread": "https://www.reddit.com/r/DeepSeek/comments/1x28cm4/why_dont_more_people_use_deepseek_are_they_in/",
+          "link": "",
+          "comment": ""
+        },
+        {
+          "date": "2026-10-11",
+          "title": "Elon Musk has rebranded SpaceX AI to SpaceX Super Intelligence",
+          "thread": "https://www.reddit.com/r/ArtificialInteligence/comments/1x2q4pi/elon_musk_has_rebranded_spacex_ai_to_spacex_super/",
+          "link": "",
+          "comment": ""
+        },
+        {
+          "date": "2026-10-11",
+          "title": "OpenAI and Anthropic expect a catastrophe by 2027, and they're secretly planning... the PR response.",
+          "thread": "https://www.reddit.com/r/OpenAI/comments/1x2jll0/openai_and_anthropic_expect_a_catastrophe_by_2027/",
+          "link": "",
+          "comment": ""
         }
       ],
       "deep_dive": "",
-      "last_seen": "2026-10-10"
+      "last_seen": "2026-10-11"
     },
     "ai-pricing-and-costs": {
       "name": "AI Pricing and Costs",
       "first_seen": "2026-10-09",
       "days": [
         "2026-10-09",
-        "2026-10-10"
+        "2026-10-10",
+        "2026-10-11"
       ],
       "subs": [
         "ArtificialInteligence",
+        "GeminiAI",
         "LocalLLaMA",
         "codex",
         "singularity"
       ],
-      "mentions": 5,
+      "mentions": 6,
       "refs": [
         {
           "date": "2026-10-09",
@@ -2291,10 +2832,17 @@
           "thread": "https://www.reddit.com/r/singularity/comments/1x1kpmv/seattle_becomes_first_city_to_stop_grocery_stores/",
           "link": "https://wilson.seattle.gov/2026/09/23/seattle-becomes-first-city-to-stop-grocery-stores-from-using-ai-based-personal-data-to-set-prices/",
           "comment": ""
+        },
+        {
+          "date": "2026-10-11",
+          "title": "Google AI pro plane now provide you Nvidia A100 GPUs with 80gb VRAM",
+          "thread": "https://www.reddit.com/r/GeminiAI/comments/1x263qn/google_ai_pro_plane_now_provide_you_nvidia_a100/",
+          "link": "https://x.com/googlegemma/status/2108652628590944540",
+          "comment": ""
         }
       ],
       "deep_dive": "",
-      "last_seen": "2026-10-10"
+      "last_seen": "2026-10-11"
     }
   }
 }

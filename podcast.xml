@@ -8,9 +8,40 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Sat, 10 Oct 2026 11:18:20 GMT</lastBuildDate>
+<lastBuildDate>Sun, 11 Oct 2026 03:19:56 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Morning - 11 Oct: Prince Rupert’s Polyhedron and Claude</title>
+<description>Morning edition - Sunday, 11 October 2026
+Grounding frontier models through rigorous geometric verification, isolated evaluation sandboxes, and hardware-level memory optimization.
+
+00:45  Prince Rupert’s Polyhedron and Claude
+   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1x2eybb/im_a_9th_grader_and_i_used_claude_to_prove_a/
+   Source: https://www.reddit.com/gallery/1x2eybb
+07:40  Cutting the Cord on Agentic Evaluations
+   artificial: https://www.reddit.com/r/artificial/comments/1x2h9it/anthropic_cut_live_internet_access_from_every/
+   Source: https://techcrunch.com/2026/10/09/anthropic-cant-reliably-control-its-ai-agents-its-cutting-off-its-internal-evals-from-the-live-internet-instead/
+13:57  Fusing Kernels for Edge Inference
+   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x2erdj/qwen3827b_on_a_single_3090_140_toks_on_code_with/
+21:11  Local Multimodal Retrieval with DigUp
+   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x2eeds/opensource_mac_app_that_runs_embeddinggemma_2/
+28:07  Hardware Economics, Agent Observability, and Edge Decisions
+   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x28zr9/created_laya_now_introducing_a_new_800_million/
+   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x29q4a/what_are_people_doing_with_decisions_jevlike/
+   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x2u742/building_a_4x_r9700_setup_for_a_10_person_startup/
+   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x2bt6r/nvidia_reportedly_discontinuing_rtx_5090_gb202/
+   Source: https://videocardz.com/newz/nvidia-reportedly-discontinuing-rtx-5090-gb202-gpus-to-be-reserved-for-rtx-pro-series
+   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1x2f59x/i_made_my_claude_code_subagents_a_video_call/
+
+Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
+Written by: Gemini 3.8 Flash · Voices: Fish Audio (free) · Discussions: Reddit (collected directly)</description>
+<pubDate>Sun, 11 Oct 2026 08:13:17 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-10-11_morning_0813.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-11_morning_0813.mp3" length="16007468" type="audio/mpeg"/>
+<itunes:duration>2000</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Evening - 10 Oct: Speculative Expert Prefetching: Breaking Memory Bottlenecks in Mixture-of-Experts</title>
 <description>Evening edition - Saturday, 10 October 2026
