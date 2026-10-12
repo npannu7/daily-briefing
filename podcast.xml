@@ -8,9 +8,27 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Mon, 12 Oct 2026 03:22:04 GMT</lastBuildDate>
+<lastBuildDate>Mon, 12 Oct 2026 11:57:43 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Deep dive - 12 Oct: Anthropic Claude Models</title>
+<description>Deep dive - Monday, 12 October 2026
+Deep dive: Anthropic Claude Models
+
+01:09  Anthropic Claude Models: Why everyone is talking about it
+13:41  Anthropic Claude Models: The foundations, from scratch
+29:39  Anthropic Claude Models: How we got here
+44:59  Anthropic Claude Models: Reality check
+
+Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
+Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit (collected directly)</description>
+<pubDate>Mon, 12 Oct 2026 16:14:39 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-10-12_evening_1614.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-12_evening_1614.mp3" length="26853548" type="audio/mpeg"/>
+<itunes:duration>3356</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Morning - 12 Oct: Clinical AI at the Bedside: OpenMed 3.0 and Local Validation Limits</title>
 <description>Morning edition - Monday, 12 October 2026

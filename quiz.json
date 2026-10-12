@@ -4,6 +4,235 @@
  "repo": "npannu7/daily-briefing",
  "episodes": [
   {
+   "file": "ai_2026-10-12_evening_1614.mp3",
+   "title": "Deep dive - 12 Oct: Anthropic Claude Models",
+   "label": "Monday 12 Oct evening deep dive",
+   "date": "2026-10-12",
+   "edition": "evening",
+   "published": "2026-10-12T16:14:39.994702+05:30",
+   "duration": 3356,
+   "theme": "Deep dive: Anthropic Claude Models",
+   "writer": "nemotron-3-ultra-550b-a55b (free)",
+   "voices": "Fish Audio (free)",
+   "deep_dive": true,
+   "segments": [
+    {
+     "title": "Anthropic Claude Models: Why everyone is talking about it",
+     "category": "deepdive"
+    },
+    {
+     "title": "Anthropic Claude Models: The foundations, from scratch",
+     "category": "deepdive"
+    },
+    {
+     "title": "Anthropic Claude Models: How we got here",
+     "category": "deepdive"
+    },
+    {
+     "title": "Anthropic Claude Models: Reality check",
+     "category": "deepdive"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What engineering parallel did Laura use to explain the mechanism of the Frame Grid tool's trade-off between spatial resolution and token budget?",
+     "options": [
+      "Finite element mesh convergence",
+      "Inspection sampling frequency on a production line",
+      "Specific strength in materials like strength-to-weight ratio",
+      "Statistical process control charting for surface finish"
+     ],
+     "answer": 1,
+     "explain": "Laura compared the trade-off to choosing inspection sampling frequency on a production line: too sparse and defects are missed, too dense and data overflows without new information.",
+     "segment": "Anthropic Claude Models: Why everyone is talking about it"
+    },
+    {
+     "q": "How does Laura explain the function of the attention mechanism in transformer models using an industrial analogy?",
+     "options": [
+      "Like a coordinate measuring machine reaching any point without moving the gantry",
+      "Like a manufacturing execution system where work orders broadcast queries, keys, and payloads",
+      "Like a cellular manufacturing layout where cells only talk to neighbors",
+      "Like a hydraulic bypass circuit routing excess fluid around a valve"
+     ],
+     "answer": 1,
+     "explain": "Laura explained attention by comparing work orders broadcasting queries, keys, and values to a manufacturing execution system.",
+     "segment": "Anthropic Claude Models: The foundations, from scratch"
+    },
+    {
+     "q": "What specific engineering challenge did Laura highlight regarding the PlayStation 2 decompilation claim?",
+     "options": [
+      "It lacks network redundancy across microservices",
+      "It is an ill-posed problem since many source programs compile to the exact same binary",
+      "It requires a real-time hardware loop to verify CPU cycle counts",
+      "It generates non-deterministic instruction sets that violate browser sandboxing"
+     ],
+     "answer": 1,
+     "explain": "Laura noted that decompilation is ill-posed because many different source programs compile to the same binary, requiring the model to reconstruct intent from stripped artifacts.",
+     "segment": "Anthropic Claude Models: How we got here"
+    },
+    {
+     "q": "According to the discussion in the reality check segment, what was the community consensus regarding LLM decompilation capability?",
+     "options": [
+      "It fully replaces human reverse engineers for production-grade software",
+      "It gets eighty percent of the way there quickly, but the last twenty percent still requires a human staring at a disassembler like IDA Pro",
+      "It fails completely on vintage architectures due to missing token embeddings",
+      "It operates deterministically without hallucinations if supplied with debug symbols"
+     ],
+     "answer": 1,
+     "explain": "A professional commenter cited in the transcript stated that the model gets you most of the way there fast, but the final portion still requires human expertise.",
+     "segment": "Anthropic Claude Models: Reality check"
+    }
+   ],
+   "digest": [
+    {
+     "title": "Shock and awe — Creator of free Adobe clones unveils open-source Microsoft Office Excel, PowerPoint, and Word replications — Autodesk tools and other subscription-based services may come next",
+     "subs": [
+      "artificial",
+      "singularity"
+     ],
+     "thread": "https://www.reddit.com/r/singularity/comments/1x3daf9/shock_and_awe_creator_of_free_adobe_clones/",
+     "link": "https://www.tomshardware.com/software/microsoft-office/creator-of-free-adobe-clones-unveils-open-source-microsoft-office-excel-powerpoint-and-word-replications-autodesk-tools-and-other-subscription-based-services-may-come-next",
+     "line": "A creator released open-source Microsoft Office and Adobe alternatives built with AI, and commenters are debating whether AI is replacing tech jobs.",
+     "verdict": "opinion",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Rebuilding a PDF editor with Claude Code made me question my engineering skills",
+     "subs": [
+      "ClaudeCode"
+     ],
+     "thread": "https://www.reddit.com/r/ClaudeCode/comments/1x37jfk/rebuilding_a_pdf_editor_with_claude_code_made_me/",
+     "link": "",
+     "line": "An experienced developer struggled to keep up with architecture decisions when Claude Code generated over 3,000 lines for a PDF editor.",
+     "verdict": "opinion",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "I used Codex to build an entire 2D/3D animation software, and now Codex can operate it through MCP",
+     "subs": [
+      "codex"
+     ],
+     "thread": "https://www.reddit.com/r/codex/comments/1x3fp16/i_used_codex_to_build_an_entire_2d3d_animation/",
+     "link": "",
+     "line": "A developer used Codex to build 2D and 3D animation software called Warp Studio, which Codex can now operate directly through MCP.",
+     "verdict": "plausible",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Every Model That Can Be Run On 10-16GB VRAM Ranked",
+     "subs": [
+      "LocalLLaMA"
+     ],
+     "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1x3gpyi/every_model_that_can_be_run_on_1016gb_vram_ranked/",
+     "link": "",
+     "line": "Users discussed rankings of LLMs that fit on 10-16GB VRAM and lamented that spontaneous AI hallucinations have not improved much over four years.",
+     "verdict": "opinion",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Does this still works for bots or is it over?",
+     "subs": [
+      "singularity"
+     ],
+     "thread": "https://www.reddit.com/r/singularity/comments/1x3d76y/does_this_still_works_for_bots_or_is_it_over/",
+     "link": "",
+     "line": "Users discussed whether tricking social media bots into revealing they are LLMs still works, with mixed results reported.",
+     "verdict": "opinion",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "The day we can run Sonnet-level AI locally on a regular PC will be insane",
+     "subs": [
+      "ClaudeAI"
+     ],
+     "thread": "https://www.reddit.com/r/ClaudeAI/comments/1x35dqe/the_day_we_can_run_sonnetlevel_ai_locally_on_a/",
+     "link": "",
+     "line": "A user expressed excitement about the future turning point when Sonnet-level AI capabilities can be run locally on personal PCs without subscriptions.",
+     "verdict": "hype",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "I made a free Minecraft mod where Claude builds whatever you describe",
+     "subs": [
+      "ClaudeAI"
+     ],
+     "thread": "https://www.reddit.com/r/ClaudeAI/comments/1x3olix/i_made_a_free_minecraft_mod_where_claude_builds/",
+     "link": "",
+     "line": "A user built and shared a free Minecraft mod utilizing Claude Code that lets players prompt Claude to build structures in-game.",
+     "verdict": "plausible",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "This reverse-engineering repo could massively accelerate AI coding capabilities.",
+     "subs": [
+      "singularity"
+     ],
+     "thread": "https://www.reddit.com/r/singularity/comments/1x3b6f1/this_reverseengineering_repo_could_massively/",
+     "link": "",
+     "line": "Users discussed a reverse-engineering repository that could allow AI agents to systematically inspect binaries and reconstruct closed-source software.",
+     "verdict": "plausible",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Here’s why RTX 5090 costs $5,000: AI firms are buying gaming GPUs by the pallet",
+     "subs": [
+      "LocalLLaMA"
+     ],
+     "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1x37tg6/heres_why_rtx_5090_costs_5000_ai_firms_are_buying/",
+     "link": "https://videocardz.com/newz/heres-why-rtx-5090-costs-5000-ai-firms-are-buying-gaming-gpus-by-the-pallet",
+     "line": "A thread claimed that the RTX 5090 costs $5,000 because AI firms are purchasing gaming GPUs by the pallet.",
+     "verdict": "hype",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Decision 3.0: open, multimodal decision models from 0.6B to 27B. Ranks #1 on both Jev Decision Index boards",
+     "subs": [
+      "LocalLLaMA"
+     ],
+     "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1x3th4p/decision_30_open_multimodal_decision_models_from/",
+     "link": "https://www.reddit.com/gallery/1x3th4p",
+     "line": "The vLLM Semantic Router team released Decision 3.0, a new open-source multimodal decision model family ranging from 0.6B to 27B parameters.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "In Denmark, Hive Robotics is training Unitree G1 to restock shelves in a supermarket - expected to do it autonomously by early 2027",
+     "subs": [
+      "singularity"
+     ],
+     "thread": "https://www.reddit.com/r/singularity/comments/1x3pwum/in_denmark_hive_robotics_is_training_unitree_g1/",
+     "link": "",
+     "line": "Hive Robotics in Denmark is training a Unitree G1 robot to restock supermarket shelves autonomously by early 2027.",
+     "verdict": "plausible",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Whistle: speech to text in 16.9 MB",
+     "subs": [
+      "LocalLLaMA"
+     ],
+     "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1x3bpfl/whistle_speech_to_text_in_169_mb/",
+     "link": "https://cactuscompute.com/blog/whistle",
+     "line": "A thread highlighted Whistle, a speech-to-text tool packed into a 16.9 MB size.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    }
+   ],
+   "transcript": "transcripts/ai_2026-10-12_evening_1614.txt"
+  },
+  {
    "file": "ai_2026-10-12_morning_0815.mp3",
    "title": "Morning - 12 Oct: Clinical AI at the Bedside: OpenMed 3.0 and Local Validation Limits",
    "label": "Monday 12 Oct morning",
