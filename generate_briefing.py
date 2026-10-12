@@ -39,6 +39,7 @@ import re
 import shutil
 import subprocess
 import sys
+import threading
 import time
 import wave
 from collections import Counter
@@ -106,8 +107,18 @@ WRITER_CHAIN = os.getenv("WRITER_MODELS") or (
     "gemini:gemini-3.8-flash,gemini:gemini-3.7-flash,openrouter:free,gemini:gemini-3.5-flash-lite,github:auto")
 HELPER_CHAIN = os.getenv("HELPER_MODELS") or (
     "gemini:gemini-3.5-flash-lite,gemini:gemini-3.1-flash-lite,openrouter:free,github:auto")
-# Scoring: one batched call to the helper chain, unless DECISION_MODELS lists decision models to use per thread.
-DECISION_MODELS = [m.strip() for m in (os.getenv("DECISION_MODELS") or "").split(",") if m.strip()]
+# OpenRouter free models (checked 12 Oct 2026). "openrouter:free" in a chain expands to these, then to any other
+# free model OpenRouter lists. OPENROUTER_FREE_MODELS replaces both lists.
+FREE_WRITERS = ["nvidia/nemotron-3-ultra-550b-a55b:free", "nvidia/nemotron-3-super-120b-a12b:free",
+                "google/gemma-4-31b-it:free"]
+FREE_HELPERS = ["nvidia/nemotron-3-super-120b-a12b:free", "google/gemma-4-31b-it:free",
+                "google/gemma-4-26b-a4b-it:free"]
+# Free models without a JSON mode: asked for JSON in the prompt only.
+NO_JSON_MODE = ("nemotron-3-ultra", "nemotron-3.5-lightning", "nano-omni", "inkling", "laguna", "north-mini", "ling-")
+# Scoring: each thread is judged on its own by these models (free chat models answer the scoring questions as
+# JSON; dedicated paid decision models use OpenRouter's Decisions API). Threads they miss are scored in a batch.
+DECISION_MODELS = [m.strip() for m in (os.getenv("DECISION_MODELS") or
+                   "nvidia/nemotron-3-super-120b-a12b:free,google/gemma-4-31b-it:free").split(",") if m.strip()]
 SCORING = (os.getenv("SCORING") or "auto").lower()      # auto | batch | decisions
 OPENROUTER_DAILY_USD = float(os.getenv("OPENROUTER_DAILY_USD") or 0)   # spend cap for paid models
 # OpenRouter's free models (text and Fish voices) share one daily request limit that resets at 00:00 UTC:
@@ -263,32 +274,42 @@ def _gemini_stream(model, prompt, json_mode, role="writer"):
 
 
 _FREE = None
+_LISTED = None
 
 
-def free_models():
-    global _FREE
-    if _FREE is not None:
-        return _FREE
-    override = os.getenv("OPENROUTER_FREE_MODELS", "").strip()
-    if override:
-        _FREE = [m.strip() for m in override.split(",") if m.strip()]
-        return _FREE
-    _FREE = []
+def listed_free():
+    """Other free text models OpenRouter lists today - a safety net when the chosen ones stop being free."""
+    global _LISTED
+    if _LISTED is not None:
+        return _LISTED
+    _LISTED = []
     try:
         data = requests.get("https://openrouter.ai/api/v1/models", headers=UA, timeout=30).json()["data"]
-        free = [m for m in data if m.get("id", "").endswith(":free") and "inkling" not in m["id"]
-                and (m.get("context_length") or 0) >= 64000
+        free = [m for m in data if m.get("id", "").endswith(":free") and (m.get("context_length") or 0) >= 64000
+                and not re.search(r"safety|lyria|code|inkling|liquid|omni", m["id"])
                 and "text" in ((m.get("architecture") or {}).get("output_modalities") or ["text"])]
-        pref = ["gemini", "deepseek", "qwen", "nemotron", "kimi", "glm", "gemma", "llama", "mistral", "gpt-oss"]
+        pref = ["nemotron", "gemma", "deepseek", "qwen", "kimi", "glm", "dots", "apodex", "llama", "mistral"]
 
         def rank(m):
             mid = m["id"].lower()
             return (next((i for i, p in enumerate(pref) if p in mid), len(pref)), -(m.get("context_length") or 0))
-        _FREE = [m["id"] for m in sorted(free, key=rank)][:6]
+        _LISTED = [m["id"] for m in sorted(free, key=rank)]
     except Exception as e:
         log(f"  could not list OpenRouter models: {e}")
-    log(f"  OpenRouter free models: {', '.join(_FREE) or 'none'}")
-    return _FREE
+    return _LISTED
+
+
+def free_models(role="writer"):
+    global _FREE
+    if _FREE is None:
+        _FREE = {}
+    if role not in _FREE:
+        override = [m.strip() for m in os.getenv("OPENROUTER_FREE_MODELS", "").split(",") if m.strip()]
+        chosen = override or (FREE_WRITERS if role == "writer" else FREE_HELPERS)
+        extra = [] if override else [m for m in listed_free() if m not in chosen][:2]
+        _FREE[role] = chosen + extra
+        log(f"  OpenRouter free models ({role}): {', '.join(_FREE[role]) or 'none'}")
+    return _FREE[role]
 
 
 def _openrouter(model, prompt, json_mode, role="writer"):
@@ -301,7 +322,7 @@ def _openrouter(model, prompt, json_mode, role="writer"):
             "temperature": 0.6, "max_tokens": 12000, "usage": {"include": True}}
     if paid:
         body["reasoning"] = {"effort": "low"}
-    if json_mode:
+    if json_mode and not any(k in model for k in NO_JSON_MODE):
         body["response_format"] = {"type": "json_object"}
     r = requests.post("https://openrouter.ai/api/v1/chat/completions", json=body, timeout=(20, 400 if paid else 150),
                       headers={"Authorization": f"Bearer {OPENROUTER_API_KEY}",
@@ -375,14 +396,14 @@ def _github(model, prompt, json_mode, role="writer"):
 PROVIDERS = {"gemini": _gemini_stream, "openrouter": _openrouter, "github": _github}
 
 
-def expand_chain(chain):
+def expand_chain(chain, role="writer"):
     out = []
     for item in [c.strip() for c in chain.split(",") if c.strip()]:
         prov, _, model = item.partition(":")
         if prov == "gemini" and GEMINI_API_KEY:
             out.append(("gemini", model))
         elif prov == "openrouter" and OPENROUTER_API_KEY:
-            out += [("openrouter", m) for m in free_models()] if model == "free" else [("openrouter", model)]
+            out += [("openrouter", m) for m in free_models(role)] if model == "free" else [("openrouter", model)]
         elif prov == "github" and GITHUB_TOKEN:
             out += [("github", m) for m in github_models()] if model == "auto" else [("github", model)]
     return out
@@ -390,7 +411,7 @@ def expand_chain(chain):
 
 def llm(prompt, json_mode=False, min_words=0, label="", role="writer"):
     """Returns (text, model). role 'writer' = quality chain, 'helper' = free-first chain."""
-    chain = expand_chain(WRITER_CHAIN if role == "writer" else HELPER_CHAIN)
+    chain = expand_chain(WRITER_CHAIN if role == "writer" else HELPER_CHAIN, role)
     if not chain:
         raise RuntimeError("No LLM provider configured")
     if role == "writer" and WRITER_PICK and WRITER_PICK[0] in chain:
@@ -462,20 +483,86 @@ def as_obj(data, key):
     return data if isinstance(data, dict) else {}
 
 
+_PACE = threading.Lock()
+_LAST_FREE = [0.0]
+
+
+def free_pace(gap=3.2):
+    """Free models allow about 20 requests a minute; keep parallel scoring under that."""
+    with _PACE:
+        wait = _LAST_FREE[0] + gap - time.time()
+        if wait > 0:
+            time.sleep(wait)
+        _LAST_FREE[0] = time.time()
+
+
+def decide_chat(model, state_obj, questions):
+    """Ask a free chat model the scoring questions for one thread; answers in the Decisions API's shape."""
+    asks = "\n".join(f'- "{k}" ({q["type"]}): {q["instructions"]} Criteria: {json.dumps(q["criteria"])}'
+                     for k, q in questions.items())
+    prompt = f"""Judge this AI discussion thread. Answer each question carefully, on its own merits.
+
+THREAD:
+{json.dumps(state_obj, ensure_ascii=False)}
+
+QUESTIONS:
+{asks}
+
+Return JSON only, with one key per question:
+- type "noul": a probability 0-1 that the answer is true
+- type "score": an integer index into the criteria list (0 = first)
+- type "choice": one of the criteria keys
+Example: {{"relevant": 0.9, "substance": 2, "level": "technical", "needs_check": 0.7, "hype": 0.1}}"""
+    for attempt in (1, 2):
+        free_pace()
+        try:
+            status, text, err = _openrouter(model, prompt, True, "helper")
+        except (requests.RequestException, ValueError) as e:
+            status, text, err = 503, "", str(e)[:120]
+        if status == 200 and text:
+            try:
+                a = parse_json(text)
+            except (ValueError, TypeError):
+                return None
+            out = {}
+            for k, q in questions.items():
+                v = a.get(k) if isinstance(a, dict) else None
+                if v is None:
+                    continue
+                try:
+                    out[k] = ({"noul": max(0.0, min(1.0, float(v)))} if q["type"] == "noul" else
+                              {"score": max(0, min(len(q["criteria"]) - 1, int(float(v))))} if q["type"] == "score" else
+                              {"choice": str(v) if str(v) in q["criteria"] else next(iter(q["criteria"]))})
+                except (TypeError, ValueError):
+                    continue
+            return out or None
+        if status in (429, 503) and FREE_DAY_OUT[0] != utc_day() and attempt == 1:
+            time.sleep(20)   # per-minute limit; wait and try once more
+            continue
+        if status in (400, 401, 402, 403, 404):
+            log(f"    decision model {model}: HTTP {status} -> skipping | {err[:160]}")
+            DEAD.add(model)
+        return None
+    return None
+
+
 def decide(state_obj, questions):
-    """OpenRouter Decisions API. Returns the answers dict, or None if unavailable."""
+    """Answers for one thread: free chat models via JSON, paid decision models via the Decisions API."""
     if not OPENROUTER_API_KEY:
         return None
     for model in DECISION_MODELS:
         if model in DEAD:
             continue
         free = model.endswith(":free")
-        if free and not free_allowed(1, "helper"):
-            return None
-        if not free and OPENROUTER_DAILY_USD > 0 and spent_today() >= OPENROUTER_DAILY_USD:
-            continue
         if free:
-            note_free()
+            if not free_allowed(1, "helper"):
+                return None
+            ans = decide_chat(model, state_obj, questions)
+            if ans:
+                return ans
+            continue
+        if OPENROUTER_DAILY_USD > 0 and spent_today() >= OPENROUTER_DAILY_USD:
+            continue
         try:
             r = requests.post("https://openrouter.ai/api/alpha/decisions", timeout=(15, 90),
                               json={"model": model, "state": state_obj, "questions": questions},
@@ -904,11 +991,12 @@ def score_stories(stories, state, limit=70):
 
     results = {}
     if DECISION_MODELS and SCORING in ("auto", "decisions"):
-        with cf.ThreadPoolExecutor(max_workers=6) as ex:
+        t0 = time.time()
+        with cf.ThreadPoolExecutor(max_workers=4) as ex:
             for sid, ans in ex.map(one, top):
                 if ans:
                     results[sid] = ans
-        log(f"  decision models scored {len(results)}/{len(top)}")
+        log(f"  decision models scored {len(results)}/{len(top)} in {time.time() - t0:.0f}s")
     missing = [s for s in top if s["id"] not in results]
     if missing:
         results.update(llm_score(missing))

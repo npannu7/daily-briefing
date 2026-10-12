@@ -26,8 +26,9 @@ It covers threads that didn't make the episode, so you don't need to open Reddit
 
 | Job | Used, in order |
 |---|---|
-| Writing | Gemini API free key, then OpenRouter free models (DeepSeek, Qwen, Nemotron…), then GitHub Models. Once a model works, it keeps writing the rest of the episode. |
-| Scoring, topics, quiz, digest | Gemini Flash-Lite free key, then OpenRouter free models. Scoring is one batched call. |
+| Writing | Gemini API free key, then OpenRouter free models (Nemotron 3 Ultra, Nemotron 3 Super, Gemma 4 31B), then GitHub Models. Once a model works, it keeps writing the rest of the episode. |
+| Scoring | Each thread judged on its own by Nemotron 3 Super (free), Gemma 4 31B as backup, about 70 requests per episode. Threads they miss are scored in one batched call. |
+| Topics, quiz, digest | Gemini Flash-Lite free key, then OpenRouter free models (Nemotron 3 Super, Gemma 4). |
 | Voices | Fish Audio (OpenRouter free), then Gemini TTS (free key), then Edge. |
 
 OpenRouter's free models (text and Fish) share one daily request limit that resets at 00:00 UTC.
@@ -41,10 +42,10 @@ Optional variables:
 
 | Variable | Default | Meaning |
 |---|---|---|
-| `OPENROUTER_FREE_DAILY` | `1000` | Your OpenRouter free-model daily limit (50 if the account never bought $10 of credits) |
+| `OPENROUTER_FREE_DAILY` | `1000` | Your OpenRouter free-model daily limit (1000 after buying $10 of credits; 50 otherwise) |
 | `OPENROUTER_DAILY_USD` | `0` | Spend cap for paid models. Leave at 0 to stay free |
 | `WRITER_MODELS`, `HELPER_MODELS` | free chains | e.g. `gemini:gemini-3.8-flash,openrouter:free,github:auto` |
-| `OPENROUTER_FREE_MODELS` | auto-picked | Pin specific free models, comma-separated |
-| `DECISION_MODELS` | empty | Decision models to score each thread individually. One that charges money is dropped while the cap is 0 |
+| `OPENROUTER_FREE_MODELS` | Nemotron / Gemma | Replace the free model lists, comma-separated |
+| `DECISION_MODELS` | Nemotron 3 Super, Gemma 4 31B (free) | Models that score each thread. A paid one that charges money is dropped while the cap is 0 |
 | `SCORING` | `auto` | `batch` or `decisions` |
 | `FISH_VOICE_A`, `FISH_VOICE_B` | set | Fish Audio voice ids for Sarah and Laura |
