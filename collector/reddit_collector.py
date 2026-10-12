@@ -14,6 +14,9 @@ Standard library only - no pip installs needed.
 Usage
   python reddit_collector.py            collect + upload (uses collector_config.json)
   python reddit_collector.py --test     collect 3 subreddits, print a summary, no upload
+  python reddit_collector.py --pool reddit/pool.json [--requests 10] [--pause 60]
+                                        one small hourly step: add to a pool that builds up over the day
+                                        (used by the GitHub workflow collect_reddit.yml)
 """
 import base64
 import datetime as dt
@@ -212,6 +215,105 @@ def collect(subs, pause=PAUSE, log=log, budget_s=None, comment_limit=COMMENT_LIM
             "subreddits": len(subs), "errors": errors, "posts": posts}
 
 
+# ---------------- pool mode: many small runs through the day ----------------
+POOL_HOURS = 36            # threads older than this leave the pool
+LISTING_EVERY_H = 3        # how often the subreddit listings are re-read
+COMMENT_REREAD_H = 6       # comments are read again once the thread has matured
+MAX_COMMENT_READS = 2
+
+
+def _hours_since(iso, now):
+    if not iso:
+        return 1e9
+    try:
+        return (now - dt.datetime.fromisoformat(iso.replace("Z", "+00:00"))).total_seconds() / 3600
+    except ValueError:
+        return 1e9
+
+
+def pool_step(pool, subs, max_requests=10, pause=60.0, log=log, budget_s=900):
+    """One hourly step at about one request per minute. Listings are refreshed every few hours; the rest of the
+    requests read comments, best threads first, and re-read them once a thread is a few hours old, when the
+    upvoted comments have settled."""
+    now = dt.datetime.now(dt.timezone.utc)
+    t0, used = time.time(), 0
+    pool = pool or {}
+    posts = pool.setdefault("posts", {})
+    weight_of = {name.lower(): w for name, w in subs}
+
+    def can_request():
+        return used < max_requests and time.time() - t0 < budget_s
+
+    if _hours_since(pool.get("listing_at"), now) >= LISTING_EVERY_H:
+        tiers = {}
+        for name, w in subs:
+            tiers.setdefault(w, []).append(name)
+        groups = [(w, tiers[w][i:i + GROUP_SIZE]) for w in sorted(tiers, reverse=True)
+                  for i in range(0, len(tiers[w]), GROUP_SIZE)]
+        for weight, group in groups:
+            if not can_request():
+                break
+            limit = TIER_LIMIT.get(int(weight), 15)
+            body = http_get(f"https://www.reddit.com/r/{'+'.join(group)}/top/.rss?t=day&limit={limit}")
+            used += 1
+            time.sleep(pause)
+            if body is None:
+                log(f"  weight {weight:g} group ({len(group)} subreddits): no data")
+                continue
+            entries = [e for e in parse_entries(body) if "/comments/" in e["url"]]
+            log(f"  weight {weight:g} group ({len(group)} subreddits): {len(entries)} posts")
+            for rank, e in enumerate(entries):
+                pid = e["id"].replace("t3_", "")
+                sub = e["sub"] or group[0]
+                old = posts.get(pid)
+                if old:
+                    old.update(title=e["title"], rank=min(old["rank"], rank), last_listed=now.isoformat())
+                    continue
+                posts[pid] = {"sub": sub, "weight": weight_of.get(sub.lower(), weight), "rank": rank, "id": pid,
+                              "title": e["title"], "url": e["url"], "date": e["date"],
+                              "link": external_link(e["content"]), "text": strip_html(e["content"], 2500),
+                              "comments": [], "first_seen": now.isoformat(), "last_listed": now.isoformat(),
+                              "comments_at": "", "comment_reads": 0}
+        pool["listing_at"] = now.isoformat()
+
+    def due(p):
+        if p["comment_reads"] == 0:
+            return True
+        return (p["comment_reads"] < MAX_COMMENT_READS and _hours_since(p["comments_at"], now) >= COMMENT_REREAD_H
+                and _hours_since(p["date"], now) < 24)
+
+    queue = sorted((p for p in posts.values() if due(p)),
+                   key=lambda p: (p["comment_reads"], -p["weight"] / (1 + p["rank"])))
+    read = 0
+    for p in queue:
+        if not can_request():
+            break
+        cbody = http_get(f"https://www.reddit.com/r/{p['sub']}/comments/{p['id']}/.rss?sort=top&limit={MAX_COMMENTS + 1}")
+        used += 1
+        time.sleep(pause)
+        if not cbody:
+            continue
+        comments = []
+        for c in parse_entries(cbody):
+            if c["id"].startswith("t3_"):
+                continue
+            text = strip_html(c["content"], 700)
+            if text and text.lower() not in ("[deleted]", "[removed]"):
+                comments.append(text)
+        if comments:
+            p["comments"] = comments[:MAX_COMMENTS]
+        p["comments_at"], p["comment_reads"] = now.isoformat(), p["comment_reads"] + 1
+        read += 1
+
+    for pid in [k for k, p in posts.items() if _hours_since(p.get("date") or p.get("first_seen"), now) > POOL_HOURS]:
+        del posts[pid]
+    pool["updated_at"] = now.isoformat()
+    pool["source"] = "reddit-pool"
+    log(f"  {used} requests: {read} comment threads read; pool holds {len(posts)} threads, "
+        f"{sum(1 for p in posts.values() if p['comments'])} with comments")
+    return pool
+
+
 def upload(snapshot, repo, token):
     api = f"https://api.github.com/repos/{repo}/contents/reddit/latest.json"
     headers = {"Authorization": f"Bearer {token}", "Accept": "application/vnd.github+json",
@@ -233,7 +335,31 @@ def upload(snapshot, repo, token):
         return r.status
 
 
+def arg(name, default):
+    if name in sys.argv:
+        i = sys.argv.index(name)
+        if i + 1 < len(sys.argv):
+            return sys.argv[i + 1]
+    return default
+
+
+def main_pool():
+    path = Path(arg("--pool", "pool.json"))
+    repo = arg("--repo", DEFAULT_REPO)
+    pool = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+    subs = read_subreddits(repo)
+    log(f"Pool step: {len(subs)} subreddits, {len(pool.get('posts', {}))} threads in pool")
+    try:
+        pool = pool_step(pool, subs, max_requests=int(arg("--requests", 10)), pause=float(arg("--pause", 60)))
+    except Blocked as e:
+        log(f"STOPPED: Reddit refused this connection ({e}); pool kept as it was.")
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(pool, ensure_ascii=False), encoding="utf-8")
+
+
 def main():
+    if "--pool" in sys.argv:
+        return main_pool()
     test = "--test" in sys.argv
     cfg = json.loads(CONFIG_FILE.read_text(encoding="utf-8-sig")) if CONFIG_FILE.exists() else {}
     repo = cfg.get("repo", DEFAULT_REPO)
