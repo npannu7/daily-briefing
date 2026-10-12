@@ -4,11 +4,14 @@ Weights & Measures - a two-host podcast about what the AI community is discussin
 checked against the evidence. One run = one episode.
 
 Pipeline
-  1. COLLECT  - Reddit threads from the subreddits in subreddits.txt. Preferred source is
-                reddit/latest.json, uploaded by the office-PC collector (Reddit blocks cloud
-                servers). Fallbacks: direct Reddit RSS, then Hacker News discussions.
-  2. SCORE    - a cheap decision model rates every thread (relevant? substantial? level?
+  1. COLLECT  - Reddit threads from the subreddits in subreddits.txt, gathered hourly through the day by
+                the Collect Reddit workflow (about one request a minute; comments re-read once a thread
+                has matured). Also: reddit/latest.json from the office-PC collector if present.
+                Fallbacks: direct Reddit RSS, then Hacker News discussions.
+  2. SCORE    - one batched call to a free model rates every thread (relevant? substantial? level?
                 needs fact-checking? hype?). Duplicates across subreddits are merged.
+                CHECK: each thread is matched against feeds.txt, Hugging Face Daily Papers, the
+                primary source it links to, and Hacker News.
   3. TRACK    - threads are grouped into topics that build up over days. When a topic has
                 come up on several days in several communities, the evening becomes a deep dive.
   4. PLAN     - morning: "the thread vs the evidence"; evening: follow-ups + a concept from
@@ -16,12 +19,11 @@ Pipeline
   5. RESEARCH - the linked article / paper / repo behind each thread is fetched.
   6. WRITE    - two hosts (Sarah, Laura) in dialogue, pitched at an engineer outside CS.
   7. GREET    - personal greeting linked to past episodes; summary saved as memory.
-  8. VOICE    - Gemini TTS (free quota, reserved for the evening) -> Fish Audio free (OpenRouter)
-                -> Edge voices.
-  9. PUBLISH  - MP3 to the GitHub release, podcast.xml, quiz.json and transcript.
+  8. VOICE    - Fish Audio free (OpenRouter) -> Gemini TTS (free key) -> Edge voices.
+  9. PUBLISH  - MP3 to the GitHub release, podcast.xml, quiz.json (quiz + daily digest) and transcript.
 
-Writers: Gemini 3.8 Flash first (free key, then OpenRouter), Claude Haiku 5.5 as backup,
-then free models. Helper jobs (topics, quiz) use free models first.
+Zero cost by default: Gemini free key, then OpenRouter free models, then GitHub Models. One writer
+per episode where possible. OpenRouter's free daily request limit is counted, with a reserve for writing.
 """
 
 import asyncio
@@ -52,6 +54,10 @@ try:
     import trafilatura
 except ImportError:  # optional: better article extraction
     trafilatura = None
+try:
+    import feedparser
+except ImportError:  # optional: trusted-source cross-check
+    feedparser = None
 
 # =============================== SETTINGS ===============================
 LISTENER = "Nikhil"
@@ -94,15 +100,21 @@ AUDIO_BASE_URL = f"https://github.com/{REPO_FULL}/releases/download/{RELEASE_TAG
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "")
+# Free only by default: the Gemini API key's free quota, then OpenRouter's free models, then GitHub Models.
+# A paid model is used only if you add it to WRITER_MODELS / HELPER_MODELS and set OPENROUTER_DAILY_USD above 0.
 WRITER_CHAIN = os.getenv("WRITER_MODELS") or (
-    "gemini:gemini-3.8-flash,openrouter:google/gemini-3.8-flash,openrouter:anthropic/claude-haiku-5.5,"
-    "gemini:gemini-3.7-flash,gemini:gemini-3.5-flash-lite,openrouter:free")
+    "gemini:gemini-3.8-flash,gemini:gemini-3.7-flash,openrouter:free,gemini:gemini-3.5-flash-lite,github:auto")
 HELPER_CHAIN = os.getenv("HELPER_MODELS") or (
-    "gemini:gemini-3.5-flash-lite,openrouter:free,gemini:gemini-3.1-flash-lite,"
-    "openrouter:anthropic/claude-haiku-5.5")
-DECISION_MODELS = [m.strip() for m in (os.getenv("DECISION_MODELS") or
-                   "openai/gpt-6-luna-decisions,~typesafe/jev-latest").split(",") if m.strip()]
-OPENROUTER_DAILY_USD = float(os.getenv("OPENROUTER_DAILY_USD") or 0.40)   # spend cap for paid models
+    "gemini:gemini-3.5-flash-lite,gemini:gemini-3.1-flash-lite,openrouter:free,github:auto")
+# Scoring: one batched call to the helper chain, unless DECISION_MODELS lists decision models to use per thread.
+DECISION_MODELS = [m.strip() for m in (os.getenv("DECISION_MODELS") or "").split(",") if m.strip()]
+SCORING = (os.getenv("SCORING") or "auto").lower()      # auto | batch | decisions
+OPENROUTER_DAILY_USD = float(os.getenv("OPENROUTER_DAILY_USD") or 0)   # spend cap for paid models
+# OpenRouter's free models (text and Fish voices) share one daily request limit that resets at 00:00 UTC:
+# 1000 a day on accounts that have bought at least $10 of credits, 50 otherwise. Writing keeps a reserve.
+OPENROUTER_FREE_DAILY = int(os.getenv("OPENROUTER_FREE_DAILY") or 1000)
+FREE_WRITER_RESERVE = int(os.getenv("FREE_WRITER_RESERVE") or 40)
+GITHUB_TOKEN = os.getenv("GH_TOKEN") or os.getenv("GITHUB_TOKEN", "")
 
 GEMINI_TTS_MODEL = os.getenv("GEMINI_TTS_MODEL") or "gemini-3.8-flash-tts"
 TTS_ENGINE = (os.getenv("TTS_ENGINE") or "auto").lower()   # auto | gemini | fish | edge
@@ -121,6 +133,8 @@ QUIZ_FILE = ROOT / "quiz.json"
 TRANSCRIPT_DIR = ROOT / "transcripts"
 SNAPSHOT_FILE = ROOT / "reddit" / "latest.json"
 INTERESTS_FILE = ROOT / "interests.txt"
+POOL_FILE = ROOT / "reddit" / "pool.json"
+FEEDS_FILE = ROOT / "feeds.txt"
 BUILD_DIR = ROOT / "build"
 
 RATE = 24000
@@ -176,6 +190,38 @@ def strip_html(s, limit=None):
 DEAD = set()          # models that hit a quota/hard error this run
 SPEND = []            # [[iso_time, usd], ...] OpenRouter paid spend, last 24 h
 USED_BY = Counter()   # which writer produced the script
+FREE_LOG = []         # [utc_iso, ...] OpenRouter free-model requests (text and Fish) - one shared daily limit
+FREE_DAY_OUT = [""]   # UTC date on which OpenRouter said the free daily limit was used up
+WRITER_PICK = []      # the writer that last succeeded; later writing tries it first so the hosts sound the same
+
+
+def utc_day():
+    return dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d")
+
+
+def free_used():
+    return sum(1 for t in FREE_LOG if t.startswith(utc_day()))
+
+
+def free_allowed(n=1, role="writer"):
+    """Writing may use the whole free limit; scoring, quiz, digest and voices leave a reserve for it."""
+    if FREE_DAY_OUT[0] == utc_day():
+        return False
+    reserve = 0 if role == "writer" else FREE_WRITER_RESERVE
+    return free_used() + n <= OPENROUTER_FREE_DAILY - reserve
+
+
+def note_free(n=1):
+    FREE_LOG.extend([dt.datetime.now(dt.timezone.utc).isoformat()] * n)
+
+
+def free_limit_hit(status, err):
+    if status == 429 and re.search(r"per[- ]?day|daily", err or "", re.I):
+        if FREE_DAY_OUT[0] != utc_day():
+            log(f"    OpenRouter free daily limit reached ({free_used()} requests counted today)")
+        FREE_DAY_OUT[0] = utc_day()
+        return True
+    return False
 
 
 def spent_today():
@@ -190,7 +236,7 @@ def nice_model(model):
     return names.get(model, model.split("/")[-1].replace(":free", " (free)"))
 
 
-def _gemini_stream(model, prompt, json_mode):
+def _gemini_stream(model, prompt, json_mode, role="writer"):
     cfg = {"temperature": 0.6, "maxOutputTokens": 16384}
     if json_mode:
         cfg["responseMimeType"] = "application/json"
@@ -233,22 +279,24 @@ def free_models():
         free = [m for m in data if m.get("id", "").endswith(":free") and "inkling" not in m["id"]
                 and (m.get("context_length") or 0) >= 64000
                 and "text" in ((m.get("architecture") or {}).get("output_modalities") or ["text"])]
-        pref = ["gemini", "deepseek", "qwen", "kimi", "glm", "gemma", "inkling", "llama", "mistral", "gpt-oss"]
+        pref = ["gemini", "deepseek", "qwen", "nemotron", "kimi", "glm", "gemma", "llama", "mistral", "gpt-oss"]
 
         def rank(m):
             mid = m["id"].lower()
             return (next((i for i, p in enumerate(pref) if p in mid), len(pref)), -(m.get("context_length") or 0))
-        _FREE = [m["id"] for m in sorted(free, key=rank)][:4]
+        _FREE = [m["id"] for m in sorted(free, key=rank)][:6]
     except Exception as e:
         log(f"  could not list OpenRouter models: {e}")
     log(f"  OpenRouter free models: {', '.join(_FREE) or 'none'}")
     return _FREE
 
 
-def _openrouter(model, prompt, json_mode):
+def _openrouter(model, prompt, json_mode, role="writer"):
     paid = not model.endswith(":free")
     if paid and spent_today() >= OPENROUTER_DAILY_USD:
         return 402, "", f"daily OpenRouter budget ${OPENROUTER_DAILY_USD:.2f} reached"
+    if not paid and not free_allowed(1, role):
+        return 409, "", "free daily requests kept for writing"   # 409: skip for this call only
     body = {"model": model, "messages": [{"role": "user", "content": prompt}],
             "temperature": 0.6, "max_tokens": 12000, "usage": {"include": True}}
     if paid:
@@ -258,8 +306,13 @@ def _openrouter(model, prompt, json_mode):
     r = requests.post("https://openrouter.ai/api/v1/chat/completions", json=body, timeout=(20, 400 if paid else 150),
                       headers={"Authorization": f"Bearer {OPENROUTER_API_KEY}",
                                "HTTP-Referer": PAGES_URL, "X-Title": SHOW_TITLE})
+    if not paid:
+        note_free()
     if r.status_code != 200:
-        return r.status_code, "", r.text[:300].replace("\n", " ")
+        err = r.text[:300].replace("\n", " ")
+        if not paid and free_limit_hit(r.status_code, err):
+            return 429, "", err
+        return r.status_code, "", err
     data = r.json()
     if "error" in data:
         return 502, "", str(data["error"])[:300]
@@ -271,6 +324,57 @@ def _openrouter(model, prompt, json_mode):
     return 200, text, ""
 
 
+_GHM = None
+
+
+def github_models():
+    """GitHub Models: free with the workflow's own token (permission models: read), small daily limits and
+    small prompts on the free tier, so it is the last fallback."""
+    global _GHM
+    if _GHM is not None:
+        return _GHM
+    override = os.getenv("GITHUB_MODELS", "").strip()
+    if override:
+        _GHM = [m.strip() for m in override.split(",") if m.strip()]
+        return _GHM
+    _GHM = []
+    try:
+        data = requests.get("https://models.github.ai/catalog/models", timeout=30,
+                            headers={**UA, "Authorization": f"Bearer {GITHUB_TOKEN}",
+                                     "Accept": "application/vnd.github+json"}).json()
+        items = data if isinstance(data, list) else (data.get("models") or data.get("data") or [])
+        text = [m for m in items if isinstance(m, dict) and m.get("id")
+                and "text" in (m.get("supported_output_modalities") or ["text"])
+                and "embed" not in m["id"].lower()]
+        pref = ["deepseek", "gpt", "llama", "mistral", "phi"]
+
+        def rank(m):
+            mid = m["id"].lower()
+            return (next((i for i, p in enumerate(pref) if p in mid), len(pref)),
+                    -((m.get("limits") or {}).get("max_input_tokens") or 0))
+        _GHM = [m["id"] for m in sorted(text, key=rank)][:2]
+    except Exception as e:
+        log(f"  could not list GitHub Models: {str(e)[:120]}")
+    log(f"  GitHub Models: {', '.join(_GHM) or 'none'}")
+    return _GHM
+
+
+def _github(model, prompt, json_mode, role="writer"):
+    body = {"model": model, "messages": [{"role": "user", "content": prompt}], "temperature": 0.6, "max_tokens": 4000}
+    if json_mode:
+        body["response_format"] = {"type": "json_object"}
+    r = requests.post("https://models.github.ai/inference/chat/completions", json=body, timeout=(20, 300),
+                      headers={"Authorization": f"Bearer {GITHUB_TOKEN}", "Content-Type": "application/json",
+                               "Accept": "application/vnd.github+json"})
+    if r.status_code != 200:
+        return r.status_code, "", r.text[:300].replace("\n", " ")
+    msg = ((r.json().get("choices") or [{}])[0].get("message") or {})
+    return 200, re.sub(r"<think>.*?</think>", "", msg.get("content") or "", flags=re.S).strip(), ""
+
+
+PROVIDERS = {"gemini": _gemini_stream, "openrouter": _openrouter, "github": _github}
+
+
 def expand_chain(chain):
     out = []
     for item in [c.strip() for c in chain.split(",") if c.strip()]:
@@ -279,6 +383,8 @@ def expand_chain(chain):
             out.append(("gemini", model))
         elif prov == "openrouter" and OPENROUTER_API_KEY:
             out += [("openrouter", m) for m in free_models()] if model == "free" else [("openrouter", model)]
+        elif prov == "github" and GITHUB_TOKEN:
+            out += [("github", m) for m in github_models()] if model == "auto" else [("github", model)]
     return out
 
 
@@ -287,6 +393,9 @@ def llm(prompt, json_mode=False, min_words=0, label="", role="writer"):
     chain = expand_chain(WRITER_CHAIN if role == "writer" else HELPER_CHAIN)
     if not chain:
         raise RuntimeError("No LLM provider configured")
+    if role == "writer" and WRITER_PICK and WRITER_PICK[0] in chain:
+        chain.remove(WRITER_PICK[0])
+        chain.insert(0, WRITER_PICK[0])
     errors = []
     for prov, model in chain:
         if model in DEAD:
@@ -294,8 +403,7 @@ def llm(prompt, json_mode=False, min_words=0, label="", role="writer"):
         for attempt in (1, 2):
             t0 = time.time()
             try:
-                fn = _gemini_stream if prov == "gemini" else _openrouter
-                status, text, err = fn(model, prompt, json_mode)
+                status, text, err = PROVIDERS[prov](model, prompt, json_mode, role)
             except (requests.RequestException, ValueError, KeyError) as e:
                 log(f"    {model}: connection problem ({str(e)[:120]})")
                 errors.append(f"{model}: connection")
@@ -316,6 +424,8 @@ def llm(prompt, json_mode=False, min_words=0, label="", role="writer"):
                             continue
                         break
                 if text and n >= min_words:
+                    if role == "writer":
+                        WRITER_PICK[:] = [(prov, model)]
                     return text, model
                 errors.append(f"{model}: short ({n})")
                 break
@@ -354,11 +464,18 @@ def as_obj(data, key):
 
 def decide(state_obj, questions):
     """OpenRouter Decisions API. Returns the answers dict, or None if unavailable."""
-    if not OPENROUTER_API_KEY or spent_today() >= OPENROUTER_DAILY_USD:
+    if not OPENROUTER_API_KEY:
         return None
     for model in DECISION_MODELS:
         if model in DEAD:
             continue
+        free = model.endswith(":free")
+        if free and not free_allowed(1, "helper"):
+            return None
+        if not free and OPENROUTER_DAILY_USD > 0 and spent_today() >= OPENROUTER_DAILY_USD:
+            continue
+        if free:
+            note_free()
         try:
             r = requests.post("https://openrouter.ai/api/alpha/decisions", timeout=(15, 90),
                               json={"model": model, "state": state_obj, "questions": questions},
@@ -371,6 +488,9 @@ def decide(state_obj, questions):
             cost = float((data.get("usage") or {}).get("cost") or 0)
             if cost:
                 SPEND.append([dt.datetime.now(TZ).isoformat(), cost])
+                if OPENROUTER_DAILY_USD <= 0 and model not in DEAD:
+                    log(f"    decision model {model} charges money -> dropped (OPENROUTER_DAILY_USD is 0)")
+                    DEAD.add(model)
             return data.get("answers")
         if r.status_code in (400, 401, 402, 403, 404):
             log(f"    decision model {model}: HTTP {r.status_code} -> skipping | {r.text[:160]}")
@@ -381,7 +501,7 @@ def decide(state_obj, questions):
 # =============================== STATE ===============================
 def load_state():
     data = json.loads(EPISODES_FILE.read_text(encoding="utf-8")) if EPISODES_FILE.exists() else {}
-    for k in ("episodes", "memory", "seen", "feedback", "tts_log", "or_spend"):
+    for k in ("episodes", "memory", "seen", "feedback", "tts_log", "or_spend", "free_log"):
         data.setdefault(k, [])
     data.setdefault("topics", {})
     return data
@@ -494,6 +614,31 @@ def load_snapshot():
     return snap, f"office-PC snapshot ({age:.0f} h old)"
 
 
+def load_pool():
+    """Threads gathered by the hourly collect_reddit workflow (comments re-read once a thread has matured)."""
+    if not POOL_FILE.exists():
+        return [], "no hourly Reddit pool yet"
+    try:
+        pool = json.loads(POOL_FILE.read_text(encoding="utf-8"))
+    except (OSError, ValueError) as e:
+        return [], f"hourly Reddit pool unreadable ({e})"
+    now = dt.datetime.now(dt.timezone.utc)
+
+    def age_h(iso):
+        try:
+            return (now - dt.datetime.fromisoformat(str(iso).replace("Z", "+00:00"))).total_seconds() / 3600
+        except ValueError:
+            return 1e9
+    age = age_h(pool.get("updated_at", ""))
+    if age > 12:
+        return [], f"hourly Reddit pool is {age:.0f} h old"
+    posts = [p for p in (pool.get("posts") or {}).values()
+             if age_h(p.get("date") or p.get("first_seen", "")) <= SNAPSHOT_MAX_AGE_H]
+    with_c = sum(1 for p in posts if p.get("comments"))
+    log(f"  hourly pool: {len(posts)} threads ({with_c} with comments), updated {age:.1f} h ago")
+    return posts, f"Reddit, collected hourly ({len(posts)} threads)"
+
+
 def direct_reddit():
     """Try Reddit RSS from this server (usually blocked for cloud IPs)."""
     sys.path.insert(0, str(ROOT / "collector"))
@@ -589,6 +734,134 @@ def build_stories(posts, state):
     return stories
 
 
+# ======================= TRUSTED SOURCES (cross-check) =======================
+STOP = set("the and for with from into that this what when your have about will just more than over after their "
+           "they them been were does using used new how why can are its not you our".split())
+PRIMARY_DOMAINS = ("arxiv.org", "github.com", "huggingface.co", "openreview.net", "openai.com", "anthropic.com",
+                   "deepmind.google", "blog.google", "ai.google.dev", "research.google", "ai.meta.com", "mistral.ai",
+                   "nvidia.com", "microsoft.com", "qwenlm.github.io", "deepseek.com", "x.ai", "fda.gov", "europa.eu")
+
+
+def sig_words(t):
+    return {w for w in re.findall(r"[a-z0-9][a-z0-9.\-]*[a-z0-9]", (t or "").lower()) if len(w) > 2 and w not in STOP}
+
+
+def arxiv_ids(text):
+    return set(re.findall(r"\b(\d{4}\.\d{4,5})(?:v\d+)?\b", text or ""))
+
+
+def load_trusted(days=4):
+    """Recent items from feeds.txt plus Hugging Face Daily Papers - what careful outlets and primary sources said."""
+    feeds = []
+    if FEEDS_FILE.exists():
+        for line in FEEDS_FILE.read_text(encoding="utf-8").splitlines():
+            line = line.split("#", 1)[0].strip()
+            name, _, url = line.partition("|")
+            if name.strip() and url.strip().startswith("http"):
+                feeds.append((name.strip(), url.strip()))
+    cutoff = dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=days)
+
+    def one(feed):
+        name, url = feed
+        if not feedparser:
+            return name, [], "feedparser not installed"
+        try:
+            r = requests.get(url, headers=UA, timeout=20)
+            r.raise_for_status()
+            out = []
+            for e in feedparser.parse(r.content).entries[:40]:
+                t = e.get("published_parsed") or e.get("updated_parsed")
+                if t and dt.datetime(*t[:6], tzinfo=dt.timezone.utc) < cutoff:
+                    continue
+                out.append({"source": name, "title": fix_text(e.get("title", "")), "link": e.get("link", ""),
+                            "summary": strip_html(e.get("summary", ""), 700)})
+            return name, out, ""
+        except Exception as e:
+            return name, [], str(e)[:80]
+
+    items = []
+    with cf.ThreadPoolExecutor(max_workers=8) as ex:
+        for name, got, err in ex.map(one, feeds):
+            log(f"  feed {'OK  ' if not err else 'FAIL'} {name}: {len(got) if not err else err}")
+            items += got
+    try:
+        papers = requests.get("https://huggingface.co/api/daily_papers", headers=UA, timeout=20).json()
+        for it in (papers if isinstance(papers, list) else [])[:60]:
+            paper = it.get("paper") or it
+            pid = paper.get("id", "")
+            items.append({"source": "Hugging Face Daily Papers", "title": it.get("title") or paper.get("title", ""),
+                          "link": f"https://arxiv.org/abs/{pid}" if pid else "",
+                          "summary": strip_html(paper.get("summary") or it.get("summary") or "", 700)})
+        log(f"  Hugging Face Daily Papers: {len(papers) if isinstance(papers, list) else 0}")
+    except Exception as e:
+        log(f"  Hugging Face Daily Papers failed: {str(e)[:80]}")
+    for t in items:
+        t.update(nlink=norm_link(t["link"]), words=sig_words(t["title"]), arxiv=arxiv_ids(t["link"]))
+    return items
+
+
+def trusted_matches(s, trusted):
+    nl, tw = s.get("nlink", ""), sig_words(s["title"])
+    ax = arxiv_ids(f"{s.get('link', '')} {s.get('text', '')}")
+    hits = []
+    for t in trusted:
+        same = (nl and nl == t["nlink"]) or (t["arxiv"] & ax)
+        if not same:
+            common = tw & t["words"]
+            same = len(common) >= 3 and len(common) / max(1, min(len(tw), len(t["words"]))) >= 0.6
+        if same and t["source"] not in {h["source"] for h in hits}:
+            hits.append(t)
+    return hits[:3]
+
+
+def primary_link(s):
+    """The thread's own link, or the first link to a primary source mentioned in the post."""
+    if s.get("link") and not any(d in urlparse(s["link"]).netloc for d in SKIP_DOMAINS):
+        return s["link"]
+    for u in re.findall(r"https?://[^\s)\]>\"']+", s.get("text", "")):
+        if any(d in urlparse(u).netloc for d in PRIMARY_DOMAINS):
+            return u.rstrip(".,;")
+    return s.get("link", "")
+
+
+def hn_lookup(s):
+    """The same story on Hacker News - a second, independent community."""
+    if "HackerNews" in s["subs"]:
+        return None
+    try:
+        q = ({"query": s["link"], "restrictSearchableAttributes": "url", "tags": "story"} if s.get("link")
+             else {"query": s["title"][:120], "tags": "story"})
+        hits = requests.get("https://hn.algolia.com/api/v1/search", params=q, headers=UA, timeout=20).json().get("hits", [])
+        hits = [h for h in hits if (h.get("points") or 0) >= 10]
+        if not s.get("link"):
+            hits = [h for h in hits if len(sig_words(h.get("title")) & sig_words(s["title"])) >= 3]
+        if not hits:
+            return None
+        h = max(hits, key=lambda h: h.get("points") or 0)
+        item = requests.get(f"https://hn.algolia.com/api/v1/items/{h['objectID']}", headers=UA, timeout=20).json()
+        comments = [strip_html(c.get("text") or "", 500) for c in (item.get("children") or [])[:8] if c.get("text")]
+        return {"points": h.get("points") or 0, "title": h.get("title", ""), "comments": comments[:5]}
+    except Exception:
+        return None
+
+
+def check_block(s):
+    lines = []
+    if s.get("evidence") and not s["evidence"].startswith("(could not"):
+        lines.append(f"- Source read directly: {urlparse(s.get('source_url', '')).netloc or 'linked page'}")
+    for t in s.get("also_in", []):
+        lines.append(f"- {t['source']} has a matching item (use only if it is clearly the same story): "
+                     f"\"{t['title']}\" - {t['summary'][:500]}")
+    hn = s.get("hn")
+    if hn:
+        lines.append(f"- Hacker News discussed it ({hn['points']} points). Comments there: "
+                     + " | ".join(c[:300] for c in hn["comments"][:4]))
+    if not lines:
+        lines.append("- Found nowhere outside Reddit and no source could be read: treat its claims as unconfirmed "
+                     "and say so on air.")
+    return "INDEPENDENT CHECK:\n" + "\n".join(lines)
+
+
 # =============================== 2. SCORE ===============================
 SCORE_QUESTIONS = {
     "relevant": {"type": "noul", "instructions": "Is this thread about AI technology, research, products, the AI "
@@ -630,13 +903,15 @@ def score_stories(stories, state, limit=70):
         return s["id"], decide(st, SCORE_QUESTIONS)
 
     results = {}
-    with cf.ThreadPoolExecutor(max_workers=6) as ex:
-        for sid, ans in ex.map(one, top):
-            if ans:
-                results[sid] = ans
-    if len(results) < len(top) * 0.5:
-        log(f"  decision model scored only {len(results)}/{len(top)}; using a free model to score")
-        results.update(llm_score(top))
+    if DECISION_MODELS and SCORING in ("auto", "decisions"):
+        with cf.ThreadPoolExecutor(max_workers=6) as ex:
+            for sid, ans in ex.map(one, top):
+                if ans:
+                    results[sid] = ans
+        log(f"  decision models scored {len(results)}/{len(top)}")
+    missing = [s for s in top if s["id"] not in results]
+    if missing:
+        results.update(llm_score(missing))
     bonus = level_bonus(state)
     kept = []
     for s in top:
@@ -658,8 +933,18 @@ def score_stories(stories, state, limit=70):
     return kept
 
 
-def llm_score(stories):
-    listing = "\n".join(f"[{s['id']}] ({', '.join(sorted(set(s['subs'])))}) {s['title']} :: {s['text'][:200]}"
+def llm_score(stories, batch=35):
+    """All threads in one or two calls instead of one call per thread - gentle on free daily limits."""
+    out = {}
+    for i in range(0, len(stories), batch):
+        out.update(_score_batch(stories[i:i + batch]))
+    log(f"  batched scoring: {len(out)} threads in {(len(stories) + batch - 1) // batch} call(s)")
+    return out
+
+
+def _score_batch(stories):
+    listing = "\n".join(f"[{s['id']}] ({', '.join(sorted(set(s['subs'])))}; {len(s['comments'])} comments) {s['title']}"
+                        f" :: {s['text'][:220]}" + (f" || top comment: {s['comments'][0][:160]}" if s["comments"] else "")
                         for s in stories)
     prompt = f"""Rate these AI discussion threads. Return JSON only:
 {{"items": [{{"id": <n>, "relevant": 0-1, "substance": 0-3, "level": "general|technical|specialist",
@@ -673,11 +958,14 @@ needs_check = makes checkable factual claims. hype = speculative or sensational 
         text, _ = llm(prompt, json_mode=True, label="scoring", role="helper")
         out = {}
         for it in as_obj(parse_json(text), "items").get("items", []):
-            out[int(it["id"])] = {"relevant": {"noul": float(it.get("relevant", 0))},
-                                  "substance": {"score": float(it.get("substance", 1))},
-                                  "level": {"choice": it.get("level", "technical")},
-                                  "needs_check": {"noul": float(it.get("needs_check", 0))},
-                                  "hype": {"noul": float(it.get("hype", 0))}}
+            try:
+                out[int(it["id"])] = {"relevant": {"noul": float(it.get("relevant", 0))},
+                                      "substance": {"score": float(it.get("substance", 1))},
+                                      "level": {"choice": it.get("level", "technical")},
+                                      "needs_check": {"noul": float(it.get("needs_check", 0))},
+                                      "hype": {"noul": float(it.get("hype", 0))}}
+            except (KeyError, TypeError, ValueError):
+                continue
         return out
     except Exception as e:
         log(f"  fallback scoring failed: {e}")
@@ -801,6 +1089,8 @@ def personal_rank(stories, state):
         s["covered"] = s.get("topic") in covered
         if s["covered"] and len(set(s["subs"])) < 3:
             s["score"] -= 0.15
+        if s.get("also_in"):
+            s["score"] += 0.05   # a trusted outlet or primary source also has it
     stories.sort(key=lambda s: -s.get("score", 0))
     log(f"  interest matches: {sum(1 for s in stories if s['interests'])}, "
         f"held back as recently covered: {sum(1 for s in stories if s['covered'])}")
@@ -816,6 +1106,8 @@ EDITORIAL = f"""EDITORIAL STANDARD:
   missing context. Separate: what the post claims / what the community argues / what the evidence shows.
 - Paraphrase commenters; never use usernames ("one commenter who runs models at home argued...").
 - No hype words ("revolutionary", "game-changer", "unlocks"); no predictions presented as facts.
+- Every thread comes with an INDEPENDENT CHECK. Say plainly on air whether a claim is backed by the primary
+  source or a trusted outlet (name it), or is so far only on Reddit.
 - Your own training knowledge may be out of date. For anything recent, rely only on the SOURCES given.
   Never invent numbers, names, dates or quotes. If unsure, say it is unclear."""
 
@@ -826,6 +1118,8 @@ def candidate_listing(stories, n=30):
         flags = ", ".join(x for x in (s.get("level", ""), "claims to check" if s.get("needs_check") else "",
                                       "hype" if s.get("hype") else "",
                                       "covered recently" if s.get("covered") else "",
+                                      ("also in: " + ", ".join(t["source"] for t in s["also_in"]))
+                                      if s.get("also_in") else "",
                                       ("interest: " + "/".join(s["interests"][:2])) if s.get("interests") else "") if x)
         rows.append(f"[{s['id']}] ({', '.join(sorted(set(s['subs'])))}; {len(s['comments'])} comments; {flags}) "
                     f"{s['title']}" + (f" :: {s['text'][:220]}" if s["text"] else ""))
@@ -930,13 +1224,22 @@ def sources_block(items, topic=None):
     blocks = []
     for s in items:
         if "evidence" not in s:
-            s["evidence"] = fetch_article(s.get("link"))
+            s["source_url"] = primary_link(s)
+            s["evidence"] = fetch_article(s["source_url"])
+            if not s["evidence"] or s["evidence"].startswith("(could not"):
+                for t in s.get("also_in", []):   # fall back to the trusted outlet's own write-up
+                    ev = fetch_article(t["link"])
+                    if ev and not ev.startswith("(could not"):
+                        s["source_url"], s["evidence"] = t["link"], ev
+                        break
+            s["hn"] = hn_lookup(s)
         comments = "\n".join(f"  - {c[:500]}" for c in s["comments"][:14])
         blocks.append(f"THREAD: {s['title']}\nCommunities: {', '.join(sorted(set(s['subs'])))}\n"
                       f"Post text: {s['text'][:2000] or '(link post, no text)'}\n"
                       f"Top comments:\n{comments or '  (none collected)'}\n"
-                      f"Linked source: {s.get('link') or 'none'}\n"
-                      f"Linked source text: {s['evidence'][:6000] or '(not available)'}")
+                      f"Linked source: {s.get('source_url') or 'none'}\n"
+                      f"Linked source text: {s['evidence'][:6000] or '(not available)'}\n"
+                      f"{check_block(s)}")
     if topic:
         refs = "\n".join(f"- {r['date']}: {r['title']}" + (f" | comment: {r['comment']}" if r.get("comment") else "")
                          for r in topic["refs"])
@@ -1264,9 +1567,12 @@ def fish_tts_chunk(turns):
             r = requests.post("https://openrouter.ai/api/v1/audio/speech", timeout=(20, 180), json=body,
                               headers={"Authorization": f"Bearer {OPENROUTER_API_KEY}",
                                        "HTTP-Referer": PAGES_URL, "X-Title": SHOW_TITLE})
+            note_free()
             if r.status_code == 200 and r.content:
                 pcm += ffmpeg_to_pcm(r.content) + silence(0.25)
                 break
+            if free_limit_hit(r.status_code, r.text[:300]):
+                raise RuntimeError("OpenRouter free daily limit reached")
             if r.status_code in (429, 500, 502, 503, 504) and attempt < 3:
                 time.sleep(30 if r.status_code == 429 else 10 * attempt)
                 continue
@@ -1327,7 +1633,8 @@ def voice_episode(sections, state, edition):
         chunks = split_chunks(flat, size)
     log(f"  {len(chunks)} voice chunks of up to {size} words")
 
-    engines = ["gemini", "fish", "edge"] if TTS_ENGINE == "auto" else [TTS_ENGINE]
+    # Fish is the standard voice; Gemini (free key) and Edge are fallbacks.
+    engines = ["fish", "gemini", "edge"] if TTS_ENGINE == "auto" else [TTS_ENGINE]
     for engine in engines:
         if engine == "gemini":
             if not GEMINI_API_KEY:
@@ -1341,8 +1648,13 @@ def voice_episode(sections, state, edition):
             if TTS_ENGINE == "auto" and used + len(chunks) > GEMINI_TTS_DAILY:
                 log(f"  Gemini TTS: {used} used today (Pacific), need {len(chunks)} (limit {GEMINI_TTS_DAILY}) -> next voice")
                 continue
-        if engine == "fish" and not OPENROUTER_API_KEY:
-            continue
+        if engine == "fish":
+            if not OPENROUTER_API_KEY:
+                continue
+            if not free_allowed(len(flat), "voices"):
+                log(f"  Fish: needs {len(flat)} free requests, {free_used()} of {OPENROUTER_FREE_DAILY} used today "
+                    f"(UTC) with {FREE_WRITER_RESERVE} kept for writing -> next voice")
+                continue
         try:
             pcm, marks, seen_labels = bytearray(), [], set()
             for i, chunk in enumerate(chunks, 1):
@@ -1414,6 +1726,39 @@ Plausible distractors; vary the position of the correct answer."""
     except Exception as e:
         log(f"  quiz skipped: {e}")
         return []
+
+
+def make_digest(stories, used, n=12):
+    """Ten-second read of the day's top threads, so there is no need to open Reddit to know nothing was missed."""
+    top = stories[:n]
+    if not top:
+        return []
+    listing = "\n".join(
+        f"[{s['id']}] ({', '.join(sorted(set(s['subs'])))}) {s['title']} :: {s['text'][:300]}"
+        + (f" || comments: {' | '.join(c[:150] for c in s['comments'][:3])}" if s["comments"] else "")
+        + (f" || also reported by: {', '.join(t['source'] for t in s['also_in'])}" if s.get("also_in") else "")
+        for s in top)
+    prompt = f"""For each AI discussion thread below, write ONE plain sentence (at most 30 words) saying what it is
+about and where the discussion landed, for {LISTENER}, who will not open Reddit. Then a verdict, one of:
+"confirmed" (a primary source or trusted outlet backs it), "plausible", "unclear", "hype", "opinion" (a debate,
+not a factual claim). Use only what is given; no usernames.
+Return JSON only: {{"items": [{{"id": <n>, "line": "...", "verdict": "..."}}]}}
+
+{listing}"""
+    got = {}
+    try:
+        text, _ = llm(prompt, json_mode=True, label="digest", role="helper")
+        for it in as_obj(parse_json(text), "items").get("items", []):
+            try:
+                got[int(it["id"])] = it
+            except (KeyError, TypeError, ValueError):
+                continue
+    except Exception as e:
+        log(f"  digest lines skipped: {e}")
+    return [{"title": s["title"], "subs": sorted(set(s["subs"])), "thread": s["threads"][0], "link": s.get("link", ""),
+             "line": str(got.get(s["id"], {}).get("line") or s["text"][:180]),
+             "verdict": str(got.get(s["id"], {}).get("verdict") or ""),
+             "also_in": [t["source"] for t in s.get("also_in", [])], "in_episode": s["id"] in used} for s in top]
 
 
 def write_quiz_files(keep, entry, transcript_text):
@@ -1492,6 +1837,8 @@ def main():
 
     state = load_state()
     SPEND.extend(state.get("or_spend", []))
+    FREE_LOG.extend(state.get("free_log", []))
+    FREE_DAY_OUT[0] = state.get("free_day_out", "")
     if any(e["date"] == date_key and e["edition"] == edition for e in state["episodes"]) and not force:
         log("This edition already exists - nothing to do (backup run).")
         return
@@ -1503,9 +1850,15 @@ def main():
         EDGE_RATE = "-8%" if shift < 0 else "+8%"
 
     log("1/8 Collecting discussions")
-    snap, source_note = load_snapshot()
-    posts = snap["posts"] if snap else []
-    if not posts:
+    posts, pool_note = load_pool()
+    snap, snap_note = load_snapshot()
+    notes = [pool_note] if posts else []
+    if snap:   # office-PC snapshot, if that collector is still running
+        have = {p["id"] for p in posts}
+        posts += [p for p in snap["posts"] if p["id"] not in have]
+        notes.append(snap_note)
+    source_note = " + ".join(notes) or f"{pool_note}; {snap_note}"
+    if len(posts) < 15:
         log(f"  {source_note}")
         direct = direct_reddit()
         if direct and direct["posts"]:
@@ -1513,8 +1866,7 @@ def main():
     if len(posts) < 15:
         source_note = (source_note + " + Hacker News") if posts else f"Hacker News (no Reddit data: {source_note})"
         posts += hn_threads()
-        if not snap:
-            gh_note("warning", "No fresh Reddit data", "Using Hacker News discussions. Check the office-PC collector.")
+        gh_note("warning", "Little Reddit data", "Using Hacker News too. Check the Collect Reddit workflow.")
     stories = build_stories(posts, state)
     if len(stories) < 5:
         raise RuntimeError(f"Only {len(stories)} new discussions found.")
@@ -1524,8 +1876,12 @@ def main():
     stories = score_stories(stories, state)
     by_id = {s["id"]: s for s in stories}
 
-    log("3/8 Tracking topics")
+    log("3/8 Tracking topics and checking trusted sources")
     update_topics(state, stories, date_key)
+    trusted = load_trusted()
+    for s in stories:
+        s["also_in"] = trusted_matches(s, trusted)
+    log(f"  {sum(1 for s in stories if s['also_in'])} of {len(stories)} threads also covered by a trusted source")
     personal_rank(stories, state)
     deep = ready_topic(state, date_key) if edition == "evening" else None
     real_topics = [k for k in state["topics"] if k not in NO_TOPIC]
@@ -1638,26 +1994,31 @@ def main():
         gh("release", "upload", RELEASE_TAG, str(mp3), "--clobber")
         sync_release_assets({e["file"] for e in keep})
 
+    log("  writing quiz and digest")
+    quiz = make_quiz(written, theme)
+    digest = make_digest(stories, used)
+
     fb_cut = (now - dt.timedelta(days=FEEDBACK_DAYS)).isoformat()
     day_ago = (now - dt.timedelta(hours=24)).isoformat()
+    utc_yesterday = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=1)).strftime("%Y-%m-%d")
     save_state({"episodes": keep, "memory": memory, "seen": seen,
                 "feedback": [f for f in state["feedback"] if f.get("received", "") >= fb_cut],
                 "tts_log": state.get("tts_log", []), "or_spend": [s for s in SPEND if s[0] >= day_ago],
+                "free_log": [t for t in FREE_LOG if t >= utc_yesterday], "free_day_out": FREE_DAY_OUT[0],
                 "topics": state["topics"]})
 
-    log("  writing quiz")
-    quiz = make_quiz(written, theme)
     transcript = "\n\n".join(f"## {lbl}\n" + "\n".join(f"{spk}: {t}" for spk, t in turns) for lbl, turns in sections)
     write_quiz_files(keep, {
         "file": filename, "title": episode["title"], "label": label, "date": date_key, "edition": edition,
         "published": now.isoformat(), "duration": duration, "theme": theme, "writer": writer,
         "voices": ENGINE_NAMES[engine], "deep_dive": bool(deep),
         "segments": [{"title": s["title"], "category": s.get("format", "")} for s, _ in written],
-        "quiz": quiz, "transcript": f"transcripts/{Path(filename).stem}.txt"}, transcript)
+        "quiz": quiz, "digest": digest, "transcript": f"transcripts/{Path(filename).stem}.txt"}, transcript)
     build_rss(keep)
     for n in close_issues:
         gh("issue", "close", str(n), "--comment", "Thanks - recorded. It will shape the next episodes.", check=False)
-    log(f"Done. Feed: {PAGES_URL}/podcast.xml | OpenRouter spend last 24 h: ${spent_today():.3f}")
+    log(f"Done. Feed: {PAGES_URL}/podcast.xml | OpenRouter spend last 24 h: ${spent_today():.3f} | "
+        f"free requests today (UTC): {free_used()}/{OPENROUTER_FREE_DAILY}")
     gh_note("notice", "Episode ready", f"{filename} - {fmt_ts(duration)} - {len(written)} segments - {total_words} words "
                                         f"- writer: {writer} - voices: {ENGINE_NAMES[engine]} - source: {source_note}")
 

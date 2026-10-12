@@ -69,13 +69,24 @@ textarea{width:100%;min-height:90px;border:1px solid var(--line);border-radius:1
 .hint{color:var(--muted);font-size:13px}
 a{color:var(--accent)}
 .empty{color:var(--muted);text-align:center;padding:40px 0}
+.dg{border-top:1px solid var(--line);padding:10px 0}
+.dg:first-of-type{border-top:0;padding-top:0}
+.dg a.t{font-weight:600;text-decoration:none;color:var(--ink)}
+.dg a.t:hover{text-decoration:underline}
+.dg p{margin:4px 0 2px;font-size:14px}
+.badge{display:inline-block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;
+  border-radius:6px;padding:1px 6px;margin-right:6px;background:var(--chip);color:var(--muted);vertical-align:1px}
+.badge.confirmed{background:var(--good-soft);color:var(--good)}
+.badge.hype{background:var(--bad-soft);color:var(--bad)}
+.badge.ep{background:var(--soft);color:var(--accent)}
+details.digest summary{cursor:pointer;color:var(--muted);font-size:14px;margin:0 0 10px}
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
     <img src="artwork.jpg" alt="">
-    <div><h1 id="show">Weights &amp; Measures</h1><p id="sub">Quiz and feedback</p></div>
+    <div><h1 id="show">Weights &amp; Measures</h1><p id="sub">Digest, quiz and feedback</p></div>
   </header>
   <div class="tabs" id="tabs" role="toolbar" aria-label="Episodes"></div>
   <div id="list"><p class="empty">Loading episodes…</p></div>
@@ -102,6 +113,7 @@ a{color:var(--accent)}
     (kids||[]).forEach(function(c){ if (c) n.appendChild(c); });
     return n;
   }
+  function safeUrl(u){ return /^https?:\/\//i.test(u || '') ? u : ''; }
   function fmtDur(s){ s = +s||0; return Math.floor(s/60) + ' min'; }
   function st(file){
     if (!state[file]) state[file] = store.get('wm:' + file, {answers:{}, checked:false, ratings:{}, segments:{}, comment:''});
@@ -130,6 +142,28 @@ a{color:var(--accent)}
       el('div', {class:'meta', text: ep.label + ' · ' + fmtDur(ep.duration) + (ep.writer ? ' · written by ' + ep.writer : '') + (ep.voices ? ' · voices: ' + ep.voices : '')}),
       ep.theme ? el('p', {class:'theme', text: ep.theme}) : null
     ]));
+
+    // At a glance: the day's top threads, so there is no need to open Reddit
+    if (ep.digest && ep.digest.length){
+      card.appendChild(el('div', {class:'sec', text:'At a glance — top threads'}));
+      var box = el('details', {class:'digest'});
+      if (ep === DATA.episodes[0]) box.setAttribute('open', '');
+      box.appendChild(el('summary', {text: ep.digest.length + ' threads · ' +
+        ep.digest.filter(function(d){ return d.in_episode; }).length + ' discussed in this episode'}));
+      ep.digest.forEach(function(d){
+        var badges = [];
+        if (d.verdict) badges.push(el('span', {class:'badge ' + d.verdict.toLowerCase(), text: d.verdict}));
+        if (d.in_episode) badges.push(el('span', {class:'badge ep', text:'in episode'}));
+        var meta = (d.subs || []).join(', ') + (d.also_in && d.also_in.length ? ' · also in ' + d.also_in.join(', ') : '');
+        box.appendChild(el('div', {class:'dg'}, [
+          el('div', {}, badges.concat([safeUrl(d.thread) ? el('a', {class:'t', href: safeUrl(d.thread), target:'_blank', rel:'noopener', text: d.title}) : el('span', {class:'t', text: d.title})])),
+          el('p', {text: d.line || ''}),
+          el('div', {class:'meta'}, [document.createTextNode(meta)].concat(safeUrl(d.link) ? [document.createTextNode(' · '),
+            el('a', {href: safeUrl(d.link), target:'_blank', rel:'noopener', text:'source'})] : []))
+        ]));
+      });
+      card.appendChild(box);
+    }
 
     // Quiz
     if (ep.quiz && ep.quiz.length){
@@ -256,7 +290,7 @@ a{color:var(--accent)}
     DATA = d;
     DATA.episodes.sort(function(a, b){ return a.published < b.published ? 1 : -1; });
     document.getElementById('show').textContent = d.show || 'Weights & Measures';
-    document.getElementById('sub').textContent = 'Quiz and feedback for ' + (d.listener || 'you');
+    document.getElementById('sub').textContent = 'Digest, quiz and feedback for ' + (d.listener || 'you');
     selected = DATA.episodes.slice(0, 2).map(function(e){ return e.file; });
     if (!DATA.episodes.length){ document.getElementById('list').innerHTML = '<p class="empty">No episodes with a quiz yet.</p>'; return; }
     renderTabs(); render();

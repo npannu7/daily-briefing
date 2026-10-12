@@ -21,7 +21,7 @@ on:
       tts:
         description: 'Voice engine'
         type: choice
-        options: [auto, gemini, fish, edge]
+        options: [auto, fish, gemini, edge]
         default: auto
       deep_dive:
         description: 'Make this a deep dive on the most built-up topic'
@@ -31,6 +31,7 @@ on:
 permissions:
   contents: write      # commit feed, quiz and cover; upload audio
   issues: write        # read and close feedback sent from quiz.html
+  models: read         # GitHub Models, the last free fallback for writing
 
 concurrency:
   group: daily-briefing
@@ -61,6 +62,11 @@ jobs:
             python make_cover.py
           fi
 
+      - name: Download hourly Reddit pool
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release download reddit-pool -p pool.json -D reddit --clobber || echo "No Reddit pool yet."
+
       - name: Generate briefing
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
@@ -68,7 +74,11 @@ jobs:
           WRITER_MODELS: ${{ vars.WRITER_MODELS }}
           HELPER_MODELS: ${{ vars.HELPER_MODELS }}
           DECISION_MODELS: ${{ vars.DECISION_MODELS }}
+          SCORING: ${{ vars.SCORING }}
           OPENROUTER_DAILY_USD: ${{ vars.OPENROUTER_DAILY_USD }}
+          OPENROUTER_FREE_DAILY: ${{ vars.OPENROUTER_FREE_DAILY }}
+          OPENROUTER_FREE_MODELS: ${{ vars.OPENROUTER_FREE_MODELS }}
+          GITHUB_MODELS: ${{ vars.GITHUB_MODELS }}
           FISH_VOICE_A: ${{ vars.FISH_VOICE_A }}
           FISH_VOICE_B: ${{ vars.FISH_VOICE_B }}
           GEMINI_TTS_MODEL: ${{ vars.GEMINI_TTS_MODEL }}
