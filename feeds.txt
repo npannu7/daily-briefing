@@ -11,7 +11,7 @@ BAIR Blog | https://bair.berkeley.edu/blog/feed.xml
 
 # --- Careful, low-hype analysis ---
 Simon Willison | https://simonwillison.net/atom/everything/
-Import AI (Jack Clark) | https://importai.substack.com/feed
+# Import AI (Jack Clark) | https://importai.substack.com/feed   (Substack refuses GitHub's servers: HTTP 403)
 Interconnects (Nathan Lambert) | https://www.interconnects.ai/feed
 Ahead of AI (Sebastian Raschka) | https://magazine.sebastianraschka.com/feed
 Latent Space | https://www.latent.space/feed
