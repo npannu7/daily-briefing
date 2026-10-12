@@ -83,7 +83,7 @@ HOST_B = {"name": "Laura", "gemini": "Gacrux", "edge": "en-US-JennyNeural",
 
 MIN_WORDS = 3300
 TARGET_WORDS = 3800
-DEEP_DIVE_WORDS = 4600
+DEEP_DIVE_WORDS = 4000
 MIN_AUDIO_SEC = 20 * 60
 RETENTION_DAYS = 7
 MEMORY_DAYS = 60
@@ -1271,13 +1271,13 @@ def plan_deep_dive(topic_key, state, stories):
     base = {"item_ids": today_ids, "format": "deepdive", "topic": topic_key, "connects_to": ""}
     parts = [
         ("Why everyone is talking about it", "Walk through how the discussion built up over the past days across "
-         "communities: what people claimed, what they argued about, what changed.", 900),
+         "communities: what people claimed, what they argued about, what changed.", 800),
         ("The foundations, from scratch", "Explain the underlying idea from first principles for an engineer "
-         "outside CS: the problem it solves, the mechanism, analogies, and the key terms.", 1250),
+         "outside CS: the problem it solves, the mechanism, analogies, and the key terms.", 1100),
         ("How we got here", "The history: earlier approaches, key papers or releases, what each step fixed and "
-         "what it broke. Only use facts you are sure of or that are in the sources.", 1250),
+         "what it broke. Only use facts you are sure of or that are in the sources.", 1100),
         ("Reality check", "What the community gets right and wrong, the actual evidence today, the honest "
-         "limitations, and open questions to watch - no predictions.", 1100),
+         "limitations, and open questions to watch - no predictions.", 1000),
     ]
     segs = [dict(base, title=f"{t['name']}: {title}", angle=angle, words=w) for title, angle, w in parts]
     return f"Deep dive: {t['name']}", segs
@@ -1869,6 +1869,13 @@ def ensure_release():
            "--notes", "Audio files for the podcast feed. Managed automatically.", "--latest=false")
 
 
+def release_files():
+    res = gh("release", "view", RELEASE_TAG, "--json", "assets", check=False)
+    if res.returncode != 0:
+        return None
+    return {a["name"] for a in json.loads(res.stdout).get("assets", [])}
+
+
 def sync_release_assets(keep_files):
     res = gh("release", "view", RELEASE_TAG, "--json", "assets", check=False)
     if res.returncode != 0:
@@ -1972,6 +1979,9 @@ def main():
     log(f"  {sum(1 for s in stories if s['also_in'])} of {len(stories)} threads also covered by a trusted source")
     personal_rank(stories, state)
     deep = ready_topic(state, date_key) if edition == "evening" else None
+    if deep and not any(s.get("topic") == deep for s in stories):
+        log(f"  deep dive on {state['topics'][deep]['name']} skipped: none of today's threads are about it")
+        deep = None
     real_topics = [k for k in state["topics"] if k not in NO_TOPIC]
     if env_true("DEEP_DIVE") and not deep and real_topics:   # manual "deep dive now" from the workflow
         deep = max(real_topics, key=lambda k: (len(state["topics"][k]["days"]), state["topics"][k]["mentions"]))
@@ -2080,6 +2090,11 @@ def main():
     else:
         ensure_release()
         gh("release", "upload", RELEASE_TAG, str(mp3), "--clobber")
+        present = release_files()
+        if present is not None:   # the feed must never point at audio that is gone
+            for e in [e for e in keep if e["file"] not in present]:
+                log(f"  audio missing for {e['file']} -> removed from the feed")
+            keep = [e for e in keep if e["file"] in present]
         sync_release_assets({e["file"] for e in keep})
 
     log("  writing quiz and digest")
