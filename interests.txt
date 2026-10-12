@@ -1,0 +1,27 @@
+# What Nikhil personally wants more of.   Format:  phrase / synonym / synonym | weight
+#   weight 3 = strong interest, 2 = interested, 1 = mild, 0 = off
+# Matching threads get a boost in ranking, and the editor is told these interests.
+# Edit freely - changes apply on the next episode.
+
+# --- Work: regulated industry, quality, validation ---
+medical device / medtech / SaMD / diagnostic / clinical / healthcare / hospital | 3
+FDA / EU AI Act / MDR / regulation / regulator / regulatory / compliance / ISO 13485 / ISO 42001 | 3
+validation / verification / audit / traceability / GMP / quality system | 3
+pharma / drug discovery / protein / biotech | 2
+manufacturing / inspection / factory / industrial / predictive maintenance | 2
+
+# --- Can AI be trusted? ---
+hallucination / reliability / failure mode / error rate | 3
+benchmark / evaluation / eval / leaderboard / contamination | 2
+interpretability / explainability | 2
+safety / alignment / sycophancy | 1
+
+# --- Hobby: building with AI ---
+local model / LocalLLaMA / ollama / quantization / GGUF / on-device | 2
+coding agent / Claude Code / Codex / Cursor / agentic coding | 2
+RAG / retrieval / knowledge base / document | 2
+robotics / embodied / control | 2
+
+# --- Bigger picture ---
+India / Indian | 2
+jobs / employment / automation of work | 1

@@ -108,6 +108,7 @@ GEMINI_TTS_MODEL = os.getenv("GEMINI_TTS_MODEL") or "gemini-3.8-flash-tts"
 TTS_ENGINE = (os.getenv("TTS_ENGINE") or "auto").lower()   # auto | gemini | fish | edge
 GEMINI_TTS_DAILY = int(os.getenv("GEMINI_TTS_DAILY") or 10)
 TTS_CHUNK_WORDS = int(os.getenv("TTS_CHUNK_WORDS") or 700)
+TTS_MAX_CHUNK_WORDS = int(os.getenv("TTS_MAX_CHUNK_WORDS") or 1100)
 FISH_MODEL = os.getenv("FISH_MODEL") or "fish-audio/s2.1-pro-free:free"
 # Fish Audio library voices (via OpenRouter's free Fish model): Sarah, Laura
 FISH_VOICES = [os.getenv("FISH_VOICE_A") or "933563129e564b19a115bedd57b7406a",
@@ -119,6 +120,7 @@ PODCAST_FILE = ROOT / "podcast.xml"
 QUIZ_FILE = ROOT / "quiz.json"
 TRANSCRIPT_DIR = ROOT / "transcripts"
 SNAPSHOT_FILE = ROOT / "reddit" / "latest.json"
+INTERESTS_FILE = ROOT / "interests.txt"
 BUILD_DIR = ROOT / "build"
 
 RATE = 24000
@@ -352,7 +354,7 @@ def as_obj(data, key):
 
 def decide(state_obj, questions):
     """OpenRouter Decisions API. Returns the answers dict, or None if unavailable."""
-    if not OPENROUTER_API_KEY:
+    if not OPENROUTER_API_KEY or spent_today() >= OPENROUTER_DAILY_USD:
         return None
     for model in DECISION_MODELS:
         if model in DEAD:
@@ -548,6 +550,10 @@ def title_words(t):
     return {w for w in re.findall(r"[a-z0-9]+", t.lower()) if len(w) > 2}
 
 
+BOT_COMMENT = re.compile(r"I am a bot|performed automatically|AutoModerator|contact the moderators|"
+                         r"^\s*(this|\^this|same|lol|lmao|\+1)\W*$", re.I)
+
+
 def build_stories(posts, state):
     seen = {s["link"] for s in state["seen"]}
     stories = []
@@ -555,7 +561,7 @@ def build_stories(posts, state):
         if p["url"] in seen or (p.get("link") and p["link"] in seen):
             continue
         p = dict(p, title=fix_text(p["title"]), text=fix_text(p.get("text", "")),
-                 comments=[fix_text(c) for c in p.get("comments", [])])
+                 comments=[fix_text(c) for c in p.get("comments", []) if not BOT_COMMENT.search(c)])
         nl, tw = norm_link(p.get("link")), title_words(p["title"])
         match = None
         for s in stories:
@@ -604,7 +610,18 @@ SCORE_QUESTIONS = {
 }
 
 
-def score_stories(stories, limit=70):
+def level_bonus(state):
+    """Depth votes move the weights, so 'too technical' changes what gets picked, not only how it is told."""
+    votes = [f.get("ratings", {}).get("depth") for f in state["feedback"][-6:]]
+    lean = votes.count("too technical") - votes.count("too basic")
+    if lean >= 2:
+        return {"general": 1.0, "technical": 0.5, "specialist": 0.0}
+    if lean <= -2:
+        return {"general": 0.6, "technical": 1.0, "specialist": 0.6}
+    return {"general": 1.0, "technical": 0.75, "specialist": 0.25}
+
+
+def score_stories(stories, state, limit=70):
     top = stories[:limit]
 
     def one(s):
@@ -620,6 +637,7 @@ def score_stories(stories, limit=70):
     if len(results) < len(top) * 0.5:
         log(f"  decision model scored only {len(results)}/{len(top)}; using a free model to score")
         results.update(llm_score(top))
+    bonus = level_bonus(state)
     kept = []
     for s in top:
         a = results.get(s["id"])
@@ -632,7 +650,7 @@ def score_stories(stories, limit=70):
         lvl = (a.get("level") or {}).get("choice", "technical")
         s.update(level=lvl, needs_check=(a.get("needs_check") or {}).get("noul", 0) >= 0.5,
                  hype=(a.get("hype") or {}).get("noul", 0) >= 0.5)
-        lvl_bonus = {"general": 1.0, "technical": 0.75, "specialist": 0.25}.get(lvl, 0.6)
+        lvl_bonus = bonus.get(lvl, 0.6)
         s["score"] = 0.35 * min(s["signal"] / 3, 1) + 0.35 * sub + 0.2 * lvl_bonus + 0.1 * min(len(set(s["subs"])) / 3, 1)
         kept.append(s)
     kept.sort(key=lambda s: -s["score"])
@@ -667,15 +685,23 @@ needs_check = makes checkable factual claims. hype = speculative or sensational 
 
 
 # =============================== 3. TOPICS ===============================
+# Keys a model uses for "no topic". Tracked as a topic they collect every one-off thread and win the deep dive.
+NO_TOPIC = {"none", "no-topic", "notopic", "na", "n-a", "null", "misc", "miscellaneous", "other", "others",
+            "general", "one-off", "oneoff", "unrelated", "unassigned", "various"}
+
+
 def update_topics(state, stories, date_key):
     topics = state["topics"]
+    for k in [k for k in topics if k in NO_TOPIC]:
+        del topics[k]
     recent = sorted(topics.items(), key=lambda kv: kv[1].get("last_seen", ""), reverse=True)[:40]
     known = "\n".join(f"- {k}: {v['name']}" for k, v in recent) or "(none yet)"
     listing = "\n".join(f"[{s['id']}] {s['title']}" for s in stories[:40])
     prompt = f"""Group these AI discussion threads into ongoing topics (stories or themes that can build up
 over days, e.g. "open-weight reasoning models", "AI coding agents in real teams", "AI and jobs in India").
 Reuse an existing topic key when a thread belongs to it; otherwise create a new short kebab-case key.
-A thread may have no topic (one-off). Keep topics specific enough to make a 30-minute deep dive.
+A one-off thread gets NO entry at all (never a key like "none" or "misc"). A topic must be a specific
+question or development that can carry a 30-minute deep dive - not just a company or product family name.
 
 EXISTING TOPICS:
 {known}
@@ -693,7 +719,7 @@ Return JSON only: {{"assign": [{{"id": <thread id>, "topic": "<key>", "name": "<
     by_id = {s["id"]: s for s in stories}
     for a in assign:
         s, key = by_id.get(a.get("id")), re.sub(r"[^a-z0-9-]", "", str(a.get("topic", "")).lower())[:60]
-        if not s or not key:
+        if not s or not key or key in NO_TOPIC:
             continue
         t = topics.setdefault(key, {"name": a.get("name") or key, "first_seen": date_key, "days": [], "subs": [],
                                     "mentions": 0, "refs": [], "deep_dive": ""})
@@ -718,6 +744,8 @@ def ready_topic(state, date_key):
         return None
     best = None
     for key, t in state["topics"].items():
+        if key in NO_TOPIC:
+            continue
         if len(t["days"]) < 3 or len(t["subs"]) < 3 or t["mentions"] < 5:
             continue
         if t.get("deep_dive") and (today - dt.date.fromisoformat(t["deep_dive"])).days < 21:
@@ -728,6 +756,54 @@ def ready_topic(state, date_key):
         if not best or rank > best[0]:
             best = (rank, key)
     return best[1] if best else None
+
+
+def load_interests():
+    """interests.txt: 'phrase | weight' per line (weight 1-3). A phrase may list synonyms with '/'."""
+    out = []
+    if not INTERESTS_FILE.exists():
+        return out
+    for line in INTERESTS_FILE.read_text(encoding="utf-8").splitlines():
+        line = line.split("#", 1)[0].strip()
+        if not line:
+            continue
+        phrase, _, w = line.partition("|")
+        try:
+            weight = float(w.strip() or 1)
+        except ValueError:
+            weight = 1.0
+        terms = [t.strip() for t in phrase.split("/") if t.strip()]
+        if terms and weight > 0:
+            out.append((terms[0], weight, re.compile(r"\b(" + "|".join(re.escape(t) for t in terms) + r")(s|es)?\b", re.I)))
+    return out
+
+
+INTERESTS = load_interests()
+
+
+def interests_text():
+    if not INTERESTS:
+        return ""
+    ranked = sorted(INTERESTS, key=lambda i: -i[1])
+    return (f"{LISTENER.upper()}'S INTERESTS (strongest first; prefer these when quality is equal, and connect "
+            f"stories to them where it is honest): " + "; ".join(name for name, _, _ in ranked))
+
+
+def personal_rank(stories, state):
+    """Boost threads that match the listener's interests; hold back topics covered in the last two episodes."""
+    recent = sorted(state["memory"], key=lambda m: m["published"])[-2:]
+    covered = {t for m in recent for t in m.get("topics", [])}
+    for s in stories:
+        blob = f"{s['title']} {s['text'][:800]} {s.get('link', '')}"
+        hits = [name for name, w, rx in INTERESTS if rx.search(blob)]
+        s["interests"] = hits
+        s["score"] = s.get("score", 0) + min(0.25, 0.06 * sum(w for name, w, _ in INTERESTS if name in hits))
+        s["covered"] = s.get("topic") in covered
+        if s["covered"] and len(set(s["subs"])) < 3:
+            s["score"] -= 0.15
+    stories.sort(key=lambda s: -s.get("score", 0))
+    log(f"  interest matches: {sum(1 for s in stories if s['interests'])}, "
+        f"held back as recently covered: {sum(1 for s in stories if s['covered'])}")
 
 
 # =============================== 4. PLAN ===============================
@@ -748,7 +824,9 @@ def candidate_listing(stories, n=30):
     rows = []
     for s in stories[:n]:
         flags = ", ".join(x for x in (s.get("level", ""), "claims to check" if s.get("needs_check") else "",
-                                      "hype" if s.get("hype") else "") if x)
+                                      "hype" if s.get("hype") else "",
+                                      "covered recently" if s.get("covered") else "",
+                                      ("interest: " + "/".join(s["interests"][:2])) if s.get("interests") else "") if x)
         rows.append(f"[{s['id']}] ({', '.join(sorted(set(s['subs'])))}; {len(s['comments'])} comments; {flags}) "
                     f"{s['title']}" + (f" :: {s['text'][:220]}" if s["text"] else ""))
     return "\n".join(rows)
@@ -774,6 +852,8 @@ def plan_regular(stories, edition, state):
 {EDITORIAL}
 
 {shape}
+
+{interests_text()}
 
 PAST EPISODES (most recent last; follow developing stories, never repeat one without new information):
 {memory_text(state)}
@@ -1096,7 +1176,7 @@ def gemini_tts_chunk(turns):
                     break
                 pcm = pcm_from_audio(base64.b64decode(b64))
                 secs = len(pcm) / BYTES_PER_SEC
-                if secs < expected * 0.55:
+                if secs < expected * 0.8:   # Gemini speaks ~2.5 words/s; less means the audio was cut off
                     last = f"audio too short ({secs:.0f}s for ~{expected:.0f}s)"
                     log(f"    TTS {last}; retrying")
                     continue
@@ -1222,26 +1302,37 @@ def edge_tts_chunk(turns):
 ENGINE_NAMES = {"gemini": "Gemini TTS", "fish": "Fish Audio (free)", "edge": "Edge TTS"}
 
 
-def voice_episode(sections, state, edition):
-    flat = [(label, spk, text) for label, turns in sections for spk, text in turns]
+def split_chunks(flat, size):
     chunks, cur, n = [], [], 0
     for row in flat:
         w = words(row[2])
-        if cur and n + w > TTS_CHUNK_WORDS:
+        if cur and n + w > size:
             chunks.append(cur)
             cur, n = [], 0
         cur.append(row)
         n += w
     if cur:
         chunks.append(cur)
+    return chunks
+
+
+def voice_episode(sections, state, edition):
+    flat = [(label, spk, text) for label, turns in sections for spk, text in turns]
+    # Both editions share one Gemini quota day (it resets at midnight Pacific = 12:30/13:30 IST, so every Pacific
+    # day holds one evening and the next morning). Grow the chunks until one episode fits in half the quota.
+    size, per_episode = TTS_CHUNK_WORDS, max(1, GEMINI_TTS_DAILY // 2)
+    chunks = split_chunks(flat, size)
+    while len(chunks) > per_episode and size < TTS_MAX_CHUNK_WORDS:
+        size = min(TTS_MAX_CHUNK_WORDS, size + 50)
+        chunks = split_chunks(flat, size)
+    log(f"  {len(chunks)} voice chunks of up to {size} words")
 
     engines = ["gemini", "fish", "edge"] if TTS_ENGINE == "auto" else [TTS_ENGINE]
     for engine in engines:
         if engine == "gemini":
             if not GEMINI_API_KEY:
                 continue
-            # Google's free daily quota resets at midnight Pacific time. The morning run (08:00 IST) and the
-            # evening run (16:00 IST) fall on different Pacific days, so each edition gets the full quota.
+            # Google's free daily quota resets at midnight Pacific time.
             pt = ZoneInfo("America/Los_Angeles")
             day_start = dt.datetime.now(pt).replace(hour=0, minute=0, second=0, microsecond=0)
             state["tts_log"] = [t for t in state.get("tts_log", [])
@@ -1430,14 +1521,16 @@ def main():
     log(f"  {len(stories)} distinct stories from {len(posts)} threads ({source_note})")
 
     log("2/8 Scoring threads")
-    stories = score_stories(stories)
+    stories = score_stories(stories, state)
     by_id = {s["id"]: s for s in stories}
 
     log("3/8 Tracking topics")
     update_topics(state, stories, date_key)
+    personal_rank(stories, state)
     deep = ready_topic(state, date_key) if edition == "evening" else None
-    if env_true("DEEP_DIVE") and not deep and state["topics"]:   # manual "deep dive now" from the workflow
-        deep = max(state["topics"], key=lambda k: (len(state["topics"][k]["days"]), state["topics"][k]["mentions"]))
+    real_topics = [k for k in state["topics"] if k not in NO_TOPIC]
+    if env_true("DEEP_DIVE") and not deep and real_topics:   # manual "deep dive now" from the workflow
+        deep = max(real_topics, key=lambda k: (len(state["topics"][k]["days"]), state["topics"][k]["mentions"]))
 
     log("4/8 Planning")
     if deep:
@@ -1526,7 +1619,8 @@ def main():
               and not (m.get("date") == date_key and m.get("edition") == edition)]
     memory.append({"label": label, "date": date_key, "edition": edition, "published": now.isoformat(),
                    "file": filename, "writer": writer, "voices": ENGINE_NAMES[engine],
-                   "summary": summary, "threads": threads, "segments": [s["title"] for s, _ in written]})
+                   "summary": summary, "threads": threads, "segments": [s["title"] for s, _ in written],
+                   "topics": sorted({by_id[j]["topic"] for j in used if j in by_id and by_id[j].get("topic")})})
     seen_cut = (now - dt.timedelta(days=SEEN_DAYS)).strftime("%Y-%m-%d")
     seen = [s for s in state["seen"] if s.get("date", "") >= seen_cut]
     for j in used:
