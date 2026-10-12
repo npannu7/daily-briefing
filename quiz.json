@@ -4,6 +4,92 @@
  "repo": "npannu7/daily-briefing",
  "episodes": [
   {
+   "file": "ai_2026-10-12_morning_0815.mp3",
+   "title": "Morning - 12 Oct: Clinical AI at the Bedside: OpenMed 3.0 and Local Validation Limits",
+   "label": "Monday 12 Oct morning",
+   "date": "2026-10-12",
+   "edition": "morning",
+   "published": "2026-10-12T08:15:13.366647+05:30",
+   "duration": 1792,
+   "theme": "Grounding Agent Autonomy and Edge Scaling in Physical and Safety Limits",
+   "writer": "Gemini 3.8 Flash",
+   "voices": "Fish Audio (free)",
+   "deep_dive": false,
+   "segments": [
+    {
+     "title": "Clinical AI at the Bedside: OpenMed 3.0 and Local Validation Limits",
+     "category": "thread"
+    },
+    {
+     "title": "API Key Exfiltration or Leaky Test Benches: The DeepSeek Flash Sandbox Scare",
+     "category": "thread"
+    },
+    {
+     "title": "100 Billion Parameters in Your Pocket: Qualcomm's 2028 Phone Claim",
+     "category": "thread"
+    },
+    {
+     "title": "Splitting the Engine: Converting Dense Models into Sparse Mixtures-of-Experts",
+     "category": "thread"
+    },
+    {
+     "title": "Morning Radar: Terminal QA Telemetry, Remarked Silicon, Game Decompilations, and Declarative UIs",
+     "category": "quickfire"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why does OpenMed 3.0 deliberately refuse to merge patient profiles automatically when there is a 99% probability match?",
+     "options": [
+      "Because false certainty in medical records can cause catastrophic errors, such as attaching one person's allergy to another's chart.",
+      "Because local SQLite databases lack the storage capacity required to hold merged patient records without compression.",
+      "Because federal compliance laws strictly prohibit automated record linking on local edge hardware.",
+      "Because the maintainer forgot to implement string-matching algorithms in the append-only SQLite database."
+     ],
+     "answer": 0,
+     "explain": "False certainty in medical records can be catastrophic, such as incorrectly merging drug allergies between patients. The system flags these matches for human review rather than risking automatic errors.",
+     "segment": "Clinical AI at the Bedside: OpenMed 3.0 and Local Validation Limits"
+    },
+    {
+     "q": "What was the actual cause of the DeepSeek V4.1 Flash incident where benchmark harnesses reported API key exfiltration?",
+     "options": [
+      "The model developed malicious intent and actively hacked the host server.",
+      "The test harnesses (Harbor and Pier) left live OpenRouter credentials exposed inside the agent's runtime environment variables.",
+      "The external API endpoint was intercepted by a malicious third-party adversary during code evaluation.",
+      "The model bypassed its air-gapped container boundaries by exploiting a zero-day vulnerability in Linux."
+     ],
+     "answer": 1,
+     "explain": "The incident occurred because the test harnesses accidentally passed live credentials into the agent's environment variables, allowing the model to find them in its reachable tool space.",
+     "segment": "API Key Exfiltration or Leaky Test Benches: The DeepSeek Flash Sandbox Scare"
+    },
+    {
+     "q": "What primary physical constraint makes running a 100-billion parameter dense model continuously on a smartphone infeasible by 2028?",
+     "options": [
+      "Smartphones lack the operating system support required to execute large-scale language models.",
+      "Flash memory chips cannot store parameter files larger than 10 gigabytes due to physical surface area limits.",
+      "The memory bandwidth required to read weights continuously generates thermal dissipation that exceeds passive cooling limits.",
+      "Mobile processors do not support floating-point quantization algorithms."
+     ],
+     "answer": 2,
+     "explain": "Moving massive weight parameters across memory buses at high speeds generates intense resistance and heat, which a sealed, passively cooled smartphone cannot dissipate without throttling or draining the battery instantly.",
+     "segment": "100 Billion Parameters in Your Pocket: Qualcomm's 2028 Phone Claim"
+    },
+    {
+     "q": "Why did naive post-hoc slicing of a dense model into a Mixture-of-Experts (MoE) result in a severe drop in reasoning accuracy?",
+     "options": [
+      "Dense models store knowledge integrated across the entire weight matrix, so cutting them without retraining destroys structural integrity and causes routing collapse.",
+      "Consumer GPUs automatically truncate 32-bit floating-point numbers during memory transfers.",
+      "The gating router was programmed to drop 90% of all tokens to save power.",
+      "The hobbyist forgot to include a shared expert in the final conversion script."
+     ],
+     "answer": 0,
+     "explain": "Dense layers are highly integrated load-bearing structures where knowledge is smeared across the matrix; naive slicing without retraining destroys this structure and prevents the router from finding clean boundaries.",
+     "segment": "Splitting the Engine: Converting Dense Models into Sparse Mixtures-of-Experts"
+    }
+   ],
+   "transcript": "transcripts/ai_2026-10-12_morning_0815.txt"
+  },
+  {
    "file": "ai_2026-10-11_evening_1610.mp3",
    "title": "Deep dive - 11 Oct: none",
    "label": "Sunday 11 Oct evening deep dive",

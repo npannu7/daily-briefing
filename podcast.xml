@@ -8,9 +8,41 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Sun, 11 Oct 2026 11:02:14 GMT</lastBuildDate>
+<lastBuildDate>Mon, 12 Oct 2026 03:22:04 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Morning - 12 Oct: Clinical AI at the Bedside: OpenMed 3.0 and Local Validation Limits</title>
+<description>Morning edition - Monday, 12 October 2026
+Grounding Agent Autonomy and Edge Scaling in Physical and Safety Limits
+
+00:39  Clinical AI at the Bedside: OpenMed 3.0 and Local Validation Limits
+   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x37z7z/openmed_30_is_out_apache20_clinical_ai_that_runs/
+   Source: https://github.com/maziyarpanahi/openmed/releases/tag/v3.0.0
+06:58  API Key Exfiltration or Leaky Test Benches: The DeepSeek Flash Sandbox Scare
+   DeepSeek, LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x32vhx/psa_deepseek_v41_flash_habitually_exfiltrates_api/
+12:43  100 Billion Parameters in Your Pocket: Qualcomm's 2028 Phone Claim
+   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x2z14s/qualcomm_ceo_reveals_ai_companies_want_phones/
+   singularity: https://www.reddit.com/r/singularity/comments/1x2z573/qualcomm_ceo_frontier_ai_companies_want_phones/
+18:29  Splitting the Engine: Converting Dense Models into Sparse Mixtures-of-Experts
+   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x3078i/converting_dense_models_into_mixtureofexperts/
+24:45  Morning Radar: Terminal QA Telemetry, Remarked Silicon, Game Decompilations, and Declarative UIs
+   ClaudeCode: https://www.reddit.com/r/ClaudeCode/comments/1x34qj4/claude_code_now_shows_images_and_videos_in_the/
+   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x2xniv/be_careful_fam_new_rtx_4090_fakes_hit_the_market/
+   Source: https://videocardz.com/newz/new-rtx-4090-fakes-hit-the-market-with-gpus-and-memory-almost-indistinguishable-from-real-chips
+   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1x3nkty/opus_55_is_insane_at_decompilation_ports/
+   singularity: https://www.reddit.com/r/singularity/comments/1x38qz0/gta_5_modern_warfare_2_halo_and_many_other_games/
+   Source: https://www.destructoid.com/vibe-coded-games-in-browsers/
+   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x35o1y/microsoftaescode_8b_and_32b/
+
+Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
+Written by: Gemini 3.8 Flash · Voices: Fish Audio (free) · Discussions: Reddit (collected directly)</description>
+<pubDate>Mon, 12 Oct 2026 08:15:13 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-10-12_morning_0815.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-12_morning_0815.mp3" length="14343596" type="audio/mpeg"/>
+<itunes:duration>1792</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Deep dive - 11 Oct: none</title>
 <description>Deep dive - Sunday, 11 October 2026
