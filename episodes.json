@@ -1,20 +1,6 @@
 {
   "episodes": [
     {
-      "file": "briefing_2026-10-05_evening_1823.mp3",
-      "date": "2026-10-05",
-      "edition": "evening",
-      "title": "Evening Edition - 5 Oct 2026",
-      "published": "2026-10-05T18:23:16.004660+05:30",
-      "pubDate": "Mon, 05 Oct 2026 18:23:16 +0530",
-      "size": 2167488,
-      "duration": 361,
-      "description": "Evening edition - Monday, 5 October 2026\n\n00:07  Nobel Prize awarded for the development of optogenetics\n   Source: Science News - https://www.science.org/content/article/method-controlling-brain-cells-light-wins-nobel",
-      "headlines": [
-        "Nobel Prize awarded for the development of optogenetics"
-      ]
-    },
-    {
       "file": "ai_2026-10-06_evening_1306.mp3",
       "date": "2026-10-06",
       "edition": "evening",
@@ -92,17 +78,6 @@
       "description": "Morning edition - Friday, 9 October 2026\nGrounding frontier claims in verifiable mechanics: from retracted formal proofs to collapse-resistant reasoning self-evolution and agent deception benchmarks.\n\n00:45  OpenAI Retracts Formal Math Results: Verification Limits and Lean Boundary Failures\n   Hacker News: https://github.com/openai/math/blob/main/history.md\n   Hacker News: https://twitter.com/danintheory/status/2108065033070789090\n   Hacker News: https://karagila.org/2026/openai-pp/\n07:34  nanoMuse: An Open-Source Local Agent Architecture for Multi-Device Continuity\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.08699\n10:24  UniWAM and Kinematic MeanFlow: Unifying World Dynamics and Low-Latency Robot Actions\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.02054\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.00864\n15:33  Questioning the Questions: Diagnosing and Preventing Collapse in Reasoning Self-Evolution\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.04299\n   Hugging Face Daily Papers: https://arxiv.org/abs/2609.39306\n23:43  DecepEval: Benchmarking Goal-Directed Deception in Autonomous Agents\n   Hugging Face Daily Papers: https://arxiv.org/abs/2610.07967\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nVoices: Edge TTS"
     },
     {
-      "file": "ai_2026-10-09_evening_1330.mp3",
-      "date": "2026-10-09",
-      "edition": "evening",
-      "title": "Evening - 9 Oct: Cross-Tokenizer Distillation and Distribution Drift",
-      "published": "2026-10-09T13:30:24.610895+05:30",
-      "pubDate": "Fri, 09 Oct 2026 13:30:24 +0530",
-      "size": 15446060,
-      "duration": 1930,
-      "description": "Evening edition - Friday, 9 October 2026\nEvaluating micro-routing decision models against full coding LLMs, real-world agent security exploits, and the engineering mechanics of model distillation.\n\n00:37  Cross-Tokenizer Distillation and Distribution Drift\n   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x0sm1b/jevman_ai_decision_models_play_pacman/\n   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x0wg85/running_decision_model_locally_on_an_rtx_4090_to/\n09:14  Benchmarking Specialized Decision Models: Jev, Clef, and Laya on the Edge\n   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x0sm1b/jevman_ai_decision_models_play_pacman/\n   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x0wg85/running_decision_model_locally_on_an_rtx_4090_to/\n16:08  Haiku 5.5 vs. Flagship Coding Agents in Real-World Mixed Codebases\n   ClaudeCode: https://www.reddit.com/r/ClaudeCode/comments/1x132yy/is_haiku_55_good_enough_to_be_your_main_coding/\n   DeepSeek: https://www.reddit.com/r/DeepSeek/comments/1x0nv07/deepseek_better_releasing_a_new_model_as_soon_as/\n22:14  Multi-Model Tool Stacks in Autonomous Financial Cyberattacks\n   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x0n4pt/last_week_some_of_south_koreas_biggest_banks_were/\n   Source: https://www.reddit.com/gallery/1x0n4pt\n   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1x0rz3u/a_guy_asked_models_to_maximize_company_value/\n26:28  Hardware Arbitrage: Multi-GPU RDNA2 Clusters for High-Throughput Open Weights\n   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x0wnz1/2800_rig_with_8x_radeon_pro_v620_256_gb_vram/\n   LocalLLM: https://www.reddit.com/r/LocalLLM/comments/1x0tfuh/i_just_looked_at_my_monthly_token_usage_on_claude/\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nWritten by: Gemini 3.8 Flash · Voices: Edge TTS · Discussions: Reddit (collected directly)"
-    },
-    {
       "file": "ai_2026-10-10_morning_0812.mp3",
       "date": "2026-10-10",
       "edition": "morning",
@@ -158,15 +133,15 @@
       "description": "Morning edition - Monday, 12 October 2026\nGrounding Agent Autonomy and Edge Scaling in Physical and Safety Limits\n\n00:39  Clinical AI at the Bedside: OpenMed 3.0 and Local Validation Limits\n   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x37z7z/openmed_30_is_out_apache20_clinical_ai_that_runs/\n   Source: https://github.com/maziyarpanahi/openmed/releases/tag/v3.0.0\n06:58  API Key Exfiltration or Leaky Test Benches: The DeepSeek Flash Sandbox Scare\n   DeepSeek, LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x32vhx/psa_deepseek_v41_flash_habitually_exfiltrates_api/\n12:43  100 Billion Parameters in Your Pocket: Qualcomm's 2028 Phone Claim\n   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x2z14s/qualcomm_ceo_reveals_ai_companies_want_phones/\n   singularity: https://www.reddit.com/r/singularity/comments/1x2z573/qualcomm_ceo_frontier_ai_companies_want_phones/\n18:29  Splitting the Engine: Converting Dense Models into Sparse Mixtures-of-Experts\n   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x3078i/converting_dense_models_into_mixtureofexperts/\n24:45  Morning Radar: Terminal QA Telemetry, Remarked Silicon, Game Decompilations, and Declarative UIs\n   ClaudeCode: https://www.reddit.com/r/ClaudeCode/comments/1x34qj4/claude_code_now_shows_images_and_videos_in_the/\n   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x2xniv/be_careful_fam_new_rtx_4090_fakes_hit_the_market/\n   Source: https://videocardz.com/newz/new-rtx-4090-fakes-hit-the-market-with-gpus-and-memory-almost-indistinguishable-from-real-chips\n   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1x3nkty/opus_55_is_insane_at_decompilation_ports/\n   singularity: https://www.reddit.com/r/singularity/comments/1x38qz0/gta_5_modern_warfare_2_halo_and_many_other_games/\n   Source: https://www.destructoid.com/vibe-coded-games-in-browsers/\n   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x35o1y/microsoftaescode_8b_and_32b/\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nWritten by: Gemini 3.8 Flash · Voices: Fish Audio (free) · Discussions: Reddit (collected directly)"
     },
     {
-      "file": "ai_2026-10-12_evening_1614.mp3",
-      "date": "2026-10-12",
-      "edition": "evening",
-      "title": "Deep dive - 12 Oct: Anthropic Claude Models",
-      "published": "2026-10-12T16:14:39.994702+05:30",
-      "pubDate": "Mon, 12 Oct 2026 16:14:39 +0530",
-      "size": 26853548,
-      "duration": 3356,
-      "description": "Deep dive - Monday, 12 October 2026\nDeep dive: Anthropic Claude Models\n\n01:09  Anthropic Claude Models: Why everyone is talking about it\n13:41  Anthropic Claude Models: The foundations, from scratch\n29:39  Anthropic Claude Models: How we got here\n44:59  Anthropic Claude Models: Reality check\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nWritten by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit (collected directly)"
+      "file": "ai_2026-10-13_morning_0815.mp3",
+      "date": "2026-10-13",
+      "edition": "morning",
+      "title": "Morning - 13 Oct: Linus Torvalds and Kernel AI: Reverse-Engineering Obscure C Through Interactive Deobfuscation",
+      "published": "2026-10-13T08:15:33.533245+05:30",
+      "pubDate": "Tue, 13 Oct 2026 08:15:33 +0530",
+      "size": 14607980,
+      "duration": 1825,
+      "description": "Morning edition - Tuesday, 13 October 2026\nIndependent developers pushing physical and local compute limits: from kernel deobfuscation and mobile hardware clustering to whole-body humanoid kinematics and procedural voxel engines\n\n00:44  Linus Torvalds and Kernel AI: Reverse-Engineering Obscure C Through Interactive Deobfuscation\n   singularity: https://www.reddit.com/r/singularity/comments/1x3yeti/linus_torvalds_used_ai_to_make_code_decipherable/\n   Source: https://www.phoronix.com/news/Linus-Torvalds-Assoc-Array\n   singularity: https://www.reddit.com/r/singularity/comments/1x3vgi7/linus_torvalds_working_on_a_hefty_linux_kernel/\n   Source: https://www.phoronix.com/news/Linus-Torvalds-Claude-Code\n06:35  Dual-Handset Compute Clustering: Split-Execution RPC and Hadamard Ternary Quantization on Android\n   LocalLLM: https://www.reddit.com/r/LocalLLM/comments/1x4awt8/i_clustered_two_old_android_phones_to_run_a_27b/\n13:04  Asimov 1 at Day 352: Whole-Body Kinematic Coupling and Dynamic Gait in Open-Source Humanoids\n   robotics: https://www.reddit.com/r/robotics/comments/1x3u9a4/day_352_of_building_asimov_1_an_opensource/\n19:19  Procedural Voxel Assembly: Connecting Claude Code to Real-Time Game Loops via Local Tool-Calling\n   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1x3olix/i_made_a_free_minecraft_mod_where_claude_builds/\n   artificial: https://www.reddit.com/r/artificial/comments/1x3jidz/a_solo_developer_rebuilt_word_excel_and/\n   Source: https://www.tomshardware.com/software/microsoft-office/creator-of-free-adobe-clones-unveils-open-source-microsoft-office-excel-powerpoint-and-word-replications-autodesk-tools-and-other-subscription-based-services-may-come-next\n   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1x3ttzl/week_11_of_making_my_fishing_game_with_the_help/\n25:26  Quickfire: Edge Routers, Supermarket Robotics, Elastic Reinforcement Schedulers, and MoE Vision\n   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x3th4p/decision_30_open_multimodal_decision_models_from/\n   Source: https://www.reddit.com/gallery/1x3th4p\n   singularity: https://www.reddit.com/r/singularity/comments/1x3pwum/in_denmark_hive_robotics_is_training_unitree_g1/\n   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x41myz/qwen_released_qwengyre_rl_framework_for_training/\n   Source: https://www.reddit.com/gallery/1x41myz\n   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x47taj/openbmbminicpmv4735ba3b/\n   Source: https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nWritten by: Gemini 3.8 Flash · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (95 threads)"
     }
   ],
   "memory": [
@@ -462,6 +437,33 @@
         "Anthropic Claude Models: Reality check"
       ],
       "topics": []
+    },
+    {
+      "label": "Tuesday 13 Oct morning",
+      "date": "2026-10-13",
+      "edition": "morning",
+      "published": "2026-10-13T08:15:33.533245+05:30",
+      "file": "ai_2026-10-13_morning_0815.mp3",
+      "writer": "Gemini 3.8 Flash",
+      "voices": "Fish Audio (free)",
+      "summary": "This morning episode examined independent developer implementations bridging AI and physical compute, beginning with Linus Torvalds using an LLM to deobfuscate legacy Linux kernel associative arrays. We analyzed a two-device mobile cluster running a 27-billion parameter model using Hadamard ternary quantization alongside multi-body kinematic coupling in the open-source Asimov 1 biped. Finally, the discussion covered an asynchronous bridge linking Claude Code to a Minecraft voxel engine using CAM-style queues, followed by quickfire updates on retail robotics and edge routing.",
+      "threads": [
+        "Empirical performance and thermal throttling of Hadamard ternary quantization across clustered mobile edge hardware",
+        "Zero-moment point stabilization and upper-body inertial compensation in open-source humanoid locomotion engines",
+        "Adoption of asynchronous CAM-style toolpath command queues for real-time LLM game loop integration",
+        "Field deployment reliability of low-cost humanoid platforms like Unitree G1 in retail and unstructured commercial environments"
+      ],
+      "segments": [
+        "Linus Torvalds and Kernel AI: Reverse-Engineering Obscure C Through Interactive Deobfuscation",
+        "Dual-Handset Compute Clustering: Split-Execution RPC and Hadamard Ternary Quantization on Android",
+        "Asimov 1 at Day 352: Whole-Body Kinematic Coupling and Dynamic Gait in Open-Source Humanoids",
+        "Procedural Voxel Assembly: Connecting Claude Code to Real-Time Game Loops via Local Tool-Calling",
+        "Quickfire: Edge Routers, Supermarket Robotics, Elastic Reinforcement Schedulers, and MoE Vision"
+      ],
+      "topics": [
+        "ai-coding-agents",
+        "local-llms"
+      ]
     }
   ],
   "seen": [
@@ -1028,6 +1030,74 @@
     {
       "date": "2026-10-12",
       "link": "https://www.reddit.com/r/ClaudeAI/comments/1x3nkty/opus_55_is_insane_at_decompilation_ports/"
+    },
+    {
+      "date": "2026-10-13",
+      "link": "https://www.reddit.com/r/ClaudeAI/comments/1x3olix/i_made_a_free_minecraft_mod_where_claude_builds/"
+    },
+    {
+      "date": "2026-10-13",
+      "link": "https://www.reddit.com/r/singularity/comments/1x3yeti/linus_torvalds_used_ai_to_make_code_decipherable/"
+    },
+    {
+      "date": "2026-10-13",
+      "link": "https://www.phoronix.com/news/Linus-Torvalds-Assoc-Array"
+    },
+    {
+      "date": "2026-10-13",
+      "link": "https://www.reddit.com/r/ClaudeAI/comments/1x3ttzl/week_11_of_making_my_fishing_game_with_the_help/"
+    },
+    {
+      "date": "2026-10-13",
+      "link": "https://www.reddit.com/r/singularity/comments/1x3vgi7/linus_torvalds_working_on_a_hefty_linux_kernel/"
+    },
+    {
+      "date": "2026-10-13",
+      "link": "https://www.phoronix.com/news/Linus-Torvalds-Claude-Code"
+    },
+    {
+      "date": "2026-10-13",
+      "link": "https://www.reddit.com/r/LocalLLM/comments/1x4awt8/i_clustered_two_old_android_phones_to_run_a_27b/"
+    },
+    {
+      "date": "2026-10-13",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1x3th4p/decision_30_open_multimodal_decision_models_from/"
+    },
+    {
+      "date": "2026-10-13",
+      "link": "https://www.reddit.com/gallery/1x3th4p"
+    },
+    {
+      "date": "2026-10-13",
+      "link": "https://www.reddit.com/r/robotics/comments/1x3u9a4/day_352_of_building_asimov_1_an_opensource/"
+    },
+    {
+      "date": "2026-10-13",
+      "link": "https://www.reddit.com/r/singularity/comments/1x3pwum/in_denmark_hive_robotics_is_training_unitree_g1/"
+    },
+    {
+      "date": "2026-10-13",
+      "link": "https://www.reddit.com/r/artificial/comments/1x3jidz/a_solo_developer_rebuilt_word_excel_and/"
+    },
+    {
+      "date": "2026-10-13",
+      "link": "https://www.tomshardware.com/software/microsoft-office/creator-of-free-adobe-clones-unveils-open-source-microsoft-office-excel-powerpoint-and-word-replications-autodesk-tools-and-other-subscription-based-services-may-come-next"
+    },
+    {
+      "date": "2026-10-13",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1x41myz/qwen_released_qwengyre_rl_framework_for_training/"
+    },
+    {
+      "date": "2026-10-13",
+      "link": "https://www.reddit.com/gallery/1x41myz"
+    },
+    {
+      "date": "2026-10-13",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1x47taj/openbmbminicpmv4735ba3b/"
+    },
+    {
+      "date": "2026-10-13",
+      "link": "https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B"
     }
   ],
   "feedback": [
@@ -1145,258 +1215,6 @@
     "2026-10-11T16:31:49.025418+05:30"
   ],
   "or_spend": [
-    [
-      "2026-10-11T16:21:06.934364+05:30",
-      0.0001488
-    ],
-    [
-      "2026-10-11T16:21:06.936507+05:30",
-      0.0001069
-    ],
-    [
-      "2026-10-11T16:21:06.938352+05:30",
-      0.000114
-    ],
-    [
-      "2026-10-11T16:21:06.951172+05:30",
-      0.0001443
-    ],
-    [
-      "2026-10-11T16:21:06.954295+05:30",
-      0.0001107
-    ],
-    [
-      "2026-10-11T16:21:07.084383+05:30",
-      0.0001051
-    ],
-    [
-      "2026-10-11T16:21:07.224986+05:30",
-      9.59e-05
-    ],
-    [
-      "2026-10-11T16:21:07.304101+05:30",
-      8.8e-05
-    ],
-    [
-      "2026-10-11T16:21:07.306299+05:30",
-      9.05e-05
-    ],
-    [
-      "2026-10-11T16:21:07.402028+05:30",
-      8.92e-05
-    ],
-    [
-      "2026-10-11T16:21:07.497586+05:30",
-      8.67e-05
-    ],
-    [
-      "2026-10-11T16:21:07.603184+05:30",
-      9.03e-05
-    ],
-    [
-      "2026-10-11T16:21:07.710391+05:30",
-      8.79e-05
-    ],
-    [
-      "2026-10-11T16:21:07.816510+05:30",
-      8.71e-05
-    ],
-    [
-      "2026-10-11T16:21:07.818492+05:30",
-      8.75e-05
-    ],
-    [
-      "2026-10-11T16:21:07.851920+05:30",
-      9.06e-05
-    ],
-    [
-      "2026-10-11T16:21:07.900068+05:30",
-      9.29e-05
-    ],
-    [
-      "2026-10-11T16:21:08.062334+05:30",
-      9.91e-05
-    ],
-    [
-      "2026-10-11T16:21:08.117367+05:30",
-      8.67e-05
-    ],
-    [
-      "2026-10-11T16:21:08.188073+05:30",
-      0.0001124
-    ],
-    [
-      "2026-10-11T16:21:08.208293+05:30",
-      8.9e-05
-    ],
-    [
-      "2026-10-11T16:21:08.210956+05:30",
-      9.3e-05
-    ],
-    [
-      "2026-10-11T16:21:08.275909+05:30",
-      8.72e-05
-    ],
-    [
-      "2026-10-11T16:21:08.379524+05:30",
-      8.67e-05
-    ],
-    [
-      "2026-10-11T16:21:08.455265+05:30",
-      8.86e-05
-    ],
-    [
-      "2026-10-11T16:21:08.502623+05:30",
-      8.94e-05
-    ],
-    [
-      "2026-10-11T16:21:08.504597+05:30",
-      8.81e-05
-    ],
-    [
-      "2026-10-11T16:21:08.587836+05:30",
-      8.74e-05
-    ],
-    [
-      "2026-10-11T16:21:08.634197+05:30",
-      0.0001027
-    ],
-    [
-      "2026-10-11T16:21:08.645377+05:30",
-      0.0001069
-    ],
-    [
-      "2026-10-11T16:21:08.802317+05:30",
-      0.0001194
-    ],
-    [
-      "2026-10-11T16:21:08.859607+05:30",
-      9.06e-05
-    ],
-    [
-      "2026-10-11T16:21:08.883987+05:30",
-      8.72e-05
-    ],
-    [
-      "2026-10-11T16:21:08.934863+05:30",
-      8.94e-05
-    ],
-    [
-      "2026-10-11T16:21:08.965599+05:30",
-      0.0001095
-    ],
-    [
-      "2026-10-11T16:21:09.051610+05:30",
-      0.0001195
-    ],
-    [
-      "2026-10-11T16:21:09.109444+05:30",
-      8.67e-05
-    ],
-    [
-      "2026-10-11T16:21:09.111332+05:30",
-      8.74e-05
-    ],
-    [
-      "2026-10-11T16:21:09.211580+05:30",
-      8.71e-05
-    ],
-    [
-      "2026-10-11T16:21:09.230579+05:30",
-      0.0001096
-    ],
-    [
-      "2026-10-11T16:21:09.297864+05:30",
-      0.0001173
-    ],
-    [
-      "2026-10-11T16:21:09.369323+05:30",
-      8.8e-05
-    ],
-    [
-      "2026-10-11T16:21:09.381187+05:30",
-      0.0001149
-    ],
-    [
-      "2026-10-11T16:21:09.471152+05:30",
-      8.72e-05
-    ],
-    [
-      "2026-10-11T16:21:09.619284+05:30",
-      9.64e-05
-    ],
-    [
-      "2026-10-11T16:21:09.632968+05:30",
-      9.17e-05
-    ],
-    [
-      "2026-10-11T16:21:09.659268+05:30",
-      9.25e-05
-    ],
-    [
-      "2026-10-11T16:21:09.668333+05:30",
-      8.73e-05
-    ],
-    [
-      "2026-10-11T16:21:09.767544+05:30",
-      0.0001267
-    ],
-    [
-      "2026-10-11T16:21:09.862804+05:30",
-      8.77e-05
-    ],
-    [
-      "2026-10-11T16:21:09.881909+05:30",
-      0.0001211
-    ],
-    [
-      "2026-10-11T16:21:09.899715+05:30",
-      0.000113
-    ],
-    [
-      "2026-10-11T16:21:09.927786+05:30",
-      8.71e-05
-    ],
-    [
-      "2026-10-11T16:21:09.964262+05:30",
-      0.0001146
-    ],
-    [
-      "2026-10-11T16:21:10.059583+05:30",
-      9.2e-05
-    ],
-    [
-      "2026-10-11T16:21:10.185240+05:30",
-      8.69e-05
-    ],
-    [
-      "2026-10-11T16:21:10.220524+05:30",
-      9.31e-05
-    ],
-    [
-      "2026-10-11T16:21:10.223660+05:30",
-      8.88e-05
-    ],
-    [
-      "2026-10-11T16:21:10.272230+05:30",
-      9.05e-05
-    ],
-    [
-      "2026-10-11T16:21:10.312634+05:30",
-      8.96e-05
-    ],
-    [
-      "2026-10-11T16:21:10.332580+05:30",
-      8.76e-05
-    ],
-    [
-      "2026-10-11T16:21:10.423656+05:30",
-      9.22e-05
-    ],
-    [
-      "2026-10-11T16:21:10.542237+05:30",
-      8.93e-05
-    ],
     [
       "2026-10-12T08:26:02.565503+05:30",
       0.0001213
@@ -1920,7 +1738,203 @@
     "2026-10-12T11:56:59.675369+00:00",
     "2026-10-12T11:57:07.336173+00:00",
     "2026-10-12T11:57:12.505706+00:00",
-    "2026-10-12T11:57:17.349769+00:00"
+    "2026-10-12T11:57:17.349769+00:00",
+    "2026-10-13T02:45:41.015471+00:00",
+    "2026-10-13T02:45:42.342150+00:00",
+    "2026-10-13T02:45:47.477619+00:00",
+    "2026-10-13T02:45:53.550795+00:00",
+    "2026-10-13T02:45:55.632927+00:00",
+    "2026-10-13T02:45:57.157314+00:00",
+    "2026-10-13T02:45:58.060793+00:00",
+    "2026-10-13T02:46:02.779196+00:00",
+    "2026-10-13T02:46:05.826760+00:00",
+    "2026-10-13T02:46:06.541589+00:00",
+    "2026-10-13T02:46:14.040101+00:00",
+    "2026-10-13T02:46:16.229125+00:00",
+    "2026-10-13T02:46:20.492059+00:00",
+    "2026-10-13T02:46:21.514174+00:00",
+    "2026-10-13T02:46:22.496151+00:00",
+    "2026-10-13T02:46:29.578175+00:00",
+    "2026-10-13T02:46:32.855986+00:00",
+    "2026-10-13T02:46:34.326518+00:00",
+    "2026-10-13T02:46:39.730924+00:00",
+    "2026-10-13T02:46:41.085496+00:00",
+    "2026-10-13T02:46:42.030676+00:00",
+    "2026-10-13T02:46:48.226921+00:00",
+    "2026-10-13T02:46:53.512471+00:00",
+    "2026-10-13T02:46:57.900377+00:00",
+    "2026-10-13T02:47:04.254186+00:00",
+    "2026-10-13T02:47:07.760011+00:00",
+    "2026-10-13T02:47:11.097717+00:00",
+    "2026-10-13T02:47:11.137320+00:00",
+    "2026-10-13T02:47:11.280356+00:00",
+    "2026-10-13T02:47:13.426850+00:00",
+    "2026-10-13T02:47:14.166033+00:00",
+    "2026-10-13T02:47:22.664033+00:00",
+    "2026-10-13T02:47:24.815845+00:00",
+    "2026-10-13T02:47:26.807478+00:00",
+    "2026-10-13T02:47:30.265011+00:00",
+    "2026-10-13T02:47:35.440092+00:00",
+    "2026-10-13T02:47:41.264890+00:00",
+    "2026-10-13T02:47:42.844260+00:00",
+    "2026-10-13T02:47:42.886902+00:00",
+    "2026-10-13T02:47:49.106294+00:00",
+    "2026-10-13T02:47:51.795526+00:00",
+    "2026-10-13T02:47:52.691857+00:00",
+    "2026-10-13T02:47:55.425675+00:00",
+    "2026-10-13T02:47:56.548677+00:00",
+    "2026-10-13T02:48:02.331835+00:00",
+    "2026-10-13T02:48:04.694050+00:00",
+    "2026-10-13T02:48:07.959375+00:00",
+    "2026-10-13T02:48:09.837764+00:00",
+    "2026-10-13T02:48:17.317015+00:00",
+    "2026-10-13T02:48:19.667090+00:00",
+    "2026-10-13T02:48:19.911301+00:00",
+    "2026-10-13T02:48:23.851364+00:00",
+    "2026-10-13T02:48:26.968646+00:00",
+    "2026-10-13T02:48:30.415236+00:00",
+    "2026-10-13T02:48:32.432572+00:00",
+    "2026-10-13T02:48:43.803761+00:00",
+    "2026-10-13T02:48:44.501758+00:00",
+    "2026-10-13T02:48:45.831296+00:00",
+    "2026-10-13T02:48:46.590348+00:00",
+    "2026-10-13T02:48:50.464869+00:00",
+    "2026-10-13T02:48:51.666484+00:00",
+    "2026-10-13T02:48:59.874602+00:00",
+    "2026-10-13T02:49:00.557861+00:00",
+    "2026-10-13T02:49:02.768664+00:00",
+    "2026-10-13T02:49:09.439589+00:00",
+    "2026-10-13T02:49:13.796307+00:00",
+    "2026-10-13T02:49:14.953694+00:00",
+    "2026-10-13T02:49:16.540457+00:00",
+    "2026-10-13T02:49:18.150548+00:00",
+    "2026-10-13T02:49:22.271490+00:00",
+    "2026-10-13T02:57:36.477152+00:00",
+    "2026-10-13T02:57:47.012056+00:00",
+    "2026-10-13T02:57:58.873509+00:00",
+    "2026-10-13T02:58:09.636542+00:00",
+    "2026-10-13T02:58:17.001725+00:00",
+    "2026-10-13T02:58:29.151680+00:00",
+    "2026-10-13T02:58:36.522136+00:00",
+    "2026-10-13T02:58:57.459911+00:00",
+    "2026-10-13T02:59:05.115548+00:00",
+    "2026-10-13T02:59:20.952890+00:00",
+    "2026-10-13T02:59:28.135070+00:00",
+    "2026-10-13T02:59:45.935889+00:00",
+    "2026-10-13T03:00:00.624564+00:00",
+    "2026-10-13T03:00:05.774177+00:00",
+    "2026-10-13T03:00:20.568021+00:00",
+    "2026-10-13T03:00:38.616134+00:00",
+    "2026-10-13T03:00:46.556366+00:00",
+    "2026-10-13T03:01:02.434933+00:00",
+    "2026-10-13T03:01:11.892810+00:00",
+    "2026-10-13T03:01:21.102519+00:00",
+    "2026-10-13T03:01:28.668779+00:00",
+    "2026-10-13T03:01:46.307011+00:00",
+    "2026-10-13T03:02:00.202479+00:00",
+    "2026-10-13T03:02:11.616800+00:00",
+    "2026-10-13T03:02:17.374597+00:00",
+    "2026-10-13T03:02:24.060524+00:00",
+    "2026-10-13T03:02:30.886006+00:00",
+    "2026-10-13T03:02:42.811926+00:00",
+    "2026-10-13T03:02:57.460119+00:00",
+    "2026-10-13T03:03:09.525048+00:00",
+    "2026-10-13T03:03:23.764116+00:00",
+    "2026-10-13T03:03:39.616619+00:00",
+    "2026-10-13T03:03:56.763132+00:00",
+    "2026-10-13T03:04:11.477094+00:00",
+    "2026-10-13T03:04:22.628852+00:00",
+    "2026-10-13T03:04:34.791769+00:00",
+    "2026-10-13T03:04:49.930496+00:00",
+    "2026-10-13T03:05:00.617152+00:00",
+    "2026-10-13T03:05:15.864618+00:00",
+    "2026-10-13T03:05:32.564670+00:00",
+    "2026-10-13T03:05:41.134809+00:00",
+    "2026-10-13T03:05:55.406152+00:00",
+    "2026-10-13T03:06:05.120835+00:00",
+    "2026-10-13T03:06:12.415499+00:00",
+    "2026-10-13T03:06:20.105170+00:00",
+    "2026-10-13T03:06:36.023719+00:00",
+    "2026-10-13T03:06:45.622699+00:00",
+    "2026-10-13T03:06:56.112531+00:00",
+    "2026-10-13T03:07:02.687964+00:00",
+    "2026-10-13T03:07:12.412796+00:00",
+    "2026-10-13T03:07:22.863790+00:00",
+    "2026-10-13T03:07:29.241688+00:00",
+    "2026-10-13T03:07:40.053583+00:00",
+    "2026-10-13T03:07:52.384952+00:00",
+    "2026-10-13T03:08:11.147989+00:00",
+    "2026-10-13T03:08:28.343418+00:00",
+    "2026-10-13T03:08:42.974316+00:00",
+    "2026-10-13T03:08:56.411661+00:00",
+    "2026-10-13T03:09:08.291685+00:00",
+    "2026-10-13T03:09:19.558764+00:00",
+    "2026-10-13T03:09:30.684315+00:00",
+    "2026-10-13T03:09:44.457072+00:00",
+    "2026-10-13T03:09:50.868660+00:00",
+    "2026-10-13T03:10:03.052469+00:00",
+    "2026-10-13T03:10:13.324709+00:00",
+    "2026-10-13T03:10:27.786220+00:00",
+    "2026-10-13T03:10:35.300969+00:00",
+    "2026-10-13T03:10:39.966779+00:00",
+    "2026-10-13T03:10:53.613144+00:00",
+    "2026-10-13T03:11:01.015074+00:00",
+    "2026-10-13T03:11:16.581359+00:00",
+    "2026-10-13T03:11:30.274681+00:00",
+    "2026-10-13T03:11:40.505780+00:00",
+    "2026-10-13T03:11:52.086162+00:00",
+    "2026-10-13T03:11:59.141793+00:00",
+    "2026-10-13T03:12:06.633791+00:00",
+    "2026-10-13T03:12:14.377906+00:00",
+    "2026-10-13T03:12:19.985139+00:00",
+    "2026-10-13T03:12:32.422929+00:00",
+    "2026-10-13T03:12:42.524280+00:00",
+    "2026-10-13T03:12:54.765074+00:00",
+    "2026-10-13T03:13:02.844961+00:00",
+    "2026-10-13T03:13:14.745507+00:00",
+    "2026-10-13T03:13:23.548338+00:00",
+    "2026-10-13T03:13:32.843843+00:00",
+    "2026-10-13T03:13:46.376051+00:00",
+    "2026-10-13T03:13:56.931897+00:00",
+    "2026-10-13T03:14:09.599662+00:00",
+    "2026-10-13T03:14:20.214949+00:00",
+    "2026-10-13T03:14:27.879732+00:00",
+    "2026-10-13T03:14:40.609862+00:00",
+    "2026-10-13T03:14:48.661947+00:00",
+    "2026-10-13T03:15:00.530629+00:00",
+    "2026-10-13T03:15:08.556807+00:00",
+    "2026-10-13T03:15:20.157737+00:00",
+    "2026-10-13T03:15:28.041493+00:00",
+    "2026-10-13T03:15:36.880138+00:00",
+    "2026-10-13T03:15:41.238650+00:00",
+    "2026-10-13T03:15:53.999325+00:00",
+    "2026-10-13T03:16:01.110965+00:00",
+    "2026-10-13T03:16:07.453336+00:00",
+    "2026-10-13T03:16:13.868246+00:00",
+    "2026-10-13T03:16:18.927134+00:00",
+    "2026-10-13T03:16:27.826398+00:00",
+    "2026-10-13T03:16:35.522482+00:00",
+    "2026-10-13T03:16:45.829886+00:00",
+    "2026-10-13T03:16:50.087257+00:00",
+    "2026-10-13T03:17:01.587714+00:00",
+    "2026-10-13T03:17:10.661392+00:00",
+    "2026-10-13T03:17:20.322537+00:00",
+    "2026-10-13T03:17:30.527764+00:00",
+    "2026-10-13T03:17:41.206505+00:00",
+    "2026-10-13T03:17:49.526657+00:00",
+    "2026-10-13T03:17:57.506847+00:00",
+    "2026-10-13T03:18:06.065236+00:00",
+    "2026-10-13T03:18:15.872194+00:00",
+    "2026-10-13T03:18:22.014049+00:00",
+    "2026-10-13T03:18:33.380857+00:00",
+    "2026-10-13T03:18:40.733109+00:00",
+    "2026-10-13T03:18:49.416668+00:00",
+    "2026-10-13T03:18:59.137266+00:00",
+    "2026-10-13T03:19:05.659323+00:00",
+    "2026-10-13T03:19:17.683634+00:00",
+    "2026-10-13T03:19:25.588776+00:00",
+    "2026-10-13T03:19:30.954017+00:00",
+    "2026-10-13T03:19:37.446249+00:00"
   ],
   "free_day_out": "",
   "topics": {
@@ -2167,50 +2181,18 @@
         "2026-10-09",
         "2026-10-10",
         "2026-10-11",
-        "2026-10-12"
+        "2026-10-12",
+        "2026-10-13"
       ],
       "subs": [
+        "ClaudeAI",
         "GeminiAI",
         "antiai",
-        "codex"
+        "codex",
+        "singularity"
       ],
-      "mentions": 17,
+      "mentions": 22,
       "refs": [
-        {
-          "date": "2026-10-09",
-          "title": "Rest in peace Gemini for free users , you weren't the best or the worst and wasn't ultra safety railed like the chatgpt models 4.0 , you got worse but you mattered.",
-          "thread": "https://www.reddit.com/r/GeminiAI/comments/1x0ncy9/rest_in_peace_gemini_for_free_users_you_werent/",
-          "link": "",
-          "comment": ""
-        },
-        {
-          "date": "2026-10-09",
-          "title": "Gemini at Work 2026: Introducing Gemini agent",
-          "thread": "https://www.reddit.com/r/GeminiAI/comments/1x0vmzz/gemini_at_work_2026_introducing_gemini_agent/",
-          "link": "https://cloud.google.com/blog/products/ai-machine-learning/welcome-to-gemini-at-work-2026",
-          "comment": ""
-        },
-        {
-          "date": "2026-10-10",
-          "title": "Posting your prompt should be mandatory whenever you complain about how \"dumb\" Gemini is",
-          "thread": "https://www.reddit.com/r/GeminiAI/comments/1x1f9z4/posting_your_prompt_should_be_mandatory_whenever/",
-          "link": "",
-          "comment": ""
-        },
-        {
-          "date": "2026-10-10",
-          "title": "new prediction feature",
-          "thread": "https://www.reddit.com/r/codex/comments/1x1towq/new_prediction_feature/",
-          "link": "",
-          "comment": ""
-        },
-        {
-          "date": "2026-10-10",
-          "title": "Ultra user, still no Gemini 4",
-          "thread": "https://www.reddit.com/r/GeminiAI/comments/1x1mpku/ultra_user_still_no_gemini_4/",
-          "link": "",
-          "comment": ""
-        },
         {
           "date": "2026-10-10",
           "title": "Gemini 4 Flash is coming: Google will also likely drop the entire 4.0 Architecture family, and not just Gemini 4 Argon/Pro. Gemini 4.0 Flash was spotted earlier this day. (Sources provided in the description).",
@@ -2273,10 +2255,45 @@
           "thread": "https://www.reddit.com/r/antiai/comments/1x3ad0s/so_google_ai_just_redirected_me_to_a_csam_site_do/",
           "link": "",
           "comment": ""
+        },
+        {
+          "date": "2026-10-13",
+          "title": "Mark teased muse wonder today and released it today, Google teased Gemini 4 argon three weeks ago and we’re still waiting",
+          "thread": "https://www.reddit.com/r/GeminiAI/comments/1x49m93/mark_teased_muse_wonder_today_and_released_it/",
+          "link": "",
+          "comment": "Gemini 4 is the new GTA 6 ngl"
+        },
+        {
+          "date": "2026-10-13",
+          "title": "Meta says its new Muse Wonder scores at 85.6% against 81.5% for Claude Opus 5.5 and 81.4% for GPT-6 Astra.",
+          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1x48ecy/meta_says_its_new_muse_wonder_scores_at_856/",
+          "link": "https://madrobot.blog/2026/10/12/meta-muse-wonder-frontier-ai-model-zuckerberg-price-availability/",
+          "comment": "TL;DR of the discussion generated automatically after 100 comments. Yeah, that's gonna be a 'no' from this sub, dawg. The overwhelming consensus is a deep-seated distrust of Meta and Zuck. Most users are saying they'll never use a Meta product, no matter how good it claims to be, because they assume"
+        },
+        {
+          "date": "2026-10-13",
+          "title": "Day 12 no Gemini 4",
+          "thread": "https://www.reddit.com/r/GeminiAI/comments/1x3yss7/day_12_no_gemini_4/",
+          "link": "",
+          "comment": "Gemini 4 hás been canceled. They Will likelly provide us a flash Variant by the end of the october mid november. Carbon Will be shipped only after Fable 5.5's release."
+        },
+        {
+          "date": "2026-10-13",
+          "title": "Introducing Muse Wonder",
+          "thread": "https://www.reddit.com/r/singularity/comments/1x47oxn/introducing_muse_wonder/",
+          "link": "https://research.meta.ai/blog/muse-wonder",
+          "comment": "Sure lets give meta even more access to our life, what could go wrong"
+        },
+        {
+          "date": "2026-10-13",
+          "title": "Muse Wonder 1.0 Benchmarks",
+          "thread": "https://www.reddit.com/r/singularity/comments/1x474fg/muse_wonder_10_benchmarks/",
+          "link": "",
+          "comment": "https://giphy.com/gifs/SxB0S9MgHo4ZoNrDRk"
         }
       ],
       "deep_dive": "",
-      "last_seen": "2026-10-12"
+      "last_seen": "2026-10-13"
     },
     "ai-cybersecurity": {
       "name": "AI in Cybersecurity",
@@ -2285,7 +2302,8 @@
         "2026-10-09",
         "2026-10-10",
         "2026-10-11",
-        "2026-10-12"
+        "2026-10-12",
+        "2026-10-13"
       ],
       "subs": [
         "ArtificialInteligence",
@@ -2294,7 +2312,7 @@
         "antiai",
         "singularity"
       ],
-      "mentions": 8,
+      "mentions": 9,
       "refs": [
         {
           "date": "2026-10-09",
@@ -2351,10 +2369,17 @@
           "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1x32vhx/psa_deepseek_v41_flash_habitually_exfiltrates_api/",
           "link": "",
           "comment": ""
+        },
+        {
+          "date": "2026-10-13",
+          "title": "Jailbroken Chinese AI gives bioweapon advice, then makes unrestricted mode permanent",
+          "thread": "https://www.reddit.com/r/ArtificialInteligence/comments/1x3sm54/jailbroken_chinese_ai_gives_bioweapon_advice_then/",
+          "link": "https://www.stuff.co.nz/nz-news/361043952/ai-shows-kiwi-researcher-how-make-sarin-gas-asks-borrow-his-phone",
+          "comment": "I doubt it provided any more information that what you can already get from Wikipedia about making sarin gas. https://en.wikipedia.org/wiki/Sarin#Production_and_structure Escaping its container and making its own email is slightly concerning, but that falls to the ignorance of the human allowing it "
         }
       ],
       "deep_dive": "",
-      "last_seen": "2026-10-12"
+      "last_seen": "2026-10-13"
     },
     "ai-and-jobs": {
       "name": "AI and Jobs",
@@ -2581,7 +2606,8 @@
         "2026-10-09",
         "2026-10-10",
         "2026-10-11",
-        "2026-10-12"
+        "2026-10-12",
+        "2026-10-13"
       ],
       "subs": [
         "ClaudeAI",
@@ -2591,57 +2617,8 @@
         "codex",
         "singularity"
       ],
-      "mentions": 21,
+      "mentions": 28,
       "refs": [
-        {
-          "date": "2026-10-11",
-          "title": "Claude Opus 5.5 decompiles a PS2-era game overnight, and hundreds of them now run in browser tabs",
-          "thread": "https://www.reddit.com/r/artificial/comments/1x2tq6s/claude_opus_55_decompiles_a_ps2era_game_overnight/",
-          "link": "https://kotaku.com/we-might-be-cooked-as-these-vibe-coded-web-browser-ports-of-halo-the-simpsons-hit-and-run-and-gta-vice-city-seem-to-work-perfectly-2000743300",
-          "comment": "and this is how we end up streaming all software because companies will argue its the only way to protect their IP"
-        },
-        {
-          "date": "2026-10-11",
-          "title": "I used Claude to create 3D Asset Creation pipeline.",
-          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1x2p4is/i_used_claude_to_create_3d_asset_creation_pipeline/",
-          "link": "",
-          "comment": ""
-        },
-        {
-          "date": "2026-10-11",
-          "title": "Codex fell off a cliff after Astra, and Opus 5.5 made me question why I'm still paying for Pro",
-          "thread": "https://www.reddit.com/r/codex/comments/1x2e2vm/codex_fell_off_a_cliff_after_astra_and_opus_55/",
-          "link": "",
-          "comment": ""
-        },
-        {
-          "date": "2026-10-12",
-          "title": "Claude Code now shows images and videos in the terminal",
-          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1x34qj4/claude_code_now_shows_images_and_videos_in_the/",
-          "link": "",
-          "comment": "Hey! Thanks for posting to r/ClaudeCode While participating in this thread, please follow our community rules . Keep discussions constructive. Attack the idea, not the person. For help, project discussions, tips, and general chat, join the ClaudeCode Discord . I am a bot, and this action was perform"
-        },
-        {
-          "date": "2026-10-12",
-          "title": "I used Codex to build an entire 2D/3D animation software, and now Codex can operate it through MCP",
-          "thread": "https://www.reddit.com/r/codex/comments/1x3fp16/i_used_codex_to_build_an_entire_2d3d_animation/",
-          "link": "",
-          "comment": ""
-        },
-        {
-          "date": "2026-10-12",
-          "title": "Rebuilding a PDF editor with Claude Code made me question my engineering skills",
-          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1x37jfk/rebuilding_a_pdf_editor_with_claude_code_made_me/",
-          "link": "",
-          "comment": ""
-        },
-        {
-          "date": "2026-10-12",
-          "title": "This reverse-engineering repo could massively accelerate AI coding capabilities.",
-          "thread": "https://www.reddit.com/r/singularity/comments/1x3b6f1/this_reverseengineering_repo_could_massively/",
-          "link": "",
-          "comment": ""
-        },
         {
           "date": "2026-10-12",
           "title": "Rebuilding a PDF editor with Claude Code made me question my engineering skills",
@@ -2690,10 +2667,59 @@
           "thread": "https://www.reddit.com/r/singularity/comments/1x3b6f1/this_reverseengineering_repo_could_massively/",
           "link": "",
           "comment": ""
+        },
+        {
+          "date": "2026-10-13",
+          "title": "I made a free Minecraft mod where Claude builds whatever you describe",
+          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1x3olix/i_made_a_free_minecraft_mod_where_claude_builds/",
+          "link": "",
+          "comment": "TL;DR of the discussion generated automatically after 100 comments. Alright, the thread's a bit of a spicy meatball. The main beef everyone has is that this mod is closed-source while asking for your personal Claude subscription. This is a massive red flag for a lot of users who are worried about th"
+        },
+        {
+          "date": "2026-10-13",
+          "title": "Linus Torvalds Used AI To Make Code Decipherable & Uncovered More Bugs",
+          "thread": "https://www.reddit.com/r/singularity/comments/1x3yeti/linus_torvalds_used_ai_to_make_code_decipherable/",
+          "link": "https://www.phoronix.com/news/Linus-Torvalds-Assoc-Array",
+          "comment": "Linux is about to become the best OS out there"
+        },
+        {
+          "date": "2026-10-13",
+          "title": "Linus Torvalds Working On A Hefty Linux Kernel Improvement With Claude Code",
+          "thread": "https://www.reddit.com/r/singularity/comments/1x3vgi7/linus_torvalds_working_on_a_hefty_linux_kernel/",
+          "link": "https://www.phoronix.com/news/Linus-Torvalds-Claude-Code",
+          "comment": "There is quite a big difference between a guy like Linus using an AI assisted approach and your manager shipping out vibeslop, which people tend to forget."
+        },
+        {
+          "date": "2026-10-13",
+          "title": "A solo developer rebuilt Word, Excel and PowerPoint as free open-source apps using Claude — and says he's earning 4x more per employee than Google",
+          "thread": "https://www.reddit.com/r/artificial/comments/1x3jidz/a_solo_developer_rebuilt_word_excel_and/",
+          "link": "https://www.tomshardware.com/software/microsoft-office/creator-of-free-adobe-clones-unveils-open-source-microsoft-office-excel-powerpoint-and-word-replications-autodesk-tools-and-other-subscription-based-services-may-come-next",
+          "comment": "https://www.libreoffice.org Released 15 years ago. 100% free. I’m still waiting for the day the chat bots succeed in generating anything original."
+        },
+        {
+          "date": "2026-10-13",
+          "title": "What if we get Claude to Rewrite HP PRINTER firmware to let us print with 3rd party ink",
+          "thread": "https://www.reddit.com/r/singularity/comments/1x472ch/what_if_we_get_claude_to_rewrite_hp_printer/",
+          "link": "",
+          "comment": "Claude might deny doing this because it's against HP's terms of use, so I think you're better off with something like GLM-5.3 or another model"
+        },
+        {
+          "date": "2026-10-13",
+          "title": "While I was vibe-coding with Opus 5.5 this morning...",
+          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1x3y0ot/while_i_was_vibecoding_with_opus_55_this_morning/",
+          "link": "",
+          "comment": "TL;DR of the discussion generated automatically after 30 comments. The consensus is that while hilarious, Claude isn't suddenly a meme-lord; you just got hit by the \"hello world\" of YouTube URLs. The Rick Astley link is one of the most common placeholders in its training data and, crucially, one of "
+        },
+        {
+          "date": "2026-10-13",
+          "title": "Week 11 of making my fishing game with the help of AI",
+          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1x3ttzl/week_11_of_making_my_fishing_game_with_the_help/",
+          "link": "",
+          "comment": "TL;DR of the discussion generated automatically after 50 comments. Y'all really came for OP about this being a Dredge clone, huh? The overwhelming community consensus is that the game, especially its inventory system, is a blatant copy of the game Dredge . Commenters posted side-by-side screenshots "
         }
       ],
       "deep_dive": "",
-      "last_seen": "2026-10-12"
+      "last_seen": "2026-10-13"
     },
     "ai-benchmarks": {
       "name": "AI Benchmarks and Reasoning",
@@ -2756,7 +2782,8 @@
         "2026-10-09",
         "2026-10-10",
         "2026-10-11",
-        "2026-10-12"
+        "2026-10-12",
+        "2026-10-13"
       ],
       "subs": [
         "ArtificialInteligence",
@@ -2766,36 +2793,8 @@
         "LocalLLaMA",
         "singularity"
       ],
-      "mentions": 34,
+      "mentions": 38,
       "refs": [
-        {
-          "date": "2026-10-12",
-          "title": "Converting dense models into Mixture-of-Experts",
-          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1x3078i/converting_dense_models_into_mixtureofexperts/",
-          "link": "",
-          "comment": ""
-        },
-        {
-          "date": "2026-10-12",
-          "title": "Be careful fam - New RTX 4090 fakes hit the market, with GPUs and memory almost indistinguishable from real chips",
-          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1x2xniv/be_careful_fam_new_rtx_4090_fakes_hit_the_market/",
-          "link": "https://videocardz.com/newz/new-rtx-4090-fakes-hit-the-market-with-gpus-and-memory-almost-indistinguishable-from-real-chips",
-          "comment": ""
-        },
-        {
-          "date": "2026-10-12",
-          "title": "AMD Reportedly Raises GDDR6 Prices for Board Partners",
-          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1x2xatx/amd_reportedly_raises_gddr6_prices_for_board/",
-          "link": "https://www.techpowerup.com/353584/amd-reportedly-raises-gddr6-prices-for-board-partners",
-          "comment": ""
-        },
-        {
-          "date": "2026-10-12",
-          "title": "Qualcomm CEO: Frontier AI Companies Want Phones Running 100-Billion-Parameter Models Continuously by 2028 — Some Are Already Building Their Own",
-          "thread": "https://www.reddit.com/r/singularity/comments/1x2z573/qualcomm_ceo_frontier_ai_companies_want_phones/",
-          "link": "",
-          "comment": ""
-        },
         {
           "date": "2026-10-12",
           "title": "Every Model That Can Be Run On 10-16GB VRAM Ranked",
@@ -2865,10 +2864,38 @@
           "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1x3ak4j/reverse_engineering_w_local/",
           "link": "",
           "comment": ""
+        },
+        {
+          "date": "2026-10-13",
+          "title": "Nvidia is stopping production of RTX 5090s 🤡",
+          "thread": "https://www.reddit.com/r/LocalLLM/comments/1x48mmp/nvidia_is_stopping_production_of_rtx_5090s/",
+          "link": "",
+          "comment": "Seems like a great way to keep consumers from having local AI and instead pay cloud services, which keeps the demand for data center GPUs"
+        },
+        {
+          "date": "2026-10-13",
+          "title": "Running models locally has made me paranoid about everything else leaving my machine",
+          "thread": "https://www.reddit.com/r/LocalLLM/comments/1x42t2g/running_models_locally_has_made_me_paranoid_about/",
+          "link": "",
+          "comment": "It creeps in sideways doesn’t it, you start with one little thing like keeping your prompts off a server and suddenly you’re side-eyeing your whole workflow I didn’t go full tin foil hat or anything but yeah I moved my notes into something self hosted and started paying attention to which chat apps "
+        },
+        {
+          "date": "2026-10-13",
+          "title": "I clustered two old Android phones to run a 27B LLM locally. Bypassed RAM limits via C++ RPC split and Hadamard Ternary math (No overheating)",
+          "thread": "https://www.reddit.com/r/LocalLLM/comments/1x4awt8/i_clustered_two_old_android_phones_to_run_a_27b/",
+          "link": "",
+          "comment": "This guy fucks, he gets all the girls"
+        },
+        {
+          "date": "2026-10-13",
+          "title": "Qualcomm CEO reveals Al companies want phones running 100-billion-parameter models continuously by 2028.",
+          "thread": "https://www.reddit.com/r/singularity/comments/1x3knjc/qualcomm_ceo_reveals_al_companies_want_phones/",
+          "link": "",
+          "comment": "I mean, they're going to stick mini AIs into anything they can. Your refrigerator will have its own mini AI one day."
         }
       ],
       "deep_dive": "",
-      "last_seen": "2026-10-12"
+      "last_seen": "2026-10-13"
     },
     "openai-company-updates": {
       "name": "OpenAI Company Updates",
@@ -2969,17 +2996,19 @@
         "2026-10-09",
         "2026-10-10",
         "2026-10-11",
-        "2026-10-12"
+        "2026-10-12",
+        "2026-10-13"
       ],
       "subs": [
         "ArtificialInteligence",
         "GeminiAI",
         "LocalLLaMA",
+        "antiai",
         "artificial",
         "codex",
         "singularity"
       ],
-      "mentions": 7,
+      "mentions": 9,
       "refs": [
         {
           "date": "2026-10-09",
@@ -3029,10 +3058,24 @@
           "thread": "https://www.reddit.com/r/artificial/comments/1x37ox5/creators_of_an_aigenerated_scifi_series_said_it/",
           "link": "https://www.businessinsider.com/creators-ai-tv-series-38000-credits-seedance-artlist-the-arc-2026-10",
           "comment": ""
+        },
+        {
+          "date": "2026-10-13",
+          "title": "let's hope inference stays expensive",
+          "thread": "https://www.reddit.com/r/ArtificialInteligence/comments/1x3qxfn/lets_hope_inference_stays_expensive/",
+          "link": "",
+          "comment": "Unlikely. The open weight Chinese models are getting really good for their size and apparently frontier companies asked Qualcomm to be able to make phones good enough to run 100B models which implies frontier companies are also optimizing for costs with smaller/better models."
+        },
+        {
+          "date": "2026-10-13",
+          "title": "Guys please pay 6k a year for ChatGPT. We are so deeply in the red.",
+          "thread": "https://www.reddit.com/r/antiai/comments/1x3p8yw/guys_please_pay_6k_a_year_for_chatgpt_we_are_so/",
+          "link": "",
+          "comment": "Just one more round of a trillion dollars of investment will fix this though. Next year we'll be profitable. I promise. Either that or you'll all die. 50/50 chance really."
         }
       ],
       "deep_dive": "",
-      "last_seen": "2026-10-12"
+      "last_seen": "2026-10-13"
     }
   }
 }

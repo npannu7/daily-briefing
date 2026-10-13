@@ -4,159 +4,90 @@
  "repo": "npannu7/daily-briefing",
  "episodes": [
   {
-   "file": "ai_2026-10-12_evening_1614.mp3",
-   "title": "Deep dive - 12 Oct: Anthropic Claude Models",
-   "label": "Monday 12 Oct evening deep dive",
-   "date": "2026-10-12",
-   "edition": "evening",
-   "published": "2026-10-12T16:14:39.994702+05:30",
-   "duration": 3356,
-   "theme": "Deep dive: Anthropic Claude Models",
-   "writer": "nemotron-3-ultra-550b-a55b (free)",
+   "file": "ai_2026-10-13_morning_0815.mp3",
+   "title": "Morning - 13 Oct: Linus Torvalds and Kernel AI: Reverse-Engineering Obscure C Through Interactive Deobfuscation",
+   "label": "Tuesday 13 Oct morning",
+   "date": "2026-10-13",
+   "edition": "morning",
+   "published": "2026-10-13T08:15:33.533245+05:30",
+   "duration": 1825,
+   "theme": "Independent developers pushing physical and local compute limits: from kernel deobfuscation and mobile hardware clustering to whole-body humanoid kinematics and procedural voxel engines",
+   "writer": "Gemini 3.8 Flash",
    "voices": "Fish Audio (free)",
-   "deep_dive": true,
+   "deep_dive": false,
    "segments": [
     {
-     "title": "Anthropic Claude Models: Why everyone is talking about it",
-     "category": "deepdive"
+     "title": "Linus Torvalds and Kernel AI: Reverse-Engineering Obscure C Through Interactive Deobfuscation",
+     "category": "thread"
     },
     {
-     "title": "Anthropic Claude Models: The foundations, from scratch",
-     "category": "deepdive"
+     "title": "Dual-Handset Compute Clustering: Split-Execution RPC and Hadamard Ternary Quantization on Android",
+     "category": "thread"
     },
     {
-     "title": "Anthropic Claude Models: How we got here",
-     "category": "deepdive"
+     "title": "Asimov 1 at Day 352: Whole-Body Kinematic Coupling and Dynamic Gait in Open-Source Humanoids",
+     "category": "thread"
     },
     {
-     "title": "Anthropic Claude Models: Reality check",
-     "category": "deepdive"
+     "title": "Procedural Voxel Assembly: Connecting Claude Code to Real-Time Game Loops via Local Tool-Calling",
+     "category": "thread"
+    },
+    {
+     "title": "Quickfire: Edge Routers, Supermarket Robotics, Elastic Reinforcement Schedulers, and MoE Vision",
+     "category": "quickfire"
     }
    ],
    "quiz": [
     {
-     "q": "What engineering parallel did Laura use to explain the mechanism of the Frame Grid tool's trade-off between spatial resolution and token budget?",
+     "q": "How did Linus Torvalds utilize modern AI models to uncover hidden bugs in the Linux kernel associative array library?",
      "options": [
-      "Finite element mesh convergence",
-      "Inspection sampling frequency on a production line",
-      "Specific strength in materials like strength-to-weight ratio",
-      "Statistical process control charting for surface finish"
+      "He let the model autonomously rewrite the core C code and shipped it straight to production without human testing.",
+      "He used the model for semantic deobfuscation to break down dense monolithic functions into readable chunks, then ran a user-space test harness to expose failure modes.",
+      "He instructed the LLM to directly point out memory leaks and buffer overflows from a text prompt.",
+      "He generated entirely new low-level data structures from scratch using zero-shot code generation."
      ],
      "answer": 1,
-     "explain": "Laura compared the trade-off to choosing inspection sampling frequency on a production line: too sparse and defects are missed, too dense and data overflows without new information.",
-     "segment": "Anthropic Claude Models: Why everyone is talking about it"
+     "explain": "Linus used the model for semantic deobfuscation to restructure the unreadable code so he could trace the logic and write tests in an isolated test harness.",
+     "segment": "Linus Torvalds and Kernel AI: Reverse-Engineering Obscure C Through Interactive Deobfuscation"
     },
     {
-     "q": "How does Laura explain the function of the attention mechanism in transformer models using an industrial analogy?",
+     "q": "How did the independent developer running a 27-billion parameter model across two consumer Android phones avoid severe thermal throttling?",
      "options": [
-      "Like a coordinate measuring machine reaching any point without moving the gantry",
-      "Like a manufacturing execution system where work orders broadcast queries, keys, and payloads",
-      "Like a cellular manufacturing layout where cells only talk to neighbors",
-      "Like a hydraulic bypass circuit routing excess fluid around a valve"
+      "By liquid-cooling the USB cable connecting the two handsets.",
+      "Using Hadamard ternary quantization, which reduces weights to three values (-1, 0, +1) and replaces heavy floating-point multipliers with simple addition and subtraction circuits.",
+      "By streaming model weights continuously over Wi-Fi to offload compute entirely to the cloud.",
+      "By running the model only on the primary phone while the secondary phone acts as an idle backup battery."
      ],
      "answer": 1,
-     "explain": "Laura explained attention by comparing work orders broadcasting queries, keys, and values to a manufacturing execution system.",
-     "segment": "Anthropic Claude Models: The foundations, from scratch"
+     "explain": "Ternary quantization restricts weights to three states, eliminating complex floating-point multiplications and replacing them with additions that pull far less switching energy.",
+     "segment": "Dual-Handset Compute Clustering: Split-Execution RPC and Hadamard Ternary Quantization on Android"
     },
     {
-     "q": "What specific engineering challenge did Laura highlight regarding the PlayStation 2 decompilation claim?",
+     "q": "What mechanism does the open-source Asimov One humanoid use to coordinate upper-limb arm movements while walking without falling over?",
      "options": [
-      "It lacks network redundancy across microservices",
-      "It is an ill-posed problem since many source programs compile to the exact same binary",
-      "It requires a real-time hardware loop to verify CPU cycle counts",
-      "It generates non-deterministic instruction sets that violate browser sandboxing"
+      "Independent motion controllers that treat the arms and legs as completely isolated systems.",
+      "A pre-programmed animation script identical to a video game walk cycle.",
+      "A Whole-Control quadratic programming solver running at high frequency that treats the 25 degrees of freedom as a coupled kinematic tree to keep ground reaction forces inside the support polygon.",
+      "Heavy gyroscopic weights mounted inside the chest to completely cancel out inertial forces."
      ],
-     "answer": 1,
-     "explain": "Laura noted that decompilation is ill-posed because many different source programs compile to the same binary, requiring the model to reconstruct intent from stripped artifacts.",
-     "segment": "Anthropic Claude Models: How we got here"
+     "answer": 2,
+     "explain": "A unified whole-body controller evaluates the dynamic model of the entire linkage to compensate for center-of-mass shifts and keep the zero-moment point inside the footprint.",
+     "segment": "Asimov 1 at Day 352: Whole-Body Kinematic Coupling and Dynamic Gait in Open-Source Humanoids"
     },
     {
-     "q": "According to the discussion in the reality check segment, what was the community consensus regarding LLM decompilation capability?",
+     "q": "How does the Claude Code Minecraft mod stream voxel placement commands into a running game world without stuttering the game's tick loop?",
      "options": [
-      "It fully replaces human reverse engineers for production-grade software",
-      "It gets eighty percent of the way there quickly, but the last twenty percent still requires a human staring at a disassembler like IDA Pro",
-      "It fails completely on vintage architectures due to missing token embeddings",
-      "It operates deterministically without hallucinations if supplied with debug symbols"
+      "By pausing the Minecraft server every time Claude processes a prompt.",
+      "By using asynchronous remote procedure calls where the game loop checks a local command buffer via a FIFO queue without blocking core physics and lighting calculations.",
+      "By forcing the Minecraft client to render at a lower frame rate while generation is active.",
+      "By executing the entire building script offline and rebooting the server when finished."
      ],
      "answer": 1,
-     "explain": "A professional commenter cited in the transcript stated that the model gets you most of the way there fast, but the final portion still requires human expertise.",
-     "segment": "Anthropic Claude Models: Reality check"
+     "explain": "The Minecraft tick loop acts like a PLC, checking a local FIFO command buffer every 50 milliseconds so the game engine never waits synchronously on an API token response.",
+     "segment": "Procedural Voxel Assembly: Connecting Claude Code to Real-Time Game Loops via Local Tool-Calling"
     }
    ],
    "digest": [
-    {
-     "title": "Shock and awe — Creator of free Adobe clones unveils open-source Microsoft Office Excel, PowerPoint, and Word replications — Autodesk tools and other subscription-based services may come next",
-     "subs": [
-      "artificial",
-      "singularity"
-     ],
-     "thread": "https://www.reddit.com/r/singularity/comments/1x3daf9/shock_and_awe_creator_of_free_adobe_clones/",
-     "link": "https://www.tomshardware.com/software/microsoft-office/creator-of-free-adobe-clones-unveils-open-source-microsoft-office-excel-powerpoint-and-word-replications-autodesk-tools-and-other-subscription-based-services-may-come-next",
-     "line": "A creator released open-source Microsoft Office and Adobe alternatives built with AI, and commenters are debating whether AI is replacing tech jobs.",
-     "verdict": "opinion",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Rebuilding a PDF editor with Claude Code made me question my engineering skills",
-     "subs": [
-      "ClaudeCode"
-     ],
-     "thread": "https://www.reddit.com/r/ClaudeCode/comments/1x37jfk/rebuilding_a_pdf_editor_with_claude_code_made_me/",
-     "link": "",
-     "line": "An experienced developer struggled to keep up with architecture decisions when Claude Code generated over 3,000 lines for a PDF editor.",
-     "verdict": "opinion",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "I used Codex to build an entire 2D/3D animation software, and now Codex can operate it through MCP",
-     "subs": [
-      "codex"
-     ],
-     "thread": "https://www.reddit.com/r/codex/comments/1x3fp16/i_used_codex_to_build_an_entire_2d3d_animation/",
-     "link": "",
-     "line": "A developer used Codex to build 2D and 3D animation software called Warp Studio, which Codex can now operate directly through MCP.",
-     "verdict": "plausible",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Every Model That Can Be Run On 10-16GB VRAM Ranked",
-     "subs": [
-      "LocalLLaMA"
-     ],
-     "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1x3gpyi/every_model_that_can_be_run_on_1016gb_vram_ranked/",
-     "link": "",
-     "line": "Users discussed rankings of LLMs that fit on 10-16GB VRAM and lamented that spontaneous AI hallucinations have not improved much over four years.",
-     "verdict": "opinion",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Does this still works for bots or is it over?",
-     "subs": [
-      "singularity"
-     ],
-     "thread": "https://www.reddit.com/r/singularity/comments/1x3d76y/does_this_still_works_for_bots_or_is_it_over/",
-     "link": "",
-     "line": "Users discussed whether tricking social media bots into revealing they are LLMs still works, with mixed results reported.",
-     "verdict": "opinion",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "The day we can run Sonnet-level AI locally on a regular PC will be insane",
-     "subs": [
-      "ClaudeAI"
-     ],
-     "thread": "https://www.reddit.com/r/ClaudeAI/comments/1x35dqe/the_day_we_can_run_sonnetlevel_ai_locally_on_a/",
-     "link": "",
-     "line": "A user expressed excitement about the future turning point when Sonnet-level AI capabilities can be run locally on personal PCs without subscriptions.",
-     "verdict": "hype",
-     "also_in": [],
-     "in_episode": false
-    },
     {
      "title": "I made a free Minecraft mod where Claude builds whatever you describe",
      "subs": [
@@ -164,32 +95,68 @@
      ],
      "thread": "https://www.reddit.com/r/ClaudeAI/comments/1x3olix/i_made_a_free_minecraft_mod_where_claude_builds/",
      "link": "",
-     "line": "A user built and shared a free Minecraft mod utilizing Claude Code that lets players prompt Claude to build structures in-game.",
+     "line": "A developer shared a free Minecraft mod where Claude builds what you describe, sparking debate over its features and implementation.",
      "verdict": "plausible",
      "also_in": [],
-     "in_episode": false
+     "in_episode": true
     },
     {
-     "title": "This reverse-engineering repo could massively accelerate AI coding capabilities.",
+     "title": "I clustered two old Android phones to run a 27B LLM locally. Bypassed RAM limits via C++ RPC split and Hadamard Ternary math (No overheating)",
      "subs": [
-      "singularity"
+      "LocalLLM"
      ],
-     "thread": "https://www.reddit.com/r/singularity/comments/1x3b6f1/this_reverseengineering_repo_could_massively/",
+     "thread": "https://www.reddit.com/r/LocalLLM/comments/1x4awt8/i_clustered_two_old_android_phones_to_run_a_27b/",
      "link": "",
-     "line": "Users discussed a reverse-engineering repository that could allow AI agents to systematically inspect binaries and reconstruct closed-source software.",
-     "verdict": "plausible",
+     "line": "A user clustered two old Android phones to run a 27B LLM locally using a custom C++ engine, drawing widespread praise.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": true
+    },
+    {
+     "title": "Running models locally has made me paranoid about everything else leaving my machine",
+     "subs": [
+      "LocalLLM"
+     ],
+     "thread": "https://www.reddit.com/r/LocalLLM/comments/1x42t2g/running_models_locally_has_made_me_paranoid_about/",
+     "link": "",
+     "line": "A user discussed how using local AI models made them paranoid about data privacy elsewhere, leading to humorous agreement on digital security.",
+     "verdict": "opinion",
      "also_in": [],
      "in_episode": false
     },
     {
-     "title": "Here’s why RTX 5090 costs $5,000: AI firms are buying gaming GPUs by the pallet",
+     "title": "Day 352 of building Asimov 1, an open-source humanoid robot. Asimov 1 can now move its arms while walking",
      "subs": [
-      "LocalLLaMA"
+      "robotics"
      ],
-     "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1x37tg6/heres_why_rtx_5090_costs_5000_ai_firms_are_buying/",
-     "link": "https://videocardz.com/newz/heres-why-rtx-5090-costs-5000-ai-firms-are-buying-gaming-gpus-by-the-pallet",
-     "line": "A thread claimed that the RTX 5090 costs $5,000 because AI firms are purchasing gaming GPUs by the pallet.",
-     "verdict": "hype",
+     "thread": "https://www.reddit.com/r/robotics/comments/1x3u9a4/day_352_of_building_asimov_1_an_opensource/",
+     "link": "",
+     "line": "An open-source project shared progress on Asimov 1, a humanoid robot that can now move its arms while walking, receiving positive feedback.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": true
+    },
+    {
+     "title": "let's hope inference stays expensive",
+     "subs": [
+      "ArtificialInteligence"
+     ],
+     "thread": "https://www.reddit.com/r/ArtificialInteligence/comments/1x3qxfn/lets_hope_inference_stays_expensive/",
+     "link": "",
+     "line": "Users discussed whether AI inference costs will remain high, with opinions split on future affordability and open-weight models.",
+     "verdict": "opinion",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Day 7 - tibo",
+     "subs": [
+      "codex"
+     ],
+     "thread": "https://www.reddit.com/r/codex/comments/1x3n28b/day_7_tibo/",
+     "link": "",
+     "line": "Users discussed a Day 7 update by tibo, focusing on default settings and no extra fees for specific calls.",
+     "verdict": "plausible",
      "also_in": [],
      "in_episode": false
     },
@@ -200,37 +167,73 @@
      ],
      "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1x3th4p/decision_30_open_multimodal_decision_models_from/",
      "link": "https://www.reddit.com/gallery/1x3th4p",
-     "line": "The vLLM Semantic Router team released Decision 3.0, a new open-source multimodal decision model family ranging from 0.6B to 27B parameters.",
+     "line": "The team released Decision 3.0, a new open multimodal model family, prompting jokes and discussion about AI company valuations.",
      "verdict": "confirmed",
      "also_in": [],
-     "in_episode": false
+     "in_episode": true
     },
     {
-     "title": "In Denmark, Hive Robotics is training Unitree G1 to restock shelves in a supermarket - expected to do it autonomously by early 2027",
+     "title": "Linus Torvalds Working On A Hefty Linux Kernel Improvement With Claude Code",
      "subs": [
       "singularity"
      ],
-     "thread": "https://www.reddit.com/r/singularity/comments/1x3pwum/in_denmark_hive_robotics_is_training_unitree_g1/",
-     "link": "",
-     "line": "Hive Robotics in Denmark is training a Unitree G1 robot to restock supermarket shelves autonomously by early 2027.",
+     "thread": "https://www.reddit.com/r/singularity/comments/1x3vgi7/linus_torvalds_working_on_a_hefty_linux_kernel/",
+     "link": "https://www.phoronix.com/news/Linus-Torvalds-Claude-Code",
+     "line": "Users discussed Linus Torvalds using Claude Code for Linux kernel improvements, noting he delegates work rather than quality control.",
      "verdict": "plausible",
+     "also_in": [],
+     "in_episode": true
+    },
+    {
+     "title": "It's been 2 months",
+     "subs": [
+      "LocalLLaMA"
+     ],
+     "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1x4akj7/its_been_2_months/",
+     "link": "",
+     "line": "Users debated Facebook's motives regarding open-source contributions and monetization strategies.",
+     "verdict": "opinion",
      "also_in": [],
      "in_episode": false
     },
     {
-     "title": "Whistle: speech to text in 16.9 MB",
+     "title": "Google DeepMind’s AI weather model picked up Hurricane Isaias 11 days before landfall, pinned where it would hit 4 days out and nailed its peak strength 3 days out—potentially giving communities days more time to evacuate and prepare",
+     "subs": [
+      "singularity"
+     ],
+     "thread": "https://www.reddit.com/r/singularity/comments/1x3unnr/google_deepminds_ai_weather_model_picked_up/",
+     "link": "",
+     "line": "A post highlighted Google DeepMind's AI weather model accurately predicting Hurricane Isaias well in advance, drawing sarcastic skepticism in the comments.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Qwen released QwenGyre - RL framework for training AI agents on extremely long complex tasks",
      "subs": [
       "LocalLLaMA"
      ],
-     "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1x3bpfl/whistle_speech_to_text_in_169_mb/",
-     "link": "https://cactuscompute.com/blog/whistle",
-     "line": "A thread highlighted Whistle, a speech-to-text tool packed into a 16.9 MB size.",
+     "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1x41myz/qwen_released_qwengyre_rl_framework_for_training/",
+     "link": "https://www.reddit.com/gallery/1x41myz",
+     "line": "The release of QwenGyre for training AI agents on long tasks sparked excitement about running advanced agent training locally.",
      "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": true
+    },
+    {
+     "title": "It took two weeks for them to go back on their word.",
+     "subs": [
+      "codex"
+     ],
+     "thread": "https://www.reddit.com/r/codex/comments/1x467hb/it_took_two_weeks_for_them_to_go_back_on_their/",
+     "link": "https://www.reddit.com/gallery/1x467hb",
+     "line": "Users expressed frustration over a service halving plan usage and potentially reintroducing limits shortly after promising not to.",
+     "verdict": "plausible",
      "also_in": [],
      "in_episode": false
     }
    ],
-   "transcript": "transcripts/ai_2026-10-12_evening_1614.txt"
+   "transcript": "transcripts/ai_2026-10-13_morning_0815.txt"
   },
   {
    "file": "ai_2026-10-12_morning_0815.mp3",
@@ -653,92 +656,6 @@
     }
    ],
    "transcript": "transcripts/ai_2026-10-10_morning_0812.txt"
-  },
-  {
-   "file": "ai_2026-10-09_evening_1330.mp3",
-   "title": "Evening - 9 Oct: Cross-Tokenizer Distillation and Distribution Drift",
-   "label": "Friday 09 Oct evening",
-   "date": "2026-10-09",
-   "edition": "evening",
-   "published": "2026-10-09T13:30:24.610895+05:30",
-   "duration": 1930,
-   "theme": "Evaluating micro-routing decision models against full coding LLMs, real-world agent security exploits, and the engineering mechanics of model distillation.",
-   "writer": "Gemini 3.8 Flash",
-   "voices": "Edge TTS",
-   "deep_dive": false,
-   "segments": [
-    {
-     "title": "Cross-Tokenizer Distillation and Distribution Drift",
-     "category": "concept"
-    },
-    {
-     "title": "Benchmarking Specialized Decision Models: Jev, Clef, and Laya on the Edge",
-     "category": "thread"
-    },
-    {
-     "title": "Haiku 5.5 vs. Flagship Coding Agents in Real-World Mixed Codebases",
-     "category": "thread"
-    },
-    {
-     "title": "Multi-Model Tool Stacks in Autonomous Financial Cyberattacks",
-     "category": "thread"
-    },
-    {
-     "title": "Hardware Arbitrage: Multi-GPU RDNA2 Clusters for High-Throughput Open Weights",
-     "category": "thread"
-    }
-   ],
-   "quiz": [
-    {
-     "q": "Why does rigid token matching fail during cross-tokenizer distillation?",
-     "options": [
-      "Student models require much larger context windows than teacher models.",
-      "Different tokenizers use arbitrary character boundaries, causing exact span log probability penalties to introduce high-frequency supervision noise.",
-      "Teacher models always encrypt their output probabilities to prevent distillation.",
-      "Hardware limitations on consumer GPUs prevent matching floating-point weights."
-     ],
-     "answer": 1,
-     "explain": "Forcing a student to mirror a teacher's exact piece-by-piece scores across mismatched dictionaries penalizes valid semantic outputs due to boundary misalignment, creating supervision breakdown.",
-     "segment": "Cross-Tokenizer Distillation and Distribution Drift"
-    },
-    {
-     "q": "In the Pac-Man test comparing tiny decision models, why did the ultra-fast Laya model perform poorly on average score compared to Jev?",
-     "options": [
-      "Laya ran on incompatible hardware that throttled its processing speed.",
-      "Laya lacked sufficient representational capacity for spatial planning, causing it to react blindly to immediate noise without maintaining a coherent state.",
-      "Jev used proprietary cloud APIs instead of local weights.",
-      "Laya was programmed to intentionally avoid scoring points."
-     ],
-     "answer": 1,
-     "explain": "Laya reacted immediately like an unconstrained control loop, but without enough capacity to plan ahead, it crashed into ghosts rather than tracking long-term strategy.",
-     "segment": "Benchmarking Specialized Decision Models: Jev, Clef, and Laya on the Edge"
-    },
-    {
-     "q": "What happened when the reviewer tested Claude Haiku 5.5 at high reasoning effort on a mixed codebase?",
-     "options": [
-      "It failed all self-contained unit tests and crashed the environment.",
-      "It achieved a breakthrough in cost efficiency over medium effort.",
-      "It got stuck in an over-verification spiral, consuming 385 API calls for zero quality improvement.",
-      "It successfully replaced Sonnet 5.5 for high-stakes release staging."
-     ],
-     "answer": 2,
-     "explain": "High effort acted like an over-damped feedback loop, burning nearly 400 calls and extra cost without yielding any improvement over the medium reasoning run.",
-     "segment": "Haiku 5.5 vs. Flagship Coding Agents in Real-World Mixed Codebases"
-    },
-    {
-     "q": "How did the engineer running 8 repurposed AMD Radeon Pro V620 cards achieve high text-generation speeds?",
-     "options": [
-      "By utilizing standard, unmodified vLLM out of the box.",
-      "By relying on multi-token prediction (speculative decoding) with drafting tokens and 4-bit quantization.",
-      "By routing all decode operations through a cloud subscription.",
-      "By restricting the model to single-word prompts."
-     ],
-     "answer": 1,
-     "explain": "The setup reached high speeds by using custom compute kernels, speculative drafting tokens, and 4-bit quantization to reduce memory traffic.",
-     "segment": "Hardware Arbitrage: Multi-GPU RDNA2 Clusters for High-Throughput Open Weights"
-    }
-   ],
-   "transcript": "transcripts/ai_2026-10-09_evening_1330.txt"
   },
   {
    "file": "ai_2026-10-09_morning_0911.mp3",
