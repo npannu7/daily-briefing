@@ -1,4 +1,6 @@
-# Subreddits the show listens to.   Format:  name | weight
+# Subreddits the show listens to.   Format:  name | weight | subject
+#   subject = ai (default) or science (science, technology, biology, medicine).
+#   Each episode takes one AI story and one science story when there is a worthwhile one.
 #   weight 3 = core source, 2 = regular (comments are read), 1 = light (titles only), 0 = off
 # Remove the "#" in front of a line to switch a subreddit back on. Changes apply on the next collection.
 
@@ -44,6 +46,19 @@ antiai | 1
 AI_India | 2
 robotics | 2
 3Blue1Brown | 1
+
+# --- Science, technology, biology, medicine ---
+science | 3 | science
+EverythingScience | 2 | science
+biology | 2 | science
+biotech | 2 | science
+Physics | 2 | science
+askscience | 2 | science
+medicine | 2 | science
+engineering | 1 | science
+labrats | 1 | science
+space | 1 | science
+technology | 1 | science
 
 # --- Switched off (mostly duplicates, showcases or off-topic) ---
 # claude | 1              same discussions as ClaudeAI

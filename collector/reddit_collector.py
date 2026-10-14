@@ -42,7 +42,7 @@ ATOM = {"a": "http://www.w3.org/2005/Atom"}
 # fetched together as combined feeds (r/A+B+C), one per weight tier, and comments are read only
 # for the most promising threads.
 GROUP_SIZE = 15            # subreddits per combined feed
-TIER_LIMIT = {3: 30, 2: 25, 1: 15}   # posts per combined feed, by weight
+TIER_LIMIT = {3: 40, 2: 30, 1: 20}   # posts per combined feed, by weight
 COMMENT_LIMIT = 20         # threads whose comments are read (best first)
 MAX_COMMENTS = 12
 PAUSE = 2.0                # extra pause between requests; Reddit's own rate headers are obeyed too
@@ -153,6 +153,7 @@ def read_subreddits(repo):
             continue
         name, _, w = line.partition("|")
         name = name.strip().removeprefix("r/")
+        w = w.split("|", 1)[0]   # an optional third column is the subject (ai / science)
         try:
             weight = float(w.strip() or 1)
         except ValueError:
