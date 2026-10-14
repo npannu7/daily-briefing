@@ -71,10 +71,12 @@ jobs:
             python make_cover.py
           fi
 
-      - name: Download hourly Reddit pool
+      - name: Download Reddit pool and weekly dossier
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release download reddit-pool -p pool.json -D reddit --clobber || echo "No Reddit pool yet."
+        run: |
+          gh release download reddit-pool -p pool.json -D reddit --clobber || echo "No Reddit pool yet."
+          gh release download reddit-pool -p dossier.json -D reddit --clobber || echo "No weekly dossier yet."
 
       - name: Generate briefing
         env:

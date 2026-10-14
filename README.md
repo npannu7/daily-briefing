@@ -5,8 +5,16 @@ At zero cost by default:
 
 - **Monday–Saturday:** two 20-minute episodes for the commute (08:00 and 16:00 IST), each with one AI story and one
   science / technology / biology / medicine story.
-- **Sunday:** two long deep dives (about 45 minutes) on the topics that built up most during the week, AI in the
-  morning and science in the evening. They're shortened automatically if the free daily budget is low.
+- **Sunday:** two long magazine episodes (about 45 minutes; shorter if the free daily budget is low), AI in the
+  morning and science in the evening. Each has:
+  - **What happened next:** updates on stories from the week's episodes.
+  - **A deep dive** (about 25 minutes) on the week's most built-up topic, told as the week's story, how it works,
+    and a reality check.
+  - **The ones that got away:** three of the week's best threads that didn't make a weekday episode.
+
+  The material is gathered all week: each weekday run saves a **dossier** (`dossier.json` in the `reddit-pool`
+  release) with the best comments, sources and Hacker News discussion for every tracked topic, plus its best
+  unused threads. Reddit threads only stay in the pool for 36 hours, so without it Sunday would have only headlines.
 
 Each topic is drafted, fact-checked against its sources by a second model, then rewritten:
 at most one number per sentence, and every technical term explained.

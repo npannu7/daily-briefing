@@ -154,6 +154,8 @@ TRANSCRIPT_DIR = ROOT / "transcripts"
 SNAPSHOT_FILE = ROOT / "reddit" / "latest.json"
 INTERESTS_FILE = ROOT / "interests.txt"
 POOL_FILE = ROOT / "reddit" / "pool.json"
+DOSSIER_FILE = ROOT / "reddit" / "dossier.json"   # the week's research, kept as a release asset like the pool
+DOSSIER_DAYS = 9
 FEEDS_FILE = ROOT / "feeds.txt"
 SUBREDDITS_FILE = ROOT / "subreddits.txt"
 BUILD_DIR = ROOT / "build"
@@ -1148,6 +1150,217 @@ Return JSON only: {{"assign": [{{"id": <thread id>, "topic": "<key>", "name": "<
     log(f"  topics tracked: {len(topics)}")
 
 
+# =============================== WEEKLY DOSSIER ===============================
+# Reddit threads leave the pool after 36 hours. Each weekday run keeps what it learned about every tracked topic
+# (best comments, the source it read, Hacker News) and its best unused threads, so Sunday has a week of material.
+DOSSIER = {}
+
+
+def load_dossier():
+    try:
+        data = json.loads(DOSSIER_FILE.read_text(encoding="utf-8")) if DOSSIER_FILE.exists() else {}
+    except (OSError, ValueError):
+        data = {}
+    data.setdefault("topics", {})
+    data.setdefault("missed", [])
+    return data
+
+
+def _entry(s, date_key, used):
+    e = {"date": date_key, "title": s["title"], "subs": sorted(set(s["subs"])), "thread": s["threads"][0],
+         "link": s.get("link", ""), "text": s.get("text", "")[:800], "comments": [c[:400] for c in s["comments"][:5]],
+         "score": round(s.get("score", 0), 3), "used": s["id"] in used, "subject": s.get("subject", "ai"),
+         "topic": s.get("topic", "")}
+    if s.get("evidence") and not s["evidence"].startswith("(could not"):
+        e["evidence"], e["source_url"] = s["evidence"][:2500], s.get("source_url", "")
+    if s.get("hn"):
+        e["hn"] = s["hn"]
+    return e
+
+
+def _merge(entries, e):
+    """Same thread seen again later: keep the richer copy (comments mature over the day)."""
+    for i, old in enumerate(entries):
+        if old["thread"] == e["thread"]:
+            keep = e if len(" ".join(e["comments"])) >= len(" ".join(old["comments"])) else dict(old)
+            for k in ("evidence", "source_url", "hn"):
+                keep.setdefault(k, old.get(k) or e.get(k))
+            keep["used"] = old.get("used") or e.get("used")
+            keep["date"] = old["date"]
+            entries[i] = {k: v for k, v in keep.items() if v is not None}
+            return
+    entries.append(e)
+
+
+def update_dossier(stories, used, digest, state, date_key):
+    cutoff = (dt.date.fromisoformat(date_key) - dt.timedelta(days=DOSSIER_DAYS)).isoformat()
+    topics = DOSSIER.setdefault("topics", {})
+    for s in stories:
+        key = s.get("topic")
+        if not key or key in NO_TOPIC:
+            continue
+        t = topics.setdefault(key, {"entries": []})
+        t["name"] = state["topics"].get(key, {}).get("name", key)
+        t["subject"] = state["topics"].get(key, {}).get("subject", s.get("subject", "ai"))
+        _merge(t["entries"], _entry(s, date_key, used))
+    for key in list(topics):
+        es = sorted((e for e in topics[key]["entries"] if e["date"] >= cutoff), key=lambda e: -e.get("score", 0))[:15]
+        if es:
+            topics[key]["entries"] = sorted(es, key=lambda e: e["date"])
+        else:
+            del topics[key]
+    lines = {d["thread"]: d.get("line", "") for d in digest}
+    missed = DOSSIER.setdefault("missed", [])
+    for s in [s for s in stories if s["id"] not in used][:4]:   # the best threads that did not make the episode
+        e = _entry(s, date_key, used)
+        e["line"] = lines.get(e["thread"], "")
+        _merge(missed, e)
+    DOSSIER["missed"] = sorted((e for e in missed if e["date"] >= cutoff), key=lambda e: e["date"])[-60:]
+    DOSSIER["updated"] = dt.datetime.now(dt.timezone.utc).isoformat()
+    log(f"  dossier: {len(topics)} topics, {sum(len(t['entries']) for t in topics.values())} threads, "
+        f"{len(DOSSIER['missed'])} that got away")
+
+
+def save_dossier(dry):
+    DOSSIER_FILE.parent.mkdir(parents=True, exist_ok=True)
+    DOSSIER_FILE.write_text(json.dumps(DOSSIER, ensure_ascii=False), encoding="utf-8")
+    if dry:
+        return
+    if gh("release", "view", "reddit-pool", check=False).returncode != 0:
+        gh("release", "create", "reddit-pool", "--title", "Reddit pool", "--latest=false",
+           "--notes", "Reddit threads and the weekly dossier for the podcast. Managed automatically.", check=False)
+    res = gh("release", "upload", "reddit-pool", str(DOSSIER_FILE), "--clobber", check=False)
+    if res.returncode != 0:
+        log(f"  could not save the dossier: {res.stderr.strip()[:200]}")
+
+
+def dossier_block(key, limit=24000):
+    t = DOSSIER.get("topics", {}).get(key)
+    if not t:
+        return ""
+    out = []
+    for e in t["entries"]:
+        row = [f"{e['date']} | {e['title']} ({', '.join(e['subs'])})" + (" [covered in our episode]" if e.get("used") else "")]
+        if e.get("text"):
+            row.append(f"  Post: {e['text'][:400]}")
+        if e.get("comments"):
+            row.append("  Comments: " + " | ".join(c[:250] for c in e["comments"][:4]))
+        if e.get("evidence"):
+            row.append(f"  Source ({urlparse(e.get('source_url', '')).netloc}): {e['evidence'][:1200]}")
+        if e.get("hn"):
+            row.append(f"  Hacker News ({e['hn'].get('points', 0)} points): " + " | ".join(c[:200] for c in e["hn"].get("comments", [])[:3]))
+        out.append("\n".join(row))
+    return "\n\n".join(out)[:limit]
+
+
+def dossier_story(e, sid):
+    """A dossier entry in the shape write_segment expects."""
+    st = {"id": sid, "title": e["title"], "subs": e.get("subs") or ["Reddit"], "threads": [e["thread"]],
+          "link": e.get("link", ""), "nlink": norm_link(e.get("link", "")), "text": e.get("text", ""),
+          "comments": e.get("comments", []), "also_in": [], "subject": e.get("subject", "ai"),
+          "topic": e.get("topic", ""), "score": e.get("score", 0)}
+    if e.get("evidence"):
+        st.update(evidence=e["evidence"], source_url=e.get("source_url", ""), hn=e.get("hn"))
+    return st
+
+
+def got_away(state, subject, date_key, n):
+    """The best threads of the week that never made an episode, preferring this episode's subject."""
+    today = dt.date.fromisoformat(date_key)
+    seen = {x["link"] for x in state["seen"]}
+    cands = [e for e in DOSSIER.get("missed", [])
+             if (today - dt.date.fromisoformat(e["date"])).days <= 7 and e["thread"] not in seen
+             and not (e.get("link") and e["link"] in seen)]
+    cands.sort(key=lambda e: (e.get("subject", "ai") != subject, -e.get("score", 0)))
+    picks, topics = [], set()
+
+    def same_story(a, b):   # the same story posted again on another day
+        if a.get("link") and norm_link(a["link"]) == norm_link(b.get("link", "")):
+            return True
+        wa, wb = title_words(a["title"]), title_words(b["title"])
+        return len(wa) >= 3 and len(wa & wb) / max(1, len(wa | wb)) >= 0.6
+
+    for e in cands:
+        if (e.get("topic") and e["topic"] in topics) or any(same_story(e, x) for x in picks):
+            continue
+        picks.append(e)
+        topics.add(e.get("topic"))
+        if len(picks) == n:
+            break
+    return picks
+
+
+def follow_ups(state, date_key, limit=3):
+    """Stories from this week's episodes that moved on afterwards: newer dossier threads on the same topic."""
+    today = dt.date.fromisoformat(date_key)
+    covered = {}
+    for m in state["memory"]:
+        if m.get("date") and (today - dt.date.fromisoformat(m["date"])).days <= 7 and not m.get("deep_topic"):
+            for t in m.get("topics", []):
+                covered.setdefault(t, (m["date"], m.get("segments", [])))
+    out = []
+    for key, (when, segs) in covered.items():
+        t = DOSSIER.get("topics", {}).get(key)
+        newer = [e for e in (t or {}).get("entries", []) if e["date"] > when and not e.get("used")]
+        if newer:
+            out.append((key, when, sorted(newer, key=lambda e: -e.get("score", 0))[:2]))
+    out.sort(key=lambda x: -max(e.get("score", 0) for e in x[2]))
+    return out[:limit]
+
+
+def plain_titles(entries):
+    """Short spoken titles for threads that did not go through the editor."""
+    listing = "\n".join(f"[{i}] {e['title']} :: {e.get('line') or e.get('text', '')[:200]}" for i, e in enumerate(entries))
+    try:
+        text, _ = llm(f"""Give each thread a short spoken podcast title in plain words (no jargon, model numbers or
+acronyms; at most 8 words). Return JSON only: {{"titles": ["...", "..."]}}
+
+{listing}""", json_mode=True, label="titles", role="helper")
+        titles = as_obj(parse_json(text), "titles").get("titles", [])
+    except Exception:
+        titles = []
+    return [str(titles[i]) if i < len(titles) and titles[i] else e["title"][:70] for i, e in enumerate(entries)]
+
+
+def plan_sunday(edition, state, stories, date_key, minutes):
+    """Weekend magazine: what happened next, the week's deep dive, and the ones that got away."""
+    subject = "ai" if edition == "morning" else "science"
+    deep = sunday_topic(state, date_key, subject) or sunday_topic(state, date_key,
+                                                                    "science" if subject == "ai" else "ai")
+    got = got_away(state, subject, date_key, 3 if deep else 6)
+    news = follow_ups(state, date_key)
+    share = {"news": 0.15 if news else 0, "deep": 0.56 if deep else 0, "got": 0.29 if got else 0}
+    if not sum(share.values()):
+        return "", [], None
+    body = int(minutes * WORDS_PER_MIN) - 300
+    words = {k: int(body * v / sum(share.values())) for k, v in share.items()}
+    plan, sid = [], 100000
+    if news:
+        items = []
+        for key, when, entries in news:
+            for e in entries:
+                items.append(dossier_story(e, sid))
+                sid += 1
+        names = "; ".join(f"{DOSSIER['topics'][k].get('name', k)} (covered {w}: {', '.join(m[:2])})" for k, w, m in
+                          [(k, w, next((m.get('segments', []) for m in state['memory'] if m.get('date') == w), []))
+                           for k, w, _ in news])
+        plan.append({"title": "What happened next", "format": "followup", "item_ids": [], "stories": items,
+                     "angle": f"Updates on stories from this week's episodes: {names}", "words": words["news"]})
+    if deep:
+        _, parts = plan_deep_dive(deep, state, stories, words["deep"] / WORDS_PER_MIN + 300 / WORDS_PER_MIN)
+        plan += parts
+    if got:
+        for e, title in zip(got, plain_titles(got)):
+            plan.append({"title": title, "format": "thread", "item_ids": [], "stories": [dossier_story(e, sid)],
+                         "angle": "One of the week's most interesting threads that did not make a weekday episode: "
+                                  "what it claims, what people argued, and whether it holds up.",
+                         "words": words["got"] // len(got)})
+            sid += 1
+    name = state["topics"][deep]["name"] if deep else "the ones that got away"
+    theme = f"Sunday edition: {name}" + (" - plus the week's best threads that got away" if deep and got else "")
+    return theme, plan, deep
+
+
 def sunday_minutes(edition):
     """Long, but within the free budget: Fish makes one request per spoken turn (about 32 words)."""
     left = OPENROUTER_FREE_DAILY - free_used() - FREE_WRITER_RESERVE
@@ -1173,7 +1386,8 @@ def sunday_topic(state, date_key, subject, exclude=()):
         week = [d for d in t["days"] if (today - dt.date.fromisoformat(d)).days <= 7]
         if len(week) < 2 or len(t.get("refs", [])) < 3:
             continue
-        rank = (len(week), len(t["subs"]), t["mentions"])
+        material = len(DOSSIER.get("topics", {}).get(key, {}).get("entries", []))   # what the week saved
+        rank = (len(week), material, len(t["subs"]), t["mentions"])
         if not best or rank > best[0]:
             best = (rank, key)
     return best[1] if best else None
@@ -1332,16 +1546,14 @@ def plan_deep_dive(topic_key, state, stories, minutes=SUNDAY_MINUTES):
     base = {"item_ids": today_ids, "format": "deepdive", "topic": topic_key, "connects_to": ""}
     body = int(minutes * WORDS_PER_MIN) - 300
     parts = [
-        ("Why everyone is talking about it", "Walk through how the discussion built up over the past days across "
-         "communities: what people claimed, what they argued about, what changed.", 0.15),
-        ("The foundations, from scratch", "Explain the underlying idea from first principles for an engineer "
-         "outside the field: the problem it solves, the mechanism, analogies, and the key terms.", 0.25),
-        ("How we got here", "The history: earlier approaches, key papers or releases, what each step fixed and "
-         "what it broke. Only use facts you are sure of or that are in the sources.", 0.2),
-        ("Where it meets the real world", f"Where this matters in practice - including, where it honestly applies, "
-         f"medicine, manufacturing, quality and regulated work like {LISTENER}'s.", 0.2),
-        ("Reality check", "What the community gets right and wrong, the actual evidence today, the honest "
-         "limitations, and open questions to watch - no predictions.", 0.2),
+        ("The week's story", "How the discussion built up over the week, day by day, using THE WEEK'S DOSSIER: what "
+         "people claimed on which day, what they argued about, and what changed as evidence came in.", 0.25),
+        ("How it actually works", "From first principles for an engineer outside the field: the problem it solves, "
+         "the mechanism, analogies and key terms - and briefly how we got here. Only use facts you are sure of "
+         "or that are in the sources.", 0.4),
+        ("Reality check", "What the evidence shows today; where it meets the real world, including (where it "
+         f"honestly applies) medicine, manufacturing, quality and regulated work like {LISTENER}'s; the honest "
+         "limitations and open questions to watch - no predictions.", 0.35),
     ]
     segs = [dict(base, title=f"{t['name']}: {title}", angle=angle, words=int(body * share))
             for title, angle, share in parts]
@@ -1423,6 +1635,9 @@ FORMATS = {
     "concept": "Teach the concept from first principles: the problem, the mechanism, an engineering analogy, how "
                "the idea developed, and how it appears in the listed threads. Check understanding with a quick "
                "recap at the end.",
+    "followup": "Short updates on stories from this week's episodes. For each: one line on what we said then, then "
+                "what happened since, only from the sources (newer threads). Skip a story if nothing new is in "
+                "the sources. Clear verbal transitions.",
     "deepdive": "This is one part of a multi-part deep dive. Go slower and deeper than a news segment, but keep "
                 "the listener's level. Use analogies, recap key ideas, and connect to the earlier parts.",
 }
@@ -1435,6 +1650,9 @@ def write_segment(seg, items, state, position, total, theme):
     claims = "; ".join(seg.get("claims_to_check") or []) or "(identify them from the thread)"
     presenter, asker = (A, B) if position % 2 == 1 else (B, A)   # the hosts take turns bringing stories
     sources = sources_block(items, topic)
+    if fmt == "deepdive" and dossier_block(seg.get("topic", "")):
+        sources += "\n\n-----\n\nTHE WEEK'S DOSSIER (what each day's threads, comments and sources said):\n" \
+                   + dossier_block(seg.get("topic", ""))
     prompt = f"""You are writing one segment of "{SHOW_TITLE}", a two-host audio podcast built from AI and
 science discussions on Reddit, for {LISTENER} to hear while driving.
 Hosts (two women with different ages and temperaments):
@@ -1579,7 +1797,7 @@ def turns_words(turns):
 def write_bookends(state, segments_written, theme, edition, now, deep_dive, source_note):
     outline = "\n".join(f"- {s['title']}: {s.get('angle', '')}" for s, _ in segments_written)
     prompt = f"""You write the opening and closing for "{SHOW_TITLE}" (hosts {A} and {B}).
-The listener is {LISTENER}; {'it is Sunday and this long deep dive is for a long drive' if deep_dive else 'he listens on a short commute'}.
+The listener is {LISTENER}; {'it is Sunday: a long magazine episode for a long drive' if now.weekday() == 6 else 'he listens on a short commute'}.
 Today is {now:%A, %d %B %Y}, {edition} edition.
 {'This episode is a DEEP DIVE: ' + theme if deep_dive else 'Theme: ' + theme}
 Where today's material came from: {source_note}
@@ -2067,6 +2285,7 @@ def main():
     log(f"{SHOW_TITLE} | {edition} {date_key} | force={force} dry_run={dry} | TTS={TTS_ENGINE}")
 
     state = load_state()
+    DOSSIER.update(load_dossier())
     SPEND.extend(state.get("or_spend", []))
     FREE_LOG.extend(state.get("free_log", []))
     FREE_DAY_OUT[0] = state.get("free_day_out", "")
@@ -2114,23 +2333,24 @@ def main():
         s["also_in"] = trusted_matches(s, trusted)
     log(f"  {sum(1 for s in stories if s['also_in'])} of {len(stories)} threads also covered by a trusted source")
     personal_rank(stories, state)
-    deep, minutes = None, EPISODE_MINUTES
-    if is_sunday:   # no commute: two long deep dives, AI in the morning and science in the evening
-        for subject in (("ai", "science") if edition == "morning" else ("science", "ai")):
-            deep = sunday_topic(state, date_key, subject)
-            if deep:
-                break
-        if deep:
-            minutes = sunday_minutes(edition)
-        else:
-            log("  no topic built up enough this week for a deep dive -> regular episode")
+    deep, minutes, plan = None, EPISODE_MINUTES, []
     real_topics = [k for k in state["topics"] if k not in NO_TOPIC]
-    if env_true("DEEP_DIVE") and not deep and real_topics:   # manual "deep dive now" from the workflow
+    log("4/8 Planning")
+    if is_sunday and not env_true("DEEP_DIVE"):   # no commute: a long magazine episode, AI morning, science evening
+        minutes = sunday_minutes(edition)
+        theme, plan, deep = plan_sunday(edition, state, stories, date_key, minutes)
+        if plan:
+            min_words = int(0.7 * sum(s["words"] for s in plan))
+            log(f"  SUNDAY ({minutes:.0f} min): {theme}")
+        else:
+            log("  nothing built up this week and no threads got away -> regular episode")
+            minutes = EPISODE_MINUTES
+    if env_true("DEEP_DIVE") and real_topics and not plan:   # manual "deep dive now" from the workflow
         deep = max(real_topics, key=lambda k: (len(state["topics"][k]["days"]), state["topics"][k]["mentions"]))
         minutes = max(EPISODE_MINUTES, 30)
-
-    log("4/8 Planning")
-    if deep:
+    if plan:
+        pass   # the Sunday magazine is planned
+    elif deep:
         theme, plan = plan_deep_dive(deep, state, stories, minutes)
         log(f"  DEEP DIVE ({minutes:.0f} min): {state['topics'][deep]['name']} "
             f"({len(state['topics'][deep]['days'])} days, {len(state['topics'][deep]['subs'])} communities)")
@@ -2144,7 +2364,7 @@ def main():
     log("5/8 + 6/8 Researching and writing")
     written, used = [], set()
     for i, seg in enumerate(plan, 1):
-        items = [by_id[j] for j in seg["item_ids"] if j in by_id]
+        items = seg.get("stories") or [by_id[j] for j in seg["item_ids"] if j in by_id]
         try:
             turns = write_segment(seg, items, state, i, len(plan), theme)
         except RuntimeError as e:
@@ -2190,20 +2410,20 @@ def main():
 
     log("8/8 Publishing")
     pretty = f"{now:%A}, {now.day} {now:%B %Y}"
-    notes = [f"{'Deep dive' if deep else edition.title() + ' edition'} - {pretty}", theme, ""]
+    notes = [f"{'Sunday edition' if is_sunday else 'Deep dive' if deep else edition.title() + ' edition'} - {pretty}",
+             theme, ""]
     for (label, start), (seg, _) in zip(marks[1:], written):
         notes.append(f"{fmt_ts(start)}  {label}")
-        for j in seg["item_ids"]:
-            if j in by_id:
-                s = by_id[j]
-                notes.append(f"   {', '.join(sorted(set(s['subs'])))}: {s['threads'][0]}")
-                if s.get("link"):
-                    notes.append(f"   Source: {s['link']}")
+        for s in seg.get("stories") or [by_id[j] for j in seg["item_ids"] if j in by_id]:
+            notes.append(f"   {', '.join(sorted(set(s['subs'])))}: {s['threads'][0]}")
+            if s.get("link"):
+                notes.append(f"   Source: {s['link']}")
     notes += ["", f"Quiz and feedback: {PAGES_URL}/quiz.html",
               f"Written by: {writer} · Voices: {ENGINE_NAMES[engine]} · Discussions: {source_note}"]
-    kind = ("Sunday deep dive" if is_sunday else "Deep dive") if deep else edition.title()
+    kind = "Sunday" if is_sunday else "Deep dive" if deep else edition.title()
+    headline = state["topics"][deep]["name"] if deep else ("The ones that got away" if is_sunday else plan[0]["title"])
     episode = {"file": filename, "date": date_key, "edition": edition,
-               "title": f"{kind} - {now.day} {now:%b}: {(state['topics'][deep]['name'] if deep else plan[0]['title'])}"[:120],
+               "title": f"{kind} - {now.day} {now:%b}: {headline}"[:120],
                "published": now.isoformat(), "pubDate": email.utils.format_datetime(now),
                "size": size, "duration": duration, "description": "\n".join(notes).strip()}
     cutoff = (now - dt.timedelta(days=RETENTION_DAYS)).isoformat()
@@ -2221,11 +2441,10 @@ def main():
                    "topics": sorted({by_id[j]["topic"] for j in used if j in by_id and by_id[j].get("topic")})})
     seen_cut = (now - dt.timedelta(days=SEEN_DAYS)).strftime("%Y-%m-%d")
     seen = [s for s in state["seen"] if s.get("date", "") >= seen_cut]
-    for j in used:
-        if j in by_id:
-            seen += [{"date": date_key, "link": u} for u in by_id[j]["threads"]]
-            if by_id[j].get("link"):
-                seen.append({"date": date_key, "link": by_id[j]["link"]})
+    for st in [by_id[j] for j in used if j in by_id] + [x for sg, _ in written for x in sg.get("stories", [])]:
+        seen += [{"date": date_key, "link": u} for u in st["threads"]]
+        if st.get("link"):
+            seen.append({"date": date_key, "link": st["link"]})
     if deep:
         state["topics"][deep]["deep_dive"] = date_key
 
@@ -2244,6 +2463,8 @@ def main():
     log("  writing quiz and digest")
     quiz = make_quiz(written, theme)
     digest = make_digest(stories, used)
+    update_dossier(stories, used, digest, state, date_key)
+    save_dossier(dry)
 
     fb_cut = (now - dt.timedelta(days=FEEDBACK_DAYS)).isoformat()
     day_ago = (now - dt.timedelta(hours=24)).isoformat()
