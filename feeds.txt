@@ -21,3 +21,10 @@ The Gradient | https://thegradient.pub/rss/
 # --- Industry news ---
 Ars Technica AI | https://arstechnica.com/ai/feed/
 MIT Technology Review AI | https://www.technologyreview.com/topic/artificial-intelligence/feed
+
+# --- Science, biology, medicine ---
+Quanta Magazine | https://www.quantamagazine.org/feed/
+Nature News | https://www.nature.com/nature.rss
+Science News (AAAS) | https://www.science.org/rss/news_current.xml
+STAT News | https://www.statnews.com/feed/
+Ars Technica Science | https://feeds.arstechnica.com/arstechnica/science

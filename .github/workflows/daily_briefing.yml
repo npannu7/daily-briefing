@@ -27,6 +27,11 @@ on:
         description: 'Make this a deep dive on the most built-up topic'
         type: boolean
         default: false
+      minutes:
+        description: 'Episode length in minutes (empty = the EPISODE_MINUTES setting, normally 20)'
+        required: false
+        default: ''
+
 
 permissions:
   contents: write      # commit feed, quiz and cover; upload audio
@@ -40,7 +45,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 75
+    timeout-minutes: 120   # Sunday deep dives are long
     steps:
       - name: Checkout
         uses: actions/checkout@v5
@@ -66,10 +71,12 @@ jobs:
             python make_cover.py
           fi
 
-      - name: Download hourly Reddit pool
+      - name: Download Reddit pool and weekly dossier
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release download reddit-pool -p pool.json -D reddit --clobber || echo "No Reddit pool yet."
+        run: |
+          gh release download reddit-pool -p pool.json -D reddit --clobber || echo "No Reddit pool yet."
+          gh release download reddit-pool -p dossier.json -D reddit --clobber || echo "No weekly dossier yet."
 
       - name: Generate briefing
         env:
@@ -83,6 +90,11 @@ jobs:
           OPENROUTER_FREE_DAILY: ${{ vars.OPENROUTER_FREE_DAILY }}
           OPENROUTER_FREE_MODELS: ${{ vars.OPENROUTER_FREE_MODELS }}
           GITHUB_MODELS: ${{ vars.GITHUB_MODELS }}
+          EPISODE_MINUTES: ${{ inputs.minutes || vars.EPISODE_MINUTES }}
+          SUNDAY_MINUTES: ${{ vars.SUNDAY_MINUTES }}
+          FACT_CHECK: ${{ vars.FACT_CHECK }}
+          FISH_TEMPO_A: ${{ vars.FISH_TEMPO_A }}
+          FISH_TEMPO_B: ${{ vars.FISH_TEMPO_B }}
           FISH_VOICE_A: ${{ vars.FISH_VOICE_A }}
           FISH_VOICE_B: ${{ vars.FISH_VOICE_B }}
           GEMINI_TTS_MODEL: ${{ vars.GEMINI_TTS_MODEL }}

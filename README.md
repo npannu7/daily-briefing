@@ -1,7 +1,23 @@
 # Weights & Measures
 
-A personal two-host podcast built from AI discussions on Reddit, checked against the evidence.
-Two episodes a day (08:00 and 16:00 IST), at zero cost by default.
+A personal two-host podcast built from AI and science discussions on Reddit, checked against the evidence.
+At zero cost by default:
+
+- **Monday–Saturday:** two 20-minute episodes for the commute (08:00 and 16:00 IST), each with one AI story and one
+  science / technology / biology / medicine story.
+- **Sunday:** two long magazine episodes (about 45 minutes; shorter if the free daily budget is low), AI in the
+  morning and science in the evening. Each has:
+  - **What happened next:** updates on stories from the week's episodes.
+  - **A deep dive** (about 25 minutes) on the week's most built-up topic, told as the week's story, how it works,
+    and a reality check.
+  - **The ones that got away:** three of the week's best threads that didn't make a weekday episode.
+
+  The material is gathered all week: each weekday run saves a **dossier** (`dossier.json` in the `reddit-pool`
+  release) with the best comments, sources and Hacker News discussion for every tracked topic, plus its best
+  unused threads. Reddit threads only stay in the pool for 36 hours, so without it Sunday would have only headlines.
+
+Each topic is drafted, fact-checked against its sources by a second model, then rewritten:
+at most one number per sentence, and every technical term explained.
 
 - **Feed:** `https://npannu7.github.io/daily-briefing/podcast.xml`
 - **Digest, quiz and feedback:** `https://npannu7.github.io/daily-briefing/quiz.html`
@@ -18,7 +34,7 @@ It covers threads that didn't make the episode, so you don't need to open Reddit
 
 ## Files you edit
 
-- `subreddits.txt`: which subreddits, with weights.
+- `subreddits.txt`: which subreddits, with weights and subject (`ai` or `science`).
 - `interests.txt`: what you personally want more of. Matching threads rank higher.
 - `feeds.txt`: trusted outlets used to confirm stories (Hugging Face Daily Papers and Hacker News are built in).
 
@@ -42,6 +58,10 @@ Optional variables:
 
 | Variable | Default | Meaning |
 |---|---|---|
+| `EPISODE_MINUTES` | `20` | Weekday episode length (15 = 1 topic, 20 = 2, 30 = 3). The Run workflow button also has a minutes box |
+| `SUNDAY_MINUTES` | `45` | Longest Sunday deep dive. Shorter if the free budget is low |
+| `FACT_CHECK` | `true` | Draft, fact-check, rewrite for each topic |
+| `FISH_TEMPO_A`, `FISH_TEMPO_B` | `1.08`, `1.0` | Speaking speed for Sarah and Laura |
 | `OPENROUTER_FREE_DAILY` | `1000` | Your OpenRouter free-model daily limit (1000 after buying $10 of credits; 50 otherwise) |
 | `OPENROUTER_DAILY_USD` | `0` | Spend cap for paid models. Leave at 0 to stay free |
 | `WRITER_MODELS`, `HELPER_MODELS` | free chains | e.g. `gemini:gemini-3.8-flash,openrouter:free,github:auto` |
