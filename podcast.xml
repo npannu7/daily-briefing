@@ -3,14 +3,36 @@
 <channel>
 <title>Weights &amp; Measures</title>
 <link>https://npannu7.github.io/daily-briefing</link>
-<description>AI, as it actually works. Two hosts take what the AI community on Reddit is discussing, check it against the evidence, and explain it for curious engineers - with deep dives when a story has built up over days.</description>
+<description>AI and science, as they actually work. Two hosts take what Reddit's AI and science communities are discussing, check it against the evidence, and explain it for curious engineers - two short episodes on weekdays, two long deep dives on Sundays.</description>
 <language>en</language>
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Wed, 14 Oct 2026 03:34:44 GMT</lastBuildDate>
+<lastBuildDate>Wed, 14 Oct 2026 11:31:52 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Evening - 14 Oct: When Coding Agents Run All Night</title>
+<description>Evening edition - Wednesday, 14 October 2026
+Engineering limits in practice: from runaway agentic execution loops to photogrammetric physics simulations
+
+00:50  When Coding Agents Run All Night
+   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1x540si/psa_claude_code_wrote_me_an_uncapped_test_loop/
+   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1x4ssct/does_claude_code_find_new_bugs_every_time_you_ask/
+   singularity: https://www.reddit.com/r/singularity/comments/1x4xmw7/andrej_karpahty_ai_usage_funnel_by_use_cases/
+10:37  From Photos to Road Repairs
+   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1x4s9hp/someone_used_claude_to_get_a_yearsold_pothole/
+   ClaudeCode: https://www.reddit.com/r/ClaudeCode/comments/1x52i1r/saw_the_lg_guy_fix_plex_on_his_tv_so_i_fixed_it/
+   AgentsOfAI: https://www.reddit.com/r/AgentsOfAI/comments/1x4plxz/are_people_actually_replacing_software_by/
+
+Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
+Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (83 threads)</description>
+<pubDate>Wed, 14 Oct 2026 16:28:12 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-10-14_evening_1628.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-14_evening_1628.mp3" length="12488684" type="audio/mpeg"/>
+<itunes:duration>1560</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Morning - 14 Oct: OpenAI's Navier-Stokes proof: what the benchmark actually measured</title>
 <description>Morning edition - Wednesday, 14 October 2026
@@ -357,33 +379,6 @@ Voices: Edge TTS</description>
 <guid isPermaLink="false">ai_2026-10-08_morning_0811.mp3</guid>
 <enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-08_morning_0811.mp3" length="15414765" type="audio/mpeg"/>
 <itunes:duration>1926</itunes:duration>
-<itunes:episodeType>full</itunes:episodeType>
-</item>
-<item>
-<title>Evening - 7 Oct: Formal Math, Frontier Models, and Automated Proof Generation</title>
-<description>Evening edition - Wednesday, 7 October 2026
-Formal mathematics verification, agentic reasoning boundaries, and cross-tokenizer distillation dynamics in frontier AI systems.
-
-00:36  Formal Math, Frontier Models, and Automated Proof Generation
-   OpenAI News: https://openai.com/index/sharing-ai-progress-in-mathematics
-   Latent Space: https://www.latent.space/p/ainews-quasi-riemann-hypothesis-openai
-   Hacker News: https://www.erdosproblems.com/forum/thread/blog:9
-09:41  Cross-Tokenizer On-Policy Distillation and Supervision Reliability
-   Hugging Face Daily Papers: https://arxiv.org/abs/2610.08448
-14:14  Agentic Security Boundaries, Autonomous Tool Execution, and Monitoring
-   Simon Willison: https://simonwillison.net/2026/Oct/6/victoria-kim/
-   Hacker News: https://www.reuters.com/world/south-koreas-lee-says-ai-appears-have-been-used-bank-hacks-2026-10-06/
-18:27  Enterprise Knowledge Integration and EU Text Provenance Rules
-   OpenAI News: https://openai.com/index/atlassian-partnership
-   OpenAI News: https://openai.com/index/eu-text-provenance
-   MIT Technology Review AI: https://www.technologyreview.com/2026/10/05/1145580/connecting-ai-agents-to-enterprise-knowledge/
-
-Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
-Voices: Edge TTS</description>
-<pubDate>Wed, 07 Oct 2026 16:11:13 +0530</pubDate>
-<guid isPermaLink="false">ai_2026-10-07_evening_1611.mp3</guid>
-<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-07_evening_1611.mp3" length="11300397" type="audio/mpeg"/>
-<itunes:duration>1412</itunes:duration>
 <itunes:episodeType>full</itunes:episodeType>
 </item>
 </channel>
