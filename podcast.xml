@@ -8,9 +8,41 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Tue, 13 Oct 2026 11:28:17 GMT</lastBuildDate>
+<lastBuildDate>Wed, 14 Oct 2026 03:34:44 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Morning - 14 Oct: OpenAI's Navier-Stokes proof: what the benchmark actually measured</title>
+<description>Morning edition - Wednesday, 14 October 2026
+Proof claims under the microscope, Anthropic's internal tooling, speed-cost tradeoffs at the frontier, and local agent memory on SQLite — plus a quickfire on the Character.AI bankruptcy, factory robots, PS5 LLMs, CUDA reversing, and a 2019 hype retrospective.
+
+00:48  OpenAI's Navier-Stokes proof: what the benchmark actually measured
+   artificial: https://www.reddit.com/r/artificial/comments/1x530mt/openais_blockbuster_navierstokes_proof_isnt_what/
+   Source: https://www.scientificamerican.com/article/openais-blockbuster-navier-stokes-proof-isnt-what-we-thought-it-was/
+07:38  Anthropic replaces git with Scion: source control as a quality system
+   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1x5b5ek/redesigning_source_control_at_anthropic/
+   Source: https://www.anthropic.com/engineering/redesigning-source-control
+12:52  GPT-6.1 Sol 4.6× slower than GPT-5.6 Sol: the speed–cost frontier
+   codex: https://www.reddit.com/r/codex/comments/1x4yte1/gpt61_sol_is_46x_slower_than_gpt56_sol_are_we/
+19:52  Tencent's Agent Memory: long-term context on SQLite, no vector DB
+   AI_Agents: https://www.reddit.com/r/AI_Agents/comments/1x4pdtc/china_just_made_ai_memory_startups_sweat_tencent/
+27:10  Quickfire: bankruptcy, factory robots, PS5 LLMs, CUDA reversing, and the 2019 'too dangerous' headline
+   LocalLLaMA, antiai: https://www.reddit.com/r/antiai/comments/1x4pciw/reuters_characterai_files_for_bankruptcy/
+   Source: https://www.reuters.com/legal/litigation/characterai-files-bankruptcy-agrees-sell-some-assets-disney-20-million-2026-10-13/
+   singularity: https://www.reddit.com/r/singularity/comments/1x4etjh/unitrees_ceo_says_gpt6_already_works_very_well/
+   LocalLLM: https://www.reddit.com/r/LocalLLM/comments/1x4y61f/qwen_27b_at_20_toks_on_a_jailbroken_ps5s_gpu_i/
+   Source: https://www.reddit.com/gallery/1x4y61f
+   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x4n6sg/anyone_feel_like_reverseengineering_cuda/
+   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x52lsb/new_ai_fake_text_generator_may_be_too_dangerous/
+
+Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
+Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (94 threads)</description>
+<pubDate>Wed, 14 Oct 2026 08:25:52 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-10-14_morning_0825.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-14_morning_0825.mp3" length="15867692" type="audio/mpeg"/>
+<itunes:duration>1983</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Evening - 13 Oct: Distillation Defenses and Output Fingerprinting</title>
 <description>Evening edition - Tuesday, 13 October 2026
@@ -352,37 +384,6 @@ Voices: Edge TTS</description>
 <guid isPermaLink="false">ai_2026-10-07_evening_1611.mp3</guid>
 <enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-07_evening_1611.mp3" length="11300397" type="audio/mpeg"/>
 <itunes:duration>1412</itunes:duration>
-<itunes:episodeType>full</itunes:episodeType>
-</item>
-<item>
-<title>Morning - 7 Oct: Mistral Large 4 'Le Chonk'</title>
-<description>Morning edition - Wednesday, 7 October 2026
-New scaling frontiers in 1-trillion parameter open-weight architectures, multimodal embedding efficiency, and the operational realities of agentic security boundaries.
-
-00:39  Mistral Large 4 'Le Chonk'
-   Simon Willison: https://simonwillison.net/2026/Oct/6/le-chonk/
-   Hacker News: https://mistral.ai/news/mistral-large-4/
-06:31  EmbeddingGemma 2
-   Google DeepMind Blog: https://deepmind.google/blog/embeddinggemma-2-an-open-lightweight-multimodal-embedding-model/
-   Simon Willison: https://simonwillison.net/2026/Oct/6/hn-49983751/
-11:05  Agentic Security Boundaries and Wikimedia Incidents
-   Simon Willison: https://simonwillison.net/2026/Oct/7/openai-rogue-agents-wikimedia/
-   Ars Technica AI: https://arstechnica.com/security/2026/10/openai-agents-tried-to-hack-wikipedia-tools-and-flooded-it-with-traffic/
-15:54  Pivot-SD: Efficient Self-Distillation for Masked Diffusion Language Models
-   Hugging Face Daily Papers: https://arxiv.org/abs/2610.03665
-20:38  World Action Modeling and Progressive Visual Planning
-   Hugging Face Daily Papers: https://arxiv.org/abs/2610.02508
-   Hugging Face Daily Papers: https://arxiv.org/abs/2610.03391
-21:45  Science or Slop?: Benchmarking and Mitigating Scientific Slop in AI-Generated Pa
-   Hugging Face Daily Papers: https://arxiv.org/abs/2610.00531
-   Hugging Face Daily Papers: https://arxiv.org/abs/2609.34715
-
-Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
-Voices: Edge TTS</description>
-<pubDate>Wed, 07 Oct 2026 08:12:56 +0530</pubDate>
-<guid isPermaLink="false">ai_2026-10-07_morning_0812.mp3</guid>
-<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-07_morning_0812.mp3" length="12165549" type="audio/mpeg"/>
-<itunes:duration>1520</itunes:duration>
 <itunes:episodeType>full</itunes:episodeType>
 </item>
 </channel>
