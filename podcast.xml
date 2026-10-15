@@ -8,9 +8,28 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Thu, 15 Oct 2026 03:18:37 GMT</lastBuildDate>
+<lastBuildDate>Thu, 15 Oct 2026 11:29:45 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Evening - 15 Oct: Stretchtext: A 1967 Idea Finally Working in Code Assistants</title>
+<description>Evening edition - Thursday, 15 October 2026
+A 1967 text interface idea finally works in coding agents, and what ovaries actually do after menopause
+
+00:30  Stretchtext: A 1967 Idea Finally Working in Code Assistants
+   ClaudeCode: https://www.reddit.com/r/ClaudeCode/comments/1x688sx/turning_a_crazy_idea_from_1967_into_a_claude_code/
+08:13  What Ovaries Do After Menopause
+   science: https://www.reddit.com/r/science/comments/1x5m0v3/a_2026_study_reveals_that_human_ovaries_remain/
+   Source: https://www.sciencealert.com/ovaries-develop-an-intriguing-second-role-after-menopause
+
+Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
+Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (177 threads)</description>
+<pubDate>Thu, 15 Oct 2026 16:28:24 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-10-15_evening_1628.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-15_evening_1628.mp3" length="7842860" type="audio/mpeg"/>
+<itunes:duration>980</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Morning - 15 Oct: Teaching a Robot to Throw with Simulated Physics</title>
 <description>Morning edition - Thursday, 15 October 2026
@@ -339,30 +358,6 @@ Voices: Edge TTS</description>
 <guid isPermaLink="false">ai_2026-10-09_morning_0911.mp3</guid>
 <enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-09_morning_0911.mp3" length="14784045" type="audio/mpeg"/>
 <itunes:duration>1847</itunes:duration>
-<itunes:episodeType>full</itunes:episodeType>
-</item>
-<item>
-<title>Evening - 8 Oct: Delta-Rule Recurrent State Quantization</title>
-<description>Evening edition - Thursday, 8 October 2026
-Navigating memory constraints in linear attention, context scaling in robotics, and production trade-offs in small frontier models
-
-01:03  Delta-Rule Recurrent State Quantization
-   Hugging Face Daily Papers: https://arxiv.org/abs/2609.38169
-11:17  Scaling Context in World-Action Models
-   Hugging Face Daily Papers: https://arxiv.org/abs/2610.10528
-14:35  Claude Haiku 5.5 and Edge Decision Models
-   Latent Space: https://www.latent.space/p/ainews-claude-haiku-55-better-than
-   Hacker News: https://www.anthropic.com/claude-haiku-5-5
-   Hugging Face Blog: https://huggingface.co/blog/LiquidAI/open-d1
-18:19  Autonomous Agent Workspace Interactions
-   Hugging Face Daily Papers: https://arxiv.org/abs/2610.10444
-
-Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
-Voices: Gemini TTS</description>
-<pubDate>Thu, 08 Oct 2026 16:12:43 +0530</pubDate>
-<guid isPermaLink="false">ai_2026-10-08_evening_1612.mp3</guid>
-<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-08_evening_1612.mp3" length="11310381" type="audio/mpeg"/>
-<itunes:duration>1413</itunes:duration>
 <itunes:episodeType>full</itunes:episodeType>
 </item>
 </channel>
