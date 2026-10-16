@@ -8,9 +8,34 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Fri, 16 Oct 2026 03:23:42 GMT</lastBuildDate>
+<lastBuildDate>Fri, 16 Oct 2026 11:48:35 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Evening - 16 Oct: AI agent deletes a TV show’s edit</title>
+<description>Evening edition - Friday, 16 October 2026
+Checking claims: AI agent damage and stomach‑bug cancer link
+
+00:32  AI agent deletes a TV show’s edit
+   artificial, technology: https://www.reddit.com/r/technology/comments/1x6hr7t/unsupervised_ai_agent_reportedly_deletes_tv_shows/
+   Source: https://www.tomshardware.com/tech-industry/artificial-intelligence/ai-agent-deletes-tv-shows-entire-edit-weeks-before-release-backup-failure-means-production-team-needs-to-re-edit
+05:54  Stomach bug linked to colon cancer
+   science: https://www.reddit.com/r/science/comments/1x6icv6/a_common_stomach_bug_h_pylori_that_causes_stomach/
+   Source: https://www.med.hku.hk/en/news/press/20260928-hkumed-led-international-study-finds-helicobacter-pylori-exposure-may-be-associated
+09:16  "I think Dr. Fauci deserves to be hanged for what he did."
+   medicine: https://www.reddit.com/r/medicine/comments/1x6k9ro/i_think_dr_fauci_deserves_to_be_hanged_for_what/
+12:20  10 prompts and it's over...
+   GeminiAI: https://www.reddit.com/r/GeminiAI/comments/1x6n1jr/10_prompts_and_its_over/
+   Source: https://www.reddit.com/gallery/1x6n1jr
+
+Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
+Written by: nemotron-3-super-120b-a12b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (165 threads)</description>
+<pubDate>Fri, 16 Oct 2026 16:27:13 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-10-16_evening_1627.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-16_evening_1627.mp3" length="7498796" type="audio/mpeg"/>
+<itunes:duration>937</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Morning - 16 Oct: Can Artificial Intelligence Audit Scientific Research?</title>
 <description>Morning edition - Friday, 16 October 2026
@@ -350,34 +375,6 @@ Written by: Gemini 3.8 Flash · Voices: Gemini TTS · Discussions: Reddit (colle
 <guid isPermaLink="false">ai_2026-10-10_morning_0812.mp3</guid>
 <enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-10_morning_0812.mp3" length="14892140" type="audio/mpeg"/>
 <itunes:duration>1861</itunes:duration>
-<itunes:episodeType>full</itunes:episodeType>
-</item>
-<item>
-<title>Morning - 9 Oct: OpenAI Retracts Formal Math Results: Verification Limits and Lean Boundary Failures</title>
-<description>Morning edition - Friday, 9 October 2026
-Grounding frontier claims in verifiable mechanics: from retracted formal proofs to collapse-resistant reasoning self-evolution and agent deception benchmarks.
-
-00:45  OpenAI Retracts Formal Math Results: Verification Limits and Lean Boundary Failures
-   Hacker News: https://github.com/openai/math/blob/main/history.md
-   Hacker News: https://twitter.com/danintheory/status/2108065033070789090
-   Hacker News: https://karagila.org/2026/openai-pp/
-07:34  nanoMuse: An Open-Source Local Agent Architecture for Multi-Device Continuity
-   Hugging Face Daily Papers: https://arxiv.org/abs/2610.08699
-10:24  UniWAM and Kinematic MeanFlow: Unifying World Dynamics and Low-Latency Robot Actions
-   Hugging Face Daily Papers: https://arxiv.org/abs/2610.02054
-   Hugging Face Daily Papers: https://arxiv.org/abs/2610.00864
-15:33  Questioning the Questions: Diagnosing and Preventing Collapse in Reasoning Self-Evolution
-   Hugging Face Daily Papers: https://arxiv.org/abs/2610.04299
-   Hugging Face Daily Papers: https://arxiv.org/abs/2609.39306
-23:43  DecepEval: Benchmarking Goal-Directed Deception in Autonomous Agents
-   Hugging Face Daily Papers: https://arxiv.org/abs/2610.07967
-
-Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
-Voices: Edge TTS</description>
-<pubDate>Fri, 09 Oct 2026 09:11:22 +0530</pubDate>
-<guid isPermaLink="false">ai_2026-10-09_morning_0911.mp3</guid>
-<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-09_morning_0911.mp3" length="14784045" type="audio/mpeg"/>
-<itunes:duration>1847</itunes:duration>
 <itunes:episodeType>full</itunes:episodeType>
 </item>
 </channel>
