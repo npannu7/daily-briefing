@@ -4,6 +4,226 @@
  "repo": "npannu7/daily-briefing",
  "episodes": [
   {
+   "file": "ai_2026-10-16_morning_0828.mp3",
+   "title": "Morning - 16 Oct: Can Artificial Intelligence Audit Scientific Research?",
+   "label": "Friday 16 Oct morning",
+   "date": "2026-10-16",
+   "edition": "morning",
+   "published": "2026-10-16T08:28:02.192348+05:30",
+   "duration": 991,
+   "theme": "Verification under the microscope: evaluating automated quality checks on mathematical research and testing clinical evidence behind weight-loss drugs curbing alcohol cravings.",
+   "writer": "nemotron-3-ultra-550b-a55b (free)",
+   "voices": "Fish Audio (free)",
+   "deep_dive": false,
+   "segments": [
+    {
+     "title": "Can Artificial Intelligence Audit Scientific Research?",
+     "category": "thread"
+    },
+    {
+     "title": "Do Weight-Loss Injections Curb Alcohol Cravings?",
+     "category": "thread"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What engineering concept did Laura use to explain the survivor-bias flaw in claiming AI reduced arXiv paper errors?",
+     "options": [
+      "Analyzing static load paths in a finite element simulation",
+      "Measuring an optical inspection station that scraps every part that fails",
+      "Checking surface finish deviations on raw material incoming inspection",
+      "Calculating the escape rate through final acceptance testing"
+     ],
+     "answer": 1,
+     "explain": "Laura compared checking papers that passed an AI filter to an optical inspection station that scraps failed parts, making outgoing quality look great while yield might be terrible.",
+     "segment": "Can Artificial Intelligence Audit Scientific Research?"
+    },
+    {
+     "q": "How does a large language model actually 'audit' a math paper on arXiv, according to the discussion?",
+     "options": [
+      "By compiling the proof into formal verification languages like Lean or Coq",
+      "By executing automated type-theory checks via dependent type solvers",
+      "By reading natural-language prose and checking for local logical consistency",
+      "By running continuous-integration test suites against the source code"
+     ],
+     "answer": 2,
+     "explain": "The model reads natural-language math like prose and notation, attempting to reconstruct the logical argument internally rather than running a formal verifier.",
+     "segment": "Can Artificial Intelligence Audit Scientific Research?"
+    },
+    {
+     "q": "What alternative explanation did Laura and Sarah raise for why survey respondents on GLP-1 drugs might report drinking less alcohol?",
+     "options": [
+      "Peripheral GI side effects like nausea and delayed gastric emptying",
+      "Direct central dopamine blockade in the nucleus accumbens",
+      "Prescription compliance driven by structured cognitive behavioral therapy",
+      "Simultaneous use of FDA-approved anti-craving medications like naltrexone"
+     ],
+     "answer": 0,
+     "explain": "Peripheral mechanisms like nausea and delayed gastric emptying could cause people to consume less alcohol without touching the brain's reward pathway directly.",
+     "segment": "Do Weight-Loss Injections Curb Alcohol Cravings?"
+    },
+    {
+     "q": "Why did Sarah and Laura argue that observational survey data does not justify off-label prescribing for alcohol use disorder?",
+     "options": [
+      "Observational data always shows negative correlation with drug clearance rates",
+      "Observational data only generates hypotheses and cannot validate clinical indications",
+      "Patients with alcohol use disorder cannot legally complete standardized calendar surveys",
+      "Off-label prescribing is entirely prohibited for any drug affecting gut hormones"
+     ],
+     "answer": 1,
+     "explain": "Observational data can generate hypotheses, but establishing a clinical indication requires adequate and well-controlled investigations like pivotal Phase Three trials.",
+     "segment": "Do Weight-Loss Injections Curb Alcohol Cravings?"
+    }
+   ],
+   "digest": [
+    {
+     "title": "Nearly half of people who started GLP-1 drugs like Ozempic or Wegovy say they now drink less alcohol, and among heavier drinkers it was over half (54%), according to a new national US survey of 2,000+ adults published in JAMA Psychiatry. The drugs may act on the brain's craving and reward pathways.",
+     "subs": [
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1x6ldne/nearly_half_of_people_who_started_glp1_drugs_like/",
+     "link": "https://jamanetwork.com/journals/jamapsychiatry/fullarticle/2854926?guestAccessKey=8c64289b-1f09-44b7-89a0-7c584fe2ea58",
+     "line": "A JAMA Psychiatry survey of 2,000+ adults shows nearly half of GLP-1 users drink less alcohol, prompting personal anecdotes and empathy discussions.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": true
+    },
+    {
+     "title": "Introducing Muse Spark Open: the most capable US open-weight model to date",
+     "subs": [
+      "LocalLLaMA"
+     ],
+     "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1x6r9pz/introducing_muse_spark_open_the_most_capable_us/",
+     "link": "",
+     "line": "Muse Spark Open, an 816B parameter US open-weight model for coding, was released, receiving positive reactions from users.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Joining early stage biotech startup vs big pharma, worth the risk?",
+     "subs": [
+      "biotech"
+     ],
+     "thread": "https://www.reddit.com/r/biotech/comments/1x6cipk/joining_early_stage_biotech_startup_vs_big_pharma/",
+     "link": "",
+     "line": "A senior PhD scientist weighed an early-stage startup offer against a big pharma role, with commenters debating base salary versus stock options.",
+     "verdict": "opinion",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "166 research and science internships open now (Amgen, Regeneron, Moderna, Gilead, Vertex, Biogen, Eli Lilly)",
+     "subs": [
+      "biotech"
+     ],
+     "thread": "https://www.reddit.com/r/biotech/comments/1x6kiii/166_research_and_science_internships_open_now/",
+     "link": "",
+     "line": "A curated GitHub list sharing 166 science and research internships across 105 US companies was posted and praised by users.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Lettuce engineered to produce meat proteins",
+     "subs": [
+      "EverythingScience"
+     ],
+     "thread": "https://www.reddit.com/r/EverythingScience/comments/1x6rzau/lettuce_engineered_to_produce_meat_proteins/",
+     "link": "https://www.scientificamerican.com/article/lettuce-engineered-to-produce-meat-proteins/",
+     "line": "An article about lettuce engineered to produce meat proteins sparked curiosity and humorous commentary about meat-growing plants.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Nine in ten research papers disputing definition of ultraprocessed foods have industry ties.",
+     "subs": [
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1x6nx0w/nine_in_ten_research_papers_disputing_definition/",
+     "link": "https://www.theexamination.org/articles/nova-ultraprocessed-foods-industry-ties-study",
+     "line": "A study indicating nine in ten papers disputing ultraprocessed food definitions have industry ties sparked debates over food classifications.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "New TTS king in town: Fish's Drama 3 35B3A!",
+     "subs": [
+      "LocalLLaMA"
+     ],
+     "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1x6f9p2/new_tts_king_in_town_fishs_drama_3_35b3a/",
+     "link": "",
+     "line": "Fish's Drama 3 35B3A text-to-speech model was released with a demo, drawing discussion on streaming speed and data sources.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Bell's Theorem - Make it click for me",
+     "subs": [
+      "Physics"
+     ],
+     "thread": "https://www.reddit.com/r/Physics/comments/1x6o6qu/bells_theorem_make_it_click_for_me/",
+     "link": "",
+     "line": "A computer science master's graduate asked for explanations of Bell's Theorem, leading to recommendations for books and videos.",
+     "verdict": "opinion",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Voyager 1 is nearly one light-day from Earth. What’s out there?",
+     "subs": [
+      "EverythingScience"
+     ],
+     "thread": "https://www.reddit.com/r/EverythingScience/comments/1x6okv2/voyager_1_is_nearly_one_lightday_from_earth_whats/",
+     "link": "https://www.sciencenews.org/article/voyager-1-light-day-exploration",
+     "line": "An article noted Voyager 1 is nearly a light-day from Earth, with commenters discussing the surrounding empty space and future trajectory.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "A common stomach bug (H pylori) that causes stomach ulcers may be linked to about 1 in 5 colon cancer cases worldwide, says a review of 43 studies covering 48.7 million people. Those infected had a 59% higher risk, and people treated for it seemed to have lower colon cancer risk 10+ years later.",
+     "subs": [
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1x6icv6/a_common_stomach_bug_h_pylori_that_causes_stomach/",
+     "link": "https://www.med.hku.hk/en/news/press/20260928-hkumed-led-international-study-finds-helicobacter-pylori-exposure-may-be-associated",
+     "line": "A review of 43 studies linked the stomach bug H. pylori to a higher risk of colon cancer, leading to historical anecdotes about its discovery.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "GPT-6.1 Sol examined nearly 800 mathematics papers, finding major errors in 6% and minor mistakes in another 30%. Researchers estimate 90% of its major findings are correct. As AI adoption surged, the major-error rate in newer papers fell to just 1.5%.",
+     "subs": [
+      "singularity"
+     ],
+     "thread": "https://www.reddit.com/r/singularity/comments/1x6qczp/gpt61_sol_examined_nearly_800_mathematics_papers/",
+     "link": "https://www.reddit.com/gallery/1x6qczp",
+     "line": "GPT-6.1 Sol analyzed math papers and found errors, with commenters discussing how AI helps researchers catch mistakes.",
+     "verdict": "plausible",
+     "also_in": [],
+     "in_episode": true
+    },
+    {
+     "title": "About 1 in 4 men in the Army may have low testosterone, study finds",
+     "subs": [
+      "EverythingScience"
+     ],
+     "thread": "https://www.reddit.com/r/EverythingScience/comments/1x6qxy1/about_1_in_4_men_in_the_army_may_have_low/",
+     "link": "https://www.washingtonpost.com/national-security/2026/10/15/about-1-4-men-army-may-have-low-testosterone-study-finds/",
+     "line": "A study found about 1 in 4 Army men may have low testosterone, prompting comments attributing it to stress, sleep, and overtraining.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    }
+   ],
+   "transcript": "transcripts/ai_2026-10-16_morning_0828.txt"
+  },
+  {
    "file": "ai_2026-10-15_evening_1628.mp3",
    "title": "Evening - 15 Oct: Stretchtext: A 1967 Idea Finally Working in Code Assistants",
    "label": "Thursday 15 Oct evening",

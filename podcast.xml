@@ -8,9 +8,29 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Thu, 15 Oct 2026 11:29:45 GMT</lastBuildDate>
+<lastBuildDate>Fri, 16 Oct 2026 03:23:42 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Morning - 16 Oct: Can Artificial Intelligence Audit Scientific Research?</title>
+<description>Morning edition - Friday, 16 October 2026
+Verification under the microscope: evaluating automated quality checks on mathematical research and testing clinical evidence behind weight-loss drugs curbing alcohol cravings.
+
+00:56  Can Artificial Intelligence Audit Scientific Research?
+   singularity: https://www.reddit.com/r/singularity/comments/1x6qczp/gpt61_sol_examined_nearly_800_mathematics_papers/
+   Source: https://www.reddit.com/gallery/1x6qczp
+09:35  Do Weight-Loss Injections Curb Alcohol Cravings?
+   science: https://www.reddit.com/r/science/comments/1x6ldne/nearly_half_of_people_who_started_glp1_drugs_like/
+   Source: https://jamanetwork.com/journals/jamapsychiatry/fullarticle/2854926?guestAccessKey=8c64289b-1f09-44b7-89a0-7c584fe2ea58
+
+Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
+Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (182 threads)</description>
+<pubDate>Fri, 16 Oct 2026 08:28:02 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-10-16_morning_0828.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-16_morning_0828.mp3" length="7932908" type="audio/mpeg"/>
+<itunes:duration>991</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Evening - 15 Oct: Stretchtext: A 1967 Idea Finally Working in Code Assistants</title>
 <description>Evening edition - Thursday, 15 October 2026
