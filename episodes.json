@@ -1,17 +1,6 @@
 {
   "episodes": [
     {
-      "file": "ai_2026-10-10_evening_1609.mp3",
-      "date": "2026-10-10",
-      "edition": "evening",
-      "title": "Evening - 10 Oct: Speculative Expert Prefetching: Breaking Memory Bottlenecks in Mixture-of-Experts",
-      "published": "2026-10-10T16:09:57.858484+05:30",
-      "pubDate": "Sat, 10 Oct 2026 16:09:57 +0530",
-      "size": 13295084,
-      "duration": 1661,
-      "description": "Evening edition - Saturday, 10 October 2026\nEdge routing economics, MoE speculative scheduling, and verification hygiene across local and frontier deployments\n\n00:46  Speculative Expert Prefetching: Breaking Memory Bottlenecks in Mixture-of-Experts\n   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x1tclb/qwen_38_flash_nextgsqrcoiq2_xs_at_21_toks_on_just/\n09:21  The Edge Routing Reality: Haiku 5.5 Versus Heavyweights in Production Codebases\n   codex: https://www.reddit.com/r/codex/comments/1x1ilzd/after_years_on_the_200_tier_even_haiku_is/\n   singularity: https://www.reddit.com/r/singularity/comments/1x1z0um/introducing_microsoftdecision1_our_model_for_fast/\n   Source: https://commandline.microsoft.com/microsoft-decision-1-model-foundry/\n   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x1rwof/glm_53_flash_opensource_the_top_of_artificial/\n15:36  Lean Verification and Scientific Slop: Boundary Failures in Automated Discovery\n   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x1rk4o/openais_math_findings_built_on_stolen_user_data/\n   Source: https://youtu.be/GweKOBSJvEY?is=bRO2MbQcJFA_B5As\n   singularity: https://www.reddit.com/r/singularity/comments/1x22o0b/a_mathematicians_perspective/\n   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1x1lo40/i_pointed_claude_at_400_years_of_historical/\n   Source: https://jessewaites.com/blog/post/i-pointed-ai-at-400-years-of-archives\n21:54  The Operator Shift: Agent Workflow Reliability and Local Tool Sandboxing\n   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1x1xcus/is_it_just_me_or_did_everyone_quietly_stop_being/\n   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x1zlxh/my_anthropicchatgpt_in_a_box_is_now_open_source/\n   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1x22sap/i_built_20_free_opensource_html_pages_you_can_use/\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nWritten by: Gemini 3.8 Flash · Voices: Gemini TTS · Discussions: Reddit (collected directly)"
-    },
-    {
       "file": "ai_2026-10-11_morning_0813.mp3",
       "date": "2026-10-11",
       "edition": "morning",
@@ -142,6 +131,17 @@
       "size": 9626924,
       "duration": 1203,
       "description": "Morning edition - Saturday, 17 October 2026\nEngineering physical boundaries: compiling real-time wave physics into tiny browser binaries, and discovering spontaneous chemical reactivity on supposedly inert plastics\n\n00:35  Simulating Ocean Waves in Sixty Kilobytes\n   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1x7v7gj/this_is_61_kb_html_file/\n11:29  When Plain Plastic Generates Reactive Oxygen in Water\n   science: https://www.reddit.com/r/science/comments/1x7dc4b/plastic_isnt_as_inert_as_wed_thought_scientists/\n   Source: https://www.nature.com/articles/s41586-026-11141-y\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nWritten by: Gemini 3.8 Flash · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (181 threads)"
+    },
+    {
+      "file": "ai_2026-10-17_evening_1620.mp3",
+      "date": "2026-10-17",
+      "edition": "evening",
+      "title": "Evening - 17 Oct: Keeping Coding Agents on a Tight Token Budget",
+      "published": "2026-10-17T16:20:09.966619+05:30",
+      "pubDate": "Sat, 17 Oct 2026 16:20:09 +0530",
+      "size": 8484332,
+      "duration": 1060,
+      "description": "Evening edition - Saturday, 17 October 2026\nEngineering discipline in autonomous software workflows and the clinical diagnostic hurdles bottlenecking frontier biopharma.\n\n00:28  Keeping Coding Agents on a Tight Token Budget\n   ClaudeCode: https://www.reddit.com/r/ClaudeCode/comments/1x7ifnd/i_went_from_exhausting_claude_codes_weekly_limits/\n   ClaudeCode: https://www.reddit.com/r/ClaudeCode/comments/1x7lfoz/is_anybody_else_exhausted/\n08:58  Why New Alzheimer's Drugs Aren't Reaching Most Patients\n   science: https://www.reddit.com/r/science/comments/1x7dtv0/who_gets_alzheimers_drugs_u_s_research_shows/\n   Source: https://www.eurekalert.org/news-releases/1147823\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nWritten by: Gemini 3.8 Flash · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (219 threads)"
     }
   ],
   "memory": [
@@ -659,6 +659,29 @@
       ],
       "deep_topic": "",
       "topics": []
+    },
+    {
+      "label": "Saturday 17 Oct evening",
+      "date": "2026-10-17",
+      "edition": "evening",
+      "published": "2026-10-17T16:20:09.966619+05:30",
+      "file": "ai_2026-10-17_evening_1620.mp3",
+      "writer": "Gemini 3.8 Flash",
+      "voices": "Fish Audio (free)",
+      "summary": "The episode examined token optimization in autonomous coding workflows, analyzing how recursive transcript feeding causes context bloat and degraded output quality without deterministic local test runners and bounded sub-agent handoffs. It then evaluated the strict FDA biomarker and neuroimaging mandates governing new anti-amyloid monoclonal antibody therapies for Alzheimer's disease. Finally, it contrasted clinical gatekeeping claims against structural diagnostic bottlenecks, showing how limited access to baseline amyloid-PET, ApoE4 genotyping, and serial 3T MRI monitoring drives severe demographic disparities in patient treatment.",
+      "threads": [
+        "Adoption of deterministic test gates and compact state synchronization in autonomous coding agent harnesses",
+        "Healthcare infrastructure scaling and regional access disparities for serial 3T MRI monitoring of ARIA",
+        "Clinical validation and regulatory pathways for blood-based biomarker screening to replace baseline amyloid-PET"
+      ],
+      "segments": [
+        "Keeping Coding Agents on a Tight Token Budget",
+        "Why New Alzheimer's Drugs Aren't Reaching Most Patients"
+      ],
+      "deep_topic": "",
+      "topics": [
+        "ai-coding-agents"
+      ]
     }
   ],
   "seen": [
@@ -1513,6 +1536,22 @@
     {
       "date": "2026-10-17",
       "link": "https://www.reddit.com/r/ClaudeAI/comments/1x7v7gj/this_is_61_kb_html_file/"
+    },
+    {
+      "date": "2026-10-17",
+      "link": "https://www.reddit.com/r/ClaudeCode/comments/1x7lfoz/is_anybody_else_exhausted/"
+    },
+    {
+      "date": "2026-10-17",
+      "link": "https://www.reddit.com/r/science/comments/1x7dtv0/who_gets_alzheimers_drugs_u_s_research_shows/"
+    },
+    {
+      "date": "2026-10-17",
+      "link": "https://www.eurekalert.org/news-releases/1147823"
+    },
+    {
+      "date": "2026-10-17",
+      "link": "https://www.reddit.com/r/ClaudeCode/comments/1x7ifnd/i_went_from_exhausting_claude_codes_weekly_limits/"
     }
   ],
   "feedback": [
@@ -2173,7 +2212,167 @@
     "2026-10-17T03:18:56.382867+00:00",
     "2026-10-17T03:19:02.372973+00:00",
     "2026-10-17T03:19:08.857183+00:00",
-    "2026-10-17T03:19:13.335564+00:00"
+    "2026-10-17T03:19:13.335564+00:00",
+    "2026-10-17T10:50:19.081700+00:00",
+    "2026-10-17T10:50:23.447679+00:00",
+    "2026-10-17T10:50:29.111721+00:00",
+    "2026-10-17T10:50:30.149658+00:00",
+    "2026-10-17T10:50:32.645818+00:00",
+    "2026-10-17T10:50:32.958542+00:00",
+    "2026-10-17T10:50:44.304312+00:00",
+    "2026-10-17T10:50:52.059638+00:00",
+    "2026-10-17T10:50:53.818705+00:00",
+    "2026-10-17T10:50:57.648997+00:00",
+    "2026-10-17T10:51:03.721067+00:00",
+    "2026-10-17T10:51:07.275098+00:00",
+    "2026-10-17T10:51:07.631837+00:00",
+    "2026-10-17T10:51:09.995219+00:00",
+    "2026-10-17T10:51:16.272926+00:00",
+    "2026-10-17T10:51:17.127374+00:00",
+    "2026-10-17T10:51:22.425637+00:00",
+    "2026-10-17T10:51:25.789176+00:00",
+    "2026-10-17T10:51:25.906915+00:00",
+    "2026-10-17T10:51:39.775621+00:00",
+    "2026-10-17T10:51:41.824066+00:00",
+    "2026-10-17T10:51:42.879810+00:00",
+    "2026-10-17T10:51:46.533300+00:00",
+    "2026-10-17T10:51:53.716736+00:00",
+    "2026-10-17T10:51:54.387847+00:00",
+    "2026-10-17T10:51:55.269637+00:00",
+    "2026-10-17T10:52:08.356233+00:00",
+    "2026-10-17T10:52:09.380641+00:00",
+    "2026-10-17T10:52:11.908802+00:00",
+    "2026-10-17T10:52:18.249716+00:00",
+    "2026-10-17T10:52:21.059897+00:00",
+    "2026-10-17T10:52:23.127672+00:00",
+    "2026-10-17T10:52:25.616649+00:00",
+    "2026-10-17T10:52:30.571371+00:00",
+    "2026-10-17T10:52:36.167371+00:00",
+    "2026-10-17T10:52:36.964770+00:00",
+    "2026-10-17T10:52:40.779014+00:00",
+    "2026-10-17T10:52:51.446853+00:00",
+    "2026-10-17T10:52:52.059613+00:00",
+    "2026-10-17T10:52:57.710073+00:00",
+    "2026-10-17T10:53:00.092745+00:00",
+    "2026-10-17T10:53:00.724907+00:00",
+    "2026-10-17T10:53:02.224693+00:00",
+    "2026-10-17T10:53:10.153238+00:00",
+    "2026-10-17T10:53:17.303279+00:00",
+    "2026-10-17T10:53:19.403343+00:00",
+    "2026-10-17T10:53:19.458235+00:00",
+    "2026-10-17T10:53:21.776339+00:00",
+    "2026-10-17T10:53:24.249602+00:00",
+    "2026-10-17T10:53:32.508672+00:00",
+    "2026-10-17T10:53:42.462431+00:00",
+    "2026-10-17T10:53:43.571159+00:00",
+    "2026-10-17T10:53:44.881916+00:00",
+    "2026-10-17T10:53:50.901994+00:00",
+    "2026-10-17T10:53:52.064111+00:00",
+    "2026-10-17T10:53:53.807928+00:00",
+    "2026-10-17T10:54:04.139090+00:00",
+    "2026-10-17T10:54:09.133182+00:00",
+    "2026-10-17T10:54:10.233301+00:00",
+    "2026-10-17T10:54:17.833497+00:00",
+    "2026-10-17T10:54:21.431591+00:00",
+    "2026-10-17T10:54:26.517570+00:00",
+    "2026-10-17T10:54:26.793556+00:00",
+    "2026-10-17T10:54:28.096848+00:00",
+    "2026-10-17T10:54:30.808152+00:00",
+    "2026-10-17T10:54:36.997833+00:00",
+    "2026-10-17T10:54:40.006295+00:00",
+    "2026-10-17T10:54:40.346420+00:00",
+    "2026-10-17T10:54:45.961396+00:00",
+    "2026-10-17T10:54:49.997063+00:00",
+    "2026-10-17T10:57:55.782230+00:00",
+    "2026-10-17T10:58:04.465995+00:00",
+    "2026-10-17T10:58:13.169214+00:00",
+    "2026-10-17T10:58:21.969060+00:00",
+    "2026-10-17T10:58:31.318071+00:00",
+    "2026-10-17T10:58:37.904595+00:00",
+    "2026-10-17T10:58:49.069203+00:00",
+    "2026-10-17T10:58:57.598891+00:00",
+    "2026-10-17T10:59:13.862534+00:00",
+    "2026-10-17T10:59:21.106316+00:00",
+    "2026-10-17T10:59:28.784775+00:00",
+    "2026-10-17T10:59:47.074021+00:00",
+    "2026-10-17T11:00:00.999513+00:00",
+    "2026-10-17T11:00:07.663667+00:00",
+    "2026-10-17T11:00:17.738403+00:00",
+    "2026-10-17T11:00:25.131426+00:00",
+    "2026-10-17T11:00:41.121411+00:00",
+    "2026-10-17T11:00:53.087996+00:00",
+    "2026-10-17T11:01:09.567537+00:00",
+    "2026-10-17T11:01:20.737946+00:00",
+    "2026-10-17T11:01:31.338180+00:00",
+    "2026-10-17T11:01:35.840776+00:00",
+    "2026-10-17T11:01:46.511923+00:00",
+    "2026-10-17T11:01:54.934543+00:00",
+    "2026-10-17T11:02:05.693168+00:00",
+    "2026-10-17T11:02:11.048860+00:00",
+    "2026-10-17T11:02:16.533467+00:00",
+    "2026-10-17T11:02:24.735496+00:00",
+    "2026-10-17T11:02:37.446162+00:00",
+    "2026-10-17T11:02:52.279540+00:00",
+    "2026-10-17T11:03:02.264099+00:00",
+    "2026-10-17T11:03:11.780472+00:00",
+    "2026-10-17T11:03:23.842216+00:00",
+    "2026-10-17T11:03:33.962405+00:00",
+    "2026-10-17T11:03:48.667174+00:00",
+    "2026-10-17T11:03:58.462885+00:00",
+    "2026-10-17T11:04:11.036792+00:00",
+    "2026-10-17T11:04:20.356857+00:00",
+    "2026-10-17T11:04:36.214585+00:00",
+    "2026-10-17T11:04:43.780142+00:00",
+    "2026-10-17T11:04:54.613848+00:00",
+    "2026-10-17T11:05:01.252105+00:00",
+    "2026-10-17T11:05:10.750223+00:00",
+    "2026-10-17T11:05:18.679941+00:00",
+    "2026-10-17T11:05:28.147295+00:00",
+    "2026-10-17T11:05:41.287643+00:00",
+    "2026-10-17T11:05:49.487210+00:00",
+    "2026-10-17T11:05:57.496272+00:00",
+    "2026-10-17T11:06:10.255341+00:00",
+    "2026-10-17T11:06:17.010383+00:00",
+    "2026-10-17T11:06:29.514650+00:00",
+    "2026-10-17T11:06:33.944189+00:00",
+    "2026-10-17T11:06:44.568052+00:00",
+    "2026-10-17T11:06:50.585397+00:00",
+    "2026-10-17T11:07:00.107464+00:00",
+    "2026-10-17T11:07:07.141235+00:00",
+    "2026-10-17T11:07:16.055860+00:00",
+    "2026-10-17T11:07:21.113285+00:00",
+    "2026-10-17T11:07:30.646658+00:00",
+    "2026-10-17T11:07:35.414294+00:00",
+    "2026-10-17T11:07:44.631509+00:00",
+    "2026-10-17T11:07:49.722261+00:00",
+    "2026-10-17T11:07:58.231071+00:00",
+    "2026-10-17T11:08:08.546032+00:00",
+    "2026-10-17T11:08:16.853380+00:00",
+    "2026-10-17T11:08:26.535406+00:00",
+    "2026-10-17T11:08:37.901071+00:00",
+    "2026-10-17T11:08:45.124721+00:00",
+    "2026-10-17T11:08:55.848786+00:00",
+    "2026-10-17T11:09:01.143241+00:00",
+    "2026-10-17T11:09:08.666059+00:00",
+    "2026-10-17T11:09:12.517000+00:00",
+    "2026-10-17T11:09:23.490246+00:00",
+    "2026-10-17T11:09:31.174859+00:00",
+    "2026-10-17T11:09:40.643398+00:00",
+    "2026-10-17T11:09:50.077838+00:00",
+    "2026-10-17T11:10:02.782143+00:00",
+    "2026-10-17T11:10:08.126025+00:00",
+    "2026-10-17T11:10:21.662116+00:00",
+    "2026-10-17T11:10:32.668718+00:00",
+    "2026-10-17T11:10:44.554903+00:00",
+    "2026-10-17T11:10:49.741370+00:00",
+    "2026-10-17T11:11:00.852401+00:00",
+    "2026-10-17T11:11:09.636551+00:00",
+    "2026-10-17T11:11:14.308363+00:00",
+    "2026-10-17T11:11:21.230124+00:00",
+    "2026-10-17T11:11:27.487403+00:00",
+    "2026-10-17T11:11:32.696096+00:00",
+    "2026-10-17T11:11:40.152975+00:00",
+    "2026-10-17T11:11:45.083475+00:00"
   ],
   "free_day_out": "",
   "topics": {
@@ -2917,15 +3116,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 51,
+      "mentions": 52,
       "refs": [
-        {
-          "date": "2026-10-14",
-          "title": "My mechanical keyboard's software only runs on Windows, so I had Opus 5.5 reverse engineer it and port it into a Rust app for Linux",
-          "thread": "https://www.reddit.com/r/GeminiAI/comments/1x4vvoi/my_mechanical_keyboards_software_only_runs_on/",
-          "link": "",
-          "comment": "What does this have to do with Gemini?"
-        },
         {
           "date": "2026-10-15",
           "title": "Anthropic is merging 30,000 code changes per day using Claude. Says software engineers are still vital because they tell Claude \"no.\"",
@@ -3016,6 +3208,13 @@
           "thread": "https://www.reddit.com/r/LocalLLM/comments/1x70juc/qwen38_27b_took_7_hours_on_a_task_and_didnt_make/",
           "link": "",
           "comment": "32k context? Why? That's not enough for that model to get anything done. I used 3.8 27B a ton and it's great. Built lots of stuff with it. Maybe your sampling params or the 32k context was the issue. Idk."
+        },
+        {
+          "date": "2026-10-17",
+          "title": "I went from exhausting Claude Code’s weekly limits in 2 days to making them last the entire week. Here’s my setup",
+          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1x7ifnd/i_went_from_exhausting_claude_codes_weekly_limits/",
+          "link": "",
+          "comment": "Here's how I did it: I switched from Fable 5.1 to Opus 5.5"
         }
       ],
       "deep_dive": "",
@@ -3086,7 +3285,8 @@
         "2026-10-12",
         "2026-10-13",
         "2026-10-14",
-        "2026-10-16"
+        "2026-10-16",
+        "2026-10-17"
       ],
       "subs": [
         "AI_Agents",
@@ -3095,17 +3295,11 @@
         "GeminiAI",
         "LocalLLM",
         "LocalLLaMA",
+        "artificial",
         "singularity"
       ],
-      "mentions": 49,
+      "mentions": 50,
       "refs": [
-        {
-          "date": "2026-10-13",
-          "title": "Running models locally has made me paranoid about everything else leaving my machine",
-          "thread": "https://www.reddit.com/r/LocalLLM/comments/1x42t2g/running_models_locally_has_made_me_paranoid_about/",
-          "link": "",
-          "comment": "It creeps in sideways doesn’t it, you start with one little thing like keeping your prompts off a server and suddenly you’re side-eyeing your whole workflow I didn’t go full tin foil hat or anything but yeah I moved my notes into something self hosted and started paying attention to which chat apps "
-        },
         {
           "date": "2026-10-13",
           "title": "I clustered two old Android phones to run a 27B LLM locally. Bypassed RAM limits via C++ RPC split and Hadamard Ternary math (No overheating)",
@@ -3196,10 +3390,17 @@
           "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1x6o31q/nvidianvidianemotron35bolt74ba9b24gb_hugging_face/",
           "link": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB",
           "comment": "https://preview.redd.it/r4j0nst4cnvh1.png?width=7110&format=png&auto=webp&s=311648451b7b6ce863b2a2946b47b3ad5a2e809f BF16 vs 2-bit (before you start screaming)"
+        },
+        {
+          "date": "2026-10-17",
+          "title": "Jailbroken PS5s can now run local AI models at over 100+ tokens per second — fork of PS5LM goes native, hijacks the CPU, and accesses the GPU and more RAM",
+          "thread": "https://www.reddit.com/r/artificial/comments/1x7ofj6/jailbroken_ps5s_can_now_run_local_ai_models_at/",
+          "link": "https://www.tomshardware.com/video-games/playstation/jailbroken-ps5s-can-now-run-local-ai-models-at-over-100-tokens-per-second-fork-of-ps5lm-goes-native-and-accesses-gpu-and-more-ram",
+          "comment": "Aren't these sold at a loss? If someone puts in a large order, what will happen to Sony's business model?"
         }
       ],
       "deep_dive": "",
-      "last_seen": "2026-10-16",
+      "last_seen": "2026-10-17",
       "subject": "ai"
     },
     "openai-company-updates": {
@@ -3329,7 +3530,8 @@
         "2026-10-13",
         "2026-10-14",
         "2026-10-15",
-        "2026-10-16"
+        "2026-10-16",
+        "2026-10-17"
       ],
       "subs": [
         "ArtificialInteligence",
@@ -3343,15 +3545,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 15,
+      "mentions": 16,
       "refs": [
-        {
-          "date": "2026-10-10",
-          "title": "Ahh, it all makes sense now for the 64Gb DGX Spark - [Samsung expects 780% quarterly operating profit jump on AI boom]",
-          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1x1fnsy/ahh_it_all_makes_sense_now_for_the_64gb_dgx_spark/",
-          "link": "https://www.france24.com/en/live-news/20261008-samsung-expects-780-quarterly-operating-profit-jump-on-ai-boom",
-          "comment": ""
-        },
         {
           "date": "2026-10-10",
           "title": "After years on the $200 tier, even Haiku is outperforming Sol 6.1 sol in my tests",
@@ -3442,10 +3637,17 @@
           "thread": "https://www.reddit.com/r/technology/comments/1x6v7tg/accenture_tells_employees_they_can_now_spend_only/",
           "link": "https://www.404media.co/accenture-tells-employees-they-can-now-spend-only-29-on-claude-per-month/",
           "comment": "Boy, it’s going to be hard to IPO at $2T when companies are limiting employee budgets to your product to less than lunch allocations or a gym membership."
+        },
+        {
+          "date": "2026-10-17",
+          "title": "claude pro gives 10x more usage than gpt plus now",
+          "thread": "https://www.reddit.com/r/codex/comments/1x7fyi0/claude_pro_gives_10x_more_usage_than_gpt_plus_now/",
+          "link": "",
+          "comment": "Claude is better for coding even based on the limits. But as others pointed out their pricing is very expensive so its not actually 10x. But chatgpt offers unlimited chat and lets you generate images. It also allows you to use your sub almost anywhere. I dont like that you locked into claude code wi"
         }
       ],
       "deep_dive": "",
-      "last_seen": "2026-10-16",
+      "last_seen": "2026-10-17",
       "subject": "ai"
     },
     "glp1-drugs-beyond-weight-loss": {
@@ -3505,13 +3707,14 @@
       "name": "Open-Weight Models",
       "first_seen": "2026-10-16",
       "days": [
-        "2026-10-16"
+        "2026-10-16",
+        "2026-10-17"
       ],
       "subs": [
         "LocalLLM",
         "LocalLLaMA"
       ],
-      "mentions": 4,
+      "mentions": 5,
       "refs": [
         {
           "date": "2026-10-16",
@@ -3540,11 +3743,18 @@
           "thread": "https://www.reddit.com/r/LocalLLM/comments/1x6q9t4/alibaba_gets_6x_more_openweights_downloads_on/",
           "link": "",
           "comment": "They really hit out of the park with Qwen."
+        },
+        {
+          "date": "2026-10-17",
+          "title": "The actual state of open-weight models vs. frontier models",
+          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1x7bmel/the_actual_state_of_openweight_models_vs_frontier/",
+          "link": "",
+          "comment": "US seam to have switch to looped transformers. Chinese will be back next month or before 2027, just wait a bit. https://www.reddit.com/r/singularity/comments/1wyu0ss/microsoft_has_accidentally_revealed_gpt61_sol/"
         }
       ],
       "deep_dive": "",
       "subject": "ai",
-      "last_seen": "2026-10-16"
+      "last_seen": "2026-10-17"
     }
   }
 }
