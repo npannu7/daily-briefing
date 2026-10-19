@@ -142,6 +142,17 @@
       "size": 7874156,
       "duration": 984,
       "description": "Morning edition - Monday, 19 October 2026\nMechanical minimalism in single-motor flight control and reversing early-onset diabetes through targeted metabolic clearance\n\n00:27  Flying a Drone With Just One Motor\n   robotics: https://www.reddit.com/r/robotics/comments/1x8zyvp/i_built_a_drone_with_only_one_motor_and_a_poor/\n08:52  Reversing Early Diabetes Without Drugs\n   science: https://www.reddit.com/r/science/comments/1x8zytx/more_than_half_of_people_with_earlyonset_type_2/\n   Source: https://www.sciencealert.com/this-diet-and-exercise-combination-put-early-onset-diabetes-into-remission-in-half-of-participants\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nWritten by: Gemini 3.8 Flash · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (187 threads)"
+    },
+    {
+      "file": "ai_2026-10-19_evening_1628.mp3",
+      "date": "2026-10-19",
+      "edition": "evening",
+      "title": "Evening - 19 Oct: Reconstructing Classic Games from Machine Code",
+      "published": "2026-10-19T16:28:21.312259+05:30",
+      "pubDate": "Mon, 19 Oct 2026 16:28:21 +0530",
+      "size": 7840556,
+      "duration": 979,
+      "description": "Evening edition - Monday, 19 October 2026\nReverse-engineering legacy software through automated disassembly translation, and tracking the clinical decay curve of single-dose psychiatric therapies.\n\n00:30  Reconstructing Classic Games from Machine Code\n   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1x91lor/rebuilt_a_2000_rts_from_scratch_with_claude_code/\n08:36  The One-Year Limit on Psychedelic Therapy\n   EverythingScience, science: https://www.reddit.com/r/science/comments/1x9ek4k/a_single_dose_of_psilocybin_eased_depression/\n   Source: https://www.psypost.org/a-single-dose-of-psilocybin-eased-depression-within-days-but-its-edge-over-placebo-faded-within-a-year/\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nWritten by: Gemini 3.8 Flash · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (162 threads)"
     }
   ],
   "memory": [
@@ -758,6 +769,28 @@
       ],
       "deep_topic": "",
       "topics": []
+    },
+    {
+      "label": "Monday 19 Oct evening",
+      "date": "2026-10-19",
+      "edition": "evening",
+      "published": "2026-10-19T16:28:21.312259+05:30",
+      "file": "ai_2026-10-19_evening_1628.mp3",
+      "writer": "Gemini 3.8 Flash",
+      "voices": "Fish Audio (free)",
+      "summary": "Tonight's episode examined an independent developer's modular workflow using an AI agent to translate raw x86 disassembly into memory-safe Rust for a legacy real-time strategy game. We contrasted piece-by-piece subsystem verification against brittle monolithic generation, focusing on frame-rate timing and state drift. Finally, we analyzed twelve-month psilocybin trial results, explaining how functional unblinding and regression to the mean impact FDA longitudinal efficacy requirements for psychiatric indications.",
+      "threads": [
+        "Verification frameworks for automated disassembly translation and state machine drift in legacy software ports",
+        "FDA longitudinal maintenance endpoints and blinding control methodologies in single-dose psychedelic clinical trials"
+      ],
+      "segments": [
+        "Reconstructing Classic Games from Machine Code",
+        "The One-Year Limit on Psychedelic Therapy"
+      ],
+      "deep_topic": "",
+      "topics": [
+        "ai-coding-agents"
+      ]
     }
   ],
   "seen": [
@@ -1768,6 +1801,22 @@
     {
       "date": "2026-10-19",
       "link": "https://www.reddit.com/r/robotics/comments/1x8zyvp/i_built_a_drone_with_only_one_motor_and_a_poor/"
+    },
+    {
+      "date": "2026-10-19",
+      "link": "https://www.reddit.com/r/science/comments/1x9ek4k/a_single_dose_of_psilocybin_eased_depression/"
+    },
+    {
+      "date": "2026-10-19",
+      "link": "https://www.reddit.com/r/EverythingScience/comments/1x9h1hi/a_single_dose_of_psilocybin_eased_depression/"
+    },
+    {
+      "date": "2026-10-19",
+      "link": "https://www.psypost.org/a-single-dose-of-psilocybin-eased-depression-within-days-but-its-edge-over-placebo-faded-within-a-year/"
+    },
+    {
+      "date": "2026-10-19",
+      "link": "https://www.reddit.com/r/ClaudeAI/comments/1x91lor/rebuilt_a_2000_rts_from_scratch_with_claude_code/"
     }
   ],
   "feedback": [
@@ -2584,7 +2633,164 @@
     "2026-10-19T03:25:11.693115+00:00",
     "2026-10-19T03:25:18.107363+00:00",
     "2026-10-19T03:25:25.580992+00:00",
-    "2026-10-19T03:25:31.055913+00:00"
+    "2026-10-19T03:25:31.055913+00:00",
+    "2026-10-19T10:58:35.364803+00:00",
+    "2026-10-19T10:58:39.929253+00:00",
+    "2026-10-19T10:58:40.172338+00:00",
+    "2026-10-19T10:58:42.822736+00:00",
+    "2026-10-19T10:58:44.100316+00:00",
+    "2026-10-19T10:58:55.694831+00:00",
+    "2026-10-19T10:59:00.251109+00:00",
+    "2026-10-19T10:59:00.881727+00:00",
+    "2026-10-19T10:59:08.292840+00:00",
+    "2026-10-19T10:59:12.438337+00:00",
+    "2026-10-19T10:59:16.657249+00:00",
+    "2026-10-19T10:59:18.632557+00:00",
+    "2026-10-19T10:59:21.811827+00:00",
+    "2026-10-19T10:59:27.366872+00:00",
+    "2026-10-19T10:59:32.511073+00:00",
+    "2026-10-19T10:59:35.845920+00:00",
+    "2026-10-19T10:59:46.654059+00:00",
+    "2026-10-19T10:59:50.861822+00:00",
+    "2026-10-19T10:59:52.929642+00:00",
+    "2026-10-19T10:59:53.496018+00:00",
+    "2026-10-19T11:00:01.544820+00:00",
+    "2026-10-19T11:00:16.100654+00:00",
+    "2026-10-19T11:00:28.797407+00:00",
+    "2026-10-19T11:00:29.412205+00:00",
+    "2026-10-19T11:00:33.719026+00:00",
+    "2026-10-19T11:00:37.562715+00:00",
+    "2026-10-19T11:00:54.051967+00:00",
+    "2026-10-19T11:01:07.356922+00:00",
+    "2026-10-19T11:01:08.771707+00:00",
+    "2026-10-19T11:01:11.361818+00:00",
+    "2026-10-19T11:01:22.081468+00:00",
+    "2026-10-19T11:01:31.558147+00:00",
+    "2026-10-19T11:01:31.978675+00:00",
+    "2026-10-19T11:01:36.501594+00:00",
+    "2026-10-19T11:01:39.736788+00:00",
+    "2026-10-19T11:01:42.870075+00:00",
+    "2026-10-19T11:01:45.180177+00:00",
+    "2026-10-19T11:01:51.195149+00:00",
+    "2026-10-19T11:01:56.767956+00:00",
+    "2026-10-19T11:02:04.088849+00:00",
+    "2026-10-19T11:02:06.244451+00:00",
+    "2026-10-19T11:02:07.151712+00:00",
+    "2026-10-19T11:02:13.616903+00:00",
+    "2026-10-19T11:02:15.492416+00:00",
+    "2026-10-19T11:02:21.799569+00:00",
+    "2026-10-19T11:02:27.307804+00:00",
+    "2026-10-19T11:02:28.887467+00:00",
+    "2026-10-19T11:02:34.137699+00:00",
+    "2026-10-19T11:02:48.718825+00:00",
+    "2026-10-19T11:02:52.910559+00:00",
+    "2026-10-19T11:02:54.265887+00:00",
+    "2026-10-19T11:03:02.209846+00:00",
+    "2026-10-19T11:03:02.879564+00:00",
+    "2026-10-19T11:03:05.555992+00:00",
+    "2026-10-19T11:03:08.285902+00:00",
+    "2026-10-19T11:03:17.770361+00:00",
+    "2026-10-19T11:03:22.213665+00:00",
+    "2026-10-19T11:03:25.273833+00:00",
+    "2026-10-19T11:03:34.057344+00:00",
+    "2026-10-19T11:03:38.030766+00:00",
+    "2026-10-19T11:03:38.174537+00:00",
+    "2026-10-19T11:03:38.851874+00:00",
+    "2026-10-19T11:03:43.819602+00:00",
+    "2026-10-19T11:03:56.718975+00:00",
+    "2026-10-19T11:04:02.852336+00:00",
+    "2026-10-19T11:04:03.331231+00:00",
+    "2026-10-19T11:04:25.015110+00:00",
+    "2026-10-19T11:04:25.046187+00:00",
+    "2026-10-19T11:04:25.543833+00:00",
+    "2026-10-19T11:04:31.639920+00:00",
+    "2026-10-19T11:06:54.882514+00:00",
+    "2026-10-19T11:07:04.422393+00:00",
+    "2026-10-19T11:07:14.095231+00:00",
+    "2026-10-19T11:07:18.302735+00:00",
+    "2026-10-19T11:07:28.832510+00:00",
+    "2026-10-19T11:07:34.097109+00:00",
+    "2026-10-19T11:07:43.726236+00:00",
+    "2026-10-19T11:07:50.357686+00:00",
+    "2026-10-19T11:08:02.112092+00:00",
+    "2026-10-19T11:08:08.950045+00:00",
+    "2026-10-19T11:08:22.489991+00:00",
+    "2026-10-19T11:08:37.441249+00:00",
+    "2026-10-19T11:08:48.385238+00:00",
+    "2026-10-19T11:08:59.865998+00:00",
+    "2026-10-19T11:09:12.278437+00:00",
+    "2026-10-19T11:09:21.641759+00:00",
+    "2026-10-19T11:09:26.114446+00:00",
+    "2026-10-19T11:09:35.611219+00:00",
+    "2026-10-19T11:09:47.123594+00:00",
+    "2026-10-19T11:09:55.651457+00:00",
+    "2026-10-19T11:10:05.884376+00:00",
+    "2026-10-19T11:10:18.223397+00:00",
+    "2026-10-19T11:10:31.244155+00:00",
+    "2026-10-19T11:10:35.915344+00:00",
+    "2026-10-19T11:10:44.085069+00:00",
+    "2026-10-19T11:10:55.392298+00:00",
+    "2026-10-19T11:11:05.111536+00:00",
+    "2026-10-19T11:11:16.824215+00:00",
+    "2026-10-19T11:11:29.682963+00:00",
+    "2026-10-19T11:11:38.001525+00:00",
+    "2026-10-19T11:11:52.923432+00:00",
+    "2026-10-19T11:12:07.555511+00:00",
+    "2026-10-19T11:12:15.305012+00:00",
+    "2026-10-19T11:12:23.052338+00:00",
+    "2026-10-19T11:12:36.055974+00:00",
+    "2026-10-19T11:12:42.457231+00:00",
+    "2026-10-19T11:12:52.882813+00:00",
+    "2026-10-19T11:12:59.285537+00:00",
+    "2026-10-19T11:13:06.852298+00:00",
+    "2026-10-19T11:13:14.725569+00:00",
+    "2026-10-19T11:13:21.068285+00:00",
+    "2026-10-19T11:13:33.114409+00:00",
+    "2026-10-19T11:13:39.802317+00:00",
+    "2026-10-19T11:13:50.129781+00:00",
+    "2026-10-19T11:14:00.384598+00:00",
+    "2026-10-19T11:14:10.987375+00:00",
+    "2026-10-19T11:14:19.275167+00:00",
+    "2026-10-19T11:14:28.161275+00:00",
+    "2026-10-19T11:14:34.861039+00:00",
+    "2026-10-19T11:14:43.991438+00:00",
+    "2026-10-19T11:14:52.813513+00:00",
+    "2026-10-19T11:15:04.459916+00:00",
+    "2026-10-19T11:15:12.303480+00:00",
+    "2026-10-19T11:15:27.731904+00:00",
+    "2026-10-19T11:15:35.424866+00:00",
+    "2026-10-19T11:15:44.896532+00:00",
+    "2026-10-19T11:15:52.695648+00:00",
+    "2026-10-19T11:16:02.445775+00:00",
+    "2026-10-19T11:16:11.326709+00:00",
+    "2026-10-19T11:16:20.438380+00:00",
+    "2026-10-19T11:16:25.731030+00:00",
+    "2026-10-19T11:16:32.442383+00:00",
+    "2026-10-19T11:16:39.020590+00:00",
+    "2026-10-19T11:16:48.201309+00:00",
+    "2026-10-19T11:16:55.446275+00:00",
+    "2026-10-19T11:17:02.394226+00:00",
+    "2026-10-19T11:17:08.044183+00:00",
+    "2026-10-19T11:17:17.373302+00:00",
+    "2026-10-19T11:17:24.824104+00:00",
+    "2026-10-19T11:17:34.317480+00:00",
+    "2026-10-19T11:17:42.373819+00:00",
+    "2026-10-19T11:17:50.609655+00:00",
+    "2026-10-19T11:17:59.255702+00:00",
+    "2026-10-19T11:18:08.232049+00:00",
+    "2026-10-19T11:18:14.762976+00:00",
+    "2026-10-19T11:18:22.425577+00:00",
+    "2026-10-19T11:18:29.562983+00:00",
+    "2026-10-19T11:18:37.234673+00:00",
+    "2026-10-19T11:18:43.203791+00:00",
+    "2026-10-19T11:18:52.637367+00:00",
+    "2026-10-19T11:18:59.517080+00:00",
+    "2026-10-19T11:19:10.784926+00:00",
+    "2026-10-19T11:19:16.734578+00:00",
+    "2026-10-19T11:19:24.476955+00:00",
+    "2026-10-19T11:19:31.390106+00:00",
+    "2026-10-19T11:19:38.074742+00:00",
+    "2026-10-19T11:19:43.725166+00:00"
   ],
   "free_day_out": "",
   "topics": {
@@ -2641,22 +2847,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 41,
+      "mentions": 43,
       "refs": [
-        {
-          "date": "2026-10-12",
-          "title": "Opus 5.5 is INSANE at decompilation / ports",
-          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1x3nkty/opus_55_is_insane_at_decompilation_ports/",
-          "link": "",
-          "comment": ""
-        },
-        {
-          "date": "2026-10-13",
-          "title": "Once again anthropic doing free marketing for open weight models",
-          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1x4cm73/once_again_anthropic_doing_free_marketing_for/",
-          "link": "https://www.anthropic.com/research/self-replicating-ai",
-          "comment": "https://preview.redd.it/32wh4cbog3vh1.png?width=701&format=png&auto=webp&s=003a95be52c072b640dd5ef27e77577bde6ccb26 they talking about our goat 27b"
-        },
         {
           "date": "2026-10-13",
           "title": "Anthropic is doing free publicity for GLM again",
@@ -2740,6 +2932,20 @@
           "thread": "https://www.reddit.com/r/ClaudeAI/comments/1x8v3sn/claude_solved_a_25_year_old_nsa_cryptography/",
           "link": "",
           "comment": "TL;DR of the discussion generated automatically after 100 comments. The consensus is that this is hilarious and Claude is officially one of us now that it's paranoid and throwing shade. A solid chunk of the thread has already accepted our fate as the AI's future pets, with many arguing it would be a"
+        },
+        {
+          "date": "2026-10-19",
+          "title": "Claude solved a 25 year old NSA cryptography mystery in 30 minutes. Its first reaction was to throw shade at us 🥲 \"is it suspicious that such an obvious thing wasn't discovered in 25 years?\"",
+          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1x8v3sn/claude_solved_a_25_year_old_nsa_cryptography/",
+          "link": "",
+          "comment": "TL;DR of the discussion generated automatically after 100 comments. The consensus is that this is hilarious and Claude is officially one of us now that it's paranoid and throwing shade. A solid chunk of the thread has already accepted our fate as the AI's future pets, with many arguing it would be a"
+        },
+        {
+          "date": "2026-10-19",
+          "title": "Claude designed quantum circuits up to 39x cheaper than the best published ones",
+          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1x956d5/claude_designed_quantum_circuits_up_to_39x/",
+          "link": "https://maccus.fr/en/claude-quantum-circuits/",
+          "comment": "Agreed. Moores law seems so quaint now."
         }
       ],
       "deep_dive": "2026-10-12",
@@ -3081,7 +3287,8 @@
         "2026-10-09",
         "2026-10-10",
         "2026-10-11",
-        "2026-10-12"
+        "2026-10-12",
+        "2026-10-19"
       ],
       "subs": [
         "ArtificialInteligence",
@@ -3091,15 +3298,8 @@
         "artificial",
         "singularity"
       ],
-      "mentions": 18,
+      "mentions": 19,
       "refs": [
-        {
-          "date": "2026-10-10",
-          "title": "Jeff Bezos says a 3-day workweek and more single-income households are on the way thanks to AI: ‘It’s going to be difficult to hire people’",
-          "thread": "https://www.reddit.com/r/ArtificialInteligence/comments/1x21i6w/jeff_bezos_says_a_3day_workweek_and_more/",
-          "link": "https://www.yahoo.com/finance/technology/ai/articles/jeff-bezos-says-3-day-153637443.html",
-          "comment": ""
-        },
         {
           "date": "2026-10-10",
           "title": "AI Could Allow For 3-Day Workweeks And Single-Income Households, Bezos Claims",
@@ -3190,10 +3390,18 @@
           "thread": "https://www.reddit.com/r/singularity/comments/1x3ebrt/your_job_will_disappear_but_your_purpose_never/",
           "link": "https://www.youtube.com/watch?v=02E12HRxttM",
           "comment": ""
+        },
+        {
+          "date": "2026-10-19",
+          "title": "Anthropic is on track to stop hiring technical juniors next year",
+          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1x90vwp/anthropic_is_on_track_to_stop_hiring_technical/",
+          "link": "https://www.reddit.com/gallery/1x90vwp",
+          "comment": "TL;DR of the discussion generated automatically after 100 comments. The thread is a mix of panic and heavy skepticism, with skepticism winning out in the upvotes. The general consensus is that this post is overblown. The most upvoted comments are dunking on the data, arguing that Anthropic's stats a"
         }
       ],
       "deep_dive": "",
-      "last_seen": "2026-10-12"
+      "last_seen": "2026-10-19",
+      "subject": "ai"
     },
     "ai-in-mathematics": {
       "name": "AI in Mathematics",
@@ -3350,22 +3558,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 58,
+      "mentions": 60,
       "refs": [
-        {
-          "date": "2026-10-16",
-          "title": "Unsupervised AI agent reportedly deletes TV show’s entire edit weeks before release, erasing months of work — TV show can't air, AI agent was given access to the production server and wiped the finished season",
-          "thread": "https://www.reddit.com/r/technology/comments/1x6hr7t/unsupervised_ai_agent_reportedly_deletes_tv_shows/",
-          "link": "https://www.tomshardware.com/tech-industry/artificial-intelligence/ai-agent-deletes-tv-shows-entire-edit-weeks-before-release-backup-failure-means-production-team-needs-to-re-edit",
-          "comment": "The show: Dangers of Ai."
-        },
-        {
-          "date": "2026-10-16",
-          "title": "Two AI agents in a job interview and neither one knows how to hang up",
-          "thread": "https://www.reddit.com/r/ChatGPT/comments/1x66iap/two_ai_agents_in_a_job_interview_and_neither_one/",
-          "link": "",
-          "comment": "future is bleak pal"
-        },
         {
           "date": "2026-10-16",
           "title": "Claude let me build something I wanted for almost a decade",
@@ -3449,6 +3643,20 @@
           "thread": "https://www.reddit.com/r/ClaudeCode/comments/1x8t4pe/made_this_app_with_claude_in_10_days/",
           "link": "",
           "comment": "I tried it. What’s the point of the questionnaire at the beginning? Why does it need to know my name and life story? I wanted to try your app and test what it could do and instead deleted it. I’d refocus if I were you."
+        },
+        {
+          "date": "2026-10-19",
+          "title": "Rebuilt a 2000 RTS from scratch with Claude Code, working from the original's disassembly",
+          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1x91lor/rebuilt_a_2000_rts_from_scratch_with_claude_code/",
+          "link": "",
+          "comment": "TL;DR of the discussion generated automatically after 50 comments. The consensus is this is an absolutely legendary project, and OP is the hero we didn't know we needed. The thread is a mix of pure nostalgia for Tzar and awe at the technical achievement. OP dropped in to answer the flood of \"how?!\" "
+        },
+        {
+          "date": "2026-10-19",
+          "title": "A Super Mario 64 demake for the GBA built with Claude. Mario’s physics are bit-identical to the original",
+          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1x99sel/a_super_mario_64_demake_for_the_gba_built_with/",
+          "link": "",
+          "comment": "TL;DR of the discussion generated automatically after 50 comments. The consensus is that this is an absolutely insane and impressive feat. Everyone is blown away by what OP and Claude managed to pull off, calling it \"genius\" and a perfect example of what AI should be used for. Here's the breakdown o"
         }
       ],
       "deep_dive": "2026-10-18",
@@ -3908,12 +4116,13 @@
       "name": "GLP-1 Drugs Beyond Weight Loss",
       "first_seen": "2026-10-16",
       "days": [
-        "2026-10-16"
+        "2026-10-16",
+        "2026-10-19"
       ],
       "subs": [
         "science"
       ],
-      "mentions": 1,
+      "mentions": 2,
       "refs": [
         {
           "date": "2026-10-16",
@@ -3921,11 +4130,18 @@
           "thread": "https://www.reddit.com/r/science/comments/1x6ldne/nearly_half_of_people_who_started_glp1_drugs_like/",
           "link": "https://jamanetwork.com/journals/jamapsychiatry/fullarticle/2854926?guestAccessKey=8c64289b-1f09-44b7-89a0-7c584fe2ea58",
           "comment": "Welcome to r/science ! This is a heavily moderated subreddit in order to keep the discussion on science. However, we recognize that many people want to discuss how they feel the research relates to their own personal lives, so to give people a space to do that, personal anecdotes are allowed as resp"
+        },
+        {
+          "date": "2026-10-19",
+          "title": "AI scans of 100,000+ people found those with 'brown fat' had less diabetes, heart disease, anxiety and depression. People on blood pressure pills were more likely to have it, and in mice, the common drug losartan switched brown fat on, making it burn more energy and heat.",
+          "thread": "https://www.reddit.com/r/science/comments/1x924qf/ai_scans_of_100000_people_found_those_with_brown/",
+          "link": "https://www.sciencealert.com/brown-fat-can-be-beneficial-for-the-body-and-a-blood-pressure-drug-could-turn-it-on",
+          "comment": "Welcome to r/science ! This is a heavily moderated subreddit in order to keep the discussion on science. However, we recognize that many people want to discuss how they feel the research relates to their own personal lives, so to give people a space to do that, personal anecdotes are allowed as resp"
         }
       ],
       "deep_dive": "",
       "subject": "science",
-      "last_seen": "2026-10-16"
+      "last_seen": "2026-10-19"
     },
     "ai-safety-and-alignment": {
       "name": "AI Safety and Alignment",
@@ -3978,22 +4194,16 @@
       "days": [
         "2026-10-16",
         "2026-10-17",
-        "2026-10-18"
+        "2026-10-18",
+        "2026-10-19"
       ],
       "subs": [
         "DeepSeek",
         "LocalLLM",
         "LocalLLaMA"
       ],
-      "mentions": 14,
+      "mentions": 15,
       "refs": [
-        {
-          "date": "2026-10-16",
-          "title": "Introducing Muse Spark Open: the most capable US open-weight model to date",
-          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1x6r9pz/introducing_muse_spark_open_the_most_capable_us/",
-          "link": "",
-          "comment": "Thats a big fat model."
-        },
         {
           "date": "2026-10-16",
           "title": "Introducing Muse Spark Open: the most capable US open-weight model to date",
@@ -4084,11 +4294,41 @@
           "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1x84po4/deepseekaideepseekv41flash1017_hugging_face/",
           "link": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017",
           "comment": "\"minor update\" Proceeds to obliterate GLM5.3, Kimi K3 and GPT5.6 Sol"
+        },
+        {
+          "date": "2026-10-19",
+          "title": "72 hours, four big open weights drops. The only one that fits in 24GB came from NVIDIA, of all companies.",
+          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1x9d23j/72_hours_four_big_open_weights_drops_the_only_one/",
+          "link": "",
+          "comment": "Open weight has never been equivalent to “runs on local hardware.” open weight means it’s not proprietary. Not “you can run this on a gaming card.”"
         }
       ],
       "deep_dive": "",
       "subject": "ai",
-      "last_seen": "2026-10-18"
+      "last_seen": "2026-10-19"
+    },
+    "anthropic-company-strategy": {
+      "name": "Anthropic Company Strategy and Governance",
+      "first_seen": "2026-10-19",
+      "days": [
+        "2026-10-19"
+      ],
+      "subs": [
+        "singularity"
+      ],
+      "mentions": 1,
+      "refs": [
+        {
+          "date": "2026-10-19",
+          "title": "Anthropic creates a public benefit fund, pledging 20% of its shares to the public good, with another 2% potentially added for every 50% increase in its valuation",
+          "thread": "https://www.reddit.com/r/singularity/comments/1x9a50t/anthropic_creates_a_public_benefit_fund_pledging/",
+          "link": "https://www.anthropic.com/news/public-benefit-fund",
+          "comment": "first sign of UBI"
+        }
+      ],
+      "deep_dive": "",
+      "subject": "ai",
+      "last_seen": "2026-10-19"
     }
   }
 }
