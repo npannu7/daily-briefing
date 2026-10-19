@@ -4,6 +4,227 @@
  "repo": "npannu7/daily-briefing",
  "episodes": [
   {
+   "file": "ai_2026-10-19_morning_0828.mp3",
+   "title": "Morning - 19 Oct: Flying a Drone With Just One Motor",
+   "label": "Monday 19 Oct morning",
+   "date": "2026-10-19",
+   "edition": "morning",
+   "published": "2026-10-19T08:28:10.823178+05:30",
+   "duration": 984,
+   "theme": "Mechanical minimalism in single-motor flight control and reversing early-onset diabetes through targeted metabolic clearance",
+   "writer": "Gemini 3.8 Flash",
+   "voices": "Fish Audio (free)",
+   "deep_dive": false,
+   "segments": [
+    {
+     "title": "Flying a Drone With Just One Motor",
+     "category": "thread"
+    },
+    {
+     "title": "Reversing Early Diabetes Without Drugs",
+     "category": "thread"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "How does the single-motor drone achieve multi-axis steering without conventional control surfaces or a swashplate?",
+     "options": [
+      "By dynamically shifting internal battery weight using linear actuators.",
+      "By pulsing motor torque hundreds of times a second to exploit blade inertia and an angled hinge for cyclic pitch.",
+      "By varying the voltage across independent electromagnetic stator coils.",
+      "By using high-speed aerodynamic steering vanes mounted directly inside the downwash."
+     ],
+     "answer": 1,
+     "explain": "An angled mechanical hinge at the propeller hub translates intentional high-frequency motor torque pulses into cyclic pitch as the blades lag behind.",
+     "segment": "Flying a Drone With Just One Motor"
+    },
+    {
+     "q": "Why was 3D-printed polyphthalamide (PPA-CF) chosen for the rotor hub instead of standard engineering plastics?",
+     "options": [
+      "It is flexible enough to act as an elastic spring for continuous passive deformation.",
+      "It dissolves easily in water, allowing for easy internal channel cleanout during post-processing.",
+      "It absorbs ambient moisture to lubricate the hinge joints and reduce friction.",
+      "It handles high temperatures and resists creep, while chopped carbon fibers prevent unpredictable torsional flexing."
+     ],
+     "answer": 3,
+     "explain": "PPA-CF resists creep and high temperatures while maintaining dimensional stability under severe torsional shock, unlike regular nylon which softens when absorbing moisture.",
+     "segment": "Flying a Drone With Just One Motor"
+    },
+    {
+     "q": "What primary mechanism explains how the intensive low-energy diet reversed early-onset diabetes without medications?",
+     "options": [
+      "It forced the body to burn away ectopic fat stored inside internal organs and muscle tissue, restoring insulin signaling.",
+      "It permanently lowered the basal metabolic rate, requiring less circulating insulin to manage baseline energy.",
+      "It stimulated pancreatic beta-cell replication to double natural insulin production capacity.",
+      "It cleared out subcutaneous fat layers beneath the skin, preventing glucose from converting into adipose tissue."
+     ],
+     "answer": 0,
+     "explain": "Severe calorie restriction forces the body to scavenge ectopic fat from muscle and organs, which repairs impaired insulin signaling and restores glucose regulation.",
+     "segment": "Reversing Early Diabetes Without Drugs"
+    },
+    {
+     "q": "What specific role did resistance training play during the twelve-week low-energy diet phase of the clinical trial?",
+     "options": [
+      "It increased total caloric expenditure high enough to offset the restrictive 800-calorie intake.",
+      "It forced the musculoskeletal system to preserve lean muscle mass and functional strength during rapid weight loss.",
+      "It stimulated the cardiovascular system to remodel the left ventricle into an enlarged endurance shape.",
+      "It elevated resting body temperature to accelerate the localized oxidation of subcutaneous fat."
+     ],
+     "answer": 1,
+     "explain": "Lifting weights provided the mechanical signal needed to prevent the body from breaking down vital lean muscle mass alongside body fat.",
+     "segment": "Reversing Early Diabetes Without Drugs"
+    }
+   ],
+   "digest": [
+    {
+     "title": "More than half of people with early-onset type 2 diabetes (average age just 38) went into remission with no meds after a 24-week program: 12 weeks of 800–900 calories a day plus supervised strength and cardio workouts. They lost fat but kept their muscle, and even their hearts became healthier, too.",
+     "subs": [
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1x8zytx/more_than_half_of_people_with_earlyonset_type_2/",
+     "link": "https://www.sciencealert.com/this-diet-and-exercise-combination-put-early-onset-diabetes-into-remission-in-half-of-participants",
+     "line": "A study found early-onset type 2 diabetes remission via extreme calorie restriction and exercise, while commenters questioned the safety and feasibility of such low calories.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": true
+    },
+    {
+     "title": "I Built a Drone With Only One Motor – And a Poor Man's High Speed Camera",
+     "subs": [
+      "robotics"
+     ],
+     "thread": "https://www.reddit.com/r/robotics/comments/1x8zyvp/i_built_a_drone_with_only_one_motor_and_a_poor/",
+     "link": "",
+     "line": "A builder shared a custom single-motor drone utilizing a 3D printed hinge mechanism, and commenters praised the clever engineering solution.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": true
+    },
+    {
+     "title": "Smart women at work get treated worse by their own teammates. In two studies (432 students, 394 office workers), women who scored higher on intelligence tests were seen as more hostile, got less help and faced more mistreatment. Smart men didn't face this, and in one group were even treated better.",
+     "subs": [
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1x8l8gt/smart_women_at_work_get_treated_worse_by_their/",
+     "link": "https://www.psypost.org/highly-competent-women-face-hidden-social-penalties-in-the-workplace/",
+     "line": "Studies showed smart women at work face worse treatment from teammates, while men did not, with commenters discussing workplace bias.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "A single dose of psilocybin eased depression within days, but its edge over placebo faded within a year. The effects appeared as early as the second day after dosing and lasted for more than three months, although by one year the difference between groups had faded.",
+     "subs": [
+      "EverythingScience",
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1x9ek4k/a_single_dose_of_psilocybin_eased_depression/",
+     "link": "https://www.psypost.org/a-single-dose-of-psilocybin-eased-depression-within-days-but-its-edge-over-placebo-faded-within-a-year/",
+     "line": "A single dose of psilocybin eased depression initially, but the benefit faded by one year, and commenters discussed the convenience of quarterly dosing.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Why does everyone disregard Anthropic's best practices?",
+     "subs": [
+      "ClaudeCode"
+     ],
+     "thread": "https://www.reddit.com/r/ClaudeCode/comments/1x966ii/why_does_everyone_disregard_anthropics_best/",
+     "link": "",
+     "line": "A user asked why developers ignore Anthropic's official coding best practices, and commenters debated whether the software should enforce them automatically.",
+     "verdict": "opinion",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Is this just how it is?",
+     "subs": [
+      "biotech"
+     ],
+     "thread": "https://www.reddit.com/r/biotech/comments/1x8qyuy/is_this_just_how_it_is/",
+     "link": "",
+     "line": "A biotech worker vented about a perpetually busy QC workload, and other professionals confirmed that quality control is demanding everywhere.",
+     "verdict": "opinion",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Honeybees are barging aside wild pollinators in hunt for pollen and nectar, study finds",
+     "subs": [
+      "EverythingScience"
+     ],
+     "thread": "https://www.reddit.com/r/EverythingScience/comments/1x95c78/honeybees_are_barging_aside_wild_pollinators_in/",
+     "link": "https://www.theguardian.com/environment/2026/oct/17/honeybees-are-barging-aside-wild-pollinators-in-hunt-for-pollen-and-nectar-study-finds",
+     "line": "A study found honeybees outcompete wild pollinators for resources, and commenters discussed the ecological impact on native species.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "God I hate this argument",
+     "subs": [
+      "antiai"
+     ],
+     "thread": "https://www.reddit.com/r/antiai/comments/1x8m6rf/god_i_hate_this_argument/",
+     "link": "",
+     "line": "Users argued over whether current artificial intelligence projects are genuine technological advancements or merely fleeting fads and scams.",
+     "verdict": "opinion",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Did extinct species of humans have different skin tones?",
+     "subs": [
+      "askscience"
+     ],
+     "thread": "https://www.reddit.com/r/askscience/comments/1x97wps/did_extinct_species_of_humans_have_different_skin/",
+     "link": "",
+     "line": "Users discussed whether extinct human species had varied skin tones, with an archaeologist noting depictions are based on location and educated guesswork.",
+     "verdict": "opinion",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "AI scans of 100,000+ people found those with 'brown fat' had less diabetes, heart disease, anxiety and depression. People on blood pressure pills were more likely to have it, and in mice, the common drug losartan switched brown fat on, making it burn more energy and heat.",
+     "subs": [
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1x924qf/ai_scans_of_100000_people_found_those_with_brown/",
+     "link": "https://www.sciencealert.com/brown-fat-can-be-beneficial-for-the-body-and-a-blood-pressure-drug-could-turn-it-on",
+     "line": "AI scans linked brown fat to lower rates of various diseases, with commenters discussing the potential specific benefits of blood pressure medication losartan.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Researchers connected a simulated fruit fly brain to Odyssey-3, an AI that generates entire virtual worlds. The fly is now navigating these imagined environments completely on its own. A biological brain recreated in software is exploring worlds that have never existed.",
+     "subs": [
+      "singularity"
+     ],
+     "thread": "https://www.reddit.com/r/singularity/comments/1x8qyc7/researchers_connected_a_simulated_fruit_fly_brain/",
+     "link": "",
+     "line": "Researchers connected a simulated fruit fly brain to an AI-generated virtual world, and commenters marveled at the experiment while noting the fly's unusual movement.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "A Drug Commonly Used to Treat Erectile Dysfunction, May Also Help Regenerate Damaged Muscle. Research Suggests the Medication, Tadalafil Could Support Muscle Repair and Recovery by Influencing Biological Processes Involved in Muscle Regeneration in Mouse Models.",
+     "subs": [
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1x8p3li/a_drug_commonly_used_to_treat_erectile/",
+     "link": "https://www.sciencealert.com/scientists-discover-an-erectile-dysfunction-drug-could-also-regenerate-muscle",
+     "line": "Research suggests the erectile dysfunction drug tadalafil may help regenerate damaged muscle in mouse models, drawing jokes and anecdotes from commenters.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    }
+   ],
+   "transcript": "transcripts/ai_2026-10-19_morning_0828.txt"
+  },
+  {
    "file": "ai_2026-10-18_evening_1620.mp3",
    "title": "Sunday - 18 Oct: AI Safety and Alignment",
    "label": "Sunday 18 Oct evening deep dive",
@@ -2743,92 +2964,6 @@
     }
    ],
    "transcript": "transcripts/ai_2026-10-13_morning_0815.txt"
-  },
-  {
-   "file": "ai_2026-10-12_morning_0815.mp3",
-   "title": "Morning - 12 Oct: Clinical AI at the Bedside: OpenMed 3.0 and Local Validation Limits",
-   "label": "Monday 12 Oct morning",
-   "date": "2026-10-12",
-   "edition": "morning",
-   "published": "2026-10-12T08:15:13.366647+05:30",
-   "duration": 1792,
-   "theme": "Grounding Agent Autonomy and Edge Scaling in Physical and Safety Limits",
-   "writer": "Gemini 3.8 Flash",
-   "voices": "Fish Audio (free)",
-   "deep_dive": false,
-   "segments": [
-    {
-     "title": "Clinical AI at the Bedside: OpenMed 3.0 and Local Validation Limits",
-     "category": "thread"
-    },
-    {
-     "title": "API Key Exfiltration or Leaky Test Benches: The DeepSeek Flash Sandbox Scare",
-     "category": "thread"
-    },
-    {
-     "title": "100 Billion Parameters in Your Pocket: Qualcomm's 2028 Phone Claim",
-     "category": "thread"
-    },
-    {
-     "title": "Splitting the Engine: Converting Dense Models into Sparse Mixtures-of-Experts",
-     "category": "thread"
-    },
-    {
-     "title": "Morning Radar: Terminal QA Telemetry, Remarked Silicon, Game Decompilations, and Declarative UIs",
-     "category": "quickfire"
-    }
-   ],
-   "quiz": [
-    {
-     "q": "Why does OpenMed 3.0 deliberately refuse to merge patient profiles automatically when there is a 99% probability match?",
-     "options": [
-      "Because false certainty in medical records can cause catastrophic errors, such as attaching one person's allergy to another's chart.",
-      "Because local SQLite databases lack the storage capacity required to hold merged patient records without compression.",
-      "Because federal compliance laws strictly prohibit automated record linking on local edge hardware.",
-      "Because the maintainer forgot to implement string-matching algorithms in the append-only SQLite database."
-     ],
-     "answer": 0,
-     "explain": "False certainty in medical records can be catastrophic, such as incorrectly merging drug allergies between patients. The system flags these matches for human review rather than risking automatic errors.",
-     "segment": "Clinical AI at the Bedside: OpenMed 3.0 and Local Validation Limits"
-    },
-    {
-     "q": "What was the actual cause of the DeepSeek V4.1 Flash incident where benchmark harnesses reported API key exfiltration?",
-     "options": [
-      "The model developed malicious intent and actively hacked the host server.",
-      "The test harnesses (Harbor and Pier) left live OpenRouter credentials exposed inside the agent's runtime environment variables.",
-      "The external API endpoint was intercepted by a malicious third-party adversary during code evaluation.",
-      "The model bypassed its air-gapped container boundaries by exploiting a zero-day vulnerability in Linux."
-     ],
-     "answer": 1,
-     "explain": "The incident occurred because the test harnesses accidentally passed live credentials into the agent's environment variables, allowing the model to find them in its reachable tool space.",
-     "segment": "API Key Exfiltration or Leaky Test Benches: The DeepSeek Flash Sandbox Scare"
-    },
-    {
-     "q": "What primary physical constraint makes running a 100-billion parameter dense model continuously on a smartphone infeasible by 2028?",
-     "options": [
-      "Smartphones lack the operating system support required to execute large-scale language models.",
-      "Flash memory chips cannot store parameter files larger than 10 gigabytes due to physical surface area limits.",
-      "The memory bandwidth required to read weights continuously generates thermal dissipation that exceeds passive cooling limits.",
-      "Mobile processors do not support floating-point quantization algorithms."
-     ],
-     "answer": 2,
-     "explain": "Moving massive weight parameters across memory buses at high speeds generates intense resistance and heat, which a sealed, passively cooled smartphone cannot dissipate without throttling or draining the battery instantly.",
-     "segment": "100 Billion Parameters in Your Pocket: Qualcomm's 2028 Phone Claim"
-    },
-    {
-     "q": "Why did naive post-hoc slicing of a dense model into a Mixture-of-Experts (MoE) result in a severe drop in reasoning accuracy?",
-     "options": [
-      "Dense models store knowledge integrated across the entire weight matrix, so cutting them without retraining destroys structural integrity and causes routing collapse.",
-      "Consumer GPUs automatically truncate 32-bit floating-point numbers during memory transfers.",
-      "The gating router was programmed to drop 90% of all tokens to save power.",
-      "The hobbyist forgot to include a shared expert in the final conversion script."
-     ],
-     "answer": 0,
-     "explain": "Dense layers are highly integrated load-bearing structures where knowledge is smeared across the matrix; naive slicing without retraining destroys this structure and prevents the router from finding clean boundaries.",
-     "segment": "Splitting the Engine: Converting Dense Models into Sparse Mixtures-of-Experts"
-    }
-   ],
-   "transcript": "transcripts/ai_2026-10-12_morning_0815.txt"
   }
  ]
 }

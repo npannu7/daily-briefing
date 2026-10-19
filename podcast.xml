@@ -8,9 +8,28 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Sun, 18 Oct 2026 11:40:52 GMT</lastBuildDate>
+<lastBuildDate>Mon, 19 Oct 2026 03:25:47 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Morning - 19 Oct: Flying a Drone With Just One Motor</title>
+<description>Morning edition - Monday, 19 October 2026
+Mechanical minimalism in single-motor flight control and reversing early-onset diabetes through targeted metabolic clearance
+
+00:27  Flying a Drone With Just One Motor
+   robotics: https://www.reddit.com/r/robotics/comments/1x8zyvp/i_built_a_drone_with_only_one_motor_and_a_poor/
+08:52  Reversing Early Diabetes Without Drugs
+   science: https://www.reddit.com/r/science/comments/1x8zytx/more_than_half_of_people_with_earlyonset_type_2/
+   Source: https://www.sciencealert.com/this-diet-and-exercise-combination-put-early-onset-diabetes-into-remission-in-half-of-participants
+
+Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
+Written by: Gemini 3.8 Flash · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (187 threads)</description>
+<pubDate>Mon, 19 Oct 2026 08:28:10 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-10-19_morning_0828.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-19_morning_0828.mp3" length="7874156" type="audio/mpeg"/>
+<itunes:duration>984</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Sunday - 18 Oct: AI Safety and Alignment</title>
 <description>Sunday edition - Sunday, 18 October 2026
@@ -334,38 +353,6 @@ Written by: Gemini 3.8 Flash · Voices: Fish Audio (free) · Discussions: Reddit
 <guid isPermaLink="false">ai_2026-10-13_morning_0815.mp3</guid>
 <enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-13_morning_0815.mp3" length="14607980" type="audio/mpeg"/>
 <itunes:duration>1825</itunes:duration>
-<itunes:episodeType>full</itunes:episodeType>
-</item>
-<item>
-<title>Morning - 12 Oct: Clinical AI at the Bedside: OpenMed 3.0 and Local Validation Limits</title>
-<description>Morning edition - Monday, 12 October 2026
-Grounding Agent Autonomy and Edge Scaling in Physical and Safety Limits
-
-00:39  Clinical AI at the Bedside: OpenMed 3.0 and Local Validation Limits
-   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x37z7z/openmed_30_is_out_apache20_clinical_ai_that_runs/
-   Source: https://github.com/maziyarpanahi/openmed/releases/tag/v3.0.0
-06:58  API Key Exfiltration or Leaky Test Benches: The DeepSeek Flash Sandbox Scare
-   DeepSeek, LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x32vhx/psa_deepseek_v41_flash_habitually_exfiltrates_api/
-12:43  100 Billion Parameters in Your Pocket: Qualcomm's 2028 Phone Claim
-   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x2z14s/qualcomm_ceo_reveals_ai_companies_want_phones/
-   singularity: https://www.reddit.com/r/singularity/comments/1x2z573/qualcomm_ceo_frontier_ai_companies_want_phones/
-18:29  Splitting the Engine: Converting Dense Models into Sparse Mixtures-of-Experts
-   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x3078i/converting_dense_models_into_mixtureofexperts/
-24:45  Morning Radar: Terminal QA Telemetry, Remarked Silicon, Game Decompilations, and Declarative UIs
-   ClaudeCode: https://www.reddit.com/r/ClaudeCode/comments/1x34qj4/claude_code_now_shows_images_and_videos_in_the/
-   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x2xniv/be_careful_fam_new_rtx_4090_fakes_hit_the_market/
-   Source: https://videocardz.com/newz/new-rtx-4090-fakes-hit-the-market-with-gpus-and-memory-almost-indistinguishable-from-real-chips
-   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1x3nkty/opus_55_is_insane_at_decompilation_ports/
-   singularity: https://www.reddit.com/r/singularity/comments/1x38qz0/gta_5_modern_warfare_2_halo_and_many_other_games/
-   Source: https://www.destructoid.com/vibe-coded-games-in-browsers/
-   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x35o1y/microsoftaescode_8b_and_32b/
-
-Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
-Written by: Gemini 3.8 Flash · Voices: Fish Audio (free) · Discussions: Reddit (collected directly)</description>
-<pubDate>Mon, 12 Oct 2026 08:15:13 +0530</pubDate>
-<guid isPermaLink="false">ai_2026-10-12_morning_0815.mp3</guid>
-<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-12_morning_0815.mp3" length="14343596" type="audio/mpeg"/>
-<itunes:duration>1792</itunes:duration>
 <itunes:episodeType>full</itunes:episodeType>
 </item>
 </channel>
