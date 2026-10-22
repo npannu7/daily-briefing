@@ -1,17 +1,6 @@
 {
   "episodes": [
     {
-      "file": "ai_2026-10-15_evening_1628.mp3",
-      "date": "2026-10-15",
-      "edition": "evening",
-      "title": "Evening - 15 Oct: Stretchtext: A 1967 Idea Finally Working in Code Assistants",
-      "published": "2026-10-15T16:28:24.790694+05:30",
-      "pubDate": "Thu, 15 Oct 2026 16:28:24 +0530",
-      "size": 7842860,
-      "duration": 980,
-      "description": "Evening edition - Thursday, 15 October 2026\nA 1967 text interface idea finally works in coding agents, and what ovaries actually do after menopause\n\n00:30  Stretchtext: A 1967 Idea Finally Working in Code Assistants\n   ClaudeCode: https://www.reddit.com/r/ClaudeCode/comments/1x688sx/turning_a_crazy_idea_from_1967_into_a_claude_code/\n08:13  What Ovaries Do After Menopause\n   science: https://www.reddit.com/r/science/comments/1x5m0v3/a_2026_study_reveals_that_human_ovaries_remain/\n   Source: https://www.sciencealert.com/ovaries-develop-an-intriguing-second-role-after-menopause\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nWritten by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (177 threads)"
-    },
-    {
       "file": "ai_2026-10-16_morning_0828.mp3",
       "date": "2026-10-16",
       "edition": "morning",
@@ -153,6 +142,17 @@
       "size": 8306732,
       "duration": 1038,
       "description": "Morning edition - Thursday, 22 October 2026\nEngineering deterministic manual overrides for recursive automated systems, and treating circadian phase misalignment in treatment-resistant depression.\n\n00:35  Breaking Out of the Chatbot Loop\n   ArtificialInteligence: https://www.reddit.com/r/ArtificialInteligence/comments/1xblhi2/nyc_wants_a_onetouch_talk_to_a_human_option_on/\n   artificial: https://www.reddit.com/r/artificial/comments/1xb7a1x/new_york_city_wants_to_fine_companies_that_trap/\n   Source: https://madrobot.blog/2026/10/20/nyc-mamdani-ai-chatbot-doom-loop-rule-human-customer-service-fines/\n09:11  When Depression Is a Clock Problem\n   science: https://www.reddit.com/r/science/comments/1xb9ww2/about_1_in_4_people_with_depression_may_have_a/\n   Source: https://www.sciencealert.com/researchers-identify-new-circadian-subtype-of-depression-affecting-1-in-4-patients\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nWritten by: Gemini 3.8 Flash · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (191 threads)"
+    },
+    {
+      "file": "ai_2026-10-22_evening_1628.mp3",
+      "date": "2026-10-22",
+      "edition": "evening",
+      "title": "Evening - 22 Oct: How one developer runs a coding agent like a small engineering team with guardrails",
+      "published": "2026-10-22T16:28:40.324066+05:30",
+      "pubDate": "Thu, 22 Oct 2026 16:28:40 +0530",
+      "size": 10229036,
+      "duration": 1278,
+      "description": "Evening edition - Thursday, 22 October 2026\nEngineering guardrails for AI coding agents; validating AI cardiac risk prediction from sleep ECG\n\n00:42  How one developer runs a coding agent like a small engineering team with guardrails\n   ClaudeCode: https://www.reddit.com/r/ClaudeCode/comments/1xbxoza/my_claude_code_setup_it_runs_like_a_small/\n14:23  AI reads heart signals during sleep to predict cardiac risk ten years out\n   science: https://www.reddit.com/r/science/comments/1xbi4rj/ai_can_read_your_hearts_electrical_signals_while/\n   Source: https://www.sciencealert.com/the-way-you-sleep-can-reveal-your-risk-of-heart-failure-up-to-10-years-in-advance\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nWritten by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (168 threads)"
     }
   ],
   "memory": [
@@ -892,6 +892,26 @@
       "segments": [
         "Breaking Out of the Chatbot Loop",
         "When Depression Is a Clock Problem"
+      ],
+      "deep_topic": "",
+      "topics": []
+    },
+    {
+      "label": "Thursday 22 Oct evening",
+      "date": "2026-10-22",
+      "edition": "evening",
+      "published": "2026-10-22T16:28:40.324066+05:30",
+      "file": "ai_2026-10-22_evening_1628.mp3",
+      "writer": "nemotron-3-ultra-550b-a55b (free)",
+      "voices": "Fish Audio (free)",
+      "summary": "Examined a solo developer's guardrailed workflow for AI coding agents — deterministic context management, watchdog-style safety latches, and traceability practices that mirror medical-device quality systems. Then evaluated a sleep-ECG model trained on 16,000 patients and tested on 23,000 more that predicts heart failure, stroke, arrhythmia, and mortality up to a decade ahead, scrutinizing its validation design, regulatory pathway as an algorithmic medical device, and whether the evidence supports clinical deployment.",
+      "threads": [
+        "Regulatory precedent for single-sensor sleep ECG algorithms as Class II/III medical devices",
+        "Adoption of deterministic agent orchestration patterns in regulated software development environments"
+      ],
+      "segments": [
+        "How one developer runs a coding agent like a small engineering team with guardrails",
+        "AI reads heart signals during sleep to predict cardiac risk ten years out"
       ],
       "deep_topic": "",
       "topics": []
@@ -2001,6 +2021,18 @@
     {
       "date": "2026-10-22",
       "link": "https://madrobot.blog/2026/10/20/nyc-mamdani-ai-chatbot-doom-loop-rule-human-customer-service-fines/"
+    },
+    {
+      "date": "2026-10-22",
+      "link": "https://www.reddit.com/r/science/comments/1xbi4rj/ai_can_read_your_hearts_electrical_signals_while/"
+    },
+    {
+      "date": "2026-10-22",
+      "link": "https://www.sciencealert.com/the-way-you-sleep-can-reveal-your-risk-of-heart-failure-up-to-10-years-in-advance"
+    },
+    {
+      "date": "2026-10-22",
+      "link": "https://www.reddit.com/r/ClaudeCode/comments/1xbxoza/my_claude_code_setup_it_runs_like_a_small/"
     }
   ],
   "feedback": [
@@ -2918,7 +2950,237 @@
     "2026-10-22T03:26:37.406149+00:00",
     "2026-10-22T03:26:44.466610+00:00",
     "2026-10-22T03:26:48.834366+00:00",
-    "2026-10-22T03:26:54.450864+00:00"
+    "2026-10-22T03:26:54.450864+00:00",
+    "2026-10-22T10:58:40.785640+00:00",
+    "2026-10-22T10:58:43.925576+00:00",
+    "2026-10-22T10:58:47.121627+00:00",
+    "2026-10-22T10:58:50.294648+00:00",
+    "2026-10-22T10:58:53.601202+00:00",
+    "2026-10-22T10:58:56.786339+00:00",
+    "2026-10-22T10:58:59.980181+00:00",
+    "2026-10-22T10:59:05.366132+00:00",
+    "2026-10-22T10:59:06.397526+00:00",
+    "2026-10-22T10:59:13.791045+00:00",
+    "2026-10-22T10:59:16.986249+00:00",
+    "2026-10-22T10:59:20.185654+00:00",
+    "2026-10-22T10:59:23.390631+00:00",
+    "2026-10-22T10:59:26.841290+00:00",
+    "2026-10-22T10:59:29.986169+00:00",
+    "2026-10-22T10:59:32.991284+00:00",
+    "2026-10-22T10:59:36.190199+00:00",
+    "2026-10-22T10:59:39.398564+00:00",
+    "2026-10-22T10:59:42.630784+00:00",
+    "2026-10-22T10:59:47.043458+00:00",
+    "2026-10-22T10:59:50.225151+00:00",
+    "2026-10-22T10:59:53.428109+00:00",
+    "2026-10-22T10:59:56.615279+00:00",
+    "2026-10-22T10:59:59.827403+00:00",
+    "2026-10-22T11:00:03.106590+00:00",
+    "2026-10-22T11:00:06.275401+00:00",
+    "2026-10-22T11:00:09.476242+00:00",
+    "2026-10-22T11:00:12.616675+00:00",
+    "2026-10-22T11:00:15.827725+00:00",
+    "2026-10-22T11:00:19.050746+00:00",
+    "2026-10-22T11:00:22.233697+00:00",
+    "2026-10-22T11:00:25.447720+00:00",
+    "2026-10-22T11:00:28.658511+00:00",
+    "2026-10-22T11:00:31.841841+00:00",
+    "2026-10-22T11:00:35.049378+00:00",
+    "2026-10-22T11:00:38.228268+00:00",
+    "2026-10-22T11:00:41.454463+00:00",
+    "2026-10-22T11:00:44.633992+00:00",
+    "2026-10-22T11:00:47.850057+00:00",
+    "2026-10-22T11:00:51.064276+00:00",
+    "2026-10-22T11:00:54.264132+00:00",
+    "2026-10-22T11:00:57.432650+00:00",
+    "2026-10-22T11:01:00.834046+00:00",
+    "2026-10-22T11:01:03.843778+00:00",
+    "2026-10-22T11:01:07.017285+00:00",
+    "2026-10-22T11:01:10.237347+00:00",
+    "2026-10-22T11:01:13.428918+00:00",
+    "2026-10-22T11:01:16.622596+00:00",
+    "2026-10-22T11:01:19.843701+00:00",
+    "2026-10-22T11:01:23.025113+00:00",
+    "2026-10-22T11:01:26.226156+00:00",
+    "2026-10-22T11:01:29.426963+00:00",
+    "2026-10-22T11:01:32.653115+00:00",
+    "2026-10-22T11:01:35.900970+00:00",
+    "2026-10-22T11:01:39.023648+00:00",
+    "2026-10-22T11:01:42.254592+00:00",
+    "2026-10-22T11:01:45.428767+00:00",
+    "2026-10-22T11:01:48.637795+00:00",
+    "2026-10-22T11:01:51.870252+00:00",
+    "2026-10-22T11:01:55.494513+00:00",
+    "2026-10-22T11:01:58.272076+00:00",
+    "2026-10-22T11:02:03.585521+00:00",
+    "2026-10-22T11:02:06.818918+00:00",
+    "2026-10-22T11:02:07.855400+00:00",
+    "2026-10-22T11:02:11.034142+00:00",
+    "2026-10-22T11:02:14.239949+00:00",
+    "2026-10-22T11:02:19.387117+00:00",
+    "2026-10-22T11:02:20.625621+00:00",
+    "2026-10-22T11:02:23.839171+00:00",
+    "2026-10-22T11:02:27.043117+00:00",
+    "2026-10-22T11:02:31.275450+00:00",
+    "2026-10-22T11:02:34.407066+00:00",
+    "2026-10-22T11:02:37.620743+00:00",
+    "2026-10-22T11:02:40.831964+00:00",
+    "2026-10-22T11:02:44.034656+00:00",
+    "2026-10-22T11:02:47.286484+00:00",
+    "2026-10-22T11:02:50.417281+00:00",
+    "2026-10-22T11:02:53.633123+00:00",
+    "2026-10-22T11:02:56.819780+00:00",
+    "2026-10-22T11:03:02.075330+00:00",
+    "2026-10-22T11:03:03.225945+00:00",
+    "2026-10-22T11:03:06.771159+00:00",
+    "2026-10-22T11:03:09.637813+00:00",
+    "2026-10-22T11:03:12.836813+00:00",
+    "2026-10-22T11:03:16.033498+00:00",
+    "2026-10-22T11:03:19.241101+00:00",
+    "2026-10-22T11:03:22.464997+00:00",
+    "2026-10-22T11:03:26.945096+00:00",
+    "2026-10-22T11:03:30.147287+00:00",
+    "2026-10-22T11:03:33.372019+00:00",
+    "2026-10-22T11:03:36.555234+00:00",
+    "2026-10-22T11:03:39.756802+00:00",
+    "2026-10-22T11:03:42.956684+00:00",
+    "2026-10-22T11:03:46.172245+00:00",
+    "2026-10-22T11:03:49.341923+00:00",
+    "2026-10-22T11:03:52.553182+00:00",
+    "2026-10-22T11:03:55.959081+00:00",
+    "2026-10-22T11:03:59.225470+00:00",
+    "2026-10-22T11:04:04.326796+00:00",
+    "2026-10-22T11:04:05.338123+00:00",
+    "2026-10-22T11:04:08.569370+00:00",
+    "2026-10-22T11:04:11.773713+00:00",
+    "2026-10-22T11:04:14.991406+00:00",
+    "2026-10-22T11:04:18.159655+00:00",
+    "2026-10-22T11:04:21.345920+00:00",
+    "2026-10-22T11:04:24.558711+00:00",
+    "2026-10-22T11:04:28.756151+00:00",
+    "2026-10-22T11:04:31.952347+00:00",
+    "2026-10-22T11:04:35.151562+00:00",
+    "2026-10-22T11:04:38.389026+00:00",
+    "2026-10-22T11:04:41.541098+00:00",
+    "2026-10-22T11:04:44.858627+00:00",
+    "2026-10-22T11:04:47.941948+00:00",
+    "2026-10-22T11:04:51.149516+00:00",
+    "2026-10-22T11:04:54.360081+00:00",
+    "2026-10-22T11:04:59.693652+00:00",
+    "2026-10-22T11:05:00.751583+00:00",
+    "2026-10-22T11:05:03.992674+00:00",
+    "2026-10-22T11:05:07.174476+00:00",
+    "2026-10-22T11:05:10.351514+00:00",
+    "2026-10-22T11:05:13.549421+00:00",
+    "2026-10-22T11:05:16.762978+00:00",
+    "2026-10-22T11:05:19.945977+00:00",
+    "2026-10-22T11:05:24.171543+00:00",
+    "2026-10-22T11:05:27.388538+00:00",
+    "2026-10-22T11:05:30.607627+00:00",
+    "2026-10-22T11:05:33.778231+00:00",
+    "2026-10-22T11:05:36.987358+00:00",
+    "2026-10-22T11:05:40.181955+00:00",
+    "2026-10-22T11:05:43.368585+00:00",
+    "2026-10-22T11:05:46.598361+00:00",
+    "2026-10-22T11:05:49.775379+00:00",
+    "2026-10-22T11:05:52.976203+00:00",
+    "2026-10-22T11:05:56.187639+00:00",
+    "2026-10-22T11:05:59.377947+00:00",
+    "2026-10-22T11:06:04.789485+00:00",
+    "2026-10-22T11:06:06.783651+00:00",
+    "2026-10-22T11:06:13.154261+00:00",
+    "2026-10-22T11:06:19.562746+00:00",
+    "2026-10-22T11:07:35.937400+00:00",
+    "2026-10-22T11:09:30.962006+00:00",
+    "2026-10-22T11:10:24.376546+00:00",
+    "2026-10-22T11:11:04.999239+00:00",
+    "2026-10-22T11:11:41.078137+00:00",
+    "2026-10-22T11:12:02.293324+00:00",
+    "2026-10-22T11:12:04.213620+00:00",
+    "2026-10-22T11:12:10.656721+00:00",
+    "2026-10-22T11:12:19.335767+00:00",
+    "2026-10-22T11:12:29.914931+00:00",
+    "2026-10-22T11:12:40.422123+00:00",
+    "2026-10-22T11:12:49.578445+00:00",
+    "2026-10-22T11:12:54.465343+00:00",
+    "2026-10-22T11:13:04.513339+00:00",
+    "2026-10-22T11:13:09.082952+00:00",
+    "2026-10-22T11:13:24.382925+00:00",
+    "2026-10-22T11:13:35.505449+00:00",
+    "2026-10-22T11:13:48.540168+00:00",
+    "2026-10-22T11:13:59.721050+00:00",
+    "2026-10-22T11:14:05.428634+00:00",
+    "2026-10-22T11:14:21.325837+00:00",
+    "2026-10-22T11:14:42.803081+00:00",
+    "2026-10-22T11:14:55.885603+00:00",
+    "2026-10-22T11:15:06.660907+00:00",
+    "2026-10-22T11:15:19.363562+00:00",
+    "2026-10-22T11:15:29.701145+00:00",
+    "2026-10-22T11:15:51.298734+00:00",
+    "2026-10-22T11:16:08.264882+00:00",
+    "2026-10-22T11:16:21.635879+00:00",
+    "2026-10-22T11:16:30.259305+00:00",
+    "2026-10-22T11:16:41.091228+00:00",
+    "2026-10-22T11:16:56.418726+00:00",
+    "2026-10-22T11:17:04.199618+00:00",
+    "2026-10-22T11:17:15.763594+00:00",
+    "2026-10-22T11:17:27.710956+00:00",
+    "2026-10-22T11:17:38.729048+00:00",
+    "2026-10-22T11:17:47.152685+00:00",
+    "2026-10-22T11:18:02.480194+00:00",
+    "2026-10-22T11:18:14.086247+00:00",
+    "2026-10-22T11:18:24.475927+00:00",
+    "2026-10-22T11:18:37.794071+00:00",
+    "2026-10-22T11:18:49.962408+00:00",
+    "2026-10-22T11:19:00.642030+00:00",
+    "2026-10-22T11:19:20.551519+00:00",
+    "2026-10-22T11:19:32.778135+00:00",
+    "2026-10-22T11:19:47.260319+00:00",
+    "2026-10-22T11:19:58.395983+00:00",
+    "2026-10-22T11:20:14.956781+00:00",
+    "2026-10-22T11:20:26.282961+00:00",
+    "2026-10-22T11:20:37.114325+00:00",
+    "2026-10-22T11:20:53.461090+00:00",
+    "2026-10-22T11:21:11.929217+00:00",
+    "2026-10-22T11:21:29.431431+00:00",
+    "2026-10-22T11:21:39.456939+00:00",
+    "2026-10-22T11:22:06.214785+00:00",
+    "2026-10-22T11:22:11.679322+00:00",
+    "2026-10-22T11:22:15.606728+00:00",
+    "2026-10-22T11:22:22.690098+00:00",
+    "2026-10-22T11:22:28.443526+00:00",
+    "2026-10-22T11:22:38.024239+00:00",
+    "2026-10-22T11:22:44.196408+00:00",
+    "2026-10-22T11:22:51.546584+00:00",
+    "2026-10-22T11:22:58.427196+00:00",
+    "2026-10-22T11:23:10.250209+00:00",
+    "2026-10-22T11:23:17.691843+00:00",
+    "2026-10-22T11:23:28.958758+00:00",
+    "2026-10-22T11:23:40.555398+00:00",
+    "2026-10-22T11:23:53.036225+00:00",
+    "2026-10-22T11:24:07.157288+00:00",
+    "2026-10-22T11:24:22.676652+00:00",
+    "2026-10-22T11:24:35.252711+00:00",
+    "2026-10-22T11:24:44.704589+00:00",
+    "2026-10-22T11:24:56.551890+00:00",
+    "2026-10-22T11:25:07.798743+00:00",
+    "2026-10-22T11:25:17.031375+00:00",
+    "2026-10-22T11:25:30.902123+00:00",
+    "2026-10-22T11:25:40.613663+00:00",
+    "2026-10-22T11:25:50.757275+00:00",
+    "2026-10-22T11:26:01.400537+00:00",
+    "2026-10-22T11:26:11.089392+00:00",
+    "2026-10-22T11:26:21.033240+00:00",
+    "2026-10-22T11:26:32.062151+00:00",
+    "2026-10-22T11:26:46.409943+00:00",
+    "2026-10-22T11:26:57.480986+00:00",
+    "2026-10-22T11:27:08.087317+00:00",
+    "2026-10-22T11:27:18.178648+00:00",
+    "2026-10-22T11:27:27.394598+00:00",
+    "2026-10-22T11:27:36.491190+00:00",
+    "2026-10-22T11:27:44.856059+00:00",
+    "2026-10-22T11:27:49.423632+00:00",
+    "2026-10-22T11:27:54.833715+00:00"
   ],
   "free_day_out": "",
   "topics": {
@@ -2978,15 +3240,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 46,
+      "mentions": 47,
       "refs": [
-        {
-          "date": "2026-10-15",
-          "title": "Turning a crazy idea from 1967 into a Claude Code mod: I now read 83% fewer words from replies",
-          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1x688sx/turning_a_crazy_idea_from_1967_into_a_claude_code/",
-          "link": "",
-          "comment": "It's like if TLDR and ELI5 had a baby."
-        },
         {
           "date": "2026-10-15",
           "title": "Claude opus 5.5 vs argon 4",
@@ -3077,6 +3332,13 @@
           "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xblj73/opus_55_blender_mcp_animated_this_mp5/",
           "link": "",
           "comment": "This is huge btw that is somehow insanity, throwing off the gun instead of the magazine when it is empty lol."
+        },
+        {
+          "date": "2026-10-22",
+          "title": "Claude Duet: Anthropic just casually dropped the personal assistant calling it a proactive agent. This is the response to Muses, Bots and Dots",
+          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xbwkgf/claude_duet_anthropic_just_casually_dropped_the/",
+          "link": "",
+          "comment": "TL;DR of the discussion generated automatically after 100 comments. So, the consensus in here is a big ol' \"meh\" with a side of \"okay, I get it.\" A lot of you power users are scoffing, saying this is just another wrapper like Dots or Muse and that you already do all this with your own scheduled task"
         }
       ],
       "deep_dive": "2026-10-12",
@@ -3568,7 +3830,8 @@
         "2026-10-15",
         "2026-10-18",
         "2026-10-20",
-        "2026-10-21"
+        "2026-10-21",
+        "2026-10-22"
       ],
       "subs": [
         "ClaudeAI",
@@ -3577,17 +3840,11 @@
         "OpenAI",
         "Physics",
         "artificial",
-        "singularity"
+        "singularity",
+        "technology"
       ],
-      "mentions": 24,
+      "mentions": 25,
       "refs": [
-        {
-          "date": "2026-10-11",
-          "title": "Terrence Tao is actually calling for significantly more compute hours of AI mathematics, yet is being misportrayed in this sub.",
-          "thread": "https://www.reddit.com/r/singularity/comments/1x2w1ek/terrence_tao_is_actually_calling_for/",
-          "link": "https://www.reddit.com/gallery/1x2s155",
-          "comment": ""
-        },
         {
           "date": "2026-10-13",
           "title": "Google DeepMind’s AI weather model picked up Hurricane Isaias 11 days before landfall, pinned where it would hit 4 days out and nailed its peak strength 3 days out—potentially giving communities days more time to evacuate and prepare",
@@ -3678,10 +3935,17 @@
           "thread": "https://www.reddit.com/r/EverythingScience/comments/1xany3n/google_gemini_4_argon_shatters_59yearold_nuclear/",
           "link": "https://www.techradar.com/pro/its-over-ai-won-google-gemini-4-argon-shatters-59-year-old-nuclear-fusion-conjecture-in-just-a-few-hours",
           "comment": "An important note about all these \"AI solved this problem that mathematicians have been stuck on for decades!\" headlines: A lot of these problems aren't especially useful or interesting in and of themselves. Some are, like perhaps this one might be, but most of them – including the millennium prize "
+        },
+        {
+          "date": "2026-10-22",
+          "title": "1000 human mathematicians pledge to shun AI in their research",
+          "thread": "https://www.reddit.com/r/EverythingScience/comments/1xc4cfw/1000_human_mathematicians_pledge_to_shun_ai_in/",
+          "link": "https://www.newscientist.com/article/2593621-a-thousand-human-mathematicians-pledge-to-shun-ai-in-their-research",
+          "comment": "Huh. Math is like, the one field where I’d imagine the researchers wouldn’t care so much about the source. I mean, I get the administrative headache of verifying AI results, and I can see that verification making mathematics significantly less enjoyable. But at the same time, if the math is right, t"
         }
       ],
       "deep_dive": "",
-      "last_seen": "2026-10-21",
+      "last_seen": "2026-10-22",
       "subject": "ai"
     },
     "ai-coding-agents": {
@@ -3700,7 +3964,8 @@
         "2026-10-18",
         "2026-10-19",
         "2026-10-20",
-        "2026-10-21"
+        "2026-10-21",
+        "2026-10-22"
       ],
       "subs": [
         "AgentsOfAI",
@@ -3716,22 +3981,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 70,
+      "mentions": 72,
       "refs": [
-        {
-          "date": "2026-10-18",
-          "title": "Procedural generation with Opus is insane. This entire game is 20MB.",
-          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1x8602z/procedural_generation_with_opus_is_insane_this/",
-          "link": "",
-          "comment": "TL;DR of the discussion generated automatically after 50 comments. The consensus is that this is an absolutely insane achievement. Y'all are blown away by a solo dev creating a full, 20MB multiplayer game with Opus in just four months. For everyone asking how OP did it, here's the breakdown: The \"Se"
-        },
-        {
-          "date": "2026-10-19",
-          "title": "Made this app with Claude in 10 days",
-          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1x8t4pe/made_this_app_with_claude_in_10_days/",
-          "link": "",
-          "comment": "I tried it. What’s the point of the questionnaire at the beginning? Why does it need to know my name and life story? I wanted to try your app and test what it could do and instead deleted it. I’d refocus if I were you."
-        },
         {
           "date": "2026-10-19",
           "title": "Rebuilt a 2000 RTS from scratch with Claude Code, working from the original's disassembly",
@@ -3815,10 +4066,24 @@
           "thread": "https://www.reddit.com/r/artificial/comments/1xaqlya/google_deepmind_says_four_ai_agents_beat/",
           "link": "https://www.tomshardware.com/tech-industry/artificial-intelligence/google-deepmind-claims-four-gemini-4-agents-beat-minecraft-in-27-hours-by-writing-2-783-programs-of-their-own-the-ai-team-died-605-times-on-easy-difficulty-and-ran-up-an-estimated-usd520-in-tokens",
           "comment": "Why are making bots play videogames ,"
+        },
+        {
+          "date": "2026-10-22",
+          "title": "I used Claude to fix my Samsung TV",
+          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xbj7jr/i_used_claude_to_fix_my_samsung_tv/",
+          "link": "",
+          "comment": "TL;DR of the discussion generated automatically after 100 comments. The consensus in this thread is a collective :mind_blown:. Everyone is massively impressed with both OP for thinking of this and Claude for actually pulling it off. Here's the breakdown of the chatter: How did it even work?! This wa"
+        },
+        {
+          "date": "2026-10-22",
+          "title": "I replaced my Samsung TV’s home screen with Claude Code",
+          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xbzlih/i_replaced_my_samsung_tvs_home_screen_with_claude/",
+          "link": "",
+          "comment": "TL;DR of the discussion generated automatically after 100 comments. Okay, let's get this straight. The thread is pretty divided. The general consensus is that while sticking it to Samsung's ad-filled, spyware UI is a god-tier move, people are getting really tired of the 'I vibecoded a new screen' po"
         }
       ],
       "deep_dive": "2026-10-18",
-      "last_seen": "2026-10-21",
+      "last_seen": "2026-10-22",
       "subject": "ai"
     },
     "ai-benchmarks": {
@@ -4161,7 +4426,8 @@
         "2026-10-17",
         "2026-10-18",
         "2026-10-20",
-        "2026-10-21"
+        "2026-10-21",
+        "2026-10-22"
       ],
       "subs": [
         "AI_Agents",
@@ -4177,15 +4443,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 20,
+      "mentions": 21,
       "refs": [
-        {
-          "date": "2026-10-12",
-          "title": "Creators of an AI-generated sci-fi series said it took $38,000 in AI credits and 8 to 10 generations per shot",
-          "thread": "https://www.reddit.com/r/artificial/comments/1x37ox5/creators_of_an_aigenerated_scifi_series_said_it/",
-          "link": "https://www.businessinsider.com/creators-ai-tv-series-38000-credits-seedance-artlist-the-arc-2026-10",
-          "comment": ""
-        },
         {
           "date": "2026-10-13",
           "title": "let's hope inference stays expensive",
@@ -4276,10 +4535,17 @@
           "thread": "https://www.reddit.com/r/DeepSeek/comments/1xanexq/deepseek_even_opensourced_their_revenue_per_gpu/",
           "link": "",
           "comment": "And that's with their crazy low prices. Imagine how much American labs are making. Those CAPEX investments ROI will be insane."
+        },
+        {
+          "date": "2026-10-22",
+          "title": "Be prepared, GPU price increase incoming --> Samsung sells out 100% of all 2027 HBM capacity - HBM prices expected to jump 200% next year, DRAM prices expected to see a double-digit price increase",
+          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xbfhxp/be_prepared_gpu_price_increase_incoming_samsung/",
+          "link": "https://m.gsmarena.com/samsung_signs_huge_dram_and_hbm_contracts-news-75124.php",
+          "comment": "Sucks for us, we need GPUs to run local models, but we need giant companies to get the models, and those companies also need GPUs."
         }
       ],
       "deep_dive": "",
-      "last_seen": "2026-10-21",
+      "last_seen": "2026-10-22",
       "subject": "ai"
     },
     "glp1-drugs-beyond-weight-loss": {
@@ -4492,7 +4758,7 @@
         "singularity",
         "technology"
       ],
-      "mentions": 5,
+      "mentions": 7,
       "refs": [
         {
           "date": "2026-10-19",
@@ -4528,6 +4794,20 @@
           "thread": "https://www.reddit.com/r/antiai/comments/1xbfqm9/anthropic_report_an_80_billion_net_loss_in_the/",
           "link": "",
           "comment": "Good. Pop the bubble"
+        },
+        {
+          "date": "2026-10-22",
+          "title": "Anthropic report an $80 billion net loss in the first half of 2026",
+          "thread": "https://www.reddit.com/r/antiai/comments/1xbfqm9/anthropic_report_an_80_billion_net_loss_in_the/",
+          "link": "",
+          "comment": "Good. Pop the bubble"
+        },
+        {
+          "date": "2026-10-22",
+          "title": "Anthropic posts staggering $80.7 billion net loss in first half of 2026 as IPO approaches",
+          "thread": "https://www.reddit.com/r/technology/comments/1xbjr1n/anthropic_posts_staggering_807_billion_net_loss/",
+          "link": "https://techstartups.com/2026/10/20/anthropic-posts-staggering-80-7-billion-net-loss-in-first-half-of-2026-as-ipo-approaches/",
+          "comment": "From the article: Roughly $72 billion of the loss came from accounting charges tied to changes in the value of convertible notes and other financial instruments Anthropic used to raise money. Those charges, representing nearly 90% of the reported loss, were largely noncash adjustments rather than mo"
         }
       ],
       "deep_dive": "",

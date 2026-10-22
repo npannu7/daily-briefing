@@ -4,6 +4,228 @@
  "repo": "npannu7/daily-briefing",
  "episodes": [
   {
+   "file": "ai_2026-10-22_evening_1628.mp3",
+   "title": "Evening - 22 Oct: How one developer runs a coding agent like a small engineering team with guardrails",
+   "label": "Thursday 22 Oct evening",
+   "date": "2026-10-22",
+   "edition": "evening",
+   "published": "2026-10-22T16:28:40.324066+05:30",
+   "duration": 1278,
+   "theme": "Engineering guardrails for AI coding agents; validating AI cardiac risk prediction from sleep ECG",
+   "writer": "nemotron-3-ultra-550b-a55b (free)",
+   "voices": "Fish Audio (free)",
+   "deep_dive": false,
+   "segments": [
+    {
+     "title": "How one developer runs a coding agent like a small engineering team with guardrails",
+     "category": "concept"
+    },
+    {
+     "title": "AI reads heart signals during sleep to predict cardiac risk ten years out",
+     "category": "thread"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What engineering concept did Laura use to explain a PreToolUse hook that blocks hazardous actions before an AI coding agent executes them?",
+     "options": [
+      "A PID controller",
+      "A safety interlock",
+      "Gain scheduling",
+      "A limit cycle"
+     ],
+     "answer": 1,
+     "explain": "Laura compared a PreToolUse hook to a mechanical interlock on a CNC machine that stops the spindle from engaging if safety checks fail.",
+     "segment": "How one developer runs a coding agent like a small engineering team with guardrails"
+    },
+    {
+     "q": "How does the setup described in the Reddit post break repetition loops and prevent context-window bloat during long-running agent sessions?",
+     "options": [
+      "By using semantic drift detectors to alert supervisors",
+      "By relying entirely on the prose rules written inside the CLAUDE.md file",
+      "By enforcing hard logic via deterministic script hooks when behavior is corrected multiple times",
+      "By dynamically routing all tasks to cheaper execution models"
+     ],
+     "answer": 2,
+     "explain": "The developer's rule states that if the same behavior is corrected twice, it becomes a PreToolUse hook that denies the call, replacing model judgment with hard logic.",
+     "segment": "How one developer runs a coding agent like a small engineering team with guardrails"
+    },
+    {
+     "q": "Why does the sleep ECG model rely specifically on data recorded during the lightest stage of sleep?",
+     "options": [
+      "Because patients are completely motionless, eliminating all movement artifact",
+      "Because the nervous system rapidly swings between fight-or-flight and rest-and-digest, acting like an autonomic stress test",
+      "Because brain waves during light sleep synchronize directly with the heart's single chest lead",
+      "Because waking ECG signals are entirely corrupted by breathing pauses from sleep apnea"
+     ],
+     "answer": 1,
+     "explain": "The rapid autonomic swings during light sleep act like a stress test, amplifying subtle electrical glitches in the heart that are normally drowned out during wakefulness.",
+     "segment": "AI reads heart signals during sleep to predict cardiac risk ten years out"
+    },
+    {
+     "q": "What is the primary limitation regarding the study's clinical evidence for predicting ten-year cardiac risk?",
+     "options": [
+      "The cohort size was too small to achieve statistical significance for any outcome except mortality",
+      "The study is retrospective, meaning it looked at historical sleep studies without prospectively proving that acting on the score changes patient outcomes",
+      "The model failed to adjust for traditional risk factors like age, sex, and hypertension",
+      "The test sets came from the exact same hospital system as the training cohort, creating severe local bias"
+     ],
+     "answer": 1,
+     "explain": "The paper is retrospective, analyzing historical data where outcomes are already known, and no prospective study has followed patients to see if using the score changes the ending.",
+     "segment": "AI reads heart signals during sleep to predict cardiac risk ten years out"
+    }
+   ],
+   "digest": [
+    {
+     "title": "Bad apple effect: study shows how people are influenced by rule-breaking of others. Research shows how seeing bigger violations by others can lead people to increase their own rule-breaking",
+     "subs": [
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1xbjsxn/bad_apple_effect_study_shows_how_people_are/",
+     "link": "https://www.theguardian.com/science/2026/oct/21/bad-apples-rule-breaking-study",
+     "line": "A study shows how people increase rule-breaking when they see others do it, sparking political and historical debates.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "1 in 3 American boys aged 13 to 17 follows Andrew Tate at least a little, and those who do are more likely to believe men should hide their emotions, be dominant and reject anything feminine. But the strongest predictor wasn’t Tate at all - it was parents telling their sons to be big and tough.",
+     "subs": [
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1xc1l46/1_in_3_american_boys_aged_13_to_17_follows_andrew/",
+     "link": "https://www.psypost.org/one-in-three-teen-boys-follows-andrew-tate-at-least-a-little-and-those-who-do-hold-more-rigid-views-of-manhood/",
+     "line": "A survey finds many teenage boys follow Andrew Tate, but commenters argue parenting and society are bigger factors.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "1000 human mathematicians pledge to shun AI in their research",
+     "subs": [
+      "EverythingScience",
+      "technology"
+     ],
+     "thread": "https://www.reddit.com/r/EverythingScience/comments/1xc4cfw/1000_human_mathematicians_pledge_to_shun_ai_in/",
+     "link": "https://www.newscientist.com/article/2593621-a-thousand-human-mathematicians-pledge-to-shun-ai-in-their-research",
+     "line": "Mathematicians pledge to shun AI in research, with commenters discussing job security and whether researchers will actually comply.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Cocaine deaths are up in many states, despite Trump’s claims",
+     "subs": [
+      "EverythingScience"
+     ],
+     "thread": "https://www.reddit.com/r/EverythingScience/comments/1xbvtq0/cocaine_deaths_are_up_in_many_states_despite/",
+     "link": "https://www.whatsitlike.me/cocaine-deaths-are-up-in-many-states-despite-trumps-claims/",
+     "line": "Data shows cocaine deaths are rising despite political claims, leading to cynical discussions about addiction and funding.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Unitree's newest robot: H2-X Kung Fu Legend Guardian",
+     "subs": [
+      "singularity"
+     ],
+     "thread": "https://www.reddit.com/r/singularity/comments/1xbidfc/unitrees_newest_robot_h2x_kung_fu_legend_guardian/",
+     "link": "",
+     "line": "Unitree's new robot variant sparks fearful and joking comments about dystopian futures.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Be prepared, GPU price increase incoming --> Samsung sells out 100% of all 2027 HBM capacity - HBM prices expected to jump 200% next year, DRAM prices expected to see a double-digit price increase",
+     "subs": [
+      "LocalLLaMA"
+     ],
+     "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xbfhxp/be_prepared_gpu_price_increase_incoming_samsung/",
+     "link": "https://m.gsmarena.com/samsung_signs_huge_dram_and_hbm_contracts-news-75124.php",
+     "line": "Samsung selling out 2027 HBM capacity points to incoming GPU price hikes, worrying local AI model runners.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Gemini 4 Argon credited for \"invaluable contributions\" to PHP2Shell vulnerability discovery",
+     "subs": [
+      "GeminiAI"
+     ],
+     "thread": "https://www.reddit.com/r/GeminiAI/comments/1xbuz4r/gemini_4_argon_credited_for_invaluable/",
+     "link": "https://www.wiz.io/blog/php2shell-php-rce",
+     "line": "An AI model is credited for helping discover PHP vulnerabilities, leading to competing claims between tech firms.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Anthropic report an $80 billion net loss in the first half of 2026",
+     "subs": [
+      "antiai"
+     ],
+     "thread": "https://www.reddit.com/r/antiai/comments/1xbfqm9/anthropic_report_an_80_billion_net_loss_in_the/",
+     "link": "",
+     "line": "Reports of a massive net loss for Anthropic lead users to celebrate a potential bubble pop and debate financial fallout.",
+     "verdict": "plausible",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Study identifies world’s first corporate psychopath. The same playbook we see in toxic workplaces today appears in this case from 1629. He removed opponents, rewarded loyalists, created fear, manipulated followers and pursued power at any cost",
+     "subs": [
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1xbudxf/study_identifies_worlds_first_corporate/",
+     "link": "https://www.eurekalert.org/news-releases/1148675",
+     "line": "A study identifies the first corporate psychopath in 1629, with commenters noting earlier undocumented examples likely existed.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Rejuvenation breakthrough: Scientists reverse 60 years of aging in human cells",
+     "subs": [
+      "accelerate",
+      "singularity"
+     ],
+     "thread": "https://www.reddit.com/r/accelerate/comments/1xbtjq7/rejuvenation_breakthrough_scientists_reverse_60/",
+     "link": "https://www.sciencedaily.com/releases/2026/10/261020085013.htm",
+     "line": "A scientific breakthrough reportedly reverses aging in human cells, sparking mixed emotional reactions from readers.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Physicists Trapped a Particle of Antimatter And Kept It Caged For Months. A breakthrough that, they say, paves the way to the most rigorous probes yet of particle physics.",
+     "subs": [
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1xbpnpi/physicists_trapped_a_particle_of_antimatter_and/",
+     "link": "https://www.sciencealert.com/physicists-trapped-a-particle-of-antimatter-and-kept-it-caged-for-months",
+     "line": "Physicists successfully trap antimatter particles for months, paving the way for advanced particle physics research.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Cranberry juice may be a boon for oral hygiene: in a study of 14 children and 8 adults, pure, unsweetened cranberry juice slowed dental plaque regrowth and reduced acid production",
+     "subs": [
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1xbr4x0/cranberry_juice_may_be_a_boon_for_oral_hygiene_in/",
+     "link": "https://today.uic.edu/from-bog-to-bicuspids-cranberry-juice-may-be-a-boon-for-oral-hygiene/",
+     "line": "A small study suggests cranberry juice helps oral hygiene, though commenters question the sample size and funding sources.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    }
+   ],
+   "transcript": "transcripts/ai_2026-10-22_evening_1628.txt"
+  },
+  {
    "file": "ai_2026-10-22_morning_0829.mp3",
    "title": "Morning - 22 Oct: Breaking Out of the Chatbot Loop",
    "label": "Thursday 22 Oct morning",
@@ -2923,227 +3145,6 @@
     }
    ],
    "transcript": "transcripts/ai_2026-10-16_morning_0828.txt"
-  },
-  {
-   "file": "ai_2026-10-15_evening_1628.mp3",
-   "title": "Evening - 15 Oct: Stretchtext: A 1967 Idea Finally Working in Code Assistants",
-   "label": "Thursday 15 Oct evening",
-   "date": "2026-10-15",
-   "edition": "evening",
-   "published": "2026-10-15T16:28:24.790694+05:30",
-   "duration": 980,
-   "theme": "A 1967 text interface idea finally works in coding agents, and what ovaries actually do after menopause",
-   "writer": "nemotron-3-ultra-550b-a55b (free)",
-   "voices": "Fish Audio (free)",
-   "deep_dive": false,
-   "segments": [
-    {
-     "title": "Stretchtext: A 1967 Idea Finally Working in Code Assistants",
-     "category": "concept"
-    },
-    {
-     "title": "What Ovaries Do After Menopause",
-     "category": "thread"
-    }
-   ],
-   "quiz": [
-    {
-     "q": "How does the cc-stretch plugin handle token costs when generating the various fidelity levels of a coding agent's reply?",
-     "options": [
-      "It reduces token costs because you only download the collapsed summary version.",
-      "It charges extra tokens for every level of expansion the user requests.",
-      "Token costs remain the same because the model generates all fidelity levels up front in the initial response.",
-      "It saves tokens by streaming words one at a time and discarding unread phrases."
-     ],
-     "answer": 2,
-     "explain": "The model writes the full reply with all levels up front, meaning the token cost is identical to a standard verbose response.",
-     "segment": "Stretchtext: A 1967 Idea Finally Working in Code Assistants"
-    },
-    {
-     "q": "What core mechanical analogy does the episode use to explain how the stretchtext plugin works compared to traditional progressive disclosure?",
-     "options": [
-      "It is like a drawing with a default tolerance block where you locally refine dimensional accuracy only where fit matters.",
-      "It is like a hydraulic press that applies uniform pressure across the entire assembly.",
-      "It is like a coordinate measuring machine that tests every single feature at ultra-precise resolution.",
-      "It is like an automated assembly line that rejects any component outside strict go/no-go parameters."
-     ],
-     "answer": 0,
-     "explain": "Just like a technical drawing with a default tolerance and local tightening where fits matter, the interface uses a coarse default fidelity and lets you locally expand only where needed.",
-     "segment": "Stretchtext: A 1967 Idea Finally Working in Code Assistants"
-    },
-    {
-     "q": "What did proteomics analysis of postmenopausal ovaries reveal about women in their seventies and older?",
-     "options": [
-      "They showed a sharp spike in proteins dedicated exclusively to cellular replication and division.",
-      "The protein profile shifted to emphasize lipid metabolism, innate immunity, and inflammation.",
-      "They stopped producing all proteins, confirming the traditional shutdown model.",
-      "They exhibited high levels of RNA and DNA housekeeping proteins identical to the fifties bracket."
-     ],
-     "answer": 1,
-     "explain": "In the seventy and older bracket, the protein profile shifts to involve more lipid metabolism, innate immunity, and inflammation.",
-     "segment": "What Ovaries Do After Menopause"
-    },
-    {
-     "q": "What is a major methodological limitation of the 2026 Aging Cell study on postmenopausal ovaries?",
-     "options": [
-      "It was conducted exclusively on mouse models without human tissue validation.",
-      "It tracked the exact same group of women longitudinally over a thirty-year span.",
-      "It relied on a large, randomized cohort of women who underwent voluntary preventative biopsies.",
-      "It was cross-sectional, using a small surgical sample of twenty-eight women at single time points rather than tracking individuals over time."
-     ],
-     "answer": 3,
-     "explain": "The study used a cross-sectional approach with a small cohort of twenty-eight surgical specimens, meaning it captured single time points rather than tracking the same women over time.",
-     "segment": "What Ovaries Do After Menopause"
-    }
-   ],
-   "digest": [
-    {
-     "title": "A 2026 study reveals that human ovaries remain biologically active after menopause, shifting their protein production with age to actively influence other organs and create an inflammatory environment linked to increased ovarian cancer risk.",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1x5m0v3/a_2026_study_reveals_that_human_ovaries_remain/",
-     "link": "https://www.sciencealert.com/ovaries-develop-an-intriguing-second-role-after-menopause",
-     "line": "A study shows ovaries stay active post-menopause, influencing organs and inflammation, while commenters debated past unnecessary removals and cancer risks.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": true
-    },
-    {
-     "title": "Dogs seem to associate ‘bouba’ with round shapes and ‘kiki’ with spiky shapes, study of 70 dogs finds",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1x5tp43/dogs_seem_to_associate_bouba_with_round_shapes/",
-     "link": "https://www.sciencealert.com/dogs-seem-to-agree-with-humans-that-bouba-is-round-and-kiki-is-spiky",
-     "line": "A study of 70 dogs showed they associate bouba with round shapes and kiki with spiky shapes, prompting debate on innate language traits.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Stanford study finds severely bleached corals can make a full recovery in seven weeks with help from healthy clones",
-     "subs": [
-      "EverythingScience",
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/EverythingScience/comments/1x5zmc6/stanford_study_finds_severely_bleached_corals_can/",
-     "link": "https://www.sfgate.com/bayarea/article/stanford-coral-study-22475321.php",
-     "line": "A Stanford study found bleached corals recover via healthy clones in seven weeks, though commenters debated whether this addresses global warming.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Plastic tea bags released 555–2,498 microplastic particles per cup versus 0.3–2.4 in loose tea in a 28-brand brewing study",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1x5zkh0/plastic_tea_bags_released_5552498_microplastic/",
-     "link": "https://www.nature.com/articles/s41538-026-01175-x",
-     "line": "A brewing study revealed plastic tea bags release significantly more microplastics than loose tea, with commenters noting regional manufacturing biases.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Turning a crazy idea from 1967 into a Claude Code mod: I now read 83% fewer words from replies",
-     "subs": [
-      "ClaudeCode"
-     ],
-     "thread": "https://www.reddit.com/r/ClaudeCode/comments/1x688sx/turning_a_crazy_idea_from_1967_into_a_claude_code/",
-     "link": "",
-     "line": "A user built a Claude Code mod using a 1967 stretchtext concept to reduce read words, leading to UI suggestions from commenters.",
-     "verdict": "plausible",
-     "also_in": [],
-     "in_episode": true
-    },
-    {
-     "title": "Researchers paid $14 to plant fake research in China's biggest AI chatbot. It showed up in answers in under 90 minutes.",
-     "subs": [
-      "ArtificialInteligence"
-     ],
-     "thread": "https://www.reddit.com/r/ArtificialInteligence/comments/1x5xslx/researchers_paid_14_to_plant_fake_research_in/",
-     "link": "",
-     "line": "Researchers demonstrated how cheaply and quickly fake research could be planted into a Chinese AI chatbot, sparking skepticism discussion.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Peter Thiel: You Know Who Else Wants to Regulate AI? The Antichrist. Thiel's 'Antichrist' lecture series in Nashville is reportedly focused on casting AI regulation advocates as antichrist enablers.",
-     "subs": [
-      "artificial"
-     ],
-     "thread": "https://www.reddit.com/r/artificial/comments/1x5lboy/peter_thiel_you_know_who_else_wants_to_regulate/",
-     "link": "https://gizmodo.com/peter-thiel-you-know-who-else-wants-to-regulate-ai-the-antichrist-2000823964",
-     "line": "Peter Thiel's lecture reportedly framed AI regulation advocates as antichrist enablers, leading to mixed and sarcastic commentary.",
-     "verdict": "opinion",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "We’re surprisingly close to conserving 30% of the world’s land. Almost every country has agreed to conserve 30% of the land and sea by 2030. Study shows 27% of land may already be conserved for biodiversity, if you also count areas that aren’t globally recognised. But more work needs to be done.",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1x6239x/were_surprisingly_close_to_conserving_30_of_the/",
-     "link": "https://www.eurekalert.org/news-releases/1147778",
-     "line": "A study indicates nearly 27% of global land may be conserved, though commenters debated whether grazing rights undermine true conservation.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "New Study Finds Gendered Messaging Can Backfire: Messages that reference gender when highlighting women's success in an activity actually made kids and adults of both genders see girls and women as less capable, and also made everyone less interested in trying the activity themselves.",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1x5pj1k/new_study_finds_gendered_messaging_can_backfire/",
-     "link": "https://www.nyu.edu/about/news-publications/news/2026/october/new-study-finds-gendered-messaging-can-backfire-.html?challenge=d06e90d7-4d8f-4b88-9d8c-10b73beb60f1",
-     "line": "A study found gendered messaging highlighting women's success can backfire, making people view women as less capable, prompting sociological debate.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "NVIDIA Nemotron Bolt 3.5 74B A9B releases Oct. 15th",
-     "subs": [
-      "LocalLLaMA"
-     ],
-     "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1x5t1tm/nvidia_nemotron_bolt_35_74b_a9b_releases_oct_15th/",
-     "link": "https://blogs.nvidia.com/blog/local-ai-rtx-spark-laptops-software-updates/",
-     "line": "NVIDIA announced the Nemotron Bolt 3.5 74B A9B model, drawing mixed reactions from users regarding the utility of NVIDIA models.",
-     "verdict": "plausible",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Anthropic went from 2,500 to 30,000 merges a day, and git couldn't keep up. So they built their own",
-     "subs": [
-      "ClaudeCode"
-     ],
-     "thread": "https://www.reddit.com/r/ClaudeCode/comments/1x5phqp/anthropic_went_from_2500_to_30000_merges_a_day/",
-     "link": "",
-     "line": "Anthropic reportedly built its own version control system after git could not handle their massive surge in daily merges, prompting version control discussions.",
-     "verdict": "plausible",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "NCI Awards (2015-2026)",
-     "subs": [
-      "biotech"
-     ],
-     "thread": "https://www.reddit.com/r/biotech/comments/1x66s2i/nci_awards_20152026/",
-     "link": "",
-     "line": "Discussing NCI awards from 2015 to 2026, commenters expressed dismay about the state of academic careers and political consequences.",
-     "verdict": "opinion",
-     "also_in": [],
-     "in_episode": false
-    }
-   ],
-   "transcript": "transcripts/ai_2026-10-15_evening_1628.txt"
   }
  ]
 }

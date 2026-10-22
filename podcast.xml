@@ -8,9 +8,28 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Thu, 22 Oct 2026 03:27:11 GMT</lastBuildDate>
+<lastBuildDate>Thu, 22 Oct 2026 11:28:18 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Evening - 22 Oct: How one developer runs a coding agent like a small engineering team with guardrails</title>
+<description>Evening edition - Thursday, 22 October 2026
+Engineering guardrails for AI coding agents; validating AI cardiac risk prediction from sleep ECG
+
+00:42  How one developer runs a coding agent like a small engineering team with guardrails
+   ClaudeCode: https://www.reddit.com/r/ClaudeCode/comments/1xbxoza/my_claude_code_setup_it_runs_like_a_small/
+14:23  AI reads heart signals during sleep to predict cardiac risk ten years out
+   science: https://www.reddit.com/r/science/comments/1xbi4rj/ai_can_read_your_hearts_electrical_signals_while/
+   Source: https://www.sciencealert.com/the-way-you-sleep-can-reveal-your-risk-of-heart-failure-up-to-10-years-in-advance
+
+Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
+Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (168 threads)</description>
+<pubDate>Thu, 22 Oct 2026 16:28:40 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-10-22_evening_1628.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-22_evening_1628.mp3" length="10229036" type="audio/mpeg"/>
+<itunes:duration>1278</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Morning - 22 Oct: Breaking Out of the Chatbot Loop</title>
 <description>Morning edition - Thursday, 22 October 2026
@@ -315,25 +334,6 @@ Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Di
 <guid isPermaLink="false">ai_2026-10-16_morning_0828.mp3</guid>
 <enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-16_morning_0828.mp3" length="7932908" type="audio/mpeg"/>
 <itunes:duration>991</itunes:duration>
-<itunes:episodeType>full</itunes:episodeType>
-</item>
-<item>
-<title>Evening - 15 Oct: Stretchtext: A 1967 Idea Finally Working in Code Assistants</title>
-<description>Evening edition - Thursday, 15 October 2026
-A 1967 text interface idea finally works in coding agents, and what ovaries actually do after menopause
-
-00:30  Stretchtext: A 1967 Idea Finally Working in Code Assistants
-   ClaudeCode: https://www.reddit.com/r/ClaudeCode/comments/1x688sx/turning_a_crazy_idea_from_1967_into_a_claude_code/
-08:13  What Ovaries Do After Menopause
-   science: https://www.reddit.com/r/science/comments/1x5m0v3/a_2026_study_reveals_that_human_ovaries_remain/
-   Source: https://www.sciencealert.com/ovaries-develop-an-intriguing-second-role-after-menopause
-
-Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
-Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (177 threads)</description>
-<pubDate>Thu, 15 Oct 2026 16:28:24 +0530</pubDate>
-<guid isPermaLink="false">ai_2026-10-15_evening_1628.mp3</guid>
-<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-15_evening_1628.mp3" length="7842860" type="audio/mpeg"/>
-<itunes:duration>980</itunes:duration>
 <itunes:episodeType>full</itunes:episodeType>
 </item>
 </channel>
