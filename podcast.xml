@@ -8,9 +8,28 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Thu, 22 Oct 2026 11:28:18 GMT</lastBuildDate>
+<lastBuildDate>Fri, 23 Oct 2026 03:37:06 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Morning - 23 Oct: Diagnosing Patients Step by Step</title>
+<description>Morning edition - Friday, 23 October 2026
+Evaluating sequential diagnostic reasoning in clinical language models and auditing trial endpoints and manufacturing limits for personalized cancer vaccines.
+
+00:49  Diagnosing Patients Step by Step
+   medicine: https://www.reddit.com/r/medicine/comments/1xcvgxi/microsofts_sequential_diagnosis_with_language/
+09:50  Personalized Vaccines for Skin Cancer
+   biotech: https://www.reddit.com/r/biotech/comments/1xcwbk6/modernamercks_melanoma_vaccine_shows_42_reduction/
+   Source: https://www.reuters.com/legal/litigation/merckmoderna-cancer-vaccine-cuts-risk-death-or-recurrence-melanoma-by-over-40-2026-10-22/
+
+Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
+Written by: Gemini 3.8 Flash · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (177 threads)</description>
+<pubDate>Fri, 23 Oct 2026 08:30:37 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-10-23_morning_0830.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-23_morning_0830.mp3" length="8740268" type="audio/mpeg"/>
+<itunes:duration>1092</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Evening - 22 Oct: How one developer runs a coding agent like a small engineering team with guardrails</title>
 <description>Evening edition - Thursday, 22 October 2026
@@ -314,26 +333,6 @@ Written by: nemotron-3-super-120b-a12b (free) · Voices: Fish Audio (free) · Di
 <guid isPermaLink="false">ai_2026-10-16_evening_1627.mp3</guid>
 <enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-16_evening_1627.mp3" length="7498796" type="audio/mpeg"/>
 <itunes:duration>937</itunes:duration>
-<itunes:episodeType>full</itunes:episodeType>
-</item>
-<item>
-<title>Morning - 16 Oct: Can Artificial Intelligence Audit Scientific Research?</title>
-<description>Morning edition - Friday, 16 October 2026
-Verification under the microscope: evaluating automated quality checks on mathematical research and testing clinical evidence behind weight-loss drugs curbing alcohol cravings.
-
-00:56  Can Artificial Intelligence Audit Scientific Research?
-   singularity: https://www.reddit.com/r/singularity/comments/1x6qczp/gpt61_sol_examined_nearly_800_mathematics_papers/
-   Source: https://www.reddit.com/gallery/1x6qczp
-09:35  Do Weight-Loss Injections Curb Alcohol Cravings?
-   science: https://www.reddit.com/r/science/comments/1x6ldne/nearly_half_of_people_who_started_glp1_drugs_like/
-   Source: https://jamanetwork.com/journals/jamapsychiatry/fullarticle/2854926?guestAccessKey=8c64289b-1f09-44b7-89a0-7c584fe2ea58
-
-Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
-Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (182 threads)</description>
-<pubDate>Fri, 16 Oct 2026 08:28:02 +0530</pubDate>
-<guid isPermaLink="false">ai_2026-10-16_morning_0828.mp3</guid>
-<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-16_morning_0828.mp3" length="7932908" type="audio/mpeg"/>
-<itunes:duration>991</itunes:duration>
 <itunes:episodeType>full</itunes:episodeType>
 </item>
 </channel>
