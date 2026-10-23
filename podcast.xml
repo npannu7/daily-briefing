@@ -8,9 +8,28 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Fri, 23 Oct 2026 03:37:06 GMT</lastBuildDate>
+<lastBuildDate>Fri, 23 Oct 2026 11:27:59 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Evening - 23 Oct: Cutting the wait for a local reasoning model</title>
+<description>Evening edition - Friday, 23 October 2026
+Making local reasoning models responsive enough to use, and checking whether AI clinical advice actually saves money or just orders more tests.
+
+00:38  Cutting the wait for a local reasoning model
+   LocalLLM: https://www.reddit.com/r/LocalLLM/comments/1xclfjf/i_made_my_local_llm_start_thinking_while_im_still/
+09:21  When AI clinical advice costs more than human judgment
+   science: https://www.reddit.com/r/science/comments/1xcnye8/in_retrospective_clinic_notes_large_language/
+   Source: https://ai.nejm.org/doi/full/10.1056/AIoa2600537
+
+Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
+Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (162 threads)</description>
+<pubDate>Fri, 23 Oct 2026 16:26:50 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-10-23_evening_1626.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-23_evening_1626.mp3" length="7786796" type="audio/mpeg"/>
+<itunes:duration>973</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Morning - 23 Oct: Diagnosing Patients Step by Step</title>
 <description>Morning edition - Friday, 23 October 2026

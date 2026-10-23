@@ -153,6 +153,17 @@
       "size": 8740268,
       "duration": 1092,
       "description": "Morning edition - Friday, 23 October 2026\nEvaluating sequential diagnostic reasoning in clinical language models and auditing trial endpoints and manufacturing limits for personalized cancer vaccines.\n\n00:49  Diagnosing Patients Step by Step\n   medicine: https://www.reddit.com/r/medicine/comments/1xcvgxi/microsofts_sequential_diagnosis_with_language/\n09:50  Personalized Vaccines for Skin Cancer\n   biotech: https://www.reddit.com/r/biotech/comments/1xcwbk6/modernamercks_melanoma_vaccine_shows_42_reduction/\n   Source: https://www.reuters.com/legal/litigation/merckmoderna-cancer-vaccine-cuts-risk-death-or-recurrence-melanoma-by-over-40-2026-10-22/\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nWritten by: Gemini 3.8 Flash · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (177 threads)"
+    },
+    {
+      "file": "ai_2026-10-23_evening_1626.mp3",
+      "date": "2026-10-23",
+      "edition": "evening",
+      "title": "Evening - 23 Oct: Cutting the wait for a local reasoning model",
+      "published": "2026-10-23T16:26:50.941907+05:30",
+      "pubDate": "Fri, 23 Oct 2026 16:26:50 +0530",
+      "size": 7786796,
+      "duration": 973,
+      "description": "Evening edition - Friday, 23 October 2026\nMaking local reasoning models responsive enough to use, and checking whether AI clinical advice actually saves money or just orders more tests.\n\n00:38  Cutting the wait for a local reasoning model\n   LocalLLM: https://www.reddit.com/r/LocalLLM/comments/1xclfjf/i_made_my_local_llm_start_thinking_while_im_still/\n09:21  When AI clinical advice costs more than human judgment\n   science: https://www.reddit.com/r/science/comments/1xcnye8/in_retrospective_clinic_notes_large_language/\n   Source: https://ai.nejm.org/doi/full/10.1056/AIoa2600537\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nWritten by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (162 threads)"
     }
   ],
   "memory": [
@@ -936,6 +947,29 @@
       ],
       "deep_topic": "",
       "topics": []
+    },
+    {
+      "label": "Friday 23 Oct evening",
+      "date": "2026-10-23",
+      "edition": "evening",
+      "published": "2026-10-23T16:26:50.941907+05:30",
+      "file": "ai_2026-10-23_evening_1626.mp3",
+      "writer": "nemotron-3-ultra-550b-a55b (free)",
+      "voices": "Fish Audio (free)",
+      "summary": "Covered a speculative decoding technique that cut local reasoning model latency from twelve to three seconds on a 6 GB GPU by overlapping generation with user input, using a feedforward-control analogy. Then examined a retrospective study showing LLM clinical recommendations increased costs through excess testing and referrals, analyzing it as an algorithmic medical device validation failure and mapping it to FDA Clinical Decision Support guidance.",
+      "threads": [
+        "Speculative decoding adoption in local LLM serving stacks and draft-model quality thresholds",
+        "FDA regulatory response to over-cautious generation patterns in clinical LLM outputs",
+        "Validation study designs for algorithmic medical devices that measure downstream resource utilization"
+      ],
+      "segments": [
+        "Cutting the wait for a local reasoning model",
+        "When AI clinical advice costs more than human judgment"
+      ],
+      "deep_topic": "",
+      "topics": [
+        "local-llms"
+      ]
     }
   ],
   "seen": [
@@ -2066,6 +2100,18 @@
     {
       "date": "2026-10-23",
       "link": "https://www.reddit.com/r/medicine/comments/1xcvgxi/microsofts_sequential_diagnosis_with_language/"
+    },
+    {
+      "date": "2026-10-23",
+      "link": "https://www.reddit.com/r/LocalLLM/comments/1xclfjf/i_made_my_local_llm_start_thinking_while_im_still/"
+    },
+    {
+      "date": "2026-10-23",
+      "link": "https://www.reddit.com/r/science/comments/1xcnye8/in_retrospective_clinic_notes_large_language/"
+    },
+    {
+      "date": "2026-10-23",
+      "link": "https://ai.nejm.org/doi/full/10.1056/AIoa2600537"
     }
   ],
   "feedback": [
@@ -2235,6 +2281,28 @@
       },
       "comment": "",
       "received": "2026-10-15T16:28:25.252790+05:30"
+    },
+    {
+      "episode": "ai_2026-10-23_morning_0830.mp3",
+      "date": "2026-10-23",
+      "edition": "morning",
+      "quiz": {
+        "score": 4,
+        "total": 4,
+        "missed": []
+      },
+      "ratings": {
+        "overall": 5,
+        "depth": "right",
+        "pace": "right",
+        "voices": "good"
+      },
+      "segments": {
+        "Diagnosing Patients Step by Step": "more",
+        "Personalized Vaccines for Skin Cancer": "more"
+      },
+      "comment": "today episode content and delivery is good.",
+      "received": "2026-10-23T16:26:51.346153+05:30"
     }
   ],
   "tts_log": [
@@ -2949,7 +3017,223 @@
     "2026-10-23T03:36:31.209729+00:00",
     "2026-10-23T03:36:37.158616+00:00",
     "2026-10-23T03:36:43.692472+00:00",
-    "2026-10-23T03:36:47.581968+00:00"
+    "2026-10-23T03:36:47.581968+00:00",
+    "2026-10-23T10:56:51.566898+00:00",
+    "2026-10-23T10:56:54.692329+00:00",
+    "2026-10-23T10:56:57.940686+00:00",
+    "2026-10-23T10:57:01.101982+00:00",
+    "2026-10-23T10:57:06.339214+00:00",
+    "2026-10-23T10:57:07.960697+00:00",
+    "2026-10-23T10:57:10.942080+00:00",
+    "2026-10-23T10:57:13.922973+00:00",
+    "2026-10-23T10:57:17.127835+00:00",
+    "2026-10-23T10:57:28.104051+00:00",
+    "2026-10-23T10:57:31.298222+00:00",
+    "2026-10-23T10:57:34.518928+00:00",
+    "2026-10-23T10:57:37.892493+00:00",
+    "2026-10-23T10:57:40.894417+00:00",
+    "2026-10-23T10:57:44.303447+00:00",
+    "2026-10-23T10:57:47.514906+00:00",
+    "2026-10-23T10:57:50.567217+00:00",
+    "2026-10-23T10:57:53.707593+00:00",
+    "2026-10-23T10:57:56.907049+00:00",
+    "2026-10-23T10:58:03.832878+00:00",
+    "2026-10-23T10:58:04.249357+00:00",
+    "2026-10-23T10:58:07.655565+00:00",
+    "2026-10-23T10:58:10.861216+00:00",
+    "2026-10-23T10:58:14.053074+00:00",
+    "2026-10-23T10:58:17.249124+00:00",
+    "2026-10-23T10:58:20.461483+00:00",
+    "2026-10-23T10:58:23.645872+00:00",
+    "2026-10-23T10:58:26.849999+00:00",
+    "2026-10-23T10:58:30.069462+00:00",
+    "2026-10-23T10:58:33.357666+00:00",
+    "2026-10-23T10:58:36.466404+00:00",
+    "2026-10-23T10:58:39.653747+00:00",
+    "2026-10-23T10:58:42.892734+00:00",
+    "2026-10-23T10:58:46.066591+00:00",
+    "2026-10-23T10:58:49.279174+00:00",
+    "2026-10-23T10:58:52.454475+00:00",
+    "2026-10-23T10:58:55.669051+00:00",
+    "2026-10-23T10:58:58.857889+00:00",
+    "2026-10-23T10:59:04.479010+00:00",
+    "2026-10-23T10:59:05.256583+00:00",
+    "2026-10-23T10:59:08.463237+00:00",
+    "2026-10-23T10:59:11.681976+00:00",
+    "2026-10-23T10:59:15.062610+00:00",
+    "2026-10-23T10:59:18.054979+00:00",
+    "2026-10-23T10:59:21.293017+00:00",
+    "2026-10-23T10:59:24.459038+00:00",
+    "2026-10-23T10:59:28.601084+00:00",
+    "2026-10-23T10:59:31.813339+00:00",
+    "2026-10-23T10:59:35.003012+00:00",
+    "2026-10-23T10:59:38.212754+00:00",
+    "2026-10-23T10:59:41.404965+00:00",
+    "2026-10-23T10:59:44.629192+00:00",
+    "2026-10-23T10:59:49.911865+00:00",
+    "2026-10-23T10:59:51.006072+00:00",
+    "2026-10-23T10:59:54.207738+00:00",
+    "2026-10-23T10:59:57.398875+00:00",
+    "2026-10-23T11:00:00.607046+00:00",
+    "2026-10-23T11:00:04.552705+00:00",
+    "2026-10-23T11:00:07.007724+00:00",
+    "2026-10-23T11:00:10.198323+00:00",
+    "2026-10-23T11:00:13.396664+00:00",
+    "2026-10-23T11:00:16.597928+00:00",
+    "2026-10-23T11:00:19.801411+00:00",
+    "2026-10-23T11:00:23.014600+00:00",
+    "2026-10-23T11:00:26.193642+00:00",
+    "2026-10-23T11:00:29.599082+00:00",
+    "2026-10-23T11:00:32.647614+00:00",
+    "2026-10-23T11:00:35.806408+00:00",
+    "2026-10-23T11:00:39.011928+00:00",
+    "2026-10-23T11:00:42.201725+00:00",
+    "2026-10-23T11:00:45.419065+00:00",
+    "2026-10-23T11:00:48.618392+00:00",
+    "2026-10-23T11:00:52.014230+00:00",
+    "2026-10-23T11:00:55.018421+00:00",
+    "2026-10-23T11:00:58.215087+00:00",
+    "2026-10-23T11:01:01.409896+00:00",
+    "2026-10-23T11:01:04.608384+00:00",
+    "2026-10-23T11:01:07.830566+00:00",
+    "2026-10-23T11:01:11.018411+00:00",
+    "2026-10-23T11:01:14.234756+00:00",
+    "2026-10-23T11:01:17.444087+00:00",
+    "2026-10-23T11:01:20.602024+00:00",
+    "2026-10-23T11:01:23.800783+00:00",
+    "2026-10-23T11:01:27.005079+00:00",
+    "2026-10-23T11:01:30.213034+00:00",
+    "2026-10-23T11:01:33.417064+00:00",
+    "2026-10-23T11:01:36.646439+00:00",
+    "2026-10-23T11:01:39.806516+00:00",
+    "2026-10-23T11:01:43.025157+00:00",
+    "2026-10-23T11:01:46.197394+00:00",
+    "2026-10-23T11:01:49.433220+00:00",
+    "2026-10-23T11:01:52.597443+00:00",
+    "2026-10-23T11:01:55.825347+00:00",
+    "2026-10-23T11:01:59.202407+00:00",
+    "2026-10-23T11:02:04.320605+00:00",
+    "2026-10-23T11:02:05.432602+00:00",
+    "2026-10-23T11:02:08.599043+00:00",
+    "2026-10-23T11:02:11.826674+00:00",
+    "2026-10-23T11:02:15.005914+00:00",
+    "2026-10-23T11:02:18.272446+00:00",
+    "2026-10-23T11:02:21.436771+00:00",
+    "2026-10-23T11:02:24.620507+00:00",
+    "2026-10-23T11:02:27.817847+00:00",
+    "2026-10-23T11:02:31.024886+00:00",
+    "2026-10-23T11:02:36.387079+00:00",
+    "2026-10-23T11:02:37.405913+00:00",
+    "2026-10-23T11:02:40.603860+00:00",
+    "2026-10-23T11:02:43.815034+00:00",
+    "2026-10-23T11:02:47.000555+00:00",
+    "2026-10-23T11:02:50.213429+00:00",
+    "2026-10-23T11:02:53.414936+00:00",
+    "2026-10-23T11:02:56.622329+00:00",
+    "2026-10-23T11:02:59.816916+00:00",
+    "2026-10-23T11:03:03.065794+00:00",
+    "2026-10-23T11:03:06.205466+00:00",
+    "2026-10-23T11:03:09.474034+00:00",
+    "2026-10-23T11:03:12.621525+00:00",
+    "2026-10-23T11:03:15.814680+00:00",
+    "2026-10-23T11:03:19.006005+00:00",
+    "2026-10-23T11:03:22.225202+00:00",
+    "2026-10-23T11:03:25.418115+00:00",
+    "2026-10-23T11:03:28.611292+00:00",
+    "2026-10-23T11:03:31.805169+00:00",
+    "2026-10-23T11:03:35.388113+00:00",
+    "2026-10-23T11:03:38.212749+00:00",
+    "2026-10-23T11:03:41.455640+00:00",
+    "2026-10-23T11:03:44.604195+00:00",
+    "2026-10-23T11:03:47.828119+00:00",
+    "2026-10-23T11:03:51.004471+00:00",
+    "2026-10-23T11:03:54.236953+00:00",
+    "2026-10-23T11:03:57.408329+00:00",
+    "2026-10-23T11:04:00.653258+00:00",
+    "2026-10-23T11:04:05.755309+00:00",
+    "2026-10-23T11:04:07.019864+00:00",
+    "2026-10-23T11:04:10.276446+00:00",
+    "2026-10-23T11:04:13.422183+00:00",
+    "2026-10-23T11:04:16.613213+00:00",
+    "2026-10-23T11:04:19.816756+00:00",
+    "2026-10-23T11:04:23.031290+00:00",
+    "2026-10-23T11:04:27.153059+00:00",
+    "2026-10-23T11:04:33.753732+00:00",
+    "2026-10-23T11:04:39.972478+00:00",
+    "2026-10-23T11:08:24.155707+00:00",
+    "2026-10-23T11:10:16.259005+00:00",
+    "2026-10-23T11:12:58.370952+00:00",
+    "2026-10-23T11:14:10.996348+00:00",
+    "2026-10-23T11:15:43.777502+00:00",
+    "2026-10-23T11:16:13.007563+00:00",
+    "2026-10-23T11:16:15.564572+00:00",
+    "2026-10-23T11:16:21.189975+00:00",
+    "2026-10-23T11:16:28.075166+00:00",
+    "2026-10-23T11:16:36.128840+00:00",
+    "2026-10-23T11:16:45.700660+00:00",
+    "2026-10-23T11:16:55.109577+00:00",
+    "2026-10-23T11:17:02.433737+00:00",
+    "2026-10-23T11:17:12.985468+00:00",
+    "2026-10-23T11:17:20.952221+00:00",
+    "2026-10-23T11:17:34.405845+00:00",
+    "2026-10-23T11:17:43.246170+00:00",
+    "2026-10-23T11:17:52.854693+00:00",
+    "2026-10-23T11:18:01.464586+00:00",
+    "2026-10-23T11:18:10.544231+00:00",
+    "2026-10-23T11:18:21.059545+00:00",
+    "2026-10-23T11:18:31.708935+00:00",
+    "2026-10-23T11:18:40.190654+00:00",
+    "2026-10-23T11:18:50.614220+00:00",
+    "2026-10-23T11:18:59.800165+00:00",
+    "2026-10-23T11:19:13.140220+00:00",
+    "2026-10-23T11:19:23.593059+00:00",
+    "2026-10-23T11:19:29.829188+00:00",
+    "2026-10-23T11:19:41.735541+00:00",
+    "2026-10-23T11:19:50.904380+00:00",
+    "2026-10-23T11:20:02.241294+00:00",
+    "2026-10-23T11:20:15.364859+00:00",
+    "2026-10-23T11:20:26.164582+00:00",
+    "2026-10-23T11:20:36.607392+00:00",
+    "2026-10-23T11:20:45.344419+00:00",
+    "2026-10-23T11:20:58.941301+00:00",
+    "2026-10-23T11:21:05.137499+00:00",
+    "2026-10-23T11:21:19.985986+00:00",
+    "2026-10-23T11:21:29.003771+00:00",
+    "2026-10-23T11:21:39.445339+00:00",
+    "2026-10-23T11:21:53.126671+00:00",
+    "2026-10-23T11:22:18.244354+00:00",
+    "2026-10-23T11:22:30.647505+00:00",
+    "2026-10-23T11:22:38.221160+00:00",
+    "2026-10-23T11:22:43.089599+00:00",
+    "2026-10-23T11:22:52.053986+00:00",
+    "2026-10-23T11:23:00.882669+00:00",
+    "2026-10-23T11:23:09.806060+00:00",
+    "2026-10-23T11:23:17.849642+00:00",
+    "2026-10-23T11:23:30.403098+00:00",
+    "2026-10-23T11:23:40.060010+00:00",
+    "2026-10-23T11:23:49.345253+00:00",
+    "2026-10-23T11:24:03.027854+00:00",
+    "2026-10-23T11:24:16.350849+00:00",
+    "2026-10-23T11:24:27.112030+00:00",
+    "2026-10-23T11:24:37.444546+00:00",
+    "2026-10-23T11:24:44.277181+00:00",
+    "2026-10-23T11:24:54.288997+00:00",
+    "2026-10-23T11:25:04.215590+00:00",
+    "2026-10-23T11:25:15.182986+00:00",
+    "2026-10-23T11:25:23.963369+00:00",
+    "2026-10-23T11:25:33.617697+00:00",
+    "2026-10-23T11:25:43.255786+00:00",
+    "2026-10-23T11:25:53.603367+00:00",
+    "2026-10-23T11:26:05.628350+00:00",
+    "2026-10-23T11:26:18.601348+00:00",
+    "2026-10-23T11:26:27.882668+00:00",
+    "2026-10-23T11:26:39.348792+00:00",
+    "2026-10-23T11:26:49.732777+00:00",
+    "2026-10-23T11:27:03.227117+00:00",
+    "2026-10-23T11:27:12.704434+00:00",
+    "2026-10-23T11:27:22.292233+00:00",
+    "2026-10-23T11:27:26.815840+00:00",
+    "2026-10-23T11:27:30.959333+00:00"
   ],
   "free_day_out": "",
   "topics": {
@@ -2992,7 +3276,8 @@
         "2026-10-19",
         "2026-10-20",
         "2026-10-21",
-        "2026-10-22"
+        "2026-10-22",
+        "2026-10-23"
       ],
       "subs": [
         "ArtificialInteligence",
@@ -3009,15 +3294,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 47,
+      "mentions": 48,
       "refs": [
-        {
-          "date": "2026-10-15",
-          "title": "Claude opus 5.5 vs argon 4",
-          "thread": "https://www.reddit.com/r/GeminiAI/comments/1x61pe0/claude_opus_55_vs_argon_4/",
-          "link": "",
-          "comment": "I love how anyone shittiing on Gemini gets upvoted and celebrated, but anyone praising Gemini is immediately accused of being fake or a shill ... in the Gemini subreddit. Why do I even follow this sub?"
-        },
         {
           "date": "2026-10-15",
           "title": "Are They Nerfing Opus 5.5? Livenerf Day 20 update",
@@ -3108,10 +3386,17 @@
           "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xbwkgf/claude_duet_anthropic_just_casually_dropped_the/",
           "link": "",
           "comment": "TL;DR of the discussion generated automatically after 100 comments. So, the consensus in here is a big ol' \"meh\" with a side of \"okay, I get it.\" A lot of you power users are scoffing, saying this is just another wrapper like Dots or Muse and that you already do all this with your own scheduled task"
+        },
+        {
+          "date": "2026-10-23",
+          "title": "Claude is Like a Senior Now",
+          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xce2vu/claude_is_like_a_senior_now/",
+          "link": "",
+          "comment": "TL;DR of the discussion generated automatically after 30 comments. Looks like the hivemind is on the same page as OP. The consensus is that users have a clear hierarchy for their AIs, and Claude is reserved for the important stuff. Claude: For when you need actual quality, complex answers, and intel"
         }
       ],
       "deep_dive": "2026-10-12",
-      "last_seen": "2026-10-22",
+      "last_seen": "2026-10-23",
       "subject": "ai"
     },
     "anthropic-usage-policy": {
@@ -3375,7 +3660,8 @@
         "2026-10-11",
         "2026-10-12",
         "2026-10-13",
-        "2026-10-20"
+        "2026-10-20",
+        "2026-10-23"
       ],
       "subs": [
         "ArtificialInteligence",
@@ -3386,7 +3672,7 @@
         "antiai",
         "singularity"
       ],
-      "mentions": 10,
+      "mentions": 11,
       "refs": [
         {
           "date": "2026-10-09",
@@ -3457,10 +3743,17 @@
           "thread": "https://www.reddit.com/r/ClaudeAI/comments/1x9smgq/claude_caught_a_cryptominer_on_my_mac_whilst/",
           "link": "",
           "comment": "TL;DR of the discussion generated automatically after 50 comments. Okay, let's get this out of the way: the top comments are all pointing out that OP has posted this exact story in multiple subs. The jury's out on whether you're a karma farmer or just really, really excited. Beyond that, the thread "
+        },
+        {
+          "date": "2026-10-23",
+          "title": "The AI cyber arms race is escalating fast. PHP2Shell triggers millions of exploit attempts. China-linked hackers use AI agents to target 2,250+ cloud tenants, gaining privileged access in under 3 hours in some cases. CrowdStrike exposes four more AI-powered hacking campaigns.",
+          "thread": "https://www.reddit.com/r/singularity/comments/1xcc2cx/the_ai_cyber_arms_race_is_escalating_fast/",
+          "link": "",
+          "comment": "Looks like we're going to be going the Cyberpunk 2077 internet route."
         }
       ],
       "deep_dive": "",
-      "last_seen": "2026-10-20",
+      "last_seen": "2026-10-23",
       "subject": "ai"
     },
     "ai-and-jobs": {
@@ -3753,29 +4046,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 76,
+      "mentions": 79,
       "refs": [
-        {
-          "date": "2026-10-20",
-          "title": "Old TCL Beyond TV was super slow, so I tried this open-source debloat with Claude and it worked",
-          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xa9f5d/old_tcl_beyond_tv_was_super_slow_so_i_tried_this/",
-          "link": "",
-          "comment": "TL;DR of the discussion generated automatically after 50 comments. Here's the deal from the comments, folks. The consensus is a resounding \"HELL YES.\" The community is super hyped about OP's success in debloating their TV and is eager to do the same. How did OP \"use Claude\" to do this? OP (and other"
-        },
-        {
-          "date": "2026-10-21",
-          "title": "My Company Fired Two Highly Paid Engineers and Replaced Them With Me and Claude Code. I Make $26K a Year.",
-          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xaanlz/my_company_fired_two_highly_paid_engineers_and/",
-          "link": "",
-          "comment": "Hmm. You’re kinda fucked in this company"
-        },
-        {
-          "date": "2026-10-21",
-          "title": "Linus Torvalds posts his first AI-assisted patch to the Linux kernel, synthetic test clocks 23x performance leap — the bossman makes use of AI tooling himself after issuing clear pro-AI directives",
-          "thread": "https://www.reddit.com/r/technology/comments/1xapaw7/linus_torvalds_posts_his_first_aiassisted_patch/",
-          "link": "https://www.tomshardware.com/software/linux/linus-torvalds-posts-his-first-llm-assisted-patch-to-the-linux-kernel-after-issuing-clear-pro-ai-directives-the-bossman-makes-use-of-ai-tooling-himself",
-          "comment": "There is a big difference between the guy who built the original kernel using Claude to automate some busy work and me (an idiot) submitting vibe coded PRs that a don’t understand. Or a software company firing guys like Linus so they can hire guys like me for cheaper. Software development is a machi"
-        },
         {
           "date": "2026-10-21",
           "title": "I handed Claude Code a database of 11 million news articles, it found some weird patterns",
@@ -3852,6 +4124,27 @@
           "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xc31hj/aside_from_hacking_tvs_to_remove_ads_whats/",
           "link": "",
           "comment": "TL;DR of the discussion generated automatically after 200 comments. The consensus is clear: you guys are using Claude to hack, build, and automate basically everything in your lives. This thread is a goldmine of personal projects, with a heavy emphasis on coding and hardware modification. Here's the"
+        },
+        {
+          "date": "2026-10-23",
+          "title": "I got tired of checking whether Claude Code needs me. So I gave it a physical status light.",
+          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xcdwdx/i_got_tired_of_checking_whether_claude_code_needs/",
+          "link": "",
+          "comment": "TL;DR of the discussion generated automatically after 50 comments. The consensus is that this is a brilliant and surprisingly practical hack. Lots of users are pointing out that OP has essentially reinvented the factory 'andon light' for AI, a visual cue to show when a machine needs attention. Of co"
+        },
+        {
+          "date": "2026-10-23",
+          "title": "I used Claude Code to build a pizzeria its own ordering app so regulars stop paying DoorDash 30%. First paying customer is live.",
+          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xcm78x/i_used_claude_code_to_build_a_pizzeria_its_own/",
+          "link": "",
+          "comment": "TL;DR of the discussion generated automatically after 100 comments. Looks like we've got a classic \"build vs. business\" debate on our hands. The thread is overwhelmingly stoked for OP's project to stick it to DoorDash, but the veteran devs in the room have some... concerns. The top-voted sentiment b"
+        },
+        {
+          "date": "2026-10-23",
+          "title": "I'm building a cyberpunk pixel-art action adventure with Claude Code",
+          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xcgebb/im_building_a_cyberpunk_pixelart_action_adventure/",
+          "link": "",
+          "comment": "TL;DR of the discussion generated automatically after 50 comments. The thread is overwhelmingly hyped for OP's game. The consensus is that the cyberpunk pixel-art aesthetic and atmosphere are killer, and it's an inspiring project for a solo dev. A ton of you were asking how the sausage is made, and "
         }
       ],
       "deep_dive": "2026-10-18",
@@ -3950,7 +4243,8 @@
         "2026-10-13",
         "2026-10-14",
         "2026-10-16",
-        "2026-10-17"
+        "2026-10-17",
+        "2026-10-23"
       ],
       "subs": [
         "AI_Agents",
@@ -3962,15 +4256,8 @@
         "artificial",
         "singularity"
       ],
-      "mentions": 50,
+      "mentions": 51,
       "refs": [
-        {
-          "date": "2026-10-13",
-          "title": "I clustered two old Android phones to run a 27B LLM locally. Bypassed RAM limits via C++ RPC split and Hadamard Ternary math (No overheating)",
-          "thread": "https://www.reddit.com/r/LocalLLM/comments/1x4awt8/i_clustered_two_old_android_phones_to_run_a_27b/",
-          "link": "",
-          "comment": "This guy fucks, he gets all the girls"
-        },
         {
           "date": "2026-10-13",
           "title": "Qualcomm CEO reveals Al companies want phones running 100-billion-parameter models continuously by 2028.",
@@ -4061,10 +4348,17 @@
           "thread": "https://www.reddit.com/r/artificial/comments/1x7ofj6/jailbroken_ps5s_can_now_run_local_ai_models_at/",
           "link": "https://www.tomshardware.com/video-games/playstation/jailbroken-ps5s-can-now-run-local-ai-models-at-over-100-tokens-per-second-fork-of-ps5lm-goes-native-and-accesses-gpu-and-more-ram",
           "comment": "Aren't these sold at a loss? If someone puts in a large order, what will happen to Sony's business model?"
+        },
+        {
+          "date": "2026-10-23",
+          "title": "I made my local LLM start thinking while I'm still typing: 12s → 3s wait on a 6 GB GPU (open source)",
+          "thread": "https://www.reddit.com/r/LocalLLM/comments/1xclfjf/i_made_my_local_llm_start_thinking_while_im_still/",
+          "link": "",
+          "comment": "This is a very interesting concept. It’s a breath of fresh air from the “what model is best for xxxx on xxxxx hardware” posts"
         }
       ],
       "deep_dive": "",
-      "last_seen": "2026-10-17",
+      "last_seen": "2026-10-23",
       "subject": "ai"
     },
     "openai-company-updates": {
