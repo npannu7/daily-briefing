@@ -8,9 +8,29 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Sat, 24 Oct 2026 03:28:21 GMT</lastBuildDate>
+<lastBuildDate>Sat, 24 Oct 2026 11:35:29 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Evening - 24 Oct: When Finding Flaws Outpaces Fixing Them</title>
+<description>Evening edition - Saturday, 24 October 2026
+Why automated inspection without verification overwhelms production systems, and how low-energy deep-sea kinetics stall environmental recovery.
+
+00:42  When Finding Flaws Outpaces Fixing Them
+   ArtificialInteligence, ChatGPT, OpenAI: https://www.reddit.com/r/OpenAI/comments/1xddmtq/3_of_critical_software_security_bugs_in_all_of/
+   ArtificialInteligence, OpenAI: https://www.reddit.com/r/ArtificialInteligence/comments/1xdcowt/altman_admits_the_cybersecurity_crisis_is_going/
+08:13  Why the Deep Ocean Cannot Heal Itself Quickly
+   science: https://www.reddit.com/r/science/comments/1xddv9b/16_years_after_the_deepwater_horizon_oil_spill/
+   Source: https://www.sciencealert.com/16-years-after-deepwater-horizon-spill-deep-sea-life-in-the-gulf-of-mexico-shows-no-sign-of-recovery
+
+Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
+Written by: Gemini 3.8 Flash · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (160 threads)</description>
+<pubDate>Sat, 24 Oct 2026 16:23:32 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-10-24_evening_1623.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-24_evening_1623.mp3" length="8345324" type="audio/mpeg"/>
+<itunes:duration>1043</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Morning - 24 Oct: Building an Engine Against the Spec</title>
 <description>Morning edition - Saturday, 24 October 2026
@@ -307,26 +327,6 @@ Written by: Gemini 3.5 Flash-Lite · Voices: Fish Audio (free) · Discussions: R
 <guid isPermaLink="false">ai_2026-10-18_morning_0825.mp3</guid>
 <enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-18_morning_0825.mp3" length="18525740" type="audio/mpeg"/>
 <itunes:duration>2315</itunes:duration>
-<itunes:episodeType>full</itunes:episodeType>
-</item>
-<item>
-<title>Evening - 17 Oct: Keeping Coding Agents on a Tight Token Budget</title>
-<description>Evening edition - Saturday, 17 October 2026
-Engineering discipline in autonomous software workflows and the clinical diagnostic hurdles bottlenecking frontier biopharma.
-
-00:28  Keeping Coding Agents on a Tight Token Budget
-   ClaudeCode: https://www.reddit.com/r/ClaudeCode/comments/1x7ifnd/i_went_from_exhausting_claude_codes_weekly_limits/
-   ClaudeCode: https://www.reddit.com/r/ClaudeCode/comments/1x7lfoz/is_anybody_else_exhausted/
-08:58  Why New Alzheimer's Drugs Aren't Reaching Most Patients
-   science: https://www.reddit.com/r/science/comments/1x7dtv0/who_gets_alzheimers_drugs_u_s_research_shows/
-   Source: https://www.eurekalert.org/news-releases/1147823
-
-Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
-Written by: Gemini 3.8 Flash · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (219 threads)</description>
-<pubDate>Sat, 17 Oct 2026 16:20:09 +0530</pubDate>
-<guid isPermaLink="false">ai_2026-10-17_evening_1620.mp3</guid>
-<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-17_evening_1620.mp3" length="8484332" type="audio/mpeg"/>
-<itunes:duration>1060</itunes:duration>
 <itunes:episodeType>full</itunes:episodeType>
 </item>
 </channel>
