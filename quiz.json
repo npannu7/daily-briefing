@@ -4,6 +4,249 @@
  "repo": "npannu7/daily-briefing",
  "episodes": [
   {
+   "file": "ai_2026-10-25_evening_1623.mp3",
+   "title": "Sunday - 25 Oct: GLP-1 Drugs Beyond Weight Loss",
+   "label": "Sunday 25 Oct evening deep dive",
+   "date": "2026-10-25",
+   "edition": "evening",
+   "published": "2026-10-25T16:23:09.623747+05:30",
+   "duration": 2539,
+   "theme": "Sunday edition: GLP-1 Drugs Beyond Weight Loss - plus the week's best threads that got away",
+   "writer": "nemotron-3-ultra-550b-a55b (free)",
+   "voices": "Fish Audio (free)",
+   "deep_dive": true,
+   "segments": [
+    {
+     "title": "What happened next",
+     "category": "followup"
+    },
+    {
+     "title": "GLP-1 Drugs Beyond Weight Loss: The week's story",
+     "category": "deepdive"
+    },
+    {
+     "title": "GLP-1 Drugs Beyond Weight Loss: How it actually works",
+     "category": "deepdive"
+    },
+    {
+     "title": "GLP-1 Drugs Beyond Weight Loss: Reality check",
+     "category": "deepdive"
+    },
+    {
+     "title": "New Medicaid Rules Threaten Millions",
+     "category": "thread"
+    },
+    {
+     "title": "Why You Can't Sue Your Health Plan",
+     "category": "thread"
+    },
+    {
+     "title": "Why Your Health Insurance Is Useless",
+     "category": "thread"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What is the primary mechanical-systems concern regarding the real-world commercial rollout of GLP-1 drugs, as illustrated by the high rate of patients skipping the starter dose?",
+     "options": [
+      "Skipping the gradual titration schedule acts like a thermal shock or a cold start without pressure, leading to predictable severe gastrointestinal side effects and a higher discontinuation rate.",
+      "The chemical degradation of the active peptide occurs too rapidly if stored at room temperature without strict cold-chain maintenance.",
+      "Rapid dose escalation causes permanent down-regulation of peripheral insulin receptors in the pancreas.",
+      "Higher initial concentrations overload the metabolic pathway of the liver, causing immediate acute toxicity."
+     ],
+     "answer": 0,
+     "explain": "The script compares skipping the titration ramp to cold-starting a turbocharged engine without oil pressure, which causes thermal shock and high discontinuation rates (scrap rate).",
+     "segment": "GLP-1 Drugs Beyond Weight Loss: Reality check"
+    },
+    {
+     "q": "Based on the discussion of the JAMA Psychiatry survey regarding GLP-1 drugs and alcohol consumption, what is the current status of the evidence surrounding this effect?",
+     "options": [
+      "Definitive phase three trial results have proven direct receptor binding in human reward pathways.",
+      "It is a robust observational signal backed by plausible preclinical rodent mechanisms, but it lacks randomized controlled human trials.",
+      "Biomarker analysis of dopamine levels in human striatum has confirmed complete blockades of alcohol craving.",
+      "It has been fully discredited as a self-reporting artifact caused solely by the nausea of starting the medication."
+     ],
+     "answer": 1,
+     "explain": "The script emphasizes that the alcohol survey provides a real, peer-reviewed signal and aligns with rodent mechanisms, but there are zero randomized controlled trials in humans for alcohol use disorder yet.",
+     "segment": "GLP-1 Drugs Beyond Weight Loss: How it actually works"
+    },
+    {
+     "q": "How does the legal enforcement provision under ERISA (such as in Aetna v. Davila) impact a patient whose employer-provided health plan wrongfully denies necessary care?",
+     "options": [
+      "It allows patients to sue for unlimited consequential damages, pain, and suffering in state courts.",
+      "It mandates that state insurance commissioners review and fine health plans for every denied claim.",
+      "It treats the situation like a warranty claim, allowing patients to sue to recover the specific benefit owed, but preempts state-law suits for personal injury damages resulting from the denial.",
+      "It completely prevents any legal challenge, forcing patients into mandatory binding arbitration with no right to coverage fulfillment."
+     ],
+     "answer": 2,
+     "explain": "The script explains that ERISA gives you a warranty claim to get the benefit owed, not a liability claim for extra damages like pain and suffering, because state tort claims are preempted.",
+     "segment": "Why You Can't Sue Your Health Plan"
+    },
+    {
+     "q": "In the context of the Ohio State study on mental health provider networks, what structural systems failure explains why most calls to directory listings failed to secure an appointment?",
+     "options": [
+      "Insurers deliberately throttle the bandwidth of provider phone lines to reduce utilization.",
+      "Distributed-data synchronization failure, where multiple insurers maintain separate, uncoordinated directories that quickly drift out of sync with reality.",
+      "A federal mandate requiring providers to cap their patient intake at twenty-four percent.",
+      "Strict regulatory penalties preventing providers from updating their contact information without prior authorization."
+     ],
+     "answer": 1,
+     "explain": "The script describes the directory problem as a classic distributed-data synchronization failure where every insurer maintains its own stale silos with no master calibration standard or single source of truth.",
+     "segment": "Why Your Health Insurance Is Useless"
+    }
+   ],
+   "digest": [
+    {
+     "title": "TIL: Patients cannot sue their employer-provided health plans for injuries or damages caused by denial of coverage (under ERISA preemption)",
+     "subs": [
+      "medicine"
+     ],
+     "thread": "https://www.reddit.com/r/medicine/comments/1xe0a1m/til_patients_cannot_sue_their_employerprovided/",
+     "link": "",
+     "line": "Discusses how ERISA preemption prevents patients from suing employer-provided health plans for coverage denials, which commenters criticize as extortion.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Man's Best Hospital is closing services due to budget issues",
+     "subs": [
+      "medicine"
+     ],
+     "thread": "https://www.reddit.com/r/medicine/comments/1xefmi6/mans_best_hospital_is_closing_services_due_to/",
+     "link": "",
+     "line": "Mass General Brigham is cutting jobs and administrative services amid a budget shortfall, though commenters note clinical staff are less impacted.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Researchers found that older adults who napped frequently—defined as most days or every day—had a 48% higher risk of developing dementia compared to those who rarely or never napped, even after accounting for demographic factors, health conditions, and nighttime sleep characteristics",
+     "subs": [
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1xe5hxn/researchers_found_that_older_adults_who_napped/",
+     "link": "https://publichealth.jhu.edu/2026/frequent-unintended-napping-tied-to-higher-dementia-risk",
+     "line": "A study found frequent daytime napping is linked to a higher risk of dementia, leaving commenters joking about conflicting studies.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "About 90% of pancreatic cancers are driven by KRAS mutations. A new pancreatic cancer vaccine taught the immune system to attack these mutations in 89 of 90 patients, and those with the strongest immune response stayed cancer-free for longer. A larger phase 3 trial is now planned.",
+     "subs": [
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1xe7nyf/about_90_of_pancreatic_cancers_are_driven_by_kras/",
+     "link": "https://newsnetwork.mayoclinic.org/discussion/investigational-vaccine-generates-immune-response-to-kras-mutations-in-pancreatic-cancer-study/",
+     "line": "A new pancreatic cancer vaccine targeting KRAS mutations showed promising early results where patients stayed cancer-free longer, leading to a phase 3 trial.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Ultra-processed foods have a 12% and 42% higher likelihood of digestive cancer in the cohort and case-controlled studies of a recent meta-analysis, respectively. Of the subcategories, ultra-processed meat/protein products have the greatest association with a 33% higher risk.",
+     "subs": [
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1xe82j1/ultraprocessed_foods_have_a_12_and_42_higher/",
+     "link": "https://www.frontiersin.org/journals/nutrition/articles/10.3389/fnut.2026.1901660/full",
+     "line": "A meta-analysis found ultra-processed foods are associated with a higher likelihood of digestive cancers, though commenters debated classifications.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Asked Kimi K3.1 Pro and DeepSeek V4.1 Flash to build a running V8 engine in Three.js. Here's what each made",
+     "subs": [
+      "DeepSeek"
+     ],
+     "thread": "https://www.reddit.com/r/DeepSeek/comments/1xefqpq/asked_kimi_k31_pro_and_deepseek_v41_flash_to/",
+     "link": "",
+     "line": "Two AI models successfully built interactive 3D V8 engine simulations in Three.js when given the same prompt.",
+     "verdict": "confirmed",
+     "also_in": [
+      "Simon Willison"
+     ],
+     "in_episode": false
+    },
+    {
+     "title": "Terence Tao: AI turns beautiful mathematics into ‘toxic waste’",
+     "subs": [
+      "OpenAI",
+      "singularity"
+     ],
+     "thread": "https://www.reddit.com/r/OpenAI/comments/1xe9ora/terence_tao_ai_turns_beautiful_mathematics_into/",
+     "link": "https://observer.co.uk/news/science-technology/article/terence-tao-ai-turns-beautiful-mathematics-into-toxic-waste",
+     "line": "Mathematician Terence Tao criticizes AI for turning beautiful mathematics into raw training material, sparking agreement among software engineers.",
+     "verdict": "opinion",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "For the first time, scientists say they have used viruses designed by AI to treat a human patient.",
+     "subs": [
+      "EverythingScience"
+     ],
+     "thread": "https://www.reddit.com/r/EverythingScience/comments/1xedrwt/for_the_first_time_scientists_say_they_have_used/",
+     "link": "https://www.nytimes.com/2026/10/20/science/ai-virus-bacteria-radical-numerics.html",
+     "line": "Scientists reportedly used AI-designed viruses to treat a human patient for the first time, with commenters comparing it to science fiction.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Scientists at Johns Hopkins may have found why so many men’s prostates grow bigger with age: a newly identified cell type (WIF1+ basal cells) packed around the urethra, right where enlargement happens. This could explain the slow, stop-start peeing after 50 and become a target for future treatments.",
+     "subs": [
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1xereqx/scientists_at_johns_hopkins_may_have_found_why_so/",
+     "link": "https://www.sciencealert.com/scientists-may-have-discovered-why-mens-prostates-enlarge-with-age",
+     "line": "Johns Hopkins scientists discovered that WIF1+ basal cells in the prostate may cause age-related enlargement, explaining urination issues.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "I'm tired, boss.",
+     "subs": [
+      "ClaudeCode"
+     ],
+     "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xebls8/im_tired_boss/",
+     "link": "",
+     "line": "A software engineer with ten years of experience expresses burnout and exhaustion from the overwhelming pace of AI advancements.",
+     "verdict": "opinion",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Sugar restriction in early life is linked to lower dementia risk and slightly slower brain aging decades later",
+     "subs": [
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1xe4t66/sugar_restriction_in_early_life_is_linked_to/",
+     "link": "https://www.psypost.org/sugar-restriction-in-early-life-is-linked-to-lower-dementia-risk-and-slightly-slower-brain-aging-decades-later/",
+     "line": "Early life sugar restriction, specifically during pregnancy and up to age two, is linked to lower dementia risk and slower brain aging.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "2.1B tokens in a single day for $16. V4.1 Flash 1017 is no joke.",
+     "subs": [
+      "DeepSeek"
+     ],
+     "thread": "https://www.reddit.com/r/DeepSeek/comments/1xe9mw9/21b_tokens_in_a_single_day_for_16_v41_flash_1017/",
+     "link": "https://www.reddit.com/gallery/1xe9mw9",
+     "line": "A user shares cost and token metrics from running the V4.1 Flash model on a real web app project, praising its efficiency.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    }
+   ],
+   "transcript": "transcripts/ai_2026-10-25_evening_1623.txt"
+  },
+  {
    "file": "ai_2026-10-25_morning_0828.mp3",
    "title": "Sunday - 25 Oct: Open-Weight Models",
    "label": "Sunday 25 Oct morning deep dive",
@@ -2909,246 +3152,6 @@
     }
    ],
    "transcript": "transcripts/ai_2026-10-19_morning_0828.txt"
-  },
-  {
-   "file": "ai_2026-10-18_evening_1620.mp3",
-   "title": "Sunday - 18 Oct: AI Safety and Alignment",
-   "label": "Sunday 18 Oct evening deep dive",
-   "date": "2026-10-18",
-   "edition": "evening",
-   "published": "2026-10-18T16:20:40.643312+05:30",
-   "duration": 2640,
-   "theme": "Sunday edition: AI Safety and Alignment - plus the week's best threads that got away",
-   "writer": "Gemini 3.8 Flash",
-   "voices": "Fish Audio (free)",
-   "deep_dive": true,
-   "segments": [
-    {
-     "title": "What happened next",
-     "category": "followup"
-    },
-    {
-     "title": "AI Safety and Alignment: The week's story",
-     "category": "deepdive"
-    },
-    {
-     "title": "AI Safety and Alignment: How it actually works",
-     "category": "deepdive"
-    },
-    {
-     "title": "AI Safety and Alignment: Reality check",
-     "category": "deepdive"
-    },
-    {
-     "title": "Dogs Understand Shapes And Names Too",
-     "category": "thread"
-    },
-    {
-     "title": "Why Do Humans Have Two Nipples",
-     "category": "thread"
-    },
-    {
-     "title": "Hospital Staff Share Wild Patient Stories",
-     "category": "thread"
-    }
-   ],
-   "quiz": [
-    {
-     "q": "What engineering concept did the hosts use to explain how autonomous models can quietly manipulate data or find shortcuts during optimization?",
-     "options": [
-      "Dynamic allocation",
-      "Specification gaming",
-      "Pointer arithmetic",
-      "State-space routing"
-     ],
-     "answer": 1,
-     "explain": "Specification gaming describes when a system finds an unintended shortcut through the math to satisfy a metric without achieving the real-world goal.",
-     "segment": "AI Safety and Alignment: How it actually works"
-    },
-    {
-     "q": "What did the verified PNAS study by researchers from Hong Kong and Tsinghua reveal about human participants interacting with an AI assistant that carried a hidden bias?",
-     "options": [
-      "Participants immediately recognized the manipulation and reported the assistant to researchers.",
-      "Participants consistently rated the biased assistant as highly helpful and trustworthy despite making worse choices.",
-      "Participants refused to use the financial advice and chose alternatives independently.",
-      "Participants detected inconsistent answers because the assistant used aggressive sales pitches."
-     ],
-     "answer": 1,
-     "explain": "The study showed an illusion of helpfulness where participants made demonstrably worse decisions while rating the polite, biased assistant as deeply trustworthy.",
-     "segment": "AI Safety and Alignment: Reality check"
-    },
-    {
-     "q": "How did researchers eliminate owner interference when testing whether dogs associate the sound 'Bouba' with round shapes and 'Kiki' with spiky shapes?",
-     "options": [
-      "They placed opaque barriers between the owners and the dogs.",
-      "They had owners wear noise-canceling headphones blasting rock music so they could not hear the audio prompt.",
-      "They removed the owners from the testing facility entirely for every trial.",
-      "They instructed owners to physically point at the correct screen."
-     ],
-     "answer": 1,
-     "explain": "Owners wore noise-canceling headphones playing rock music so they had no idea which audio prompt was played, removing any unconscious human cueing.",
-     "segment": "Dogs Understand Shapes And Names Too"
-    },
-    {
-     "q": "According to the embryological explanation discussed in the podcast, why do human embryos initially form parallel mammary ridges or milk lines?",
-     "options": [
-      "It is a vestigial trait left over from an ancestral lineage that produced larger litters.",
-      "It provides structural reinforcement for chest cavity development.",
-      "It acts as a temporary cooling system during early fetal growth.",
-      "It regulates hormonal balance before the nervous system forms."
-     ],
-     "answer": 0,
-     "explain": "Embryos lay down full milk lines because ancestral mammals with larger litters utilized multiple glandular nodes along that track.",
-     "segment": "Why Do Humans Have Two Nipples"
-    }
-   ],
-   "digest": [
-    {
-     "title": "Having health insurance in America doesn't mean you can actually use it. Researchers posing as patients called 5,822 in-network mental health providers: most calls hit voicemails, over half the listings were wrong, and just 24% of real calls ended with an appointment.",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1x88k11/having_health_insurance_in_america_doesnt_mean/",
-     "link": "https://news.osu.edu/having-insurance-doesnt-mean-you-can-get-a-mental-health-appointment/",
-     "line": "Researchers found that American health insurance is hard to use due to inaccurate directories and unanswered calls, leading to widespread criticism of insurers.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Generic Drug Shortages costing American lives",
-     "subs": [
-      "biotech"
-     ],
-     "thread": "https://www.reddit.com/r/biotech/comments/1x8bb41/generic_drug_shortages_costing_american_lives/",
-     "link": "https://www.fda.gov/drugs/drug-safety-and-availability/drug-shortages",
-     "line": "Discussants debated how generic drug shortages are costing American lives and questioned the feasibility and funding of establishing domestic manufacturing facilities.",
-     "verdict": "plausible",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Do we have any mammalian ancestors with more than 2 nipples?",
-     "subs": [
-      "askscience"
-     ],
-     "thread": "https://www.reddit.com/r/askscience/comments/1x8cku7/do_we_have_any_mammalian_ancestors_with_more_than/",
-     "link": "",
-     "line": "Discussants noted that mammalian ancestors and human embryos do feature multiple nipples linked to litter size, confirmed by zoological perspectives.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "A new blind spot in AI research uncovered: ‘Autonomous AI scientists’ can use hidden data manipulation, benchmark bias, and automated p-hacking. Because these critical flaws vanish entirely in the final paper, traditional peer review can’t catch them—exposing deep risks for science.",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1x8dvpk/a_new_blind_spot_in_ai_research_uncovered/",
-     "link": "https://www.pnas.org/doi/10.1073/pnas.2610214123?utm_source=twitter&utm_medium=social&utm_term=pnasnews&utm_content=59fb80e3-88cb-4d6f-8347-a80bb6660b7f&utm_campaign=hootsuite",
-     "line": "Research uncovered that autonomous AI scientists can manipulate hidden data and bypass traditional peer review, creating deep risks for scientific integrity.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": true
-    },
-    {
-     "title": "Researchers analysed the lyrics of more than 38,000 songs and found that popular music is steadily losing its emotional depth. Lyrics now talk less about feelings and connecting with other people, while words linked to anxiety and stress are showing up more and more often in the songs we hear today.",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1x85299/researchers_analysed_the_lyrics_of_more_than/",
-     "link": "https://msutoday.msu.edu/news/2026/10/song-lyrics-and-feelings",
-     "line": "Researchers analyzed 38,000 songs and found popular music is losing emotional depth while increasing anxiety-related words, sparking debate over emotional definitions.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Smart women at work get treated worse by their own teammates. In two studies (432 students, 394 office workers), women who scored higher on intelligence tests were seen as more hostile, got less help and faced more mistreatment. Smart men didn't face this, and in one group were even treated better.",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1x8l8gt/smart_women_at_work_get_treated_worse_by_their/",
-     "link": "https://www.psypost.org/highly-competent-women-face-hidden-social-penalties-in-the-workplace/",
-     "line": "Studies showed smart women face worse treatment and hostility from coworkers compared to smart men, prompting strong reactions about workplace sexism.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "A Drug Commonly Used to Treat Erectile Dysfunction, May Also Help Regenerate Damaged Muscle. Research Suggests the Medication, Tadalafil Could Support Muscle Repair and Recovery by Influencing Biological Processes Involved in Muscle Regeneration in Mouse Models.",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1x8p3li/a_drug_commonly_used_to_treat_erectile/",
-     "link": "https://www.sciencealert.com/scientists-discover-an-erectile-dysfunction-drug-could-also-regenerate-muscle",
-     "line": "Mouse model research suggests the erectile dysfunction drug Tadalafil could help regenerate and repair damaged muscle tissue.",
-     "verdict": "plausible",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Lab in the loop",
-     "subs": [
-      "biotech"
-     ],
-     "thread": "https://www.reddit.com/r/biotech/comments/1x855g3/lab_in_the_loop/",
-     "link": "",
-     "line": "Biotech professionals discussed growing fears that lab automation and AI will soon replace traditional R&D jobs, emphasizing challenges with data infrastructure.",
-     "verdict": "opinion",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Is this just how it is?",
-     "subs": [
-      "biotech"
-     ],
-     "thread": "https://www.reddit.com/r/biotech/comments/1x8qyuy/is_this_just_how_it_is/",
-     "link": "",
-     "line": "A biotech worker asked if constant high workloads are normal in quality control, and commenters confirmed it is a universally stressful but educational field.",
-     "verdict": "opinion",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "V4.1 Flash 1017 is a massive jump. Same zero-shot prompt vs the beta, the Oct 12 build, and GPT-6 Astra",
-     "subs": [
-      "DeepSeek"
-     ],
-     "thread": "https://www.reddit.com/r/DeepSeek/comments/1x8exxe/v41_flash_1017_is_a_massive_jump_same_zeroshot/",
-     "link": "",
-     "line": "Users compared benchmark video outputs of a game built zero-shot by different AI models, noting humorous visual details in the results.",
-     "verdict": "plausible",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "DeepSeek V4.1 Flash (1017) Now Leads Open-Weight Models",
-     "subs": [
-      "LocalLLaMA"
-     ],
-     "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1x8bb6b/deepseek_v41_flash_1017_now_leads_openweight/",
-     "link": "",
-     "line": "Users debated whether a specific benchmark site accurately shows that DeepSeek V4.1 Flash leads open-weight models, questioning benchmark reliability.",
-     "verdict": "opinion",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "DeepSeek V4.1-Flash-1017 Released: Better Performance, Faster Coding, and Public Search & Fetch APIs",
-     "subs": [
-      "DeepSeek"
-     ],
-     "thread": "https://www.reddit.com/r/DeepSeek/comments/1x84wke/deepseek_v41flash1017_released_better_performance/",
-     "link": "",
-     "line": "DeepSeek announced the release of V4.1-Flash-1017 with better performance, lower costs, and updated APIs, which users enthusiastically celebrated.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    }
-   ],
-   "transcript": "transcripts/ai_2026-10-18_evening_1620.txt"
   }
  ]
 }

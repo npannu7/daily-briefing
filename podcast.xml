@@ -8,9 +8,40 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Sun, 25 Oct 2026 03:45:52 GMT</lastBuildDate>
+<lastBuildDate>Sun, 25 Oct 2026 11:42:23 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Sunday - 25 Oct: GLP-1 Drugs Beyond Weight Loss</title>
+<description>Sunday edition - Sunday, 25 October 2026
+Sunday edition: GLP-1 Drugs Beyond Weight Loss - plus the week's best threads that got away
+
+00:41  What happened next
+   ClaudeAI, ClaudeCode: https://www.reddit.com/r/ClaudeAI/comments/1xcdwdx/i_got_tired_of_checking_whether_claude_code_needs/
+   ClaudeCode: https://www.reddit.com/r/ClaudeCode/comments/1xaanlz/my_company_fired_two_highly_paid_engineers_and/
+   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1xd5ruf/anthropic_appears_to_sneak_in_a_legal_loophole_in/
+   ClaudeCode: https://www.reddit.com/r/ClaudeCode/comments/1xdfxg6/claude_refuses_anything_to_do_with_reverse/
+   singularity: https://www.reddit.com/r/singularity/comments/1xe5i3d/altman_i_dont_even_know_a_dramatic_enough_word_to/
+07:56  GLP-1 Drugs Beyond Weight Loss: The week's story
+13:55  GLP-1 Drugs Beyond Weight Loss: How it actually works
+21:30  GLP-1 Drugs Beyond Weight Loss: Reality check
+30:03  New Medicaid Rules Threaten Millions
+   science: https://www.reddit.com/r/science/comments/1xcdl33/starting_in_2027_lowincome_americans_on_medicaid/
+   Source: https://www.eurekalert.org/news-releases/1148526
+34:15  Why You Can't Sue Your Health Plan
+   medicine: https://www.reddit.com/r/medicine/comments/1xe0a1m/til_patients_cannot_sue_their_employerprovided/
+38:27  Why Your Health Insurance Is Useless
+   science: https://www.reddit.com/r/science/comments/1x88k11/having_health_insurance_in_america_doesnt_mean/
+   Source: https://news.osu.edu/having-insurance-doesnt-mean-you-can-get-a-mental-health-appointment/
+
+Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
+Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (181 threads)</description>
+<pubDate>Sun, 25 Oct 2026 16:23:09 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-10-25_evening_1623.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-25_evening_1623.mp3" length="20313068" type="audio/mpeg"/>
+<itunes:duration>2539</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Sunday - 25 Oct: Open-Weight Models</title>
 <description>Sunday edition - Sunday, 25 October 2026
@@ -276,46 +307,6 @@ Written by: Gemini 3.8 Flash · Voices: Fish Audio (free) · Discussions: Reddit
 <guid isPermaLink="false">ai_2026-10-19_morning_0828.mp3</guid>
 <enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-19_morning_0828.mp3" length="7874156" type="audio/mpeg"/>
 <itunes:duration>984</itunes:duration>
-<itunes:episodeType>full</itunes:episodeType>
-</item>
-<item>
-<title>Sunday - 18 Oct: AI Safety and Alignment</title>
-<description>Sunday edition - Sunday, 18 October 2026
-Sunday edition: AI Safety and Alignment - plus the week's best threads that got away
-
-00:42  What happened next
-   codex: https://www.reddit.com/r/codex/comments/1x7fyi0/claude_pro_gives_10x_more_usage_than_gpt_plus_now/
-   technology: https://www.reddit.com/r/technology/comments/1x7sv1u/ai_bubble_could_burst_and_take_global_economy/
-   Source: https://www.theregister.com/ai-and-ml/2026/10/13/ai-bubble-could-burst-and-take-global-economy-with-it-imf-warns/5302781
-   ClaudeCode: https://www.reddit.com/r/ClaudeCode/comments/1x5phqp/anthropic_went_from_2500_to_30000_merges_a_day/
-   ClaudeCode: https://www.reddit.com/r/ClaudeCode/comments/1x4tuqy/13_weeks_of_vibe_coding_my_mmorpg_with_claude/
-   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x6o31q/nvidianvidianemotron35bolt74ba9b24gb_hugging_face/
-   Source: https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB
-   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x52kco/liquidailfm2524ba2b/
-   Source: https://huggingface.co/LiquidAI/LFM2.5-24B-A2B
-07:29  AI Safety and Alignment: The week's story
-   science: https://www.reddit.com/r/science/comments/1x8dvpk/a_new_blind_spot_in_ai_research_uncovered/
-   Source: https://www.pnas.org/doi/10.1073/pnas.2610214123?utm_source=twitter&amp;utm_medium=social&amp;utm_term=pnasnews&amp;utm_content=59fb80e3-88cb-4d6f-8347-a80bb6660b7f&amp;utm_campaign=hootsuite
-13:06  AI Safety and Alignment: How it actually works
-   science: https://www.reddit.com/r/science/comments/1x8dvpk/a_new_blind_spot_in_ai_research_uncovered/
-   Source: https://www.pnas.org/doi/10.1073/pnas.2610214123?utm_source=twitter&amp;utm_medium=social&amp;utm_term=pnasnews&amp;utm_content=59fb80e3-88cb-4d6f-8347-a80bb6660b7f&amp;utm_campaign=hootsuite
-22:53  AI Safety and Alignment: Reality check
-   science: https://www.reddit.com/r/science/comments/1x8dvpk/a_new_blind_spot_in_ai_research_uncovered/
-   Source: https://www.pnas.org/doi/10.1073/pnas.2610214123?utm_source=twitter&amp;utm_medium=social&amp;utm_term=pnasnews&amp;utm_content=59fb80e3-88cb-4d6f-8347-a80bb6660b7f&amp;utm_campaign=hootsuite
-31:19  Dogs Understand Shapes And Names Too
-   science: https://www.reddit.com/r/science/comments/1x5tp43/dogs_seem_to_associate_bouba_with_round_shapes/
-   Source: https://www.sciencealert.com/dogs-seem-to-agree-with-humans-that-bouba-is-round-and-kiki-is-spiky
-35:42  Why Do Humans Have Two Nipples
-   askscience: https://www.reddit.com/r/askscience/comments/1x8cku7/do_we_have_any_mammalian_ancestors_with_more_than/
-39:44  Hospital Staff Share Wild Patient Stories
-   medicine: https://www.reddit.com/r/medicine/comments/1x7xm93/foreign_body_bros/
-
-Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
-Written by: Gemini 3.8 Flash · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (176 threads)</description>
-<pubDate>Sun, 18 Oct 2026 16:20:40 +0530</pubDate>
-<guid isPermaLink="false">ai_2026-10-18_evening_1620.mp3</guid>
-<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-18_evening_1620.mp3" length="21125420" type="audio/mpeg"/>
-<itunes:duration>2640</itunes:duration>
 <itunes:episodeType>full</itunes:episodeType>
 </item>
 </channel>
