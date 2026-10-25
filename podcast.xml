@@ -8,9 +8,43 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Sat, 24 Oct 2026 11:35:29 GMT</lastBuildDate>
+<lastBuildDate>Sun, 25 Oct 2026 03:45:52 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Sunday - 25 Oct: Open-Weight Models</title>
+<description>Sunday edition - Sunday, 25 October 2026
+Sunday edition: Open-Weight Models - plus the week's best threads that got away
+
+00:45  What happened next
+   ClaudeAI, ClaudeCode: https://www.reddit.com/r/ClaudeAI/comments/1xcdwdx/i_got_tired_of_checking_whether_claude_code_needs/
+   ClaudeCode: https://www.reddit.com/r/ClaudeCode/comments/1xaanlz/my_company_fired_two_highly_paid_engineers_and/
+   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1xd5ruf/anthropic_appears_to_sneak_in_a_legal_loophole_in/
+   ClaudeCode: https://www.reddit.com/r/ClaudeCode/comments/1xdfxg6/claude_refuses_anything_to_do_with_reverse/
+06:56  Open-Weight Models: The week's story
+   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1xecgrf/kimi_k31_removes_cyberattack_training_data_from/
+   Source: https://www.reuters.com/technology/moonshot-curbs-hacking-ability-new-kimi-model-fears-grow-over-ai-powered-2026-10-24/
+12:37  Open-Weight Models: How it actually works
+   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1xecgrf/kimi_k31_removes_cyberattack_training_data_from/
+   Source: https://www.reuters.com/technology/moonshot-curbs-hacking-ability-new-kimi-model-fears-grow-over-ai-powered-2026-10-24/
+21:20  Open-Weight Models: Reality check
+   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1xecgrf/kimi_k31_removes_cyberattack_training_data_from/
+   Source: https://www.reuters.com/technology/moonshot-curbs-hacking-ability-new-kimi-model-fears-grow-over-ai-powered-2026-10-24/
+29:17  The New Game Console Gets Hacked
+   codex: https://www.reddit.com/r/codex/comments/1xcg2b2/the_nintendo_switch_2_has_been_jailbroken_using/
+33:04  Making a Music Video Using Artificial Intelligence
+   ClaudeCode: https://www.reddit.com/r/ClaudeCode/comments/1xdnlm3/opus_55_animated_this_music_video_frame_by_frame/
+36:35  Growing a Brain to Control a Robot
+   singularity: https://www.reddit.com/r/singularity/comments/1xd8qwb/scientists_grew_a_human_minibrain_and_used_it_to/
+
+Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
+Written by: Gemini 3.8 Flash · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (169 threads)</description>
+<pubDate>Sun, 25 Oct 2026 08:28:41 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-10-25_morning_0828.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-25_morning_0828.mp3" length="19226924" type="audio/mpeg"/>
+<itunes:duration>2403</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Evening - 24 Oct: When Finding Flaws Outpaces Fixing Them</title>
 <description>Evening edition - Saturday, 24 October 2026
@@ -282,51 +316,6 @@ Written by: Gemini 3.8 Flash · Voices: Fish Audio (free) · Discussions: Reddit
 <guid isPermaLink="false">ai_2026-10-18_evening_1620.mp3</guid>
 <enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-18_evening_1620.mp3" length="21125420" type="audio/mpeg"/>
 <itunes:duration>2640</itunes:duration>
-<itunes:episodeType>full</itunes:episodeType>
-</item>
-<item>
-<title>Sunday - 18 Oct: AI Coding Agents</title>
-<description>Sunday edition - Sunday, 18 October 2026
-Sunday edition: AI Coding Agents - plus the week's best threads that got away
-
-00:53  What happened next
-   codex: https://www.reddit.com/r/codex/comments/1x7fyi0/claude_pro_gives_10x_more_usage_than_gpt_plus_now/
-   technology: https://www.reddit.com/r/technology/comments/1x6v7tg/accenture_tells_employees_they_can_now_spend_only/
-   Source: https://www.404media.co/accenture-tells-employees-they-can-now-spend-only-29-on-claude-per-month/
-   ClaudeCode: https://www.reddit.com/r/ClaudeCode/comments/1x5phqp/anthropic_went_from_2500_to_30000_merges_a_day/
-   ClaudeCode: https://www.reddit.com/r/ClaudeCode/comments/1x4tuqy/13_weeks_of_vibe_coding_my_mmorpg_with_claude/
-   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x6o31q/nvidianvidianemotron35bolt74ba9b24gb_hugging_face/
-   Source: https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB
-   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x52kco/liquidailfm2524ba2b/
-   Source: https://huggingface.co/LiquidAI/LFM2.5-24B-A2B
-07:48  AI Coding Agents: The week's story
-   ClaudeCode: https://www.reddit.com/r/ClaudeCode/comments/1x8a8e5/linus_torvalds_shares_his_thoughts_on_antiai/
-   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x8e4wd/linux_creator_says_antiai_rules_are_idiotic/
-   ArtificialInteligence, singularity: https://www.reddit.com/r/ArtificialInteligence/comments/1x832z0/i_used_my_own_swarm_of_agents_to_look_for/
-   codex: https://www.reddit.com/r/codex/comments/1x7vvhy/codex_caching_improved/
-13:49  AI Coding Agents: How it actually works
-   ClaudeCode: https://www.reddit.com/r/ClaudeCode/comments/1x8a8e5/linus_torvalds_shares_his_thoughts_on_antiai/
-   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x8e4wd/linux_creator_says_antiai_rules_are_idiotic/
-   ArtificialInteligence, singularity: https://www.reddit.com/r/ArtificialInteligence/comments/1x832z0/i_used_my_own_swarm_of_agents_to_look_for/
-   codex: https://www.reddit.com/r/codex/comments/1x7vvhy/codex_caching_improved/
-23:40  AI Coding Agents: Reality check
-   ClaudeCode: https://www.reddit.com/r/ClaudeCode/comments/1x8a8e5/linus_torvalds_shares_his_thoughts_on_antiai/
-   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x8e4wd/linux_creator_says_antiai_rules_are_idiotic/
-   ArtificialInteligence, singularity: https://www.reddit.com/r/ArtificialInteligence/comments/1x832z0/i_used_my_own_swarm_of_agents_to_look_for/
-   codex: https://www.reddit.com/r/codex/comments/1x7vvhy/codex_caching_improved/
-29:45  Why the Endless Tech Hype Feels Exhausting
-   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x4u6vi/its_been_too_quiet_on_the_other_side_of_the/
-32:41  Meet the New Powerhouse Open AI Model
-   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1x6r9pz/introducing_muse_spark_open_the_most_capable_us/
-35:34  The 1960s Prediction That Got AI Right
-   ArtificialInteligence, singularity: https://www.reddit.com/r/ArtificialInteligence/comments/1x5h74v/this_post_was_written_in_1960s_btw_felt_like_he/
-
-Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
-Written by: Gemini 3.5 Flash-Lite · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (186 threads)</description>
-<pubDate>Sun, 18 Oct 2026 08:25:15 +0530</pubDate>
-<guid isPermaLink="false">ai_2026-10-18_morning_0825.mp3</guid>
-<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-18_morning_0825.mp3" length="18525740" type="audio/mpeg"/>
-<itunes:duration>2315</itunes:duration>
 <itunes:episodeType>full</itunes:episodeType>
 </item>
 </channel>

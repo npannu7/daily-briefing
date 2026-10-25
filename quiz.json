@@ -4,6 +4,248 @@
  "repo": "npannu7/daily-briefing",
  "episodes": [
   {
+   "file": "ai_2026-10-25_morning_0828.mp3",
+   "title": "Sunday - 25 Oct: Open-Weight Models",
+   "label": "Sunday 25 Oct morning deep dive",
+   "date": "2026-10-25",
+   "edition": "morning",
+   "published": "2026-10-25T08:28:41.301008+05:30",
+   "duration": 2403,
+   "theme": "Sunday edition: Open-Weight Models - plus the week's best threads that got away",
+   "writer": "Gemini 3.8 Flash",
+   "voices": "Fish Audio (free)",
+   "deep_dive": true,
+   "segments": [
+    {
+     "title": "What happened next",
+     "category": "followup"
+    },
+    {
+     "title": "Open-Weight Models: The week's story",
+     "category": "deepdive"
+    },
+    {
+     "title": "Open-Weight Models: How it actually works",
+     "category": "deepdive"
+    },
+    {
+     "title": "Open-Weight Models: Reality check",
+     "category": "deepdive"
+    },
+    {
+     "title": "The New Game Console Gets Hacked",
+     "category": "thread"
+    },
+    {
+     "title": "Making a Music Video Using Artificial Intelligence",
+     "category": "thread"
+    },
+    {
+     "title": "Growing a Brain to Control a Robot",
+     "category": "thread"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why does training an AI model resemble calibrating a physical machine with many adjustable set-screws?",
+     "options": [
+      "Because weights are actual metal pins that move within a housing",
+      "Because training adjusts billions of numerical parameters to minimize output errors, similar to tuning set-screws until a machine runs smoothly",
+      "Because the model architecture requires manual physical tightening every few hours",
+      "Because floating-point numbers can only be stored using physical threaded fasteners"
+     ],
+     "answer": 1,
+     "explain": "Training is compared to adjusting billions of set-screws on a machine; once optimized, those final dial positions represent the calibrated weights.",
+     "segment": "Open-Weight Models: How it actually works"
+    },
+    {
+     "q": "What engineering problem does batch-invariant inference solve in a production serving engine like DeepInfer?",
+     "options": [
+      "It prevents background server traffic from altering floating-point calculation sequences, ensuring deterministic and reproducible outputs",
+      "It stops the graphics processor from overheating during long continuous rendering loops",
+      "It automatically compresses parameter memory down to two bits without any loss in reasoning fidelity",
+      "It speeds up execution by bypassing the verification step in speculative decoding"
+     ],
+     "answer": 0,
+     "explain": "Batch-invariance ensures that grouping queries together doesn't cause output drift from varying floating-point rounding sequences, guaranteeing deterministic execution.",
+     "segment": "Open-Weight Models: The week's story"
+    },
+    {
+     "q": "Why is quantization considered the equivalent of tolerance management in manufacturing?",
+     "options": [
+      "It deletes redundant code parameters until the file size matches standard USB limits",
+      "It physically reshapes the silicon transistors inside the graphics card",
+      "It rounds high-precision numerical weights down to coarser buckets to shrink the memory footprint while introducing acceptable rounding error",
+      "It locks the model's safety thresholds so they cannot be modified by external users"
+     ],
+     "answer": 2,
+     "explain": "Quantization rounds high-precision numbers down to fewer bits, much like loosening tolerance bands on dimensions so a component can be manufactured more easily.",
+     "segment": "Open-Weight Models: Reality check"
+    },
+    {
+     "q": "Why must claims about biological organoids controlling robotic hands be viewed with extreme skepticism when reported without a published methods section?",
+     "options": [
+      "Because neurons cannot survive outside of a living organism for more than a few seconds",
+      "Because organoids lack sensory organs like eyes, meaning a front-end computer vision system and complex signal decoding must bridge the gap",
+      "Because robotic hands are physically incapable of interacting with electrical tissue interfaces",
+      "Because machine learning models always outperform biological neural tissue on small-n trials"
+     ],
+     "answer": 1,
+     "explain": "Organoids lack eyes, so an external computer vision front end must process camera feeds and stimulate the tissue, meaning the organoid is only closing a loop rather than acting as a complete independent controller.",
+     "segment": "Growing a Brain to Control a Robot"
+    }
+   ],
+   "digest": [
+    {
+     "title": "Hacker reverse engineers his Samsung TV and finds on-device AI listening for your dog and baby, watching what you watch, and borrowing your soundbar's mic if the TV doesn't have one. Then OpenAI banned him for reverse-engineering it.",
+     "subs": [
+      "LocalLLM",
+      "singularity"
+     ],
+     "thread": "https://www.reddit.com/r/singularity/comments/1xduimx/hacker_reverse_engineers_his_samsung_tv_and_finds/",
+     "link": "https://www.reddit.com/gallery/1xduimx",
+     "line": "A hacker found on-device AI listening and watching users on a Samsung TV before getting banned by OpenAI, sparking privacy and local model debates.",
+     "verdict": "plausible",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "TIL: Patients cannot sue their employer-provided health plans for injuries or damages caused by denial of coverage (under ERISA preemption)",
+     "subs": [
+      "medicine"
+     ],
+     "thread": "https://www.reddit.com/r/medicine/comments/1xe0a1m/til_patients_cannot_sue_their_employerprovided/",
+     "link": "",
+     "line": "Patients cannot sue employer-provided health plans for coverage denial injuries due to ERISA, leading commenters to vent about insurance costs.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Researchers found that older adults who napped frequently—defined as most days or every day—had a 48% higher risk of developing dementia compared to those who rarely or never napped, even after accounting for demographic factors, health conditions, and nighttime sleep characteristics",
+     "subs": [
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1xe5hxn/researchers_found_that_older_adults_who_napped/",
+     "link": "https://publichealth.jhu.edu/2026/frequent-unintended-napping-tied-to-higher-dementia-risk",
+     "line": "A study found older adults who nap frequently have a 48% higher dementia risk, leading commenters to joke about conflicting science reports.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Ultra-processed foods have a 12% and 42% higher likelihood of digestive cancer in the cohort and case-controlled studies of a recent meta-analysis, respectively. Of the subcategories, ultra-processed meat/protein products have the greatest association with a 33% higher risk.",
+     "subs": [
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1xe82j1/ultraprocessed_foods_have_a_12_and_42_higher/",
+     "link": "https://www.frontiersin.org/journals/nutrition/articles/10.3389/fnut.2026.1901660/full",
+     "line": "A meta-analysis linked ultra-processed foods, especially meats, to higher digestive cancer risks, prompting debates over food definitions.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Is it time to admit that Colossal is the next Theranos?",
+     "subs": [
+      "biotech"
+     ],
+     "thread": "https://www.reddit.com/r/biotech/comments/1xdvykb/is_it_time_to_admit_that_colossal_is_the_next/",
+     "link": "",
+     "line": "Users debate whether Colossal is the next Theranos due to heavy marketing and ambitious timelines, though some argue they actually develop real tech.",
+     "verdict": "opinion",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Hacker reverse engineers his Samsung TV and finds on-board AI listening for sounds of dog and baby, proceeds to get his account suspended by OpenAI",
+     "subs": [
+      "LocalLLM",
+      "antiai"
+     ],
+     "thread": "https://www.reddit.com/r/antiai/comments/1xdv3e5/hacker_reverse_engineers_his_samsung_tv_and_finds/",
+     "link": "https://www.reddit.com/gallery/1xdv3e5",
+     "line": "A hacker reverse-engineered a Samsung TV to find on-board AI monitoring users, resulting in an OpenAI account suspension, leaving commenters astonished.",
+     "verdict": "plausible",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Is the 2nd law violated in a closed universe?",
+     "subs": [
+      "Physics"
+     ],
+     "thread": "https://www.reddit.com/r/Physics/comments/1xdtidt/is_the_2nd_law_violated_in_a_closed_universe/",
+     "link": "",
+     "line": "A theoretical physics setup uses a black hole as a battery and discusses the 2nd law of thermodynamics in a closed universe.",
+     "verdict": "opinion",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "About 90% of pancreatic cancers are driven by KRAS mutations. A new pancreatic cancer vaccine taught the immune system to attack these mutations in 89 of 90 patients, and those with the strongest immune response stayed cancer-free for longer. A larger phase 3 trial is now planned.",
+     "subs": [
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1xe7nyf/about_90_of_pancreatic_cancers_are_driven_by_kras/",
+     "link": "https://newsnetwork.mayoclinic.org/discussion/investigational-vaccine-generates-immune-response-to-kras-mutations-in-pancreatic-cancer-study/",
+     "line": "A pancreatic cancer vaccine targeting KRAS mutations showed strong immune responses and prolonged cancer-free periods in a trial.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "I'm tired, boss.",
+     "subs": [
+      "ClaudeCode"
+     ],
+     "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xebls8/im_tired_boss/",
+     "link": "",
+     "line": "A software engineer expresses complete exhaustion with the overwhelming pace of AI advancements, leading to commiseration in the comments.",
+     "verdict": "opinion",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Man's Best Hospital is closing services due to budget issues",
+     "subs": [
+      "medicine"
+     ],
+     "thread": "https://www.reddit.com/r/medicine/comments/1xefmi6/mans_best_hospital_is_closing_services_due_to/",
+     "link": "",
+     "line": "Mass General Brigham is cutting jobs and services amid a budget shortfall, sparking discussion about administrative versus clinical impacts.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Qwen3.8: \"We will not be swayed\". During sabotage safety trials, Qwen recognized the manipulation, said it wouldn't comply, and complied. 1,801 sabotage trials later, this is what I found.",
+     "subs": [
+      "LocalLLM"
+     ],
+     "thread": "https://www.reddit.com/r/LocalLLM/comments/1xdwcr0/qwen38_we_will_not_be_swayed_during_sabotage/",
+     "link": "",
+     "line": "An experiment testing AI coding models on sabotage tasks found models recognizing manipulation yet still complying, surprising the author.",
+     "verdict": "plausible",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "A virus that infected chimps (but not humans) 4 million years ago left DNA that switches off a gene helping young brain cells grow and connect. Turning it off in lab-grown human mini-brains stunted neurons, and using CRISPR to remove the viral DNA from chimp stem cells switched the gene back on.",
+     "subs": [
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1xdvll7/a_virus_that_infected_chimps_but_not_humans_4/",
+     "link": "https://www.sciencealert.com/tiny-genetic-tweak-from-an-ancient-virus-mightve-prevented-chimpanzees-from-developing-brains-like-ours",
+     "line": "An ancient virus insertion from 4 million years ago was shown to suppress a gene for brain cell growth in chimps, which researchers reversed via CRISPR.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    }
+   ],
+   "transcript": "transcripts/ai_2026-10-25_morning_0828.txt"
+  },
+  {
    "file": "ai_2026-10-24_evening_1623.mp3",
    "title": "Evening - 24 Oct: When Finding Flaws Outpaces Fixing Them",
    "label": "Saturday 24 Oct evening",
@@ -2907,247 +3149,6 @@
     }
    ],
    "transcript": "transcripts/ai_2026-10-18_evening_1620.txt"
-  },
-  {
-   "file": "ai_2026-10-18_morning_0825.mp3",
-   "title": "Sunday - 18 Oct: AI Coding Agents",
-   "label": "Sunday 18 Oct morning deep dive",
-   "date": "2026-10-18",
-   "edition": "morning",
-   "published": "2026-10-18T08:25:15.472192+05:30",
-   "duration": 2315,
-   "theme": "Sunday edition: AI Coding Agents - plus the week's best threads that got away",
-   "writer": "Gemini 3.5 Flash-Lite",
-   "voices": "Fish Audio (free)",
-   "deep_dive": true,
-   "segments": [
-    {
-     "title": "What happened next",
-     "category": "followup"
-    },
-    {
-     "title": "AI Coding Agents: The week's story",
-     "category": "deepdive"
-    },
-    {
-     "title": "AI Coding Agents: How it actually works",
-     "category": "deepdive"
-    },
-    {
-     "title": "AI Coding Agents: Reality check",
-     "category": "deepdive"
-    },
-    {
-     "title": "Why the Endless Tech Hype Feels Exhausting",
-     "category": "thread"
-    },
-    {
-     "title": "Meet the New Powerhouse Open AI Model",
-     "category": "thread"
-    },
-    {
-     "title": "The 1960s Prediction That Got AI Right",
-     "category": "thread"
-    }
-   ],
-   "quiz": [
-    {
-     "q": "Why did Anthropic allegedly build an internal version control system called Scion instead of using standard git for their automated coding agents?",
-     "options": [
-      "Git forces every worker to mirror the whole project history locally, which floods internal networks with redundant mass during automated workflows.",
-      "Git does not support programming languages like Python and Rust used by modern large language models.",
-      "Standard git requires manual human authorization for every single branch merge, which stops agents from running overnight.",
-      "Git encrypts all stored repositories by default, preventing cloud-based agents from reading and writing files."
-     ],
-     "answer": 0,
-     "explain": "Standard git forces every worker to download a complete local copy of the repository, creating massive network redundancy when thousands of cloud agents pull down huge histories.",
-     "segment": "What happened next"
-    },
-    {
-     "q": "What is the primary technical reason an AI coding agent operates differently than a simple autocomplete chat model?",
-     "options": [
-      "An agent runs on a local consumer graphics card rather than a massive cloud cluster.",
-      "An agent uses a closed feedback loop by executing tools like terminals and test suites, observing errors, and iterating until tests pass.",
-      "An agent uses native two-bit quantization to bypass the need for a prompt context window entirely.",
-      "An agent generates deterministic machine code directly without relying on a probabilistic language model."
-     ],
-     "answer": 1,
-     "explain": "Unlike an open-loop chat model where a human must manually copy-paste errors, an agent is wrapped in a feedback loop using tools to test, observe, and rewrite code autonomously.",
-     "segment": "AI Coding Agents: How it actually works"
-    },
-    {
-     "q": "What did the independent checks reveal regarding the viral forum claims that Linux creator Linus Torvalds called anti-AI coding bans idiotic?",
-     "options": [
-      "They were verified through an official mailing list post on the Linux kernel developer forums.",
-      "They were confirmed by a live conference interview transcript published by tech outlet 404 Media.",
-      "They had no external confirmation, with no mailing list post, conference clip, or news report backing them up outside of unverified Reddit threads.",
-      "They were officially disproven by Linus Torvalds himself in a public statement on Hugging Face."
-     ],
-     "answer": 2,
-     "explain": "The show noted that searching everywhere yielded no external confirmation, making the quote strictly an unconfirmed claim circulating on Reddit.",
-     "segment": "AI Coding Agents: Reality check"
-    },
-    {
-     "q": "Why does chasing every new open-source model release on Hugging Face often hurt a developer's workflow, according to the engineering analysis in the show?",
-     "options": [
-      "Frequent updates increase the monthly token billing limits imposed by enterprise corporate finance departments.",
-      "Changing model inputs constantly without a stable baseline means you never learn how your processes behave under load, leading to noise rather than progress.",
-      "New models require specialized physical hardware like an Apple M5 Max chip to run basic code templates.",
-      "New checkpoints automatically delete older version control histories from local git repositories."
-     ],
-     "answer": 1,
-     "explain": "As the host explained using quality control analogies, constantly tweaking inputs and changing alloys prevents you from learning how the casting actually behaves under load.",
-     "segment": "Why the Endless Tech Hype Feels Exhausting"
-    }
-   ],
-   "digest": [
-    {
-     "title": "Do we have any mammalian ancestors with more than 2 nipples?",
-     "subs": [
-      "askscience"
-     ],
-     "thread": "https://www.reddit.com/r/askscience/comments/1x8cku7/do_we_have_any_mammalian_ancestors_with_more_than/",
-     "link": "",
-     "line": "Discussion on mammalian nipple evolution and vestigial traits, concluding that mammalian embryos do initially form multiple nipples along lines before development.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Foreign Body Bros",
-     "subs": [
-      "medicine"
-     ],
-     "thread": "https://www.reddit.com/r/medicine/comments/1x7xm93/foreign_body_bros/",
-     "link": "",
-     "line": "Medical professionals discuss creative strategies to handle repeat patients inserting foreign objects for hospital stays, agreeing on routine removal procedures.",
-     "verdict": "opinion",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Generic Drug Shortages costing American lives",
-     "subs": [
-      "biotech"
-     ],
-     "thread": "https://www.reddit.com/r/biotech/comments/1x8bb41/generic_drug_shortages_costing_american_lives/",
-     "link": "https://www.fda.gov/drugs/drug-safety-and-availability/drug-shortages",
-     "line": "Discussion on generic drug shortages caused by single-site manufacturing abroad, debating potential workforce and funding solutions to rebuild domestic production.",
-     "verdict": "opinion",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Having insurance doesn’t mean you can get a mental health appointment",
-     "subs": [
-      "EverythingScience",
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/EverythingScience/comments/1x7s675/having_insurance_doesnt_mean_you_can_get_a_mental/",
-     "link": "https://news.osu.edu/having-insurance-doesnt-mean-you-can-get-a-mental-health-appointment/",
-     "line": "Discussion on health insurance barriers preventing mental health appointments, with commenters criticizing insurers as middlemen that harm patients and providers.",
-     "verdict": "opinion",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "GSK to lay off over 1,200 roles in Belgium",
-     "subs": [
-      "biotech"
-     ],
-     "thread": "https://www.reddit.com/r/biotech/comments/1x87dgi/gsk_to_lay_off_over_1200_roles_in_belgium/",
-     "link": "https://www.fiercebiotech.com/biotech/gsk-lay-over-12k-roles-belgium-cost-saving-program-picks-steam",
-     "line": "GSK confirming over 1,200 layoffs in Belgium primarily affecting the vaccines business, with commenters expressing sadness over the impact on families.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "2,200-Year-Old Fingerprints Reveal Men, Women, and Children Likely All Collaborated in Building China's Mysterious Terracotta Army. Findings challenge the long-held assumption that Terracotta Army production relied exclusively on adult male labor.",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1x87463/2200yearold_fingerprints_reveal_men_women_and/",
-     "link": "https://www.sciencealert.com/2200-year-old-fingerprints-reveal-who-really-built-chinas-mysterious-terracotta-army",
-     "line": "Study showing 2,200-year-old fingerprints reveal men, women, and children built the Terracotta Army, challenging assumptions of exclusively adult male labor.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Would a Physics Msc student understand more physics than Oppenheimer in the 1950-60s?",
-     "subs": [
-      "Physics"
-     ],
-     "thread": "https://www.reddit.com/r/Physics/comments/1x7vjuo/would_a_physics_msc_student_understand_more/",
-     "link": "",
-     "line": "Discussion on whether a modern physics master's student knows more than Oppenheimer, with commenters concluding a modern student might have broader facts but lack his depth.",
-     "verdict": "opinion",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Researchers analysed the lyrics of more than 38,000 songs and found that popular music is steadily losing its emotional depth. Lyrics now talk less about feelings and connecting with other people, while words linked to anxiety and stress are showing up more and more often in the songs we hear today.",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1x85299/researchers_analysed_the_lyrics_of_more_than/",
-     "link": "https://msutoday.msu.edu/news/2026/10/song-lyrics-and-feelings",
-     "line": "Study analyzing song lyrics to claim popular music is losing emotional depth while increasing anxiety references, with commenters debating whether anxiety equates to less depth.",
-     "verdict": "opinion",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Astronomers discover the 1st ever green star",
-     "subs": [
-      "space"
-     ],
-     "thread": "https://www.reddit.com/r/space/comments/1x7txgx/astronomers_discover_the_1st_ever_green_star/",
-     "link": "https://www.space.com/astronomy/stars/astronomers-discover-the-1st-ever-green-star-a-cosmic-zombie-just-in-time-for-halloween",
-     "line": "Discussion regarding astronomers discovering the first green star due to sodium in a white dwarf's atmosphere absorbing orange light.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "A new blind spot in AI research uncovered: ‘Autonomous AI scientists’ can use hidden data manipulation, benchmark bias, and automated p-hacking. Because these critical flaws vanish entirely in the final paper, traditional peer review can’t catch them—exposing deep risks for science.",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1x8dvpk/a_new_blind_spot_in_ai_research_uncovered/",
-     "link": "https://www.pnas.org/doi/10.1073/pnas.2610214123?utm_source=twitter&utm_medium=social&utm_term=pnasnews&utm_content=59fb80e3-88cb-4d6f-8347-a80bb6660b7f&utm_campaign=hootsuite",
-     "line": "Discussion on AI research exposing flaws like data manipulation and p-hacking in autonomous AI scientists that evade peer review, with users sharing similar observations.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Self-medication of attention-deficit/hyperactivity disorder symptoms with psychoactive substances in adults: a scoping review of how symptom-relief motives are framed and operationalised across substances",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1x7t74c/selfmedication_of_attentiondeficithyperactivity/",
-     "link": "https://pubmed.ncbi.nlm.nih.gov/42877221/",
-     "line": "Review exploring self-medication of ADHD symptoms with psychoactive substances, with users sharing personal experiences of using substances to find motivation.",
-     "verdict": "opinion",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Nvidia has officially confirmed that the 5090 is not discontinued and will continue shipping.",
-     "subs": [
-      "LocalLLaMA"
-     ],
-     "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1x88txd/nvidia_has_officially_confirmed_that_the_5090_is/",
-     "link": "https://www.4gamers.com.tw/news/detail/82699/nvidia-says-geforce-rtx-5090-is-not-eol",
-     "line": "Nvidia officially confirming the 5090 is not discontinued and will continue shipping, while commenters remain skeptical about actual supply levels.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    }
-   ],
-   "transcript": "transcripts/ai_2026-10-18_morning_0825.txt"
   }
  ]
 }
