@@ -8,9 +8,28 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Mon, 26 Oct 2026 03:36:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 26 Oct 2026 11:36:32 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Evening - 26 Oct: A new open model beats a benchmark leader, and what distillation really means</title>
+<description>Evening edition - Monday, 26 October 2026
+Benchmark claims for a new open model and the nuclear physics behind the universe's element pattern
+
+00:46  A new open model beats a benchmark leader, and what distillation really means
+   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1xf0kz4/nanbeigenanbeige4333b_hugging_face/
+   Source: https://huggingface.co/Nanbeige/Nanbeige4.3-33B
+08:29  Why the universe has more even-numbered elements than odd ones
+   Physics: https://www.reddit.com/r/Physics/comments/1xf13wn/whats_the_reason_behind_this_zigzag_distribution/
+
+Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
+Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (166 threads)</description>
+<pubDate>Mon, 26 Oct 2026 16:34:51 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-10-26_evening_1634.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-26_evening_1634.mp3" length="8360684" type="audio/mpeg"/>
+<itunes:duration>1045</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Morning - 26 Oct: When Coding Agents Reverse Engineer Smart TV Firmware</title>
 <description>Morning edition - Monday, 26 October 2026
@@ -292,25 +311,6 @@ Written by: Gemini 3.8 Flash · Voices: Fish Audio (free) · Discussions: Reddit
 <guid isPermaLink="false">ai_2026-10-20_morning_0829.mp3</guid>
 <enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-20_morning_0829.mp3" length="8720876" type="audio/mpeg"/>
 <itunes:duration>1090</itunes:duration>
-<itunes:episodeType>full</itunes:episodeType>
-</item>
-<item>
-<title>Evening - 19 Oct: Reconstructing Classic Games from Machine Code</title>
-<description>Evening edition - Monday, 19 October 2026
-Reverse-engineering legacy software through automated disassembly translation, and tracking the clinical decay curve of single-dose psychiatric therapies.
-
-00:30  Reconstructing Classic Games from Machine Code
-   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1x91lor/rebuilt_a_2000_rts_from_scratch_with_claude_code/
-08:36  The One-Year Limit on Psychedelic Therapy
-   EverythingScience, science: https://www.reddit.com/r/science/comments/1x9ek4k/a_single_dose_of_psilocybin_eased_depression/
-   Source: https://www.psypost.org/a-single-dose-of-psilocybin-eased-depression-within-days-but-its-edge-over-placebo-faded-within-a-year/
-
-Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
-Written by: Gemini 3.8 Flash · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (162 threads)</description>
-<pubDate>Mon, 19 Oct 2026 16:28:21 +0530</pubDate>
-<guid isPermaLink="false">ai_2026-10-19_evening_1628.mp3</guid>
-<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-19_evening_1628.mp3" length="7840556" type="audio/mpeg"/>
-<itunes:duration>979</itunes:duration>
 <itunes:episodeType>full</itunes:episodeType>
 </item>
 </channel>

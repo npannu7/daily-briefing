@@ -1,17 +1,6 @@
 {
   "episodes": [
     {
-      "file": "ai_2026-10-19_evening_1628.mp3",
-      "date": "2026-10-19",
-      "edition": "evening",
-      "title": "Evening - 19 Oct: Reconstructing Classic Games from Machine Code",
-      "published": "2026-10-19T16:28:21.312259+05:30",
-      "pubDate": "Mon, 19 Oct 2026 16:28:21 +0530",
-      "size": 7840556,
-      "duration": 979,
-      "description": "Evening edition - Monday, 19 October 2026\nReverse-engineering legacy software through automated disassembly translation, and tracking the clinical decay curve of single-dose psychiatric therapies.\n\n00:30  Reconstructing Classic Games from Machine Code\n   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1x91lor/rebuilt_a_2000_rts_from_scratch_with_claude_code/\n08:36  The One-Year Limit on Psychedelic Therapy\n   EverythingScience, science: https://www.reddit.com/r/science/comments/1x9ek4k/a_single_dose_of_psilocybin_eased_depression/\n   Source: https://www.psypost.org/a-single-dose-of-psilocybin-eased-depression-within-days-but-its-edge-over-placebo-faded-within-a-year/\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nWritten by: Gemini 3.8 Flash · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (162 threads)"
-    },
-    {
       "file": "ai_2026-10-20_morning_0829.mp3",
       "date": "2026-10-20",
       "edition": "morning",
@@ -153,6 +142,17 @@
       "size": 8336876,
       "duration": 1042,
       "description": "Morning edition - Monday, 26 October 2026\nFrom firmware reverse-engineering guardrails on consumer hardware to reproducing Roman nanotechnology in glass, this morning examines the boundary between automated tools, materials physics, and process control.\n\n00:47  When Coding Agents Reverse Engineer Smart TV Firmware\n   singularity: https://www.reddit.com/r/singularity/comments/1xfh36p/developer_uses_claude_to_overhaul_his_parents_tv/\n   Source: https://www.reddit.com/gallery/1xfh36p\n   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1xer30z/openai_and_anthropic_blocked_the_reverse/\n   Source: https://x.com/yacineMTB/status/2113965724435697732\n   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1xetxga/seems_like_anthropic_enabled_safeguards_around/\n09:11  How Ancient Roman Glass Changes Color\n   EverythingScience: https://www.reddit.com/r/EverythingScience/comments/1xez4vh/its_magic_scientists_rediscover_how_to_make/\n   Source: https://www.theguardian.com/science/2026/oct/25/scientists-rediscover-ancient-roman-colour-changing-glass\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nWritten by: Gemini 3.8 Flash · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (178 threads)"
+    },
+    {
+      "file": "ai_2026-10-26_evening_1634.mp3",
+      "date": "2026-10-26",
+      "edition": "evening",
+      "title": "Evening - 26 Oct: A new open model beats a benchmark leader, and what distillation really means",
+      "published": "2026-10-26T16:34:51.514166+05:30",
+      "pubDate": "Mon, 26 Oct 2026 16:34:51 +0530",
+      "size": 8360684,
+      "duration": 1045,
+      "description": "Evening edition - Monday, 26 October 2026\nBenchmark claims for a new open model and the nuclear physics behind the universe's element pattern\n\n00:46  A new open model beats a benchmark leader, and what distillation really means\n   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1xf0kz4/nanbeigenanbeige4333b_hugging_face/\n   Source: https://huggingface.co/Nanbeige/Nanbeige4.3-33B\n08:29  Why the universe has more even-numbered elements than odd ones\n   Physics: https://www.reddit.com/r/Physics/comments/1xf13wn/whats_the_reason_behind_this_zigzag_distribution/\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nWritten by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (166 threads)"
     }
   ],
   "memory": [
@@ -1083,6 +1083,29 @@
       "deep_topic": "",
       "topics": [
         "ai-coding-agents"
+      ]
+    },
+    {
+      "label": "Monday 26 Oct evening",
+      "date": "2026-10-26",
+      "edition": "evening",
+      "published": "2026-10-26T16:34:51.514166+05:30",
+      "file": "ai_2026-10-26_evening_1634.mp3",
+      "writer": "nemotron-3-ultra-550b-a55b (free)",
+      "voices": "Fish Audio (free)",
+      "summary": "The episode examines a benchmark claim that Nanbeige 4.3 33B outperforms Qwen 3.8 27B, treating the result as a test specification to explain what benchmarks measure, where they fall short, and why distillation — compressing a large model into a smaller one — matters for local deployment on constrained hardware. The second segment explains the sawtooth abundance pattern of even versus odd atomic numbers as a direct consequence of nuclear binding energy and nucleon pairing, tracing the mechanism from stellar fusion pathways to supernova ejecta and drawing an analogy to balanced lattice stability in materials science.",
+      "threads": [
+        "Independent benchmark replication of Nanbeige 4.3 33B versus Qwen 3.8 27B across diverse evaluation suites",
+        "Distillation pipeline quality thresholds for 3B student models targeting consumer hardware",
+        "Nucleosynthesis yield predictions from next-generation supernova simulations incorporating three-body forces"
+      ],
+      "segments": [
+        "A new open model beats a benchmark leader, and what distillation really means",
+        "Why the universe has more even-numbered elements than odd ones"
+      ],
+      "deep_topic": "",
+      "topics": [
+        "open-weight-models"
       ]
     }
   ],
@@ -2370,6 +2393,18 @@
     {
       "date": "2026-10-26",
       "link": "https://www.theguardian.com/science/2026/oct/25/scientists-rediscover-ancient-roman-colour-changing-glass"
+    },
+    {
+      "date": "2026-10-26",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1xf0kz4/nanbeigenanbeige4333b_hugging_face/"
+    },
+    {
+      "date": "2026-10-26",
+      "link": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B"
+    },
+    {
+      "date": "2026-10-26",
+      "link": "https://www.reddit.com/r/Physics/comments/1xf13wn/whats_the_reason_behind_this_zigzag_distribution/"
     }
   ],
   "feedback": [
@@ -3371,7 +3406,220 @@
     "2026-10-26T03:35:26.709767+00:00",
     "2026-10-26T03:35:33.975981+00:00",
     "2026-10-26T03:35:40.138466+00:00",
-    "2026-10-26T03:35:44.397527+00:00"
+    "2026-10-26T03:35:44.397527+00:00",
+    "2026-10-26T11:04:51.988409+00:00",
+    "2026-10-26T11:04:55.127800+00:00",
+    "2026-10-26T11:04:58.341178+00:00",
+    "2026-10-26T11:05:01.525119+00:00",
+    "2026-10-26T11:05:07.123728+00:00",
+    "2026-10-26T11:05:08.019466+00:00",
+    "2026-10-26T11:05:11.222664+00:00",
+    "2026-10-26T11:05:14.424807+00:00",
+    "2026-10-26T11:05:17.655285+00:00",
+    "2026-10-26T11:05:28.234751+00:00",
+    "2026-10-26T11:05:31.404405+00:00",
+    "2026-10-26T11:05:34.624952+00:00",
+    "2026-10-26T11:05:39.924693+00:00",
+    "2026-10-26T11:05:41.014234+00:00",
+    "2026-10-26T11:05:44.220972+00:00",
+    "2026-10-26T11:05:47.403370+00:00",
+    "2026-10-26T11:05:50.615444+00:00",
+    "2026-10-26T11:05:54.295670+00:00",
+    "2026-10-26T11:05:57.019703+00:00",
+    "2026-10-26T11:06:01.210034+00:00",
+    "2026-10-26T11:06:04.411972+00:00",
+    "2026-10-26T11:06:07.619365+00:00",
+    "2026-10-26T11:06:11.017201+00:00",
+    "2026-10-26T11:06:14.003803+00:00",
+    "2026-10-26T11:06:17.246943+00:00",
+    "2026-10-26T11:06:20.411660+00:00",
+    "2026-10-26T11:06:23.615096+00:00",
+    "2026-10-26T11:06:27.206169+00:00",
+    "2026-10-26T11:06:30.013632+00:00",
+    "2026-10-26T11:06:35.252129+00:00",
+    "2026-10-26T11:06:36.427129+00:00",
+    "2026-10-26T11:06:39.638768+00:00",
+    "2026-10-26T11:06:42.819447+00:00",
+    "2026-10-26T11:06:46.020040+00:00",
+    "2026-10-26T11:06:49.203928+00:00",
+    "2026-10-26T11:06:52.428132+00:00",
+    "2026-10-26T11:06:55.615153+00:00",
+    "2026-10-26T11:06:58.801743+00:00",
+    "2026-10-26T11:07:02.013518+00:00",
+    "2026-10-26T11:07:05.208523+00:00",
+    "2026-10-26T11:07:08.419154+00:00",
+    "2026-10-26T11:07:11.637133+00:00",
+    "2026-10-26T11:07:14.836975+00:00",
+    "2026-10-26T11:07:18.017623+00:00",
+    "2026-10-26T11:07:21.231394+00:00",
+    "2026-10-26T11:07:24.399626+00:00",
+    "2026-10-26T11:07:27.624954+00:00",
+    "2026-10-26T11:07:30.829671+00:00",
+    "2026-10-26T11:07:34.007353+00:00",
+    "2026-10-26T11:07:37.232573+00:00",
+    "2026-10-26T11:07:40.428336+00:00",
+    "2026-10-26T11:07:43.598756+00:00",
+    "2026-10-26T11:07:46.859261+00:00",
+    "2026-10-26T11:07:50.013950+00:00",
+    "2026-10-26T11:07:53.227847+00:00",
+    "2026-10-26T11:07:56.444517+00:00",
+    "2026-10-26T11:07:59.598900+00:00",
+    "2026-10-26T11:08:04.801649+00:00",
+    "2026-10-26T11:08:07.983758+00:00",
+    "2026-10-26T11:08:09.252459+00:00",
+    "2026-10-26T11:08:12.412766+00:00",
+    "2026-10-26T11:08:15.613254+00:00",
+    "2026-10-26T11:08:18.821042+00:00",
+    "2026-10-26T11:08:22.008643+00:00",
+    "2026-10-26T11:08:25.224572+00:00",
+    "2026-10-26T11:08:28.418495+00:00",
+    "2026-10-26T11:08:32.600745+00:00",
+    "2026-10-26T11:08:35.814372+00:00",
+    "2026-10-26T11:08:39.003152+00:00",
+    "2026-10-26T11:08:42.218785+00:00",
+    "2026-10-26T11:08:45.384756+00:00",
+    "2026-10-26T11:08:48.592326+00:00",
+    "2026-10-26T11:08:51.804879+00:00",
+    "2026-10-26T11:08:55.005808+00:00",
+    "2026-10-26T11:08:58.209813+00:00",
+    "2026-10-26T11:09:03.461051+00:00",
+    "2026-10-26T11:09:06.220342+00:00",
+    "2026-10-26T11:09:07.816081+00:00",
+    "2026-10-26T11:09:11.015772+00:00",
+    "2026-10-26T11:09:14.220852+00:00",
+    "2026-10-26T11:09:17.411132+00:00",
+    "2026-10-26T11:09:20.599984+00:00",
+    "2026-10-26T11:09:23.814787+00:00",
+    "2026-10-26T11:09:28.000250+00:00",
+    "2026-10-26T11:09:31.219635+00:00",
+    "2026-10-26T11:09:34.404351+00:00",
+    "2026-10-26T11:09:37.609029+00:00",
+    "2026-10-26T11:09:40.834237+00:00",
+    "2026-10-26T11:09:44.003580+00:00",
+    "2026-10-26T11:09:47.214100+00:00",
+    "2026-10-26T11:09:50.452883+00:00",
+    "2026-10-26T11:09:53.611908+00:00",
+    "2026-10-26T11:09:56.804385+00:00",
+    "2026-10-26T11:10:00.004288+00:00",
+    "2026-10-26T11:10:03.259490+00:00",
+    "2026-10-26T11:10:06.423417+00:00",
+    "2026-10-26T11:10:09.624993+00:00",
+    "2026-10-26T11:10:12.825579+00:00",
+    "2026-10-26T11:10:16.014356+00:00",
+    "2026-10-26T11:10:19.210291+00:00",
+    "2026-10-26T11:10:24.541642+00:00",
+    "2026-10-26T11:10:25.610794+00:00",
+    "2026-10-26T11:10:28.809308+00:00",
+    "2026-10-26T11:10:32.056422+00:00",
+    "2026-10-26T11:10:35.248943+00:00",
+    "2026-10-26T11:10:38.457684+00:00",
+    "2026-10-26T11:10:41.639556+00:00",
+    "2026-10-26T11:10:44.799639+00:00",
+    "2026-10-26T11:10:49.058783+00:00",
+    "2026-10-26T11:10:52.201009+00:00",
+    "2026-10-26T11:10:55.416066+00:00",
+    "2026-10-26T11:10:58.593195+00:00",
+    "2026-10-26T11:11:01.821643+00:00",
+    "2026-10-26T11:11:05.026419+00:00",
+    "2026-10-26T11:11:08.239039+00:00",
+    "2026-10-26T11:11:11.436670+00:00",
+    "2026-10-26T11:11:14.598563+00:00",
+    "2026-10-26T11:11:17.812604+00:00",
+    "2026-10-26T11:11:20.998737+00:00",
+    "2026-10-26T11:11:24.526680+00:00",
+    "2026-10-26T11:11:27.406917+00:00",
+    "2026-10-26T11:11:30.599159+00:00",
+    "2026-10-26T11:11:33.823983+00:00",
+    "2026-10-26T11:11:36.996330+00:00",
+    "2026-10-26T11:11:40.206933+00:00",
+    "2026-10-26T11:11:43.420169+00:00",
+    "2026-10-26T11:11:46.604273+00:00",
+    "2026-10-26T11:11:49.803749+00:00",
+    "2026-10-26T11:11:53.005659+00:00",
+    "2026-10-26T11:11:56.349965+00:00",
+    "2026-10-26T11:11:59.407271+00:00",
+    "2026-10-26T11:12:02.632020+00:00",
+    "2026-10-26T11:12:05.838492+00:00",
+    "2026-10-26T11:12:09.014096+00:00",
+    "2026-10-26T11:12:12.208667+00:00",
+    "2026-10-26T11:12:15.396679+00:00",
+    "2026-10-26T11:12:18.599056+00:00",
+    "2026-10-26T11:12:22.827765+00:00",
+    "2026-10-26T11:12:29.302307+00:00",
+    "2026-10-26T11:12:35.600371+00:00",
+    "2026-10-26T11:20:41.825267+00:00",
+    "2026-10-26T11:22:05.132776+00:00",
+    "2026-10-26T11:22:32.432899+00:00",
+    "2026-10-26T11:23:10.743410+00:00",
+    "2026-10-26T11:23:47.525638+00:00",
+    "2026-10-26T11:24:02.016821+00:00",
+    "2026-10-26T11:24:06.367040+00:00",
+    "2026-10-26T11:24:13.559129+00:00",
+    "2026-10-26T11:24:20.466024+00:00",
+    "2026-10-26T11:24:28.843792+00:00",
+    "2026-10-26T11:24:37.889996+00:00",
+    "2026-10-26T11:24:50.696644+00:00",
+    "2026-10-26T11:24:57.601292+00:00",
+    "2026-10-26T11:25:09.424217+00:00",
+    "2026-10-26T11:25:22.792930+00:00",
+    "2026-10-26T11:25:32.677157+00:00",
+    "2026-10-26T11:25:46.734854+00:00",
+    "2026-10-26T11:25:58.025197+00:00",
+    "2026-10-26T11:26:12.019444+00:00",
+    "2026-10-26T11:26:22.804873+00:00",
+    "2026-10-26T11:26:33.047174+00:00",
+    "2026-10-26T11:26:47.945066+00:00",
+    "2026-10-26T11:27:01.551943+00:00",
+    "2026-10-26T11:27:15.278904+00:00",
+    "2026-10-26T11:27:26.968381+00:00",
+    "2026-10-26T11:27:39.870562+00:00",
+    "2026-10-26T11:27:48.329421+00:00",
+    "2026-10-26T11:28:00.584396+00:00",
+    "2026-10-26T11:28:13.188418+00:00",
+    "2026-10-26T11:28:28.989645+00:00",
+    "2026-10-26T11:28:42.681596+00:00",
+    "2026-10-26T11:28:53.966119+00:00",
+    "2026-10-26T11:29:07.433696+00:00",
+    "2026-10-26T11:29:19.674457+00:00",
+    "2026-10-26T11:29:30.056658+00:00",
+    "2026-10-26T11:29:37.410715+00:00",
+    "2026-10-26T11:29:48.547240+00:00",
+    "2026-10-26T11:30:04.239778+00:00",
+    "2026-10-26T11:30:13.082349+00:00",
+    "2026-10-26T11:30:24.546462+00:00",
+    "2026-10-26T11:30:31.522485+00:00",
+    "2026-10-26T11:30:51.766059+00:00",
+    "2026-10-26T11:31:00.801436+00:00",
+    "2026-10-26T11:31:10.495329+00:00",
+    "2026-10-26T11:31:16.341213+00:00",
+    "2026-10-26T11:31:29.048413+00:00",
+    "2026-10-26T11:31:39.597158+00:00",
+    "2026-10-26T11:31:51.137883+00:00",
+    "2026-10-26T11:32:03.485460+00:00",
+    "2026-10-26T11:32:17.550523+00:00",
+    "2026-10-26T11:32:26.722737+00:00",
+    "2026-10-26T11:32:41.127586+00:00",
+    "2026-10-26T11:32:49.554676+00:00",
+    "2026-10-26T11:33:01.550086+00:00",
+    "2026-10-26T11:33:09.077743+00:00",
+    "2026-10-26T11:33:24.236398+00:00",
+    "2026-10-26T11:33:30.890359+00:00",
+    "2026-10-26T11:33:42.864731+00:00",
+    "2026-10-26T11:33:50.304061+00:00",
+    "2026-10-26T11:33:59.719395+00:00",
+    "2026-10-26T11:34:05.134872+00:00",
+    "2026-10-26T11:34:15.490508+00:00",
+    "2026-10-26T11:34:26.103938+00:00",
+    "2026-10-26T11:34:44.839452+00:00",
+    "2026-10-26T11:34:50.979934+00:00",
+    "2026-10-26T11:35:01.656709+00:00",
+    "2026-10-26T11:35:13.766076+00:00",
+    "2026-10-26T11:35:24.655208+00:00",
+    "2026-10-26T11:35:45.936152+00:00",
+    "2026-10-26T11:35:55.076145+00:00",
+    "2026-10-26T11:35:59.740150+00:00",
+    "2026-10-26T11:36:04.601557+00:00",
+    "2026-10-26T11:36:09.174094+00:00"
   ],
   "free_day_out": "",
   "topics": {
@@ -3803,9 +4051,11 @@
         "2026-10-20",
         "2026-10-23",
         "2026-10-24",
-        "2026-10-25"
+        "2026-10-25",
+        "2026-10-26"
       ],
       "subs": [
+        "AI_Agents",
         "ArtificialInteligence",
         "ChatGPT",
         "ClaudeAI",
@@ -3814,38 +4064,11 @@
         "LocalLLaMA",
         "OpenAI",
         "antiai",
+        "codex",
         "singularity"
       ],
-      "mentions": 20,
+      "mentions": 24,
       "refs": [
-        {
-          "date": "2026-10-11",
-          "title": "PSA: DeepSeek V4.1 Flash habitually exfiltrates API keys. It is dangerously misaligned and may be hazardous to use",
-          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1x32vhx/psa_deepseek_v41_flash_habitually_exfiltrates_api/",
-          "link": "",
-          "comment": ""
-        },
-        {
-          "date": "2026-10-12",
-          "title": "PSA: DeepSeek V4.1 Flash habitually exfiltrates API keys. It is dangerously misaligned and may be hazardous to use",
-          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1x32vhx/psa_deepseek_v41_flash_habitually_exfiltrates_api/",
-          "link": "",
-          "comment": ""
-        },
-        {
-          "date": "2026-10-13",
-          "title": "Jailbroken Chinese AI gives bioweapon advice, then makes unrestricted mode permanent",
-          "thread": "https://www.reddit.com/r/ArtificialInteligence/comments/1x3sm54/jailbroken_chinese_ai_gives_bioweapon_advice_then/",
-          "link": "https://www.stuff.co.nz/nz-news/361043952/ai-shows-kiwi-researcher-how-make-sarin-gas-asks-borrow-his-phone",
-          "comment": "I doubt it provided any more information that what you can already get from Wikipedia about making sarin gas. https://en.wikipedia.org/wiki/Sarin#Production_and_structure Escaping its container and making its own email is slightly concerning, but that falls to the ignorance of the human allowing it "
-        },
-        {
-          "date": "2026-10-20",
-          "title": "Claude caught a cryptominer on my Mac whilst building me a temperature monitor app",
-          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1x9smgq/claude_caught_a_cryptominer_on_my_mac_whilst/",
-          "link": "",
-          "comment": "TL;DR of the discussion generated automatically after 50 comments. Okay, let's get this out of the way: the top comments are all pointing out that OP has posted this exact story in multiple subs. The jury's out on whether you're a karma farmer or just really, really excited. Beyond that, the thread "
-        },
         {
           "date": "2026-10-23",
           "title": "The AI cyber arms race is escalating fast. PHP2Shell triggers millions of exploit attempts. China-linked hackers use AI agents to target 2,250+ cloud tenants, gaining privileged access in under 3 hours in some cases. CrowdStrike exposes four more AI-powered hacking campaigns.",
@@ -3915,10 +4138,38 @@
           "thread": "https://www.reddit.com/r/singularity/comments/1xe5i3d/altman_i_dont_even_know_a_dramatic_enough_word_to/",
           "link": "",
           "comment": "By the way folks. This was a foregone conclusion a long time ago. It's not a joke, every digital system humans rely on right now is inherently untrustable. It's alll broken."
+        },
+        {
+          "date": "2026-10-26",
+          "title": "The last week in cyber seems like a glimpse of the future",
+          "thread": "https://www.reddit.com/r/ArtificialInteligence/comments/1xezaxh/the_last_week_in_cyber_seems_like_a_glimpse_of/",
+          "link": "",
+          "comment": "This is the most serious 48 hours in cybersecurity history. \"Black October\" they're calling it It seems every hour there's a new incident, that in a typical year, would be one of the biggest incidents of the entire year SUMMARY OF THE LAST 48 HOURS: YEAR-LEVEL INCIDENTS (In a typical year, these wou"
+        },
+        {
+          "date": "2026-10-26",
+          "title": "Abliterated DeepSeek V4.1 Flash is a game changer for cybersecurity work",
+          "thread": "https://www.reddit.com/r/DeepSeek/comments/1xff0vr/abliterated_deepseek_v41_flash_is_a_game_changer/",
+          "link": "",
+          "comment": "The deepseek provider one..doesnt really refuse."
+        },
+        {
+          "date": "2026-10-26",
+          "title": "An AI agent hit my site, read a note hidden from humans, and did exactly what it said 61 minutes later",
+          "thread": "https://www.reddit.com/r/AI_Agents/comments/1xfddh7/an_ai_agent_hit_my_site_read_a_note_hidden_from/",
+          "link": "",
+          "comment": "We have left the era of Little Bobby Tables and entered the era of Little Bobby Disregard All Previous Instructions."
+        },
+        {
+          "date": "2026-10-26",
+          "title": "Stay safe out there using agents",
+          "thread": "https://www.reddit.com/r/codex/comments/1xf06z4/stay_safe_out_there_using_agents/",
+          "link": "",
+          "comment": "an english teachers association hiding scripts in its 404 page is a sentence i did not expect to read today"
         }
       ],
       "deep_dive": "",
-      "last_seen": "2026-10-25",
+      "last_seen": "2026-10-26",
       "subject": "ai"
     },
     "ai-and-jobs": {
@@ -4216,29 +4467,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 92,
+      "mentions": 95,
       "refs": [
-        {
-          "date": "2026-10-23",
-          "title": "I'm building a cyberpunk pixel-art action adventure with Claude Code",
-          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xcgebb/im_building_a_cyberpunk_pixelart_action_adventure/",
-          "link": "",
-          "comment": "TL;DR of the discussion generated automatically after 50 comments. The thread is overwhelmingly hyped for OP's game. The consensus is that the cyberpunk pixel-art aesthetic and atmosphere are killer, and it's an inspiring project for a solo dev. A ton of you were asking how the sausage is made, and "
-        },
-        {
-          "date": "2026-10-24",
-          "title": "I built a web browser from scratch in Rust with Claude Code — 90%+ WPT compliance, 97.8% ECMAScript, and 100% WebAssembly. No Chromium, no WebView.",
-          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xd2oxt/i_built_a_web_browser_from_scratch_in_rust_with/",
-          "link": "",
-          "comment": "I'm sure there's absolutely no security issues with this browser at all."
-        },
-        {
-          "date": "2026-10-24",
-          "title": "No coding or gamedev background, 6 weeks with Opus 5.5 + Godot — from drawings to a playable game",
-          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xdhkzb/no_coding_or_gamedev_background_6_weeks_with_opus/",
-          "link": "",
-          "comment": "TL;DR of the discussion generated automatically after 50 comments. The thread's got two main moods: suspicion and genuine technical curiosity. The overwhelming consensus is skepticism about the 6-week timeline . The top comments, with heavy upvotes, argue that what's shown is a simple tech demo (a c"
-        },
         {
           "date": "2026-10-24",
           "title": "Vibecoding your own inference engine is easy they said",
@@ -4315,6 +4545,27 @@
           "thread": "https://www.reddit.com/r/singularity/comments/1xfh36p/developer_uses_claude_to_overhaul_his_parents_tv/",
           "link": "https://www.reddit.com/gallery/1xfh36p",
           "comment": "The days where manufacturer can just install crap on our devices are hopefully over now."
+        },
+        {
+          "date": "2026-10-26",
+          "title": "I pointed Claude Code at the cheap Chinese head unit in my Civic. What it found in the firmware was wild.",
+          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xf2lur/i_pointed_claude_code_at_the_cheap_chinese_head/",
+          "link": "",
+          "comment": "I love seeing this trend of people using Claude to debloat hot mic spyware."
+        },
+        {
+          "date": "2026-10-26",
+          "title": "I built an open source sky camera that Claude Code can actually run. Last night it caught 17 meteors and had them sorted before I woke up.",
+          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xfm8i7/i_built_an_open_source_sky_camera_that_claude/",
+          "link": "",
+          "comment": "Oh so cool! I've been wanting to make this. I would love to see this automation crowd sourced and mapped out and triangulated in a neighborhood, city, or across the country. What is the camera you use?"
+        },
+        {
+          "date": "2026-10-26",
+          "title": "DeepSeek V4.1 Flash built an Interstellar-style black hole in Three.js, wrote 109 tests, and caught its own physics bugs. Under $1",
+          "thread": "https://www.reddit.com/r/DeepSeek/comments/1xf0vlu/deepseek_v41_flash_built_an_interstellarstyle/",
+          "link": "",
+          "comment": "prompt: Build \"Event Horizon\", an interactive real-time black hole simulator in Three.js with Vite. It must run at 60 fps in a desktop browser and use no external assets: every texture, star and effect is procedural. The scene: - A Schwarzschild black hole with a glowing, turbulent accretion disk, r"
         }
       ],
       "deep_dive": "2026-10-18",
@@ -4673,7 +4924,8 @@
         "2026-10-20",
         "2026-10-21",
         "2026-10-22",
-        "2026-10-25"
+        "2026-10-25",
+        "2026-10-26"
       ],
       "subs": [
         "AI_Agents",
@@ -4683,21 +4935,15 @@
         "DeepSeek",
         "GeminiAI",
         "LocalLLaMA",
+        "OpenAI",
         "antiai",
         "artificial",
         "codex",
         "singularity",
         "technology"
       ],
-      "mentions": 23,
+      "mentions": 24,
       "refs": [
-        {
-          "date": "2026-10-14",
-          "title": "GPT-6.1 Sol is 4.6x slower than GPT-5.6 Sol. Are we really getting cheaper models, or just slower ones?",
-          "thread": "https://www.reddit.com/r/codex/comments/1x4yte1/gpt61_sol_is_46x_slower_than_gpt56_sol_are_we/",
-          "link": "",
-          "comment": "Below is a GPT-generated summary of the conversation below after reaching 40 comments (45 currently observed) . The thread’s broad verdict is GPT-6.1 Sol is dramatically slower in practice, even if it may be cheaper per task . For many users, the savings are cold comfort when the agent spends hours—"
-        },
         {
           "date": "2026-10-14",
           "title": "Gemini Argon costs twice as much as GPT Sol 6.1 for similar intelligence.",
@@ -4788,10 +5034,17 @@
           "thread": "https://www.reddit.com/r/DeepSeek/comments/1xe9mw9/21b_tokens_in_a_single_day_for_16_v41_flash_1017/",
           "link": "https://www.reddit.com/gallery/1xe9mw9",
           "comment": "I have better question, what the fk are you working on? GTA 6?"
+        },
+        {
+          "date": "2026-10-26",
+          "title": "OpenAI and Anthropic cut their LLM prices by up to 80% within a few months. Why?",
+          "thread": "https://www.reddit.com/r/OpenAI/comments/1xfkqa2/openai_and_anthropic_cut_their_llm_prices_by_up/",
+          "link": "https://minimaxir.com/2026/10/cheap-llms/",
+          "comment": "China"
         }
       ],
       "deep_dive": "",
-      "last_seen": "2026-10-25",
+      "last_seen": "2026-10-26",
       "subject": "ai"
     },
     "glp1-drugs-beyond-weight-loss": {
@@ -4920,7 +5173,8 @@
         "2026-10-19",
         "2026-10-21",
         "2026-10-24",
-        "2026-10-25"
+        "2026-10-25",
+        "2026-10-26"
       ],
       "subs": [
         "DeepSeek",
@@ -4929,22 +5183,8 @@
         "artificial",
         "singularity"
       ],
-      "mentions": 26,
+      "mentions": 28,
       "refs": [
-        {
-          "date": "2026-10-18",
-          "title": "DeepSeek V4.1-Flash-1017 Released: Better Performance, Faster Coding, and Public Search & Fetch APIs",
-          "thread": "https://www.reddit.com/r/DeepSeek/comments/1x84wke/deepseek_v41flash1017_released_better_performance/",
-          "link": "",
-          "comment": "Let's goooo!!! Year 2026 does not stop giving . What a Year!!"
-        },
-        {
-          "date": "2026-10-18",
-          "title": "deepseek-ai/DeepSeek-V4.1-Flash-1017 · Hugging Face",
-          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1x84po4/deepseekaideepseekv41flash1017_hugging_face/",
-          "link": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017",
-          "comment": "\"minor update\" Proceeds to obliterate GLM5.3, Kimi K3 and GPT5.6 Sol"
-        },
         {
           "date": "2026-10-19",
           "title": "72 hours, four big open weights drops. The only one that fits in 24GB came from NVIDIA, of all companies.",
@@ -5028,11 +5268,25 @@
           "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xecgrf/kimi_k31_removes_cyberattack_training_data_from/",
           "link": "https://www.reuters.com/technology/moonshot-curbs-hacking-ability-new-kimi-model-fears-grow-over-ai-powered-2026-10-24/",
           "comment": "Then how can we protect our software?"
+        },
+        {
+          "date": "2026-10-26",
+          "title": "Nanbeige/Nanbeige4.3-33B · Hugging Face",
+          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xf0kz4/nanbeigenanbeige4333b_hugging_face/",
+          "link": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B",
+          "comment": "https://preview.redd.it/sw62u5nkslxh1.png?width=2800&format=png&auto=webp&s=fe427b771dc82badd58084e52d7fcb1829f16cb4 Benchmark scores"
+        },
+        {
+          "date": "2026-10-26",
+          "title": "A 4B coding model that can generate 3D scenes",
+          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xeuo7t/a_4b_coding_model_that_can_generate_3d_scenes/",
+          "link": "",
+          "comment": "Many guys want to see Blender finetune but this one is also great, because size is very nice"
         }
       ],
       "deep_dive": "2026-10-25",
       "subject": "ai",
-      "last_seen": "2026-10-25"
+      "last_seen": "2026-10-26"
     },
     "anthropic-company-strategy": {
       "name": "Anthropic Company Strategy and Governance",
@@ -5117,7 +5371,7 @@
         "science",
         "singularity"
       ],
-      "mentions": 7,
+      "mentions": 9,
       "refs": [
         {
           "date": "2026-10-24",
@@ -5167,6 +5421,20 @@
           "thread": "https://www.reddit.com/r/singularity/comments/1xet21r/bespoke_mrna_vaccine_significantly_reduces_risk/",
           "link": "https://www.theguardian.com/society/2026/oct/23/mrna-vaccine-melanoma-cancer-breakthrough-australia",
           "comment": "The trial found that at two years post treatment, the combination of intismeran and pembrolizumab reduced the risk of melanoma recurrence or death by 42% compared with treatment with pembrolizumab alone. That is indeed significant."
+        },
+        {
+          "date": "2026-10-26",
+          "title": "Oncology ADC Clinical Data Release at ESMO",
+          "thread": "https://www.reddit.com/r/biotech/comments/1xf2hpr/oncology_adc_clinical_data_release_at_esmo/",
+          "link": "",
+          "comment": "These advancements are obviously so important but coming from outside the cancer realm, all I can think is how terrible the prognosis still is for these patients. Is this yours or did you find it published somewhere? Either way, thanks for sharing."
+        },
+        {
+          "date": "2026-10-26",
+          "title": "Tarlatamab/Durvalumab was n E-SCLC",
+          "thread": "https://www.reddit.com/r/biotech/comments/1xfg5go/tarlatamabdurvalumab_was_n_esclc/",
+          "link": "",
+          "comment": "Lung cancer is so hard. I mean, this is being touted as a great success, but all they're doing is buying some time. The lines converge at 22 months."
         }
       ],
       "deep_dive": "",
@@ -5228,13 +5496,16 @@
         "2026-10-26"
       ],
       "subs": [
+        "ArtificialInteligence",
+        "ChatGPT",
         "LocalLLM",
         "LocalLLaMA",
+        "OpenAI",
         "antiai",
         "singularity",
         "technology"
       ],
-      "mentions": 11,
+      "mentions": 14,
       "refs": [
         {
           "date": "2026-10-24",
@@ -5305,6 +5576,27 @@
           "thread": "https://www.reddit.com/r/technology/comments/1xf03qh/cybersecurity_bounty_hunter_says_samsung_tvs_use/",
           "link": "https://www.tomshardware.com/tech-industry/cyber-security/hacker-finds-own-samsung-tv-collecting-scary-amounts-of-user-information-and-gets-banned-by-openai-for-cyber-abuse-tv-runs-an-ai-model-that-collects-audio-screenshots-and-plenty-of-other-user-data-for-ad-targeting",
           "comment": "What makes this even worse than LG is that individual sounds were able to be identified and catalogued, such as baby cries or dog barks. Just shows the level of effort gone into spying into everyone's lives"
+        },
+        {
+          "date": "2026-10-26",
+          "title": "LG Smart TVs Caught Mapping Your Network, Logging Audio With Screen Off",
+          "thread": "https://www.reddit.com/r/technology/comments/1xf9ssl/lg_smart_tvs_caught_mapping_your_network_logging/",
+          "link": "https://thecybersecguru.com/news/lg-smart-tv-spying-investigation/",
+          "comment": "Why in the flying fuck is this not 100% illegal????"
+        },
+        {
+          "date": "2026-10-26",
+          "title": "Cybersecurity bounty hunter says Samsung TVs use AI to record audio and screenshots for ads — 'Finally found a company that truly listens to its customers,' says hacker",
+          "thread": "https://www.reddit.com/r/technology/comments/1xf03qh/cybersecurity_bounty_hunter_says_samsung_tvs_use/",
+          "link": "https://www.tomshardware.com/tech-industry/cyber-security/hacker-finds-own-samsung-tv-collecting-scary-amounts-of-user-information-and-gets-banned-by-openai-for-cyber-abuse-tv-runs-an-ai-model-that-collects-audio-screenshots-and-plenty-of-other-user-data-for-ad-targeting",
+          "comment": "What makes this even worse than LG is that individual sounds were able to be identified and catalogued, such as baby cries or dog barks. Just shows the level of effort gone into spying into everyone's lives"
+        },
+        {
+          "date": "2026-10-26",
+          "title": "ChatGPT Is Building Detailed Psychological Profiles of Its Users",
+          "thread": "https://www.reddit.com/r/OpenAI/comments/1xfapw3/chatgpt_is_building_detailed_psychological/",
+          "link": "https://futurism.com/artificial-intelligence/chatgpt-building-profiles-users",
+          "comment": "So what’s the news here? It’s obvious that these chatbots collect every last detail about the user 😐"
         },
         {
           "date": "2026-10-26",
