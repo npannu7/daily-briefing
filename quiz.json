@@ -4,6 +4,226 @@
  "repo": "npannu7/daily-briefing",
  "episodes": [
   {
+   "file": "ai_2026-10-26_morning_0833.mp3",
+   "title": "Morning - 26 Oct: When Coding Agents Reverse Engineer Smart TV Firmware",
+   "label": "Monday 26 Oct morning",
+   "date": "2026-10-26",
+   "edition": "morning",
+   "published": "2026-10-26T08:33:02.577544+05:30",
+   "duration": 1042,
+   "theme": "From firmware reverse-engineering guardrails on consumer hardware to reproducing Roman nanotechnology in glass, this morning examines the boundary between automated tools, materials physics, and process control.",
+   "writer": "Gemini 3.8 Flash",
+   "voices": "Fish Audio (free)",
+   "deep_dive": false,
+   "segments": [
+    {
+     "title": "When Coding Agents Reverse Engineer Smart TV Firmware",
+     "category": "thread"
+    },
+    {
+     "title": "How Ancient Roman Glass Changes Color",
+     "category": "thread"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why did frontier commercial language models frequently trigger safety filters when developers tried using them for smart TV firmware reverse engineering?",
+     "options": [
+      "Because electronics manufacturers made secret backdoor agreements with AI companies to protect their products.",
+      "Because the safety classifiers interpreted static binary analysis and instruction patching as potential cyber exploit generation.",
+      "Because local open-weight models have completely surpassed commercial models in reasoning capacity.",
+      "Because the Android Debug Bridge is legally classified as a restricted military technology."
+     ],
+     "answer": 1,
+     "explain": "Frontier models are heavily trained to refuse assistance with tasks like vulnerability discovery and binary modification, which look identical to exploit generation to an automated classifier.",
+     "segment": "When Coding Agents Reverse Engineer Smart TV Firmware"
+    },
+    {
+     "q": "What technical limitation currently prevents local open-weight models from replacing commercial frontier models in deep embedded firmware auditing?",
+     "options": [
+      "They cannot connect to local Wi-Fi networks via the Android Debug Bridge.",
+      "They lack the necessary reasoning stamina and context window capacity, leading to hallucinations in complex assembly code.",
+      "They are legally prohibited from running on consumer graphics cards.",
+      "They automatically trigger corporate conspiracy filters built by hardware manufacturers."
+     ],
+     "answer": 1,
+     "explain": "Tracing low-level assembly and variable states across nested function calls requires massive reasoning capacity, causing smaller local models to drift off track quickly.",
+     "segment": "When Coding Agents Reverse Engineer Smart TV Firmware"
+    },
+    {
+     "q": "How do gold and silver nanoparticles inside the Roman Lycurgus Cup create its distinctive red transmitted color?",
+     "options": [
+      "They undergo a chemical oxidation reaction that changes the base glass color when heated.",
+      "They completely reflect all wavelengths of light except for green.",
+      "They absorb and scatter green and blue wavelengths via surface plasmon resonance while letting red wavelengths pass straight through.",
+      "They act as reducing agents that donate electrons to the iron and antimony in the glass matrix."
+     ],
+     "answer": 2,
+     "explain": "The alloy particles strongly absorb and scatter green and blue light through localized surface plasmon resonance, allowing only the red and orange wavelengths to transmit through the glass.",
+     "segment": "How Ancient Roman Glass Changes Color"
+    },
+    {
+     "q": "What historical conclusion did materials experts draw regarding how ancient Romans manufactured the Lycurgus Cup?",
+     "options": [
+      "They utilized precise fourth-century computer models and QA manuals to guarantee exact particle sizing.",
+      "They possessed advanced alien nanotechnology that modern engineering has still failed to replicate.",
+      "They accidentally discovered a rare optical effect through serendipitous furnace conditions and trace scrap metal rather than intentional nanotechnology.",
+      "They used high-speed cooling to completely prevent metal precipitation in the silicate matrix."
+     ],
+     "answer": 2,
+     "explain": "The color outcome was wildly sensitive to kiln temperature gradients and redox atmospheres, suggesting Roman glassmakers capitalized on a lucky process variation rather than predictive design.",
+     "segment": "How Ancient Roman Glass Changes Color"
+    }
+   ],
+   "digest": [
+    {
+     "title": "Magic mushroom compound psilocybin grows new brain connections within 24 hours and repairs circuits damaged by chronic stress in mice. Scientists found the brain rewiring runs on a different pathway than the trip itself, opening the door to fast-acting depression drugs without the hallucinations.",
+     "subs": [
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1xf1bbn/magic_mushroom_compound_psilocybin_grows_new/",
+     "link": "https://news.ucsc.edu/2026/10/how-psilocybin-reshapes-brain-circuits/",
+     "line": "A study shows psilocybin repairs brain connections in mice without causing hallucinations, with commenters discussing personal healing experiences and comparing it to other treatments.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "I pointed Claude Code at the cheap Chinese head unit in my Civic. What it found in the firmware was wild.",
+     "subs": [
+      "ClaudeCode"
+     ],
+     "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xf2lur/i_pointed_claude_code_at_the_cheap_chinese_head/",
+     "link": "",
+     "line": "Someone used Claude Code to analyze a cheap Android head unit firmware, finding ads and spyware, which commenters celebrated.",
+     "verdict": "plausible",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "‘Bespoke’ mRNA vaccine significantly reduces risk of melanoma recurrence or death, clinical trial shows | First successful phase 3 trial of mRNA cancer vaccine",
+     "subs": [
+      "singularity"
+     ],
+     "thread": "https://www.reddit.com/r/singularity/comments/1xet21r/bespoke_mrna_vaccine_significantly_reduces_risk/",
+     "link": "https://www.theguardian.com/society/2026/oct/23/mrna-vaccine-melanoma-cancer-breakthrough-australia",
+     "line": "A phase 3 clinical trial shows a bespoke mRNA vaccine significantly reduces melanoma recurrence or death, with commenters highlighting its statistical significance.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Scientists at Johns Hopkins may have found why so many men’s prostates grow bigger with age: a newly identified cell type (WIF1+ basal cells) packed around the urethra, right where enlargement happens. This could explain the slow, stop-start peeing after 50 and become a target for future treatments.",
+     "subs": [
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1xereqx/scientists_at_johns_hopkins_may_have_found_why_so/",
+     "link": "https://www.sciencealert.com/scientists-may-have-discovered-why-mens-prostates-enlarge-with-age",
+     "line": "Researchers discovered a new prostate cell type that may explain age-related enlargement and urinary issues, with commenters discussing the moderation.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "OpenAI and Anthropic blocked the reverse engineering of smart TVs spying on us",
+     "subs": [
+      "LocalLLaMA"
+     ],
+     "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xer30z/openai_and_anthropic_blocked_the_reverse/",
+     "link": "https://x.com/yacineMTB/status/2113965724435697732",
+     "line": "AI models blocked reverse engineering tools for smart TVs, and commenters debated whether researchers should quietly bypass blocks or share publicly.",
+     "verdict": "plausible",
+     "also_in": [],
+     "in_episode": true
+    },
+    {
+     "title": "‘It’s magic’: scientists rediscover how to make ancient Roman colour-changing glass",
+     "subs": [
+      "EverythingScience"
+     ],
+     "thread": "https://www.reddit.com/r/EverythingScience/comments/1xez4vh/its_magic_scientists_rediscover_how_to_make/",
+     "link": "https://www.theguardian.com/science/2026/oct/25/scientists-rediscover-ancient-roman-colour-changing-glass",
+     "line": "Scientists rediscovered the method behind ancient Roman color-changing glass, and commenters expressed amazement and joked about gold nanoparticles.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": true
+    },
+    {
+     "title": "Nanbeige/Nanbeige4.3-33B · Hugging Face",
+     "subs": [
+      "LocalLLaMA"
+     ],
+     "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xf0kz4/nanbeigenanbeige4333b_hugging_face/",
+     "link": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B",
+     "line": "The Nanbeige4.3-33B model launched with strong benchmark scores, and users discussed testing it for real-world performance.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Amgen’s Imdelltra Combination Reduced the Risk of Death by 58% in a Phase 3 Trial for Small-Cell Lung Cancer",
+     "subs": [
+      "biotech"
+     ],
+     "thread": "https://www.reddit.com/r/biotech/comments/1xenbqt/amgens_imdelltra_combination_reduced_the_risk_of/",
+     "link": "https://www.reuters.com/legal/litigation/amgen-drug-combined-with-immunotherapy-extends-survival-lung-cancer-trial-2026-10-24/",
+     "line": "Amgen's trial combination reduced small-cell lung cancer death risk by 58%, and commenters discussed the scientific news.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "The Human Brain Owes Its Existence to a Prehistoric Pandemic: How an ancient viral infection helped form humankind",
+     "subs": [
+      "EverythingScience"
+     ],
+     "thread": "https://www.reddit.com/r/EverythingScience/comments/1xf0v9q/the_human_brain_owes_its_existence_to_a/",
+     "link": "https://www.psychologytoday.com/us/blog/the-new-brain/202610/the-human-brain-owes-its-existence-to-a-prehistoric-pandemic",
+     "line": "An article suggests a prehistoric viral infection helped form the human brain, but commenters criticized the study's lack of supporting conclusions.",
+     "verdict": "unclear",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "White Americans who said being white was important to them or wanted less immigration were far more likely to switch to the Republican Party between 2016 and 2020, while those who felt warmly toward Black Lives Matter were far more likely to switch to the Democratic Party, a new study finds.",
+     "subs": [
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1xek9oa/white_americans_who_said_being_white_was/",
+     "link": "https://www.cambridge.org/core/journals/ps-political-science-and-politics/article/role-of-identityrelated-issues-in-partisan-shifts-among-white-americans-20162020/5626A566455D48C081BB0870F29A49F2",
+     "line": "A study found that white identity and immigration views drove switches to the Republican Party, while BLM warmth drove switches to Democrats.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "A new study indicates that adults who experience severe material disruptions after a breakup, such as moving or changing financial circumstances, report higher levels of ambiguity and flux regarding their sexual identity, whereas psychological distress does not show the same link.",
+     "subs": [
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1xf1kl5/a_new_study_indicates_that_adults_who_experience/",
+     "link": "https://www.psypost.org/the-material-fallout-of-a-breakup-correlates-with-shifts-in-sexual-identity/",
+     "line": "A study indicates severe material disruptions after breakups lead to sexual identity flux, and commenters discussed the underlying causes.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Newly unearthed records rewrite the history of North America's basic income experiments",
+     "subs": [
+      "EverythingScience"
+     ],
+     "thread": "https://www.reddit.com/r/EverythingScience/comments/1xfa4rh/newly_unearthed_records_rewrite_the_history_of/",
+     "link": "https://www.scienceofmoney.org/newly-unearthed-records-rewrite-the-history-of-north-america-s-basic-income-expe-1346/",
+     "line": "Newly unearthed records rewrite North American basic income experiments, with commenters noting significant reductions in work.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    }
+   ],
+   "transcript": "transcripts/ai_2026-10-26_morning_0833.txt"
+  },
+  {
    "file": "ai_2026-10-25_evening_1623.mp3",
    "title": "Sunday - 25 Oct: GLP-1 Drugs Beyond Weight Loss",
    "label": "Sunday 25 Oct evening deep dive",
@@ -2931,227 +3151,6 @@
     }
    ],
    "transcript": "transcripts/ai_2026-10-19_evening_1628.txt"
-  },
-  {
-   "file": "ai_2026-10-19_morning_0828.mp3",
-   "title": "Morning - 19 Oct: Flying a Drone With Just One Motor",
-   "label": "Monday 19 Oct morning",
-   "date": "2026-10-19",
-   "edition": "morning",
-   "published": "2026-10-19T08:28:10.823178+05:30",
-   "duration": 984,
-   "theme": "Mechanical minimalism in single-motor flight control and reversing early-onset diabetes through targeted metabolic clearance",
-   "writer": "Gemini 3.8 Flash",
-   "voices": "Fish Audio (free)",
-   "deep_dive": false,
-   "segments": [
-    {
-     "title": "Flying a Drone With Just One Motor",
-     "category": "thread"
-    },
-    {
-     "title": "Reversing Early Diabetes Without Drugs",
-     "category": "thread"
-    }
-   ],
-   "quiz": [
-    {
-     "q": "How does the single-motor drone achieve multi-axis steering without conventional control surfaces or a swashplate?",
-     "options": [
-      "By dynamically shifting internal battery weight using linear actuators.",
-      "By pulsing motor torque hundreds of times a second to exploit blade inertia and an angled hinge for cyclic pitch.",
-      "By varying the voltage across independent electromagnetic stator coils.",
-      "By using high-speed aerodynamic steering vanes mounted directly inside the downwash."
-     ],
-     "answer": 1,
-     "explain": "An angled mechanical hinge at the propeller hub translates intentional high-frequency motor torque pulses into cyclic pitch as the blades lag behind.",
-     "segment": "Flying a Drone With Just One Motor"
-    },
-    {
-     "q": "Why was 3D-printed polyphthalamide (PPA-CF) chosen for the rotor hub instead of standard engineering plastics?",
-     "options": [
-      "It is flexible enough to act as an elastic spring for continuous passive deformation.",
-      "It dissolves easily in water, allowing for easy internal channel cleanout during post-processing.",
-      "It absorbs ambient moisture to lubricate the hinge joints and reduce friction.",
-      "It handles high temperatures and resists creep, while chopped carbon fibers prevent unpredictable torsional flexing."
-     ],
-     "answer": 3,
-     "explain": "PPA-CF resists creep and high temperatures while maintaining dimensional stability under severe torsional shock, unlike regular nylon which softens when absorbing moisture.",
-     "segment": "Flying a Drone With Just One Motor"
-    },
-    {
-     "q": "What primary mechanism explains how the intensive low-energy diet reversed early-onset diabetes without medications?",
-     "options": [
-      "It forced the body to burn away ectopic fat stored inside internal organs and muscle tissue, restoring insulin signaling.",
-      "It permanently lowered the basal metabolic rate, requiring less circulating insulin to manage baseline energy.",
-      "It stimulated pancreatic beta-cell replication to double natural insulin production capacity.",
-      "It cleared out subcutaneous fat layers beneath the skin, preventing glucose from converting into adipose tissue."
-     ],
-     "answer": 0,
-     "explain": "Severe calorie restriction forces the body to scavenge ectopic fat from muscle and organs, which repairs impaired insulin signaling and restores glucose regulation.",
-     "segment": "Reversing Early Diabetes Without Drugs"
-    },
-    {
-     "q": "What specific role did resistance training play during the twelve-week low-energy diet phase of the clinical trial?",
-     "options": [
-      "It increased total caloric expenditure high enough to offset the restrictive 800-calorie intake.",
-      "It forced the musculoskeletal system to preserve lean muscle mass and functional strength during rapid weight loss.",
-      "It stimulated the cardiovascular system to remodel the left ventricle into an enlarged endurance shape.",
-      "It elevated resting body temperature to accelerate the localized oxidation of subcutaneous fat."
-     ],
-     "answer": 1,
-     "explain": "Lifting weights provided the mechanical signal needed to prevent the body from breaking down vital lean muscle mass alongside body fat.",
-     "segment": "Reversing Early Diabetes Without Drugs"
-    }
-   ],
-   "digest": [
-    {
-     "title": "More than half of people with early-onset type 2 diabetes (average age just 38) went into remission with no meds after a 24-week program: 12 weeks of 800–900 calories a day plus supervised strength and cardio workouts. They lost fat but kept their muscle, and even their hearts became healthier, too.",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1x8zytx/more_than_half_of_people_with_earlyonset_type_2/",
-     "link": "https://www.sciencealert.com/this-diet-and-exercise-combination-put-early-onset-diabetes-into-remission-in-half-of-participants",
-     "line": "A study found early-onset type 2 diabetes remission via extreme calorie restriction and exercise, while commenters questioned the safety and feasibility of such low calories.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": true
-    },
-    {
-     "title": "I Built a Drone With Only One Motor – And a Poor Man's High Speed Camera",
-     "subs": [
-      "robotics"
-     ],
-     "thread": "https://www.reddit.com/r/robotics/comments/1x8zyvp/i_built_a_drone_with_only_one_motor_and_a_poor/",
-     "link": "",
-     "line": "A builder shared a custom single-motor drone utilizing a 3D printed hinge mechanism, and commenters praised the clever engineering solution.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": true
-    },
-    {
-     "title": "Smart women at work get treated worse by their own teammates. In two studies (432 students, 394 office workers), women who scored higher on intelligence tests were seen as more hostile, got less help and faced more mistreatment. Smart men didn't face this, and in one group were even treated better.",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1x8l8gt/smart_women_at_work_get_treated_worse_by_their/",
-     "link": "https://www.psypost.org/highly-competent-women-face-hidden-social-penalties-in-the-workplace/",
-     "line": "Studies showed smart women at work face worse treatment from teammates, while men did not, with commenters discussing workplace bias.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "A single dose of psilocybin eased depression within days, but its edge over placebo faded within a year. The effects appeared as early as the second day after dosing and lasted for more than three months, although by one year the difference between groups had faded.",
-     "subs": [
-      "EverythingScience",
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1x9ek4k/a_single_dose_of_psilocybin_eased_depression/",
-     "link": "https://www.psypost.org/a-single-dose-of-psilocybin-eased-depression-within-days-but-its-edge-over-placebo-faded-within-a-year/",
-     "line": "A single dose of psilocybin eased depression initially, but the benefit faded by one year, and commenters discussed the convenience of quarterly dosing.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Why does everyone disregard Anthropic's best practices?",
-     "subs": [
-      "ClaudeCode"
-     ],
-     "thread": "https://www.reddit.com/r/ClaudeCode/comments/1x966ii/why_does_everyone_disregard_anthropics_best/",
-     "link": "",
-     "line": "A user asked why developers ignore Anthropic's official coding best practices, and commenters debated whether the software should enforce them automatically.",
-     "verdict": "opinion",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Is this just how it is?",
-     "subs": [
-      "biotech"
-     ],
-     "thread": "https://www.reddit.com/r/biotech/comments/1x8qyuy/is_this_just_how_it_is/",
-     "link": "",
-     "line": "A biotech worker vented about a perpetually busy QC workload, and other professionals confirmed that quality control is demanding everywhere.",
-     "verdict": "opinion",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Honeybees are barging aside wild pollinators in hunt for pollen and nectar, study finds",
-     "subs": [
-      "EverythingScience"
-     ],
-     "thread": "https://www.reddit.com/r/EverythingScience/comments/1x95c78/honeybees_are_barging_aside_wild_pollinators_in/",
-     "link": "https://www.theguardian.com/environment/2026/oct/17/honeybees-are-barging-aside-wild-pollinators-in-hunt-for-pollen-and-nectar-study-finds",
-     "line": "A study found honeybees outcompete wild pollinators for resources, and commenters discussed the ecological impact on native species.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "God I hate this argument",
-     "subs": [
-      "antiai"
-     ],
-     "thread": "https://www.reddit.com/r/antiai/comments/1x8m6rf/god_i_hate_this_argument/",
-     "link": "",
-     "line": "Users argued over whether current artificial intelligence projects are genuine technological advancements or merely fleeting fads and scams.",
-     "verdict": "opinion",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Did extinct species of humans have different skin tones?",
-     "subs": [
-      "askscience"
-     ],
-     "thread": "https://www.reddit.com/r/askscience/comments/1x97wps/did_extinct_species_of_humans_have_different_skin/",
-     "link": "",
-     "line": "Users discussed whether extinct human species had varied skin tones, with an archaeologist noting depictions are based on location and educated guesswork.",
-     "verdict": "opinion",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "AI scans of 100,000+ people found those with 'brown fat' had less diabetes, heart disease, anxiety and depression. People on blood pressure pills were more likely to have it, and in mice, the common drug losartan switched brown fat on, making it burn more energy and heat.",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1x924qf/ai_scans_of_100000_people_found_those_with_brown/",
-     "link": "https://www.sciencealert.com/brown-fat-can-be-beneficial-for-the-body-and-a-blood-pressure-drug-could-turn-it-on",
-     "line": "AI scans linked brown fat to lower rates of various diseases, with commenters discussing the potential specific benefits of blood pressure medication losartan.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Researchers connected a simulated fruit fly brain to Odyssey-3, an AI that generates entire virtual worlds. The fly is now navigating these imagined environments completely on its own. A biological brain recreated in software is exploring worlds that have never existed.",
-     "subs": [
-      "singularity"
-     ],
-     "thread": "https://www.reddit.com/r/singularity/comments/1x8qyc7/researchers_connected_a_simulated_fruit_fly_brain/",
-     "link": "",
-     "line": "Researchers connected a simulated fruit fly brain to an AI-generated virtual world, and commenters marveled at the experiment while noting the fly's unusual movement.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "A Drug Commonly Used to Treat Erectile Dysfunction, May Also Help Regenerate Damaged Muscle. Research Suggests the Medication, Tadalafil Could Support Muscle Repair and Recovery by Influencing Biological Processes Involved in Muscle Regeneration in Mouse Models.",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1x8p3li/a_drug_commonly_used_to_treat_erectile/",
-     "link": "https://www.sciencealert.com/scientists-discover-an-erectile-dysfunction-drug-could-also-regenerate-muscle",
-     "line": "Research suggests the erectile dysfunction drug tadalafil may help regenerate damaged muscle in mouse models, drawing jokes and anecdotes from commenters.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    }
-   ],
-   "transcript": "transcripts/ai_2026-10-19_morning_0828.txt"
   }
  ]
 }

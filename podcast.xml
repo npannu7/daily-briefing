@@ -8,9 +8,32 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Sun, 25 Oct 2026 11:42:23 GMT</lastBuildDate>
+<lastBuildDate>Mon, 26 Oct 2026 03:36:00 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Morning - 26 Oct: When Coding Agents Reverse Engineer Smart TV Firmware</title>
+<description>Morning edition - Monday, 26 October 2026
+From firmware reverse-engineering guardrails on consumer hardware to reproducing Roman nanotechnology in glass, this morning examines the boundary between automated tools, materials physics, and process control.
+
+00:47  When Coding Agents Reverse Engineer Smart TV Firmware
+   singularity: https://www.reddit.com/r/singularity/comments/1xfh36p/developer_uses_claude_to_overhaul_his_parents_tv/
+   Source: https://www.reddit.com/gallery/1xfh36p
+   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1xer30z/openai_and_anthropic_blocked_the_reverse/
+   Source: https://x.com/yacineMTB/status/2113965724435697732
+   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1xetxga/seems_like_anthropic_enabled_safeguards_around/
+09:11  How Ancient Roman Glass Changes Color
+   EverythingScience: https://www.reddit.com/r/EverythingScience/comments/1xez4vh/its_magic_scientists_rediscover_how_to_make/
+   Source: https://www.theguardian.com/science/2026/oct/25/scientists-rediscover-ancient-roman-colour-changing-glass
+
+Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
+Written by: Gemini 3.8 Flash · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (178 threads)</description>
+<pubDate>Mon, 26 Oct 2026 08:33:02 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-10-26_morning_0833.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-26_morning_0833.mp3" length="8336876" type="audio/mpeg"/>
+<itunes:duration>1042</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Sunday - 25 Oct: GLP-1 Drugs Beyond Weight Loss</title>
 <description>Sunday edition - Sunday, 25 October 2026
@@ -288,25 +311,6 @@ Written by: Gemini 3.8 Flash · Voices: Fish Audio (free) · Discussions: Reddit
 <guid isPermaLink="false">ai_2026-10-19_evening_1628.mp3</guid>
 <enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-19_evening_1628.mp3" length="7840556" type="audio/mpeg"/>
 <itunes:duration>979</itunes:duration>
-<itunes:episodeType>full</itunes:episodeType>
-</item>
-<item>
-<title>Morning - 19 Oct: Flying a Drone With Just One Motor</title>
-<description>Morning edition - Monday, 19 October 2026
-Mechanical minimalism in single-motor flight control and reversing early-onset diabetes through targeted metabolic clearance
-
-00:27  Flying a Drone With Just One Motor
-   robotics: https://www.reddit.com/r/robotics/comments/1x8zyvp/i_built_a_drone_with_only_one_motor_and_a_poor/
-08:52  Reversing Early Diabetes Without Drugs
-   science: https://www.reddit.com/r/science/comments/1x8zytx/more_than_half_of_people_with_earlyonset_type_2/
-   Source: https://www.sciencealert.com/this-diet-and-exercise-combination-put-early-onset-diabetes-into-remission-in-half-of-participants
-
-Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
-Written by: Gemini 3.8 Flash · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (187 threads)</description>
-<pubDate>Mon, 19 Oct 2026 08:28:10 +0530</pubDate>
-<guid isPermaLink="false">ai_2026-10-19_morning_0828.mp3</guid>
-<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-19_morning_0828.mp3" length="7874156" type="audio/mpeg"/>
-<itunes:duration>984</itunes:duration>
 <itunes:episodeType>full</itunes:episodeType>
 </item>
 </channel>
