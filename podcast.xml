@@ -8,9 +8,29 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Tue, 27 Oct 2026 03:36:11 GMT</lastBuildDate>
+<lastBuildDate>Tue, 27 Oct 2026 11:37:03 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Evening - 27 Oct: AI Takes on Three Hard Problems in Math and Physics</title>
+<description>Evening edition - Tuesday, 27 October 2026
+AI tackles fundamental math and physics; environmental models find hidden forever chemicals in tap water
+
+00:36  AI Takes on Three Hard Problems in Math and Physics
+   EverythingScience, Physics, accelerate, artificial: https://www.reddit.com/r/Physics/comments/1xgannr/openai_working_with_academic_communities_to_build/
+   Source: https://openai.com/index/building-scientific-understanding-with-academic-communities/
+11:33  Forever Chemicals in Tap Water: What Models Show vs What Tests Find
+   science: https://www.reddit.com/r/science/comments/1xftgvd/us_drinking_water_could_contain_double_the/
+   Source: https://www.eurekalert.org/news-releases/1147828
+
+Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
+Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (170 threads)</description>
+<pubDate>Tue, 27 Oct 2026 16:33:18 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-10-27_evening_1633.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-27_evening_1633.mp3" length="9295148" type="audio/mpeg"/>
+<itunes:duration>1161</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Morning - 27 Oct: Letting a coding agent watch the night sky</title>
 <description>Morning edition - Tuesday, 27 October 2026
@@ -289,26 +309,6 @@ Written by: Gemini 3.8 Flash · Voices: Fish Audio (free) · Discussions: Reddit
 <guid isPermaLink="false">ai_2026-10-21_morning_0828.mp3</guid>
 <enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-21_morning_0828.mp3" length="8110892" type="audio/mpeg"/>
 <itunes:duration>1013</itunes:duration>
-<itunes:episodeType>full</itunes:episodeType>
-</item>
-<item>
-<title>Evening - 20 Oct: How Much Damage Should Stop a Model?</title>
-<description>Evening edition - Tuesday, 20 October 2026
-Engineering safety thresholds for emerging technologies, from algorithmic catastrophic risk limits to nature-tested genetic targets in drug validation.
-
-00:28  How Much Damage Should Stop a Model?
-   ClaudeAI, technology: https://www.reddit.com/r/ClaudeAI/comments/1x9y7du/anthropic_wants_ai_models_blocked_only_if_they/
-   Source: https://www.techspot.com/news/114252-anthropic-wants-ai-models-blocked-only-if-they.html#google_vignette
-10:27  Testing Drugs in People Before Making the Molecule
-   biotech: https://www.reddit.com/r/biotech/comments/1xa00cb/drug_targets_with_human_genetic_support_are_26x/
-   Source: https://worksinprogress.co/issue/natures-laboratory/
-
-Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
-Written by: Gemini 3.7 Flash · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (165 threads)</description>
-<pubDate>Tue, 20 Oct 2026 16:26:48 +0530</pubDate>
-<guid isPermaLink="false">ai_2026-10-20_evening_1626.mp3</guid>
-<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-20_evening_1626.mp3" length="9807788" type="audio/mpeg"/>
-<itunes:duration>1225</itunes:duration>
 <itunes:episodeType>full</itunes:episodeType>
 </item>
 </channel>

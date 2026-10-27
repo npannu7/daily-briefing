@@ -1,17 +1,6 @@
 {
   "episodes": [
     {
-      "file": "ai_2026-10-20_evening_1626.mp3",
-      "date": "2026-10-20",
-      "edition": "evening",
-      "title": "Evening - 20 Oct: How Much Damage Should Stop a Model?",
-      "published": "2026-10-20T16:26:48.183485+05:30",
-      "pubDate": "Tue, 20 Oct 2026 16:26:48 +0530",
-      "size": 9807788,
-      "duration": 1225,
-      "description": "Evening edition - Tuesday, 20 October 2026\nEngineering safety thresholds for emerging technologies, from algorithmic catastrophic risk limits to nature-tested genetic targets in drug validation.\n\n00:28  How Much Damage Should Stop a Model?\n   ClaudeAI, technology: https://www.reddit.com/r/ClaudeAI/comments/1x9y7du/anthropic_wants_ai_models_blocked_only_if_they/\n   Source: https://www.techspot.com/news/114252-anthropic-wants-ai-models-blocked-only-if-they.html#google_vignette\n10:27  Testing Drugs in People Before Making the Molecule\n   biotech: https://www.reddit.com/r/biotech/comments/1xa00cb/drug_targets_with_human_genetic_support_are_26x/\n   Source: https://worksinprogress.co/issue/natures-laboratory/\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nWritten by: Gemini 3.7 Flash · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (165 threads)"
-    },
-    {
       "file": "ai_2026-10-21_morning_0828.mp3",
       "date": "2026-10-21",
       "edition": "morning",
@@ -153,6 +142,17 @@
       "size": 7944236,
       "duration": 992,
       "description": "Morning edition - Tuesday, 27 October 2026\nFrom autonomous sky cameras to the forgotten physics of flowing matter\n\n00:26  Letting a coding agent watch the night sky\n   ClaudeAI, ClaudeCode: https://www.reddit.com/r/ClaudeCode/comments/1xfm8i7/i_built_an_open_source_sky_camera_that_claude/\n08:15  Why physics programs stopped teaching how liquids move\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nWritten by: Gemini 3.8 Flash · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (200 threads)"
+    },
+    {
+      "file": "ai_2026-10-27_evening_1633.mp3",
+      "date": "2026-10-27",
+      "edition": "evening",
+      "title": "Evening - 27 Oct: AI Takes on Three Hard Problems in Math and Physics",
+      "published": "2026-10-27T16:33:18.788866+05:30",
+      "pubDate": "Tue, 27 Oct 2026 16:33:18 +0530",
+      "size": 9295148,
+      "duration": 1161,
+      "description": "Evening edition - Tuesday, 27 October 2026\nAI tackles fundamental math and physics; environmental models find hidden forever chemicals in tap water\n\n00:36  AI Takes on Three Hard Problems in Math and Physics\n   EverythingScience, Physics, accelerate, artificial: https://www.reddit.com/r/Physics/comments/1xgannr/openai_working_with_academic_communities_to_build/\n   Source: https://openai.com/index/building-scientific-understanding-with-academic-communities/\n11:33  Forever Chemicals in Tap Water: What Models Show vs What Tests Find\n   science: https://www.reddit.com/r/science/comments/1xftgvd/us_drinking_water_could_contain_double_the/\n   Source: https://www.eurekalert.org/news-releases/1147828\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nWritten by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (170 threads)"
     }
   ],
   "memory": [
@@ -1129,6 +1129,29 @@
       "deep_topic": "",
       "topics": [
         "ai-coding-agents"
+      ]
+    },
+    {
+      "label": "Tuesday 27 Oct evening",
+      "date": "2026-10-27",
+      "edition": "evening",
+      "published": "2026-10-27T16:33:18.788866+05:30",
+      "file": "ai_2026-10-27_evening_1633.mp3",
+      "writer": "nemotron-3-ultra-550b-a55b (free)",
+      "voices": "Fish Audio (free)",
+      "summary": "The episode examined OpenAI's claims that AI contributed to progress on the Kakeya conjecture, Exponential Time Hypothesis, and quantum chromodynamics, separating engineering analogies from verifiable results and linking to validation standards in regulated science. The second segment analyzed modeling estimates that PFAS levels in U.S. drinking water are double reported values, framing analytical detection limits, environmental fate modeling, and regulatory reporting as a measurement-validation problem familiar from medical device quality systems.",
+      "threads": [
+        "Independent replication of AI-assisted proofs for Kakeya conjecture and Exponential Time Hypothesis",
+        "EPA regulatory response to modeling-based PFAS estimates versus analytical detection data",
+        "Validation frameworks for AI-generated scientific claims in Class II/III medical device pathways"
+      ],
+      "segments": [
+        "AI Takes on Three Hard Problems in Math and Physics",
+        "Forever Chemicals in Tap Water: What Models Show vs What Tests Find"
+      ],
+      "deep_topic": "",
+      "topics": [
+        "openai-company-updates"
       ]
     }
   ],
@@ -2436,6 +2459,34 @@
     {
       "date": "2026-10-27",
       "link": "https://www.reddit.com/r/ClaudeAI/comments/1xfqc9x/i_built_an_open_source_sky_camera_that_claude/"
+    },
+    {
+      "date": "2026-10-27",
+      "link": "https://www.reddit.com/r/science/comments/1xftgvd/us_drinking_water_could_contain_double_the/"
+    },
+    {
+      "date": "2026-10-27",
+      "link": "https://www.eurekalert.org/news-releases/1147828"
+    },
+    {
+      "date": "2026-10-27",
+      "link": "https://www.reddit.com/r/Physics/comments/1xgannr/openai_working_with_academic_communities_to_build/"
+    },
+    {
+      "date": "2026-10-27",
+      "link": "https://www.reddit.com/r/EverythingScience/comments/1xgbc42/openai_has_announced_three_new_discoveries_in/"
+    },
+    {
+      "date": "2026-10-27",
+      "link": "https://www.reddit.com/r/accelerate/comments/1xga6k2/openai_we_are_announcing_three_new_discoveries_in/"
+    },
+    {
+      "date": "2026-10-27",
+      "link": "https://www.reddit.com/r/artificial/comments/1xgbnyg/openai_claims_to_have_proved_that_the_exponential/"
+    },
+    {
+      "date": "2026-10-27",
+      "link": "https://openai.com/index/building-scientific-understanding-with-academic-communities/"
     }
   ],
   "feedback": [
@@ -3364,7 +3415,247 @@
     "2026-10-27T03:35:33.306899+00:00",
     "2026-10-27T03:35:40.352530+00:00",
     "2026-10-27T03:35:48.260854+00:00",
-    "2026-10-27T03:35:54.609020+00:00"
+    "2026-10-27T03:35:54.609020+00:00",
+    "2026-10-27T11:03:19.449134+00:00",
+    "2026-10-27T11:03:22.506820+00:00",
+    "2026-10-27T11:03:25.709745+00:00",
+    "2026-10-27T11:03:28.916848+00:00",
+    "2026-10-27T11:03:32.224355+00:00",
+    "2026-10-27T11:03:35.415827+00:00",
+    "2026-10-27T11:03:38.644424+00:00",
+    "2026-10-27T11:03:41.820601+00:00",
+    "2026-10-27T11:03:52.396131+00:00",
+    "2026-10-27T11:03:55.613795+00:00",
+    "2026-10-27T11:03:58.834174+00:00",
+    "2026-10-27T11:04:02.009626+00:00",
+    "2026-10-27T11:04:05.198073+00:00",
+    "2026-10-27T11:04:08.407061+00:00",
+    "2026-10-27T11:04:11.596177+00:00",
+    "2026-10-27T11:04:14.790075+00:00",
+    "2026-10-27T11:04:18.028129+00:00",
+    "2026-10-27T11:04:21.213449+00:00",
+    "2026-10-27T11:04:25.390918+00:00",
+    "2026-10-27T11:04:28.572623+00:00",
+    "2026-10-27T11:04:31.826298+00:00",
+    "2026-10-27T11:04:34.999644+00:00",
+    "2026-10-27T11:04:38.158344+00:00",
+    "2026-10-27T11:04:41.381166+00:00",
+    "2026-10-27T11:04:44.591248+00:00",
+    "2026-10-27T11:04:48.069070+00:00",
+    "2026-10-27T11:04:50.974151+00:00",
+    "2026-10-27T11:04:54.204748+00:00",
+    "2026-10-27T11:04:57.398628+00:00",
+    "2026-10-27T11:05:00.562601+00:00",
+    "2026-10-27T11:05:03.809373+00:00",
+    "2026-10-27T11:05:06.966454+00:00",
+    "2026-10-27T11:05:10.420651+00:00",
+    "2026-10-27T11:05:13.380966+00:00",
+    "2026-10-27T11:05:16.561293+00:00",
+    "2026-10-27T11:05:19.766161+00:00",
+    "2026-10-27T11:05:23.023844+00:00",
+    "2026-10-27T11:05:26.180989+00:00",
+    "2026-10-27T11:05:29.529766+00:00",
+    "2026-10-27T11:05:32.855805+00:00",
+    "2026-10-27T11:05:35.810719+00:00",
+    "2026-10-27T11:05:38.996367+00:00",
+    "2026-10-27T11:05:42.164085+00:00",
+    "2026-10-27T11:05:45.378738+00:00",
+    "2026-10-27T11:05:48.586319+00:00",
+    "2026-10-27T11:05:51.781162+00:00",
+    "2026-10-27T11:05:54.968379+00:00",
+    "2026-10-27T11:05:58.234160+00:00",
+    "2026-10-27T11:06:01.418607+00:00",
+    "2026-10-27T11:06:04.604745+00:00",
+    "2026-10-27T11:06:07.786058+00:00",
+    "2026-10-27T11:06:10.978966+00:00",
+    "2026-10-27T11:06:14.211718+00:00",
+    "2026-10-27T11:06:17.403198+00:00",
+    "2026-10-27T11:06:20.574237+00:00",
+    "2026-10-27T11:06:23.789648+00:00",
+    "2026-10-27T11:06:26.989732+00:00",
+    "2026-10-27T11:06:30.192487+00:00",
+    "2026-10-27T11:06:33.377567+00:00",
+    "2026-10-27T11:06:36.574956+00:00",
+    "2026-10-27T11:06:39.760636+00:00",
+    "2026-10-27T11:06:43.018046+00:00",
+    "2026-10-27T11:06:46.201652+00:00",
+    "2026-10-27T11:06:49.370217+00:00",
+    "2026-10-27T11:06:52.567094+00:00",
+    "2026-10-27T11:06:55.758684+00:00",
+    "2026-10-27T11:06:58.980782+00:00",
+    "2026-10-27T11:07:02.163359+00:00",
+    "2026-10-27T11:07:05.440182+00:00",
+    "2026-10-27T11:07:08.589981+00:00",
+    "2026-10-27T11:07:11.788212+00:00",
+    "2026-10-27T11:07:14.999311+00:00",
+    "2026-10-27T11:07:18.171461+00:00",
+    "2026-10-27T11:07:21.504650+00:00",
+    "2026-10-27T11:07:24.602016+00:00",
+    "2026-10-27T11:07:27.775178+00:00",
+    "2026-10-27T11:07:30.985109+00:00",
+    "2026-10-27T11:07:34.157681+00:00",
+    "2026-10-27T11:07:37.561605+00:00",
+    "2026-10-27T11:07:40.582413+00:00",
+    "2026-10-27T11:07:45.946797+00:00",
+    "2026-10-27T11:07:46.972047+00:00",
+    "2026-10-27T11:07:50.194342+00:00",
+    "2026-10-27T11:07:53.383967+00:00",
+    "2026-10-27T11:07:56.582345+00:00",
+    "2026-10-27T11:07:59.765532+00:00",
+    "2026-10-27T11:08:03.001123+00:00",
+    "2026-10-27T11:08:06.185331+00:00",
+    "2026-10-27T11:08:09.424742+00:00",
+    "2026-10-27T11:08:12.606201+00:00",
+    "2026-10-27T11:08:15.784403+00:00",
+    "2026-10-27T11:08:18.981263+00:00",
+    "2026-10-27T11:08:22.188825+00:00",
+    "2026-10-27T11:08:25.408596+00:00",
+    "2026-10-27T11:08:28.573489+00:00",
+    "2026-10-27T11:08:31.787503+00:00",
+    "2026-10-27T11:08:35.046292+00:00",
+    "2026-10-27T11:08:38.193641+00:00",
+    "2026-10-27T11:08:41.363279+00:00",
+    "2026-10-27T11:08:44.582762+00:00",
+    "2026-10-27T11:08:47.773637+00:00",
+    "2026-10-27T11:08:50.994660+00:00",
+    "2026-10-27T11:08:54.175542+00:00",
+    "2026-10-27T11:08:57.356443+00:00",
+    "2026-10-27T11:09:00.576634+00:00",
+    "2026-10-27T11:09:03.766190+00:00",
+    "2026-10-27T11:09:07.000117+00:00",
+    "2026-10-27T11:09:12.338083+00:00",
+    "2026-10-27T11:09:13.420131+00:00",
+    "2026-10-27T11:09:16.600303+00:00",
+    "2026-10-27T11:09:19.754536+00:00",
+    "2026-10-27T11:09:22.982366+00:00",
+    "2026-10-27T11:09:26.178417+00:00",
+    "2026-10-27T11:09:29.349139+00:00",
+    "2026-10-27T11:09:32.630577+00:00",
+    "2026-10-27T11:09:36.758291+00:00",
+    "2026-10-27T11:09:39.995195+00:00",
+    "2026-10-27T11:09:43.165762+00:00",
+    "2026-10-27T11:09:46.365041+00:00",
+    "2026-10-27T11:09:49.610407+00:00",
+    "2026-10-27T11:09:52.762447+00:00",
+    "2026-10-27T11:09:55.976844+00:00",
+    "2026-10-27T11:09:59.173192+00:00",
+    "2026-10-27T11:10:02.399552+00:00",
+    "2026-10-27T11:10:05.571566+00:00",
+    "2026-10-27T11:10:09.216479+00:00",
+    "2026-10-27T11:10:11.970193+00:00",
+    "2026-10-27T11:10:15.177451+00:00",
+    "2026-10-27T11:10:18.357249+00:00",
+    "2026-10-27T11:10:21.572456+00:00",
+    "2026-10-27T11:10:24.755502+00:00",
+    "2026-10-27T11:10:27.960020+00:00",
+    "2026-10-27T11:10:31.176516+00:00",
+    "2026-10-27T11:10:34.374050+00:00",
+    "2026-10-27T11:10:37.565074+00:00",
+    "2026-10-27T11:10:40.797387+00:00",
+    "2026-10-27T11:10:43.963868+00:00",
+    "2026-10-27T11:10:47.178577+00:00",
+    "2026-10-27T11:10:50.361547+00:00",
+    "2026-10-27T11:10:53.563552+00:00",
+    "2026-10-27T11:10:57.743894+00:00",
+    "2026-10-27T11:11:06.106927+00:00",
+    "2026-10-27T11:11:10.563400+00:00",
+    "2026-10-27T11:16:44.484121+00:00",
+    "2026-10-27T11:18:28.952549+00:00",
+    "2026-10-27T11:19:45.820412+00:00",
+    "2026-10-27T11:20:43.951240+00:00",
+    "2026-10-27T11:22:01.711569+00:00",
+    "2026-10-27T11:22:22.892201+00:00",
+    "2026-10-27T11:22:26.145587+00:00",
+    "2026-10-27T11:22:31.378486+00:00",
+    "2026-10-27T11:22:38.067650+00:00",
+    "2026-10-27T11:22:46.630149+00:00",
+    "2026-10-27T11:22:54.479405+00:00",
+    "2026-10-27T11:23:03.868734+00:00",
+    "2026-10-27T11:23:09.926531+00:00",
+    "2026-10-27T11:23:20.637455+00:00",
+    "2026-10-27T11:23:28.447514+00:00",
+    "2026-10-27T11:23:37.808554+00:00",
+    "2026-10-27T11:23:46.447132+00:00",
+    "2026-10-27T11:23:53.999556+00:00",
+    "2026-10-27T11:24:02.751891+00:00",
+    "2026-10-27T11:24:16.940561+00:00",
+    "2026-10-27T11:24:33.823885+00:00",
+    "2026-10-27T11:24:47.479274+00:00",
+    "2026-10-27T11:24:56.247608+00:00",
+    "2026-10-27T11:25:07.867627+00:00",
+    "2026-10-27T11:25:18.373504+00:00",
+    "2026-10-27T11:25:27.097047+00:00",
+    "2026-10-27T11:25:33.879625+00:00",
+    "2026-10-27T11:25:48.019304+00:00",
+    "2026-10-27T11:26:01.303174+00:00",
+    "2026-10-27T11:26:09.774415+00:00",
+    "2026-10-27T11:26:18.566059+00:00",
+    "2026-10-27T11:26:31.336880+00:00",
+    "2026-10-27T11:26:38.917948+00:00",
+    "2026-10-27T11:26:49.595614+00:00",
+    "2026-10-27T11:26:56.130009+00:00",
+    "2026-10-27T11:27:03.373058+00:00",
+    "2026-10-27T11:27:09.820951+00:00",
+    "2026-10-27T11:27:23.709889+00:00",
+    "2026-10-27T11:27:39.140455+00:00",
+    "2026-10-27T11:27:48.705667+00:00",
+    "2026-10-27T11:27:56.054451+00:00",
+    "2026-10-27T11:28:09.817097+00:00",
+    "2026-10-27T11:28:18.092874+00:00",
+    "2026-10-27T11:28:27.523239+00:00",
+    "2026-10-27T11:28:37.850309+00:00",
+    "2026-10-27T11:28:48.589192+00:00",
+    "2026-10-27T11:28:58.306582+00:00",
+    "2026-10-27T11:29:09.789848+00:00",
+    "2026-10-27T11:29:15.874332+00:00",
+    "2026-10-27T11:29:28.875242+00:00",
+    "2026-10-27T11:29:38.917258+00:00",
+    "2026-10-27T11:29:49.574547+00:00",
+    "2026-10-27T11:29:58.487411+00:00",
+    "2026-10-27T11:30:07.195165+00:00",
+    "2026-10-27T11:30:22.175274+00:00",
+    "2026-10-27T11:30:32.356186+00:00",
+    "2026-10-27T11:30:41.583499+00:00",
+    "2026-10-27T11:30:51.854072+00:00",
+    "2026-10-27T11:31:00.023204+00:00",
+    "2026-10-27T11:31:04.105933+00:00",
+    "2026-10-27T11:31:14.686595+00:00",
+    "2026-10-27T11:31:21.508090+00:00",
+    "2026-10-27T11:31:32.669205+00:00",
+    "2026-10-27T11:31:42.567580+00:00",
+    "2026-10-27T11:31:50.561788+00:00",
+    "2026-10-27T11:32:00.010216+00:00",
+    "2026-10-27T11:32:06.057222+00:00",
+    "2026-10-27T11:32:17.335071+00:00",
+    "2026-10-27T11:32:29.126135+00:00",
+    "2026-10-27T11:32:38.549527+00:00",
+    "2026-10-27T11:32:47.995963+00:00",
+    "2026-10-27T11:32:59.214214+00:00",
+    "2026-10-27T11:33:09.191592+00:00",
+    "2026-10-27T11:33:17.792197+00:00",
+    "2026-10-27T11:33:26.811043+00:00",
+    "2026-10-27T11:33:38.685429+00:00",
+    "2026-10-27T11:33:46.544368+00:00",
+    "2026-10-27T11:33:57.262803+00:00",
+    "2026-10-27T11:34:04.686607+00:00",
+    "2026-10-27T11:34:13.978241+00:00",
+    "2026-10-27T11:34:22.353147+00:00",
+    "2026-10-27T11:34:35.023162+00:00",
+    "2026-10-27T11:34:42.438868+00:00",
+    "2026-10-27T11:34:51.216832+00:00",
+    "2026-10-27T11:35:01.773020+00:00",
+    "2026-10-27T11:35:08.335878+00:00",
+    "2026-10-27T11:35:17.760420+00:00",
+    "2026-10-27T11:35:28.776016+00:00",
+    "2026-10-27T11:35:41.847891+00:00",
+    "2026-10-27T11:35:52.397109+00:00",
+    "2026-10-27T11:36:01.460977+00:00",
+    "2026-10-27T11:36:09.991369+00:00",
+    "2026-10-27T11:36:16.170315+00:00",
+    "2026-10-27T11:36:23.700685+00:00",
+    "2026-10-27T11:36:29.726311+00:00",
+    "2026-10-27T11:36:34.440929+00:00",
+    "2026-10-27T11:36:39.276139+00:00"
   ],
   "free_day_out": "",
   "topics": {
@@ -3812,17 +4103,11 @@
         "OpenAI",
         "antiai",
         "codex",
+        "medicine",
         "singularity"
       ],
-      "mentions": 25,
+      "mentions": 26,
       "refs": [
-        {
-          "date": "2026-10-24",
-          "title": "3% of critical software security bugs, in all of recorded history, have been found in the last month - \"Black October\"",
-          "thread": "https://www.reddit.com/r/OpenAI/comments/1xddmtq/3_of_critical_software_security_bugs_in_all_of/",
-          "link": "",
-          "comment": "You know who this is really bad for? State backed intelligence agencies who do hacking. The really big players who were able to keep their exploits to themselves. Suddenly the world starts patching exploits at an unprecedented speed."
-        },
         {
           "date": "2026-10-24",
           "title": "Altman admits the cybersecurity crisis is going to get worse: \"I no longer think we're gonna be able to patch all the bugs.\"",
@@ -3913,6 +4198,13 @@
           "thread": "https://www.reddit.com/r/DeepSeek/comments/1xff0vr/abliterated_deepseek_v41_flash_is_a_game_changer/",
           "link": "",
           "comment": "The deepseek provider one..doesnt really refuse."
+        },
+        {
+          "date": "2026-10-27",
+          "title": "Hot take - With modern AI vulnerabilities I think we're going to see most hospital systems go intranet only for any PC with EMR access",
+          "thread": "https://www.reddit.com/r/medicine/comments/1xg8tig/hot_take_with_modern_ai_vulnerabilities_i_think/",
+          "link": "",
+          "comment": "I think the real hot take is that any hospital or health system would actually care about HIPPA as it applies to the institution itself. We lose our livelihoods if we make HIPPA error. Health systems get a small absorbable fee if thousands of patient records are compromised."
         }
       ],
       "deep_dive": "",
@@ -4058,7 +4350,8 @@
         "2026-10-21",
         "2026-10-22",
         "2026-10-23",
-        "2026-10-25"
+        "2026-10-25",
+        "2026-10-27"
       ],
       "subs": [
         "ArtificialInteligence",
@@ -4071,15 +4364,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 28,
+      "mentions": 29,
       "refs": [
-        {
-          "date": "2026-10-15",
-          "title": "GPT-6 Astra autonomously solves 49 out of 50 unpublished theoretical physics research problems, scoring 98% at under $3 per problem. Researchers initially marked several answers wrong, only to discover the AI had caught errors in the calculations of world-class physicists.",
-          "thread": "https://www.reddit.com/r/singularity/comments/1x5y9ue/gpt6_astra_autonomously_solves_49_out_of_50/",
-          "link": "https://www.reddit.com/gallery/1x5y9ue",
-          "comment": "Source: https://arxiv.org/abs/2610.16733 Next year is gonna be physics, I can feel it lol"
-        },
         {
           "date": "2026-10-15",
           "title": "Assessing AI agents at autonomous theoretical physics problem solving (2610.16733)",
@@ -4170,10 +4456,17 @@
           "thread": "https://www.reddit.com/r/OpenAI/comments/1xe9ora/terence_tao_ai_turns_beautiful_mathematics_into/",
           "link": "https://observer.co.uk/news/science-technology/article/terence-tao-ai-turns-beautiful-mathematics-into-toxic-waste",
           "comment": "I have to say mathematicians are having a much worse time coping than software developers."
+        },
+        {
+          "date": "2026-10-27",
+          "title": "OpenAI says its AI invented a new mathematical technique to solve a 35-year-old mystery about how waves focus, then used the breakthrough to crack several other decades-old problems involving how waves overlap, how signals can be reconstructed, and the geometry of space.",
+          "thread": "https://www.reddit.com/r/singularity/comments/1xgaw9b/openai_says_its_ai_invented_a_new_mathematical/",
+          "link": "https://github.com/openai/math/blob/main/preprints/Local-smoothing-for-the-Euclidean-wave-equation-October-25-2026/paper.pdf",
+          "comment": "So the Kabeya conjecture paper is the first one of the 3 papers OpenAI released today and boy is this shit good. I just started pouring over it and is blowing my mind. Now to add some caveats before I go any further. This is foundational math, this isn't gonna gives us flying cars tomorrow or whatev"
         }
       ],
       "deep_dive": "",
-      "last_seen": "2026-10-25",
+      "last_seen": "2026-10-27",
       "subject": "ai"
     },
     "ai-coding-agents": {
@@ -4215,15 +4508,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 97,
+      "mentions": 98,
       "refs": [
-        {
-          "date": "2026-10-25",
-          "title": "Anthropic’s new guide (Oct 22) argues most agents should have fewer subagents: one main loop, skills and tool search instead. Includes “we cut Claude Code’s system prompt by over 80%”",
-          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xdwquj/anthropics_new_guide_oct_22_argues_most_agents/",
-          "link": "",
-          "comment": "TL;DR of the discussion generated automatically after 30 comments. Alright, the hivemind has spoken. The consensus is that Anthropic's guide is spot on—a lot of you are admitting your subagent setups were bloated and that many were just \"skills wearing a trench coat.\" People are widely confirming th"
-        },
         {
           "date": "2026-10-25",
           "title": "What's the one line in your CLAUDE.md that made the biggest difference?",
@@ -4307,6 +4593,13 @@
           "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xfm8i7/i_built_an_open_source_sky_camera_that_claude/",
           "link": "",
           "comment": "Oh so cool! I've been wanting to make this. I would love to see this automation crowd sourced and mapped out and triangulated in a neighborhood, city, or across the country. What is the camera you use?"
+        },
+        {
+          "date": "2026-10-27",
+          "title": "Engineers are coding by voice with Claude Code, some from their phones on dog walks",
+          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xfra3e/engineers_are_coding_by_voice_with_claude_code/",
+          "link": "https://leaddev.com/technical-direction/engineers-are-coding-out-loud",
+          "comment": "coding on a dog walk. so you're the guy yelling \"refactor the auth module\" at a lamppost"
         },
         {
           "date": "2026-10-27",
@@ -4422,7 +4715,8 @@
         "2026-10-16",
         "2026-10-17",
         "2026-10-23",
-        "2026-10-25"
+        "2026-10-25",
+        "2026-10-27"
       ],
       "subs": [
         "AI_Agents",
@@ -4434,15 +4728,8 @@
         "artificial",
         "singularity"
       ],
-      "mentions": 53,
+      "mentions": 54,
       "refs": [
-        {
-          "date": "2026-10-14",
-          "title": "Qwen 27B at ~20 tok/s on a jailbroken PS5's GPU. I forked PS5LM and turned it into a native app",
-          "thread": "https://www.reddit.com/r/LocalLLM/comments/1x4y61f/qwen_27b_at_20_toks_on_a_jailbroken_ps5s_gpu_i/",
-          "link": "https://www.reddit.com/gallery/1x4y61f",
-          "comment": "> Qwen 3.8 27B Oh wow, didn't expect it to run a 27B model. This will very likely get a lot of media attention and PS5 prices will skyrocket lmao"
-        },
         {
           "date": "2026-10-14",
           "title": "China just made AI memory startups sweat 💀 Tencent open-sourced Agent Memory and it runs 100% locally on SQLite",
@@ -4533,10 +4820,17 @@
           "thread": "https://www.reddit.com/r/LocalLLM/comments/1xe1u1i/qwen38flashnext_on_4x_r9700_with_radiance_at_tp4/",
           "link": "https://www.reddit.com/gallery/1xe1u1i",
           "comment": "Anyone else who thought this was a 2 meters sized server in a garage before realizing it is a desktop under a table?"
+        },
+        {
+          "date": "2026-10-27",
+          "title": "Have 8 GB of VRAM and 32 GB of RAM? You can run Qwen 3.8 Flash Next at up to 900 t/s PP and 30 t/s TG!",
+          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xft2ae/have_8_gb_of_vram_and_32_gb_of_ram_you_can_run/",
+          "link": "https://www.reddit.com/gallery/1xft2ae",
+          "comment": "[Serious] Could anyone please explain what is the point of these 3D scenes? is this just for fun\\art? or perhaps this can be actually be made into blender models or environments for games or something? I mean, I agree it's impressive. but what is it good for beside benchmarking a model and providing"
         }
       ],
       "deep_dive": "",
-      "last_seen": "2026-10-25",
+      "last_seen": "2026-10-27",
       "subject": "ai"
     },
     "openai-company-updates": {
@@ -4546,26 +4840,25 @@
         "2026-10-09",
         "2026-10-10",
         "2026-10-11",
-        "2026-10-14"
+        "2026-10-14",
+        "2026-10-27"
       ],
       "subs": [
         "ArtificialInteligence",
         "DeepSeek",
+        "EverythingScience",
         "GeminiAI",
         "LocalLLaMA",
         "OpenAI",
+        "Physics",
+        "accelerate",
         "antiai",
+        "artificial",
+        "codex",
         "singularity"
       ],
-      "mentions": 13,
+      "mentions": 15,
       "refs": [
-        {
-          "date": "2026-10-09",
-          "title": "An open letter from the three OpenAl employees who were fired last week",
-          "thread": "https://www.reddit.com/r/singularity/comments/1x10im0/an_open_letter_from_the_three_openal_employees/",
-          "link": "https://www.reddit.com/gallery/1x10im0",
-          "comment": ""
-        },
         {
           "date": "2026-10-10",
           "title": "AI Bubble Teetering on the Brink as OpenAI Admits to Massive Financial Failure in Leaked Documents",
@@ -4649,10 +4942,24 @@
           "thread": "https://www.reddit.com/r/GeminiAI/comments/1x4o9u9/logan_4_will_be_released_today/",
           "link": "",
           "comment": "By the time model get released, I would be in my coffin"
+        },
+        {
+          "date": "2026-10-27",
+          "title": "OpenAI: Working with academic communities to build scientific understanding",
+          "thread": "https://www.reddit.com/r/Physics/comments/1xgannr/openai_working_with_academic_communities_to_build/",
+          "link": "https://openai.com/index/building-scientific-understanding-with-academic-communities/",
+          "comment": "They claim a proof of the existence of Yang-Mills, which is very important for mathematical physics (but of course, isn't relevant to finding new physics). Instead of giving any details, they convened a group of famous physicists to vet it and decide how to release it: David Gross will lead a group "
+        },
+        {
+          "date": "2026-10-27",
+          "title": "Introducing GPT-6.1 Terra",
+          "thread": "https://www.reddit.com/r/singularity/comments/1xg4hs6/introducing_gpt61_terra/",
+          "link": "https://openai.com/index/introducing-gpt-6-1-terra/",
+          "comment": "So this is essentially Astra 6.0 but at 10% the cost. It’s not pushing the frontier but if that’s true it’s pretty impressive. Also, all the job displacement and embodied AI that people want comes from this type of progress, making capable models really really cheap to run."
         }
       ],
       "deep_dive": "",
-      "last_seen": "2026-10-14",
+      "last_seen": "2026-10-27",
       "subject": "ai"
     },
     "ai-pricing-and-costs": {
@@ -5052,7 +5359,7 @@
         "singularity",
         "technology"
       ],
-      "mentions": 9,
+      "mentions": 11,
       "refs": [
         {
           "date": "2026-10-19",
@@ -5116,6 +5423,20 @@
           "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xg1q97/anthropic_reveals_it_will_pay_spacex_up_to_1205b/",
           "link": "https://teslanorth.com/2026/10/26/anthropic-s1-spacex-120b-compute/",
           "comment": "This AI house of cards is looking increasingly fragile."
+        },
+        {
+          "date": "2026-10-27",
+          "title": "Anthropic files S-1 with the SEC for proposed initial public offering",
+          "thread": "https://www.reddit.com/r/singularity/comments/1xfwi7n/anthropic_files_s1_with_the_sec_for_proposed/",
+          "link": "https://www.anthropic.com/news/s1-sec",
+          "comment": "Wall Street bankers scrambling to ask Claude to summarize the Anthropic S-1 so they can price the IPO."
+        },
+        {
+          "date": "2026-10-27",
+          "title": "Anthropic Reveals It Will Pay SpaceX Up to $120.5B for AI Compute",
+          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xg1q97/anthropic_reveals_it_will_pay_spacex_up_to_1205b/",
+          "link": "https://teslanorth.com/2026/10/26/anthropic-s1-spacex-120b-compute/",
+          "comment": "TL;DR of the discussion generated automatically after 100 comments. This thread is a dumpster fire of disapproval. The consensus is that this is a terrible, hypocritical move by Anthropic. The main source of the outrage is the association with Elon Musk. Users are absolutely livid that the \"ethical "
         }
       ],
       "deep_dive": "",
@@ -5137,7 +5458,7 @@
         "science",
         "singularity"
       ],
-      "mentions": 10,
+      "mentions": 11,
       "refs": [
         {
           "date": "2026-10-24",
@@ -5208,6 +5529,13 @@
           "thread": "https://www.reddit.com/r/EverythingScience/comments/1xft1ra/moderna_mrna_vaccine_almost_halves_the_risk_of/",
           "link": "https://www.nature.com/articles/d41586-026-03417-0",
           "comment": "I'm genuinely interested in knowing what portion of anti-vaxers will make an \"exception\" for cancer-preventing vaccines. That aside, I'm really excited to see how these medical advancements progress."
+        },
+        {
+          "date": "2026-10-27",
+          "title": "Moderna mRNA vaccine almost halves the risk of skin cancer returning",
+          "thread": "https://www.reddit.com/r/EverythingScience/comments/1xft1ra/moderna_mrna_vaccine_almost_halves_the_risk_of/",
+          "link": "https://www.nature.com/articles/d41586-026-03417-0",
+          "comment": "I'm genuinely interested in knowing what portion of anti-vaxers will make an \"exception\" for cancer-preventing vaccines. That aside, I'm really excited to see how these medical advancements progress."
         }
       ],
       "deep_dive": "",
@@ -5218,12 +5546,14 @@
       "name": "AI Impacts on Mental Health",
       "first_seen": "2026-10-24",
       "days": [
-        "2026-10-24"
+        "2026-10-24",
+        "2026-10-27"
       ],
       "subs": [
+        "EverythingScience",
         "science"
       ],
-      "mentions": 1,
+      "mentions": 2,
       "refs": [
         {
           "date": "2026-10-24",
@@ -5231,11 +5561,18 @@
           "thread": "https://www.reddit.com/r/science/comments/1xdc3e7/a_new_study_found_that_conversational_ai_chatbots/",
           "link": "https://www.psypost.org/ai-psychosis-appears-rare-but-real-and-first-episode-patients-may-be-most-vulnerable-study-suggests/",
           "comment": "Welcome to r/science ! This is a heavily moderated subreddit in order to keep the discussion on science. However, we recognize that many people want to discuss how they feel the research relates to their own personal lives, so to give people a space to do that, personal anecdotes are allowed as resp"
+        },
+        {
+          "date": "2026-10-27",
+          "title": "10 minutes is all it takes for AI assistance to erode your motivation, study shows",
+          "thread": "https://www.reddit.com/r/EverythingScience/comments/1xg5yq9/10_minutes_is_all_it_takes_for_ai_assistance_to/",
+          "link": "https://www.livescience.com/technology/artificial-intelligence/10-minutes-is-all-it-takes-for-ai-assistance-to-erode-your-motivation-study-shows",
+          "comment": "Sounds kind of dystopian, but how concerned should we be that people begin to rely on a tool that makes their job easier? If you have an engineer who has always used AutoCAD and you tell him he has to do his next project by hand instead, he's going to probably not have as much motivation to do the s"
         }
       ],
       "deep_dive": "",
       "subject": "science",
-      "last_seen": "2026-10-24"
+      "last_seen": "2026-10-27"
     },
     "organoid-intelligence-and-biocomputing": {
       "name": "Organoid Intelligence and Biocomputing",
@@ -5279,15 +5616,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 15,
+      "mentions": 16,
       "refs": [
-        {
-          "date": "2026-10-24",
-          "title": "Hacker reverse engineers his Samsung TV and finds on-board AI listening for sounds of dog and baby, proceeds to get his account suspended by OpenAI",
-          "thread": "https://www.reddit.com/r/antiai/comments/1xdv3e5/hacker_reverse_engineers_his_samsung_tv_and_finds/",
-          "link": "https://www.reddit.com/gallery/1xdv3e5",
-          "comment": "By definition you can't hack your own device."
-        },
         {
           "date": "2026-10-24",
           "title": "Google quietly changes privacy policy so your Gmail and Photos could be used in targeted ads",
@@ -5371,6 +5701,13 @@
           "thread": "https://www.reddit.com/r/technology/comments/1xf9ssl/lg_smart_tvs_caught_mapping_your_network_logging/",
           "link": "https://thecybersecguru.com/news/lg-smart-tv-spying-investigation/",
           "comment": "Why in the flying fuck is this not 100% illegal????"
+        },
+        {
+          "date": "2026-10-27",
+          "title": "Police Are Increasingly Pulling People Over Because AI Deems Their Driving Patterns “Suspicious”",
+          "thread": "https://www.reddit.com/r/technology/comments/1xg8gp4/police_are_increasingly_pulling_people_over/",
+          "link": "https://www.aclu.org/news/privacy-technology/ai-driven-police-stops",
+          "comment": "He was stopped because a federal fusion center had alerted local police that Schott, who sells oilfield supplies, was suspicious because he drove from Houston to the town of Carrizo Springs, and then back the next day. The Institute for Justice, which represented Schott, noted that the same county h"
         },
         {
           "date": "2026-10-27",
