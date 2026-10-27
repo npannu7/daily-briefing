@@ -1,0 +1,96 @@
+## Welcome
+Sarah: Good morning, Nikhil! We're dialing back the technical density and easing our pace today to keep things grounded and clear.
+Laura: Continuing our look at indie developers building practical tools, we first explore how someone wired a coding agent into an all-sky camera to autonomously track meteors.
+Sarah: Then, we investigate why modern physics departments quietly dropped fluid mechanics from their core curriculum to focus almost entirely on particles and quanta.
+Laura: Let's dive right in.
+
+## Letting a coding agent watch the night sky
+Sarah: I came across this project on the Claude Code subreddit that immediately made me want to bolt a four-K camera to my roof. A developer built an open-source project called openskycam, hooked it up to an artificial intelligence coding agent, and woke up to seventeen confirmed meteors, neatly clipped and categorized while he was asleep.
+Laura: That does sound fun, but what does the coding agent actually do? Because people have been pointing security cameras at the sky to catch Perseid meteors for decades with simple motion detection scripts.
+Sarah: Right, but the old way meant scrubbing through hours of video by hand every morning. You would get hundreds of false alarms from airplanes, satellites, passing clouds, or even just twinkling stars triggering the motion threshold. The author claimed that instead of spending hours pulling frames and hand-labeling them to retrain a detection model, they let Claude Code drive the entire pipeline through the command line.
+Laura: Okay, so the argument in the thread is that the agent basically acts like an autonomous night-shift operator. It watches the incoming feed, flags the streaks, retrains the vision model when it makes mistakes, and texts you the highlights.
+Sarah: Exactly. And the community was eating it up. People were immediately chiming in about setting up distributed camera networks spaced across neighborhoods to triangulate meteor trajectories in three dimensions.
+Laura: Triangulating fireballs is legitimate physics, but you actually need stations spaced around fifty miles apart because meteors burn up seventy miles above the ground. But before we build a national sky-watch network, what is the actual software mechanism here? Because an LLM cannot watch a continuous four-K video stream in real time. The compute cost alone would be astronomical.
+Sarah: You caught the first catch. Claude is not watching raw video. We looked up the source code directly on GitHub, and the architecture is much more grounded than the Reddit post makes it sound. You have a standard outdoor security camera sending video to a local mini-computer like a Raspberry Pi.
+Laura: Which is just a deterministic streaming relay.
+Sarah: Yes. It chops the video into one-minute files without re-encoding and saves them onto your local hard drive. Then, a separate local processor runs an off-the-shelf vision model called YOLO—which stands for You Only Look Once—to scan individual frames. In machine learning, YOLO is just an established algorithm that draws bounding boxes around objects in a single pass, kind of like an automated optical inspection scanner looking for surface blemishes on a factory line.
+Laura: That makes complete sense. In manufacturing quality, you do not use an expensive deep-reasoning system to inspect every widget on a conveyor belt. You use a dedicated high-speed sensor tuned for that one geometry. But where does the agent enter the picture?
+Sarah: It connects through something called the Model Context Protocol, or MCP. Think of MCP like a standardized communication bus, similar to how an industrial programmable logic controller talks to field devices over Modbus. It gives the coding agent a defined set of tools to query the database, pull specific image frames, schedule nightly processing runs, or check system health.
+Laura: So the agent is not doing the computer vision. It is acting as a natural language interface to run scripts and orchestrate existing command-line tools.
+Sarah: Pretty much. But the post made a much bigger claim. It claimed that the agent autonomously runs, debugs, and sorts the data without human intervention, and that it eliminated manual labeling when the system kept confusing stars for meteors.
+Laura: That is the claim we really need to audit. How did it solve the twinkling star problem without human supervision?
+Sarah: Well, that is where the Reddit headline collides with the repository documentation. When you inspect the actual code, the system tells planes and meteors apart from stars using deterministic tracking algorithms. If a bright spot stays in the exact same pixel coordinates across multiple minutes, the code flags it as stationary—meaning it is a star or a streetlight.
+Laura: Which is classic temporal filtering. In control systems, that is just distinguishing a static DC bias from a transient dynamic signal. You do not need artificial intelligence for that; you just subtract the static background.
+Sarah: Exactly. And when it came to retraining the vision model, the author admitted in the comments that the agent did not just magically figure out what was real on its own. The developer had to manually approve or reject the candidate detections first.
+Laura: Ah. So there was a human in the loop validating the inspection log.
+Sarah: Yes. The agent took the images the human had already approved, formatted them into a structured dataset, and ran the retraining script. On held-out test nights, that dropped the false alarms from stationary stars down to about seven percent, while keeping ninety percent of real meteors. But the human was still providing the ground truth.
+Laura: That reminds me of the automated defect inspection audit we discussed from that Saturday evening episode. If you turn up your detector sensitivity to catch faint anomalies, you get flooded with unconfirmed flags. If you then let an automated script train on its own unverified assumptions, you get model drift. One commenter on the thread actually raised a brilliant point about this: survivorship bias.
+Sarah: Yes! That commenter pointed out that if the model only trains on things the human approved from the previous model's output, it will quietly narrow its own vision. If the original detector had a blind spot for faint, fast-moving fireballs, and never showed them to the user, the agent would never add them to the retraining pool.
+Laura: It is the classic feedback loop trap in quality engineering. If your gage only flags burrs wider than two millimeters, and you only verify what the gage flags, your new process will never learn how to catch a one-millimeter burr. To claim you have ninety percent recall under those conditions is misleading, because you are only measuring ninety percent of what your previous filter already caught.
+Sarah: And to the author's credit, they conceded that immediately. They pointed to the model documentation on GitHub and said, yes, that ninety percent is strictly measured against what the old model flagged, not against the total sky truth of everything that entered the atmosphere.
+Laura: I respect that honesty. It is rare to see someone on social media admit the boundary of their test sample so clearly. What about the claim that Claude Code set the whole thing up autonomously?
+Sarah: Half-true at best. The setup script does have automated flags, but the repository explicitly states that a human still has to manually log in, configure the secure web tunnel, and generate the API security credentials. In fact, the software has hard-coded server guardrails. The agent is explicitly barred from creating its own security keys, and any file deletion requires a human confirmation preview.
+Laura: Those are not AI safety features; those are basic industrial safety interlocks. You do not let a robotic arm write its own permissions register on the factory floor, no matter how sophisticated its motion planning is.
+Sarah: So when we audit the claims: can a coding agent autonomously run and sort sky video without human intervention? No. It orchestrates the tools, but deterministic computer vision algorithms do the heavy lifting, and hardcoded boundaries keep the agent in check.
+Laura: And did it eliminate manual labeling to fix the false positives from stars?
+Sarah: Definitely not. The user had to review the detections to build the baseline dataset, and deterministic tracking logic did the spatial filtering. The agent just handled the plumbing of packaging the files and calling the training binary.
+Laura: So our verdict is half-right. As a software engineering achievement, it is a genuinely clever demonstration of using an agent as an interactive operations layer over command-line utilities. But it is an orchestrator, not an autonomous scientist.
+Sarah: The big takeaway here is that coding agents make great shop foremen for running your pipelines, but your instruments still need deterministic physics and human verification to know what they are actually looking at.
+
+## Why physics programs stopped teaching how liquids move
+Laura: Speaking of things that move through the air, I ran into a discussion on the physics forum this week that made me stop and check my own college transcripts.
+Sarah: Oh boy. Did you find out you skipped a prerequisite thirty years ago?
+Laura: Not quite. A graduating physics senior realized they could solve the wave function of a hydrogen atom in their sleep, but had no idea how to calculate the pressure drop of water moving through a bent pipe.
+Sarah: Wait, really? Water in a pipe is classical mechanics! Newton, Euler, Bernoulli. That is literally the physics of everyday life.
+Laura: It is, but if you look at the core requirements for an undergraduate physics degree today, fluid mechanics is almost completely missing.
+Sarah: Hold on. How missing are we talking? Like, tucked away in an elective, or totally gone?
+Laura: An independent audit of physics curricula across top universities in North America and Europe showed that fewer than ten percent require a course in continuum or fluid mechanics.
+Sarah: That is wild to me. In mechanical engineering, fluids is a rite of passage. You spend half your junior year staring at pipe friction and boundary layers.
+Laura: Exactly. If you study mechanical, aerospace, or civil engineering, fluids is bedrock. But in physics, the core four has been locked in stone for decades: analytical classical mechanics, electromagnetism, quantum mechanics, and statistical thermodynamics.
+Sarah: But classical mechanics is on that list! Doesn't fluids live inside classical mechanics?
+Laura: Only the first few pages. Classical mechanics in a physics department almost exclusively means discrete systems. You study single particles, two-body orbits, and rigid bodies using elegant formulations like Lagrangian and Hamiltonian dynamics.
+Sarah: Right, point masses connected by massless springs. The frictionless spherical cow on an infinite plane.
+Laura: Precisely. Once a medium can deform, shear, and flow, it enters the realm of continuum mechanics. And modern physics curricula basically hand that entire domain over to engineering departments.
+Sarah: How did that split happen? Did physicists just decide water was boring?
+Laura: Not boring, but fundamentally out of step with where twentieth-century physics wanted to go. After the nineteen twenties, physics went all-in on reductionism.
+Sarah: Breaking things down into their smallest possible parts.
+Laura: Yes. The prestige, the funding, and the Nobel prizes moved toward peeling back layers of matter: from atoms to electrons, then to nuclei, quarks, and quantum fields. The goal was finding the fundamental building blocks of the universe.
+Sarah: And a bucket of water is already trillions of trillions of atoms, so looking at it as a continuous goo felt like moving backward.
+Laura: To a reductionist, treating matter as a continuum felt like an outdated approximation from the Victorian era. But there was a second, even bigger barrier, and it was purely mathematical.
+Sarah: The math? I thought physics majors lived for horrifying math.
+Laura: They do, but they prefer a specific flavor of horrifying math: linear systems. Think about quantum mechanics. The Schrödinger equation might look intimidating, but it is linear.
+Sarah: Which means you can add two solutions together to get a third solution. Principle of superposition.
+Laura: Exactly. In linear algebra and linear differential equations, you have powerful tools to find exact, closed-form solutions, or at least clean approximations.
+Sarah: But fluids do not play nice like that.
+Laura: Not even a little. The governing equation for fluid flow, the Navier-Stokes equation, has an advective acceleration term. That represents the fluid carrying its own momentum along with it.
+Sarah: It acts on itself. That is where the non-linearity comes from.
+Laura: That single non-linear term shatters superposition. You cannot just add solutions together. Most realistic fluid problems have no exact analytical solution at all.
+Sarah: Which explains why we engineers lean so heavily on empirical dimensionless numbers. Like the Reynolds number, or friction factor charts, or firing up computational fluid dynamics to solve it cell by cell.
+Laura: Right. And fifty years ago, pure physics departments looked at empirical charts and numerical approximations and thought, that is not fundamental theory, that is design work. That belongs in engineering.
+Sarah: That feels a little snobbish, Laura. Richard Feynman himself famously called turbulence the most important unsolved problem of classical physics!
+Laura: He did! And that quote is legendary. But acknowledging that turbulence is an unsolved mystery did not translate into putting it on the required syllabus. The mathematical intractability pushed it out.
+Sarah: But isn't there a real cost to that? If you only train people on discrete, linear systems, you are basically blinding them to how the macro world actually behaves.
+Laura: It creates a strange blind spot. Commenters in that Reddit thread who transitioned from physics to applied industry jobs said they felt totally unprepared for real-world transport phenomena.
+Sarah: Like heat transfer, or how cooling air moves across a server rack, or how blood shears through a heart valve.
+Laura: Exactly. Those are continuum problems. In quality engineering for medical devices, for instance, you cannot pretend an intravenous fluid is a cloud of isolated point particles. You have to understand viscosity, boundary layers, and laminar-to-turbulent transitions.
+Sarah: Okay, so that was the claim to check: did the math really drive the split?
+Laura: Historically, yes. The evidence from curriculum histories shows that as quantum mechanics expanded after World War Two, physics departments had to drop something to keep a four-year degree manageable.
+Sarah: And continuum mechanics drew the short straw because it wouldn't solve cleanly on a chalkboard.
+Laura: It was messy, it required heavy numerical computation or physical wind tunnels, and it felt like engineering. So physics kept the elegant, discrete math, and let the engineers worry about the plumbing.
+Sarah: But wait, Laura, push back with me for a second. Isn't this pendulum starting to swing back? I keep reading about soft matter physics, active matter, flocks of birds modeled as fluids.
+Laura: That is an astute catch, Sarah. In research, fluid concepts are roaring back. Soft condensed matter, granular flows, and biophysics are some of the most dynamic fields in modern science.
+Sarah: Even in astrophysics! Accretion disks around black holes and stellar interiors are pure magnetohydrodynamics. That is fluids with a magnetic field strapped to it.
+Laura: It is. Researchers in those specialized fields will tell you that fluid mechanics never stopped being deep physics. The problem is institutional inertia. Research frontiers evolve in a few years, but undergraduate degree requirements can take half a century to budge.
+Sarah: So if you are an undergraduate sitting in a physics lecture hall right now, you are still studying the nineteen-sixty curriculum.
+Laura: In most places, yes. If you want to learn how a liquid actually flows, you either have to cross campus to the mechanical engineering building, or wait until graduate school.
+Sarah: That is such a bizarre academic border wall. Both sides are studying the same universe, just separated by whether matter is chopped into tiny dots or treated as a continuous field.
+Laura: It really is a cultural wall between two different ways of solving problems: reductionism seeking the ultimate particle, versus continuum modeling trying to capture emergent behavior at scale.
+Sarah: Let's do a quick recap so we can keep our mental models straight while driving.
+Laura: First, the core physics curriculum pivoted in the mid-twentieth century toward discrete quantum and particle systems, dropping continuum mechanics to make room.
+Sarah: Second, the non-linear math of Navier-Stokes meant you could rarely find neat, exact pencil-and-paper solutions, which made theoretical physicists label it as engineering.
+Laura: And third, while research in soft matter and astrophysics desperately relies on fluid flow today, the undergraduate physics requirements have not caught up.
+Sarah: Lesson learned: if you want to know what an electron is doing, ask a physicist. But if your pipe is vibrating, talk to an engineer.
+
+## Close
+Sarah: That wraps up our Tuesday morning ride, Nikhil. From skyward camera rigs to turbulent flow, physical systems always demand careful verification.
+Laura: Whether checking code outputs or modeling fluids, fundamentals matter. We'll be back this evening.
