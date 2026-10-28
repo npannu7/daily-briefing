@@ -8,9 +8,28 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Tue, 27 Oct 2026 11:37:03 GMT</lastBuildDate>
+<lastBuildDate>Wed, 28 Oct 2026 03:38:03 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Morning - 28 Oct: When the coding agent bills you for its own errors</title>
+<description>Morning edition - Wednesday, 28 October 2026
+Validating the tools you pay for, and the physics of a everyday breath
+
+00:37  When the coding agent bills you for its own errors
+   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1xh3yyu/claude_code_usage_exploded_8x_today_anthropic/
+   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1xguw7r/claude_is_performing_38x_poorer_compared_to_last/
+09:39  Why your breath feels cold through pursed lips but warm with an open mouth
+   askscience: https://www.reddit.com/r/askscience/comments/1xgpqsy/what_fluid_dynamic_or_thermodynamic_mechanisms/
+
+Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
+Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (196 threads)</description>
+<pubDate>Wed, 28 Oct 2026 08:40:56 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-10-28_morning_0840.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-28_morning_0840.mp3" length="8483372" type="audio/mpeg"/>
+<itunes:duration>1060</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Evening - 27 Oct: AI Takes on Three Hard Problems in Math and Physics</title>
 <description>Evening edition - Tuesday, 27 October 2026
@@ -289,26 +308,6 @@ Written by: Gemini 3.7 Flash · Voices: Fish Audio (free) · Discussions: Reddit
 <guid isPermaLink="false">ai_2026-10-21_evening_1628.mp3</guid>
 <enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-21_evening_1628.mp3" length="8987948" type="audio/mpeg"/>
 <itunes:duration>1123</itunes:duration>
-<itunes:episodeType>full</itunes:episodeType>
-</item>
-<item>
-<title>Morning - 21 Oct: Can Driverless Cars Prove They Are Safer Than Humans?</title>
-<description>Morning edition - Wednesday, 21 October 2026
-Validating safety benchmarks in autonomous vehicles and testing mechanical perfusion devices against cognitive decline
-
-00:32  Can Driverless Cars Prove They Are Safer Than Humans?
-   singularity: https://www.reddit.com/r/singularity/comments/1xarq3w/waymos_robotaxis_had_95_fewer_serious_crashes/
-   Source: https://maccus.fr/en/waymo-robotaxis-serious-crashes/
-08:38  Can Pulsing Leg Cuffs Reverse Early Memory Loss?
-   science: https://www.reddit.com/r/science/comments/1xb5p3k/a_1970s_heart_treatment_that_squeezes_your_legs/
-   Source: https://www.sciencealert.com/this-heart-treatment-from-the-1970s-could-also-improve-memory-in-alzheimers-patients
-
-Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
-Written by: Gemini 3.8 Flash · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (173 threads)</description>
-<pubDate>Wed, 21 Oct 2026 08:28:55 +0530</pubDate>
-<guid isPermaLink="false">ai_2026-10-21_morning_0828.mp3</guid>
-<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-21_morning_0828.mp3" length="8110892" type="audio/mpeg"/>
-<itunes:duration>1013</itunes:duration>
 <itunes:episodeType>full</itunes:episodeType>
 </item>
 </channel>

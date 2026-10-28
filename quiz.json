@@ -4,6 +4,234 @@
  "repo": "npannu7/daily-briefing",
  "episodes": [
   {
+   "file": "ai_2026-10-28_morning_0840.mp3",
+   "title": "Morning - 28 Oct: When the coding agent bills you for its own errors",
+   "label": "Wednesday 28 Oct morning",
+   "date": "2026-10-28",
+   "edition": "morning",
+   "published": "2026-10-28T08:40:56.826453+05:30",
+   "duration": 1060,
+   "theme": "Validating the tools you pay for, and the physics of a everyday breath",
+   "writer": "nemotron-3-ultra-550b-a55b (free)",
+   "voices": "Fish Audio (free)",
+   "deep_dive": false,
+   "segments": [
+    {
+     "title": "When the coding agent bills you for its own errors",
+     "category": "thread"
+    },
+    {
+     "title": "Why your breath feels cold through pursed lips but warm with an open mouth",
+     "category": "concept"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why did the user's token consumption surge dramatically on October 27th while using Claude Code?",
+     "options": [
+      "The model doubled its vocabulary size per request.",
+      "Service errors triggered the harness to retry failed requests, and every retry counted against paid limits.",
+      "Anthropic automatically upgraded all users to the multi-terabyte enterprise tier.",
+      "The coding agent began writing documentation in binary format."
+     ],
+     "answer": 1,
+     "explain": "Anthropic acknowledged service incidents that day, and retries triggered by service errors count against your paid limit, multiplying token usage.",
+     "segment": "When the coding agent bills you for its own errors"
+    },
+    {
+     "q": "What engineering parallel did Laura use to describe the sub-agents and orchestration layer in Claude Code?",
+     "options": [
+      "A pneumatic cylinder and a piston pump",
+      "A workpiece and a high-speed milling cutter",
+      "A fixture acting as the harness, with the model as the cutting tool and sub-agents as specialized subprocesses",
+      "A feedback control loop with an integral gain controller"
+     ],
+     "answer": 2,
+     "explain": "Laura compared the harness to a fixture holding a workpiece, the model to the cutting tool, and sub-agents to specialized subroutines.",
+     "segment": "When the coding agent bills you for its own errors"
+    },
+    {
+     "q": "Why does breath through pursed lips feel cool compared to breathing with an open mouth?",
+     "options": [
+      "Joule-Thomson adiabatic expansion drops the temperature of the air by several degrees.",
+      "Pursed lips create a high-velocity turbulent jet that heavily entrains cooler room air, stripping the skin's thermal boundary layer and driving higher heat flux.",
+      "The tongue acts as a heat sink that absorbs thermal energy before the air exits.",
+      "Moisture evaporates more rapidly inside the oral cavity during restricted exhalation."
+     ],
+     "answer": 1,
+     "explain": "The dominant effect is entrainment: the high-velocity jet pulls in cooler ambient air, increasing convective heat transfer and heat flux out of the skin.",
+     "segment": "Why your breath feels cold through pursed lips but warm with an open mouth"
+    },
+    {
+     "q": "What did the hosts conclude about the primary sources supporting the Reddit claims regarding token consumption and breath physics?",
+     "options": [
+      "They were fully backed by peer-reviewed thermodynamics papers.",
+      "They were verified through official Anthropic status page telemetry.",
+      "There were no primary sources or independent verifications outside of Reddit anecdotes.",
+      "They were confirmed by double-blind clinical trials in a medical device lab."
+     ],
+     "answer": 2,
+     "explain": "Both topics relied heavily on unconfirmed community discussions, with no primary source or independent verification outside of Reddit.",
+     "segment": "Why your breath feels cold through pursed lips but warm with an open mouth"
+    }
+   ],
+   "digest": [
+    {
+     "title": "Young adults with cancer report getting dismissed by doctors",
+     "subs": [
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1xh1fgk/young_adults_with_cancer_report_getting_dismissed/",
+     "link": "https://www.futurity.org/young-adults-cancer-3350622-2/?utm_campaign=young-adults-cancer-3350622-2",
+     "line": "Young adults and cardiac patients frequently report being dismissed by doctors who tell them they are too young for serious illnesses, and commenters shared similar personal stories.",
+     "verdict": "opinion",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Surgeon left sponge in abdominal cavity. Patient dies from peritonitis. Defense expert claims patient ate it.",
+     "subs": [
+      "medicine"
+     ],
+     "thread": "https://www.reddit.com/r/medicine/comments/1xgxmnz/surgeon_left_sponge_in_abdominal_cavity_patient/",
+     "link": "",
+     "line": "In a 1997 medical malpractice lawsuit where a patient died from a surgical sponge left in her abdomen, a defense expert absurdly claimed the patient ate it, sparking outrage.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Why do so many cool non-research jobs require a PhD?",
+     "subs": [
+      "biotech"
+     ],
+     "thread": "https://www.reddit.com/r/biotech/comments/1xg9jzy/why_do_so_many_cool_nonresearch_jobs_require_a_phd/",
+     "link": "",
+     "line": "Professionals discussed why non-research biotech jobs often require a PhD, concluding it stems from PhD oversaturation and serves as an independent signal of capability.",
+     "verdict": "opinion",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "'Constant surveillance is pushing us toward an authoritarian state': voters demand regulation of Flock cameras",
+     "subs": [
+      "technology"
+     ],
+     "thread": "https://www.reddit.com/r/technology/comments/1xgrezg/constant_surveillance_is_pushing_us_toward_an/",
+     "link": "https://english.elpais.com/technology/2026-10-27/constant-surveillance-is-pushing-us-toward-an-authoritarian-state-voters-demand-regulation-of-flock-cameras.html",
+     "line": "Voters are demanding regulation of Flock AI cameras due to fears that constant surveillance is pushing society toward an authoritarian state, drawing heavy criticism from commenters.",
+     "verdict": "opinion",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Two physicists asked AI to choose a problem on its own, solve it and write a paper that could be published in a prestigious journal. In two hours, AI produced a paper with a novel, significant result.",
+     "subs": [
+      "ArtificialInteligence",
+      "OpenAI",
+      "singularity"
+     ],
+     "thread": "https://www.reddit.com/r/ArtificialInteligence/comments/1xgo1i9/two_physicists_asked_ai_to_choose_a_problem_on/",
+     "link": "",
+     "line": "Physicists asked an AI to autonomously choose, solve, and write a paper on a problem, resulting in a novel and significant research paper within two hours.",
+     "verdict": "hype",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Early progress on accelerating drug development with Claude",
+     "subs": [
+      "biotech",
+      "singularity"
+     ],
+     "thread": "https://www.reddit.com/r/singularity/comments/1xh4yqn/early_progress_on_accelerating_drug_development/",
+     "link": "https://www.anthropic.com/research/early-progress-drug-development",
+     "line": "Users expressed optimism regarding early progress in accelerating drug development using Claude, alongside efforts in China.",
+     "verdict": "hype",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "A monkey infected with an HIV-like virus has stayed virus-free for four years after a single shot of a new antibody that helps the immune system destroy the cells where the virus hides. Several other baby monkeys also stayed clear for months after their HIV drugs were stopped, in a small, new study.",
+     "subs": [
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1xgn6as/a_monkey_infected_with_an_hivlike_virus_has/",
+     "link": "https://www.sciencealert.com/one-dose-of-experimental-antibody-kept-hiv-like-virus-in-remission-for-4-years-in-a-monkey",
+     "line": "A small study showed that an HIV-like virus in a monkey stayed virus-free for four years after a single antibody shot, and commenters hope this will translate to humans.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Genie 4: A new generation of world simulation",
+     "subs": [
+      "GeminiAI",
+      "singularity"
+     ],
+     "thread": "https://www.reddit.com/r/singularity/comments/1xgwsjx/genie_4_a_new_generation_of_world_simulation/",
+     "link": "https://youtu.be/sFfPkUJd_Jk?si=lxnHNFGx9tXxyInb",
+     "line": "Google DeepMind announced Genie 4, a new generation of world simulation, leading commenters to speculate about future gaming and hardware limitations.",
+     "verdict": "confirmed",
+     "also_in": [
+      "Google DeepMind Blog"
+     ],
+     "in_episode": false
+    },
+    {
+     "title": "How dismissed symptoms can push patients to breaking point: Patients with autoimmune diseases have been left feeling suicidal after feeling like their doctor was saying their symptoms were ‘all in their head’. Only 7% agreed with being told that their symptoms were “psychosomatic”.",
+     "subs": [
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1xgq57z/how_dismissed_symptoms_can_push_patients_to/",
+     "link": "https://www.uea.ac.uk/about/news/article/how-dismissed-symptoms-can-push-patients-to-breaking-point",
+     "line": "Patients with autoimmune diseases report feeling suicidal after doctors dismiss their symptoms as psychosomatic, and commenters shared matching experiences with conditions like Hashimoto's.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Retrospective cohort: after implementation of Heidi (ambient AI scribe), BIDMC researchers found an association of high use of Heidi with lower median note-active time (21 minutes → 18 minutes) and higher median number of characters per note (4,854 → 5,187), without changes in completed note or RVUs",
+     "subs": [
+      "medicine"
+     ],
+     "thread": "https://www.reddit.com/r/medicine/comments/1xgcgqt/retrospective_cohort_after_implementation_of/",
+     "link": "",
+     "line": "A retrospective cohort study found that using Heidi ambient AI scribes reduced note-active time while increasing character count without changing productivity, though critics noted it skipped error checks.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Brazil election: many scientists relieved as Lula wins surprise victory",
+     "subs": [
+      "EverythingScience"
+     ],
+     "thread": "https://www.reddit.com/r/EverythingScience/comments/1xh262w/brazil_election_many_scientists_relieved_as_lula/",
+     "link": "https://www.nature.com/articles/d41586-026-03446-9?e",
+     "line": "Scientists in Brazil expressed relief following a surprise election victory by Lula, which led to a broader debate in the comments about the role of politics in science.",
+     "verdict": "confirmed",
+     "also_in": [
+      "Nature News"
+     ],
+     "in_episode": false
+    },
+    {
+     "title": "What fluid dynamic or thermodynamic mechanisms cause exhaled human breath to feel cool through pursed lips but warm through an open mouth?",
+     "subs": [
+      "askscience"
+     ],
+     "thread": "https://www.reddit.com/r/askscience/comments/1xgpqsy/what_fluid_dynamic_or_thermodynamic_mechanisms/",
+     "link": "",
+     "line": "Commenters explained that exhaled breath feels cool through pursed lips due to higher velocity and convective heat transfer pulling in surrounding air, compared to a slow open-mouth exhale.",
+     "verdict": "opinion",
+     "also_in": [],
+     "in_episode": true
+    }
+   ],
+   "transcript": "transcripts/ai_2026-10-28_morning_0840.txt"
+  },
+  {
    "file": "ai_2026-10-27_evening_1633.mp3",
    "title": "Evening - 27 Oct: AI Takes on Three Hard Problems in Math and Physics",
    "label": "Tuesday 27 Oct evening",
@@ -2914,227 +3142,6 @@
     }
    ],
    "transcript": "transcripts/ai_2026-10-21_evening_1628.txt"
-  },
-  {
-   "file": "ai_2026-10-21_morning_0828.mp3",
-   "title": "Morning - 21 Oct: Can Driverless Cars Prove They Are Safer Than Humans?",
-   "label": "Wednesday 21 Oct morning",
-   "date": "2026-10-21",
-   "edition": "morning",
-   "published": "2026-10-21T08:28:55.928628+05:30",
-   "duration": 1013,
-   "theme": "Validating safety benchmarks in autonomous vehicles and testing mechanical perfusion devices against cognitive decline",
-   "writer": "Gemini 3.8 Flash",
-   "voices": "Fish Audio (free)",
-   "deep_dive": false,
-   "segments": [
-    {
-     "title": "Can Driverless Cars Prove They Are Safer Than Humans?",
-     "category": "thread"
-    },
-    {
-     "title": "Can Pulsing Leg Cuffs Reverse Early Memory Loss?",
-     "category": "thread"
-    }
-   ],
-   "quiz": [
-    {
-     "q": "Why did the IIHS throw out about twenty-five percent of the initial incident reports when auditing the autonomous vehicle dataset?",
-     "options": [
-      "Because the companies intentionally deleted collision logs to make their software look safer.",
-      "Because autonomous cars must report even trivial incidents like minor curb scrapes that human drivers and federal reporting standards typically ignore.",
-      "Because those records were corrupted by sensor failures during high-speed highway testing.",
-      "Because local police departments failed to log collisions involving robotaxis in Los Angeles and Austin."
-     ],
-     "answer": 1,
-     "explain": "Autonomous companies are legally required to report every minor event, whereas humans rarely report minor bumps, creating a reporting bias that makes automated vehicles look worse on paper until filtered.",
-     "segment": "Can Driverless Cars Prove They Are Safer Than Humans?"
-    },
-    {
-     "q": "What is the primary operational limitation that keeps autonomous vehicles from proving they are unconditionally safer than human drivers everywhere?",
-     "options": [
-      "They rely entirely on cloud-based servers that disconnect when driving through tunnels.",
-      "They use closed-loop controllers that are heavily filtered to avoid high-risk environments like severe weather and construction zones.",
-      "They lack any mechanism to brake automatically when encountering pedestrians on secondary roads.",
-      "They are legally restricted from driving faster than thirty miles per hour in major metropolitan areas."
-     ],
-     "answer": 1,
-     "explain": "Autonomous vehicles filter their operational design domain to avoid complex or hazardous environments, meaning their lower crash rates reflect easier operating conditions rather than superhuman driving everywhere.",
-     "segment": "Can Driverless Cars Prove They Are Safer Than Humans?"
-    },
-    {
-     "q": "During external counterpulsation (ECP) therapy, what specific physiological mechanism is triggered when the pneumatic cuffs inflate immediately after the heart finishes contracting?",
-     "options": [
-      "It forces an immediate drop in core body temperature to preserve neural tissue.",
-      "It generates an arterial back-pressure wave that increases fluid shear stress, causing endothelial cells to release nitric oxide and dilate vessels.",
-      "It acts as a physical pacemaker, overriding erratic electrical signals in the sinoatrial node.",
-      "It reverses the flow of venous blood to completely clear plaque buildup from the carotid arteries."
-     ],
-     "answer": 1,
-     "explain": "The pneumatic pulses delivered during diastole increase frictional drag (wall shear stress), prompting endothelial cells to release nitric oxide, which dilates blood vessels and reduces peripheral resistance.",
-     "segment": "Can Pulsing Leg Cuffs Reverse Early Memory Loss?"
-    },
-    {
-     "q": "Why did medical quality and device experts express skepticism about the positive cognitive outcomes reported in the ECP clinical trial?",
-     "options": [
-      "The trial failed to use objective biological markers like amyloid and tau to confirm Alzheimer's pathology, and lacked airtight blinding for patients and assessors.",
-      "The external cuffs were shown to cause severe deep vein thrombosis in more than half of the test subjects.",
-      "The cognitive improvement scores were entirely fabricated by the independent auditing team from the FDA.",
-      "Patients only wore the pneumatic sleeves for a total of ten minutes over a six-month monitoring period."
-     ],
-     "answer": 0,
-     "explain": "Without blood biomarkers or PET scans, many patients likely had vascular dementia rather than Alzheimer's, and the inability to properly blind patients or assessors introduced potential expectation bias.",
-     "segment": "Can Pulsing Leg Cuffs Reverse Early Memory Loss?"
-    }
-   ],
-   "digest": [
-    {
-     "title": "Scientists turned blood cells from donors aged newborn to 101 directly into brain stem cells, and the new cells kept getting biologically younger over time, shedding about 60 years of cell age in 50 days and acting like young cells, which may one day help treat brain diseases like dementia.",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1xambfi/scientists_turned_blood_cells_from_donors_aged/",
-     "link": "https://www.sciencealert.com/old-blood-cells-have-been-transformed-into-brain-stem-cells-that-get-younger-as-they-age",
-     "line": "Researchers turned blood cells into brain stem cells that aged backwards in a lab, and commenters debated general research headlines and skepticism.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Waymo's robotaxis had 95% fewer serious crashes than humans. Now it plans a fleet of 20,000 cars",
-     "subs": [
-      "singularity"
-     ],
-     "thread": "https://www.reddit.com/r/singularity/comments/1xarq3w/waymos_robotaxis_had_95_fewer_serious_crashes/",
-     "link": "https://maccus.fr/en/waymo-robotaxis-serious-crashes/",
-     "line": "Waymo reported significantly fewer serious crashes than human drivers and plans a massive expansion, with commenters frustrated by unfair public criticism of autonomous vehicles.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": true
-    },
-    {
-     "title": "In teenagers (mean age 12.6 years) one additional serve of any type of fruit each day was associated with a 13% lower risk of depression and a 7% lower risk of anxiety over the study period, according to a study on 6537 Australian adolescents followed for 3 years",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1xax0em/in_teenagers_mean_age_126_years_one_additional/",
-     "link": "https://www.sydney.edu.au/news-opinion/news/2026/10/19/an-extra-serve-of-fruit-linked-to-lower-risk-of-depression-and-anxiety-in-teenagers.html",
-     "line": "A study on Australian adolescents linked eating extra fruit daily to lower depression and anxiety risks, while commenters discussed the starting age terminology.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Candida auris cases in the US more than doubled in two years (At least 28 states have reported clinical cases of the drug-resistant fungus in 2026, straining hospital infection controls.)",
-     "subs": [
-      "EverythingScience"
-     ],
-     "thread": "https://www.reddit.com/r/EverythingScience/comments/1xamtrx/candida_auris_cases_in_the_us_more_than_doubled/",
-     "link": "https://the-scientist.com/candida-auris-cases-more-than-doubled-in-two-years-75088",
-     "line": "US cases of the drug-resistant fungus Candida auris reportedly doubled over two years, and a nursing home worker confirmed treating colonized patients.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Deepseek released DeepInfer - Open Source high-performance, large-scale inference framework for DeepSeek models!",
-     "subs": [
-      "LocalLLaMA",
-      "singularity"
-     ],
-     "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xanm55/deepseek_released_deepinfer_open_source/",
-     "link": "https://github.com/deepseek-ai/DeepInfer",
-     "line": "DeepSeek released an open-source inference framework called DeepInfer, and commenters discussed hardware compatibility and the impact on GPU markets.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Scientists uncover devastating damage to marine life 16 years after BP oil disaster",
-     "subs": [
-      "EverythingScience"
-     ],
-     "thread": "https://www.reddit.com/r/EverythingScience/comments/1xaoe28/scientists_uncover_devastating_damage_to_marine/",
-     "link": "https://www.independent.co.uk/news/world/americas/deepwater-horizon-gulf-mexico-marine-b3069658.html",
-     "line": "Scientists uncovered long-term marine life damage 16 years after the BP oil disaster, and commenters expressed unsurprised outrage.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "A 1970s heart treatment that squeezes your legs with inflatable cuffs improved memory and thinking in 84% of people with early Alzheimer’s in a 190-person trial. Most patients actually got better than where they started, not just slower decline, and 75% still had gains 6 months after treatment ended",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1xb5p3k/a_1970s_heart_treatment_that_squeezes_your_legs/",
-     "link": "https://www.sciencealert.com/this-heart-treatment-from-the-1970s-could-also-improve-memory-in-alzheimers-patients",
-     "line": "A leg-squeezing heart treatment trial improved early Alzheimer's memory symptoms, though commenters noted the study was funded by the device's owning company.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": true
-    },
-    {
-     "title": "Birds are among Earth’s most important nutrient-movers. A review of nearly 400 scientific papers shows how birds transport nutrients from land, lake and sea through their waste and bodies. This influences everything from soil and water chemistry to plant and animal growth.",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1xaokl6/birds_are_among_earths_most_important/",
-     "link": "https://www.sflorg.com/2026/10/eco10192601.html?m=1",
-     "line": "A review of numerous papers highlighted birds as major global nutrient transporters via their waste and bodies, which commenters expanded upon with personal observations.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "My Company Fired Two Highly Paid Engineers and Replaced Them With Me and Claude Code. I Make $26K a Year.",
-     "subs": [
-      "ClaudeCode"
-     ],
-     "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xaanlz/my_company_fired_two_highly_paid_engineers_and/",
-     "link": "",
-     "line": "A worker reported being hired at a low salary in Spain to replace two fired engineers using Claude Code, with commenters agreeing the company situation is terrible.",
-     "verdict": "plausible",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Psychiatrists - do you have adult patients come to you that are 110% sure they have a diagnosis (usually autism and/or ADHD) without ever even having been seen?",
-     "subs": [
-      "medicine"
-     ],
-     "thread": "https://www.reddit.com/r/medicine/comments/1xasjet/psychiatrists_do_you_have_adult_patients_come_to/",
-     "link": "",
-     "line": "Psychiatrists discussed an uptick in patients self-diagnosing autism and ADHD, with commenters blaming social media trends and identity culture.",
-     "verdict": "opinion",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "I handed Claude Code a database of 11 million news articles, it found some weird patterns",
-     "subs": [
-      "ClaudeCode"
-     ],
-     "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xaxzqv/i_handed_claude_code_a_database_of_11_million/",
-     "link": "",
-     "line": "A developer used Claude Code to analyze millions of news articles and find patterns, while commenters debated the utility and potential misleading nature of LLM analysis.",
-     "verdict": "plausible",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Scientists found that indoor air contains significantly higher concentrations of microplastics than outdoor air, mostly shedding from our clothes and carpets. Outside, cloud formation is being altered by microplastics in the air.",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1xalr7n/scientists_found_that_indoor_air_contains/",
-     "link": "https://pubmed.ncbi.nlm.nih.gov/42371868/",
-     "line": "Studies found high microplastic concentrations in indoor air from clothing and carpets alongside atmospheric impacts, prompting discussion on common household sources.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    }
-   ],
-   "transcript": "transcripts/ai_2026-10-21_morning_0828.txt"
   }
  ]
 }
