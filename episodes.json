@@ -1,17 +1,6 @@
 {
   "episodes": [
     {
-      "file": "ai_2026-10-21_evening_1628.mp3",
-      "date": "2026-10-21",
-      "edition": "evening",
-      "title": "Evening - 21 Oct: Sorting Millions of News Stories with an Agent",
-      "published": "2026-10-21T16:28:23.118676+05:30",
-      "pubDate": "Wed, 21 Oct 2026 16:28:23 +0530",
-      "size": 8987948,
-      "duration": 1123,
-      "description": "Evening edition - Wednesday, 21 October 2026\nEngineering renewal across software pipelines and human biology: validating autonomous data architectures and cellular rejuvenation\n\n00:36  Sorting Millions of News Stories with an Agent\n   ClaudeCode: https://www.reddit.com/r/ClaudeCode/comments/1xaxzqv/i_handed_claude_code_a_database_of_11_million/\n09:16  Resetting Biological Age in Reprogrammed Cells\n   science: https://www.reddit.com/r/science/comments/1xambfi/scientists_turned_blood_cells_from_donors_aged/\n   Source: https://www.sciencealert.com/old-blood-cells-have-been-transformed-into-brain-stem-cells-that-get-younger-as-they-age\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nWritten by: Gemini 3.7 Flash · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (164 threads)"
-    },
-    {
       "file": "ai_2026-10-22_morning_0829.mp3",
       "date": "2026-10-22",
       "edition": "morning",
@@ -153,6 +142,17 @@
       "size": 8483372,
       "duration": 1060,
       "description": "Morning edition - Wednesday, 28 October 2026\nValidating the tools you pay for, and the physics of a everyday breath\n\n00:37  When the coding agent bills you for its own errors\n   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1xh3yyu/claude_code_usage_exploded_8x_today_anthropic/\n   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1xguw7r/claude_is_performing_38x_poorer_compared_to_last/\n09:39  Why your breath feels cold through pursed lips but warm with an open mouth\n   askscience: https://www.reddit.com/r/askscience/comments/1xgpqsy/what_fluid_dynamic_or_thermodynamic_mechanisms/\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nWritten by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (196 threads)"
+    },
+    {
+      "file": "ai_2026-10-28_evening_1638.mp3",
+      "date": "2026-10-28",
+      "edition": "evening",
+      "title": "Evening - 28 Oct: A new benchmark shows coding agents still struggle with real software tasks",
+      "published": "2026-10-28T16:38:58.549031+05:30",
+      "pubDate": "Wed, 28 Oct 2026 16:38:58 +0530",
+      "size": 8841836,
+      "duration": 1105,
+      "description": "Evening edition - Wednesday, 28 October 2026\nHow a new coding-agent benchmark exposes the gap between demo performance and real software engineering, and a catalyst that could turn Mars atmosphere into rocket fuel.\n\n00:36  A new benchmark shows coding agents still struggle with real software tasks\n   codex: https://www.reddit.com/r/codex/comments/1xh1uiu/cognition_has_released_frontiercode_20_a_tougher/\n09:50  A catalyst that could make rocket fuel from Mars air\n   EverythingScience: https://www.reddit.com/r/EverythingScience/comments/1xgmfha/chinese_scientists_create_powerful_catalyst_to/\n   Source: https://www.scmp.com/news/china/science/article/3372123/chinese-scientists-create-powerful-catalyst-turn-air-mars-rocket-fuel?utm_source=Reddit&utm_medium=Social\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nWritten by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (172 threads)"
     }
   ],
   "memory": [
@@ -1175,6 +1175,29 @@
       "deep_topic": "",
       "topics": [
         "anthropic-claude-models"
+      ]
+    },
+    {
+      "label": "Wednesday 28 Oct evening",
+      "date": "2026-10-28",
+      "edition": "evening",
+      "published": "2026-10-28T16:38:58.549031+05:30",
+      "file": "ai_2026-10-28_evening_1638.mp3",
+      "writer": "nemotron-3-ultra-550b-a55b (free)",
+      "voices": "Fish Audio (free)",
+      "summary": "Today's episode examined FrontierCode 2.0, a new benchmark revealing that leading coding agents score below 50 percent on realistic multi-file software tasks involving unit-test passes, dependency resolution, and production-grade constraints. The second segment analyzed a Chinese research claim of an electrically driven catalyst converting Mars-atmosphere carbon dioxide into methane and oxygen, detailing the reaction pathway, conversion efficiency, and the gap between laboratory demonstration and flight-ready in-situ resource utilization systems.",
+      "threads": [
+        "Independent replication of FrontierCode 2.0 results across agent architectures and task distributions",
+        "Long-durability testing of the Mars CO2-reduction catalyst under thermal cycling and dust exposure",
+        "Integration of coding-agent reliability metrics into regulated software acceptance test plans"
+      ],
+      "segments": [
+        "A new benchmark shows coding agents still struggle with real software tasks",
+        "A catalyst that could make rocket fuel from Mars air"
+      ],
+      "deep_topic": "",
+      "topics": [
+        "ai-coding-agents"
       ]
     }
   ],
@@ -2426,6 +2449,18 @@
     {
       "date": "2026-10-28",
       "link": "https://www.reddit.com/r/ClaudeAI/comments/1xh3yyu/claude_code_usage_exploded_8x_today_anthropic/"
+    },
+    {
+      "date": "2026-10-28",
+      "link": "https://www.reddit.com/r/EverythingScience/comments/1xgmfha/chinese_scientists_create_powerful_catalyst_to/"
+    },
+    {
+      "date": "2026-10-28",
+      "link": "https://www.scmp.com/news/china/science/article/3372123/chinese-scientists-create-powerful-catalyst-turn-air-mars-rocket-fuel?utm_source=Reddit&utm_medium=Social"
+    },
+    {
+      "date": "2026-10-28",
+      "link": "https://www.reddit.com/r/codex/comments/1xh1uiu/cognition_has_released_frontiercode_20_a_tougher/"
     }
   ],
   "feedback": [
@@ -3382,7 +3417,232 @@
     "2026-10-28T03:37:31.267709+00:00",
     "2026-10-28T03:37:35.258371+00:00",
     "2026-10-28T03:37:40.180375+00:00",
-    "2026-10-28T03:37:44.340926+00:00"
+    "2026-10-28T03:37:44.340926+00:00",
+    "2026-10-28T11:08:59.325452+00:00",
+    "2026-10-28T11:09:02.236842+00:00",
+    "2026-10-28T11:09:05.436121+00:00",
+    "2026-10-28T11:09:08.628092+00:00",
+    "2026-10-28T11:09:11.921369+00:00",
+    "2026-10-28T11:09:15.123850+00:00",
+    "2026-10-28T11:09:18.285482+00:00",
+    "2026-10-28T11:09:21.509210+00:00",
+    "2026-10-28T11:09:32.128089+00:00",
+    "2026-10-28T11:09:35.304265+00:00",
+    "2026-10-28T11:09:38.478327+00:00",
+    "2026-10-28T11:09:41.686767+00:00",
+    "2026-10-28T11:09:44.872662+00:00",
+    "2026-10-28T11:09:48.065277+00:00",
+    "2026-10-28T11:09:53.496410+00:00",
+    "2026-10-28T11:09:54.499840+00:00",
+    "2026-10-28T11:09:59.703442+00:00",
+    "2026-10-28T11:10:00.870311+00:00",
+    "2026-10-28T11:10:04.067248+00:00",
+    "2026-10-28T11:10:07.270020+00:00",
+    "2026-10-28T11:10:10.486721+00:00",
+    "2026-10-28T11:10:13.653606+00:00",
+    "2026-10-28T11:10:16.879182+00:00",
+    "2026-10-28T11:10:20.052668+00:00",
+    "2026-10-28T11:10:24.213484+00:00",
+    "2026-10-28T11:10:27.405602+00:00",
+    "2026-10-28T11:10:30.621134+00:00",
+    "2026-10-28T11:10:33.806606+00:00",
+    "2026-10-28T11:10:37.033358+00:00",
+    "2026-10-28T11:10:40.210269+00:00",
+    "2026-10-28T11:10:43.438136+00:00",
+    "2026-10-28T11:10:46.631418+00:00",
+    "2026-10-28T11:10:49.826489+00:00",
+    "2026-10-28T11:10:53.029780+00:00",
+    "2026-10-28T11:10:56.216776+00:00",
+    "2026-10-28T11:10:59.437159+00:00",
+    "2026-10-28T11:11:04.956150+00:00",
+    "2026-10-28T11:11:05.834985+00:00",
+    "2026-10-28T11:11:09.002242+00:00",
+    "2026-10-28T11:11:12.209945+00:00",
+    "2026-10-28T11:11:15.435383+00:00",
+    "2026-10-28T11:11:18.618231+00:00",
+    "2026-10-28T11:11:21.834159+00:00",
+    "2026-10-28T11:11:25.008517+00:00",
+    "2026-10-28T11:11:28.214826+00:00",
+    "2026-10-28T11:11:31.505906+00:00",
+    "2026-10-28T11:11:34.607487+00:00",
+    "2026-10-28T11:11:37.852403+00:00",
+    "2026-10-28T11:11:41.021614+00:00",
+    "2026-10-28T11:11:44.263646+00:00",
+    "2026-10-28T11:11:47.421183+00:00",
+    "2026-10-28T11:11:50.636913+00:00",
+    "2026-10-28T11:11:53.803006+00:00",
+    "2026-10-28T11:11:57.057827+00:00",
+    "2026-10-28T11:12:00.237466+00:00",
+    "2026-10-28T11:12:05.736245+00:00",
+    "2026-10-28T11:12:06.858668+00:00",
+    "2026-10-28T11:12:10.114052+00:00",
+    "2026-10-28T11:12:13.021802+00:00",
+    "2026-10-28T11:12:16.278103+00:00",
+    "2026-10-28T11:12:19.524238+00:00",
+    "2026-10-28T11:12:22.630897+00:00",
+    "2026-10-28T11:12:25.901624+00:00",
+    "2026-10-28T11:12:30.261262+00:00",
+    "2026-10-28T11:12:33.474015+00:00",
+    "2026-10-28T11:12:36.660969+00:00",
+    "2026-10-28T11:12:39.957577+00:00",
+    "2026-10-28T11:12:43.078587+00:00",
+    "2026-10-28T11:12:46.255829+00:00",
+    "2026-10-28T11:12:49.499307+00:00",
+    "2026-10-28T11:12:52.734422+00:00",
+    "2026-10-28T11:12:55.847720+00:00",
+    "2026-10-28T11:12:59.068864+00:00",
+    "2026-10-28T11:13:02.255502+00:00",
+    "2026-10-28T11:13:05.472649+00:00",
+    "2026-10-28T11:13:08.682448+00:00",
+    "2026-10-28T11:13:11.857358+00:00",
+    "2026-10-28T11:13:15.072790+00:00",
+    "2026-10-28T11:13:18.256479+00:00",
+    "2026-10-28T11:13:21.464635+00:00",
+    "2026-10-28T11:13:24.651370+00:00",
+    "2026-10-28T11:13:27.864461+00:00",
+    "2026-10-28T11:13:31.053690+00:00",
+    "2026-10-28T11:13:34.390487+00:00",
+    "2026-10-28T11:13:37.489274+00:00",
+    "2026-10-28T11:13:40.668853+00:00",
+    "2026-10-28T11:13:43.844279+00:00",
+    "2026-10-28T11:13:47.050940+00:00",
+    "2026-10-28T11:13:50.256151+00:00",
+    "2026-10-28T11:13:53.474379+00:00",
+    "2026-10-28T11:13:56.648648+00:00",
+    "2026-10-28T11:13:59.962223+00:00",
+    "2026-10-28T11:14:05.194516+00:00",
+    "2026-10-28T11:14:06.258568+00:00",
+    "2026-10-28T11:14:09.494682+00:00",
+    "2026-10-28T11:14:12.708834+00:00",
+    "2026-10-28T11:14:15.865165+00:00",
+    "2026-10-28T11:14:19.063038+00:00",
+    "2026-10-28T11:14:22.365383+00:00",
+    "2026-10-28T11:14:25.458221+00:00",
+    "2026-10-28T11:14:29.694665+00:00",
+    "2026-10-28T11:14:32.837637+00:00",
+    "2026-10-28T11:14:36.047442+00:00",
+    "2026-10-28T11:14:39.236008+00:00",
+    "2026-10-28T11:14:42.489844+00:00",
+    "2026-10-28T11:14:45.728227+00:00",
+    "2026-10-28T11:14:48.834676+00:00",
+    "2026-10-28T11:14:52.035265+00:00",
+    "2026-10-28T11:14:55.227608+00:00",
+    "2026-10-28T11:14:58.439914+00:00",
+    "2026-10-28T11:15:01.636137+00:00",
+    "2026-10-28T11:15:04.829359+00:00",
+    "2026-10-28T11:15:08.074571+00:00",
+    "2026-10-28T11:15:11.235829+00:00",
+    "2026-10-28T11:15:14.443582+00:00",
+    "2026-10-28T11:15:17.630505+00:00",
+    "2026-10-28T11:15:20.850983+00:00",
+    "2026-10-28T11:15:24.049203+00:00",
+    "2026-10-28T11:15:27.258609+00:00",
+    "2026-10-28T11:15:30.431741+00:00",
+    "2026-10-28T11:15:33.644618+00:00",
+    "2026-10-28T11:15:36.826846+00:00",
+    "2026-10-28T11:15:40.039723+00:00",
+    "2026-10-28T11:15:43.268330+00:00",
+    "2026-10-28T11:15:46.437042+00:00",
+    "2026-10-28T11:15:49.651022+00:00",
+    "2026-10-28T11:15:52.832387+00:00",
+    "2026-10-28T11:15:56.101176+00:00",
+    "2026-10-28T11:15:59.240243+00:00",
+    "2026-10-28T11:16:04.625819+00:00",
+    "2026-10-28T11:16:05.648987+00:00",
+    "2026-10-28T11:16:08.943599+00:00",
+    "2026-10-28T11:16:12.051266+00:00",
+    "2026-10-28T11:16:15.227633+00:00",
+    "2026-10-28T11:16:18.441234+00:00",
+    "2026-10-28T11:16:21.653840+00:00",
+    "2026-10-28T11:16:29.088589+00:00",
+    "2026-10-28T11:16:32.295514+00:00",
+    "2026-10-28T11:16:38.574034+00:00",
+    "2026-10-28T11:21:37.415786+00:00",
+    "2026-10-28T11:23:27.725150+00:00",
+    "2026-10-28T11:24:31.888449+00:00",
+    "2026-10-28T11:26:46.417848+00:00",
+    "2026-10-28T11:28:24.226391+00:00",
+    "2026-10-28T11:28:59.868390+00:00",
+    "2026-10-28T11:29:05.712229+00:00",
+    "2026-10-28T11:29:14.272650+00:00",
+    "2026-10-28T11:29:24.351840+00:00",
+    "2026-10-28T11:29:32.752884+00:00",
+    "2026-10-28T11:29:36.851540+00:00",
+    "2026-10-28T11:29:51.078793+00:00",
+    "2026-10-28T11:29:57.773350+00:00",
+    "2026-10-28T11:30:03.998518+00:00",
+    "2026-10-28T11:30:09.365609+00:00",
+    "2026-10-28T11:30:16.436002+00:00",
+    "2026-10-28T11:30:22.871810+00:00",
+    "2026-10-28T11:30:32.126056+00:00",
+    "2026-10-28T11:30:39.954069+00:00",
+    "2026-10-28T11:30:50.724369+00:00",
+    "2026-10-28T11:31:07.929477+00:00",
+    "2026-10-28T11:31:17.321834+00:00",
+    "2026-10-28T11:31:21.527547+00:00",
+    "2026-10-28T11:31:29.308796+00:00",
+    "2026-10-28T11:31:40.378304+00:00",
+    "2026-10-28T11:31:48.338008+00:00",
+    "2026-10-28T11:31:57.942318+00:00",
+    "2026-10-28T11:32:04.535927+00:00",
+    "2026-10-28T11:32:14.010536+00:00",
+    "2026-10-28T11:32:25.041111+00:00",
+    "2026-10-28T11:32:37.977834+00:00",
+    "2026-10-28T11:32:46.794187+00:00",
+    "2026-10-28T11:33:00.538483+00:00",
+    "2026-10-28T11:33:14.116906+00:00",
+    "2026-10-28T11:33:22.963808+00:00",
+    "2026-10-28T11:33:28.273187+00:00",
+    "2026-10-28T11:33:32.159455+00:00",
+    "2026-10-28T11:33:43.108662+00:00",
+    "2026-10-28T11:33:52.460945+00:00",
+    "2026-10-28T11:33:56.593611+00:00",
+    "2026-10-28T11:34:04.683958+00:00",
+    "2026-10-28T11:34:14.559081+00:00",
+    "2026-10-28T11:34:20.901633+00:00",
+    "2026-10-28T11:34:28.767851+00:00",
+    "2026-10-28T11:34:37.706666+00:00",
+    "2026-10-28T11:34:45.741839+00:00",
+    "2026-10-28T11:34:57.388672+00:00",
+    "2026-10-28T11:35:07.539353+00:00",
+    "2026-10-28T11:35:22.587193+00:00",
+    "2026-10-28T11:35:32.926312+00:00",
+    "2026-10-28T11:35:41.133104+00:00",
+    "2026-10-28T11:35:50.779822+00:00",
+    "2026-10-28T11:36:05.198026+00:00",
+    "2026-10-28T11:36:13.657633+00:00",
+    "2026-10-28T11:36:27.582893+00:00",
+    "2026-10-28T11:36:38.308248+00:00",
+    "2026-10-28T11:36:42.367195+00:00",
+    "2026-10-28T11:36:52.315265+00:00",
+    "2026-10-28T11:37:02.515612+00:00",
+    "2026-10-28T11:37:06.780251+00:00",
+    "2026-10-28T11:37:13.322925+00:00",
+    "2026-10-28T11:37:18.671912+00:00",
+    "2026-10-28T11:37:30.746859+00:00",
+    "2026-10-28T11:37:38.790678+00:00",
+    "2026-10-28T11:37:56.198476+00:00",
+    "2026-10-28T11:38:10.841328+00:00",
+    "2026-10-28T11:38:27.338980+00:00",
+    "2026-10-28T11:38:34.546949+00:00",
+    "2026-10-28T11:38:57.341846+00:00",
+    "2026-10-28T11:39:06.884999+00:00",
+    "2026-10-28T11:39:24.502847+00:00",
+    "2026-10-28T11:39:35.235267+00:00",
+    "2026-10-28T11:39:52.172750+00:00",
+    "2026-10-28T11:40:08.834853+00:00",
+    "2026-10-28T11:40:29.578248+00:00",
+    "2026-10-28T11:40:53.680750+00:00",
+    "2026-10-28T11:41:16.337982+00:00",
+    "2026-10-28T11:41:28.869863+00:00",
+    "2026-10-28T11:41:49.696810+00:00",
+    "2026-10-28T11:42:07.177876+00:00",
+    "2026-10-28T11:42:21.595895+00:00",
+    "2026-10-28T11:42:25.983811+00:00",
+    "2026-10-28T11:42:33.497620+00:00",
+    "2026-10-28T11:42:38.951814+00:00",
+    "2026-10-28T11:42:45.977102+00:00",
+    "2026-10-28T11:42:50.143908+00:00"
   ],
   "free_day_out": "",
   "topics": {
@@ -3445,22 +3705,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 53,
+      "mentions": 55,
       "refs": [
-        {
-          "date": "2026-10-18",
-          "title": "Claude solved a 25 year old NSA cryptography mystery in 30 minutes. Its first reaction was to throw shade at us 🥲 \"is it suspicious that such an obvious thing wasn't discovered in 25 years?\"",
-          "thread": "https://www.reddit.com/r/agi/comments/1x8eal4/claude_solved_a_25_year_old_nsa_cryptography/",
-          "link": "",
-          "comment": "TL;DR of the discussion generated automatically after 100 comments. The consensus is that this is hilarious and Claude is officially one of us now that it's paranoid and throwing shade. A solid chunk of the thread has already accepted our fate as the AI's future pets, with many arguing it would be a"
-        },
-        {
-          "date": "2026-10-19",
-          "title": "Claude solved a 25 year old NSA cryptography mystery in 30 minutes. Its first reaction was to throw shade at us 🥲 \"is it suspicious that such an obvious thing wasn't discovered in 25 years?\"",
-          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1x8v3sn/claude_solved_a_25_year_old_nsa_cryptography/",
-          "link": "",
-          "comment": "TL;DR of the discussion generated automatically after 100 comments. The consensus is that this is hilarious and Claude is officially one of us now that it's paranoid and throwing shade. A solid chunk of the thread has already accepted our fate as the AI's future pets, with many arguing it would be a"
-        },
         {
           "date": "2026-10-19",
           "title": "Claude solved a 25 year old NSA cryptography mystery in 30 minutes. Its first reaction was to throw shade at us 🥲 \"is it suspicious that such an obvious thing wasn't discovered in 25 years?\"",
@@ -3530,6 +3776,20 @@
           "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xh3yyu/claude_code_usage_exploded_8x_today_anthropic/",
           "link": "",
           "comment": "TL;DR of the discussion generated automatically after 100 comments. Looks like this thread is a giant \"me too\" party. The consensus is that OP is not crazy; tons of users are reporting their usage limits are getting absolutely torched this week, with some burning through 70-90% of their weekly max p"
+        },
+        {
+          "date": "2026-10-28",
+          "title": "Claude Opus 5.5 helps developer bring the entire Super Mario 64 into mixed reality, running natively in full 3D at 90 FPS, with the game world appearing right inside his room.",
+          "thread": "https://www.reddit.com/r/singularity/comments/1xgw6sk/claude_opus_55_helps_developer_bring_the_entire/",
+          "link": "",
+          "comment": "This is one of the cooler things I've ever seen"
+        },
+        {
+          "date": "2026-10-28",
+          "title": "Claude Opus 5.5 is insane in creating creating 3D movies.",
+          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xgu73u/claude_opus_55_is_insane_in_creating_creating_3d/",
+          "link": "",
+          "comment": "TL;DR of the discussion generated automatically after 100 comments. Okay, let's clear up the confusion because half this thread was just \"how??\". This is not a direct text-to-video generation. OP used Claude Opus 5.5 as a tireless 3D artist to control Blender via Python scripts. After some initial ("
         },
         {
           "date": "2026-10-28",
@@ -4093,29 +4353,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 35,
+      "mentions": 38,
       "refs": [
-        {
-          "date": "2026-10-20",
-          "title": "Fields Medalist Richard Borcherds on OpenAI proofs: \"I think what people are getting upset about is they’re slowly realizing that they are dumb and somehow blaming this on AI, even though it’s not really AI’s fault\"",
-          "thread": "https://www.reddit.com/r/singularity/comments/1xa0dgj/fields_medalist_richard_borcherds_on_openai/",
-          "link": "",
-          "comment": "I needed to read this today: “I’ve told my students that you can, by all means, use AI,” Huang said. “I don’t care if you do your homework or not. But if you don’t do your homework by yourself, you will fail the f--- out of the exam.” Thank you."
-        },
-        {
-          "date": "2026-10-20",
-          "title": "2026 Fields Medalist John Pardon says AI now understands even his messiest mathematical proofs, catches subtle errors, and proves nontrivial results. “The AI understands. 100%.” Just a year ago, he would have said the opposite. He calls the progress world-changing for mathematics.",
-          "thread": "https://www.reddit.com/r/singularity/comments/1xaernx/2026_fields_medalist_john_pardon_says_ai_now/",
-          "link": "",
-          "comment": "https://preview.redd.it/k4jnhfv1xiwh1.jpeg?width=1376&format=pjpg&auto=webp&s=51512ce5ace637b758660b445f13463d82d004a6"
-        },
-        {
-          "date": "2026-10-21",
-          "title": "Google Gemini 4 Argon shatters 59-year-old nuclear fusion conjecture in just a few hours | Humans stalled for 59 years, but AI found a way in a few hours",
-          "thread": "https://www.reddit.com/r/EverythingScience/comments/1xany3n/google_gemini_4_argon_shatters_59yearold_nuclear/",
-          "link": "https://www.techradar.com/pro/its-over-ai-won-google-gemini-4-argon-shatters-59-year-old-nuclear-fusion-conjecture-in-just-a-few-hours",
-          "comment": "An important note about all these \"AI solved this problem that mathematicians have been stuck on for decades!\" headlines: A lot of these problems aren't especially useful or interesting in and of themselves. Some are, like perhaps this one might be, but most of them – including the millennium prize "
-        },
         {
           "date": "2026-10-22",
           "title": "1000 human mathematicians pledge to shun AI in their research",
@@ -4192,6 +4431,27 @@
           "thread": "https://www.reddit.com/r/EverythingScience/comments/1xgxqhi/dueling_proofs_from_openai_and_anthropic_astound/",
           "link": "https://www.scientificamerican.com/article/dueling-proofs-from-openai-and-anthropic-astound-scientists/",
           "comment": "Some of this stuff will break our basic assumptions, though I wonder what will change practically. The implications of this kind of math, what are they ?"
+        },
+        {
+          "date": "2026-10-28",
+          "title": "Two physicists asked AI to choose a problem on its own, solve it and write a paper that could be published in a prestigious journal. In two hours, AI produced a paper with a novel, significant result.",
+          "thread": "https://www.reddit.com/r/ArtificialInteligence/comments/1xgo1i9/two_physicists_asked_ai_to_choose_a_problem_on/",
+          "link": "",
+          "comment": "Claude do science"
+        },
+        {
+          "date": "2026-10-28",
+          "title": "Dueling proofs from OpenAI and Anthropic astound scientists",
+          "thread": "https://www.reddit.com/r/EverythingScience/comments/1xgxqhi/dueling_proofs_from_openai_and_anthropic_astound/",
+          "link": "https://www.scientificamerican.com/article/dueling-proofs-from-openai-and-anthropic-astound-scientists/",
+          "comment": "Some of this stuff will break our basic assumptions, though I wonder what will change practically. The implications of this kind of math, what are they ?"
+        },
+        {
+          "date": "2026-10-28",
+          "title": "How big a deal is this? Claude Opus 5.5: \"If these hold up, this is the biggest single day in the history of math and theoretical computer science.\"",
+          "thread": "https://www.reddit.com/r/OpenAI/comments/1xgyzcg/how_big_a_deal_is_this_claude_opus_55_if_these/",
+          "link": "https://www.reddit.com/gallery/1xgyzcg",
+          "comment": "I think people here completely miss the point. The question is not the very issue or a problem or a theory that AI has solved. It’s the very ability of AI to solve problems of this complexity level. Once AI is trained enough for its supervisors to be sure of its expected correctness, it will develop"
         }
       ],
       "deep_dive": "",
@@ -4238,22 +4498,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 99,
+      "mentions": 101,
       "refs": [
-        {
-          "date": "2026-10-25",
-          "title": "Asked Kimi K3.1 Pro and DeepSeek V4.1 Flash to build a running V8 engine in Three.js. Here's what each made",
-          "thread": "https://www.reddit.com/r/DeepSeek/comments/1xefqpq/asked_kimi_k31_pro_and_deepseek_v41_flash_to/",
-          "link": "",
-          "comment": "Prompt: Build a stunning, highly realistic, fully interactive 3D simulation of a **90-degree V8 combustion engine mounted on an industrial engine test stand**. Use Three.js and WebGL. Deliver a complete, runnable browser application. **THE OBJECT** A large, exceptionally detailed V8 engine positione"
-        },
-        {
-          "date": "2026-10-25",
-          "title": "What's the one line in your CLAUDE.md that made the biggest difference?",
-          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xeautc/whats_the_one_line_in_your_claudemd_that_made_the/",
-          "link": "",
-          "comment": "make no mistakes"
-        },
         {
           "date": "2026-10-25",
           "title": "Asked Kimi K3.1 Pro and DeepSeek V4.1 Flash to build a running V8 engine in Three.js. Here's what each made",
@@ -4337,6 +4583,20 @@
           "thread": "https://www.reddit.com/r/codex/comments/1xh1uiu/cognition_has_released_frontiercode_20_a_tougher/",
           "link": "",
           "comment": "Below is a GPT-generated summary of the conversation below after reaching 80 comments (93 currently observed) . The consensus is that FrontierCode is a much more interesting signal than the usual benchmark carousel , with Opus 5.5 narrowly taking first at 45.5% and Astra close behind at 42.8%. Plent"
+        },
+        {
+          "date": "2026-10-28",
+          "title": "Cognition has released FrontierCode 2.0, a tougher benchmark for Al coding agents. The results are brutal: Claude Opus 5.5 leads with just 45.5%, followed by GPT-6 Astra at 42.8%.",
+          "thread": "https://www.reddit.com/r/codex/comments/1xh1uiu/cognition_has_released_frontiercode_20_a_tougher/",
+          "link": "",
+          "comment": "Below is a GPT-generated summary of the conversation below after reaching 80 comments (93 currently observed) . The consensus is that FrontierCode is a much more interesting signal than the usual benchmark carousel , with Opus 5.5 narrowly taking first at 45.5% and Astra close behind at 42.8%. Plent"
+        },
+        {
+          "date": "2026-10-28",
+          "title": "I built a way for Claude Code to generate videos without running Chrome",
+          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xh1a8s/i_built_a_way_for_claude_code_to_generate_videos/",
+          "link": "",
+          "comment": "nice."
         }
       ],
       "deep_dive": "2026-10-18",
@@ -4354,7 +4614,8 @@
         "2026-10-18",
         "2026-10-19",
         "2026-10-20",
-        "2026-10-24"
+        "2026-10-24",
+        "2026-10-28"
       ],
       "subs": [
         "DeepSeek",
@@ -4362,7 +4623,7 @@
         "Physics",
         "singularity"
       ],
-      "mentions": 9,
+      "mentions": 10,
       "refs": [
         {
           "date": "2026-10-09",
@@ -4426,10 +4687,17 @@
           "thread": "https://www.reddit.com/r/singularity/comments/1xdligf/babe_wake_up_kimi_k31_is_rated_higher_than_fable/",
           "link": "",
           "comment": "Wait that cant be right. I was told anthropic stopped distillation efforts by 90%+ so china cant catch up yet"
+        },
+        {
+          "date": "2026-10-28",
+          "title": "Internal Claude research model also independently refuted the Exponential Time Hypothesis on October 16, with 14M output tokens and no human input.",
+          "thread": "https://www.reddit.com/r/singularity/comments/1xgmlas/internal_claude_research_model_also_independently/",
+          "link": "",
+          "comment": "Feels like this was posted just to say 'we solved it too, look what we can do' after OpenAI announced theirs 😀"
         }
       ],
       "deep_dive": "",
-      "last_seen": "2026-10-24",
+      "last_seen": "2026-10-28",
       "subject": "ai"
     },
     "local-llms": {

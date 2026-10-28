@@ -8,9 +8,28 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Wed, 28 Oct 2026 03:38:03 GMT</lastBuildDate>
+<lastBuildDate>Wed, 28 Oct 2026 11:43:08 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Evening - 28 Oct: A new benchmark shows coding agents still struggle with real software tasks</title>
+<description>Evening edition - Wednesday, 28 October 2026
+How a new coding-agent benchmark exposes the gap between demo performance and real software engineering, and a catalyst that could turn Mars atmosphere into rocket fuel.
+
+00:36  A new benchmark shows coding agents still struggle with real software tasks
+   codex: https://www.reddit.com/r/codex/comments/1xh1uiu/cognition_has_released_frontiercode_20_a_tougher/
+09:50  A catalyst that could make rocket fuel from Mars air
+   EverythingScience: https://www.reddit.com/r/EverythingScience/comments/1xgmfha/chinese_scientists_create_powerful_catalyst_to/
+   Source: https://www.scmp.com/news/china/science/article/3372123/chinese-scientists-create-powerful-catalyst-turn-air-mars-rocket-fuel?utm_source=Reddit&amp;utm_medium=Social
+
+Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
+Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (172 threads)</description>
+<pubDate>Wed, 28 Oct 2026 16:38:58 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-10-28_evening_1638.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-28_evening_1638.mp3" length="8841836" type="audio/mpeg"/>
+<itunes:duration>1105</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Morning - 28 Oct: When the coding agent bills you for its own errors</title>
 <description>Morning edition - Wednesday, 28 October 2026
@@ -289,25 +308,6 @@ Written by: Gemini 3.8 Flash · Voices: Fish Audio (free) · Discussions: Reddit
 <guid isPermaLink="false">ai_2026-10-22_morning_0829.mp3</guid>
 <enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-22_morning_0829.mp3" length="8306732" type="audio/mpeg"/>
 <itunes:duration>1038</itunes:duration>
-<itunes:episodeType>full</itunes:episodeType>
-</item>
-<item>
-<title>Evening - 21 Oct: Sorting Millions of News Stories with an Agent</title>
-<description>Evening edition - Wednesday, 21 October 2026
-Engineering renewal across software pipelines and human biology: validating autonomous data architectures and cellular rejuvenation
-
-00:36  Sorting Millions of News Stories with an Agent
-   ClaudeCode: https://www.reddit.com/r/ClaudeCode/comments/1xaxzqv/i_handed_claude_code_a_database_of_11_million/
-09:16  Resetting Biological Age in Reprogrammed Cells
-   science: https://www.reddit.com/r/science/comments/1xambfi/scientists_turned_blood_cells_from_donors_aged/
-   Source: https://www.sciencealert.com/old-blood-cells-have-been-transformed-into-brain-stem-cells-that-get-younger-as-they-age
-
-Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
-Written by: Gemini 3.7 Flash · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (164 threads)</description>
-<pubDate>Wed, 21 Oct 2026 16:28:23 +0530</pubDate>
-<guid isPermaLink="false">ai_2026-10-21_evening_1628.mp3</guid>
-<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-21_evening_1628.mp3" length="8987948" type="audio/mpeg"/>
-<itunes:duration>1123</itunes:duration>
 <itunes:episodeType>full</itunes:episodeType>
 </item>
 </channel>
