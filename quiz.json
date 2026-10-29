@@ -4,6 +4,231 @@
  "repo": "npannu7/daily-briefing",
  "episodes": [
   {
+   "file": "ai_2026-10-29_morning_0841.mp3",
+   "title": "Morning - 29 Oct: Building a Computer Inside a Language Model",
+   "label": "Thursday 29 Oct morning",
+   "date": "2026-10-29",
+   "edition": "morning",
+   "published": "2026-10-29T08:41:42.106504+05:30",
+   "duration": 1299,
+   "theme": "Deterministic State Machines in Stochastic Weights and Quality Boundaries in Peptide Manufacturing",
+   "writer": "nemotron-3-ultra-550b-a55b (free)",
+   "voices": "Fish Audio (free)",
+   "deep_dive": false,
+   "segments": [
+    {
+     "title": "Building a Computer Inside a Language Model",
+     "category": "thread"
+    },
+    {
+     "title": "Bypassing Drug Approvals for Injectable Peptides",
+     "category": "thread"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "How was the 32-bit RISC-V processor integrated into the Qwen model in the discussed setup?",
+     "options": [
+      "By training the entire model via gradient descent using a reinforcement learning reward function",
+      "By compiling eleven transformer layers in front of the frozen base model weights using a compiler to handle instruction semantics",
+      "By routing all model inputs to an external Python interpreter running a virtual machine sandbox",
+      "By fine-tuning the base model's feed-forward networks through standard error backpropagation"
+     ],
+     "answer": 1,
+     "explain": "A compiler computed the values for eleven transformer layers inserted in front of the base Qwen model, while the base weights remained frozen without training.",
+     "segment": "Building a Computer Inside a Language Model"
+    },
+    {
+     "q": "What component of Qwen's architecture serves as the RAM and register file for the embedded virtual CPU?",
+     "options": [
+      "The external Triton GPU execution framework",
+      "The standard multi-head attention cache buffer",
+      "Gated DeltaNet's recurrent hidden state, which gets updated token by token",
+      "The final tokenizer output vocabulary table"
+     ],
+     "answer": 2,
+     "explain": "The hidden state carried forward by the linear attention variant DeltaNet acts as the RAM, allowing rows to be overwritten one at a time.",
+     "segment": "Building a Computer Inside a Language Model"
+    },
+    {
+     "q": "According to the discussion, why does solid-phase peptide synthesis (SPPS) naturally result in purity challenges?",
+     "options": [
+      "Because each coupling step is not 100 percent efficient, accumulating truncated sequences and side reactions over many cycles",
+      "Because peptides are typically manufactured using low-temperature gas-phase deposition rather than liquid chemistry",
+      "Because modern compounding pharmacies intentionally dilute batches to lower production costs",
+      "Because amino acids spontaneously degrade when exposed to standard room lighting"
+     ],
+     "answer": 0,
+     "explain": "Even with high efficiency per cycle, a long peptide chain accumulates missing links, deletion impurities, and side reactions like racemization.",
+     "segment": "Bypassing Drug Approvals for Injectable Peptides"
+    },
+    {
+     "q": "What major regulatory and quality trade-off occurs when compounded peptides are distributed without full FDA approval trials?",
+     "options": [
+      "The manufacturing process automatically shifts from batch-based production to high-throughput continuous manufacturing",
+      "The full quality and testing burden shifts to compounding pharmacies that often lack cGMP analytics for impurity profiling and sterility",
+      "Insurance companies automatically cover all resulting medical complications under federal liability statutes",
+      "The primary synthesis route changes from solid-phase to biological fermentation using engineered yeast"
+     ],
+     "answer": 1,
+     "explain": "Bypassing the standard drug approval pathway places the entire quality and validation burden onto compounding pharmacies, which often lack the specialized analytical labs needed for full impurity profiling.",
+     "segment": "Bypassing Drug Approvals for Injectable Peptides"
+    }
+   ],
+   "digest": [
+    {
+     "title": "Alphabet introducing Gemini 4 Carbon, next frontier model.",
+     "subs": [
+      "GeminiAI"
+     ],
+     "thread": "https://www.reddit.com/r/GeminiAI/comments/1xhtyol/alphabet_introducing_gemini_4_carbon_next/",
+     "link": "https://www.reddit.com/gallery/1xhtyol",
+     "line": "Users discussed Alphabet's new Gemini 4 Carbon model and its poor practical performance despite a Pro subscription.",
+     "verdict": "confirmed",
+     "also_in": [
+      "Google DeepMind Blog"
+     ],
+     "in_episode": false
+    },
+    {
+     "title": "After 20+ years of decline, US colorectal cancer rates are rising again, and not just in young people. A new NEJM Evidence study finds rates climbing in every age group up to 65-69, even where screening is high. COVID doesn't explain it, so scientists are studying environmental chemicals as a cause.",
+     "subs": [
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1xhn2sd/after_20_years_of_decline_us_colorectal_cancer/",
+     "link": "https://www.uchicagomedicine.org/forefront/cancer/rising-rates-of-colorectal-cancer",
+     "line": "US colorectal cancer rates are rising across age groups up to 65-69, prompting scientists to study environmental chemicals.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Landmark study finds three in four NFL players die with CTE",
+     "subs": [
+      "EverythingScience"
+     ],
+     "thread": "https://www.reddit.com/r/EverythingScience/comments/1xhrj1x/landmark_study_finds_three_in_four_nfl_players/",
+     "link": "https://www.scientificamerican.com/article/landmark-study-finds-three-in-four-nfl-players-die-with-cte/",
+     "line": "A landmark study found three in four NFL players die with CTE, raising concerns about children playing football.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "RFK Jr. to Allow Broad Use of Unapproved Peptide Injections",
+     "subs": [
+      "EverythingScience"
+     ],
+     "thread": "https://www.reddit.com/r/EverythingScience/comments/1xhy21u/rfk_jr_to_allow_broad_use_of_unapproved_peptide/",
+     "link": "https://www.nytimes.com/2026/10/28/health/peptides-kennedy-fda.html?smid=re-share",
+     "line": "Commenters mocked RFK Jr. allowing unapproved peptide injections and relying on YouTube influencers instead of studies.",
+     "verdict": "opinion",
+     "also_in": [],
+     "in_episode": true
+    },
+    {
+     "title": "Someone built a 32-bit RISC-V CPU directly inside Qwen's model weights so it can execute instructions internaly!",
+     "subs": [
+      "LocalLLaMA"
+     ],
+     "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xhmo1q/someone_built_a_32bit_riscv_cpu_directly_inside/",
+     "link": "",
+     "line": "A developer built a 32-bit RISC-V CPU directly inside Qwen model weights, sparking discussion on tool calling.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": true
+    },
+    {
+     "title": "Epileptic woman dies after going to ChatGPT for medical advice; family files lawsuit against OpenAI",
+     "subs": [
+      "medicine",
+      "technology"
+     ],
+     "thread": "https://www.reddit.com/r/medicine/comments/1xhx7e6/epileptic_woman_dies_after_going_to_chatgpt_for/",
+     "link": "",
+     "line": "An epileptic woman died after using ChatGPT for medical advice, leading her family to file a lawsuit against OpenAI.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Men and women report similar levels of “duty sex,” and similar reasons behind it. People who worry their partner might cheat, who see their partner as a more desirable catch than themselves, or who experience higher levels of emotional instability tend to report having sex out of duty more often.",
+     "subs": [
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1xhl74d/men_and_women_report_similar_levels_of_duty_sex/",
+     "link": "https://www.psypost.org/men-and-women-report-similar-levels-of-duty-sex-and-similar-reasons-behind-it/",
+     "line": "A study showed men and women report similar levels of duty sex, linked to relationship fears and emotional instability.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "IT vendor lists massive $60 million AI supercomputer on eBay with 9,600 Nvidia A100 GPUs and 4,200 AMD EPYC CPUs, plus free shipping — 300 racks of decommissioned GPUs on offer",
+     "subs": [
+      "LocalLLaMA",
+      "technology"
+     ],
+     "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xhsvmy/it_vendor_lists_massive_60_million_ai/",
+     "link": "https://www.tomshardware.com/desktops/servers/it-vendor-lists-massive-usd60-million-ai-cluster-on-ebay-300x-racks-of-decommissioned-gpus-includes-9-600-nvidia-a100-gpus-and-4-200-amd-epyc-cpus-plus-free-shipping",
+     "line": "An IT vendor listed a $60 million AI supercomputer with thousands of Nvidia GPUs on eBay, amusing commenters.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Dirt cheap GPUs coming next year",
+     "subs": [
+      "LocalLLaMA"
+     ],
+     "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xhep6w/dirt_cheap_gpus_coming_next_year/",
+     "link": "",
+     "line": "A user argued that a GPU price crash is coming due to data center cancellations and hardware efficiency.",
+     "verdict": "hype",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Code-execution flaw in UEFI firmware affects most servers on planet Earth",
+     "subs": [
+      "singularity",
+      "technology"
+     ],
+     "thread": "https://www.reddit.com/r/technology/comments/1xh6x0z/codeexecution_flaw_in_uefi_firmware_affects_most/",
+     "link": "https://arstechnica.com/security/2026/10/code-execution-flaw-in-uefi-firmware-threatens-most-servers-on-planet-earth/",
+     "line": "A critical code-execution vulnerability in UEFI firmware affects most servers globally, stemming from the TianoCore EDK II codebase.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "In Jerusalem neighborhoods where measles vaccine coverage had fallen to about 55%, the measles death rate in young children was about 160 times higher than in the rest of Israel (80.1 vs 0.5 deaths per 100,000).",
+     "subs": [
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1xi0ljj/in_jerusalem_neighborhoods_where_measles_vaccine/",
+     "link": "https://wwwnc.cdc.gov/eid/article/32/11/26-1397_article",
+     "line": "Jerusalem neighborhoods with low measles vaccination coverage saw a child death rate 160 times higher than the rest of Israel.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "US biotechs take lion’s share of $54.5B VC money raised since 2025",
+     "subs": [
+      "biotech"
+     ],
+     "thread": "https://www.reddit.com/r/biotech/comments/1xhbnow/us_biotechs_take_lions_share_of_545b_vc_money/",
+     "link": "https://www.biospace.com/business/us-biotechs-take-lions-share-of-54-5b-vc-money-raised-since-2025",
+     "line": "US biotechs captured the majority of $54.5 billion in venture capital raised since 2025, sparking debate on fund burning.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    }
+   ],
+   "transcript": "transcripts/ai_2026-10-29_morning_0841.txt"
+  },
+  {
    "file": "ai_2026-10-28_evening_1638.mp3",
    "title": "Evening - 28 Oct: A new benchmark shows coding agents still struggle with real software tasks",
    "label": "Wednesday 28 Oct evening",
@@ -2929,226 +3154,6 @@
     }
    ],
    "transcript": "transcripts/ai_2026-10-22_evening_1628.txt"
-  },
-  {
-   "file": "ai_2026-10-22_morning_0829.mp3",
-   "title": "Morning - 22 Oct: Breaking Out of the Chatbot Loop",
-   "label": "Thursday 22 Oct morning",
-   "date": "2026-10-22",
-   "edition": "morning",
-   "published": "2026-10-22T08:29:39.979291+05:30",
-   "duration": 1038,
-   "theme": "Engineering deterministic manual overrides for recursive automated systems, and treating circadian phase misalignment in treatment-resistant depression.",
-   "writer": "Gemini 3.8 Flash",
-   "voices": "Fish Audio (free)",
-   "deep_dive": false,
-   "segments": [
-    {
-     "title": "Breaking Out of the Chatbot Loop",
-     "category": "thread"
-    },
-    {
-     "title": "When Depression Is a Clock Problem",
-     "category": "thread"
-    }
-   ],
-   "quiz": [
-    {
-     "q": "Why do modern conversational AI agents frequently get trapped in customer service 'doom loops'?",
-     "options": [
-      "Companies deliberately program them to frustrate users into hanging up.",
-      "They use an internal hydraulic valve that shuts down under high query volume.",
-      "They pair a probabilistic text generator with a brittle state machine lacking state tracking.",
-      "They run on a master-slave oscillator network that loses synchronization with the server."
-     ],
-     "answer": 2,
-     "explain": "The text explains that doom loops happen because a probabilistic language model is paired with a brittle state machine that does not automatically track conversation state unless explicitly coded outside the model.",
-     "segment": "Breaking Out of the Chatbot Loop"
-    },
-    {
-     "q": "What is the primary function of a deterministic escalation latch in software architecture?",
-     "options": [
-      "To measure semantic distance by running a lightweight secondary model in parallel.",
-      "To act as a one-way software pressure relief valve that cuts off the probabilistic model and transfers the user to a human.",
-      "To automatically increase the confidence threshold of the primary model when it drops below eighty percent.",
-      "To filter out high-volume, low-complexity requests like checking an account balance."
-     ],
-     "answer": 1,
-     "explain": "A deterministic escalation latch acts as a one-way software pressure relief valve that cuts off the probabilistic model entirely once triggered.",
-     "segment": "Breaking Out of the Chatbot Loop"
-    },
-    {
-     "q": "What characterizes the distinct biological circadian subtype identified in roughly a quarter of depressed patients?",
-     "options": [
-      "An underlying anxiety engine that triggers typical depression models.",
-      "A master-slave oscillator network where downstream peripheral tissues run faster than the central clock.",
-      "A phase misalignment involving an evening chronotype, extended sleep, morning exhaustion, and social jet lag.",
-      "An absolute resistance to all biological rhythm treatments, requiring immediate medication escalation."
-     ],
-     "answer": 2,
-     "explain": "The paper found a circadian subtype characterized by seasonal mood shifts, delayed sleep midpoint, evening chronotype, extended sleep, heavy morning exhaustion, and social jet lag.",
-     "segment": "When Depression Is a Clock Problem"
-    },
-    {
-     "q": "Why do standard SSRI antidepressants often fail for patients with the circadian depression subtype?",
-     "options": [
-      "The liver's clearance enzymes break down the medication before it reaches the postsynaptic receptors.",
-      "Flooding extra chemical messengers into the gap fails because receptor docking ports and clearance enzymes are circadian-gated and out of phase.",
-      "The patient's suprachiasmatic nucleus completely stops producing serotonin during social jet lag.",
-      "Standard antidepressants are exclusively designed for atypical depression models rather than mood disorders."
-     ],
-     "answer": 1,
-     "explain": "Because receptor docking ports and cleanup crews are circadian-gated, flooding the gap with extra chemical messengers does not work when the biological timing is out of phase.",
-     "segment": "When Depression Is a Clock Problem"
-    }
-   ],
-   "digest": [
-    {
-     "title": "About 1 in 4 people with depression may have a ‘body clock’ type, like being stuck in permanent jet lag: late sleepers, tired mornings, worse in certain seasons. Across 11,380 people, this group got less benefit and more side effects from antidepressants, so light therapy or melatonin may help more.",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1xb9ww2/about_1_in_4_people_with_depression_may_have_a/",
-     "link": "https://www.sciencealert.com/researchers-identify-new-circadian-subtype-of-depression-affecting-1-in-4-patients",
-     "line": "A study of 11,380 people found a body-clock depression type that responds worse to antidepressants, with users discussing personal frustrations over being night owls.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": true
-    },
-    {
-     "title": "Bad apple effect: study shows how people are influenced by rule-breaking of others. Research shows how seeing bigger violations by others can lead people to increase their own rule-breaking",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1xbjsxn/bad_apple_effect_study_shows_how_people_are/",
-     "link": "https://www.theguardian.com/science/2026/oct/21/bad-apples-rule-breaking-study",
-     "line": "Research shows rule-breaking by individuals increases when they see bigger violations by others, leading commenters to debate historical and political examples.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Caching upgraded massively",
-     "subs": [
-      "codex"
-     ],
-     "thread": "https://www.reddit.com/r/codex/comments/1xb9prz/caching_upgraded_massively/",
-     "link": "",
-     "line": "A user shared a source claiming massive caching upgrades with a 12-hour API cache and no limit on Codex, sparking humorous technical debates.",
-     "verdict": "plausible",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "‘Long flu’ can linger for months. A large study published in the journal the Lancet Infectious Diseases found that persistent symptoms can harm the lungs and other organs, including the brain.",
-     "subs": [
-      "EverythingScience"
-     ],
-     "thread": "https://www.reddit.com/r/EverythingScience/comments/1xbdnis/long_flu_can_linger_for_months_a_large_study/",
-     "link": "https://wapo.st/3W24trG",
-     "line": "A study in Lancet Infectious Diseases reports 'long flu' can persist for months and harm organs, prompting commenters to share heartbreaking personal illness stories.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Navigating encounters wherein patients prior care (arguably or definitely) did not meet standard of care",
-     "subs": [
-      "medicine"
-     ],
-     "thread": "https://www.reddit.com/r/medicine/comments/1xbbrkc/navigating_encounters_wherein_patients_prior_care/",
-     "link": "",
-     "line": "A clinician discussed navigating patient care where prior treatment may have missed standards, with commenters advising caution and noting the complexities of medicine.",
-     "verdict": "opinion",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "1 in 3 American boys aged 13 to 17 follows Andrew Tate at least a little, and those who do are more likely to believe men should hide their emotions, be dominant and reject anything feminine. But the strongest predictor wasn’t Tate at all - it was parents telling their sons to be big and tough.",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1xc1l46/1_in_3_american_boys_aged_13_to_17_follows_andrew/",
-     "link": "https://www.psypost.org/one-in-three-teen-boys-follows-andrew-tate-at-least-a-little-and-those-who-do-hold-more-rigid-views-of-manhood/",
-     "line": "A study found 1 in 3 teenage American boys follows Andrew Tate, though parental influence remains a stronger predictor, sparking debate on toxic masculinity.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Unitree's newest robot: H2-X Kung Fu Legend Guardian",
-     "subs": [
-      "singularity"
-     ],
-     "thread": "https://www.reddit.com/r/singularity/comments/1xbidfc/unitrees_newest_robot_h2x_kung_fu_legend_guardian/",
-     "link": "",
-     "line": "Unitree introduced the H2-X robot variant with high endurance, leading commenters to express humorous dread about Skynet and artificial intelligence.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "NYC wants a one-touch \"talk to a human\" option on every AI customer service line",
-     "subs": [
-      "ArtificialInteligence"
-     ],
-     "thread": "https://www.reddit.com/r/ArtificialInteligence/comments/1xblhi2/nyc_wants_a_onetouch_talk_to_a_human_option_on/",
-     "link": "",
-     "line": "New York City is pursuing a mandate for a human option on AI customer service lines, with commenters strongly supporting the move due to frustration with bots.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": true
-    },
-    {
-     "title": "A study of 2,587 adults found that AI-generated stories were rated as more engaging and higher quality than human-written fiction, yet readers preferred stories labeled as human-written. Participants also struggled to distinguish AI-generated stories from those written by humans.",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1xb94ms/a_study_of_2587_adults_found_that_aigenerated/",
-     "link": "https://www.cambridge.org/core/journals/judgment-and-decision-making/article/bot-or-not-can-people-tell-the-difference-between-stories-written-by-a-human-or-by-an-ai-system/45E6DC0BB90AA648654D5AE243F6C667",
-     "line": "A study found AI stories were rated higher in quality but preferred when labeled human, with commenters debating the creative output of language models.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "A 1,000-Year-Old DNA Mystery Links Hawaii and Easter Island and Reveals Hidden Genetic Dangers",
-     "subs": [
-      "EverythingScience"
-     ],
-     "thread": "https://www.reddit.com/r/EverythingScience/comments/1xb8juu/a_1000yearold_dna_mystery_links_hawaii_and_easter/",
-     "link": "https://scitechdaily.com/a-1000-year-old-dna-mystery-links-hawaii-and-easter-island-and-reveals-hidden-genetic-dangers/",
-     "line": "A genetic study linked Hawaii and Easter Island, leading commenters to discuss the findings and share the academic journal link.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Anthropic logged net loss of over $80 billion in first half of 2026",
-     "subs": [
-      "technology"
-     ],
-     "thread": "https://www.reddit.com/r/technology/comments/1xb7op7/anthropic_logged_net_loss_of_over_80_billion_in/",
-     "link": "https://www.reuters.com/business/anthropic-recorded-net-loss-over-80-billion-first-half-this-year-wsj-reports-2026-10-20/",
-     "line": "A post claimed Anthropic logged an $80 billion loss in early 2026, causing commenters to react with astonishment and speculation about market valuations.",
-     "verdict": "plausible",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Terracotta warriors were mainly built by women and children, batch fingerprints show",
-     "subs": [
-      "EverythingScience"
-     ],
-     "thread": "https://www.reddit.com/r/EverythingScience/comments/1xbi9si/terracotta_warriors_were_mainly_built_by_women/",
-     "link": "https://www.scmp.com/news/china/science/article/3371607/terracotta-warriors-could-be-mainly-built-women-and-children-batch-fingerprints-show?utm_source=Reddit&utm_medium=Social",
-     "line": "Fingerprint analysis revealed Terracotta warriors were mainly built by women and children, with commenters discussing the statistical methods used by researchers.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    }
-   ],
-   "transcript": "transcripts/ai_2026-10-22_morning_0829.txt"
   }
  ]
 }

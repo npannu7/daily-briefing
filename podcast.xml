@@ -8,9 +8,28 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Wed, 28 Oct 2026 11:43:08 GMT</lastBuildDate>
+<lastBuildDate>Thu, 29 Oct 2026 03:49:34 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Morning - 29 Oct: Building a Computer Inside a Language Model</title>
+<description>Morning edition - Thursday, 29 October 2026
+Deterministic State Machines in Stochastic Weights and Quality Boundaries in Peptide Manufacturing
+
+00:40  Building a Computer Inside a Language Model
+   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1xhmo1q/someone_built_a_32bit_riscv_cpu_directly_inside/
+11:30  Bypassing Drug Approvals for Injectable Peptides
+   EverythingScience: https://www.reddit.com/r/EverythingScience/comments/1xhy21u/rfk_jr_to_allow_broad_use_of_unapproved_peptide/
+   Source: https://www.nytimes.com/2026/10/28/health/peptides-kennedy-fda.html?smid=re-share
+
+Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
+Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (181 threads)</description>
+<pubDate>Thu, 29 Oct 2026 08:41:42 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-10-29_morning_0841.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-29_morning_0841.mp3" length="10394732" type="audio/mpeg"/>
+<itunes:duration>1299</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Evening - 28 Oct: A new benchmark shows coding agents still struggle with real software tasks</title>
 <description>Evening edition - Wednesday, 28 October 2026
@@ -287,27 +306,6 @@ Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Di
 <guid isPermaLink="false">ai_2026-10-22_evening_1628.mp3</guid>
 <enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-22_evening_1628.mp3" length="10229036" type="audio/mpeg"/>
 <itunes:duration>1278</itunes:duration>
-<itunes:episodeType>full</itunes:episodeType>
-</item>
-<item>
-<title>Morning - 22 Oct: Breaking Out of the Chatbot Loop</title>
-<description>Morning edition - Thursday, 22 October 2026
-Engineering deterministic manual overrides for recursive automated systems, and treating circadian phase misalignment in treatment-resistant depression.
-
-00:35  Breaking Out of the Chatbot Loop
-   ArtificialInteligence: https://www.reddit.com/r/ArtificialInteligence/comments/1xblhi2/nyc_wants_a_onetouch_talk_to_a_human_option_on/
-   artificial: https://www.reddit.com/r/artificial/comments/1xb7a1x/new_york_city_wants_to_fine_companies_that_trap/
-   Source: https://madrobot.blog/2026/10/20/nyc-mamdani-ai-chatbot-doom-loop-rule-human-customer-service-fines/
-09:11  When Depression Is a Clock Problem
-   science: https://www.reddit.com/r/science/comments/1xb9ww2/about_1_in_4_people_with_depression_may_have_a/
-   Source: https://www.sciencealert.com/researchers-identify-new-circadian-subtype-of-depression-affecting-1-in-4-patients
-
-Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
-Written by: Gemini 3.8 Flash · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (191 threads)</description>
-<pubDate>Thu, 22 Oct 2026 08:29:39 +0530</pubDate>
-<guid isPermaLink="false">ai_2026-10-22_morning_0829.mp3</guid>
-<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-22_morning_0829.mp3" length="8306732" type="audio/mpeg"/>
-<itunes:duration>1038</itunes:duration>
 <itunes:episodeType>full</itunes:episodeType>
 </item>
 </channel>
