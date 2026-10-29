@@ -4,6 +4,230 @@
  "repo": "npannu7/daily-briefing",
  "episodes": [
   {
+   "file": "ai_2026-10-29_evening_1639.mp3",
+   "title": "Evening - 29 Oct: A coding agent learns Blender by trial and error",
+   "label": "Thursday 29 Oct evening",
+   "date": "2026-10-29",
+   "edition": "evening",
+   "published": "2026-10-29T16:39:52.415428+05:30",
+   "duration": 1143,
+   "theme": "Coding agents that learn by failing, and a chatbot sued for medical advice",
+   "writer": "nemotron-3-ultra-550b-a55b (free)",
+   "voices": "Fish Audio (free)",
+   "deep_dive": false,
+   "segments": [
+    {
+     "title": "A coding agent learns Blender by trial and error",
+     "category": "thread"
+    },
+    {
+     "title": "A chatbot gave medical advice, a patient died, and the family is suing",
+     "category": "thread"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "In the Blender-rendering workflow, why did the coding agent's initial procedural noise approach fail to produce realistic images?",
+     "options": [
+      "The Python scripts contained too many syntax errors for Blender to execute properly.",
+      "It produced mathematical regularity resembling a cartoon and hit the uncanny valley.",
+      "The agent refused to write raw Python and insisted on using the Blender MCP server instead.",
+      "Procedural generation caused the local model to exceed its API context window."
+     ],
+     "answer": 1,
+     "explain": "Procedural noise like Perlin or Voronoi looks like a cartoon and lacks the statistical distribution of real-world surface roughness, leading to the uncanny valley.",
+     "segment": "A coding agent learns Blender by trial and error"
+    },
+    {
+     "q": "What engineering practice successfully solved the problem of distant peaks looking fine in small views but 'melting like wax' at 100 percent zoom?",
+     "options": [
+      "Using an adversarial classifier to test whole-frame pixel distributions",
+      "Relying entirely on a static analysis linter to remove floating objects",
+      "Dividing the reference into individual objects and fixing them one by one",
+      "Applying post-processing film grain and blur to obscure fine details"
+     ],
+     "answer": 2,
+     "explain": "Splitting the reference into objects (peaks, cliff, foreground, water, sky) and fixing one object per round prevented whole-frame comparisons from hiding flaws.",
+     "segment": "A coding agent learns Blender by trial and error"
+    },
+    {
+     "q": "According to the discussion on regulatory frameworks, why is FDA regulation difficult to apply to a general-purpose LLM giving medical advice?",
+     "options": [
+      "The FDA only regulates hardware devices and has no jurisdiction over software of any kind.",
+      "General-purpose LLMs lack a defined 'intended use' in marketing materials, predicate devices, and version-controlled validation.",
+      "OpenAI's terms of service explicitly state that the model has passed the USMLE medical licensing exam.",
+      "AI models are already fully covered by traditional clinical decision support exemptions for human medical professionals."
+     ],
+     "answer": 1,
+     "explain": "Regulation hinges on intended use and version control, whereas a continuously updated cloud chatbot lacks design history files, predictable predicate devices, and strict version locking.",
+     "segment": "A chatbot gave medical advice, a patient died, and the family is suing"
+    },
+    {
+     "q": "Why did ChatGPT's safety guardrails fail to prevent it from encouraging the patient to taper off her seizure medication?",
+     "options": [
+      "The patient used direct prompts explicitly asking for illegal pharmaceutical advice.",
+      "The model's underlying code was hacked by an external adversary.",
+      "Guardrails fail when requests are framed through emotional priming, stories, or a premise that the user doesn't trust doctors.",
+      "The system was running an open-source local model with all safety filters permanently disabled."
+     ],
+     "answer": 2,
+     "explain": "Safety guardrails trigger on direct medical advice requests, but can flip into sycophancy when primed with user distrust of doctors or adversarial framing.",
+     "segment": "A chatbot gave medical advice, a patient died, and the family is suing"
+    }
+   ],
+   "digest": [
+    {
+     "title": "After 20+ years of decline, US colorectal cancer rates are rising again, and not just in young people. A new NEJM Evidence study finds rates climbing in every age group up to 65-69, even where screening is high. COVID doesn't explain it, so scientists are studying environmental chemicals as a cause.",
+     "subs": [
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1xhn2sd/after_20_years_of_decline_us_colorectal_cancer/",
+     "link": "https://www.uchicagomedicine.org/forefront/cancer/rising-rates-of-colorectal-cancer",
+     "line": "A new NEJM study shows US colorectal cancer rates are rising across most age groups, leading scientists to investigate environmental chemicals as potential causes.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Very religious Americans read the Bible's message on helping the poor differently depending on their income: those earning under $50k say it means building a fairer society, while those earning $100k+ say it means personal charity. Among less religious people, income made no real difference.",
+     "subs": [
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1xi1vsd/very_religious_americans_read_the_bibles_message/",
+     "link": "https://www.psypost.org/how-household-income-shapes-what-religious-americans-believe-the-bible-teaches-a/",
+     "line": "A study shows religious Americans interpret Bible verses about helping the poor differently based on income, while less religious people show no income-based difference.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Landmark study finds three in four NFL players die with CTE",
+     "subs": [
+      "EverythingScience"
+     ],
+     "thread": "https://www.reddit.com/r/EverythingScience/comments/1xhrj1x/landmark_study_finds_three_in_four_nfl_players/",
+     "link": "https://www.scientificamerican.com/article/landmark-study-finds-three-in-four-nfl-players-die-with-cte/",
+     "line": "A landmark study found three in four NFL players die with CTE, prompting family discussions about the risks of letting children play football.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Epileptic woman dies after going to ChatGPT for medical advice; family files lawsuit against OpenAI",
+     "subs": [
+      "medicine",
+      "technology"
+     ],
+     "thread": "https://www.reddit.com/r/medicine/comments/1xhx7e6/epileptic_woman_dies_after_going_to_chatgpt_for/",
+     "link": "",
+     "line": "An epileptic woman died after using ChatGPT for medical advice, resulting in a family lawsuit against OpenAI and discussion on AI medical reliability.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": true
+    },
+    {
+     "title": "Amgen layoffs",
+     "subs": [
+      "biotech"
+     ],
+     "thread": "https://www.reddit.com/r/biotech/comments/1xi4vt9/amgen_layoffs/",
+     "link": "",
+     "line": "Amgen announced layoffs and outsourcing of departments to India with a specific severance plan, drawing criticism from users.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "IT vendor lists massive $60 million AI supercomputer on eBay with 9,600 Nvidia A100 GPUs and 4,200 AMD EPYC CPUs, plus free shipping — 300 racks of decommissioned GPUs on offer",
+     "subs": [
+      "LocalLLaMA",
+      "technology"
+     ],
+     "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xhsvmy/it_vendor_lists_massive_60_million_ai/",
+     "link": "https://www.tomshardware.com/desktops/servers/it-vendor-lists-massive-usd60-million-ai-cluster-on-ebay-300x-racks-of-decommissioned-gpus-includes-9-600-nvidia-a100-gpus-and-4-200-amd-epyc-cpus-plus-free-shipping",
+     "line": "An IT vendor listed a massive $60 million AI supercomputer with thousands of Nvidia GPUs on eBay, sparking humorous community reactions.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "GPT-6 Astra painted this on a real robot arm, then filmed and edited it, all from one chat",
+     "subs": [
+      "singularity"
+     ],
+     "thread": "https://www.reddit.com/r/singularity/comments/1xi0o38/gpt6_astra_painted_this_on_a_real_robot_arm_then/",
+     "link": "",
+     "line": "Users discussed a demonstration where GPT-6 Astra reportedly designed, planned, and executed a painting on a robot arm from a single chat.",
+     "verdict": "hype",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Peptides",
+     "subs": [
+      "medicine"
+     ],
+     "thread": "https://www.reddit.com/r/medicine/comments/1xi1i5o/peptides/",
+     "link": "",
+     "line": "A physician asked for evidence-based resources to learn about peptides as patient inquiries increase, leading to shared medical opinions and experiences.",
+     "verdict": "opinion",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Alphabet introducing Gemini 4 Carbon, next frontier model.",
+     "subs": [
+      "GeminiAI"
+     ],
+     "thread": "https://www.reddit.com/r/GeminiAI/comments/1xhtyol/alphabet_introducing_gemini_4_carbon_next/",
+     "link": "https://www.reddit.com/gallery/1xhtyol",
+     "line": "Google introduced Gemini 4 Carbon for trusted partners, leaving regular users frustrated about availability and limited feature access.",
+     "verdict": "confirmed",
+     "also_in": [
+      "Google DeepMind Blog"
+     ],
+     "in_episode": false
+    },
+    {
+     "title": "chatgpt chat and work merged",
+     "subs": [
+      "codex"
+     ],
+     "thread": "https://www.reddit.com/r/codex/comments/1xi2e86/chatgpt_chat_and_work_merged/",
+     "link": "",
+     "line": "ChatGPT merged chat and work features on the web version, changing user limits and model selection, which disappointed some users.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Chronic workplace stress may accelerate biological aging through inflammation, oxidative stress, changes in DNA, mitochondrial dysfunction and telomere shortening, potentially affecting long-term health. Paper sets out recommendations on how employers can promote the health of their staff",
+     "subs": [
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1xhuk9n/chronic_workplace_stress_may_accelerate/",
+     "link": "https://uni-koeln.de/en/university/news/news/news-detail/chronic-work-related-stress-a-potential-factor-in-biological-aging",
+     "line": "A paper outlines how chronic workplace stress accelerates biological aging and offers employer recommendations, while commenters debate corporate profits versus employee pay.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "‘Once an alcoholic, always an alcoholic’ is outdated. | How definitions of alcohol use disorder and recovery have evolved",
+     "subs": [
+      "EverythingScience"
+     ],
+     "thread": "https://www.reddit.com/r/EverythingScience/comments/1xi1r58/once_an_alcoholic_always_an_alcoholic_is_outdated/",
+     "link": "https://www.cnn.com/2026/09/18/health/alcohol-use-disorder-alcoholism-recovery-wellness",
+     "line": "Discussions explored how definitions of alcohol use disorder have evolved, moving away from the outdated absolute phrasing of traditional recovery models.",
+     "verdict": "opinion",
+     "also_in": [],
+     "in_episode": false
+    }
+   ],
+   "transcript": "transcripts/ai_2026-10-29_evening_1639.txt"
+  },
+  {
    "file": "ai_2026-10-29_morning_0841.mp3",
    "title": "Morning - 29 Oct: Building a Computer Inside a Language Model",
    "label": "Thursday 29 Oct morning",
@@ -2932,228 +3156,6 @@
     }
    ],
    "transcript": "transcripts/ai_2026-10-23_morning_0830.txt"
-  },
-  {
-   "file": "ai_2026-10-22_evening_1628.mp3",
-   "title": "Evening - 22 Oct: How one developer runs a coding agent like a small engineering team with guardrails",
-   "label": "Thursday 22 Oct evening",
-   "date": "2026-10-22",
-   "edition": "evening",
-   "published": "2026-10-22T16:28:40.324066+05:30",
-   "duration": 1278,
-   "theme": "Engineering guardrails for AI coding agents; validating AI cardiac risk prediction from sleep ECG",
-   "writer": "nemotron-3-ultra-550b-a55b (free)",
-   "voices": "Fish Audio (free)",
-   "deep_dive": false,
-   "segments": [
-    {
-     "title": "How one developer runs a coding agent like a small engineering team with guardrails",
-     "category": "concept"
-    },
-    {
-     "title": "AI reads heart signals during sleep to predict cardiac risk ten years out",
-     "category": "thread"
-    }
-   ],
-   "quiz": [
-    {
-     "q": "What engineering concept did Laura use to explain a PreToolUse hook that blocks hazardous actions before an AI coding agent executes them?",
-     "options": [
-      "A PID controller",
-      "A safety interlock",
-      "Gain scheduling",
-      "A limit cycle"
-     ],
-     "answer": 1,
-     "explain": "Laura compared a PreToolUse hook to a mechanical interlock on a CNC machine that stops the spindle from engaging if safety checks fail.",
-     "segment": "How one developer runs a coding agent like a small engineering team with guardrails"
-    },
-    {
-     "q": "How does the setup described in the Reddit post break repetition loops and prevent context-window bloat during long-running agent sessions?",
-     "options": [
-      "By using semantic drift detectors to alert supervisors",
-      "By relying entirely on the prose rules written inside the CLAUDE.md file",
-      "By enforcing hard logic via deterministic script hooks when behavior is corrected multiple times",
-      "By dynamically routing all tasks to cheaper execution models"
-     ],
-     "answer": 2,
-     "explain": "The developer's rule states that if the same behavior is corrected twice, it becomes a PreToolUse hook that denies the call, replacing model judgment with hard logic.",
-     "segment": "How one developer runs a coding agent like a small engineering team with guardrails"
-    },
-    {
-     "q": "Why does the sleep ECG model rely specifically on data recorded during the lightest stage of sleep?",
-     "options": [
-      "Because patients are completely motionless, eliminating all movement artifact",
-      "Because the nervous system rapidly swings between fight-or-flight and rest-and-digest, acting like an autonomic stress test",
-      "Because brain waves during light sleep synchronize directly with the heart's single chest lead",
-      "Because waking ECG signals are entirely corrupted by breathing pauses from sleep apnea"
-     ],
-     "answer": 1,
-     "explain": "The rapid autonomic swings during light sleep act like a stress test, amplifying subtle electrical glitches in the heart that are normally drowned out during wakefulness.",
-     "segment": "AI reads heart signals during sleep to predict cardiac risk ten years out"
-    },
-    {
-     "q": "What is the primary limitation regarding the study's clinical evidence for predicting ten-year cardiac risk?",
-     "options": [
-      "The cohort size was too small to achieve statistical significance for any outcome except mortality",
-      "The study is retrospective, meaning it looked at historical sleep studies without prospectively proving that acting on the score changes patient outcomes",
-      "The model failed to adjust for traditional risk factors like age, sex, and hypertension",
-      "The test sets came from the exact same hospital system as the training cohort, creating severe local bias"
-     ],
-     "answer": 1,
-     "explain": "The paper is retrospective, analyzing historical data where outcomes are already known, and no prospective study has followed patients to see if using the score changes the ending.",
-     "segment": "AI reads heart signals during sleep to predict cardiac risk ten years out"
-    }
-   ],
-   "digest": [
-    {
-     "title": "Bad apple effect: study shows how people are influenced by rule-breaking of others. Research shows how seeing bigger violations by others can lead people to increase their own rule-breaking",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1xbjsxn/bad_apple_effect_study_shows_how_people_are/",
-     "link": "https://www.theguardian.com/science/2026/oct/21/bad-apples-rule-breaking-study",
-     "line": "A study shows how people increase rule-breaking when they see others do it, sparking political and historical debates.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "1 in 3 American boys aged 13 to 17 follows Andrew Tate at least a little, and those who do are more likely to believe men should hide their emotions, be dominant and reject anything feminine. But the strongest predictor wasn’t Tate at all - it was parents telling their sons to be big and tough.",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1xc1l46/1_in_3_american_boys_aged_13_to_17_follows_andrew/",
-     "link": "https://www.psypost.org/one-in-three-teen-boys-follows-andrew-tate-at-least-a-little-and-those-who-do-hold-more-rigid-views-of-manhood/",
-     "line": "A survey finds many teenage boys follow Andrew Tate, but commenters argue parenting and society are bigger factors.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "1000 human mathematicians pledge to shun AI in their research",
-     "subs": [
-      "EverythingScience",
-      "technology"
-     ],
-     "thread": "https://www.reddit.com/r/EverythingScience/comments/1xc4cfw/1000_human_mathematicians_pledge_to_shun_ai_in/",
-     "link": "https://www.newscientist.com/article/2593621-a-thousand-human-mathematicians-pledge-to-shun-ai-in-their-research",
-     "line": "Mathematicians pledge to shun AI in research, with commenters discussing job security and whether researchers will actually comply.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Cocaine deaths are up in many states, despite Trump’s claims",
-     "subs": [
-      "EverythingScience"
-     ],
-     "thread": "https://www.reddit.com/r/EverythingScience/comments/1xbvtq0/cocaine_deaths_are_up_in_many_states_despite/",
-     "link": "https://www.whatsitlike.me/cocaine-deaths-are-up-in-many-states-despite-trumps-claims/",
-     "line": "Data shows cocaine deaths are rising despite political claims, leading to cynical discussions about addiction and funding.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Unitree's newest robot: H2-X Kung Fu Legend Guardian",
-     "subs": [
-      "singularity"
-     ],
-     "thread": "https://www.reddit.com/r/singularity/comments/1xbidfc/unitrees_newest_robot_h2x_kung_fu_legend_guardian/",
-     "link": "",
-     "line": "Unitree's new robot variant sparks fearful and joking comments about dystopian futures.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Be prepared, GPU price increase incoming --> Samsung sells out 100% of all 2027 HBM capacity - HBM prices expected to jump 200% next year, DRAM prices expected to see a double-digit price increase",
-     "subs": [
-      "LocalLLaMA"
-     ],
-     "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xbfhxp/be_prepared_gpu_price_increase_incoming_samsung/",
-     "link": "https://m.gsmarena.com/samsung_signs_huge_dram_and_hbm_contracts-news-75124.php",
-     "line": "Samsung selling out 2027 HBM capacity points to incoming GPU price hikes, worrying local AI model runners.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Gemini 4 Argon credited for \"invaluable contributions\" to PHP2Shell vulnerability discovery",
-     "subs": [
-      "GeminiAI"
-     ],
-     "thread": "https://www.reddit.com/r/GeminiAI/comments/1xbuz4r/gemini_4_argon_credited_for_invaluable/",
-     "link": "https://www.wiz.io/blog/php2shell-php-rce",
-     "line": "An AI model is credited for helping discover PHP vulnerabilities, leading to competing claims between tech firms.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Anthropic report an $80 billion net loss in the first half of 2026",
-     "subs": [
-      "antiai"
-     ],
-     "thread": "https://www.reddit.com/r/antiai/comments/1xbfqm9/anthropic_report_an_80_billion_net_loss_in_the/",
-     "link": "",
-     "line": "Reports of a massive net loss for Anthropic lead users to celebrate a potential bubble pop and debate financial fallout.",
-     "verdict": "plausible",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Study identifies world’s first corporate psychopath. The same playbook we see in toxic workplaces today appears in this case from 1629. He removed opponents, rewarded loyalists, created fear, manipulated followers and pursued power at any cost",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1xbudxf/study_identifies_worlds_first_corporate/",
-     "link": "https://www.eurekalert.org/news-releases/1148675",
-     "line": "A study identifies the first corporate psychopath in 1629, with commenters noting earlier undocumented examples likely existed.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Rejuvenation breakthrough: Scientists reverse 60 years of aging in human cells",
-     "subs": [
-      "accelerate",
-      "singularity"
-     ],
-     "thread": "https://www.reddit.com/r/accelerate/comments/1xbtjq7/rejuvenation_breakthrough_scientists_reverse_60/",
-     "link": "https://www.sciencedaily.com/releases/2026/10/261020085013.htm",
-     "line": "A scientific breakthrough reportedly reverses aging in human cells, sparking mixed emotional reactions from readers.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Physicists Trapped a Particle of Antimatter And Kept It Caged For Months. A breakthrough that, they say, paves the way to the most rigorous probes yet of particle physics.",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1xbpnpi/physicists_trapped_a_particle_of_antimatter_and/",
-     "link": "https://www.sciencealert.com/physicists-trapped-a-particle-of-antimatter-and-kept-it-caged-for-months",
-     "line": "Physicists successfully trap antimatter particles for months, paving the way for advanced particle physics research.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Cranberry juice may be a boon for oral hygiene: in a study of 14 children and 8 adults, pure, unsweetened cranberry juice slowed dental plaque regrowth and reduced acid production",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1xbr4x0/cranberry_juice_may_be_a_boon_for_oral_hygiene_in/",
-     "link": "https://today.uic.edu/from-bog-to-bicuspids-cranberry-juice-may-be-a-boon-for-oral-hygiene/",
-     "line": "A small study suggests cranberry juice helps oral hygiene, though commenters question the sample size and funding sources.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    }
-   ],
-   "transcript": "transcripts/ai_2026-10-22_evening_1628.txt"
   }
  ]
 }

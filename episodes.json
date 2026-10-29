@@ -1,17 +1,6 @@
 {
   "episodes": [
     {
-      "file": "ai_2026-10-22_evening_1628.mp3",
-      "date": "2026-10-22",
-      "edition": "evening",
-      "title": "Evening - 22 Oct: How one developer runs a coding agent like a small engineering team with guardrails",
-      "published": "2026-10-22T16:28:40.324066+05:30",
-      "pubDate": "Thu, 22 Oct 2026 16:28:40 +0530",
-      "size": 10229036,
-      "duration": 1278,
-      "description": "Evening edition - Thursday, 22 October 2026\nEngineering guardrails for AI coding agents; validating AI cardiac risk prediction from sleep ECG\n\n00:42  How one developer runs a coding agent like a small engineering team with guardrails\n   ClaudeCode: https://www.reddit.com/r/ClaudeCode/comments/1xbxoza/my_claude_code_setup_it_runs_like_a_small/\n14:23  AI reads heart signals during sleep to predict cardiac risk ten years out\n   science: https://www.reddit.com/r/science/comments/1xbi4rj/ai_can_read_your_hearts_electrical_signals_while/\n   Source: https://www.sciencealert.com/the-way-you-sleep-can-reveal-your-risk-of-heart-failure-up-to-10-years-in-advance\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nWritten by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (168 threads)"
-    },
-    {
       "file": "ai_2026-10-23_morning_0830.mp3",
       "date": "2026-10-23",
       "edition": "morning",
@@ -153,6 +142,17 @@
       "size": 10394732,
       "duration": 1299,
       "description": "Morning edition - Thursday, 29 October 2026\nDeterministic State Machines in Stochastic Weights and Quality Boundaries in Peptide Manufacturing\n\n00:40  Building a Computer Inside a Language Model\n   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1xhmo1q/someone_built_a_32bit_riscv_cpu_directly_inside/\n11:30  Bypassing Drug Approvals for Injectable Peptides\n   EverythingScience: https://www.reddit.com/r/EverythingScience/comments/1xhy21u/rfk_jr_to_allow_broad_use_of_unapproved_peptide/\n   Source: https://www.nytimes.com/2026/10/28/health/peptides-kennedy-fda.html?smid=re-share\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nWritten by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (181 threads)"
+    },
+    {
+      "file": "ai_2026-10-29_evening_1639.mp3",
+      "date": "2026-10-29",
+      "edition": "evening",
+      "title": "Evening - 29 Oct: A coding agent learns Blender by trial and error",
+      "published": "2026-10-29T16:39:52.415428+05:30",
+      "pubDate": "Thu, 29 Oct 2026 16:39:52 +0530",
+      "size": 9151724,
+      "duration": 1143,
+      "description": "Evening edition - Thursday, 29 October 2026\nCoding agents that learn by failing, and a chatbot sued for medical advice\n\n00:52  A coding agent learns Blender by trial and error\n   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1xhi21l/i_got_claude_opus_55_to_render_photoreal_blender/\n   Source: https://www.reddit.com/gallery/1xhi21l\n09:04  A chatbot gave medical advice, a patient died, and the family is suing\n   medicine, technology: https://www.reddit.com/r/medicine/comments/1xhx7e6/epileptic_woman_dies_after_going_to_chatgpt_for/\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nWritten by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (166 threads)"
     }
   ],
   "memory": [
@@ -1220,6 +1220,30 @@
       ],
       "deep_topic": "",
       "topics": []
+    },
+    {
+      "label": "Thursday 29 Oct evening",
+      "date": "2026-10-29",
+      "edition": "evening",
+      "published": "2026-10-29T16:39:52.415428+05:30",
+      "file": "ai_2026-10-29_evening_1639.mp3",
+      "writer": "nemotron-3-ultra-550b-a55b (free)",
+      "voices": "Fish Audio (free)",
+      "summary": "This episode examined how a coding agent learns Blender through iterative failure — writing and executing Python scripts until a human visually approves the render — framing the loop as acceptance testing where the agent serves as both writer and tester. The second segment analyzed a lawsuit against OpenAI after an epileptic woman died following ChatGPT medication advice, exploring FDA intended-use classification, medical device validation requirements, and the regulatory gap when general-purpose models dispense clinical guidance.",
+      "threads": [
+        "Coding agent reliability benchmarks comparing visual human-in-the-loop validation vs automated test suites",
+        "FDA regulatory response to AI-generated medical advice and classification of general-purpose LLMs as medical devices",
+        "Independent replication of agent-driven Blender workflows and failure-rate distributions across scene complexity"
+      ],
+      "segments": [
+        "A coding agent learns Blender by trial and error",
+        "A chatbot gave medical advice, a patient died, and the family is suing"
+      ],
+      "deep_topic": "",
+      "topics": [
+        "ai-mental-health-impacts",
+        "anthropic-claude-models"
+      ]
     }
   ],
   "seen": [
@@ -2414,6 +2438,22 @@
     {
       "date": "2026-10-29",
       "link": "https://www.reddit.com/r/LocalLLaMA/comments/1xhmo1q/someone_built_a_32bit_riscv_cpu_directly_inside/"
+    },
+    {
+      "date": "2026-10-29",
+      "link": "https://www.reddit.com/r/medicine/comments/1xhx7e6/epileptic_woman_dies_after_going_to_chatgpt_for/"
+    },
+    {
+      "date": "2026-10-29",
+      "link": "https://www.reddit.com/r/technology/comments/1xhv532/epileptic_woman_dies_after_going_to_chatgpt_for/"
+    },
+    {
+      "date": "2026-10-29",
+      "link": "https://www.reddit.com/r/ClaudeAI/comments/1xhi21l/i_got_claude_opus_55_to_render_photoreal_blender/"
+    },
+    {
+      "date": "2026-10-29",
+      "link": "https://www.reddit.com/gallery/1xhi21l"
     }
   ],
   "feedback": [
@@ -2641,6 +2681,53 @@
       },
       "comment": "too much medical articles. other topics should also be covered in second half: physics, space, technology etc.",
       "received": "2026-10-24T16:23:33.094913+05:30"
+    },
+    {
+      "episode": "ai_2026-10-29_morning_0841.mp3",
+      "date": "2026-10-29",
+      "edition": "morning",
+      "quiz": {
+        "score": 4,
+        "total": 4,
+        "missed": []
+      },
+      "ratings": {
+        "overall": 5,
+        "depth": "right",
+        "pace": "right",
+        "voices": "good"
+      },
+      "segments": {
+        "Building a Computer Inside a Language Model": "more",
+        "Bypassing Drug Approvals for Injectable Peptides": "ok"
+      },
+      "comment": "",
+      "received": "2026-10-29T16:39:52.835723+05:30"
+    },
+    {
+      "episode": "ai_2026-10-28_evening_1638.mp3",
+      "date": "2026-10-28",
+      "edition": "evening",
+      "quiz": {
+        "score": 2,
+        "total": 4,
+        "missed": [
+          "A new benchmark shows coding agents still struggle with real software tasks: According to the discussion on software engineering benchmarks, why are unit tests alone insufficient for system-level validation?",
+          "A catalyst that could make rocket fuel from Mars air: What specific technological advancement did the Chinese research team claim in their Mars catalyst paper?"
+        ]
+      },
+      "ratings": {
+        "overall": 5,
+        "depth": "right",
+        "pace": "right",
+        "voices": "ok"
+      },
+      "segments": {
+        "A new benchmark shows coding agents still struggle with real software tasks": "ok",
+        "A catalyst that could make rocket fuel from Mars air": "ok"
+      },
+      "comment": "",
+      "received": "2026-10-29T16:39:52.835740+05:30"
     }
   ],
   "tts_log": [
@@ -3340,7 +3427,241 @@
     "2026-10-29T03:49:01.956199+00:00",
     "2026-10-29T03:49:06.470080+00:00",
     "2026-10-29T03:49:11.654462+00:00",
-    "2026-10-29T03:49:15.727026+00:00"
+    "2026-10-29T03:49:15.727026+00:00",
+    "2026-10-29T11:09:52.997388+00:00",
+    "2026-10-29T11:09:56.125744+00:00",
+    "2026-10-29T11:09:59.349672+00:00",
+    "2026-10-29T11:10:02.559720+00:00",
+    "2026-10-29T11:10:05.849379+00:00",
+    "2026-10-29T11:10:09.550046+00:00",
+    "2026-10-29T11:10:12.221273+00:00",
+    "2026-10-29T11:10:15.419211+00:00",
+    "2026-10-29T11:10:26.109534+00:00",
+    "2026-10-29T11:10:29.206667+00:00",
+    "2026-10-29T11:10:32.396806+00:00",
+    "2026-10-29T11:10:35.606678+00:00",
+    "2026-10-29T11:10:38.800618+00:00",
+    "2026-10-29T11:10:42.020590+00:00",
+    "2026-10-29T11:10:45.193791+00:00",
+    "2026-10-29T11:10:48.440618+00:00",
+    "2026-10-29T11:10:53.527654+00:00",
+    "2026-10-29T11:10:56.869437+00:00",
+    "2026-10-29T11:10:58.023670+00:00",
+    "2026-10-29T11:11:01.290148+00:00",
+    "2026-10-29T11:11:04.391903+00:00",
+    "2026-10-29T11:11:07.630621+00:00",
+    "2026-10-29T11:11:11.397041+00:00",
+    "2026-10-29T11:11:13.988957+00:00",
+    "2026-10-29T11:11:19.127095+00:00",
+    "2026-10-29T11:11:20.395421+00:00",
+    "2026-10-29T11:11:23.617904+00:00",
+    "2026-10-29T11:11:26.798118+00:00",
+    "2026-10-29T11:11:30.011464+00:00",
+    "2026-10-29T11:11:33.185478+00:00",
+    "2026-10-29T11:11:36.400765+00:00",
+    "2026-10-29T11:11:39.603472+00:00",
+    "2026-10-29T11:11:43.747971+00:00",
+    "2026-10-29T11:11:46.967512+00:00",
+    "2026-10-29T11:11:50.150759+00:00",
+    "2026-10-29T11:11:53.358567+00:00",
+    "2026-10-29T11:11:56.569366+00:00",
+    "2026-10-29T11:12:00.404584+00:00",
+    "2026-10-29T11:12:02.962425+00:00",
+    "2026-10-29T11:12:06.171569+00:00",
+    "2026-10-29T11:12:09.622817+00:00",
+    "2026-10-29T11:12:14.988562+00:00",
+    "2026-10-29T11:12:15.757920+00:00",
+    "2026-10-29T11:12:18.962512+00:00",
+    "2026-10-29T11:12:22.176568+00:00",
+    "2026-10-29T11:12:25.349497+00:00",
+    "2026-10-29T11:12:28.556265+00:00",
+    "2026-10-29T11:12:31.764777+00:00",
+    "2026-10-29T11:12:35.157950+00:00",
+    "2026-10-29T11:12:39.107505+00:00",
+    "2026-10-29T11:12:42.321338+00:00",
+    "2026-10-29T11:12:45.564284+00:00",
+    "2026-10-29T11:12:48.709196+00:00",
+    "2026-10-29T11:12:51.916379+00:00",
+    "2026-10-29T11:12:55.101646+00:00",
+    "2026-10-29T11:12:58.497404+00:00",
+    "2026-10-29T11:13:01.500028+00:00",
+    "2026-10-29T11:13:04.711502+00:00",
+    "2026-10-29T11:13:07.947107+00:00",
+    "2026-10-29T11:13:11.098584+00:00",
+    "2026-10-29T11:13:14.319243+00:00",
+    "2026-10-29T11:13:17.503264+00:00",
+    "2026-10-29T11:13:20.699031+00:00",
+    "2026-10-29T11:13:23.926987+00:00",
+    "2026-10-29T11:13:27.109976+00:00",
+    "2026-10-29T11:13:30.391176+00:00",
+    "2026-10-29T11:13:33.517882+00:00",
+    "2026-10-29T11:13:36.740182+00:00",
+    "2026-10-29T11:13:39.904769+00:00",
+    "2026-10-29T11:13:43.519742+00:00",
+    "2026-10-29T11:13:46.300125+00:00",
+    "2026-10-29T11:13:49.518013+00:00",
+    "2026-10-29T11:13:52.694057+00:00",
+    "2026-10-29T11:13:55.933991+00:00",
+    "2026-10-29T11:13:59.107393+00:00",
+    "2026-10-29T11:14:02.306400+00:00",
+    "2026-10-29T11:14:05.518296+00:00",
+    "2026-10-29T11:14:08.732935+00:00",
+    "2026-10-29T11:14:11.902788+00:00",
+    "2026-10-29T11:14:15.117384+00:00",
+    "2026-10-29T11:14:18.296648+00:00",
+    "2026-10-29T11:14:21.496070+00:00",
+    "2026-10-29T11:14:24.719945+00:00",
+    "2026-10-29T11:14:27.920057+00:00",
+    "2026-10-29T11:14:31.092550+00:00",
+    "2026-10-29T11:14:34.313875+00:00",
+    "2026-10-29T11:14:37.485956+00:00",
+    "2026-10-29T11:14:40.715013+00:00",
+    "2026-10-29T11:14:43.903983+00:00",
+    "2026-10-29T11:14:47.113173+00:00",
+    "2026-10-29T11:14:50.309573+00:00",
+    "2026-10-29T11:14:53.514009+00:00",
+    "2026-10-29T11:14:56.707166+00:00",
+    "2026-10-29T11:15:00.106596+00:00",
+    "2026-10-29T11:15:03.101035+00:00",
+    "2026-10-29T11:15:06.320771+00:00",
+    "2026-10-29T11:15:09.685330+00:00",
+    "2026-10-29T11:15:12.743827+00:00",
+    "2026-10-29T11:15:15.918118+00:00",
+    "2026-10-29T11:15:19.127067+00:00",
+    "2026-10-29T11:15:22.304000+00:00",
+    "2026-10-29T11:15:25.514673+00:00",
+    "2026-10-29T11:15:28.757973+00:00",
+    "2026-10-29T11:15:31.898162+00:00",
+    "2026-10-29T11:15:35.097777+00:00",
+    "2026-10-29T11:15:38.333962+00:00",
+    "2026-10-29T11:15:41.501375+00:00",
+    "2026-10-29T11:15:44.711528+00:00",
+    "2026-10-29T11:15:47.929062+00:00",
+    "2026-10-29T11:15:51.125414+00:00",
+    "2026-10-29T11:15:54.322911+00:00",
+    "2026-10-29T11:15:57.511829+00:00",
+    "2026-10-29T11:16:00.710378+00:00",
+    "2026-10-29T11:16:03.910475+00:00",
+    "2026-10-29T11:16:07.117919+00:00",
+    "2026-10-29T11:16:10.312270+00:00",
+    "2026-10-29T11:16:13.518277+00:00",
+    "2026-10-29T11:16:18.686082+00:00",
+    "2026-10-29T11:16:19.914327+00:00",
+    "2026-10-29T11:16:23.103898+00:00",
+    "2026-10-29T11:16:26.303203+00:00",
+    "2026-10-29T11:16:29.509957+00:00",
+    "2026-10-29T11:16:32.720463+00:00",
+    "2026-10-29T11:16:35.904326+00:00",
+    "2026-10-29T11:16:39.102484+00:00",
+    "2026-10-29T11:16:42.307460+00:00",
+    "2026-10-29T11:16:45.521540+00:00",
+    "2026-10-29T11:16:48.713526+00:00",
+    "2026-10-29T11:16:51.902268+00:00",
+    "2026-10-29T11:16:55.111449+00:00",
+    "2026-10-29T11:16:58.348782+00:00",
+    "2026-10-29T11:17:01.521986+00:00",
+    "2026-10-29T11:17:04.715731+00:00",
+    "2026-10-29T11:17:07.918792+00:00",
+    "2026-10-29T11:17:11.137496+00:00",
+    "2026-10-29T11:17:14.309726+00:00",
+    "2026-10-29T11:17:17.511201+00:00",
+    "2026-10-29T11:17:20.744906+00:00",
+    "2026-10-29T11:17:24.858001+00:00",
+    "2026-10-29T11:17:31.312964+00:00",
+    "2026-10-29T11:17:37.680335+00:00",
+    "2026-10-29T11:30:09.772535+00:00",
+    "2026-10-29T11:31:07.639099+00:00",
+    "2026-10-29T11:32:07.786668+00:00",
+    "2026-10-29T11:34:06.063001+00:00",
+    "2026-10-29T11:35:36.293438+00:00",
+    "2026-10-29T11:36:01.634788+00:00",
+    "2026-10-29T11:36:03.790356+00:00",
+    "2026-10-29T11:36:12.022879+00:00",
+    "2026-10-29T11:36:21.602698+00:00",
+    "2026-10-29T11:36:32.534339+00:00",
+    "2026-10-29T11:36:38.650645+00:00",
+    "2026-10-29T11:36:49.067269+00:00",
+    "2026-10-29T11:36:54.094479+00:00",
+    "2026-10-29T11:37:08.521629+00:00",
+    "2026-10-29T11:37:19.039975+00:00",
+    "2026-10-29T11:37:27.059637+00:00",
+    "2026-10-29T11:37:36.819132+00:00",
+    "2026-10-29T11:37:42.260014+00:00",
+    "2026-10-29T11:37:54.197867+00:00",
+    "2026-10-29T11:38:03.283680+00:00",
+    "2026-10-29T11:38:13.749419+00:00",
+    "2026-10-29T11:38:18.692072+00:00",
+    "2026-10-29T11:38:32.554529+00:00",
+    "2026-10-29T11:38:42.934862+00:00",
+    "2026-10-29T11:38:53.917900+00:00",
+    "2026-10-29T11:39:01.254366+00:00",
+    "2026-10-29T11:39:16.424260+00:00",
+    "2026-10-29T11:39:27.102685+00:00",
+    "2026-10-29T11:39:40.718093+00:00",
+    "2026-10-29T11:39:48.831483+00:00",
+    "2026-10-29T11:39:59.789182+00:00",
+    "2026-10-29T11:40:07.271871+00:00",
+    "2026-10-29T11:40:16.654660+00:00",
+    "2026-10-29T11:40:24.435682+00:00",
+    "2026-10-29T11:40:34.049171+00:00",
+    "2026-10-29T11:40:46.745546+00:00",
+    "2026-10-29T11:41:00.156534+00:00",
+    "2026-10-29T11:41:11.457320+00:00",
+    "2026-10-29T11:41:20.298462+00:00",
+    "2026-10-29T11:41:30.986579+00:00",
+    "2026-10-29T11:41:42.938508+00:00",
+    "2026-10-29T11:41:50.743348+00:00",
+    "2026-10-29T11:42:01.845060+00:00",
+    "2026-10-29T11:42:15.424067+00:00",
+    "2026-10-29T11:42:27.021176+00:00",
+    "2026-10-29T11:42:32.249397+00:00",
+    "2026-10-29T11:42:41.447798+00:00",
+    "2026-10-29T11:42:46.950582+00:00",
+    "2026-10-29T11:42:57.898201+00:00",
+    "2026-10-29T11:43:02.081217+00:00",
+    "2026-10-29T11:43:14.299161+00:00",
+    "2026-10-29T11:43:21.747051+00:00",
+    "2026-10-29T11:43:32.120929+00:00",
+    "2026-10-29T11:43:41.593119+00:00",
+    "2026-10-29T11:43:52.350091+00:00",
+    "2026-10-29T11:43:57.709720+00:00",
+    "2026-10-29T11:44:07.539802+00:00",
+    "2026-10-29T11:44:17.307631+00:00",
+    "2026-10-29T11:44:33.229224+00:00",
+    "2026-10-29T11:44:41.561323+00:00",
+    "2026-10-29T11:44:53.570620+00:00",
+    "2026-10-29T11:45:02.646091+00:00",
+    "2026-10-29T11:45:13.185984+00:00",
+    "2026-10-29T11:45:17.869467+00:00",
+    "2026-10-29T11:45:31.226122+00:00",
+    "2026-10-29T11:45:37.645332+00:00",
+    "2026-10-29T11:45:51.516230+00:00",
+    "2026-10-29T11:45:59.766533+00:00",
+    "2026-10-29T11:46:14.764928+00:00",
+    "2026-10-29T11:46:22.426568+00:00",
+    "2026-10-29T11:46:37.059874+00:00",
+    "2026-10-29T11:46:46.406771+00:00",
+    "2026-10-29T11:46:57.022605+00:00",
+    "2026-10-29T11:47:03.644229+00:00",
+    "2026-10-29T11:47:19.853915+00:00",
+    "2026-10-29T11:47:25.183727+00:00",
+    "2026-10-29T11:47:36.697050+00:00",
+    "2026-10-29T11:47:43.557195+00:00",
+    "2026-10-29T11:47:56.577533+00:00",
+    "2026-10-29T11:48:03.019535+00:00",
+    "2026-10-29T11:48:16.034751+00:00",
+    "2026-10-29T11:48:23.820165+00:00",
+    "2026-10-29T11:48:33.492503+00:00",
+    "2026-10-29T11:48:40.247299+00:00",
+    "2026-10-29T11:48:50.559683+00:00",
+    "2026-10-29T11:49:04.151383+00:00",
+    "2026-10-29T11:49:14.773653+00:00",
+    "2026-10-29T11:49:25.542120+00:00",
+    "2026-10-29T11:49:34.641392+00:00",
+    "2026-10-29T11:49:41.591731+00:00",
+    "2026-10-29T11:49:45.490473+00:00",
+    "2026-10-29T11:49:50.144187+00:00",
+    "2026-10-29T11:49:55.415621+00:00"
   ],
   "free_day_out": "",
   "topics": {
@@ -3405,29 +3726,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 57,
+      "mentions": 60,
       "refs": [
-        {
-          "date": "2026-10-20",
-          "title": "Six frontier AIs competed to design and 3D-print egg-protecting capsules. Claude Opus 5.5's egg survived a 20-foot drop without a crack. GPT-6 Astra failed at 8 feet, while Gemini 4 Argon, Grok 4.7, Qwen 3.8-Max, and Muse Wonder failed at 4 feet. Claude dominates another real-world engineering chall",
-          "thread": "https://www.reddit.com/r/singularity/comments/1x9m4gs/six_frontier_ais_competed_to_design_and_3dprint/",
-          "link": "",
-          "comment": "That was actually incredible application of AI. I remember when I designed my egg drop in high school I used rubber bands to suspend it at the middle of a box of popsicle sticks and of course it smashed, but I didn't know anything about physics at that time. I'd really like to know more about that C"
-        },
-        {
-          "date": "2026-10-21",
-          "title": "Opus 5.5 refused to draft/write an example of a paragraph in my thesis",
-          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xavfzc/opus_55_refused_to_draftwrite_an_example_of_a/",
-          "link": "",
-          "comment": "TL;DR of the discussion generated automatically after 100 comments. The consensus is a big thumbs-up for this kind of 'soft' guardrail. Most users agree with OP that it's a responsible feature for Claude to flag a potential policy violation but still leave the final decision to the user, with many p"
-        },
-        {
-          "date": "2026-10-22",
-          "title": "Opus 5.5 + Blender MCP Animated this MP5!",
-          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xblj73/opus_55_blender_mcp_animated_this_mp5/",
-          "link": "",
-          "comment": "This is huge btw that is somehow insanity, throwing off the gun instead of the magazine when it is empty lol."
-        },
         {
           "date": "2026-10-22",
           "title": "Claude Duet: Anthropic just casually dropped the personal assistant calling it a proactive agent. This is the response to Muses, Bots and Dots",
@@ -3504,6 +3804,27 @@
           "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xhqvzn/opus_55_just_shared_my_email_address/",
           "link": "",
           "comment": "This isn't a bug, it's a long-standing requirement for accessing Wikipedia's API https://foundation.wikimedia.org/wiki/Policy:Wikimedia\\_Foundation\\_User-Agent\\_Policy https://foundation.wikimedia.org/wiki/Policy:Wikimedia\\_Foundation\\_API\\_Usage\\_Guidelines"
+        },
+        {
+          "date": "2026-10-29",
+          "title": "Has anyone else noticed that Opus has become nearly perfect?",
+          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xi0b7c/has_anyone_else_noticed_that_opus_has_become/",
+          "link": "",
+          "comment": "Yes and I honestly hope this is where they all level off. Anymore and we are likely all fucked."
+        },
+        {
+          "date": "2026-10-29",
+          "title": "Opus 5.5 just shared my email address",
+          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xhqvzn/opus_55_just_shared_my_email_address/",
+          "link": "",
+          "comment": "This isn't a bug, it's a long-standing requirement for accessing Wikipedia's API https://foundation.wikimedia.org/wiki/Policy:Wikimedia\\_Foundation\\_User-Agent\\_Policy https://foundation.wikimedia.org/wiki/Policy:Wikimedia\\_Foundation\\_API\\_Usage\\_Guidelines"
+        },
+        {
+          "date": "2026-10-29",
+          "title": "I got Claude Opus 5.5 to render photoreal Blender scenes — it took 3 failed attempts per scene, here’s what actually fixed them",
+          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xhi21l/i_got_claude_opus_55_to_render_photoreal_blender/",
+          "link": "https://www.reddit.com/gallery/1xhi21l",
+          "comment": "”Here’s what actually fixed them”"
         }
       ],
       "deep_dive": "2026-10-12",
@@ -3660,15 +3981,8 @@
         "codex",
         "singularity"
       ],
-      "mentions": 56,
+      "mentions": 57,
       "refs": [
-        {
-          "date": "2026-10-14",
-          "title": "Why say pro have argon when they dont",
-          "thread": "https://www.reddit.com/r/GeminiAI/comments/1x51smr/why_say_pro_have_argon_when_they_dont/",
-          "link": "",
-          "comment": "Google just gave Pro subscribers using Antigravity a massive middle finger"
-        },
         {
           "date": "2026-10-15",
           "title": "Google's Gemini 4 Argon taught a humanoid robot to play cornhole from a single human video. It built its own physics simulator, trained the throws, and refined them on the real robot. Apollo then landed 7 shots in a row. Google says this cuts weeks of robotics engineering down to hours.",
@@ -3759,6 +4073,13 @@
           "thread": "https://www.reddit.com/r/singularity/comments/1xhtwjm/gemini_4_carbon/",
           "link": "",
           "comment": "Wow, impressive improvements. But I'm no expert lol."
+        },
+        {
+          "date": "2026-10-29",
+          "title": "Alphabet introducing Gemini 4 Carbon, next frontier model.",
+          "thread": "https://www.reddit.com/r/GeminiAI/comments/1xhtyol/alphabet_introducing_gemini_4_carbon_next/",
+          "link": "https://www.reddit.com/gallery/1xhtyol",
+          "comment": "We cant even get 3 prompts with argon bro"
         }
       ],
       "deep_dive": "",
@@ -4182,7 +4503,8 @@
         "2026-10-25",
         "2026-10-26",
         "2026-10-27",
-        "2026-10-28"
+        "2026-10-28",
+        "2026-10-29"
       ],
       "subs": [
         "AgentsOfAI",
@@ -4199,22 +4521,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 101,
+      "mentions": 103,
       "refs": [
-        {
-          "date": "2026-10-25",
-          "title": "Asked Kimi K3.1 Pro and DeepSeek V4.1 Flash to build a running V8 engine in Three.js. Here's what each made",
-          "thread": "https://www.reddit.com/r/DeepSeek/comments/1xefqpq/asked_kimi_k31_pro_and_deepseek_v41_flash_to/",
-          "link": "",
-          "comment": "Prompt: Build a stunning, highly realistic, fully interactive 3D simulation of a **90-degree V8 combustion engine mounted on an industrial engine test stand**. Use Three.js and WebGL. Deliver a complete, runnable browser application. **THE OBJECT** A large, exceptionally detailed V8 engine positione"
-        },
-        {
-          "date": "2026-10-26",
-          "title": "I pointed Claude Code at the cheap Chinese head unit in my Civic. What it found in the firmware was wild.",
-          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xf2lur/i_pointed_claude_code_at_the_cheap_chinese_head/",
-          "link": "",
-          "comment": "I love seeing this trend of people using Claude to debloat hot mic spyware."
-        },
         {
           "date": "2026-10-26",
           "title": "Samsung decided to cut my washing machine from the Internet, Claude decided otherwise",
@@ -4298,10 +4606,24 @@
           "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xh1a8s/i_built_a_way_for_claude_code_to_generate_videos/",
           "link": "",
           "comment": "nice."
+        },
+        {
+          "date": "2026-10-29",
+          "title": "It happened, my project manager just made a PR with Claude.",
+          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xhl5cb/it_happened_my_project_manager_just_made_a_pr/",
+          "link": "",
+          "comment": "TL;DR of the discussion generated automatically after 100 comments. The overwhelming consensus is that this is the future of software engineering, so you'd better get on board. Your job is shifting from being a \"code monkey\" to an architect, auditor, and guardian of the codebase. The most upvoted ad"
+        },
+        {
+          "date": "2026-10-29",
+          "title": "My Claude Code now calls my phone when it needs me. No Twilio, no phone number, free",
+          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xhvnjw/my_claude_code_now_calls_my_phone_when_it_needs/",
+          "link": "",
+          "comment": "Claude would be bugging me all the damn time. Curious, you don’t use remote control within the app?"
         }
       ],
       "deep_dive": "2026-10-18",
-      "last_seen": "2026-10-28",
+      "last_seen": "2026-10-29",
       "subject": "ai"
     },
     "ai-benchmarks": {
@@ -4555,7 +4877,8 @@
         "2026-10-10",
         "2026-10-11",
         "2026-10-14",
-        "2026-10-27"
+        "2026-10-27",
+        "2026-10-29"
       ],
       "subs": [
         "ArtificialInteligence",
@@ -4571,15 +4894,8 @@
         "codex",
         "singularity"
       ],
-      "mentions": 15,
+      "mentions": 16,
       "refs": [
-        {
-          "date": "2026-10-10",
-          "title": "AI Bubble Teetering on the Brink as OpenAI Admits to Massive Financial Failure in Leaked Documents",
-          "thread": "https://www.reddit.com/r/antiai/comments/1x2186p/ai_bubble_teetering_on_the_brink_as_openai_admits/",
-          "link": "https://futurism.com/future-society/ai-financial-bubble-openai-billions-failure",
-          "comment": ""
-        },
         {
           "date": "2026-10-10",
           "title": "OpenAI's math findings built on stolen user data",
@@ -4670,10 +4986,17 @@
           "thread": "https://www.reddit.com/r/singularity/comments/1xg4hs6/introducing_gpt61_terra/",
           "link": "https://openai.com/index/introducing-gpt-6-1-terra/",
           "comment": "So this is essentially Astra 6.0 but at 10% the cost. It’s not pushing the frontier but if that’s true it’s pretty impressive. Also, all the job displacement and embodied AI that people want comes from this type of progress, making capable models really really cheap to run."
+        },
+        {
+          "date": "2026-10-29",
+          "title": "chatgpt chat and work merged",
+          "thread": "https://www.reddit.com/r/codex/comments/1xi2e86/chatgpt_chat_and_work_merged/",
+          "link": "",
+          "comment": "Below is a GPT-generated summary of the conversation below after reaching 160 comments (169 currently observed) . This is a messy Chat/Work merge, not a clean removal of Chat —but it absolutely makes quota handling more confusing and, for many models, more expensive. The practical takeaway: GPT-6 So"
         }
       ],
       "deep_dive": "",
-      "last_seen": "2026-10-27",
+      "last_seen": "2026-10-29",
       "subject": "ai"
     },
     "ai-pricing-and-costs": {
@@ -5076,7 +5399,7 @@
         "singularity",
         "technology"
       ],
-      "mentions": 13,
+      "mentions": 14,
       "refs": [
         {
           "date": "2026-10-19",
@@ -5168,6 +5491,13 @@
           "thread": "https://www.reddit.com/r/OpenAI/comments/1xhr3wv/exopenai_researcher_anthropic_is_massively/",
           "link": "",
           "comment": ""
+        },
+        {
+          "date": "2026-10-29",
+          "title": "Ex-OpenAI researcher: \"anthropic is massively underplaying the recent security breach. i'm hearing cathedral achieved full administrator access of the slack (see every message) where literally every single research secret is contained\"",
+          "thread": "https://www.reddit.com/r/OpenAI/comments/1xhr3wv/exopenai_researcher_anthropic_is_massively/",
+          "link": "",
+          "comment": "Source?"
         }
       ],
       "deep_dive": "",
@@ -5287,7 +5617,7 @@
         "science",
         "technology"
       ],
-      "mentions": 3,
+      "mentions": 4,
       "refs": [
         {
           "date": "2026-10-24",
@@ -5302,6 +5632,13 @@
           "thread": "https://www.reddit.com/r/EverythingScience/comments/1xg5yq9/10_minutes_is_all_it_takes_for_ai_assistance_to/",
           "link": "https://www.livescience.com/technology/artificial-intelligence/10-minutes-is-all-it-takes-for-ai-assistance-to-erode-your-motivation-study-shows",
           "comment": "Sounds kind of dystopian, but how concerned should we be that people begin to rely on a tool that makes their job easier? If you have an engineer who has always used AutoCAD and you tell him he has to do his next project by hand instead, he's going to probably not have as much motivation to do the s"
+        },
+        {
+          "date": "2026-10-29",
+          "title": "Epileptic woman dies after going to ChatGPT for medical advice; family files lawsuit against OpenAI",
+          "thread": "https://www.reddit.com/r/medicine/comments/1xhx7e6/epileptic_woman_dies_after_going_to_chatgpt_for/",
+          "link": "",
+          "comment": "Would it be that hard for AI to say something like... \"it looks like you are asking for medical advice. I cannot provide medical advice, please discuss with medical professionals. I am a word prediction machine.\" How would that provide value to the shareholders?"
         },
         {
           "date": "2026-10-29",

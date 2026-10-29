@@ -8,9 +8,28 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Thu, 29 Oct 2026 03:49:34 GMT</lastBuildDate>
+<lastBuildDate>Thu, 29 Oct 2026 11:50:16 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Evening - 29 Oct: A coding agent learns Blender by trial and error</title>
+<description>Evening edition - Thursday, 29 October 2026
+Coding agents that learn by failing, and a chatbot sued for medical advice
+
+00:52  A coding agent learns Blender by trial and error
+   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1xhi21l/i_got_claude_opus_55_to_render_photoreal_blender/
+   Source: https://www.reddit.com/gallery/1xhi21l
+09:04  A chatbot gave medical advice, a patient died, and the family is suing
+   medicine, technology: https://www.reddit.com/r/medicine/comments/1xhx7e6/epileptic_woman_dies_after_going_to_chatgpt_for/
+
+Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
+Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (166 threads)</description>
+<pubDate>Thu, 29 Oct 2026 16:39:52 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-10-29_evening_1639.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-29_evening_1639.mp3" length="9151724" type="audio/mpeg"/>
+<itunes:duration>1143</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Morning - 29 Oct: Building a Computer Inside a Language Model</title>
 <description>Morning edition - Thursday, 29 October 2026
@@ -287,25 +306,6 @@ Written by: Gemini 3.8 Flash · Voices: Fish Audio (free) · Discussions: Reddit
 <guid isPermaLink="false">ai_2026-10-23_morning_0830.mp3</guid>
 <enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-23_morning_0830.mp3" length="8740268" type="audio/mpeg"/>
 <itunes:duration>1092</itunes:duration>
-<itunes:episodeType>full</itunes:episodeType>
-</item>
-<item>
-<title>Evening - 22 Oct: How one developer runs a coding agent like a small engineering team with guardrails</title>
-<description>Evening edition - Thursday, 22 October 2026
-Engineering guardrails for AI coding agents; validating AI cardiac risk prediction from sleep ECG
-
-00:42  How one developer runs a coding agent like a small engineering team with guardrails
-   ClaudeCode: https://www.reddit.com/r/ClaudeCode/comments/1xbxoza/my_claude_code_setup_it_runs_like_a_small/
-14:23  AI reads heart signals during sleep to predict cardiac risk ten years out
-   science: https://www.reddit.com/r/science/comments/1xbi4rj/ai_can_read_your_hearts_electrical_signals_while/
-   Source: https://www.sciencealert.com/the-way-you-sleep-can-reveal-your-risk-of-heart-failure-up-to-10-years-in-advance
-
-Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
-Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (168 threads)</description>
-<pubDate>Thu, 22 Oct 2026 16:28:40 +0530</pubDate>
-<guid isPermaLink="false">ai_2026-10-22_evening_1628.mp3</guid>
-<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-22_evening_1628.mp3" length="10229036" type="audio/mpeg"/>
-<itunes:duration>1278</itunes:duration>
 <itunes:episodeType>full</itunes:episodeType>
 </item>
 </channel>
