@@ -8,9 +8,27 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Fri, 30 Oct 2026 03:48:17 GMT</lastBuildDate>
+<lastBuildDate>Fri, 30 Oct 2026 11:46:20 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Evening - 30 Oct: A solo developer, a coding agent, and a World War II tank game</title>
+<description>Evening edition - Friday, 30 October 2026
+Independent developers shipping with coding agents, and giving desktop robots legs through control theory
+
+00:33  A solo developer, a coding agent, and a World War II tank game
+   ClaudeCode: https://www.reddit.com/r/ClaudeCode/comments/1xih084/korean_solo_dev_5_months_making_ww2_rts_with/
+07:48  Putting a desktop robot on a hoverboard — inverted pendulum control in practice
+   robotics: https://www.reddit.com/r/robotics/comments/1xikqpw/reachy_mini_level_up_update/
+
+Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
+Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (165 threads)</description>
+<pubDate>Fri, 30 Oct 2026 16:36:40 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-10-30_evening_1636.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-30_evening_1636.mp3" length="7676396" type="audio/mpeg"/>
+<itunes:duration>959</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Morning - 30 Oct: Why reading AI code line by line is failing</title>
 <description>Morning edition - Friday, 30 October 2026
@@ -286,25 +304,6 @@ Written by: Gemini 3.8 Flash · Voices: Fish Audio (free) · Discussions: Reddit
 <guid isPermaLink="false">ai_2026-10-24_morning_0828.mp3</guid>
 <enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-24_morning_0828.mp3" length="7901996" type="audio/mpeg"/>
 <itunes:duration>987</itunes:duration>
-<itunes:episodeType>full</itunes:episodeType>
-</item>
-<item>
-<title>Evening - 23 Oct: Cutting the wait for a local reasoning model</title>
-<description>Evening edition - Friday, 23 October 2026
-Making local reasoning models responsive enough to use, and checking whether AI clinical advice actually saves money or just orders more tests.
-
-00:38  Cutting the wait for a local reasoning model
-   LocalLLM: https://www.reddit.com/r/LocalLLM/comments/1xclfjf/i_made_my_local_llm_start_thinking_while_im_still/
-09:21  When AI clinical advice costs more than human judgment
-   science: https://www.reddit.com/r/science/comments/1xcnye8/in_retrospective_clinic_notes_large_language/
-   Source: https://ai.nejm.org/doi/full/10.1056/AIoa2600537
-
-Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
-Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (162 threads)</description>
-<pubDate>Fri, 23 Oct 2026 16:26:50 +0530</pubDate>
-<guid isPermaLink="false">ai_2026-10-23_evening_1626.mp3</guid>
-<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-23_evening_1626.mp3" length="7786796" type="audio/mpeg"/>
-<itunes:duration>973</itunes:duration>
 <itunes:episodeType>full</itunes:episodeType>
 </item>
 </channel>
