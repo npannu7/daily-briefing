@@ -8,9 +8,27 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Thu, 29 Oct 2026 11:50:16 GMT</lastBuildDate>
+<lastBuildDate>Fri, 30 Oct 2026 03:48:17 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Morning - 30 Oct: Why reading AI code line by line is failing</title>
+<description>Morning edition - Friday, 30 October 2026
+Rethinking software quality verification for high-throughput coding agents, and the continuum mechanics of surviving abyssal ocean pressures
+
+00:38  Why reading AI code line by line is failing
+   codex: https://www.reddit.com/r/codex/comments/1xic8ut/dont_review_agent_code_interrogate_it/
+08:52  Why deep sea animals survive crushing water pressure
+   askscience: https://www.reddit.com/r/askscience/comments/1xiu3v9/in_deep_waters_how_do_animals_resist_huge/
+
+Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
+Written by: Gemini 3.8 Flash · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (176 threads)</description>
+<pubDate>Fri, 30 Oct 2026 08:42:46 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-10-30_morning_0842.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-30_morning_0842.mp3" length="7796204" type="audio/mpeg"/>
+<itunes:duration>974</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Evening - 29 Oct: A coding agent learns Blender by trial and error</title>
 <description>Evening edition - Thursday, 29 October 2026
@@ -287,25 +305,6 @@ Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Di
 <guid isPermaLink="false">ai_2026-10-23_evening_1626.mp3</guid>
 <enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-23_evening_1626.mp3" length="7786796" type="audio/mpeg"/>
 <itunes:duration>973</itunes:duration>
-<itunes:episodeType>full</itunes:episodeType>
-</item>
-<item>
-<title>Morning - 23 Oct: Diagnosing Patients Step by Step</title>
-<description>Morning edition - Friday, 23 October 2026
-Evaluating sequential diagnostic reasoning in clinical language models and auditing trial endpoints and manufacturing limits for personalized cancer vaccines.
-
-00:49  Diagnosing Patients Step by Step
-   medicine: https://www.reddit.com/r/medicine/comments/1xcvgxi/microsofts_sequential_diagnosis_with_language/
-09:50  Personalized Vaccines for Skin Cancer
-   biotech: https://www.reddit.com/r/biotech/comments/1xcwbk6/modernamercks_melanoma_vaccine_shows_42_reduction/
-   Source: https://www.reuters.com/legal/litigation/merckmoderna-cancer-vaccine-cuts-risk-death-or-recurrence-melanoma-by-over-40-2026-10-22/
-
-Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
-Written by: Gemini 3.8 Flash · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (177 threads)</description>
-<pubDate>Fri, 23 Oct 2026 08:30:37 +0530</pubDate>
-<guid isPermaLink="false">ai_2026-10-23_morning_0830.mp3</guid>
-<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-23_morning_0830.mp3" length="8740268" type="audio/mpeg"/>
-<itunes:duration>1092</itunes:duration>
 <itunes:episodeType>full</itunes:episodeType>
 </item>
 </channel>
