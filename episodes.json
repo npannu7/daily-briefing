@@ -1,17 +1,6 @@
 {
   "episodes": [
     {
-      "file": "ai_2026-10-24_evening_1623.mp3",
-      "date": "2026-10-24",
-      "edition": "evening",
-      "title": "Evening - 24 Oct: When Finding Flaws Outpaces Fixing Them",
-      "published": "2026-10-24T16:23:32.741590+05:30",
-      "pubDate": "Sat, 24 Oct 2026 16:23:32 +0530",
-      "size": 8345324,
-      "duration": 1043,
-      "description": "Evening edition - Saturday, 24 October 2026\nWhy automated inspection without verification overwhelms production systems, and how low-energy deep-sea kinetics stall environmental recovery.\n\n00:42  When Finding Flaws Outpaces Fixing Them\n   ArtificialInteligence, ChatGPT, OpenAI: https://www.reddit.com/r/OpenAI/comments/1xddmtq/3_of_critical_software_security_bugs_in_all_of/\n   ArtificialInteligence, OpenAI: https://www.reddit.com/r/ArtificialInteligence/comments/1xdcowt/altman_admits_the_cybersecurity_crisis_is_going/\n08:13  Why the Deep Ocean Cannot Heal Itself Quickly\n   science: https://www.reddit.com/r/science/comments/1xddv9b/16_years_after_the_deepwater_horizon_oil_spill/\n   Source: https://www.sciencealert.com/16-years-after-deepwater-horizon-spill-deep-sea-life-in-the-gulf-of-mexico-shows-no-sign-of-recovery\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nWritten by: Gemini 3.8 Flash · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (160 threads)"
-    },
-    {
       "file": "ai_2026-10-25_morning_0828.mp3",
       "date": "2026-10-25",
       "edition": "morning",
@@ -153,6 +142,17 @@
       "size": 8220332,
       "duration": 1027,
       "description": "Morning edition - Saturday, 31 October 2026\nResource efficiency limits in computing hardware and planetary mechanics\n\n00:32  The Fight Over Local Memory\n   LocalLLM, OpenAI, technology: https://www.reddit.com/r/LocalLLM/comments/1xjosbe/openai_ceo_says_its_quite_terrible_for_your_pc_to/\n   Source: https://www.tomshardware.com/tech-industry/data-centers/openai-ceo-says-its-quite-terrible-for-your-pc-to-have-ram-sam-altman-says-data-centers-offer-better-utilization\n   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1xizbq1/sam_altman_local_inference_is_a_terrible/\n07:03  Why Mountains Refuse to Disappear\n   askscience: https://www.reddit.com/r/askscience/comments/1xjfida/if_the_earth_ceased_being_geologically_active_and/\n13:16  Six future Trump officials (Vance, Rubio, Gabbard, Hegseth, Patel, RFK Jr.) wrot\n   science: https://www.reddit.com/r/science/comments/1xjbkzd/six_future_trump_officials_vance_rubio_gabbard/\n   Source: https://www.psypost.org/six-future-trump-officials-wrote-books-before-taking-office-all-six-leaned-hardest-on-the-same-metaphor/\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nWritten by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (178 threads)"
+    },
+    {
+      "file": "ai_2026-10-31_evening_1628.mp3",
+      "date": "2026-10-31",
+      "edition": "evening",
+      "title": "Evening - 31 Oct: Stamping Text You Cannot Verify",
+      "published": "2026-10-31T16:28:22.631606+05:30",
+      "pubDate": "Sat, 31 Oct 2026 16:28:22 +0530",
+      "size": 8245100,
+      "duration": 1030,
+      "description": "Evening edition - Saturday, 31 October 2026\nInvisible constraints in engineering: from proprietary statistical watermarks in text generation to the fundamental thermodynamic limits of silicon solar cells.\n\n00:35  Stamping Text You Cannot Verify\n   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1xjqyv2/claude_now_watermarks_everything_it_writes_and/\n08:32  Pushing Past the Limit of Solar Cells\n   science: https://www.reddit.com/r/science/comments/1xjlnw2/scientists_crack_solar_panels_33_efficiency/\n   Source: https://www.bgr.com/2301659/scientists-crack-solar-panels-efficency-ceiling/\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nWritten by: Gemini 3.7 Flash · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (173 threads)"
     }
   ],
   "memory": [
@@ -1312,6 +1312,29 @@
       "topics": [
         "local-llms"
       ]
+    },
+    {
+      "label": "Saturday 31 Oct evening",
+      "date": "2026-10-31",
+      "edition": "evening",
+      "published": "2026-10-31T16:28:22.631606+05:30",
+      "file": "ai_2026-10-31_evening_1628.mp3",
+      "writer": "Gemini 3.7 Flash",
+      "voices": "Fish Audio (free)",
+      "summary": "Examined token-level watermarking that biases logits via pseudo-random green/red vocabulary partitions, creating proprietary statistical signatures only vendors can decode — a compliance blocker under 21 CFR Part 11. Then analyzed the Shockley-Queisser thermodynamic ceiling for single-junction solar cells, explaining how multi-junction tandem stacks exceed thirty-three percent efficiency while facing stability, parasitic absorption, and defect migration challenges in production.",
+      "threads": [
+        "Independent audit tooling for proprietary LLM watermarks under regulated frameworks",
+        "Long-term field degradation data for perovskite-on-silicon tandem cells",
+        "Regulatory guidance on AI provenance stripping in validated software supply chains"
+      ],
+      "segments": [
+        "Stamping Text You Cannot Verify",
+        "Pushing Past the Limit of Solar Cells"
+      ],
+      "deep_topic": "",
+      "topics": [
+        "anthropic-claude-models"
+      ]
     }
   ],
   "seen": [
@@ -2418,6 +2441,18 @@
     {
       "date": "2026-10-31",
       "link": "https://www.tomshardware.com/tech-industry/data-centers/openai-ceo-says-its-quite-terrible-for-your-pc-to-have-ram-sam-altman-says-data-centers-offer-better-utilization"
+    },
+    {
+      "date": "2026-10-31",
+      "link": "https://www.reddit.com/r/science/comments/1xjlnw2/scientists_crack_solar_panels_33_efficiency/"
+    },
+    {
+      "date": "2026-10-31",
+      "link": "https://www.bgr.com/2301659/scientists-crack-solar-panels-efficency-ceiling/"
+    },
+    {
+      "date": "2026-10-31",
+      "link": "https://www.reddit.com/r/ClaudeAI/comments/1xjqyv2/claude_now_watermarks_everything_it_writes_and/"
     }
   ],
   "feedback": [
@@ -3368,7 +3403,243 @@
     "2026-10-31T03:41:28.424434+00:00",
     "2026-10-31T03:41:35.483536+00:00",
     "2026-10-31T03:41:40.682307+00:00",
-    "2026-10-31T03:41:44.636734+00:00"
+    "2026-10-31T03:41:44.636734+00:00",
+    "2026-10-31T10:58:23.183144+00:00",
+    "2026-10-31T10:58:26.289560+00:00",
+    "2026-10-31T10:58:29.495957+00:00",
+    "2026-10-31T10:58:32.697167+00:00",
+    "2026-10-31T10:58:35.959232+00:00",
+    "2026-10-31T10:58:39.186459+00:00",
+    "2026-10-31T10:58:42.387208+00:00",
+    "2026-10-31T10:58:45.565408+00:00",
+    "2026-10-31T10:58:56.096249+00:00",
+    "2026-10-31T10:58:59.285457+00:00",
+    "2026-10-31T10:59:02.490982+00:00",
+    "2026-10-31T10:59:05.690919+00:00",
+    "2026-10-31T10:59:08.886512+00:00",
+    "2026-10-31T10:59:12.094459+00:00",
+    "2026-10-31T10:59:15.276245+00:00",
+    "2026-10-31T10:59:18.498942+00:00",
+    "2026-10-31T10:59:21.700165+00:00",
+    "2026-10-31T10:59:24.886657+00:00",
+    "2026-10-31T10:59:29.023100+00:00",
+    "2026-10-31T10:59:32.522147+00:00",
+    "2026-10-31T10:59:35.441474+00:00",
+    "2026-10-31T10:59:38.621893+00:00",
+    "2026-10-31T10:59:42.817601+00:00",
+    "2026-10-31T10:59:45.019219+00:00",
+    "2026-10-31T10:59:48.228781+00:00",
+    "2026-10-31T10:59:51.418319+00:00",
+    "2026-10-31T10:59:54.632027+00:00",
+    "2026-10-31T10:59:57.844863+00:00",
+    "2026-10-31T11:00:01.023355+00:00",
+    "2026-10-31T11:00:04.217797+00:00",
+    "2026-10-31T11:00:07.417894+00:00",
+    "2026-10-31T11:00:10.614553+00:00",
+    "2026-10-31T11:00:13.823130+00:00",
+    "2026-10-31T11:00:17.027189+00:00",
+    "2026-10-31T11:00:20.229552+00:00",
+    "2026-10-31T11:00:23.410101+00:00",
+    "2026-10-31T11:00:26.634987+00:00",
+    "2026-10-31T11:00:29.814304+00:00",
+    "2026-10-31T11:00:33.013582+00:00",
+    "2026-10-31T11:00:36.231210+00:00",
+    "2026-10-31T11:00:39.425694+00:00",
+    "2026-10-31T11:00:42.622440+00:00",
+    "2026-10-31T11:00:45.825020+00:00",
+    "2026-10-31T11:00:49.002952+00:00",
+    "2026-10-31T11:00:52.215149+00:00",
+    "2026-10-31T11:00:55.426499+00:00",
+    "2026-10-31T11:00:58.612758+00:00",
+    "2026-10-31T11:01:03.976267+00:00",
+    "2026-10-31T11:01:05.010280+00:00",
+    "2026-10-31T11:01:08.203009+00:00",
+    "2026-10-31T11:01:11.413761+00:00",
+    "2026-10-31T11:01:14.638564+00:00",
+    "2026-10-31T11:01:17.821796+00:00",
+    "2026-10-31T11:01:21.019442+00:00",
+    "2026-10-31T11:01:24.303901+00:00",
+    "2026-10-31T11:01:28.333171+00:00",
+    "2026-10-31T11:01:31.537244+00:00",
+    "2026-10-31T11:01:34.735799+00:00",
+    "2026-10-31T11:01:37.945647+00:00",
+    "2026-10-31T11:01:41.132973+00:00",
+    "2026-10-31T11:01:44.337418+00:00",
+    "2026-10-31T11:01:47.547758+00:00",
+    "2026-10-31T11:01:50.737801+00:00",
+    "2026-10-31T11:01:53.939144+00:00",
+    "2026-10-31T11:01:57.161920+00:00",
+    "2026-10-31T11:02:02.340613+00:00",
+    "2026-10-31T11:02:03.547130+00:00",
+    "2026-10-31T11:02:06.743452+00:00",
+    "2026-10-31T11:02:09.933211+00:00",
+    "2026-10-31T11:02:13.143138+00:00",
+    "2026-10-31T11:02:16.331896+00:00",
+    "2026-10-31T11:02:19.537537+00:00",
+    "2026-10-31T11:02:22.730211+00:00",
+    "2026-10-31T11:02:25.951902+00:00",
+    "2026-10-31T11:02:29.132882+00:00",
+    "2026-10-31T11:02:32.326514+00:00",
+    "2026-10-31T11:02:35.572380+00:00",
+    "2026-10-31T11:02:38.762281+00:00",
+    "2026-10-31T11:02:41.945513+00:00",
+    "2026-10-31T11:02:45.167265+00:00",
+    "2026-10-31T11:02:48.336215+00:00",
+    "2026-10-31T11:02:51.540806+00:00",
+    "2026-10-31T11:02:54.738154+00:00",
+    "2026-10-31T11:02:58.049050+00:00",
+    "2026-10-31T11:03:01.135929+00:00",
+    "2026-10-31T11:03:04.353135+00:00",
+    "2026-10-31T11:03:07.573416+00:00",
+    "2026-10-31T11:03:10.741477+00:00",
+    "2026-10-31T11:03:13.990836+00:00",
+    "2026-10-31T11:03:17.155397+00:00",
+    "2026-10-31T11:03:20.336018+00:00",
+    "2026-10-31T11:03:23.551001+00:00",
+    "2026-10-31T11:03:26.743706+00:00",
+    "2026-10-31T11:03:29.932961+00:00",
+    "2026-10-31T11:03:33.138501+00:00",
+    "2026-10-31T11:03:36.349097+00:00",
+    "2026-10-31T11:03:39.539272+00:00",
+    "2026-10-31T11:03:42.727765+00:00",
+    "2026-10-31T11:03:45.932645+00:00",
+    "2026-10-31T11:03:49.148984+00:00",
+    "2026-10-31T11:03:52.334313+00:00",
+    "2026-10-31T11:03:55.541214+00:00",
+    "2026-10-31T11:03:58.742353+00:00",
+    "2026-10-31T11:04:01.938493+00:00",
+    "2026-10-31T11:04:05.130989+00:00",
+    "2026-10-31T11:04:08.371848+00:00",
+    "2026-10-31T11:04:11.543103+00:00",
+    "2026-10-31T11:04:14.750061+00:00",
+    "2026-10-31T11:04:17.956260+00:00",
+    "2026-10-31T11:04:21.139432+00:00",
+    "2026-10-31T11:04:24.344237+00:00",
+    "2026-10-31T11:04:27.547248+00:00",
+    "2026-10-31T11:04:30.755746+00:00",
+    "2026-10-31T11:04:33.945291+00:00",
+    "2026-10-31T11:04:37.138383+00:00",
+    "2026-10-31T11:04:40.343279+00:00",
+    "2026-10-31T11:04:43.549922+00:00",
+    "2026-10-31T11:04:46.748387+00:00",
+    "2026-10-31T11:04:49.957158+00:00",
+    "2026-10-31T11:04:55.456126+00:00",
+    "2026-10-31T11:04:56.360161+00:00",
+    "2026-10-31T11:04:59.552927+00:00",
+    "2026-10-31T11:05:02.758092+00:00",
+    "2026-10-31T11:05:05.977214+00:00",
+    "2026-10-31T11:05:09.162900+00:00",
+    "2026-10-31T11:05:12.338826+00:00",
+    "2026-10-31T11:05:15.545236+00:00",
+    "2026-10-31T11:05:18.738626+00:00",
+    "2026-10-31T11:05:21.948218+00:00",
+    "2026-10-31T11:05:25.140420+00:00",
+    "2026-10-31T11:05:28.352023+00:00",
+    "2026-10-31T11:05:31.543038+00:00",
+    "2026-10-31T11:05:34.750967+00:00",
+    "2026-10-31T11:05:37.946815+00:00",
+    "2026-10-31T11:05:41.142198+00:00",
+    "2026-10-31T11:05:44.341064+00:00",
+    "2026-10-31T11:05:47.550701+00:00",
+    "2026-10-31T11:05:50.752639+00:00",
+    "2026-10-31T11:05:53.973411+00:00",
+    "2026-10-31T11:05:57.134374+00:00",
+    "2026-10-31T11:06:01.279511+00:00",
+    "2026-10-31T11:06:07.683824+00:00",
+    "2026-10-31T11:06:14.098192+00:00",
+    "2026-10-31T11:16:52.706114+00:00",
+    "2026-10-31T11:18:22.041040+00:00",
+    "2026-10-31T11:18:54.408665+00:00",
+    "2026-10-31T11:19:14.702302+00:00",
+    "2026-10-31T11:19:16.512234+00:00",
+    "2026-10-31T11:19:23.021321+00:00",
+    "2026-10-31T11:19:30.949014+00:00",
+    "2026-10-31T11:19:38.616462+00:00",
+    "2026-10-31T11:19:46.294352+00:00",
+    "2026-10-31T11:19:52.299149+00:00",
+    "2026-10-31T11:19:59.053575+00:00",
+    "2026-10-31T11:20:09.844684+00:00",
+    "2026-10-31T11:20:16.513746+00:00",
+    "2026-10-31T11:20:25.179309+00:00",
+    "2026-10-31T11:20:34.968405+00:00",
+    "2026-10-31T11:20:42.090917+00:00",
+    "2026-10-31T11:20:54.745463+00:00",
+    "2026-10-31T11:21:03.557266+00:00",
+    "2026-10-31T11:21:10.513207+00:00",
+    "2026-10-31T11:21:17.453357+00:00",
+    "2026-10-31T11:21:26.874560+00:00",
+    "2026-10-31T11:21:33.237197+00:00",
+    "2026-10-31T11:21:44.370840+00:00",
+    "2026-10-31T11:21:50.154059+00:00",
+    "2026-10-31T11:21:59.211415+00:00",
+    "2026-10-31T11:22:06.792999+00:00",
+    "2026-10-31T11:22:16.989399+00:00",
+    "2026-10-31T11:22:22.846703+00:00",
+    "2026-10-31T11:22:31.710586+00:00",
+    "2026-10-31T11:22:37.650113+00:00",
+    "2026-10-31T11:22:45.268571+00:00",
+    "2026-10-31T11:22:54.469353+00:00",
+    "2026-10-31T11:23:02.987505+00:00",
+    "2026-10-31T11:23:08.039049+00:00",
+    "2026-10-31T11:23:20.289878+00:00",
+    "2026-10-31T11:23:26.801950+00:00",
+    "2026-10-31T11:23:35.405429+00:00",
+    "2026-10-31T11:23:42.883921+00:00",
+    "2026-10-31T11:23:49.792112+00:00",
+    "2026-10-31T11:23:58.006553+00:00",
+    "2026-10-31T11:24:07.511746+00:00",
+    "2026-10-31T11:24:17.703128+00:00",
+    "2026-10-31T11:24:25.758045+00:00",
+    "2026-10-31T11:24:34.468229+00:00",
+    "2026-10-31T11:24:46.428009+00:00",
+    "2026-10-31T11:24:53.652666+00:00",
+    "2026-10-31T11:25:04.067500+00:00",
+    "2026-10-31T11:25:09.674476+00:00",
+    "2026-10-31T11:25:18.685677+00:00",
+    "2026-10-31T11:25:25.071381+00:00",
+    "2026-10-31T11:25:34.636377+00:00",
+    "2026-10-31T11:25:41.300518+00:00",
+    "2026-10-31T11:25:51.156257+00:00",
+    "2026-10-31T11:25:57.639692+00:00",
+    "2026-10-31T11:26:08.642049+00:00",
+    "2026-10-31T11:26:15.738876+00:00",
+    "2026-10-31T11:26:24.937586+00:00",
+    "2026-10-31T11:26:32.865939+00:00",
+    "2026-10-31T11:26:51.481960+00:00",
+    "2026-10-31T11:26:59.021300+00:00",
+    "2026-10-31T11:27:09.499567+00:00",
+    "2026-10-31T11:27:17.278832+00:00",
+    "2026-10-31T11:27:32.336108+00:00",
+    "2026-10-31T11:27:38.901556+00:00",
+    "2026-10-31T11:27:49.992853+00:00",
+    "2026-10-31T11:27:57.346475+00:00",
+    "2026-10-31T11:28:06.533575+00:00",
+    "2026-10-31T11:28:13.297291+00:00",
+    "2026-10-31T11:28:22.151317+00:00",
+    "2026-10-31T11:28:29.838687+00:00",
+    "2026-10-31T11:28:44.592074+00:00",
+    "2026-10-31T11:28:55.985714+00:00",
+    "2026-10-31T11:29:07.835502+00:00",
+    "2026-10-31T11:29:16.755916+00:00",
+    "2026-10-31T11:29:24.780383+00:00",
+    "2026-10-31T11:29:31.651800+00:00",
+    "2026-10-31T11:29:44.223457+00:00",
+    "2026-10-31T11:29:49.197908+00:00",
+    "2026-10-31T11:30:01.909477+00:00",
+    "2026-10-31T11:30:10.231387+00:00",
+    "2026-10-31T11:30:25.286922+00:00",
+    "2026-10-31T11:30:32.130072+00:00",
+    "2026-10-31T11:30:44.258602+00:00",
+    "2026-10-31T11:30:54.148190+00:00",
+    "2026-10-31T11:31:04.638202+00:00",
+    "2026-10-31T11:31:11.204412+00:00",
+    "2026-10-31T11:31:22.877977+00:00",
+    "2026-10-31T11:31:27.202714+00:00",
+    "2026-10-31T11:31:42.654909+00:00",
+    "2026-10-31T11:31:48.555643+00:00",
+    "2026-10-31T11:31:52.562522+00:00",
+    "2026-10-31T11:31:57.566479+00:00",
+    "2026-10-31T11:32:01.745057+00:00"
   ],
   "free_day_out": "",
   "topics": {
@@ -3415,7 +3686,8 @@
         "2026-10-23",
         "2026-10-24",
         "2026-10-28",
-        "2026-10-29"
+        "2026-10-29",
+        "2026-10-31"
       ],
       "subs": [
         "ArtificialInteligence",
@@ -3433,15 +3705,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 60,
+      "mentions": 61,
       "refs": [
-        {
-          "date": "2026-10-22",
-          "title": "Claude Duet: Anthropic just casually dropped the personal assistant calling it a proactive agent. This is the response to Muses, Bots and Dots",
-          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xbwkgf/claude_duet_anthropic_just_casually_dropped_the/",
-          "link": "",
-          "comment": "TL;DR of the discussion generated automatically after 100 comments. So, the consensus in here is a big ol' \"meh\" with a side of \"okay, I get it.\" A lot of you power users are scoffing, saying this is just another wrapper like Dots or Muse and that you already do all this with your own scheduled task"
-        },
         {
           "date": "2026-10-23",
           "title": "Claude is Like a Senior Now",
@@ -3532,10 +3797,17 @@
           "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xhi21l/i_got_claude_opus_55_to_render_photoreal_blender/",
           "link": "https://www.reddit.com/gallery/1xhi21l",
           "comment": "”Here’s what actually fixed them”"
+        },
+        {
+          "date": "2026-10-31",
+          "title": "Claude now watermarks everything it writes, and you're the one who can't check",
+          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xjqyv2/claude_now_watermarks_everything_it_writes_and/",
+          "link": "",
+          "comment": "TL;DR of the discussion generated automatically after 400 comments. Alright, let's get to the bottom of this. The general consensus in this thread is a resounding \"this is a terrible idea that will only hurt honest users.\" The community is overwhelmingly against Anthropic's watermarking policy. The "
         }
       ],
       "deep_dive": "2026-10-12",
-      "last_seen": "2026-10-29",
+      "last_seen": "2026-10-31",
       "subject": "ai"
     },
     "anthropic-usage-policy": {
@@ -3550,7 +3822,8 @@
         "2026-10-20",
         "2026-10-24",
         "2026-10-27",
-        "2026-10-30"
+        "2026-10-30",
+        "2026-10-31"
       ],
       "subs": [
         "ClaudeAI",
@@ -3560,22 +3833,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 20,
+      "mentions": 22,
       "refs": [
-        {
-          "date": "2026-10-10",
-          "title": "Anthropic bans ‘abusive or cruel behavior’ toward Claude",
-          "thread": "https://www.reddit.com/r/OpenAI/comments/1x1bxtb/anthropic_bans_abusive_or_cruel_behavior_toward/",
-          "link": "https://www.theverge.com/ai-artificial-intelligence/1008100/anthropic-new-usage-policy-abuse-claude",
-          "comment": ""
-        },
-        {
-          "date": "2026-10-10",
-          "title": "Claude Startup Program no longer offering a year of Claude Team and $1K in API Credits",
-          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1x1af87/claude_startup_program_no_longer_offering_a_year/",
-          "link": "",
-          "comment": ""
-        },
         {
           "date": "2026-10-10",
           "title": "Musk called Anthropic 'evil'; SpaceX's deal with it nearly doubled to $84.5 ⁠billion through 2029",
@@ -3659,10 +3918,24 @@
           "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xib8ta/how_anthropic_allegedly_determines_to_ban_you/",
           "link": "",
           "comment": "Let me say the same thing as in the other thread: My isp does not give static ips - they change basically every week. I use Claude on Linux, do not own Windows or macos. I use Claude from 2 locations with non-static ips actually. My \"devices\" shows sessions from all over my country due to mobile ses"
+        },
+        {
+          "date": "2026-10-31",
+          "title": "Claude Code's new \"games\" rule shut down my small business overnight. I'm a Claude for Startups member and trusted tester, and support's bot told me there are no exceptions.",
+          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xjce9j/claude_codes_new_games_rule_shut_down_my_small/",
+          "link": "",
+          "comment": "I think this one sentence gets you into trouble. “Original code, written from materials the clients supply” You conveniently excluded the IP issue. You could have said “from their own IP”, but you didn’t. You are pointing the finger at the other guys saying “they violated IP”, and you are Just follo"
+        },
+        {
+          "date": "2026-10-31",
+          "title": "I'm close to cancelling my max subscription due to the safety classifier",
+          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xjmtad/im_close_to_cancelling_my_max_subscription_due_to/",
+          "link": "",
+          "comment": "TL;DR of the discussion generated automatically after 100 comments. The consensus in this thread is a resounding yes, OP, you're absolutely right. The safety filters are out of control and making Claude unusable for professional work. The community is overwhelmingly fed up. Users from all fields—rev"
         }
       ],
       "deep_dive": "",
-      "last_seen": "2026-10-30",
+      "last_seen": "2026-10-31",
       "subject": "ai"
     },
     "gemini-model-releases": {
@@ -3823,24 +4096,11 @@
         "antiai",
         "codex",
         "medicine",
-        "singularity"
+        "singularity",
+        "technology"
       ],
-      "mentions": 27,
+      "mentions": 29,
       "refs": [
-        {
-          "date": "2026-10-24",
-          "title": "Cybersecurity is currently experiencing a revolution that was completely unimaginable in its entire history. If this pace continues, at the end of 2026 we will see more than 26% of all bugs in human history discovered by the end of the year, hard to even imagine 2027 at this point",
-          "thread": "https://www.reddit.com/r/singularity/comments/1xdh8vq/cybersecurity_is_currently_experiencing_a/",
-          "link": "",
-          "comment": "Discovered, without the infrastructure in place to fix them. The most dangerous situation possible Certainly a revolution, though"
-        },
-        {
-          "date": "2026-10-24",
-          "title": "Anthropic's deputy security chief on this week's cyberattacks: things are \"going to get a lot worse before they get better\"",
-          "thread": "https://www.reddit.com/r/ArtificialInteligence/comments/1xd0zle/anthropics_deputy_security_chief_on_this_weeks/",
-          "link": "",
-          "comment": "Wait, these people are making vast sums of money creating these problems and saying that everyone else has to fix them while they continue to make vast sums of money?"
-        },
         {
           "date": "2026-10-24",
           "title": "Altman admits the cybersecurity crisis is going to get worse: \"I no longer think we're gonna be able to patch all the bugs.\"",
@@ -3924,6 +4184,20 @@
           "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xj7d4p/the_official_claude_code_vs_code_extension_was/",
           "link": "",
           "comment": "Fyi Affected only if: Mac (M-series) + VS Code/Cursor/VSCodium pulling from Open VSX + v2.1.313 installed."
+        },
+        {
+          "date": "2026-10-31",
+          "title": "North Korea Steals USD 6.36 Billion From Binance in the Largest Hack in History",
+          "thread": "https://www.reddit.com/r/technology/comments/1xj6gwl/north_korea_steals_usd_636_billion_from_binance/",
+          "link": "https://www.trmlabs.com/resources/blog/north-korea-steals-usd-6-36-billion-from-binance-in-the-largest-hack-in-history",
+          "comment": "Leaving aside the totally fabricated headline math, watching an entire industry claim crypto is the 'future of unregulated currency' right up until a rogue nation loots $6B and everyone begs the federal government to fix it never gets old."
+        },
+        {
+          "date": "2026-10-31",
+          "title": "The $6.3 Billion Binance Hack Was Pulled Off in Just 20 Minutes",
+          "thread": "https://www.reddit.com/r/technology/comments/1xjdg5q/the_63_billion_binance_hack_was_pulled_off_in/",
+          "link": "https://www.wired.com/story/the-dollar63-billion-binance-hack-was-pulled-off-in-just-20-minutes/",
+          "comment": "Lmao future of finance amiright guys LOL"
         }
       ],
       "deep_dive": "",
@@ -4235,22 +4509,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 110,
+      "mentions": 112,
       "refs": [
-        {
-          "date": "2026-10-27",
-          "title": "Engineers are coding by voice with Claude Code, some from their phones on dog walks",
-          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xfra3e/engineers_are_coding_by_voice_with_claude_code/",
-          "link": "https://leaddev.com/technical-direction/engineers-are-coding-out-loud",
-          "comment": "coding on a dog walk. so you're the guy yelling \"refactor the auth module\" at a lamppost"
-        },
-        {
-          "date": "2026-10-27",
-          "title": "Engineers are coding by voice with Claude Code, some from their phones on dog walks",
-          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xfra3e/engineers_are_coding_by_voice_with_claude_code/",
-          "link": "https://leaddev.com/technical-direction/engineers-are-coding-out-loud",
-          "comment": "coding on a dog walk. so you're the guy yelling \"refactor the auth module\" at a lamppost"
-        },
         {
           "date": "2026-10-28",
           "title": "Cognition has released FrontierCode 2.0, a tougher benchmark for Al coding agents. The results are brutal: Claude Opus 5.5 leads with just 45.5%, followed by GPT-6 Astra at 42.8%.",
@@ -4334,6 +4594,20 @@
           "thread": "https://www.reddit.com/r/singularity/comments/1xiwplq/sam_altman_reveals_openai_barely_understood_how/",
           "link": "",
           "comment": "Vibe progressing society"
+        },
+        {
+          "date": "2026-10-31",
+          "title": "The official Claude code VS Code extension was compromised and pulling it would’ve installed an ssh backdoor on your machine for a brief window today.",
+          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xj7d4p/the_official_claude_code_vs_code_extension_was/",
+          "link": "",
+          "comment": "Fyi Affected only if: Mac (M-series) + VS Code/Cursor/VSCodium pulling from Open VSX + v2.1.313 installed."
+        },
+        {
+          "date": "2026-10-31",
+          "title": "Cisco gives 27-year-old engineer unlimited AI tokens to rewrite 98% of the company's legacy code in 24 months — president plucks former startup founder, telling him to 'go nuts'",
+          "thread": "https://www.reddit.com/r/technology/comments/1xjn25u/cisco_gives_27yearold_engineer_unlimited_ai/",
+          "link": "https://www.tomshardware.com/tech-industry/big-tech/cisco-gives-27-year-old-engineer-unlimited-ai-tokens-to-rewrite-98-percent-of-the-companys-legacy-code-in-24-months-president-plucks-former-startup-founder-telling-him-to-go-nuts",
+          "comment": "In my experience, legacy code becomes “legacy” because no one remembers all the hacks and edge cases that went into decisions about the code, almost all of which is undocumented. And if you say to yourself, “Oh this would be so easy to modernize and streamline” you end up breaking a dozen downstream"
         }
       ],
       "deep_dive": "2026-10-18",
@@ -4482,15 +4756,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 59,
+      "mentions": 60,
       "refs": [
-        {
-          "date": "2026-10-14",
-          "title": "Tencent open-sourced Agent Memory and it runs 100% locally on SQLite",
-          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1x50rgo/tencent_opensourced_agent_memory_and_it_runs_100/",
-          "link": "",
-          "comment": "Runs 100% locally on SQLite. No cloud APIs, no separate vector database to host They report about 61% fewer tokens PersonaMem accuracy went from 48% to 76% Memory is readable and traceable, so the agent can point back to the original conversation logs instead of relying on a black box of embeddings"
-        },
         {
           "date": "2026-10-14",
           "title": "Qwen3.8 Flash Next vs Qwen3.8 27B - The hype vs the truth.",
@@ -4581,6 +4848,13 @@
           "thread": "https://www.reddit.com/r/technology/comments/1xjfjl6/openai_ceo_sam_altman_says_its_terrible_to_have/",
           "link": "https://frvr.com/blog/news/openai-ceo-sam-altman-says-its-terrible-to-have-everybody-have-a-bunch-of-the-worlds-limited-supply-of-dram-instead-of-shoving-it-all-in-datacentres/",
           "comment": "He’s showing his hand a little bit. They conceive of a world where they essentially control all devices bc they control all GPUs. These people are psychotic"
+        },
+        {
+          "date": "2026-10-31",
+          "title": "Another reason to own your own compute. Your account may get banned in a sneaky update.",
+          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xjgfuv/another_reason_to_own_your_own_compute_your/",
+          "link": "",
+          "comment": "They will keep altering the deal... Just wait until you see all of the nonsense they start coming up with once they are public and miss the first quarterly earnings report."
         }
       ],
       "deep_dive": "",

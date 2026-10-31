@@ -8,9 +8,28 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Sat, 31 Oct 2026 03:42:01 GMT</lastBuildDate>
+<lastBuildDate>Sat, 31 Oct 2026 11:32:28 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Evening - 31 Oct: Stamping Text You Cannot Verify</title>
+<description>Evening edition - Saturday, 31 October 2026
+Invisible constraints in engineering: from proprietary statistical watermarks in text generation to the fundamental thermodynamic limits of silicon solar cells.
+
+00:35  Stamping Text You Cannot Verify
+   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1xjqyv2/claude_now_watermarks_everything_it_writes_and/
+08:32  Pushing Past the Limit of Solar Cells
+   science: https://www.reddit.com/r/science/comments/1xjlnw2/scientists_crack_solar_panels_33_efficiency/
+   Source: https://www.bgr.com/2301659/scientists-crack-solar-panels-efficency-ceiling/
+
+Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
+Written by: Gemini 3.7 Flash · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (173 threads)</description>
+<pubDate>Sat, 31 Oct 2026 16:28:22 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-10-31_evening_1628.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-31_evening_1628.mp3" length="8245100" type="audio/mpeg"/>
+<itunes:duration>1030</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Morning - 31 Oct: The Fight Over Local Memory</title>
 <description>Morning edition - Saturday, 31 October 2026
@@ -288,26 +307,6 @@ Written by: Gemini 3.8 Flash · Voices: Fish Audio (free) · Discussions: Reddit
 <guid isPermaLink="false">ai_2026-10-25_morning_0828.mp3</guid>
 <enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-25_morning_0828.mp3" length="19226924" type="audio/mpeg"/>
 <itunes:duration>2403</itunes:duration>
-<itunes:episodeType>full</itunes:episodeType>
-</item>
-<item>
-<title>Evening - 24 Oct: When Finding Flaws Outpaces Fixing Them</title>
-<description>Evening edition - Saturday, 24 October 2026
-Why automated inspection without verification overwhelms production systems, and how low-energy deep-sea kinetics stall environmental recovery.
-
-00:42  When Finding Flaws Outpaces Fixing Them
-   ArtificialInteligence, ChatGPT, OpenAI: https://www.reddit.com/r/OpenAI/comments/1xddmtq/3_of_critical_software_security_bugs_in_all_of/
-   ArtificialInteligence, OpenAI: https://www.reddit.com/r/ArtificialInteligence/comments/1xdcowt/altman_admits_the_cybersecurity_crisis_is_going/
-08:13  Why the Deep Ocean Cannot Heal Itself Quickly
-   science: https://www.reddit.com/r/science/comments/1xddv9b/16_years_after_the_deepwater_horizon_oil_spill/
-   Source: https://www.sciencealert.com/16-years-after-deepwater-horizon-spill-deep-sea-life-in-the-gulf-of-mexico-shows-no-sign-of-recovery
-
-Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
-Written by: Gemini 3.8 Flash · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (160 threads)</description>
-<pubDate>Sat, 24 Oct 2026 16:23:32 +0530</pubDate>
-<guid isPermaLink="false">ai_2026-10-24_evening_1623.mp3</guid>
-<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-24_evening_1623.mp3" length="8345324" type="audio/mpeg"/>
-<itunes:duration>1043</itunes:duration>
 <itunes:episodeType>full</itunes:episodeType>
 </item>
 </channel>
