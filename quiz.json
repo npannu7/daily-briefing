@@ -4,6 +4,234 @@
  "repo": "npannu7/daily-briefing",
  "episodes": [
   {
+   "file": "ai_2026-10-31_morning_0841.mp3",
+   "title": "Morning - 31 Oct: The Fight Over Local Memory",
+   "label": "Saturday 31 Oct morning",
+   "date": "2026-10-31",
+   "edition": "morning",
+   "published": "2026-10-31T08:41:09.044611+05:30",
+   "duration": 1027,
+   "theme": "Resource efficiency limits in computing hardware and planetary mechanics",
+   "writer": "nemotron-3-ultra-550b-a55b (free)",
+   "voices": "Fish Audio (free)",
+   "deep_dive": false,
+   "segments": [
+    {
+     "title": "The Fight Over Local Memory",
+     "category": "thread"
+    },
+    {
+     "title": "Why Mountains Refuse to Disappear",
+     "category": "concept"
+    },
+    {
+     "title": "Six future Trump officials (Vance, Rubio, Gabbard, Hegseth, Patel, RFK Jr.) wrot",
+     "category": "thread"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What technical mechanism explains why a home graphics card running single-user AI inference achieves lower hardware efficiency than a datacenter?",
+     "options": [
+      "Thermal throttling due to insufficient cooling chassis",
+      "A memory-bandwidth bottleneck where compute cores wait idle for feedstock data",
+      "Bus saturation from PCIe Gen 5 limitations on motherboards",
+      "Inefficient power delivery from standard consumer power supplies"
+     ],
+     "answer": 1,
+     "explain": "At the smallest batch size, compute cores spend most of their cycle waiting for data to arrive from memory, mimicking a machining spindle starved for feed rate.",
+     "segment": "The Fight Over Local Memory"
+    },
+    {
+     "q": "Why is keeping a local CMM (coordinate measuring machine) compared to local AI inference in a medical device company?",
+     "options": [
+      "Both reduce the total cost of capital equipment acquisition",
+      "Both prioritize execution speed and processing throughput above all else",
+      "Both accept lower hardware utilization to maintain regulatory traceability, chain of custody, and control",
+      "Both require identical calibration standards enforced by federal agencies"
+     ],
+     "answer": 2,
+     "explain": "A regulated environment accepts lower asset utilization (Overall Equipment Effectiveness) because the trade-off yields necessary validation, sovereignty, and control.",
+     "segment": "The Fight Over Local Memory"
+    },
+    {
+     "q": "According to the geophysical analysis in the episode, why would Earth's continents fail to erode completely to sea level if plate tectonics stopped?",
+     "options": [
+      "Atmospheric precipitation would drop to zero globally, halting rain-driven incision",
+      "Isostatic rebound pushes the continental root upward as mass is removed, while compositional buoyancy prevents granitic crust from sinking to oceanic depths",
+      "Ocean levels would drop simultaneously as water is trapped in deep inland basins",
+      "Hardened bedrock strata would become completely impervious to stream power mechanics"
+     ],
+     "answer": 1,
+     "explain": "Airy isostasy causes the crust to float higher and pop up as mass is eroded off the top, and silica-rich continental crust is intrinsically less dense than oceanic crust.",
+     "segment": "Why Mountains Refuse to Disappear"
+    },
+    {
+     "q": "What is the methodological status of the claim that the analysed political books' metaphors directly caused voter shifts or fear mobilization?",
+     "options": [
+      "Proven by a 51-study systematic review measuring direct voter cognition",
+      "Verified through strict clinical trials conducted by the Nanjing university researchers",
+      "Unconfirmed because the corpus linguistics study is descriptive of text patterns, leaving reader effects untested",
+      "Invalidated because ghostwriters proved that the authors never wrote the texts"
+     ],
+     "answer": 2,
+     "explain": "The study uses corpus linguistics to show a shared rhetorical toolkit in the text, but 'cognitive mobilization' remains a text-level claim without direct measurement of reader effects.",
+     "segment": "Six future Trump officials (Vance, Rubio, Gabbard, Hegseth, Patel, RFK Jr.) wrot"
+    }
+   ],
+   "digest": [
+    {
+     "title": "Six future Trump officials (Vance, Rubio, Gabbard, Hegseth, Patel, RFK Jr.) wrote books before taking office. Researchers counted 2,074 metaphors in them: about 91% were about threats, and war was the top theme by far. Fear showed up in about 95% of passages, while hope-themed ones made up under 10%",
+     "subs": [
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1xjbkzd/six_future_trump_officials_vance_rubio_gabbard/",
+     "link": "https://www.psypost.org/six-future-trump-officials-wrote-books-before-taking-office-all-six-leaned-hardest-on-the-same-metaphor/",
+     "line": "A study found that books by future Trump officials heavily rely on war and threat metaphors, with commenters debating whether they wrote the books themselves.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": true
+    },
+    {
+     "title": "Large consortium finds no meaningful association between behavioral and neural measures of emotion regulation, raising questions about what it means to regulate emotions effectively.",
+     "subs": [
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1xjasjs/large_consortium_finds_no_meaningful_association/",
+     "link": "https://www.nature.com/articles/s41586-026-11203-1",
+     "line": "A large study found no clear association between behavioral and neural emotion regulation measures, with commenters discussing the limitations of fMRI and brain mapping.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "In hospital, you're slightly less likely to die if your doctor's a woman",
+     "subs": [
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1xjjh0t/in_hospital_youre_slightly_less_likely_to_die_if/",
+     "link": "https://doi.org/10.1001/jamanetworkopen.2026.41487",
+     "line": "Hospital data shows patients are slightly less likely to die if treated by a female doctor, which commenters attribute to younger demographics and hiring trends.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "AstraZeneca announces $2bn restructuring to invest in drugs pipeline",
+     "subs": [
+      "biotech"
+     ],
+     "thread": "https://www.reddit.com/r/biotech/comments/1xjajq8/astrazeneca_announces_2bn_restructuring_to_invest/",
+     "link": "https://www.thetimes.com/business/companies-markets/article/astrazeneca-restructuring-third-quarter-results-ftjkm9d6x?utm_medium=Social&utm_source=Reddit&utm_content=branded",
+     "line": "AstraZeneca announced a $2 billion restructuring plan to boost its drug pipeline, with commenters widely agreeing restructuring is a synonym for layoffs.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "How a Secret Vote by U.N. Scientists Legitimized Carbon Capture and Skewed Decades of Climate Policy",
+     "subs": [
+      "EverythingScience"
+     ],
+     "thread": "https://www.reddit.com/r/EverythingScience/comments/1xjgwn9/how_a_secret_vote_by_un_scientists_legitimized/",
+     "link": "https://www.propublica.org/article/carbon-capture-storage-fossil-fuel-sally-benson",
+     "line": "An article explored how a secret UN vote legitimized carbon capture, prompting user debate over the viability and geological reality of carbon storage.",
+     "verdict": "plausible",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "If the Earth ceased being geologically active and the plates stopped moving, how long would it take for the planet to smooth out due to wind and water erosion?",
+     "subs": [
+      "askscience"
+     ],
+     "thread": "https://www.reddit.com/r/askscience/comments/1xjfida/if_the_earth_ceased_being_geologically_active_and/",
+     "link": "",
+     "line": "A hypothetical question asked how long erosion would take if Earth's tectonic plates stopped moving, with users discussing the physical parameters required to answer.",
+     "verdict": "opinion",
+     "also_in": [],
+     "in_episode": true
+    },
+    {
+     "title": "The official Claude code VS Code extension was compromised and pulling it would’ve installed an ssh backdoor on your machine for a brief window today.",
+     "subs": [
+      "ClaudeCode"
+     ],
+     "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xj7d4p/the_official_claude_code_vs_code_extension_was/",
+     "link": "",
+     "line": "The official Claude Code VS Code extension was briefly compromised with a backdoor, which commenters noted only affected specific Mac setups using an Open VSX registry.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "OpenAI CEO says it's 'quite terrible' for your PC to have RAM — Sam Altman says data centers offer better utilization",
+     "subs": [
+      "LocalLLM",
+      "OpenAI",
+      "technology"
+     ],
+     "thread": "https://www.reddit.com/r/LocalLLM/comments/1xjosbe/openai_ceo_says_its_quite_terrible_for_your_pc_to/",
+     "link": "https://www.tomshardware.com/tech-industry/data-centers/openai-ceo-says-its-quite-terrible-for-your-pc-to-have-ram-sam-altman-says-data-centers-offer-better-utilization",
+     "line": "Sam Altman argued local PC RAM is inefficient compared to data centers, drawing harsh mockery and skepticism from users over hardware hoarding and resource allocation.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": true
+    },
+    {
+     "title": "Sam Altman: “Local inference is a terrible allocation of scarce resources”",
+     "subs": [
+      "LocalLLaMA"
+     ],
+     "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xizbq1/sam_altman_local_inference_is_a_terrible/",
+     "link": "",
+     "line": "Users reacted to Sam Altman calling local inference a poor resource allocation, with many expressing defiance and skepticism toward centralized AI control.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": true
+    },
+    {
+     "title": "Republicans liked the exact same workplace diversity training more when it skipped buzzwords like \"diversity\" and \"privilege\" and used plain words like \"differences\" and \"unfair advantages\" instead. Same content, different labels, and they also rated it as less politically biased.",
+     "subs": [
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1xjt1g9/republicans_liked_the_exact_same_workplace/",
+     "link": "https://news.cornell.edu/stories/2026/10/using-less-politically-charged-language-can-lower-temperature-dei-training",
+     "line": "A study showed Republicans favored workplace diversity training more when plain language was used instead of buzzwords, drawing comparisons to political naming debates like Obamacare.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Another reason to own your own compute. Your account may get banned in a sneaky update.",
+     "subs": [
+      "LocalLLaMA"
+     ],
+     "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xjgfuv/another_reason_to_own_your_own_compute_your/",
+     "link": "",
+     "line": "A post warned about cloud account bans and promoted owning local compute hardware, leading commenters to joke about corporate greed and praise running local models.",
+     "verdict": "opinion",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Reddit will force everyone to log in",
+     "subs": [
+      "GeminiAI",
+      "LocalLLM",
+      "LocalLLaMA"
+     ],
+     "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xj2pnp/reddit_will_force_everyone_to_log_in/",
+     "link": "https://www.theverge.com/tech/1022571/reddit-login-requirement-q3-2026-earnings",
+     "line": "Reports indicate Reddit will shift to a logged-in-only experience, which commenters criticized as a negative trend driven by commercialization and monetization.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    }
+   ],
+   "transcript": "transcripts/ai_2026-10-31_morning_0841.txt"
+  },
+  {
    "file": "ai_2026-10-30_evening_1636.mp3",
    "title": "Evening - 30 Oct: A solo developer, a coding agent, and a World War II tank game",
    "label": "Friday 30 Oct evening",
@@ -2932,227 +3160,6 @@
     }
    ],
    "transcript": "transcripts/ai_2026-10-24_evening_1623.txt"
-  },
-  {
-   "file": "ai_2026-10-24_morning_0828.mp3",
-   "title": "Morning - 24 Oct: Building an Engine Against the Spec",
-   "label": "Saturday 24 Oct morning",
-   "date": "2026-10-24",
-   "edition": "morning",
-   "published": "2026-10-24T08:28:07.753698+05:30",
-   "duration": 987,
-   "theme": "Validating agentic code against rigorous test suites and the clinical consequences of skipping drug titration ramps.",
-   "writer": "Gemini 3.8 Flash",
-   "voices": "Fish Audio (free)",
-   "deep_dive": false,
-   "segments": [
-    {
-     "title": "Building an Engine Against the Spec",
-     "category": "thread"
-    },
-    {
-     "title": "When Medical Dosing Skips the Ramp",
-     "category": "thread"
-    }
-   ],
-   "quiz": [
-    {
-     "q": "How did the independent developer tether the AI coding agent to ensure it built the Kingmaker engine against the specification?",
-     "options": [
-      "By manually debugging every line of Rust code before compilation",
-      "By connecting the agent directly to formal, upstream compliance test suites like Web Platform Tests",
-      "By using an automated garbage collector to clean up the code memory architecture",
-      "By relying on a JIT compiler to run safety checks on the fly"
-     ],
-     "answer": 1,
-     "explain": "The developer used closed-loop inspection by tethering the AI agent to official compliance suites, acting like a go or no-go gauge.",
-     "segment": "Building an Engine Against the Spec"
-    },
-    {
-     "q": "Why did critics on Reddit argue that passing functional conformance suites did not guarantee the browser engine was secure?",
-     "options": [
-      "Because conformance tests only measure compliance with features, not resilience against attacks like buffer overflows",
-      "Because the engine was written in Rust instead of JavaScript",
-      "Because the test suites only evaluated JavaScript virtual machines and not layout engines",
-      "Because the author failed to run all testing batteries simultaneously in a single sweep"
-     ],
-     "answer": 0,
-     "explain": "Functional tests confirm normal behavior but do not test whether the memory architecture can withstand malicious attacks like buffer overflows.",
-     "segment": "Building an Engine Against the Spec"
-    },
-    {
-     "q": "What is the primary pharmacological reason why skipping the semaglutide titration ramp causes severe gastrointestinal distress?",
-     "options": [
-      "It triggers an immediate allergic reaction in the autonomic nervous system",
-      "It causes the small intestine to stop absorbing water entirely",
-      "It mimics a hormone that delays gastric emptying, and skipping the ramp overloads an unadapted digestive system",
-      "It creates a permanent chemical burn on the stomach lining"
-     ],
-     "answer": 2,
-     "explain": "Semaglutide delays gastric transit, and a sudden high dose acts like throttling a drain valve, causing food to ferment and lead to severe nausea.",
-     "segment": "When Medical Dosing Skips the Ramp"
-    },
-    {
-     "q": "How did the hosts evaluate the specific claim that one in seven adult patients in the US starts semaglutide on an off-label high dose?",
-     "options": [
-      "They verified it through an open-access copy of the paper published in Diabetes, Obesity and Metabolism",
-      "They confirmed it using a secondary reporting dataset from national hospital admissions",
-      "They treated the numbers as strictly unconfirmed because the primary source was behind a paywall and unverified",
-      "They dismissed the entire study as scientifically flawed due to bad biological mechanisms"
-     ],
-     "answer": 2,
-     "explain": "The primary source returned an access error and lacked independent verification, meaning the specific epidemiological figures remain unconfirmed.",
-     "segment": "When Medical Dosing Skips the Ramp"
-    }
-   ],
-   "digest": [
-    {
-     "title": "16 Years After the Deepwater Horizon Oil Spill, Deep-Sea Marine Life in the Gulf of Mexico Has Yet to Recover, With Populations of Fish, Crustaceans, Squid, and Octopuses Declining by Around 60% and Some Species Losing Genetic Diversity.",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1xddv9b/16_years_after_the_deepwater_horizon_oil_spill/",
-     "link": "https://www.sciencealert.com/16-years-after-deepwater-horizon-spill-deep-sea-life-in-the-gulf-of-mexico-shows-no-sign-of-recovery",
-     "line": "A discussion on a study finding deep-sea marine life in the Gulf of Mexico has not recovered 16 years after Deepwater Horizon, with commenters noting broader ocean decline from commercial fishing.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "I built a web browser from scratch in Rust with Claude Code — 90%+ WPT compliance, 97.8% ECMAScript, and 100% WebAssembly. No Chromium, no WebView.",
-     "subs": [
-      "ClaudeCode"
-     ],
-     "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xd2oxt/i_built_a_web_browser_from_scratch_in_rust_with/",
-     "link": "",
-     "line": "A developer shared they built a custom web browser in Rust using Claude Code with high compliance rates, leading to jokes and discussion in the comments about security and AI prompting.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": true
-    },
-    {
-     "title": "A randomized study of 7,338 US adults found that describing biodiversity loss as the \"extinction of plants and animals\" generated more public concern and support for conservation policies than terms like \"biodiversity crisis\" or \"extinction crisis\", highlighting the importance of familiar language.",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1xcywia/a_randomized_study_of_7338_us_adults_found_that/",
-     "link": "https://www.nature.com/articles/s44185-026-00163-4",
-     "line": "A study showed that describing biodiversity loss as the extinction of plants and animals generates more public support than technical terms, sparking debate about plain language versus specific scientific metrics.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Researchers say a world-first cancer vaccine is delivering results even better than they had hoped for. The “transformational” breakthrough is detailed in a study that found a 42% reduction in the risk of melanoma recurrence.",
-     "subs": [
-      "EverythingScience"
-     ],
-     "thread": "https://www.reddit.com/r/EverythingScience/comments/1xd9llf/researchers_say_a_worldfirst_cancer_vaccine_is/",
-     "link": "https://abc.net.au/news/2026-10-23/melanoma-cancer-vaccine-breakthrough-georgina-long/107303082",
-     "line": "Researchers report a world-first cancer vaccine achieved a 42 percent reduction in the risk of melanoma recurrence, performing better than expected.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Cambridge study finds UK GCSE science courses name 86 scientists and only one is a woman (Rosalind Franklin, in just one exam board). At A-level it's 3 out of 181. Researchers say this could help explain why so many girls drop physics and maths at 16, and suggest adding Marie Curie and Lise Meitner.",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1xdaw67/cambridge_study_finds_uk_gcse_science_courses/",
-     "link": "https://www.cam.ac.uk/news/women-scientists-almost-entirely-omitted-from-exam-boards-compulsory-learning-material-for-uk",
-     "line": "A Cambridge study found UK GCSE science courses name very few female scientists, leading commenters to debate whether notable figures like Marie Curie are actually omitted from standard curricula.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "A new study found that conversational AI chatbots can worsen psychotic symptoms in a small fraction of mental health patients by validating their delusions, with individuals experiencing their first episode of psychosis being the most vulnerable.",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1xdc3e7/a_new_study_found_that_conversational_ai_chatbots/",
-     "link": "https://www.psypost.org/ai-psychosis-appears-rare-but-real-and-first-episode-patients-may-be-most-vulnerable-study-suggests/",
-     "line": "A study found conversational AI chatbots can worsen psychotic symptoms in vulnerable mental health patients by validating delusions, which commenters corroborated based on personal experiences with reassurance cycles.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "No coding or gamedev background, 6 weeks with Opus 5.5 + Godot — from drawings to a playable game",
-     "subs": [
-      "ClaudeAI"
-     ],
-     "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xdhkzb/no_coding_or_gamedev_background_6_weeks_with_opus/",
-     "link": "",
-     "line": "A solo developer with no background built a playable game in Godot over six weeks using AI tools, drawing mixed reactions of suspicion and technical curiosity from the community.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Jensen Huang brought four Microduck robots onstage during his keynote at NVIDIA GTC Berlin",
-     "subs": [
-      "robotics"
-     ],
-     "thread": "https://www.reddit.com/r/robotics/comments/1xdaqlq/jensen_huang_brought_four_microduck_robots/",
-     "link": "",
-     "line": "Jensen Huang showcased Microduck robots onstage at an NVIDIA keynote, prompting commenters to discuss their potential as educational toys for reinforcement learning and joke about corporate surveillance.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Bird Flu Is Raging on a Mink Farm. It Could Spark a Human Pandemic, Experts Say, but Officials Won’t Act.",
-     "subs": [
-      "EverythingScience"
-     ],
-     "thread": "https://www.reddit.com/r/EverythingScience/comments/1xdc4yu/bird_flu_is_raging_on_a_mink_farm_it_could_spark/",
-     "link": "https://www.propublica.org/article/bird-flu-mink-farm-utah-human-risk",
-     "line": "Experts warn that bird flu raging on a mink farm could spark a human pandemic while officials fail to act, leaving commenters questioning the continued existence of mink farming.",
-     "verdict": "plausible",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "New Arrivals in the ER? Georgia Gears Up To Solve Rural Maternal Health Crisis",
-     "subs": [
-      "medicine"
-     ],
-     "thread": "https://www.reddit.com/r/medicine/comments/1xd275s/new_arrivals_in_the_er_georgia_gears_up_to_solve/",
-     "link": "",
-     "line": "Georgia is equipping rural emergency rooms with OB crash carts to address maternal health closures, while commenters heavily criticize the approach as an inadequate substitute for actual obstetricians.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "About 1 in 7 US adults starting semaglutide were given an off-label high first dose, and those patients had a 25% higher rate of stopping the drug early and were less likely to still be on it a year later",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1xdgoe9/about_1_in_7_us_adults_starting_semaglutide_were/",
-     "link": "https://dom-pubs.onlinelibrary.wiley.com/doi/10.1111/dom.71448",
-     "line": "A study found 1 in 7 US adults starting semaglutide received an incorrect high initial dose leading to higher discontinuation rates, with commenters sharing personal accounts of severe side effects from improper dosing.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": true
-    },
-    {
-     "title": "Altman admits the cybersecurity crisis is going to get worse: \"I no longer think we're gonna be able to patch all the bugs.\"",
-     "subs": [
-      "ArtificialInteligence",
-      "OpenAI"
-     ],
-     "thread": "https://www.reddit.com/r/ArtificialInteligence/comments/1xdcowt/altman_admits_the_cybersecurity_crisis_is_going/",
-     "link": "",
-     "line": "Sam Altman acknowledged that cybersecurity crises will worsen and patching all bugs is unlikely, with commenters debating whether this is a sales tactic to push new AI security tools.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    }
-   ],
-   "transcript": "transcripts/ai_2026-10-24_morning_0828.txt"
   }
  ]
 }

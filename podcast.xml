@@ -8,9 +8,32 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Fri, 30 Oct 2026 11:46:20 GMT</lastBuildDate>
+<lastBuildDate>Sat, 31 Oct 2026 03:42:01 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Morning - 31 Oct: The Fight Over Local Memory</title>
+<description>Morning edition - Saturday, 31 October 2026
+Resource efficiency limits in computing hardware and planetary mechanics
+
+00:32  The Fight Over Local Memory
+   LocalLLM, OpenAI, technology: https://www.reddit.com/r/LocalLLM/comments/1xjosbe/openai_ceo_says_its_quite_terrible_for_your_pc_to/
+   Source: https://www.tomshardware.com/tech-industry/data-centers/openai-ceo-says-its-quite-terrible-for-your-pc-to-have-ram-sam-altman-says-data-centers-offer-better-utilization
+   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1xizbq1/sam_altman_local_inference_is_a_terrible/
+07:03  Why Mountains Refuse to Disappear
+   askscience: https://www.reddit.com/r/askscience/comments/1xjfida/if_the_earth_ceased_being_geologically_active_and/
+13:16  Six future Trump officials (Vance, Rubio, Gabbard, Hegseth, Patel, RFK Jr.) wrot
+   science: https://www.reddit.com/r/science/comments/1xjbkzd/six_future_trump_officials_vance_rubio_gabbard/
+   Source: https://www.psypost.org/six-future-trump-officials-wrote-books-before-taking-office-all-six-leaned-hardest-on-the-same-metaphor/
+
+Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
+Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (178 threads)</description>
+<pubDate>Sat, 31 Oct 2026 08:41:09 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-10-31_morning_0841.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-31_morning_0841.mp3" length="8220332" type="audio/mpeg"/>
+<itunes:duration>1027</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Evening - 30 Oct: A solo developer, a coding agent, and a World War II tank game</title>
 <description>Evening edition - Friday, 30 October 2026
@@ -285,25 +308,6 @@ Written by: Gemini 3.8 Flash · Voices: Fish Audio (free) · Discussions: Reddit
 <guid isPermaLink="false">ai_2026-10-24_evening_1623.mp3</guid>
 <enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-24_evening_1623.mp3" length="8345324" type="audio/mpeg"/>
 <itunes:duration>1043</itunes:duration>
-<itunes:episodeType>full</itunes:episodeType>
-</item>
-<item>
-<title>Morning - 24 Oct: Building an Engine Against the Spec</title>
-<description>Morning edition - Saturday, 24 October 2026
-Validating agentic code against rigorous test suites and the clinical consequences of skipping drug titration ramps.
-
-00:24  Building an Engine Against the Spec
-   ClaudeCode: https://www.reddit.com/r/ClaudeCode/comments/1xd2oxt/i_built_a_web_browser_from_scratch_in_rust_with/
-09:09  When Medical Dosing Skips the Ramp
-   science: https://www.reddit.com/r/science/comments/1xdgoe9/about_1_in_7_us_adults_starting_semaglutide_were/
-   Source: https://dom-pubs.onlinelibrary.wiley.com/doi/10.1111/dom.71448
-
-Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
-Written by: Gemini 3.8 Flash · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (185 threads)</description>
-<pubDate>Sat, 24 Oct 2026 08:28:07 +0530</pubDate>
-<guid isPermaLink="false">ai_2026-10-24_morning_0828.mp3</guid>
-<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-24_morning_0828.mp3" length="7901996" type="audio/mpeg"/>
-<itunes:duration>987</itunes:duration>
 <itunes:episodeType>full</itunes:episodeType>
 </item>
 </channel>
