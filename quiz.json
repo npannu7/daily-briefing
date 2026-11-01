@@ -4,6 +4,247 @@
  "repo": "npannu7/daily-briefing",
  "episodes": [
   {
+   "file": "ai_2026-11-01_evening_1632.mp3",
+   "title": "Sunday - 1 Nov: Cancer Vaccines and Immunotherapy Breakthroughs",
+   "label": "Sunday 01 Nov evening deep dive",
+   "date": "2026-11-01",
+   "edition": "evening",
+   "published": "2026-11-01T16:32:05.714154+05:30",
+   "duration": 2666,
+   "theme": "Sunday edition: Cancer Vaccines and Immunotherapy Breakthroughs - plus the week's best threads that got away",
+   "writer": "nemotron-3-ultra-550b-a55b (free)",
+   "voices": "Fish Audio (free)",
+   "deep_dive": true,
+   "segments": [
+    {
+     "title": "What happened next",
+     "category": "followup"
+    },
+    {
+     "title": "Cancer Vaccines and Immunotherapy Breakthroughs: The week's story",
+     "category": "deepdive"
+    },
+    {
+     "title": "Cancer Vaccines and Immunotherapy Breakthroughs: How it actually works",
+     "category": "deepdive"
+    },
+    {
+     "title": "Cancer Vaccines and Immunotherapy Breakthroughs: Reality check",
+     "category": "deepdive"
+    },
+    {
+     "title": "How Magic Mushrooms Repair the Brain",
+     "category": "thread"
+    },
+    {
+     "title": "Why Colon Cancer Rates Are Rising",
+     "category": "thread"
+    },
+    {
+     "title": "The Global Crisis in Mens Health",
+     "category": "thread"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "How did the developer access the unbranded streaming stick to install clean mainline Linux without using a soldering iron?",
+     "options": [
+      "By broadcasting an unencrypted Wi-Fi payload via a nearby laptop",
+      "By using a physical button to trigger FEL mode, the chip's hard-wired bootstrap loader over USB",
+      "By executing a remote script through the factory root backdoor and botnet malware",
+      "By flashing the firmware wirelessly through an open Bluetooth debugging profile"
+     ],
+     "answer": 1,
+     "explain": "The developer relied entirely on a physical button on the board that forces the silicon into FEL mode, a low-level USB recovery mode connected to read-only memory.",
+     "segment": "What happened next"
+    },
+    {
+     "q": "Why was KRAS historically considered an 'undruggable' target for pancreatic cancer treatments?",
+     "options": [
+      "It mutates too quickly for any known chemotherapy drug to bind to its active site.",
+      "It is located deep inside the cell nucleus where small-molecule drugs cannot penetrate.",
+      "It is a smooth, spherical protein lacking deep pockets for drugs to bind to.",
+      "It actively destroys messenger RNA before therapeutic lipid nanoparticles can release their payload."
+     ],
+     "answer": 2,
+     "explain": "KRAS is a smooth, spherical protein with no deep pockets for drugs to bind, which is why vaccines bypassing traditional binding pockets are needed.",
+     "segment": "Cancer Vaccines and Immunotherapy Breakthroughs: How it actually works"
+    },
+    {
+     "q": "What mechanism does psilocybin use according to the mouse study claims discussed in the podcast?",
+     "options": [
+      "It repairs circuits damaged by chronic stress via a pathway supposedly separated from the psychedelic trip itself.",
+      "It permanently downregulates 5-HT2A receptors to completely eliminate immediate pharmacological tolerance.",
+      "It triggers immediate neurogenesis by directly binding to prefrontal cortex dendritic spines within hours.",
+      "It mimics ketamine's IV pharmacokinetics to bypass first-pass liver metabolism."
+     ],
+     "answer": 0,
+     "explain": "The mouse study claimed the rewiring runs on a completely different pathway than the psychedelic trip itself, offering antidepressant effects without hallucinations.",
+     "segment": "How Magic Mushrooms Repair the Brain"
+    },
+    {
+     "q": "What explains the sharp jump in colorectal cancer incidence observed in the 45-to-49 age cohort?",
+     "options": [
+      "A severe multi-year backlog in screening appointments caused by pandemic restrictions",
+      "A biological shift in the gut microbiome driven entirely by microplastics and dietary additives",
+      "A screening artifact resulting from official guidelines lowering the recommended starting age",
+      "An absolute increase in severe, late-stage metastatic presentations across all demographic groups"
+     ],
+     "answer": 2,
+     "explain": "The authors noted that the sharp jump in the 45-to-49 group is largely a screening artifact because guidelines dropped the start age from 50 to 45.",
+     "segment": "Why Colon Cancer Rates Are Rising"
+    }
+   ],
+   "digest": [
+    {
+     "title": "Men lose 16% more healthy years than women worldwide, yet only a handful of countries have a men's health policy. A new Lancet series says much of it is preventable (poverty, jobs, masculinity norms) and warns that this policy vacuum is being filled by 'manosphere' influencers and companies instead.",
+     "subs": [
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1xk8h41/men_lose_16_more_healthy_years_than_women/",
+     "link": "https://www.gla.ac.uk/news/headline_1300273_en.html",
+     "line": "A Lancet series discusses how men lose more healthy years than women due to preventable factors, with commenters agreeing resources are lacking.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Solving biology is not a weekend project and “epigenetic” is not a flavor",
+     "subs": [
+      "biotech"
+     ],
+     "thread": "https://www.reddit.com/r/biotech/comments/1xk5c38/solving_biology_is_not_a_weekend_project_and/",
+     "link": "",
+     "line": "A user criticizes a longevity serum for using epigenetic buzzwords, and commenters agree it is cosmetic pseudoscience.",
+     "verdict": "opinion",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "How can you find our solar system if you are lost in our galaxy?",
+     "subs": [
+      "askscience"
+     ],
+     "thread": "https://www.reddit.com/r/askscience/comments/1xkcy26/how_can_you_find_our_solar_system_if_you_are_lost/",
+     "link": "",
+     "line": "A discussion asks how to locate our solar system in the galaxy, noting the Voyager golden record used pulsars.",
+     "verdict": "opinion",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "How Trump Is Dismantling America’s Scientific Research Machine",
+     "subs": [
+      "EverythingScience",
+      "biotech"
+     ],
+     "thread": "https://www.reddit.com/r/biotech/comments/1xk8tkj/how_trump_is_dismantling_americas_scientific/",
+     "link": "https://www.nytimes.com/2026/10/31/climate/how-trump-is-dismantling-americas-scientific-research-machine.html?unlocked_article_code=1.M1E.RQvA.tPEOudMcw6HX&smid=re-share",
+     "line": "An article discusses how political actions are dismantling American scientific research, which commenters view as disastrous.",
+     "verdict": "opinion",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "A study of 12 fruits and vegetables found that commonly discarded parts, including peels, skins and seeds, contained more dietary fibre than the portions typically eaten in 10 of 12 cases. Pineapple skin and core had over five times more fibre than the flesh, suggesting ways to reduce food waste.",
+     "subs": [
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1xkdbq4/a_study_of_12_fruits_and_vegetables_found_that/",
+     "link": "https://www.tandfonline.com/doi/full/10.1080/09637486.2026.2734852",
+     "line": "A study found that discarded fruit parts contain more dietary fiber, though commenters expressed skepticism about eating things like pineapple skins.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "ChatGPT-Codex merge is happening",
+     "subs": [
+      "codex"
+     ],
+     "thread": "https://www.reddit.com/r/codex/comments/1xkc5p1/chatgptcodex_merge_is_happening/",
+     "link": "",
+     "line": "Users discuss an email regarding a ChatGPT and Codex merge, with some expressing frustration over subscription changes.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "A new study found that untrained dogs can spontaneously detect the unique scent of an epileptic seizure from a complete stranger's sweat sample, suggesting that canines may have an innate ability to prioritize and recognize these olfactory cues without any prior medical training.",
+     "subs": [
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1xkipc7/a_new_study_found_that_untrained_dogs_can/",
+     "link": "https://www.sciencealert.com/dogs-may-smell-a-complete-strangers-seizure-without-ever-being-trained-study-finds",
+     "line": "A study found untrained dogs can detect epileptic seizure scents in sweat, and commenters shared personal anecdotes.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "A randomized trial found that urinating posture does not clinically affect urine flow or volume in healthy men, making the choice between sitting or standing a matter of personal preference.",
+     "subs": [
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1xk6uxn/a_randomized_trial_found_that_urinating_posture/",
+     "link": "https://www.sciencealert.com/does-it-matter-if-men-pee-sitting-or-standing-a-randomized-test-has-an-answer",
+     "line": "A trial found urinating posture does not clinically affect urine flow in healthy men, and commenters discussed hygiene and noise.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Extreme liberals who rely on traditional news sources are most likely to overestimate their own science knowledge, revealing a gap between perceived and actual scientific understanding.",
+     "subs": [
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1xkl1yw/extreme_liberals_who_rely_on_traditional_news/",
+     "link": "https://www.psypost.org/extreme-liberals-who-rely-on-traditional-sources-are-the-most-likely-to-overrate-their-science-knowledge/",
+     "line": "A study indicates extreme liberals relying on traditional news overestimate their science knowledge, sparking lighthearted definitional jokes.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Ontario's measles outbreak hit 2,377 people over nearly a year, and 89% were not vaccinated. Most were kids and teens. 166 were hospitalized, 10 babies were infected before birth, and one infant died. This outbreak helped Canada lose its measles elimination status, which it had held ever since 1998.",
+     "subs": [
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1xk8kar/ontarios_measles_outbreak_hit_2377_people_over/",
+     "link": "https://bmjgroup.com/measles-outbreak-that-contributed-to-canada-losing-elimination-status-highlights-risks-from-persistent-immunity-gaps/",
+     "line": "An Ontario measles outbreak mostly affecting the unvaccinated caused Canada to lose its elimination status, with commenters blaming disinformation.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Premature birth alters the brain’s developmental clock: when a baby is born prematurely, the cerebellum, the part of the brain with a critical role in motor function, language and cognition, grows and develops in a different way than it would if the baby remains in utero full term",
+     "subs": [
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1xkg0rx/premature_birth_alters_the_brains_developmental/",
+     "link": "https://innovationdistrict.childrensnational.org/premature-birth-alters-the-brains-developmental-clock/",
+     "line": "Research shows premature birth alters cerebellum development, prompting humorous personal reflections from commenters.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "I built a collection of undergraduate level interactive physics simulations, structured to help visualize the Feynman Lectures.",
+     "subs": [
+      "Physics"
+     ],
+     "thread": "https://www.reddit.com/r/Physics/comments/1xkb4ri/i_built_a_collection_of_undergraduate_level/",
+     "link": "https://physin.org",
+     "line": "An author shared a website of undergraduate physics simulations visualizing the Feynman Lectures, receiving positive feedback.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    }
+   ],
+   "transcript": "transcripts/ai_2026-11-01_evening_1632.txt"
+  },
+  {
    "file": "ai_2026-11-01_morning_0842.mp3",
    "title": "Sunday - 1 Nov: Local LLMs and Hardware",
    "label": "Sunday 01 Nov morning deep dive",
@@ -2916,249 +3157,6 @@
     }
    ],
    "transcript": "transcripts/ai_2026-10-26_morning_0833.txt"
-  },
-  {
-   "file": "ai_2026-10-25_evening_1623.mp3",
-   "title": "Sunday - 25 Oct: GLP-1 Drugs Beyond Weight Loss",
-   "label": "Sunday 25 Oct evening deep dive",
-   "date": "2026-10-25",
-   "edition": "evening",
-   "published": "2026-10-25T16:23:09.623747+05:30",
-   "duration": 2539,
-   "theme": "Sunday edition: GLP-1 Drugs Beyond Weight Loss - plus the week's best threads that got away",
-   "writer": "nemotron-3-ultra-550b-a55b (free)",
-   "voices": "Fish Audio (free)",
-   "deep_dive": true,
-   "segments": [
-    {
-     "title": "What happened next",
-     "category": "followup"
-    },
-    {
-     "title": "GLP-1 Drugs Beyond Weight Loss: The week's story",
-     "category": "deepdive"
-    },
-    {
-     "title": "GLP-1 Drugs Beyond Weight Loss: How it actually works",
-     "category": "deepdive"
-    },
-    {
-     "title": "GLP-1 Drugs Beyond Weight Loss: Reality check",
-     "category": "deepdive"
-    },
-    {
-     "title": "New Medicaid Rules Threaten Millions",
-     "category": "thread"
-    },
-    {
-     "title": "Why You Can't Sue Your Health Plan",
-     "category": "thread"
-    },
-    {
-     "title": "Why Your Health Insurance Is Useless",
-     "category": "thread"
-    }
-   ],
-   "quiz": [
-    {
-     "q": "What is the primary mechanical-systems concern regarding the real-world commercial rollout of GLP-1 drugs, as illustrated by the high rate of patients skipping the starter dose?",
-     "options": [
-      "Skipping the gradual titration schedule acts like a thermal shock or a cold start without pressure, leading to predictable severe gastrointestinal side effects and a higher discontinuation rate.",
-      "The chemical degradation of the active peptide occurs too rapidly if stored at room temperature without strict cold-chain maintenance.",
-      "Rapid dose escalation causes permanent down-regulation of peripheral insulin receptors in the pancreas.",
-      "Higher initial concentrations overload the metabolic pathway of the liver, causing immediate acute toxicity."
-     ],
-     "answer": 0,
-     "explain": "The script compares skipping the titration ramp to cold-starting a turbocharged engine without oil pressure, which causes thermal shock and high discontinuation rates (scrap rate).",
-     "segment": "GLP-1 Drugs Beyond Weight Loss: Reality check"
-    },
-    {
-     "q": "Based on the discussion of the JAMA Psychiatry survey regarding GLP-1 drugs and alcohol consumption, what is the current status of the evidence surrounding this effect?",
-     "options": [
-      "Definitive phase three trial results have proven direct receptor binding in human reward pathways.",
-      "It is a robust observational signal backed by plausible preclinical rodent mechanisms, but it lacks randomized controlled human trials.",
-      "Biomarker analysis of dopamine levels in human striatum has confirmed complete blockades of alcohol craving.",
-      "It has been fully discredited as a self-reporting artifact caused solely by the nausea of starting the medication."
-     ],
-     "answer": 1,
-     "explain": "The script emphasizes that the alcohol survey provides a real, peer-reviewed signal and aligns with rodent mechanisms, but there are zero randomized controlled trials in humans for alcohol use disorder yet.",
-     "segment": "GLP-1 Drugs Beyond Weight Loss: How it actually works"
-    },
-    {
-     "q": "How does the legal enforcement provision under ERISA (such as in Aetna v. Davila) impact a patient whose employer-provided health plan wrongfully denies necessary care?",
-     "options": [
-      "It allows patients to sue for unlimited consequential damages, pain, and suffering in state courts.",
-      "It mandates that state insurance commissioners review and fine health plans for every denied claim.",
-      "It treats the situation like a warranty claim, allowing patients to sue to recover the specific benefit owed, but preempts state-law suits for personal injury damages resulting from the denial.",
-      "It completely prevents any legal challenge, forcing patients into mandatory binding arbitration with no right to coverage fulfillment."
-     ],
-     "answer": 2,
-     "explain": "The script explains that ERISA gives you a warranty claim to get the benefit owed, not a liability claim for extra damages like pain and suffering, because state tort claims are preempted.",
-     "segment": "Why You Can't Sue Your Health Plan"
-    },
-    {
-     "q": "In the context of the Ohio State study on mental health provider networks, what structural systems failure explains why most calls to directory listings failed to secure an appointment?",
-     "options": [
-      "Insurers deliberately throttle the bandwidth of provider phone lines to reduce utilization.",
-      "Distributed-data synchronization failure, where multiple insurers maintain separate, uncoordinated directories that quickly drift out of sync with reality.",
-      "A federal mandate requiring providers to cap their patient intake at twenty-four percent.",
-      "Strict regulatory penalties preventing providers from updating their contact information without prior authorization."
-     ],
-     "answer": 1,
-     "explain": "The script describes the directory problem as a classic distributed-data synchronization failure where every insurer maintains its own stale silos with no master calibration standard or single source of truth.",
-     "segment": "Why Your Health Insurance Is Useless"
-    }
-   ],
-   "digest": [
-    {
-     "title": "TIL: Patients cannot sue their employer-provided health plans for injuries or damages caused by denial of coverage (under ERISA preemption)",
-     "subs": [
-      "medicine"
-     ],
-     "thread": "https://www.reddit.com/r/medicine/comments/1xe0a1m/til_patients_cannot_sue_their_employerprovided/",
-     "link": "",
-     "line": "Discusses how ERISA preemption prevents patients from suing employer-provided health plans for coverage denials, which commenters criticize as extortion.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Man's Best Hospital is closing services due to budget issues",
-     "subs": [
-      "medicine"
-     ],
-     "thread": "https://www.reddit.com/r/medicine/comments/1xefmi6/mans_best_hospital_is_closing_services_due_to/",
-     "link": "",
-     "line": "Mass General Brigham is cutting jobs and administrative services amid a budget shortfall, though commenters note clinical staff are less impacted.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Researchers found that older adults who napped frequently—defined as most days or every day—had a 48% higher risk of developing dementia compared to those who rarely or never napped, even after accounting for demographic factors, health conditions, and nighttime sleep characteristics",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1xe5hxn/researchers_found_that_older_adults_who_napped/",
-     "link": "https://publichealth.jhu.edu/2026/frequent-unintended-napping-tied-to-higher-dementia-risk",
-     "line": "A study found frequent daytime napping is linked to a higher risk of dementia, leaving commenters joking about conflicting studies.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "About 90% of pancreatic cancers are driven by KRAS mutations. A new pancreatic cancer vaccine taught the immune system to attack these mutations in 89 of 90 patients, and those with the strongest immune response stayed cancer-free for longer. A larger phase 3 trial is now planned.",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1xe7nyf/about_90_of_pancreatic_cancers_are_driven_by_kras/",
-     "link": "https://newsnetwork.mayoclinic.org/discussion/investigational-vaccine-generates-immune-response-to-kras-mutations-in-pancreatic-cancer-study/",
-     "line": "A new pancreatic cancer vaccine targeting KRAS mutations showed promising early results where patients stayed cancer-free longer, leading to a phase 3 trial.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Ultra-processed foods have a 12% and 42% higher likelihood of digestive cancer in the cohort and case-controlled studies of a recent meta-analysis, respectively. Of the subcategories, ultra-processed meat/protein products have the greatest association with a 33% higher risk.",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1xe82j1/ultraprocessed_foods_have_a_12_and_42_higher/",
-     "link": "https://www.frontiersin.org/journals/nutrition/articles/10.3389/fnut.2026.1901660/full",
-     "line": "A meta-analysis found ultra-processed foods are associated with a higher likelihood of digestive cancers, though commenters debated classifications.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Asked Kimi K3.1 Pro and DeepSeek V4.1 Flash to build a running V8 engine in Three.js. Here's what each made",
-     "subs": [
-      "DeepSeek"
-     ],
-     "thread": "https://www.reddit.com/r/DeepSeek/comments/1xefqpq/asked_kimi_k31_pro_and_deepseek_v41_flash_to/",
-     "link": "",
-     "line": "Two AI models successfully built interactive 3D V8 engine simulations in Three.js when given the same prompt.",
-     "verdict": "confirmed",
-     "also_in": [
-      "Simon Willison"
-     ],
-     "in_episode": false
-    },
-    {
-     "title": "Terence Tao: AI turns beautiful mathematics into ‘toxic waste’",
-     "subs": [
-      "OpenAI",
-      "singularity"
-     ],
-     "thread": "https://www.reddit.com/r/OpenAI/comments/1xe9ora/terence_tao_ai_turns_beautiful_mathematics_into/",
-     "link": "https://observer.co.uk/news/science-technology/article/terence-tao-ai-turns-beautiful-mathematics-into-toxic-waste",
-     "line": "Mathematician Terence Tao criticizes AI for turning beautiful mathematics into raw training material, sparking agreement among software engineers.",
-     "verdict": "opinion",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "For the first time, scientists say they have used viruses designed by AI to treat a human patient.",
-     "subs": [
-      "EverythingScience"
-     ],
-     "thread": "https://www.reddit.com/r/EverythingScience/comments/1xedrwt/for_the_first_time_scientists_say_they_have_used/",
-     "link": "https://www.nytimes.com/2026/10/20/science/ai-virus-bacteria-radical-numerics.html",
-     "line": "Scientists reportedly used AI-designed viruses to treat a human patient for the first time, with commenters comparing it to science fiction.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Scientists at Johns Hopkins may have found why so many men’s prostates grow bigger with age: a newly identified cell type (WIF1+ basal cells) packed around the urethra, right where enlargement happens. This could explain the slow, stop-start peeing after 50 and become a target for future treatments.",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1xereqx/scientists_at_johns_hopkins_may_have_found_why_so/",
-     "link": "https://www.sciencealert.com/scientists-may-have-discovered-why-mens-prostates-enlarge-with-age",
-     "line": "Johns Hopkins scientists discovered that WIF1+ basal cells in the prostate may cause age-related enlargement, explaining urination issues.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "I'm tired, boss.",
-     "subs": [
-      "ClaudeCode"
-     ],
-     "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xebls8/im_tired_boss/",
-     "link": "",
-     "line": "A software engineer with ten years of experience expresses burnout and exhaustion from the overwhelming pace of AI advancements.",
-     "verdict": "opinion",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Sugar restriction in early life is linked to lower dementia risk and slightly slower brain aging decades later",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1xe4t66/sugar_restriction_in_early_life_is_linked_to/",
-     "link": "https://www.psypost.org/sugar-restriction-in-early-life-is-linked-to-lower-dementia-risk-and-slightly-slower-brain-aging-decades-later/",
-     "line": "Early life sugar restriction, specifically during pregnancy and up to age two, is linked to lower dementia risk and slower brain aging.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "2.1B tokens in a single day for $16. V4.1 Flash 1017 is no joke.",
-     "subs": [
-      "DeepSeek"
-     ],
-     "thread": "https://www.reddit.com/r/DeepSeek/comments/1xe9mw9/21b_tokens_in_a_single_day_for_16_v41_flash_1017/",
-     "link": "https://www.reddit.com/gallery/1xe9mw9",
-     "line": "A user shares cost and token metrics from running the V4.1 Flash model on a real web app project, praising its efficiency.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    }
-   ],
-   "transcript": "transcripts/ai_2026-10-25_evening_1623.txt"
   }
  ]
 }
