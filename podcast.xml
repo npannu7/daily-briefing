@@ -8,9 +8,47 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Sat, 31 Oct 2026 11:32:28 GMT</lastBuildDate>
+<lastBuildDate>Sun, 01 Nov 2026 04:09:23 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Sunday - 1 Nov: Local LLMs and Hardware</title>
+<description>Sunday edition - Sunday, 1 November 2026
+Sunday edition: Local LLMs and Hardware - plus the week's best threads that got away
+
+01:00  What happened next
+   ClaudeCode: https://www.reddit.com/r/ClaudeCode/comments/1xj7d4p/the_official_claude_code_vs_code_extension_was/
+   ClaudeCode: https://www.reddit.com/r/ClaudeCode/comments/1xih084/korean_solo_dev_5_months_making_ww2_rts_with/
+   codex: https://www.reddit.com/r/codex/comments/1xi2e86/chatgpt_chat_and_work_merged/
+   singularity: https://www.reddit.com/r/singularity/comments/1xiwplq/sam_altman_reveals_openai_barely_understood_how/
+   ClaudeCode: https://www.reddit.com/r/ClaudeCode/comments/1xhqvzn/opus_55_just_shared_my_email_address/
+   ClaudeCode: https://www.reddit.com/r/ClaudeCode/comments/1xi0b7c/has_anyone_else_noticed_that_opus_has_become/
+07:09  Local LLMs and Hardware: The week's story
+   LocalLLM: https://www.reddit.com/r/LocalLLM/comments/1xjvc08/local_qwen_27b_is_practically_unusable_for_coding/
+   LocalLLM: https://www.reddit.com/r/LocalLLM/comments/1xjx4vc/your_iq1_100_toks_recipe_isnt_the_flex_you_think/
+13:32  Local LLMs and Hardware: How it actually works
+   LocalLLM: https://www.reddit.com/r/LocalLLM/comments/1xjvc08/local_qwen_27b_is_practically_unusable_for_coding/
+   LocalLLM: https://www.reddit.com/r/LocalLLM/comments/1xjx4vc/your_iq1_100_toks_recipe_isnt_the_flex_you_think/
+22:37  Local LLMs and Hardware: Reality check
+   LocalLLM: https://www.reddit.com/r/LocalLLM/comments/1xjvc08/local_qwen_27b_is_practically_unusable_for_coding/
+   LocalLLM: https://www.reddit.com/r/LocalLLM/comments/1xjx4vc/your_iq1_100_toks_recipe_isnt_the_flex_you_think/
+32:02  Hacking my car stereo's hidden software
+   ClaudeCode: https://www.reddit.com/r/ClaudeCode/comments/1xf2lur/i_pointed_claude_code_at_the_cheap_chinese_head/
+35:16  Testing a brand new AI model
+   GeminiAI: https://www.reddit.com/r/GeminiAI/comments/1xhtyol/alphabet_introducing_gemini_4_carbon_next/
+   Source: https://www.reddit.com/gallery/1xhtyol
+38:03  Custom mRNA vaccine fights skin cancer
+   singularity: https://www.reddit.com/r/singularity/comments/1xet21r/bespoke_mrna_vaccine_significantly_reduces_risk/
+   Source: https://www.theguardian.com/society/2026/oct/23/mrna-vaccine-melanoma-cancer-breakthrough-australia
+
+Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
+Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (185 threads)</description>
+<pubDate>Sun, 01 Nov 2026 08:42:20 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-11-01_morning_0842.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-01_morning_0842.mp3" length="19905068" type="audio/mpeg"/>
+<itunes:duration>2488</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Evening - 31 Oct: Stamping Text You Cannot Verify</title>
 <description>Evening edition - Saturday, 31 October 2026
@@ -273,40 +311,6 @@ Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Di
 <guid isPermaLink="false">ai_2026-10-25_evening_1623.mp3</guid>
 <enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-25_evening_1623.mp3" length="20313068" type="audio/mpeg"/>
 <itunes:duration>2539</itunes:duration>
-<itunes:episodeType>full</itunes:episodeType>
-</item>
-<item>
-<title>Sunday - 25 Oct: Open-Weight Models</title>
-<description>Sunday edition - Sunday, 25 October 2026
-Sunday edition: Open-Weight Models - plus the week's best threads that got away
-
-00:45  What happened next
-   ClaudeAI, ClaudeCode: https://www.reddit.com/r/ClaudeAI/comments/1xcdwdx/i_got_tired_of_checking_whether_claude_code_needs/
-   ClaudeCode: https://www.reddit.com/r/ClaudeCode/comments/1xaanlz/my_company_fired_two_highly_paid_engineers_and/
-   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1xd5ruf/anthropic_appears_to_sneak_in_a_legal_loophole_in/
-   ClaudeCode: https://www.reddit.com/r/ClaudeCode/comments/1xdfxg6/claude_refuses_anything_to_do_with_reverse/
-06:56  Open-Weight Models: The week's story
-   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1xecgrf/kimi_k31_removes_cyberattack_training_data_from/
-   Source: https://www.reuters.com/technology/moonshot-curbs-hacking-ability-new-kimi-model-fears-grow-over-ai-powered-2026-10-24/
-12:37  Open-Weight Models: How it actually works
-   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1xecgrf/kimi_k31_removes_cyberattack_training_data_from/
-   Source: https://www.reuters.com/technology/moonshot-curbs-hacking-ability-new-kimi-model-fears-grow-over-ai-powered-2026-10-24/
-21:20  Open-Weight Models: Reality check
-   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1xecgrf/kimi_k31_removes_cyberattack_training_data_from/
-   Source: https://www.reuters.com/technology/moonshot-curbs-hacking-ability-new-kimi-model-fears-grow-over-ai-powered-2026-10-24/
-29:17  The New Game Console Gets Hacked
-   codex: https://www.reddit.com/r/codex/comments/1xcg2b2/the_nintendo_switch_2_has_been_jailbroken_using/
-33:04  Making a Music Video Using Artificial Intelligence
-   ClaudeCode: https://www.reddit.com/r/ClaudeCode/comments/1xdnlm3/opus_55_animated_this_music_video_frame_by_frame/
-36:35  Growing a Brain to Control a Robot
-   singularity: https://www.reddit.com/r/singularity/comments/1xd8qwb/scientists_grew_a_human_minibrain_and_used_it_to/
-
-Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
-Written by: Gemini 3.8 Flash · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (169 threads)</description>
-<pubDate>Sun, 25 Oct 2026 08:28:41 +0530</pubDate>
-<guid isPermaLink="false">ai_2026-10-25_morning_0828.mp3</guid>
-<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-25_morning_0828.mp3" length="19226924" type="audio/mpeg"/>
-<itunes:duration>2403</itunes:duration>
 <itunes:episodeType>full</itunes:episodeType>
 </item>
 </channel>
