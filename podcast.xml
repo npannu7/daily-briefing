@@ -8,9 +8,28 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Mon, 02 Nov 2026 03:52:25 GMT</lastBuildDate>
+<lastBuildDate>Mon, 02 Nov 2026 12:08:36 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Evening - 2 Nov: Giving an AI Agent the Keys to Robotic Telescopes</title>
+<description>Evening edition - Monday, 2 November 2026
+From delegating physical robotic observatories to AI agents, to the fluid mechanics and partial pressures governing every breath we take.
+
+00:38  Giving an AI Agent the Keys to Robotic Telescopes
+   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1xkxsca/i_gave_claude_access_to_remote_telescopes_now_she/
+   Source: https://www.reddit.com/gallery/1xkxsca
+08:35  What Happens to the Nitrogen and Other Gases We Breathe
+   askscience: https://www.reddit.com/r/askscience/comments/1xll95d/when_we_breathe_in_oxygen_co₂_n₂_and_other_gases/
+
+Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
+Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (166 threads)</description>
+<pubDate>Mon, 02 Nov 2026 16:48:22 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-11-02_evening_1648.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-02_evening_1648.mp3" length="9526316" type="audio/mpeg"/>
+<itunes:duration>1190</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Morning - 2 Nov: Modifying Model Weights Without Retraining</title>
 <description>Morning edition - Monday, 2 November 2026
@@ -291,25 +310,6 @@ Written by: Gemini 3.8 Flash · Voices: Fish Audio (free) · Discussions: Reddit
 <guid isPermaLink="false">ai_2026-10-27_morning_0832.mp3</guid>
 <enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-27_morning_0832.mp3" length="7944236" type="audio/mpeg"/>
 <itunes:duration>992</itunes:duration>
-<itunes:episodeType>full</itunes:episodeType>
-</item>
-<item>
-<title>Evening - 26 Oct: A new open model beats a benchmark leader, and what distillation really means</title>
-<description>Evening edition - Monday, 26 October 2026
-Benchmark claims for a new open model and the nuclear physics behind the universe's element pattern
-
-00:46  A new open model beats a benchmark leader, and what distillation really means
-   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1xf0kz4/nanbeigenanbeige4333b_hugging_face/
-   Source: https://huggingface.co/Nanbeige/Nanbeige4.3-33B
-08:29  Why the universe has more even-numbered elements than odd ones
-   Physics: https://www.reddit.com/r/Physics/comments/1xf13wn/whats_the_reason_behind_this_zigzag_distribution/
-
-Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
-Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (166 threads)</description>
-<pubDate>Mon, 26 Oct 2026 16:34:51 +0530</pubDate>
-<guid isPermaLink="false">ai_2026-10-26_evening_1634.mp3</guid>
-<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-26_evening_1634.mp3" length="8360684" type="audio/mpeg"/>
-<itunes:duration>1045</itunes:duration>
 <itunes:episodeType>full</itunes:episodeType>
 </item>
 </channel>

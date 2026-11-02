@@ -4,6 +4,227 @@
  "repo": "npannu7/daily-briefing",
  "episodes": [
   {
+   "file": "ai_2026-11-02_evening_1648.mp3",
+   "title": "Evening - 2 Nov: Giving an AI Agent the Keys to Robotic Telescopes",
+   "label": "Monday 02 Nov evening",
+   "date": "2026-11-02",
+   "edition": "evening",
+   "published": "2026-11-02T16:48:22.072812+05:30",
+   "duration": 1190,
+   "theme": "From delegating physical robotic observatories to AI agents, to the fluid mechanics and partial pressures governing every breath we take.",
+   "writer": "nemotron-3-ultra-550b-a55b (free)",
+   "voices": "Fish Audio (free)",
+   "deep_dive": false,
+   "segments": [
+    {
+     "title": "Giving an AI Agent the Keys to Robotic Telescopes",
+     "category": "thread"
+    },
+    {
+     "title": "What Happens to the Nitrogen and Other Gases We Breathe",
+     "category": "concept"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What architectural mechanism is actually responsible for executing the automated telescope operations attributed to the AI agent in the Reddit post?",
+     "options": [
+      "The LLM directly performs astrodynamic coordinate transformations and calculates exact right ascension and declination.",
+      "A local PLC executes deterministic ladder logic to bypass the public internet entirely.",
+      "The model parameterizes calls to a deterministic Python library through tool-calling while a headless browser drives the web UI.",
+      "The LLM acts as a high-frequency closed-loop controller sampling physical hardware states at kilohertz speeds."
+     ],
+     "answer": 2,
+     "explain": "The model uses tool-calling to parameterize a deterministic Python library (like Astropy) and drives a headless browser to interact with the commercial booking platform.",
+     "segment": "Giving an AI Agent the Keys to Robotic Telescopes"
+    },
+    {
+     "q": "According to the analysis in the discussion, what best characterizes the level of autonomy demonstrated by the AI agent operating the robotic observatories?",
+     "options": [
+      "Closed-loop real-time control managing hardware faults and asynchronous physical states directly.",
+      "Supervisory scheduling and task selection at a human cadence, leaving hardware protection and low-level control to local systems.",
+      "Autonomous astronomical judgment that dynamically adjusts exposure times based on live sky brightness.",
+      "Complete manual operation disguised as automated script execution."
+     ],
+     "answer": 1,
+     "explain": "The agent operates as a supervisory batch scheduler picking tasks at human cadence; the observatory's own control systems handle real-time hardware faults and state-machine transitions.",
+     "segment": "Giving an AI Agent the Keys to Robotic Telescopes"
+    },
+    {
+     "q": "At sea-level atmospheric pressure, what happens to the nitrogen we inhale with every breath?",
+     "options": [
+      "It continuously builds up and accumulates in lipid tissues until it reaches toxic levels.",
+      "It undergoes heavy metabolic consumption alongside oxygen to produce carbon dioxide.",
+      "It dissolves into tissues until reaching a steady-state Henry's law saturation dictated by its partial pressure, with a net-zero migration gradient.",
+      "It actively crosses the alveolar-capillary membrane driven by a steep seventy-four kilopascal pressure gradient."
+     ],
+     "answer": 2,
+     "explain": "Venous blood and alveolar partial pressures for nitrogen are nearly identical, resulting in a zero net gradient where tissues simply sit at steady-state saturation.",
+     "segment": "What Happens to the Nitrogen and Other Gases We Breathe"
+    },
+    {
+     "q": "Why is carbon dioxide cleared so efficiently from the blood despite having a relatively small partial pressure gradient across the alveolar-capillary membrane?",
+     "options": [
+      "It is aggressively transported by hemoglobin using the Haldane and Bohr cooperative effects.",
+      "It has an extremely high solubility in liquids compared to oxygen, making the mass flux massive even with a small driving potential.",
+      "It is actively pumped across the membrane by cellular energy expenditure.",
+      "Its alveolar partial pressure drops to zero with every breath cycle."
+     ],
+     "answer": 1,
+     "explain": "Carbon dioxide is about twenty times more soluble than oxygen, meaning its high solubility compensates for a small partial pressure gradient to yield massive mass transfer.",
+     "segment": "What Happens to the Nitrogen and Other Gases We Breathe"
+    }
+   ],
+   "digest": [
+    {
+     "title": "Kids of insecure, self-absorbed (narcissistic) parents were more likely to be depressed as young adults, mostly because they were made to act as the parent's emotional partner or therapist growing up, a study of 513 students in the US and Turkey has found. Surprisingly, it was more common in the US.",
+     "subs": [
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1xl12we/kids_of_insecure_selfabsorbed_narcissistic/",
+     "link": "https://www.psypost.org/how-parental-narcissism-links-to-depression-in-adult-children-across-cultures/",
+     "line": "A study found children of narcissistic parents face higher depression risks, and users debated differing personal experiences with parental neglect.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Has there ever been an instance of a vestigial organ \"re-evolving\" into something useful?",
+     "subs": [
+      "askscience"
+     ],
+     "thread": "https://www.reddit.com/r/askscience/comments/1xl8wtq/has_there_ever_been_an_instance_of_a_vestigial/",
+     "link": "",
+     "line": "A biologist answered that vestigial organs do re-evolve into useful traits, sparking humorous comments about biology professions.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "A randomized, placebo-controlled study found that experimentally inducing brief inflammation in healthy women temporarily increased symptoms of anhedonia and reduced their motivation to socialize, highlighting a specific pathway through which immune activation may contribute to depression.",
+     "subs": [
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1xlbu83/a_randomized_placebocontrolled_study_found_that/",
+     "link": "https://www.psypost.org/inflammation-briefly-dampens-pleasure-and-the-desire-to-socialize-placebo-controlled-study-finds/",
+     "line": "A study showed temporary inflammation in women increases anhedonia and reduces socialization, while commenters criticized medical research bias.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "When we breathe in oxygen, CO₂, N₂, and other gases also enter our bodies, right? So, what happens to them?",
+     "subs": [
+      "askscience"
+     ],
+     "thread": "https://www.reddit.com/r/askscience/comments/1xll95d/when_we_breathe_in_oxygen_co₂_n₂_and_other_gases/",
+     "link": "",
+     "line": "Users discussed what happens to inhaled gases like nitrogen and carbon dioxide, noting they mostly pass through unless under pressure.",
+     "verdict": "plausible",
+     "also_in": [],
+     "in_episode": true
+    },
+    {
+     "title": "A study found a chatbot that speaks naturally is more likely to be perceived by users as intelligent and useful, even if it spouts nonsense. These language models still tend to run wild with so-called ‘hallucinations’: unreliable, dubious answers that are presented with great certainty as the truth.",
+     "subs": [
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1xlamlf/a_study_found_a_chatbot_that_speaks_naturally_is/",
+     "link": "https://www.ru.nl/en/research/research-news/fluent-language-makes-a-hallucinatory-chatbot-just-as-credible-as-a-curt-flawless-one",
+     "line": "A study found naturally speaking chatbots are seen as smarter despite hallucinating, and users compared this overconfidence to humans.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Teens whose rule-breaking and aggression persisted were roughly twice as likely to vote populist-right as adults, while teens with anxiety or depression tended to lean left and vote less, according to a new 28-year study that followed 2,215 Norwegians from age 15 all the way into their early forties",
+     "subs": [
+      "science"
+     ],
+     "thread": "https://www.reddit.com/r/science/comments/1xl1lsc/teens_whose_rulebreaking_and_aggression_persisted/",
+     "link": "https://www.psypost.org/how-adolescent-mental-health-predicts-adult-political-views/",
+     "line": "A long-term study linked persistent teen aggression to populist-right voting and anxiety to the left, which commenters found unsurprising.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Anthropic's Mythos-class model allegedly leaked on Hugging Face 💀",
+     "subs": [
+      "AI_India",
+      "ClaudeAI"
+     ],
+     "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xl47f5/anthropics_mythosclass_model_allegedly_leaked_on/",
+     "link": "",
+     "line": "A Hugging Face repository claimed to leak an internal Anthropic Mythos model, leading to skepticism and jokes among users.",
+     "verdict": "unclear",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "How's it like internally at Lilly/Novo? Are y'all swimming in cash?",
+     "subs": [
+      "biotech"
+     ],
+     "thread": "https://www.reddit.com/r/biotech/comments/1xl34rb/hows_it_like_internally_at_lillynovo_are_yall/",
+     "link": "",
+     "line": "Users discussed internal culture and hiring challenges at companies like Novo Nordisk and Lilly following GLP-1 successes.",
+     "verdict": "opinion",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Qwen3.8 27b (Q6) casually breaking reCAPTCHA",
+     "subs": [
+      "LocalLLM"
+     ],
+     "thread": "https://www.reddit.com/r/LocalLLM/comments/1xl3yxo/qwen38_27b_q6_casually_breaking_recaptcha/",
+     "link": "",
+     "line": "A user shared an instance of an LLM successfully bypassing a reCAPTCHA, sparking hopes for the end of the technology.",
+     "verdict": "plausible",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Those with significant career experience at multiple companies — Abbvie, RevMed, Lilly, Genentech, etc — have you observed major scientific competence differences between companies?",
+     "subs": [
+      "biotech"
+     ],
+     "thread": "https://www.reddit.com/r/biotech/comments/1xlfk7c/those_with_significant_career_experience_at/",
+     "link": "",
+     "line": "Industry professionals shared varied experiences regarding scientific competence and management differences across major biotech companies.",
+     "verdict": "opinion",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Neursurgery resident caught and convicted to five years for secretly recording staff in bathroom (Bodycam footage)",
+     "subs": [
+      "medicine"
+     ],
+     "thread": "https://www.reddit.com/r/medicine/comments/1xl7m5v/neursurgery_resident_caught_and_convicted_to_five/",
+     "link": "",
+     "line": "A neurosurgery resident was convicted for secretly recording staff, and commenters highlighted similar disturbing incidents elsewhere.",
+     "verdict": "confirmed",
+     "also_in": [],
+     "in_episode": false
+    },
+    {
+     "title": "Are people still pretending coding agents aren't better than humans because they've only ever used M365 Copilot?",
+     "subs": [
+      "ClaudeCode"
+     ],
+     "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xl7lhz/are_people_still_pretending_coding_agents_arent/",
+     "link": "",
+     "line": "Users debated whether organizational skepticism toward coding agents stems from people only having used basic tools like Copilot.",
+     "verdict": "opinion",
+     "also_in": [],
+     "in_episode": false
+    }
+   ],
+   "transcript": "transcripts/ai_2026-11-02_evening_1648.txt"
+  },
+  {
    "file": "ai_2026-11-02_morning_0846.mp3",
    "title": "Morning - 2 Nov: Modifying Model Weights Without Retraining",
    "label": "Monday 02 Nov morning",
@@ -2937,227 +3158,6 @@
     }
    ],
    "transcript": "transcripts/ai_2026-10-27_morning_0832.txt"
-  },
-  {
-   "file": "ai_2026-10-26_evening_1634.mp3",
-   "title": "Evening - 26 Oct: A new open model beats a benchmark leader, and what distillation really means",
-   "label": "Monday 26 Oct evening",
-   "date": "2026-10-26",
-   "edition": "evening",
-   "published": "2026-10-26T16:34:51.514166+05:30",
-   "duration": 1045,
-   "theme": "Benchmark claims for a new open model and the nuclear physics behind the universe's element pattern",
-   "writer": "nemotron-3-ultra-550b-a55b (free)",
-   "voices": "Fish Audio (free)",
-   "deep_dive": false,
-   "segments": [
-    {
-     "title": "A new open model beats a benchmark leader, and what distillation really means",
-     "category": "thread"
-    },
-    {
-     "title": "Why the universe has more even-numbered elements than odd ones",
-     "category": "concept"
-    }
-   ],
-   "quiz": [
-    {
-     "q": "What is the primary architectural limitation of the Nanbeige 4.3 model regarding long contexts?",
-     "options": [
-      "It lacks a vision encoder entirely, preventing multi-modal tasks.",
-      "It uses grouped-query attention which, while saving memory, still scales quadratically with sequence length, making the KV cache massive.",
-      "It relies on recurrent depth that makes inference latency unpredictable.",
-      "It employs sparse attention mechanisms that drop critical historical sensor readings."
-     ],
-     "answer": 1,
-     "explain": "The script notes that grouped-query attention shares memory across attention heads to save space, but it is still quadratic in sequence length, resulting in a large KV cache requirement at high token lengths.",
-     "segment": "A new open model beats a benchmark leader, and what distillation really means"
-    },
-    {
-     "q": "In the mechanical engineering analogy used for LLM distillation, what does the teacher model represent?",
-     "options": [
-      "A compact surrogate model running on a real-time PLC",
-      "An iterative solver that loops through layers until convergence",
-      "A full high-fidelity finite-element simulation run offline to generate input-output pairs",
-      "A rigid constraint that eliminates all information-theoretic capacity limits"
-     ],
-     "answer": 2,
-     "explain": "The script compares the teacher model to running a full high-fidelity model offline to generate input-output pairs across an operating envelope for a reduced-order surrogate.",
-     "segment": "A new open model beats a benchmark leader, and what distillation really means"
-    },
-    {
-     "q": "Why does an even number of protons (even atomic number) generally result in a more abundant element in the universe?",
-     "options": [
-      "Protons and neutrons pair up with opposite spins in shells, releasing energy and creating a more stable, lower-energy nuclear configuration.",
-      "Odd-numbered elements are completely destroyed during Big Bang nucleosynthesis due to unstable mass-five gaps.",
-      "Coulomb repulsion completely prevents odd-numbered protons from forming stable atomic bonds.",
-      "Stellar nucleosynthesis processes selectively destroy even-numbered nuclei through rapid beta decay."
-     ],
-     "answer": 0,
-     "explain": "The Oddo-Harkins rule and pairing effect explain that protons and neutrons pair up in shells with opposite spins, releasing energy and making even-even nuclei more stable.",
-     "segment": "Why the universe has more even-numbered elements than odd ones"
-    },
-    {
-     "q": "What mechanism causes certain elements like oxygen-sixteen or calcium-forty to show abundance spikes beyond the basic sawtooth pattern?",
-     "options": [
-      "Unbalanced lattice point defects that increase neutron capture cross-sections",
-      "Magic numbers representing complete shell closures that form deeper energy dimples",
-      "The triple-alpha process jumping straight to carbon-twelve via non-resonant states",
-      "Asymptotic giant branch stars operating far from the valley of stability"
-     ],
-     "answer": 1,
-     "explain": "Magic numbers correspond to specific counts where a nuclear shell fills completely, creating deeper dimples and abundance spikes.",
-     "segment": "Why the universe has more even-numbered elements than odd ones"
-    }
-   ],
-   "digest": [
-    {
-     "title": "Magic mushroom compound psilocybin grows new brain connections within 24 hours and repairs circuits damaged by chronic stress in mice. Scientists found the brain rewiring runs on a different pathway than the trip itself, opening the door to fast-acting depression drugs without the hallucinations.",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1xf1bbn/magic_mushroom_compound_psilocybin_grows_new/",
-     "link": "https://news.ucsc.edu/2026/10/how-psilocybin-reshapes-brain-circuits/",
-     "line": "A study shows psilocybin repairs stress-damaged brain circuits in mice without hallucinations, and medical professionals in the comments report positive real-world mental health benefits.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Nanbeige/Nanbeige4.3-33B · Hugging Face",
-     "subs": [
-      "LocalLLaMA"
-     ],
-     "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xf0kz4/nanbeigenanbeige4333b_hugging_face/",
-     "link": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B",
-     "line": "Users discussed the new Nanbeige model's benchmark scores, which allegedly outperform competitors, with community members planning to smoke test its real-world performance.",
-     "verdict": "plausible",
-     "also_in": [],
-     "in_episode": true
-    },
-    {
-     "title": "Do you and/or your coworkers get your yearly COVID boosters?",
-     "subs": [
-      "medicine"
-     ],
-     "thread": "https://www.reddit.com/r/medicine/comments/1xfjn1v/do_you_andor_your_coworkers_get_your_yearly_covid/",
-     "link": "",
-     "line": "Healthcare workers discussed whether they get yearly COVID boosters, with several medical professionals chiming in that they continue to get vaccinated annually to avoid illness.",
-     "verdict": "opinion",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "A UK modelling study estimated that reducing red and processed meat consumption by 35–50% and replacing it with vegetables and legumes could increase life expectancy by 7–9 months and prevent 3.4–4.5 million chronic disease cases over 30 years, with most benefits linked to cardiovascular health.",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1xfffua/a_uk_modelling_study_estimated_that_reducing_red/",
-     "link": "https://link.springer.com/article/10.1007/s00394-026-04093-6",
-     "line": "A UK study estimated that cutting red meat consumption could slightly increase life expectancy, prompting a mix of skepticism and jokes about giving up meat from commenters.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Oncology ADC Clinical Data Release at ESMO",
-     "subs": [
-      "biotech"
-     ],
-     "thread": "https://www.reddit.com/r/biotech/comments/1xf2hpr/oncology_adc_clinical_data_release_at_esmo/",
-     "link": "",
-     "line": "Users shared clinical data and general thoughts regarding oncology antibody-drug conjugates from an ESMO conference, acknowledging the poor overall prognosis of cancer.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "A 4B coding model that can generate 3D scenes",
-     "subs": [
-      "LocalLLaMA"
-     ],
-     "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xeuo7t/a_4b_coding_model_that_can_generate_3d_scenes/",
-     "link": "",
-     "line": "An independent developer shared a preview of a small 4B coding model capable of 3D scene generation, which users praised for its compact size and potential niche utility.",
-     "verdict": "plausible",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "The last week in cyber seems like a glimpse of the future",
-     "subs": [
-      "ArtificialInteligence",
-      "OpenAI"
-     ],
-     "thread": "https://www.reddit.com/r/ArtificialInteligence/comments/1xezaxh/the_last_week_in_cyber_seems_like_a_glimpse_of/",
-     "link": "",
-     "line": "Users discussed a severe week in cybersecurity involving multiple incidents and corporate data exposures, with some expressing cynical acceptance that breaches happen by design.",
-     "verdict": "opinion",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "guys, this is still a WEEKLY limit",
-     "subs": [
-      "codex"
-     ],
-     "thread": "https://www.reddit.com/r/codex/comments/1xfb5jb/guys_this_is_still_a_weekly_limit/",
-     "link": "",
-     "line": "Users complained about burning through weekly AI usage limits too quickly under current reset rules, expressing anxiety about future rationing and service changes.",
-     "verdict": "opinion",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "What's the reason behind this zig-zag distribution of element abundance in the universe? Does it have any explanation?",
-     "subs": [
-      "Physics"
-     ],
-     "thread": "https://www.reddit.com/r/Physics/comments/1xf13wn/whats_the_reason_behind_this_zigzag_distribution/",
-     "link": "",
-     "line": "A user asked about the zig-zag distribution of element abundance in the universe, and commenters quickly pointed out that the peaks correspond to elements with an even number of protons.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": true
-    },
-    {
-     "title": "I pointed Claude Code at the cheap Chinese head unit in my Civic. What it found in the firmware was wild.",
-     "subs": [
-      "ClaudeCode"
-     ],
-     "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xf2lur/i_pointed_claude_code_at_the_cheap_chinese_head/",
-     "link": "",
-     "line": "A user used Claude Code to analyze the firmware of a cheap Android car head unit, discovering hidden ads and preinstalled software, which commenters found thrilling.",
-     "verdict": "plausible",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "A study of biochemical records preserved in humpback whale baleen found that the 2014–2016 Pacific marine heatwave was associated with reduced metabolic activity, nutritional stress and potentially impaired reproduction, revealing how extreme ocean warming may affect whale physiology.",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1xfjl4u/a_study_of_biochemical_records_preserved_in/",
-     "link": "https://linkinghub.elsevier.com/retrieve/pii/S2589004226025599",
-     "line": "A study found that the 2014-2016 Pacific marine heatwave caused nutritional stress and reduced metabolic activity in humpback whales based on baleen records.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "So has anyone tried this?",
-     "subs": [
-      "LocalLLM"
-     ],
-     "thread": "https://www.reddit.com/r/LocalLLM/comments/1xezspt/so_has_anyone_tried_this/",
-     "link": "",
-     "line": "Users discussed real-world benchmarks using a GPU unlock kernel module on NVIDIA cards, reporting performance uplifts on local hardware configurations.",
-     "verdict": "plausible",
-     "also_in": [],
-     "in_episode": false
-    }
-   ],
-   "transcript": "transcripts/ai_2026-10-26_evening_1634.txt"
   }
  ]
 }
