@@ -8,9 +8,28 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Sun, 01 Nov 2026 12:00:34 GMT</lastBuildDate>
+<lastBuildDate>Mon, 02 Nov 2026 03:52:25 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Morning - 2 Nov: Modifying Model Weights Without Retraining</title>
+<description>Morning edition - Monday, 2 November 2026
+Surgical weight modification in local models, and the physical engineering and sovereignty limits of edge surveillance hardware.
+
+00:33  Modifying Model Weights Without Retraining
+   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1xl2tcm/heretic_20_released_model_modification_for/
+10:37  Why a Police Chief Had to Physically Unplug His City's Cameras
+   technology: https://www.reddit.com/r/technology/comments/1xl3u8r/police_chief_physically_unplugs_flock_cameras/
+   Source: https://www.tomshardware.com/tech-industry/big-tech/police-chief-physically-unplugs-flock-cameras-after-the-company-ignores-contract-cancellation-city-takes-matters-into-its-own-hands-amid-privacy-controversies
+
+Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
+Written by: Gemini 3.8 Flash · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (198 threads)</description>
+<pubDate>Mon, 02 Nov 2026 08:46:15 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-11-02_morning_0846.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-02_morning_0846.mp3" length="8960492" type="audio/mpeg"/>
+<itunes:duration>1119</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Sunday - 1 Nov: Cancer Vaccines and Immunotherapy Breakthroughs</title>
 <description>Sunday edition - Sunday, 1 November 2026
@@ -291,29 +310,6 @@ Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Di
 <guid isPermaLink="false">ai_2026-10-26_evening_1634.mp3</guid>
 <enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-26_evening_1634.mp3" length="8360684" type="audio/mpeg"/>
 <itunes:duration>1045</itunes:duration>
-<itunes:episodeType>full</itunes:episodeType>
-</item>
-<item>
-<title>Morning - 26 Oct: When Coding Agents Reverse Engineer Smart TV Firmware</title>
-<description>Morning edition - Monday, 26 October 2026
-From firmware reverse-engineering guardrails on consumer hardware to reproducing Roman nanotechnology in glass, this morning examines the boundary between automated tools, materials physics, and process control.
-
-00:47  When Coding Agents Reverse Engineer Smart TV Firmware
-   singularity: https://www.reddit.com/r/singularity/comments/1xfh36p/developer_uses_claude_to_overhaul_his_parents_tv/
-   Source: https://www.reddit.com/gallery/1xfh36p
-   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1xer30z/openai_and_anthropic_blocked_the_reverse/
-   Source: https://x.com/yacineMTB/status/2113965724435697732
-   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1xetxga/seems_like_anthropic_enabled_safeguards_around/
-09:11  How Ancient Roman Glass Changes Color
-   EverythingScience: https://www.reddit.com/r/EverythingScience/comments/1xez4vh/its_magic_scientists_rediscover_how_to_make/
-   Source: https://www.theguardian.com/science/2026/oct/25/scientists-rediscover-ancient-roman-colour-changing-glass
-
-Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
-Written by: Gemini 3.8 Flash · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (178 threads)</description>
-<pubDate>Mon, 26 Oct 2026 08:33:02 +0530</pubDate>
-<guid isPermaLink="false">ai_2026-10-26_morning_0833.mp3</guid>
-<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-26_morning_0833.mp3" length="8336876" type="audio/mpeg"/>
-<itunes:duration>1042</itunes:duration>
 <itunes:episodeType>full</itunes:episodeType>
 </item>
 </channel>
