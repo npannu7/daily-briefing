@@ -2603,7 +2603,7 @@ def check_explore(step, max_outputs=4):
         val = _num(raw.get("value"), lo)
         val = min(hi, max(lo, lo + round((val - lo) / st) * st))
         seen.add(iid)
-        inputs.append({"id": iid, "label": _txt(raw.get("label") or iid, 40), "unit": _txt(raw.get("unit"), 14),
+        inputs.append({"id": iid, "label": _txt(raw.get("label") or iid, 56), "unit": _txt(raw.get("unit"), 14),
                        "min": lo, "max": hi, "step": st, "value": val})
     if not inputs:
         raise ValueError("no sliders")
@@ -2618,7 +2618,7 @@ def check_explore(step, max_outputs=4):
             raise ValueError(f"readout {oid} uses unknown {sorted(missing)}")
         digits = _num(raw.get("digits"))
         trees[oid] = tree
-        outputs.append({"id": oid, "label": _txt(raw.get("label") or oid, 40), "unit": _txt(raw.get("unit"), 14),
+        outputs.append({"id": oid, "label": _txt(raw.get("label") or oid, 56), "unit": _txt(raw.get("unit"), 14),
                         "expr": str(raw["expr"]),
                         **({"digits": int(min(4, max(0, digits)))} if digits is not None else {})})
         seen.add(oid)
@@ -2952,6 +2952,149 @@ TEMPLATES = {
         "example": {"unit": "tokens/s", "stages": [{"label": "Memory reads", "value": 40, "max": 200},
                                                    {"label": "Compute", "value": 120, "max": 200}]}},
 }
+
+
+# Added after reviewing the episodes of 27 Oct - 3 Nov 2026: local models and hardware, agents retrying, cancer
+# vaccine headlines, mountains (isostasy), deep-sea animals and lungs, editing model weights and search by meaning.
+def _cap(t):
+    return t[:1].upper() + t[1:]
+
+
+def _t_model_memory(p):
+    lo, hi = _span(max(0.1, p["params_min"]), p["params_max"])
+    share = max(0.01, p["active_share"] / 100)
+    ins = [_inp("P", "Parameters", "billion", lo, hi, p["params_b"]),
+           _inp("bits", "Bits per weight (quantization)", "bits", 2, 16, p["bits"], 0.5)]
+    outs = [_out("size", "Memory needed (incl. ~10% extra)", "GB", "P*bits/8*1.1", 1),
+            _out("free", f"Left over on {p['device']}", "GB", f"{_c(p['vram'])}-size", 1),
+            _out("speed", "Tokens per second, at best", "", f"{_c(p['bandwidth'])}/(P*{_c(share)}*bits/8)", 0)]
+    return {"inputs": ins, "outputs": outs,
+            "view": {"kind": "memory", "size": "size", "speed": "speed", "vram": p["vram"], "device": p["device"],
+                     "model": p["model"]}}
+
+
+def _t_tries(p):
+    lo, hi = _span(max(0.01, p["p_min"]), min(99.0, p["p_max"]), 0.01)
+    kmax = max(2, int(p["k_max"]))
+    t, su = p["try_label"], p["success_label"]
+    ins = [_inp("p", f"Chance each {t} works", "%", lo, hi, p["p"]),
+           _inp("k", f"{_cap(t)}s allowed", "", 1, kmax, int(p["k"]), max(1, round(nice_step(1, kmax, 200))))]
+    outs = [_out("atleast", f"Chance {su} within those {t}s", "%", "100*(1-(1-p/100)^k)", 1),
+            _out("expected", f"{_cap(t)}s needed on average", "", "100/p", 1)]
+    if p["cost"] > 0:
+        outs.append(_out("spend", f"Average cost until {su}", p["cost_unit"], f"{_c(p['cost'])}*expected", 2))
+    return {"inputs": ins, "outputs": outs,
+            "view": {"kind": "attempts", "p": "p", "k": "k", "try": t, "success": su}}
+
+
+def _t_risk(p):
+    lo, hi = _span(max(0.01, p["base_min"]), min(99.0, p["base_max"]), 0.01)
+    tr = p["treatment"]
+    ins = [_inp("base", f"Risk without {tr}", "%", lo, hi, p["base"]),
+           _inp("rrr", "Relative reduction (the headline)", "%", 1, 95, max(1, p["rrr"]), 1)]
+    outs = [_out("treated", f"Risk with {tr}", "%", "base*(1-rrr/100)", 2),
+            _out("arr", "Absolute drop", "points", "base-treated", 2),
+            _out("nnt", f"{_cap(p['who'])} treated to spare one", "", "100/arr", 0)]
+    return {"inputs": ins, "outputs": outs,
+            "view": {"kind": "people", "base": "base", "treated": "treated", "outcome": p["outcome"], "treatment": tr,
+                     "who": p["who"]}}
+
+
+def _t_buoyancy(p):
+    rf = p["rho_fluid"]
+    hi = min(p["rho_max"], 0.995 * rf)
+    lo, hi = _span(min(max(1.0, p["rho_min"]), 0.9 * hi), hi)
+    hlo, hhi = _span(max(1e-6, p["h_min"]), p["h_max"])
+    obj, unit = p["object"], p["unit"]
+    ins = [_inp("rho", f"Density of the {obj}", "kg/m³", lo, hi, p["rho"]),
+           _inp("h", f"Total thickness of the {obj}", unit, hlo, hhi, p["h"])]
+    outs = [_out("sub", "Share hidden below the surface", "%", f"100*rho/{_c(rf)}", 1),
+            _out("above", "Sticks out above", unit, f"h*(1-rho/{_c(rf)})"),
+            _out("below", "Reaches down below", unit, f"h*rho/{_c(rf)}")]
+    return {"inputs": ins, "outputs": outs,
+            "view": {"kind": "float", "rho": "rho", "h": "h", "above": "above", "below": "below", "hmax": hhi,
+                     "object": obj, "fluid": p["fluid"], "unit": unit}}
+
+
+def _t_compression(p):
+    dmax, rho, v0, k = p["depth_max"], p["fluid_density"], p["gas_volume"], p["bulk_modulus"]
+    ins = [_inp("depth", "Depth", "m", 0, dmax, 0, nice_step(0, dmax, 200))]
+    outs = [_out("P", "Pressure", "kPa", f"101.3+{_c(rho)}*9.81*depth/1000", 0),
+            _out("gas", f"{_cap(p['gas_label'])}: volume", p["gas_unit"], f"{_c(v0)}*101.3/P", 2),
+            _out("liq", f"{_cap(p['liquid_label'])} shrinks by", "%", f"100*(P-101.3)/({_c(k)}*1000000)", 2)]
+    return {"inputs": ins, "outputs": outs,
+            "view": {"kind": "squeeze", "P": "P", "gas": "gas", "liq": "liq", "v0": v0, "depth": "depth", "dmax": dmax,
+                     "gas_label": p["gas_label"], "liquid_label": p["liquid_label"], "unit": p["gas_unit"]}}
+
+
+def _t_vectors(p):
+    a, b = p["a_label"], p["b_label"]
+    ins = [_inp("angle", f"Angle between {a} and {b}", "°", 0, 180, p["angle"], 1),
+           _inp("len", f"Length of {a}", "", 0.2, 2, p["length"], 0.05)]
+    outs = [_out("sim", "Cosine similarity", "", "cos(angle*pi/180)", 2),
+            _out("along", f"Part pointing along {b}", "", "len*cos(angle*pi/180)", 2),
+            _out("left", "Left after removing that direction", "", "len*abs(sin(angle*pi/180))", 2)]
+    return {"inputs": ins, "outputs": outs,
+            "view": {"kind": "arrows", "angle": "angle", "len": "len", "a_label": a, "b_label": b}}
+
+
+TEMPLATES.update({
+    "model_memory": {
+        "pick": "Running an AI model on your own hardware or a phone: parameters, quantization (bits per weight), "
+                "memory and speed - will it fit, and how fast will it type? Also mixture-of-experts (active share).",
+        "build": _t_model_memory, "goals": "size (GB needed), free (GB left; negative = does not fit), speed (tokens/s)",
+        "params": {"model": (_TEXT, "the model", 40), "device": (_TEXT, "your GPU", 40), "params_b": ("num", 27, 0.1, 2000),
+                   "params_min": ("num", 1, 0.1, 2000), "params_max": ("num", 120, 0.1, 2000), "bits": ("num", 16, 2, 16),
+                   "vram": ("num", 24, 1, 2048), "bandwidth": ("num", 1000, 1, 20000),
+                   "active_share": ("num", 100, 1, 100)},
+        "example": {"model": "a 32B open model", "device": "a 24 GB graphics card", "params_b": 32, "params_min": 1,
+                    "params_max": 120, "bits": 16, "vram": 24, "bandwidth": 1000, "active_share": 100}},
+    "tries": {
+        "pick": "Trying again and again until something works once: an AI agent retrying (and the bill), random or "
+                "property-based tests finding a rare bug, a vaccine with many targets, a screening repeated yearly.",
+        "build": _t_tries, "goals": "atleast (% chance of at least one success), expected (tries on average), spend",
+        "params": {"try_label": (_TEXT, "try", 24), "success_label": (_TEXT, "success", 40),
+                   "p": ("num", 10, 0.01, 99), "p_min": ("num", 1, 0.01, 99), "p_max": ("num", 50, 0.02, 99),
+                   "k": ("num", 10, 1, 1000), "k_max": ("num", 50, 2, 1000), "cost": ("num", 0, 0, 1e6),
+                   "cost_unit": (_TEXT, "$", 8)},
+        "example": {"try_label": "random test", "success_label": "the bug is caught", "p": 2, "p_min": 0.5, "p_max": 20,
+                    "k": 20, "k_max": 300}},
+    "risk": {
+        "pick": "A treatment, vaccine or habit that 'cuts the risk by X%': relative vs absolute risk and how many "
+                "people must be treated to spare one - drug trials, cancer vaccines, screening, rising disease rates.",
+        "build": _t_risk, "goals": "treated (% risk with it), arr (absolute drop, points), nnt (people treated per one spared)",
+        "params": {"outcome": (_TEXT, "get the disease", 40), "treatment": (_TEXT, "the treatment", 30),
+                   "who": (_TEXT, "people", 20), "base": ("num", 10, 0.01, 99), "base_min": ("num", 0.5, 0.01, 99),
+                   "base_max": ("num", 50, 0.02, 99), "rrr": ("num", 30, 1, 95)},
+        "example": {"outcome": "have melanoma come back", "treatment": "the vaccine", "who": "patients", "base": 40,
+                    "base_min": 1, "base_max": 60, "rrr": 44}},
+    "buoyancy": {
+        "pick": "Something floating with most of it hidden below: icebergs, ships, and continents floating on the "
+                "mantle (isostasy - why eroded mountains rise back up).",
+        "build": _t_buoyancy, "goals": "sub (% below the surface), above, below",
+        "params": {"object": (_TEXT, "iceberg", 30), "fluid": (_TEXT, "seawater", 30), "unit": (_TEXT, "m", 10),
+                   "rho": ("num", 917, 1, 30000), "rho_min": ("num", 500, 1, 30000), "rho_max": ("num", 1000, 1, 30000),
+                   "rho_fluid": ("num", 1025, 1, 30000), "h": ("num", 100, 1e-6, 1e6), "h_min": ("num", 10, 1e-6, 1e6),
+                   "h_max": ("num", 300, 1e-6, 1e6)},
+        "example": {"object": "crust", "fluid": "mantle", "unit": "km", "rho": 2700, "rho_min": 2000, "rho_max": 3200,
+                    "rho_fluid": 3300, "h": 30, "h_min": 5, "h_max": 70}},
+    "compression": {
+        "pick": "Pressure with depth squeezing gas but hardly liquid: deep-sea animals, a diver's or whale's lungs, "
+                "submarine hulls, why fluid-filled bodies survive where air spaces collapse.",
+        "build": _t_compression, "goals": "P (pressure, kPa), gas (gas volume), liq (% the liquid shrinks)",
+        "params": {"depth_max": ("num", 1000, 1, 11000), "fluid_density": ("num", 1025, 500, 1500),
+                   "gas_label": (_TEXT, "air in a lung", 30), "liquid_label": (_TEXT, "body water", 30),
+                   "gas_volume": ("num", 6, 0.001, 1e6), "gas_unit": (_TEXT, "L", 8), "bulk_modulus": ("num", 2.2, 0.01, 1000)},
+        "example": {"depth_max": 11000, "fluid_density": 1025, "gas_label": "air in a lung",
+                    "liquid_label": "a fish's body water", "gas_volume": 6, "gas_unit": "L", "bulk_modulus": 2.2}},
+    "vectors": {
+        "pick": "Meaning as directions (embeddings): search by meaning and cosine similarity, RAG retrieval, and "
+                "editing a model by removing one direction from its weights (steering, ablation).",
+        "build": _t_vectors, "goals": "sim (cosine similarity), along (part along the direction), left (what remains)",
+        "params": {"a_label": (_TEXT, "your question", 30), "b_label": (_TEXT, "a document", 30),
+                   "angle": ("num", 60, 0, 180), "length": ("num", 1, 0.2, 2)},
+        "example": {"a_label": "your question", "b_label": "a manual page", "angle": 70, "length": 1}},
+})
 
 
 def template_params(spec, given):

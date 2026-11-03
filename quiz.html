@@ -144,6 +144,11 @@ input[type=range]{width:100%;accent-color:var(--accent);height:28px;margin:2px 0
 .v-arrow{stroke:var(--accent);stroke-linecap:round} .v-arrowhead{fill:var(--accent)}
 .v-sun{fill:var(--accent)} .v-cone{fill:var(--accent)} .v-panel{fill:var(--accent)} .v-panel-edge{fill:none;stroke:var(--muted);stroke-width:1}
 .v-flow{fill:var(--blue);opacity:.45}
+.v-miss{fill:var(--bad);opacity:.25} .v-fluid{fill:var(--blue);opacity:.22} .v-sunk{fill:var(--accent);opacity:.45}
+.v-waterline{stroke:var(--blue);stroke-width:2} .v-balloon{fill:var(--accent);opacity:.8} .v-drop{fill:var(--blue);opacity:.8}
+.v-vec-a{stroke:var(--accent);stroke-width:3;fill:var(--accent)} .v-vec-b{stroke:var(--blue);stroke-width:3;fill:var(--blue)}
+.v-vec-left{stroke:var(--bad);stroke-width:2;fill:var(--bad)} .v-along{stroke:var(--accent);stroke-width:6;opacity:.35}
+.head{stroke-width:0}
 .v-prompt{font-size:16px;margin:0 0 10px} .v-prompt .blank{color:var(--muted);letter-spacing:2px} .v-prompt .filled{color:var(--accent)}
 /* ---------- words ---------- */
 .word{border-top:1px solid var(--line);padding:9px 0}
@@ -530,6 +535,106 @@ details.more summary{cursor:pointer;color:var(--muted);font-size:14px;margin:0 0
         var fh = 110 * thr / top;
         s.appendChild(svg('rect', {x:10, y:70 - fh / 2, width:300, height:fh, rx:4, class:'v-flow'}));
         txt(s, 160, 12, 'output ' + fmt(thr) + ' ' + v.unit + ': limited by ' + v.labels[low], 'vt', 'middle');
+        return s;
+      };
+    },
+    memory: function(box, step, v){
+      return function(env){
+        var s = frame(160), size = env[v.size], speed = env[v.speed], cap = v.vram, W = 200;
+        var fits = size <= cap, used = Math.min(size, cap) / cap * W, over = fits ? 0 : Math.min(96, (size - cap) / cap * W);
+        txt(s, 10, 16, v.device + ': ' + fmt(cap, 0) + ' GB', 'vt muted');
+        s.appendChild(svg('rect', {x:10, y:24, width:W, height:38, rx:6, class:'v-vessel'}));
+        s.appendChild(svg('rect', {x:12, y:26, width:Math.max(0, used - 4), height:34, rx:5, class:'v-fill'}));
+        if (over) s.appendChild(svg('rect', {x:10 + W + 2, y:26, width:over, height:34, rx:5, class:'v-bad'}));
+        txt(s, 10, 80, v.model + ' needs ' + fmt(size) + ' GB', 'vt');
+        txt(s, 10, 98, fits ? 'Fits, with ' + fmt(cap - size) + ' GB to spare' : "Doesn't fit: it would spill into much slower memory", fits ? 'vt good' : 'vt bad');
+        txt(s, 10, 130, '~' + fmt(speed, speed < 10 ? 1 : 0) + ' tokens/s', 'vt big');
+        txt(s, 10, 152, !fits ? 'at best - far less once it spills over' : speed >= 7 ? 'faster than you can read' : 'slower than you can read', 'vt muted');
+        return s;
+      };
+    },
+    attempts: function(box, step, v){
+      return function(env, values){
+        var p = values[v.p] / 100, k = Math.round(values[v.k]), R = 12, cols = Math.min(k, 60), w = Math.min(16, 260 / cols);
+        var s = frame(R * 16 + 30), got = 0;
+        for (var r = 0; r < R; r++) {
+          var first = -1;
+          for (var c = 0; c < k; c++) if (rnd('try' + r, c) < p) { first = c; break; }
+          for (var c2 = 0; c2 < cols; c2++) {
+            var cls = first >= 0 && c2 > first ? 'v-off' : c2 === first ? 'v-good' : 'v-miss';
+            s.appendChild(svg('rect', {x: 4 + c2 * w, y: 4 + r * 16, width: Math.max(1, w - 1.5), height:12, rx:2, class: cls}));
+          }
+          if (first >= 0) got++;
+          txt(s, 288, 14 + r * 16, first >= 0 ? '✓' : '✗', first >= 0 ? 'vt good' : 'vt bad');
+        }
+        txt(s, 4, R * 16 + 22, 'In ' + got + ' of ' + R + ' runs, ' + v.success + ' within ' + k + ' ' + v.try + 's' + (k > cols ? ' (first ' + cols + ' shown)' : ''), 'vt');
+        return s;
+      };
+    },
+    people: function(box, step, v){
+      return function(env, values){
+        var base = values[v.base], treated = env[v.treated], per = base >= 5 ? 100 : 1000, s = frame(per === 100 ? 190 : 205);
+        var cols = per === 100 ? 10 : 25, gap = per === 100 ? 13 : 5.5, r = per === 100 ? 4.6 : 2, top = 30;
+        var sick0 = Math.round(base / 100 * per), sick1 = Math.round(treated / 100 * per);
+        [[0, sick0, 'without ' + v.treatment], [168, sick1, 'with ' + v.treatment]].forEach(function(g, gi){
+          txt(s, g[0] + 76, 14, g[2], 'vt muted', 'middle');
+          for (var i = 0; i < per; i++) {
+            var cls = i < g[1] ? 'v-bad' : (gi === 1 && i < sick0 ? 'v-good' : 'v-off');
+            s.appendChild(svg('circle', {cx: g[0] + 10 + (i % cols) * gap, cy: top + Math.floor(i / cols) * gap, r:r, class: cls}));
+          }
+        });
+        var y = per === 100 ? 182 : 198;
+        txt(s, 4, y, 'of ' + per + ' ' + v.who + ': ' + sick0 + ' → ' + sick1 + ' ' + v.outcome + ' · ' + (sick0 - sick1) + ' spared', 'vt');
+        return s;
+      };
+    },
+    float: function(box, step, v){
+      return function(env, values){
+        var s = frame(200), h = values[v.h], px = 150 * h / v.hmax, frac = env[v.below] / h, wl = 46;
+        var above = px * (1 - frac), below = px * frac;
+        s.appendChild(svg('rect', {x:0, y:wl, width:320, height:154, class:'v-fluid'}));
+        s.appendChild(svg('rect', {x:110, y:wl - above, width:100, height:Math.max(0.5, above), rx:3, class:'v-fill'}));
+        s.appendChild(svg('rect', {x:110, y:wl, width:100, height:Math.max(0.5, below), rx:3, class:'v-sunk'}));
+        s.appendChild(svg('line', {x1:0, x2:320, y1:wl, y2:wl, class:'v-waterline'}));
+        txt(s, 220, wl - above / 2 + 4, 'above: ' + fmt(env[v.above]) + ' ' + v.unit, 'vt');
+        txt(s, 220, wl + below / 2 + 4, 'below: ' + fmt(env[v.below]) + ' ' + v.unit, 'vt');
+        txt(s, 100, wl - 6, v.object, 'vt muted', 'end'); txt(s, 8, 194, v.fluid, 'vt muted');
+        return s;
+      };
+    },
+    squeeze: function(box, step, v){
+      return function(env, values){
+        var s = frame(175), d = values[v.depth], gas = env[v.gas], liq = env[v.liq];
+        s.appendChild(svg('rect', {x:0, y:0, width:320, height:150, rx:10, class:'v-fluid', style:'opacity:' + (0.12 + 0.55 * d / v.dmax)}));
+        var rg = 52 * Math.cbrt(Math.max(0, gas) / v.v0), rl = 34 * Math.cbrt(Math.max(0, 1 - liq / 100));
+        s.appendChild(svg('circle', {cx:90, cy:78, r:Math.max(1.5, rg), class:'v-balloon'}));
+        s.appendChild(svg('circle', {cx:236, cy:78, r:rl, class:'v-drop'}));
+        txt(s, 160, 16, fmt(d) + ' m deep · ' + fmt(env[v.P] / 101.3, 1) + ' atmospheres', 'vt', 'middle');
+        txt(s, 90, 146, v.gas_label + ': ' + fmt(gas) + ' ' + v.unit, 'vt', 'middle');
+        txt(s, 236, 146, v.liquid_label + ': −' + fmt(liq, 2) + '%', 'vt', 'middle');
+        txt(s, 160, 170, 'gas halves when pressure doubles; liquid hardly gives', 'vt muted', 'middle');
+        return s;
+      };
+    },
+    arrows: function(box, step, v){
+      function arrow(s, x1, y1, x2, y2, cls){
+        s.appendChild(svg('line', {x1:x1, y1:y1, x2:x2, y2:y2, class: cls}));
+        var a = Math.atan2(y2 - y1, x2 - x1), L = 9;
+        if (Math.hypot(x2 - x1, y2 - y1) > 4) s.appendChild(svg('polygon', {class: cls + ' head', points: x2 + ',' + y2 + ' ' +
+          (x2 - L * Math.cos(a - 0.4)) + ',' + (y2 - L * Math.sin(a - 0.4)) + ' ' + (x2 - L * Math.cos(a + 0.4)) + ',' + (y2 - L * Math.sin(a + 0.4))}));
+      }
+      return function(env, values){
+        var s = frame(170), ang = values[v.angle] * Math.PI / 180, len = values[v.len], U = 62, ox = 160, oy = 140;
+        var ax = ox + len * U * Math.cos(ang), ay = oy - len * U * Math.sin(ang), fx = ox + len * U * Math.cos(ang);
+        s.appendChild(svg('line', {x1:20, x2:300, y1:oy, y2:oy, class:'axis'}));
+        arrow(s, ox, oy, ox + U * 2, oy, 'v-vec-b');
+        s.appendChild(svg('line', {x1:ax, y1:ay, x2:fx, y2:oy, class:'v-cut'}));
+        s.appendChild(svg('line', {x1:ox, y1:oy, x2:fx, y2:oy, class:'v-along'}));
+        arrow(s, fx, oy, ax, ay, 'v-vec-left');
+        arrow(s, ox, oy, ax, ay, 'v-vec-a');
+        txt(s, ox + U * 2, oy + 14, v.b_label, 'vt blue', 'end');
+        txt(s, ax + (Math.cos(ang) >= 0 ? 6 : -6), ay - 6, v.a_label, 'vt', Math.cos(ang) >= 0 ? 'start' : 'end');
+        txt(s, 160, 14, 'similarity ' + fmt(env.sim, 2) + ' · red: what is left if the blue direction is removed', 'vt muted', 'middle');
         return s;
       };
     }

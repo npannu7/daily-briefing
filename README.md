@@ -36,7 +36,7 @@ stories.
 
 Each episode's page has **puzzles**: short, Brilliant-style lessons on the episode's ideas, done on the phone
 after the drive. Each lesson is built around one hands-on **template**: a picture with sliders whose maths is
-written and tested once, in `generate_briefing.py` (`TEMPLATES`) and drawn by `quiz.html`:
+written and tested once, in `generate_briefing.py` (`TEMPLATES`, 17 so far) and drawn by `quiz.html`:
 
 | Template | The picture | Fits stories about |
 |---|---|---|
@@ -51,6 +51,16 @@ written and tested once, in `generate_briefing.py` (`TEMPLATES`) and drawn by `q
 | `flow` | particles crossing a membrane from high to low | partial pressure in the lungs, heat, batteries |
 | `inverse_square` | light spreading over a growing area | sunlight, radiation dose, signal strength, gravity |
 | `bottleneck` | pipes with the narrowest stage marked | AI inference, production lines, hospitals |
+| `model_memory` | a memory bar that overflows when the model doesn't fit | running models locally or on phones, quantization |
+| `tries` | 12 runs retrying until the first success | agents retrying (and the bill), random tests finding rare bugs |
+| `risk` | two crowds, without and with treatment, the spared marked | "cuts the risk by X%", absolute risk, number needed to treat |
+| `buoyancy` | a block floating with most of it below the waterline | icebergs, ships, mountains floating on the mantle |
+| `compression` | a balloon shrinking next to a water drop that barely does | deep-sea animals, divers' and whales' lungs, hulls |
+| `vectors` | two arrows, the projection and what is left | embeddings, search by meaning, editing model weights |
+
+The last six were added after reviewing the episodes of 27 October to 3 November 2026: about half of that
+week's segments fitted the first eleven, and these six cover most of the rest. Stories without a quantity to
+play with (policy, lawsuits) get no template, by design.
 
 How a lesson is made:
 
