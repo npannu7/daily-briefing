@@ -58,9 +58,9 @@ written and tested once, in `generate_briefing.py` (`TEMPLATES`, 17 so far) and 
 | `compression` | a balloon shrinking next to a water drop that barely does | deep-sea animals, divers' and whales' lungs, hulls |
 | `vectors` | two arrows, the projection and what is left | embeddings, search by meaning, editing model weights |
 
-The last six were added after reviewing the episodes of 27 October to 3 November 2026: about half of that
-week's segments fitted the first eleven, and these six cover most of the rest. Stories without a quantity to
-play with (policy, lawsuits) get no template, by design.
+The last six were added after reviewing the episodes of 27 October to 3 November 2026: of that week's 33
+segments, about 10 fitted the first eleven templates and about 21 fit the seventeen. Most of the rest have no
+quantity to play with (policy, lawsuits, a firmware hack) and get prediction and ordering puzzles instead.
 
 How a lesson is made:
 
