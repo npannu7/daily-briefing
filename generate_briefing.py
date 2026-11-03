@@ -26,6 +26,7 @@ Zero cost by default: Gemini free key, then OpenRouter free models, then GitHub 
 per episode where possible. OpenRouter's free daily request limit is counted, with a reserve for writing.
 """
 
+import array
 import asyncio
 import base64
 import concurrent.futures as cf
@@ -34,6 +35,7 @@ import email.utils
 import html
 import io
 import json
+import math
 import os
 import re
 import shutil
@@ -62,10 +64,15 @@ except ImportError:  # optional: trusted-source cross-check
 
 # =============================== SETTINGS ===============================
 LISTENER = "Nikhil"
-LISTENER_PROFILE = ("Nikhil has an M.Tech in mechanical engineering and works in medical-device quality. "
-                    "He codes and follows AI as a hobby, reads research papers comfortably (not in computer "
-                    "science), follows AI discussions on Reddit, and is curious about science, biology and "
-                    "technology beyond AI.")
+LISTENER_PROFILE = ("Nikhil has an M.Tech in mechanical engineering and is Head of Quality Assurance at a "
+                    "medical-device and pharmaceutical manufacturer, so quality systems, validation, GMP, audits, "
+                    "regulation and manufacturing are his daily work. He codes and follows AI as a hobby, reads "
+                    "research papers comfortably (not in computer science), follows AI discussions on Reddit, and "
+                    "is curious about science, physics, space and technology beyond AI.")
+# Terms the listener knows better than the hosts: never explained on air (explaining them sounds patronising).
+EXPERT_AREAS = ("quality assurance, validation and verification, CAPA, audits, GMP, FDA / EU MDR / ISO 13485 / "
+                "21 CFR Part 11 and other regulation, sterilisation, manufacturing, CNC machining, control "
+                "systems and mechanical engineering")
 SHOW_TITLE = "Weights & Measures"
 SHOW_DESC = ("AI and science, as they actually work. Two hosts take what Reddit's AI and science communities "
              "are discussing, check it against the evidence, and explain it for curious engineers - two "
@@ -84,12 +91,14 @@ HOST_B = {"name": "Laura", "gemini": "Gacrux", "edge": "en-US-JennyNeural",
                      "humour, asks what was actually measured and how, explains mechanisms patiently - but is "
                      "not cynical, and says so when something really is new"}
 
-# Episode length. Fish voices read about 155 words a minute. A weekday episode is a few topics of about seven
-# minutes each; Sunday makes two long deep dives instead (no commute), sized to the free daily budget.
+# Episode length. Measured on the published episodes (Oct-Nov 2026): about 160 spoken words a minute including
+# pauses. A weekday episode is a few topics of seven to nine minutes each; Sunday makes two long deep dives
+# instead (no commute), sized to the free daily budget.
 EPISODE_MINUTES = float(os.getenv("EPISODE_MINUTES") or 20)
 SUNDAY_MINUTES = float(os.getenv("SUNDAY_MINUTES") or 45)
-WORDS_PER_MIN = 155
-SEGMENT_WORDS = 1150          # one topic, about seven minutes
+WORDS_PER_MIN = 160
+SEGMENT_WORDS = 1150          # one topic, about seven minutes (decides how many topics fit)
+MAX_SEGMENT_WORDS = 1500      # longest topic a model writes reliably in one go
 FACT_CHECK = os.getenv("FACT_CHECK", "true").strip().lower() not in ("0", "false", "no")
 MIN_AUDIO_SEC = 20 * 60
 RETENTION_DAYS = 7
@@ -114,18 +123,26 @@ WRITER_CHAIN = os.getenv("WRITER_MODELS") or (
     "gemini:gemini-3.8-flash,gemini:gemini-3.7-flash,openrouter:free,gemini:gemini-3.5-flash-lite,github:auto")
 HELPER_CHAIN = os.getenv("HELPER_MODELS") or (
     "gemini:gemini-3.5-flash-lite,gemini:gemini-3.1-flash-lite,openrouter:free,github:auto")
-# OpenRouter free models (checked 12 Oct 2026). "openrouter:free" in a chain expands to these, then to any other
+# OpenRouter free models (checked 3 Nov 2026). "openrouter:free" in a chain expands to these, then to any other
 # free model OpenRouter lists. OPENROUTER_FREE_MODELS replaces both lists.
-FREE_WRITERS = ["nvidia/nemotron-3-ultra-550b-a55b:free", "nvidia/nemotron-3-super-120b-a12b:free",
+# Nemotron 3 Super lost its free version on 2 Nov 2026 (HTTP 404 "unavailable for free"); Nemotron 3.5 Super VL
+# (same family, 120B / 12B active) takes its place.
+FREE_WRITERS = ["nvidia/nemotron-3-ultra-550b-a55b:free", "nvidia/nemotron-3.5-super-vl:free",
                 "google/gemma-4-31b-it:free"]
-FREE_HELPERS = ["nvidia/nemotron-3-super-120b-a12b:free", "google/gemma-4-31b-it:free",
+FREE_HELPERS = ["nvidia/nemotron-3.5-super-vl:free", "google/gemma-4-31b-it:free",
                 "google/gemma-4-26b-a4b-it:free"]
 # Free models without a JSON mode: asked for JSON in the prompt only.
 NO_JSON_MODE = ("nemotron-3-ultra", "nemotron-3.5-lightning", "nano-omni", "inkling", "laguna", "north-mini", "ling-")
+# Never picked automatically from OpenRouter's free list: coding-only, guardrail, tiny, audio or retiring models.
+NOT_FOR_WRITING = r"safety|lyria|code|flint|inkling|liquid|lfm|omni|span-|heygen|fish-audio"
 # Scoring: each thread is judged on its own by these models (free chat models answer the scoring questions as
-# JSON; dedicated paid decision models use OpenRouter's Decisions API). Threads they miss are scored in a batch.
+# JSON; Decisions-API models answer them directly). Threads they miss are scored in one batched call.
+# Nemotron 3.5 Lightning (3B active) is NVIDIA's high-throughput model, built for many small requests.
 DECISION_MODELS = [m.strip() for m in (os.getenv("DECISION_MODELS") or
-                   "nvidia/nemotron-3-super-120b-a12b:free,google/gemma-4-31b-it:free").split(",") if m.strip()]
+                   "nvidia/nemotron-3.5-lightning:free,nvidia/nemotron-3.5-super-vl:free").split(",") if m.strip()]
+# Models that only answer through OpenRouter's Decisions API (they do not generate text), even when free,
+# e.g. DECISION_MODELS=respan/span-01-lite:free
+DECISIONS_ONLY = ("respan/",)
 SCORING = (os.getenv("SCORING") or "auto").lower()      # auto | batch | decisions
 OPENROUTER_DAILY_USD = float(os.getenv("OPENROUTER_DAILY_USD") or 0)   # spend cap for paid models
 # OpenRouter's free models (text and Fish voices) share one daily request limit that resets at 00:00 UTC:
@@ -141,7 +158,16 @@ TTS_CHUNK_WORDS = int(os.getenv("TTS_CHUNK_WORDS") or 700)
 TTS_MAX_CHUNK_WORDS = int(os.getenv("TTS_MAX_CHUNK_WORDS") or 1100)
 FISH_MODEL = os.getenv("FISH_MODEL") or "fish-audio/s2.1-pro-free:free"
 # Playback speed per host after Fish renders it (pitch unchanged): Sarah a touch brisker so she sounds awake.
-FISH_TEMPO = [float(os.getenv("FISH_TEMPO_A") or 1.08), float(os.getenv("FISH_TEMPO_B") or 1.0)]
+# Pace feedback ("too fast" / "too slow") moves both a few percent from here (see apply_pace).
+FISH_TEMPO_BASE = [float(os.getenv("FISH_TEMPO_A") or 1.08), float(os.getenv("FISH_TEMPO_B") or 1.0)]
+FISH_TEMPO = list(FISH_TEMPO_BASE)
+# Fish requests in flight at once. Starts stay at least 3.2 s apart (free models: 20 requests a minute), so this
+# only overlaps the seconds each request spends rendering. 1 = one turn at a time, as before.
+FISH_WORKERS = max(1, int(os.getenv("FISH_WORKERS") or 3))
+# Sound: podcasts are mastered to about -16 LUFS (Apple's guideline). The raw Fish audio measured -26.5 LUFS,
+# ten decibels quieter than other shows. "off" keeps the raw level.
+TARGET_LUFS = os.getenv("TARGET_LUFS") or "-16"
+SEGMENT_CHIME = os.getenv("SEGMENT_CHIME", "true").strip().lower() not in ("0", "false", "no", "off")
 # Fish Audio library voices (via OpenRouter's free Fish model): Sarah, Laura
 FISH_VOICES = [os.getenv("FISH_VOICE_A") or "933563129e564b19a115bedd57b7406a",
                os.getenv("FISH_VOICE_B") or "e3cd384158934cc9a01029cd7d278634"]
@@ -216,6 +242,28 @@ USED_BY = Counter()   # which writer produced the script
 FREE_LOG = []         # [utc_iso, ...] OpenRouter free-model requests (text and Fish) - one shared daily limit
 FREE_DAY_OUT = [""]   # UTC date on which OpenRouter said the free daily limit was used up
 WRITER_PICK = []      # the writer that last succeeded; later writing tries it first so the hosts sound the same
+FAIL_STREAK = Counter()   # failed calls in a row per model; a model that keeps failing is dropped for the run
+_FAIL_LOCK = threading.Lock()
+
+
+def model_failed(model, why, limit):
+    """Count a failed call. After `limit` in a row the model is skipped for the rest of this run, so an
+    overloaded or rate-limited model costs a few minutes once instead of on every later call."""
+    with _FAIL_LOCK:
+        FAIL_STREAK[model] += 1
+        n = FAIL_STREAK[model]
+        drop = n >= limit and model not in DEAD
+        if drop:
+            DEAD.add(model)
+    if n == 1:
+        log(f"    {model}: failed ({why[:160]})")
+    if drop:
+        log(f"    {model}: {n} failures in a row -> skipping it for the rest of this run")
+
+
+def model_ok(model):
+    with _FAIL_LOCK:
+        FAIL_STREAK[model] = 0
 
 
 def utc_day():
@@ -298,7 +346,7 @@ def listed_free():
     try:
         data = requests.get("https://openrouter.ai/api/v1/models", headers=UA, timeout=30).json()["data"]
         free = [m for m in data if m.get("id", "").endswith(":free") and (m.get("context_length") or 0) >= 64000
-                and not re.search(r"safety|lyria|code|inkling|liquid|omni", m["id"])
+                and not re.search(NOT_FOR_WRITING, m["id"])
                 and "text" in ((m.get("architecture") or {}).get("output_modalities") or ["text"])]
         pref = ["nemotron", "gemma", "deepseek", "qwen", "kimi", "glm", "dots", "apodex", "llama", "mistral"]
 
@@ -372,9 +420,12 @@ def github_models():
         return _GHM
     _GHM = []
     try:
-        data = requests.get("https://models.github.ai/catalog/models", timeout=30,
-                            headers={**UA, "Authorization": f"Bearer {GITHUB_TOKEN}",
-                                     "Accept": "application/vnd.github+json"}).json()
+        r = requests.get("https://models.github.ai/catalog/models", timeout=30,
+                         headers={**UA, "Authorization": f"Bearer {GITHUB_TOKEN}",
+                                  "Accept": "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28"})
+        if r.status_code != 200 or "json" not in r.headers.get("content-type", ""):
+            raise ValueError(f"HTTP {r.status_code}, {r.headers.get('content-type', '?')}: {r.text[:100]!r}")
+        data = r.json()
         items = data if isinstance(data, list) else (data.get("models") or data.get("data") or [])
         text = [m for m in items if isinstance(m, dict) and m.get("id")
                 and "text" in (m.get("supported_output_modalities") or ["text"])
@@ -438,11 +489,21 @@ def llm(prompt, json_mode=False, min_words=0, label="", role="writer"):
             try:
                 status, text, err = PROVIDERS[prov](model, prompt, json_mode, role)
             except (requests.RequestException, ValueError, KeyError) as e:
+                if isinstance(e, requests.Timeout) or "timed out" in str(e).lower():
+                    # An overloaded model that went silent for minutes (a streamed reply reports this as a
+                    # connection error): try the next model instead of waiting another three minutes.
+                    log(f"    {model}: no reply in time -> next")
+                    errors.append(f"{model}: timeout")
+                    model_failed(model, "timeout", 2)
+                    break
                 log(f"    {model}: connection problem ({str(e)[:120]})")
                 errors.append(f"{model}: connection")
+                if attempt == 2:
+                    model_failed(model, "connection", 2)
                 time.sleep(8)
                 continue
             if status == 200:
+                model_ok(model)
                 text = fix_text(text)
                 n = words(text)
                 log(f"    {label} {prov}:{model}: {n} words in {time.time() - t0:.0f}s")
@@ -473,6 +534,8 @@ def llm(prompt, json_mode=False, min_words=0, label="", role="writer"):
                 continue
             log(f"    {model}: HTTP {status} -> next | {err[:140]}")
             errors.append(f"{model}: HTTP {status}")
+            if status != 409:   # 409 = free requests kept for writing, not the model's fault
+                model_failed(model, f"HTTP {status}", 2)
             break
     raise RuntimeError(f"All models failed ({label}) -> " + " | ".join(errors[-8:]))
 
@@ -526,6 +589,8 @@ Return JSON only, with one key per question:
 - type "choice": one of the criteria keys
 Example: {{"relevant": 0.9, "substance": 2, "level": "technical", "needs_check": 0.7, "hype": 0.1}}"""
     for attempt in (1, 2):
+        if model in DEAD:
+            return None
         free_pace()
         try:
             status, text, err = _openrouter(model, prompt, True, "helper")
@@ -535,6 +600,7 @@ Example: {{"relevant": 0.9, "substance": 2, "level": "technical", "needs_check":
             try:
                 a = parse_json(text)
             except (ValueError, TypeError):
+                model_failed(model, "reply was not JSON", 6)
                 return None
             out = {}
             for k, q in questions.items():
@@ -547,14 +613,64 @@ Example: {{"relevant": 0.9, "substance": 2, "level": "technical", "needs_check":
                               {"choice": str(v) if str(v) in q["criteria"] else next(iter(q["criteria"]))})
                 except (TypeError, ValueError):
                     continue
+            if out:
+                model_ok(model)
+            else:
+                model_failed(model, "reply had none of the answers", 6)
             return out or None
-        if status in (429, 503) and FREE_DAY_OUT[0] != utc_day() and attempt == 1:
+        if status == 409:   # free requests kept for writing: not the model's fault
+            return None
+        if status in (400, 401, 402, 403, 404):
+            if model not in DEAD:
+                log(f"    decision model {model}: HTTP {status} -> skipping | {err[:160]}")
+            DEAD.add(model)
+            return None
+        if status in (429, 503) and FREE_DAY_OUT[0] != utc_day() and attempt == 1 and FAIL_STREAK[model] < 3:
             time.sleep(20)   # per-minute limit; wait and try once more
             continue
-        if status in (400, 401, 402, 403, 404):
-            log(f"    decision model {model}: HTTP {status} -> skipping | {err[:160]}")
-            DEAD.add(model)
+        # Before this check, a rate-limited model failed silently on every thread: 8 minutes, 0 of 70 scored.
+        model_failed(model, f"HTTP {status} {err[:120]}", 6)
         return None
+    return None
+
+
+def decide_api(model, state_obj, questions):
+    """OpenRouter's Decisions API: typed answers with calibrated probabilities (no text generation)."""
+    free = model.endswith(":free")
+    if free:
+        free_pace()
+    try:
+        r = requests.post("https://openrouter.ai/api/alpha/decisions", timeout=(15, 90),
+                          json={"model": model, "state": state_obj, "questions": questions},
+                          headers={"Authorization": f"Bearer {OPENROUTER_API_KEY}",
+                                   "HTTP-Referer": PAGES_URL, "X-Title": SHOW_TITLE})
+    except requests.RequestException as e:
+        model_failed(model, f"connection: {e}", 6)
+        return None
+    if free:
+        note_free()
+    if r.status_code == 200:
+        data = r.json()
+        cost = float((data.get("usage") or {}).get("cost") or 0)
+        if cost:
+            SPEND.append([dt.datetime.now(TZ).isoformat(), cost])
+            if OPENROUTER_DAILY_USD <= 0 and model not in DEAD:
+                log(f"    decision model {model} charges money -> dropped (OPENROUTER_DAILY_USD is 0)")
+                DEAD.add(model)
+        answers = data.get("answers")
+        if isinstance(answers, dict) and answers:
+            model_ok(model)
+            return answers
+        model_failed(model, "no answers in the reply", 6)
+        return None
+    if free and free_limit_hit(r.status_code, r.text[:300]):
+        return None
+    if r.status_code in (400, 401, 402, 403, 404):
+        if model not in DEAD:
+            log(f"    decision model {model}: HTTP {r.status_code} -> skipping | {r.text[:160]}")
+        DEAD.add(model)
+        return None
+    model_failed(model, f"HTTP {r.status_code} {r.text[:120]}", 6)
     return None
 
 
@@ -566,34 +682,16 @@ def decide(state_obj, questions):
         if model in DEAD:
             continue
         free = model.endswith(":free")
-        if free:
-            if not free_allowed(1, "helper"):
-                return None
+        if free and not free_allowed(1, "helper"):
+            return None
+        if free and not model.startswith(DECISIONS_ONLY):
             ans = decide_chat(model, state_obj, questions)
-            if ans:
-                return ans
+        elif not free and OPENROUTER_DAILY_USD > 0 and spent_today() >= OPENROUTER_DAILY_USD:
             continue
-        if OPENROUTER_DAILY_USD > 0 and spent_today() >= OPENROUTER_DAILY_USD:
-            continue
-        try:
-            r = requests.post("https://openrouter.ai/api/alpha/decisions", timeout=(15, 90),
-                              json={"model": model, "state": state_obj, "questions": questions},
-                              headers={"Authorization": f"Bearer {OPENROUTER_API_KEY}",
-                                       "HTTP-Referer": PAGES_URL, "X-Title": SHOW_TITLE})
-        except requests.RequestException:
-            continue
-        if r.status_code == 200:
-            data = r.json()
-            cost = float((data.get("usage") or {}).get("cost") or 0)
-            if cost:
-                SPEND.append([dt.datetime.now(TZ).isoformat(), cost])
-                if OPENROUTER_DAILY_USD <= 0 and model not in DEAD:
-                    log(f"    decision model {model} charges money -> dropped (OPENROUTER_DAILY_USD is 0)")
-                    DEAD.add(model)
-            return data.get("answers")
-        if r.status_code in (400, 401, 402, 403, 404):
-            log(f"    decision model {model}: HTTP {r.status_code} -> skipping | {r.text[:160]}")
-            DEAD.add(model)
+        else:
+            ans = decide_api(model, state_obj, questions)
+        if ans:
+            return ans
     return None
 
 
@@ -643,10 +741,56 @@ def ingest_feedback(state):
     return done
 
 
-def pace_shift(state):
-    recent = [f.get("ratings", {}).get("pace") for f in state["feedback"][-6:]]
-    fast, slow = recent.count("too fast"), recent.count("too slow")
-    return 1 if slow > fast else -1 if fast > slow else 0
+PACE_STEP, PACE_LIMIT = 0.04, 0.12
+
+
+def update_pace(state, new_feedback):
+    """Each new 'too fast' / 'too slow' vote moves the speaking speed 4% (at most 12% either way); 'right'
+    keeps it. The setting is remembered, so one vote changes the pace once instead of for weeks.
+    Returns the change made by this run's feedback (0 if none)."""
+    before = float(state.get("pace_adjust", 0.0))
+    adj = before
+    for f in new_feedback:
+        vote = (f.get("ratings") or {}).get("pace")
+        adj += -PACE_STEP if vote == "too fast" else PACE_STEP if vote == "too slow" else 0
+    adj = round(max(-PACE_LIMIT, min(PACE_LIMIT, adj)), 3)
+    state["pace_adjust"] = adj
+    return round(adj - before, 3)
+
+
+def apply_pace(adj):
+    """The same pace setting for every voice engine (before, Fish - the voice actually used - ignored it)."""
+    global PACE_NOTE, EDGE_RATE
+    FISH_TEMPO[:] = [t * (1 + adj) for t in FISH_TEMPO_BASE]
+    EDGE_RATE = f"{round(adj * 100):+d}%"
+    PACE_NOTE = "; slightly slower, unhurried pace" if adj <= -0.02 else "; slightly brisker pace" if adj >= 0.02 else ""
+
+
+def new_feedback_text(new_feedback, pace_change):
+    """What the listener said since the last episode - the only feedback the greeting may mention."""
+    if not new_feedback and not pace_change:
+        return ("NEW FEEDBACK SINCE THE LAST EPISODE: none. Do NOT mention feedback, past requests or the pace in "
+                "the greeting (the listener has already heard those acknowledged).")
+    out = ["NEW FEEDBACK SINCE THE LAST EPISODE (acknowledge it once, in one sentence):"]
+    for f in new_feedback:
+        r = f.get("ratings") or {}
+        bits = [f"{k}: {r[k]}" for k in ("overall", "depth", "pace", "voices") if r.get(k)]
+        more = [s for s, v in (f.get("segments") or {}).items() if v == "more"]
+        less = [s for s, v in (f.get("segments") or {}).items() if v == "less"]
+        line = f"- {f.get('date', '')} {f.get('edition', '')}: " + ", ".join(bits)
+        if more:
+            line += f"; wanted more like: {'; '.join(more)}"
+        if less:
+            line += f"; wanted less like: {'; '.join(less)}"
+        if f.get("comment"):
+            line += f"; comment: {f['comment'][:300]}"
+        out.append(line)
+    if pace_change:
+        out.append(f"- Because of it, the voices are now about {abs(round(pace_change * 100))}% "
+                   f"{'slower' if pace_change < 0 else 'faster'} than in the last episode.")
+    else:
+        out.append("- The speaking pace was NOT changed: do not claim it was.")
+    return "\n".join(out)
 
 
 def feedback_text(state, short=False):
@@ -669,7 +813,7 @@ def feedback_text(state, short=False):
         m = meta.get(f.get("episode"))
         if m and r.get("overall"):
             by_writer.append(f"{m.get('writer', '?')}/{m.get('voices', '?')}: {r['overall']} stars")
-    out = [f"LISTENER FEEDBACK from {LISTENER} (most recent last; follow it):"]
+    out = [f"LISTENER FEEDBACK from {LISTENER} (most recent last). Follow it quietly - do not talk about it on air:"]
     if depth:
         out.append(f"- Depth votes: {', '.join(depth[-6:])}")
     if pace:
@@ -1448,9 +1592,12 @@ def personal_rank(stories, state):
 # =============================== 4. PLAN ===============================
 EDITORIAL = f"""EDITORIAL STANDARD:
 - The listener: {LISTENER_PROFILE}
-- Pitch: a smart engineer outside computer science. Define every CS/ML term the first time, in plain words,
+- Pitch: a smart engineer outside computer science. Define each CS/ML term once, the first time, in plain words,
   ideally with an analogy from mechanical engineering, control systems, optimisation, materials, or
   manufacturing quality. One idea at a time; never stack jargon. Prefer the mechanism over the buzzword.
+- {LISTENER} is the expert in: {EXPERT_AREAS}. Never explain those terms to him (no "validation - that's
+  the process of proving..."); use them the way a colleague would, and as the analogies. Explaining his own
+  field to him sounds patronising.
 - Reddit is the starting point, not the authority. Posts and comments are often wrong, exaggerated or
   missing context. Separate: what the post claims / what the community argues / what the evidence shows.
 - Paraphrase commenters; never use usernames ("one commenter who runs models at home argued...").
@@ -1483,7 +1630,8 @@ def episode_shape(minutes):
     """(number of topics, words per topic) for an episode of this length."""
     body = max(SEGMENT_WORDS, int(minutes * WORDS_PER_MIN) - 250)   # 250 words for the opening and close
     n = max(1, body // SEGMENT_WORDS)
-    return n, min(1300, body // n)
+    # The old 1300-word cap made "20-minute" episodes about 18 minutes (2 x 1300 words + bookends).
+    return n, min(MAX_SEGMENT_WORDS, body // n)
 
 
 def plan_regular(stories, edition, state, minutes=EPISODE_MINUTES):
@@ -1689,7 +1837,9 @@ FORMAT - every line starts with a speaker name and a colon:
 {A}: ...
 {B}: ...
 RULES: real conversation with short and longer turns; at most ONE number per turn (a listener in a car cannot
-hold more), and round it ("about thirty thousand"); explain every technical term in plain words; no greeting or sign-off;
+hold more), and round it ("about thirty thousand"); explain each computer-science or AI term once, briefly, in
+plain words - and never explain quality, regulatory, manufacturing or engineering terms ({LISTENER} knows them);
+do not chain several definitions in one turn; no greeting or sign-off; do not mention listener feedback;
 {"start directly with the story" if position == 1 else "open with a one-line transition"}; no markdown,
 stage directions, URLs or usernames; write numbers and abbreviations as a presenter would say them."""
     text, model = llm(prompt, min_words=150, label=f"segment {position}")
@@ -1717,8 +1867,10 @@ Find:
 1. Numbers, names, dates, quotes or factual claims NOT supported by the sources (well-known background facts
    are fine). Also claims stated as fact that the sources only report as a Reddit opinion.
 2. Turns with more than one number.
-3. Technical terms used without a plain-words explanation.
-4. Anything confusing to hear (lists of figures, long chains of acronyms).
+3. Computer-science or AI terms used without a short plain-words explanation the first time. Do NOT flag
+   terms from the listener's own field ({EXPERT_AREAS}); instead flag any place that EXPLAINS such a term
+   to him - he is an expert and it sounds patronising.
+4. Anything confusing to hear (lists of figures, long chains of acronyms, several definitions in one turn).
 Return JSON only:
 {{"problems": [{{"quote": "<a few words from the script>", "issue": "<what is wrong>", "fix": "<how to fix>"}}]}}
 Return an empty list if the segment is accurate and clear."""
@@ -1735,8 +1887,9 @@ Return an empty list if the segment is accurate and clear."""
     fixes = "\n".join(f"- \"{p.get('quote', '')}\": {p.get('issue', '')} -> {p.get('fix', '')}" for p in problems[:25])
     prompt = f"""Revise this segment of the podcast "{SHOW_TITLE}". Keep the hosts, their voices and energy, the flow
 and the format (every line "{A}: ..." or "{B}: ..."). Fix every problem listed. Remove or soften any claim the
-sources do not support (say it is unclear or only claimed on Reddit). At most ONE number per turn. Explain every
-technical term in plain words. Length: about {target} words (now {n}).
+sources do not support (say it is unclear or only claimed on Reddit). At most ONE number per turn. Explain each
+computer-science or AI term once in plain words; never explain {LISTENER}'s own field ({EXPERT_AREAS}).
+Length: about {target} words (now {n}).
 
 PROBLEMS:
 {fixes or '- none: only bring it to the right length'}
@@ -1794,13 +1947,22 @@ def turns_words(turns):
     return sum(words(t) for _, t in turns)
 
 
-def write_bookends(state, segments_written, theme, edition, now, deep_dive, source_note):
+def next_episode(edition, now):
+    """When the listener hears the show next. There are two episodes every day, weekends included."""
+    if edition == "morning":
+        return "this evening" + (" (Sunday's long science edition)" if now.weekday() == 6 else "")
+    return "tomorrow morning" + (" (Sunday's long AI edition)" if now.weekday() == 5 else "")
+
+
+def write_bookends(state, segments_written, theme, edition, now, deep_dive, source_note, fresh_feedback=""):
     outline = "\n".join(f"- {s['title']}: {s.get('angle', '')}" for s, _ in segments_written)
     prompt = f"""You write the opening and closing for "{SHOW_TITLE}" (hosts {A} and {B}).
 The listener is {LISTENER}; {'it is Sunday: a long magazine episode for a long drive' if now.weekday() == 6 else 'he listens on a short commute'}.
 Today is {now:%A, %d %B %Y}, {edition} edition.
 {'This episode is a DEEP DIVE: ' + theme if deep_dive else 'Theme: ' + theme}
 Where today's material came from: {source_note}
+The next episode is {next_episode(edition, now)}. The show comes out twice EVERY day, weekends included: never
+say "see you Monday", "that's the week" or "have a great weekend".
 
 TODAY'S SEGMENTS:
 {outline}
@@ -1808,7 +1970,7 @@ TODAY'S SEGMENTS:
 PAST EPISODES (most recent last):
 {memory_text(state)}
 
-{feedback_text(state)}
+{fresh_feedback or new_feedback_text([], 0)}
 
 Return JSON only:
 {{"greeting": [["{A}", "..."], ["{B}", "..."], ...],
@@ -1816,11 +1978,11 @@ Return JSON only:
   "summary": "<3-4 sentence factual summary of today's episode for future episodes>",
   "threads": ["<story to watch for follow-ups>", "..."]}}
 
-Greeting: 60-110 words, 3-5 turns, upbeat ({A} especially). Greet {LISTENER} by name naturally. Link to past
-episodes only where it truly connects. Preview each segment in ONE plain sentence - no lists of numbers or names.
-If there is recent feedback, say in one sentence what changed because of it.
+Greeting: 60-110 words, 3-5 turns, upbeat ({A} especially). Greet {LISTENER} by name naturally; the hosts do not
+introduce themselves by name. Link to past episodes only where it truly connects. Preview each segment in ONE
+plain sentence - no lists of numbers or names. Mention feedback only as the NEW FEEDBACK section above allows.
 {'For a deep dive, say why this topic is ready now (it built up over the week).' if deep_dive else ''}
-Vary the wording every time. Closing: 2-3 short turns, 30-60 words, no hype."""
+Vary the wording every time. Closing: 2-3 short turns, 30-60 words, no hype; say when the next episode is."""
     text, _ = llm(prompt, json_mode=True, label="greeting")
     data = as_obj(parse_json(text), "greeting")
 
@@ -1995,31 +2157,50 @@ def fish_reference(spk):
     return _REFS[spk]
 
 
-def fish_tts_chunk(turns):
-    voices = fish_voices()
-    pcm = bytearray()
-    for spk, text in turns:
-        body = {"model": FISH_MODEL, "input": text, "response_format": "mp3"}
-        if len(voices) == 2:
-            body["voice"] = {A: voices[0], B: voices[1]}[spk]
-        else:
-            body["input_references"] = fish_reference(spk)
-        for attempt in range(1, 4):
+def fish_turn(spk, text, voices):
+    """One spoken turn from Fish Audio (OpenRouter free) as PCM."""
+    body = {"model": FISH_MODEL, "input": text, "response_format": "mp3"}
+    if len(voices) == 2:
+        body["voice"] = {A: voices[0], B: voices[1]}[spk]
+    else:
+        body["input_references"] = fish_reference(spk)
+    for attempt in range(1, 4):
+        if FREE_DAY_OUT[0] == utc_day():
+            raise RuntimeError("OpenRouter free daily limit reached")
+        free_pace()   # request starts stay 3.2 s apart even with several in flight (20 a minute)
+        try:
             r = requests.post("https://openrouter.ai/api/v1/audio/speech", timeout=(20, 180), json=body,
                               headers={"Authorization": f"Bearer {OPENROUTER_API_KEY}",
                                        "HTTP-Referer": PAGES_URL, "X-Title": SHOW_TITLE})
-            note_free()
-            if r.status_code == 200 and r.content:
-                pcm += ffmpeg_to_pcm(r.content, FISH_TEMPO[0 if spk == A else 1]) + silence(0.25)
-                break
-            if free_limit_hit(r.status_code, r.text[:300]):
-                raise RuntimeError("OpenRouter free daily limit reached")
-            if r.status_code in (429, 500, 502, 503, 504) and attempt < 3:
-                time.sleep(30 if r.status_code == 429 else 10 * attempt)
+        except requests.RequestException as e:
+            if attempt < 3:
+                time.sleep(10 * attempt)
                 continue
-            raise RuntimeError(f"Fish Audio HTTP {r.status_code}: {r.text[:160]}")
-        time.sleep(3.2)  # free-model limit: 20 requests/minute
-    return bytes(pcm)
+            raise RuntimeError(f"Fish Audio connection failed: {str(e)[:120]}")
+        note_free()
+        if r.status_code == 200 and r.content:
+            return ffmpeg_to_pcm(r.content, FISH_TEMPO[0 if spk == A else 1])
+        if free_limit_hit(r.status_code, r.text[:300]):
+            raise RuntimeError("OpenRouter free daily limit reached")
+        if r.status_code in (429, 500, 502, 503, 504) and attempt < 3:
+            time.sleep(30 if r.status_code == 429 else 10 * attempt)
+            continue
+        raise RuntimeError(f"Fish Audio HTTP {r.status_code}: {r.text[:160]}")
+    raise RuntimeError("Fish Audio failed")
+
+
+def fish_tts_turns(turns):
+    """All turns of a chunk, a few requests in flight at once (one at a time took 12-15 minutes an episode)."""
+    voices = fish_voices()
+    if len(voices) != 2:
+        for spk in (A, B):
+            fish_reference(spk)   # make the reference clips once, before the parallel requests
+    ex = cf.ThreadPoolExecutor(max_workers=FISH_WORKERS)
+    try:
+        futures = [ex.submit(fish_turn, spk, text, voices) for spk, text in turns]
+        return [f.result() for f in futures]
+    finally:
+        ex.shutdown(wait=True, cancel_futures=True)   # after a failure, do not spend requests on the rest
 
 
 async def _edge_turn(text, voice):
@@ -2038,15 +2219,56 @@ async def _edge_turn(text, voice):
     raise RuntimeError("edge-tts failed repeatedly")
 
 
-def edge_tts_chunk(turns):
+def edge_tts_turns(turns):
     voice = {A: HOST_A["edge"], B: HOST_B["edge"]}
-    pcm = bytearray()
-    for spk, text in turns:
-        pcm += ffmpeg_to_pcm(asyncio.run(_edge_turn(text, voice[spk]))) + silence(0.25)
-    return bytes(pcm)
+    return [ffmpeg_to_pcm(asyncio.run(_edge_turn(text, voice[spk]))) for spk, text in turns]
 
 
 ENGINE_NAMES = {"gemini": "Gemini TTS", "fish": "Fish Audio (free)", "edge": "Edge TTS"}
+TURN_GAP = 0.25
+TURN_RMS = 2000.0   # about -24 dBFS: every turn is brought near this level, so the two hosts sound equally loud
+
+
+def level_match(pcm):
+    """Bring one spoken turn to a common level (at most 6 dB up or down, never clipping). The two Fish voices
+    differed by about 3 dB, so the car volume had to be right for one host or the other."""
+    a = array.array("h")
+    a.frombytes(pcm[:len(pcm) // 2 * 2])
+    if sys.byteorder != "little":
+        a.byteswap()
+    if len(a) < RATE:   # under a second ("Wait, really?"): leave it as spoken
+        return pcm
+    rms = math.sqrt(sum(x * x for x in a) / len(a))
+    if rms < 50:
+        return pcm
+    peak = max(max(a), -min(a), 1)
+    gain = min(max(0.5, min(2.0, TURN_RMS / rms)), 32000 / peak)
+    if abs(gain - 1) < 0.06:
+        return pcm
+    out = array.array("h", [int(x * gain) for x in a])
+    if sys.byteorder != "little":
+        out.byteswap()
+    return out.tobytes()
+
+
+def chime():
+    """A soft two-note chime (E5 then C5) that marks a new segment, so a driver hears where a story starts."""
+    n = int(RATE * 1.1)
+    buf = [0.0] * n
+    for freq, start, amp in ((659.25, 0.0, 0.16), (523.25, 0.28, 0.14)):
+        s0 = int(start * RATE)
+        for i in range(n - s0):
+            t = i / RATE
+            env = min(1.0, t / 0.006) * math.exp(-t * 4.0)
+            buf[s0 + i] += amp * env * (math.sin(2 * math.pi * freq * t) + 0.25 * math.sin(4 * math.pi * freq * t))
+    out = array.array("h", [int(max(-1.0, min(1.0, x)) * 32767) for x in buf])
+    if sys.byteorder != "little":
+        out.byteswap()
+    return out.tobytes()
+
+
+def transition():
+    return silence(0.6) + chime() + silence(0.5) if SEGMENT_CHIME else silence(1.2)
 
 
 def split_chunks(flat, size):
@@ -2097,26 +2319,36 @@ def voice_episode(sections, state, edition):
                     f"(UTC) with {FREE_WRITER_RESERVE} kept for writing -> next voice")
                 continue
         try:
-            pcm, marks, seen_labels = bytearray(), [], set()
+            pcm, marks, prev = bytearray(), [], None
+            t0 = time.time()
             for i, chunk in enumerate(chunks, 1):
                 turns = [(spk, text) for _, spk, text in chunk]
                 log(f"  {engine} TTS chunk {i}/{len(chunks)} ({turns_words(turns)} words)")
-                if engine == "gemini":
+                if engine == "gemini":   # one audio file per chunk: segment starts are estimated from word counts
                     audio = gemini_tts_chunk(turns)
                     state["tts_log"].append(dt.datetime.now(TZ).isoformat())
-                elif engine == "fish":
-                    audio = fish_tts_chunk(turns)
-                else:
-                    audio = edge_tts_chunk(turns)
-                start, total_w, acc = len(pcm) / BYTES_PER_SEC, max(1, turns_words(turns)), 0
-                for label, _, text in chunk:
-                    if label not in seen_labels:
-                        seen_labels.add(label)
-                        marks.append((label, start + (acc / total_w) * len(audio) / BYTES_PER_SEC))
-                    acc += words(text)
-                pcm += audio + silence(0.4)
-                if engine == "gemini":
+                    if prev is not None and chunk[0][0] != prev:
+                        pcm += transition()
+                    start, total_w, acc = len(pcm) / BYTES_PER_SEC, max(1, turns_words(turns)), 0
+                    for label, _, text in chunk:
+                        if label != prev:
+                            marks.append((label, start + (acc / total_w) * len(audio) / BYTES_PER_SEC))
+                            prev = label
+                        acc += words(text)
+                    pcm += audio + silence(0.4)
                     time.sleep(8)
+                    continue
+                # Fish and Edge speak one turn at a time: matched levels, a transition between segments,
+                # and exact segment start times for the chapters.
+                parts = fish_tts_turns(turns) if engine == "fish" else edge_tts_turns(turns)
+                for (label, _, _), audio in zip(chunk, parts):
+                    if label != prev:
+                        if prev is not None:
+                            pcm += transition()
+                        marks.append((label, len(pcm) / BYTES_PER_SEC))
+                        prev = label
+                    pcm += level_match(audio) + silence(TURN_GAP)
+            log(f"  voices: {len(flat)} turns in {time.time() - t0:.0f}s")
             return bytes(pcm), marks, engine
         except TTSQuotaError as e:
             state["tts_log"] = state.get("tts_log", []) + [dt.datetime.now(TZ).isoformat()] * GEMINI_TTS_DAILY
@@ -2129,9 +2361,52 @@ def voice_episode(sections, state, edition):
     raise RuntimeError("No TTS engine succeeded")
 
 
-def encode_mp3(pcm, out_path):
+def loudness_filter(pcm):
+    """ffmpeg loudnorm settings for TARGET_LUFS: measured first (two passes land within about 1 LU of the
+    target; one pass about 1.3 LU under). Returns "" when switched off."""
+    try:
+        target = float(TARGET_LUFS)
+    except ValueError:
+        return ""
+    if target >= 0:
+        return ""
+    base = f"loudnorm=I={target:g}:TP=-1.5:LRA=11"
+    res = subprocess.run([FFMPEG, "-hide_banner", "-nostats", "-f", "s16le", "-ar", str(RATE), "-ac", "1",
+                          "-i", "pipe:0", "-af", base + ":print_format=json", "-f", "null", "-"],
+                         input=pcm, capture_output=True)
+    err = res.stderr.decode("utf-8", "replace")
+    try:
+        m = json.loads(err[err.rindex("{"):err.rindex("}") + 1])
+        log(f"  loudness: {m['input_i']} LUFS -> {target:g} LUFS")
+        return (f"{base}:measured_I={m['input_i']}:measured_TP={m['input_tp']}:measured_LRA={m['input_lra']}"
+                f":measured_thresh={m['input_thresh']}:offset={m['target_offset']}")
+    except (ValueError, KeyError):
+        log("  loudness: could not measure; normalising in one pass")
+        return base
+
+
+def ffmeta(s):
+    return re.sub(r"([=;#\\\n])", r"\\\1", str(s))
+
+
+def encode_mp3(pcm, out_path, title="", chapters=()):
+    """MP3 at podcast loudness, with the episode title and one chapter per segment (podcast apps show them,
+    and the car's next / previous buttons can skip a story)."""
+    duration_ms = int(len(pcm) / BYTES_PER_SEC * 1000)
+    meta = [";FFMETADATA1", f"title={ffmeta(title)}", f"artist={ffmeta(SHOW_TITLE)}", f"album={ffmeta(SHOW_TITLE)}",
+            "genre=Podcast"]
+    starts = [(label, int(sec * 1000)) for label, sec in chapters]
+    for i, (label, start) in enumerate(starts):
+        end = starts[i + 1][1] if i + 1 < len(starts) else duration_ms
+        if end > start:
+            meta += ["[CHAPTER]", "TIMEBASE=1/1000", f"START={start}", f"END={end}", f"title={ffmeta(label)}"]
+    meta_file = Path(out_path).with_suffix(".meta.txt")
+    meta_file.write_text("\n".join(meta) + "\n", encoding="utf-8")
+    filt = loudness_filter(pcm)
     res = subprocess.run([FFMPEG, "-hide_banner", "-loglevel", "error", "-y", "-f", "s16le", "-ar", str(RATE),
-                          "-ac", "1", "-i", "pipe:0", "-codec:a", "libmp3lame", "-b:a", "64k", str(out_path)],
+                          "-ac", "1", "-i", "pipe:0", "-i", str(meta_file), "-map", "0:a", "-map_metadata", "1",
+                          "-map_chapters", "1", *(["-af", filt] if filt else []), "-ar", str(RATE),
+                          "-codec:a", "libmp3lame", "-b:a", "64k", "-id3v2_version", "3", str(out_path)],
                          input=pcm, capture_output=True)
     if res.returncode != 0:
         raise RuntimeError(f"ffmpeg encode failed: {res.stderr[:200]}")
@@ -2274,7 +2549,6 @@ def build_rss(episodes):
 
 # =============================== MAIN ===============================
 def main():
-    global PACE_NOTE, EDGE_RATE
     now = dt.datetime.now(TZ)
     edition = os.getenv("EDITION", "auto").strip().lower()
     if edition not in ("morning", "evening"):
@@ -2293,11 +2567,13 @@ def main():
         log("This edition already exists - nothing to do (backup run).")
         return
 
+    n_feedback = len(state["feedback"])
     close_issues = [] if dry else ingest_feedback(state)
-    shift = pace_shift(state)
-    if shift:
-        PACE_NOTE = "; slightly slower, unhurried pace" if shift < 0 else "; slightly brisker pace"
-        EDGE_RATE = "-8%" if shift < 0 else "+8%"
+    fresh = state["feedback"][n_feedback:]
+    pace_change = update_pace(state, fresh)
+    apply_pace(state["pace_adjust"])
+    if pace_change or state["pace_adjust"]:
+        log(f"  pace: {state['pace_adjust']:+.0%} from the original speed (change today {pace_change:+.0%})")
 
     log("1/8 Collecting discussions")
     posts, pool_note = load_pool()
@@ -2397,13 +2673,17 @@ def main():
         raise RuntimeError(f"Script too short ({total_words} words) - not publishing.")
 
     log("7/8 Greeting and voices")
-    greeting, closing, summary, threads = write_bookends(state, written, theme, edition, now, bool(deep), source_note)
+    greeting, closing, summary, threads = write_bookends(state, written, theme, edition, now, bool(deep), source_note,
+                                                         new_feedback_text(fresh, pace_change))
     sections = [("Welcome", greeting)] + [(s["title"], t) for s, t in written] + [("Close", closing)]
     pcm, marks, engine = voice_episode(sections, state, edition)
     BUILD_DIR.mkdir(exist_ok=True)
     filename = f"ai_{date_key}_{edition}_{now:%H%M}.mp3"
     mp3 = BUILD_DIR / filename
-    encode_mp3(pcm, mp3)
+    kind = "Sunday" if is_sunday else "Deep dive" if deep else edition.title()
+    headline = state["topics"][deep]["name"] if deep else ("The ones that got away" if is_sunday else plan[0]["title"])
+    ep_title = f"{kind} - {now.day} {now:%b}: {headline}"[:120]
+    encode_mp3(pcm, mp3, ep_title, marks)
     duration, size = int(len(pcm) / BYTES_PER_SEC), mp3.stat().st_size
     writer = USED_BY.most_common(1)[0][0] if USED_BY else "?"
     log(f"  {filename}: {fmt_ts(duration)}, {size / 1e6:.1f} MB, writer={dict(USED_BY)}, voices={engine}")
@@ -2420,10 +2700,7 @@ def main():
                 notes.append(f"   Source: {s['link']}")
     notes += ["", f"Quiz and feedback: {PAGES_URL}/quiz.html",
               f"Written by: {writer} · Voices: {ENGINE_NAMES[engine]} · Discussions: {source_note}"]
-    kind = "Sunday" if is_sunday else "Deep dive" if deep else edition.title()
-    headline = state["topics"][deep]["name"] if deep else ("The ones that got away" if is_sunday else plan[0]["title"])
-    episode = {"file": filename, "date": date_key, "edition": edition,
-               "title": f"{kind} - {now.day} {now:%b}: {headline}"[:120],
+    episode = {"file": filename, "date": date_key, "edition": edition, "title": ep_title,
                "published": now.isoformat(), "pubDate": email.utils.format_datetime(now),
                "size": size, "duration": duration, "description": "\n".join(notes).strip()}
     cutoff = (now - dt.timedelta(days=RETENTION_DAYS)).isoformat()
@@ -2473,7 +2750,7 @@ def main():
                 "feedback": [f for f in state["feedback"] if f.get("received", "") >= fb_cut],
                 "tts_log": state.get("tts_log", []), "or_spend": [s for s in SPEND if s[0] >= day_ago],
                 "free_log": [t for t in FREE_LOG if t >= utc_yesterday], "free_day_out": FREE_DAY_OUT[0],
-                "topics": state["topics"]})
+                "pace_adjust": state.get("pace_adjust", 0.0), "topics": state["topics"]})
 
     transcript = "\n\n".join(f"## {lbl}\n" + "\n".join(f"{spk}: {t}" for spk, t in turns) for lbl, turns in sections)
     write_quiz_files(keep, {
