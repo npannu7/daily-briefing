@@ -20,7 +20,7 @@ Pipeline
   6. WRITE    - two hosts (Sarah, Laura) in dialogue, pitched at an engineer outside CS.
   7. GREET    - personal greeting linked to past episodes; summary saved as memory.
   8. VOICE    - Fish Audio free (OpenRouter) -> Gemini TTS (free key) -> Edge voices.
-  9. PUBLISH  - MP3 to the GitHub release, podcast.xml, quiz.json (quiz + daily digest) and transcript.
+  9. PUBLISH  - MP3 to the GitHub release, podcast.xml, quiz.json (interactive puzzles + quiz) and transcript.
 
 Zero cost by default: Gemini free key, then OpenRouter free models, then GitHub Models. One writer
 per episode where possible. OpenRouter's free daily request limit is counted, with a reserve for writing.
@@ -775,6 +775,9 @@ def new_feedback_text(new_feedback, pace_change):
     for f in new_feedback:
         r = f.get("ratings") or {}
         bits = [f"{k}: {r[k]}" for k in ("overall", "depth", "pace", "voices") if r.get(k)]
+        pz = f.get("puzzles") or {}
+        if pz.get("total"):
+            bits.append(f"puzzles finished: {pz.get('done', 0)} of {pz['total']}")
         more = [s for s, v in (f.get("segments") or {}).items() if v == "more"]
         less = [s for s, v in (f.get("segments") or {}).items() if v == "less"]
         line = f"- {f.get('date', '')} {f.get('edition', '')}: " + ", ".join(bits)
@@ -810,6 +813,7 @@ def feedback_text(state, short=False):
         if f.get("comment"):
             notes.append(f"{f.get('date', '')} {f.get('edition', '')}: {f['comment'][:400]}")
         missed += (f.get("quiz") or {}).get("missed", [])
+        missed += (f.get("puzzles") or {}).get("struggled", [])   # puzzle steps that needed hints or the answer
         m = meta.get(f.get("episode"))
         if m and r.get("overall"):
             by_writer.append(f"{m.get('writer', '?')}/{m.get('voices', '?')}: {r['overall']} stars")
@@ -826,7 +830,8 @@ def feedback_text(state, short=False):
         if less:
             out.append(f"- Wanted LESS like: {'; '.join(less[-8:])}")
         if missed:
-            out.append("- Quiz questions he missed (explain these ideas more clearly): " + "; ".join(missed[-6:]))
+            out.append("- Quiz questions and puzzles he found hard (explain these ideas more clearly): "
+                       + "; ".join(missed[-6:]))
         if by_writer:
             out.append("- Ratings by writer/voices: " + "; ".join(by_writer[-6:]))
     return "\n".join(out)
@@ -1598,6 +1603,9 @@ EDITORIAL = f"""EDITORIAL STANDARD:
 - {LISTENER} is the expert in: {EXPERT_AREAS}. Never explain those terms to him (no "validation - that's
   the process of proving..."); use them the way a colleague would, and as the analogies. Explaining his own
   field to him sounds patronising.
+- Do not avoid real concepts to keep it easy: he enjoys meeting new ideas even when he does not follow every
+  detail at first - that is how new words stick. Name each concept by its proper name ("Dalton's law",
+  "partial pressure", "learning rate") so he can remember it and look it up; the page's puzzles let him try it.
 - Reddit is the starting point, not the authority. Posts and comments are often wrong, exaggerated or
   missing context. Separate: what the post claims / what the community argues / what the evidence shows.
 - Paraphrase commenters; never use usernames ("one commenter who runs models at home argued...").
@@ -1954,8 +1962,11 @@ def next_episode(edition, now):
     return "tomorrow morning" + (" (Sunday's long AI edition)" if now.weekday() == 5 else "")
 
 
-def write_bookends(state, segments_written, theme, edition, now, deep_dive, source_note, fresh_feedback=""):
+def write_bookends(state, segments_written, theme, edition, now, deep_dive, source_note, fresh_feedback="",
+                   puzzles=()):
     outline = "\n".join(f"- {s['title']}: {s.get('angle', '')}" for s, _ in segments_written)
+    puzzle_note = (f"Today's page has hands-on puzzles: {'; '.join(puzzles)}. In the closing, one host mentions "
+                   "them in one short, inviting sentence (what he gets to try, not a list)." if puzzles else "")
     prompt = f"""You write the opening and closing for "{SHOW_TITLE}" (hosts {A} and {B}).
 The listener is {LISTENER}; {'it is Sunday: a long magazine episode for a long drive' if now.weekday() == 6 else 'he listens on a short commute'}.
 Today is {now:%A, %d %B %Y}, {edition} edition.
@@ -1963,6 +1974,7 @@ Today is {now:%A, %d %B %Y}, {edition} edition.
 Where today's material came from: {source_note}
 The next episode is {next_episode(edition, now)}. The show comes out twice EVERY day, weekends included: never
 say "see you Monday", "that's the week" or "have a great weekend".
+{puzzle_note}
 
 TODAY'S SEGMENTS:
 {outline}
@@ -2412,6 +2424,400 @@ def encode_mp3(pcm, out_path, title="", chapters=()):
         raise RuntimeError(f"ffmpeg encode failed: {res.stderr[:200]}")
 
 
+# =============================== 8a. PUZZLES ===============================
+# Brilliant-style lessons on quiz.html: a model writes them as data (sliders with formulas, predictions, numbers to
+# work out, steps to put in order); the page brings them to life. The model never writes code, and every formula
+# is run here first, so a lesson that does not compute never reaches the page. The same tiny formula language is
+# implemented in quiz.html.
+EXPR_FUNCS = {"min": min, "max": max, "abs": abs, "sqrt": math.sqrt, "exp": math.exp, "ln": math.log,
+              "log10": math.log10, "pow": pow, "round": round, "floor": math.floor, "ceil": math.ceil,
+              "sin": math.sin, "cos": math.cos, "tan": math.tan}
+EXPR_CONST = {"pi": math.pi, "e": math.e}
+_EXPR_TOKEN = re.compile(r"\s*(?:(\d+\.?\d*(?:[eE][-+]?\d+)?|\.\d+(?:[eE][-+]?\d+)?)|([A-Za-z_]\w*)|(\S))")
+IDENT = re.compile(r"^[A-Za-z_]\w{0,24}$")
+
+
+def expr_parse(src):
+    """Formula -> tree. Numbers, names, + - * / ^, brackets and EXPR_FUNCS; nothing else (no code)."""
+    src = str(src)
+    if len(src) > 240:
+        raise ValueError("formula too long")
+    toks, pos = [], 0
+    while pos < len(src):
+        m = _EXPR_TOKEN.match(src, pos)
+        if not m or m.end() == pos:
+            break
+        pos = m.end()
+        if m.group(1):
+            toks.append(("num", float(m.group(1))))
+        elif m.group(2):
+            toks.append(("id", m.group(2)))
+        elif m.group(3):
+            if m.group(3) not in "+-*/^(),":
+                raise ValueError(f"unexpected {m.group(3)!r}")
+            toks.append(("op", m.group(3)))
+    if src[pos:].strip():
+        raise ValueError("unreadable formula")
+    i = [0]
+
+    def peek(v=None):
+        t = toks[i[0]] if i[0] < len(toks) else ("end", None)
+        return t if v is None else t == ("op", v)
+
+    def take(v):
+        if not peek(v):
+            raise ValueError(f"expected {v!r}")
+        i[0] += 1
+
+    def expr(depth=0):
+        if depth > 30:
+            raise ValueError("formula too deep")
+        node = term(depth)
+        while peek("+") or peek("-"):
+            op = toks[i[0]][1]; i[0] += 1
+            node = ("bin", op, node, term(depth))
+        return node
+
+    def term(depth):
+        node = unary(depth)
+        while peek("*") or peek("/"):
+            op = toks[i[0]][1]; i[0] += 1
+            node = ("bin", op, node, unary(depth))
+        return node
+
+    def unary(depth):
+        if peek("-"):
+            i[0] += 1
+            return ("neg", unary(depth + 1))
+        if peek("+"):
+            i[0] += 1
+            return unary(depth + 1)
+        node = atom(depth)
+        if peek("^"):
+            i[0] += 1
+            node = ("bin", "^", node, unary(depth + 1))
+        return node
+
+    def atom(depth):
+        kind, val = peek()
+        if kind == "num":
+            i[0] += 1
+            return ("num", val)
+        if kind == "id":
+            i[0] += 1
+            if peek("("):
+                if val not in EXPR_FUNCS:
+                    raise ValueError(f"unknown function {val}")
+                i[0] += 1
+                args = [expr(depth + 1)]
+                while peek(","):
+                    i[0] += 1
+                    args.append(expr(depth + 1))
+                take(")")
+                return ("call", val, args)
+            return ("num", EXPR_CONST[val]) if val in EXPR_CONST else ("var", val)
+        if peek("("):
+            i[0] += 1
+            node = expr(depth + 1)
+            take(")")
+            return node
+        raise ValueError("incomplete formula")
+
+    tree = expr()
+    if i[0] != len(toks):
+        raise ValueError("unexpected text at the end of the formula")
+    return tree
+
+
+def expr_names(tree):
+    if tree[0] == "var":
+        return {tree[1]}
+    if tree[0] == "neg":
+        return expr_names(tree[1])
+    if tree[0] == "bin":
+        return expr_names(tree[2]) | expr_names(tree[3])
+    if tree[0] == "call":
+        return set().union(*(expr_names(a) for a in tree[2]))
+    return set()
+
+
+def expr_eval(tree, env):
+    k = tree[0]
+    if k == "num":
+        return tree[1]
+    if k == "var":
+        return env[tree[1]]
+    if k == "neg":
+        return -expr_eval(tree[1], env)
+    if k == "call":
+        return float(EXPR_FUNCS[tree[1]](*[expr_eval(a, env) for a in tree[2]]))
+    a, b = expr_eval(tree[2], env), expr_eval(tree[3], env)
+    op = tree[1]
+    v = a + b if op == "+" else a - b if op == "-" else a * b if op == "*" else a / b if op == "/" else a ** b
+    if isinstance(v, complex) or not math.isfinite(v):
+        raise ValueError("not a real number")
+    return v
+
+
+def _num(v, default=None):
+    try:
+        f = float(v)
+        return f if math.isfinite(f) else default
+    except (TypeError, ValueError):
+        return default
+
+
+def _txt(v, limit):
+    return re.sub(r"\s+", " ", fix_text(str(v or ""))).strip()[:limit]
+
+
+def _slider_values(inp, count):
+    """Values the slider can actually take (on its step grid), at most `count` of them, ends included."""
+    n = int(round((inp["max"] - inp["min"]) / inp["step"]))
+    ks = range(n + 1) if n + 1 <= count else sorted({round(j * n / (count - 1)) for j in range(count)})
+    return [min(inp["max"], inp["min"] + k * inp["step"]) for k in ks]
+
+
+def check_explore(step):
+    """An exploration: 1-3 sliders, 1-4 live readouts computed from formulas, an optional chart and goal.
+    Every formula is evaluated over the sliders' whole range; a goal must be reachable with the sliders."""
+    inputs, seen = [], set(EXPR_FUNCS) | set(EXPR_CONST)
+    for raw in (step.get("inputs") or [])[:3]:
+        lo, hi, st = _num(raw.get("min")), _num(raw.get("max")), _num(raw.get("step"))
+        iid = str(raw.get("id", ""))
+        if not IDENT.match(iid) or iid in seen or lo is None or hi is None or not lo < hi:
+            raise ValueError(f"bad slider {iid!r}")
+        st = st if st and 0 < st <= hi - lo else (hi - lo) / 100
+        val = _num(raw.get("value"), lo)
+        val = min(hi, max(lo, lo + round((val - lo) / st) * st))
+        seen.add(iid)
+        inputs.append({"id": iid, "label": _txt(raw.get("label") or iid, 40), "unit": _txt(raw.get("unit"), 14),
+                       "min": lo, "max": hi, "step": st, "value": val})
+    if not inputs:
+        raise ValueError("no sliders")
+    outputs, known = [], {i["id"] for i in inputs}
+    for raw in (step.get("outputs") or [])[:4]:
+        oid = str(raw.get("id", ""))
+        if not IDENT.match(oid) or oid in seen:
+            raise ValueError(f"bad readout {oid!r}")
+        tree = expr_parse(raw.get("expr", ""))
+        missing = expr_names(tree) - known
+        if missing:
+            raise ValueError(f"readout {oid} uses unknown {sorted(missing)}")
+        digits = _num(raw.get("digits"))
+        outputs.append({"id": oid, "label": _txt(raw.get("label") or oid, 40), "unit": _txt(raw.get("unit"), 14),
+                        "expr": str(raw["expr"]), "_tree": tree,
+                        **({"digits": int(min(4, max(0, digits)))} if digits is not None else {})})
+        seen.add(oid)
+        known.add(oid)
+    if not outputs:
+        raise ValueError("no readouts")
+    per = {1: 201, 2: 61, 3: 21}[len(inputs)]
+    grids = [_slider_values(i, per) for i in inputs]
+
+    def run(values):
+        env = dict(zip([i["id"] for i in inputs], values))
+        for o in outputs:
+            env[o["id"]] = expr_eval(o["_tree"], env)
+        return env
+
+    run([i["value"] for i in inputs])   # must work where the sliders start
+    combos, good, bad = [[]], [], 0
+    for g in grids:
+        combos = [c + [v] for c in combos for v in g]
+    for c in combos:
+        try:
+            good.append(run(c))
+        except (ValueError, ZeroDivisionError, OverflowError, TypeError):
+            bad += 1
+    if bad > 0.05 * len(combos):
+        raise ValueError("formulas fail over much of the slider range")
+    for o in outputs:
+        vals = [env[o["id"]] for env in good]
+        o["lo"], o["hi"] = min(vals), max(vals)
+        del o["_tree"]
+    out = {"type": "explore", "text": _txt(step.get("text"), 420), "inputs": inputs, "outputs": outputs}
+    chart = step.get("chart") or {}
+    ys = [y for y in (chart.get("y") if isinstance(chart.get("y"), list) else [chart.get("y")])
+          if y in {o["id"] for o in outputs}][:3]
+    if chart.get("x") in {i["id"] for i in inputs} and ys:
+        out["chart"] = {"x": chart["x"], "y": ys}
+    goal = step.get("goal") or {}
+    target = goal.get("output") or goal.get("input")
+    lo, hi = _num(goal.get("min")), _num(goal.get("max"))
+    if target in known and lo is not None and hi is not None and lo <= hi and goal.get("text"):
+        if any(lo <= env[target] <= hi for env in good):
+            out["goal"] = {"target": target, "min": lo, "max": hi, "text": _txt(goal["text"], 260),
+                           "success": _txt(goal.get("success") or step.get("success"), 420)}
+        else:
+            log(f"    puzzle goal dropped: {target} never reaches {lo}..{hi} with these sliders")
+    return out
+
+
+def check_step(step):
+    kind = step.get("type")
+    if kind == "concept":
+        text = _txt(step.get("text"), 600)
+        if not text:
+            raise ValueError("empty concept")
+        return {"type": "concept", "text": text, "example": _txt(step.get("example"), 400)}
+    if kind == "explore":
+        return check_explore(step)
+    if kind == "choice":
+        opts = [_txt(o, 180) for o in (step.get("options") or [])][:5]
+        ans = int(_num(step.get("answer"), -1))
+        if len(opts) < 2 or len(set(opts)) != len(opts) or not 0 <= ans < len(opts) or not step.get("text"):
+            raise ValueError("bad choice")
+        return {"type": "choice", "text": _txt(step["text"], 420), "options": opts, "answer": ans,
+                "explain": _txt(step.get("explain"), 420), "hint": _txt(step.get("hint"), 260)}
+    if kind == "number":
+        answer = expr_eval(expr_parse(step.get("answer_expr", "")), {})   # computed here, not by the model
+        tol = min(0.25, max(0.005, _num(step.get("tolerance"), 0.03)))
+        if not step.get("text"):
+            raise ValueError("bad number question")
+        return {"type": "number", "text": _txt(step["text"], 420), "answer": round(answer, 6), "tolerance": tol,
+                "unit": _txt(step.get("unit"), 14), "explain": _txt(step.get("explain"), 420),
+                "hint": _txt(step.get("hint"), 260)}
+    if kind == "order":
+        items = [_txt(x, 140) for x in (step.get("items") or [])][:6]
+        if len(items) < 3 or len(set(items)) != len(items) or not step.get("text"):
+            raise ValueError("bad ordering")
+        return {"type": "order", "text": _txt(step["text"], 420), "items": items,
+                "explain": _txt(step.get("explain"), 420)}
+    raise ValueError(f"unknown step type {kind!r}")
+
+
+def check_lessons(data, titles):
+    """Keep only lessons and steps that work; returns (lessons, number of steps dropped)."""
+    lessons, dropped = [], 0
+    for raw in (as_obj(data, "lessons").get("lessons") or [])[:3]:
+        if not isinstance(raw, dict):
+            continue
+        steps = []
+        for s in (raw.get("steps") or [])[:9]:
+            try:
+                steps.append(check_step(s if isinstance(s, dict) else {}))
+            except (ValueError, TypeError, KeyError, ZeroDivisionError, OverflowError) as e:
+                dropped += 1
+                log(f"    puzzle step dropped ({str(e)[:100]})")
+        if len(steps) < 3 or all(s["type"] == "concept" for s in steps):
+            dropped += len(steps)
+            continue
+        words = [{"term": _txt(w.get("term"), 50), "means": _txt(w.get("means"), 240)}
+                 for w in (raw.get("words") or [])[:8] if isinstance(w, dict) and w.get("term") and w.get("means")]
+        seg = _txt(raw.get("segment"), 120)
+        lessons.append({"title": _txt(raw.get("title") or seg or "Today's puzzle", 90),
+                        "segment": seg if seg in titles else "", "steps": steps, "words": words})
+    return lessons, dropped
+
+
+LESSON_GUIDE = """Write short interactive lessons in the style of Brilliant.org for the page that goes with today's
+episode. The listener does them on his phone after the drive. He learns by doing, not by reading: minimal text,
+logic and intuition, real-life examples. He is happy to meet concepts he does not fully know yet (that is how
+new words stick), so pick the ideas that are worth understanding - especially ones the episode rushed through.
+
+LESSON SHAPE (one lesson per main idea, at most 3 lessons; 5-8 steps each; every step 15-45 words):
+- Open with a real-life situation or question, not a definition ("You are a diver at 30 m...", "You are
+  tuning a model that keeps overshooting...", "Your line inspects 10,000 parts a day...").
+- Then let him DO something: move sliders and watch what changes, predict before being told, work out a
+  number, put steps of a mechanism in order. At least 3 interactive steps per lesson; concepts in between.
+- Build up: each step uses the previous one. Finish with a step that applies the idea somewhere new.
+
+STEP TYPES (JSON):
+{"type": "concept", "text": "...", "example": "<optional real-life example>"}
+{"type": "explore", "text": "<what to try>",
+ "inputs": [{"id": "depth", "label": "Depth", "unit": "m", "min": 0, "max": 40, "step": 1, "value": 0}],
+ "outputs": [{"id": "p", "label": "Total pressure", "unit": "kPa", "expr": "101.3*(1+depth/10)", "digits": 0},
+             {"id": "pn2", "label": "Nitrogen partial pressure", "unit": "kPa", "expr": "0.78*p", "digits": 0}],
+ "chart": {"x": "depth", "y": ["pn2"]},
+ "goal": {"text": "Find the depth where nitrogen pushes twice as hard as at the surface.", "output": "pn2",
+          "min": 155, "max": 162, "success": "<what he just discovered, one or two sentences>"}}
+{"type": "choice", "text": "<question or prediction>", "options": ["...", "...", "..."], "answer": <index>,
+ "hint": "<nudge shown after a wrong try>", "explain": "<why, shown when right>"}
+{"type": "number", "text": "<question>", "answer_expr": "<formula of numbers only, e.g. 0.21*101.3>",
+ "unit": "kPa", "tolerance": 0.05, "hint": "...", "explain": "..."}
+{"type": "order", "text": "<put these in order>", "items": ["<first>", "<second>", "<third>", "<fourth>"],
+ "explain": "..."}   (items in the CORRECT order; the page shuffles them)
+
+FORMULAS: numbers, slider and readout ids, + - * / ^ ( ) and min max abs sqrt exp ln log10 pow round floor ceil
+sin cos tan, constants pi and e. A readout may use earlier readouts. Use only standard, textbook relationships
+(or a clearly labelled simple model), with realistic units and ranges. 1-3 sliders, 1-4 readouts. Use an
+explore step whenever the idea has any quantity (pressure, rate, probability, error rate, cost, size, speed,
+learning rate, accuracy). Goals must be reachable with the sliders.
+
+WORDS: for each lesson, 3-6 terms from the episode worth keeping, with a plain one-line meaning.
+Never explain {expert} (his own field) - use them freely as analogies.
+Return JSON only: {"lessons": [{"title": "<short, plain>", "segment": "<exact segment title>",
+                                "words": [{"term": "...", "means": "..."}], "steps": [...]}]}"""
+
+
+def make_lessons(written, theme):
+    """Interactive lessons for the day's segments: written by a model, run here, then checked by a second model."""
+    segs = [(s, turns) for s, turns in written if s.get("format") != "followup"][:4]
+    if not segs:
+        return []
+    titles = [s["title"] for s, _ in segs]
+    script = "\n\n".join(f"[SEGMENT: {s['title']}]\n" + "\n".join(f"{spk}: {t}" for spk, t in turns)[:9000]
+                         for s, turns in segs)
+    prompt = (LESSON_GUIDE.replace("{expert}", EXPERT_AREAS) +
+              f"\n\nListener: {LISTENER_PROFILE}\nToday's theme: {theme}\n\nEPISODE SCRIPT:\n{script}")
+    try:
+        text, _ = llm(prompt, json_mode=True, min_words=80, label="puzzles", role="writer")
+        lessons, dropped = check_lessons(parse_json(text), titles)
+    except Exception as e:
+        log(f"  puzzles skipped: {str(e)[:160]}")
+        return []
+    if lessons:
+        lessons, more = review_lessons(lessons, titles)
+        dropped += more
+    n = sum(len(x["steps"]) for x in lessons)
+    log(f"  puzzles: {len(lessons)} lesson(s), {n} steps "
+        f"({sum(1 for x in lessons for s in x['steps'] if s['type'] == 'explore')} with sliders), {dropped} dropped")
+    return lessons
+
+
+def review_lessons(lessons, titles):
+    """A second model checks the science and the answers; steps it finds wrong are removed."""
+    shown = []
+    for li, les in enumerate(lessons):
+        for si, s in enumerate(les["steps"]):
+            row = {k: v for k, v in s.items() if k not in ("lo", "hi")}
+            if s["type"] == "explore":
+                row["outputs"] = [{k: o[k] for k in ("label", "unit", "expr")} | {"range": [round(o["lo"], 3), round(o["hi"], 3)]}
+                                  for o in s["outputs"]]
+            shown.append({"lesson": li, "step": si, **row})
+    prompt = f"""You check interactive science lessons before a learner sees them. For each step, look for:
+wrong science or maths, formulas that are not the standard relationship (or have wrong units or magnitudes),
+a marked answer that is wrong or ambiguous, an explanation that contradicts the answer, an "order" whose
+items are not in the correct order. Ignore style. Be strict about facts, not about wording.
+
+STEPS:
+{json.dumps(shown, ensure_ascii=False)[:30000]}
+
+Return JSON only: {{"problems": [{{"lesson": <n>, "step": <n>, "issue": "<what is wrong>"}}]}} (empty if all correct)"""
+    try:
+        text, _ = llm(prompt, json_mode=True, label="puzzle check", role="helper")
+        problems = [p for p in as_obj(parse_json(text), "problems").get("problems", []) if isinstance(p, dict)]
+    except Exception as e:
+        log(f"  puzzle check skipped: {str(e)[:120]}")
+        return lessons, 0
+    bad = set()
+    for p in problems:
+        li, si = _num(p.get("lesson")), _num(p.get("step"))
+        if li is not None and si is not None:
+            bad.add((int(li), int(si)))
+            log(f"    puzzle check: lesson {int(li)} step {int(si)}: {str(p.get('issue', ''))[:140]}")
+    out, dropped = [], 0
+    for li, les in enumerate(lessons):
+        steps = [s for si, s in enumerate(les["steps"]) if (li, si) not in bad]
+        dropped += len(les["steps"]) - len(steps)
+        if len(steps) >= 3 and any(s["type"] != "concept" for s in steps):
+            out.append(dict(les, steps=steps))
+        else:
+            dropped += len(steps)
+    return out, dropped
+
+
 # =============================== 8. QUIZ + PUBLISH ===============================
 def make_quiz(written, theme):
     script = "\n\n".join(f"[SEGMENT: {s['title']}]\n" + "\n".join(f"{spk}: {t}" for spk, t in turns)
@@ -2672,9 +3078,13 @@ def main():
     if total_words < min_words * 0.6:
         raise RuntimeError(f"Script too short ({total_words} words) - not publishing.")
 
+    log("  writing the puzzles")
+    lessons = make_lessons(written, theme)
+
     log("7/8 Greeting and voices")
     greeting, closing, summary, threads = write_bookends(state, written, theme, edition, now, bool(deep), source_note,
-                                                         new_feedback_text(fresh, pace_change))
+                                                         new_feedback_text(fresh, pace_change),
+                                                         [x["title"] for x in lessons])
     sections = [("Welcome", greeting)] + [(s["title"], t) for s, t in written] + [("Close", closing)]
     pcm, marks, engine = voice_episode(sections, state, edition)
     BUILD_DIR.mkdir(exist_ok=True)
@@ -2692,13 +3102,10 @@ def main():
     pretty = f"{now:%A}, {now.day} {now:%B %Y}"
     notes = [f"{'Sunday edition' if is_sunday else 'Deep dive' if deep else edition.title() + ' edition'} - {pretty}",
              theme, ""]
-    for (label, start), (seg, _) in zip(marks[1:], written):
+    for (label, start), (seg, _) in zip(marks[1:], written):   # chapters only: Reddit links are of no use to him
         notes.append(f"{fmt_ts(start)}  {label}")
-        for s in seg.get("stories") or [by_id[j] for j in seg["item_ids"] if j in by_id]:
-            notes.append(f"   {', '.join(sorted(set(s['subs'])))}: {s['threads'][0]}")
-            if s.get("link"):
-                notes.append(f"   Source: {s['link']}")
-    notes += ["", f"Quiz and feedback: {PAGES_URL}/quiz.html",
+    notes += ["", (f"Puzzles: {', '.join(x['title'] for x in lessons)} - " if lessons else "")
+              + f"puzzles, quiz and feedback: {PAGES_URL}/quiz.html",
               f"Written by: {writer} · Voices: {ENGINE_NAMES[engine]} · Discussions: {source_note}"]
     episode = {"file": filename, "date": date_key, "edition": edition, "title": ep_title,
                "published": now.isoformat(), "pubDate": email.utils.format_datetime(now),
@@ -2737,7 +3144,7 @@ def main():
             keep = [e for e in keep if e["file"] in present]
         sync_release_assets({e["file"] for e in keep})
 
-    log("  writing quiz and digest")
+    log("  writing quiz (and thread notes for the weekly dossier)")
     quiz = make_quiz(written, theme)
     digest = make_digest(stories, used)
     update_dossier(stories, used, digest, state, date_key)
@@ -2758,7 +3165,7 @@ def main():
         "published": now.isoformat(), "duration": duration, "theme": theme, "writer": writer,
         "voices": ENGINE_NAMES[engine], "deep_dive": bool(deep),
         "segments": [{"title": s["title"], "category": s.get("format", "")} for s, _ in written],
-        "quiz": quiz, "digest": digest, "transcript": f"transcripts/{Path(filename).stem}.txt"}, transcript)
+        "lessons": lessons, "quiz": quiz, "transcript": f"transcripts/{Path(filename).stem}.txt"}, transcript)
     build_rss(keep)
     for n in close_issues:
         gh("issue", "close", str(n), "--comment", "Thanks - recorded. It will shape the next episodes.", check=False)

@@ -21,7 +21,7 @@ at most one number per sentence, and each computer-science term explained once (
 quality, regulation, manufacturing, engineering).
 
 - **Feed:** `https://npannu7.github.io/daily-briefing/podcast.xml`
-- **Digest, quiz and feedback:** `https://npannu7.github.io/daily-briefing/quiz.html`
+- **Puzzles, quiz and feedback:** `https://npannu7.github.io/daily-briefing/quiz.html`
 
 ## How it works
 
@@ -34,8 +34,14 @@ Each episode is mastered to podcast loudness (−16 LUFS), with the two hosts ma
 between segments, and chapter markers in the MP3, so podcast apps (and the car's skip buttons) can jump between
 stories.
 
-Each episode's quiz page also shows **At a glance**: the day's top threads, each with one line and a verdict.
-It covers threads that didn't make the episode, so you don't need to open Reddit.
+Each episode's page has **puzzles**: short, Brilliant-style lessons on the episode's ideas, done on the phone
+after the drive. A model writes them as data, never as code: sliders that drive real formulas, with a live chart
+and a challenge ("find the depth where nitrogen pushes twice as hard"), predictions, numbers to work out, and
+steps to put in order. Every formula is run before publishing; a step that doesn't compute, a challenge the
+sliders can't reach, or anything a second model flags as wrong science is removed. Number answers are computed,
+not taken from the model. The page also keeps **words to keep** (new terms with a one-line meaning), a quick
+recap quiz and the feedback form. Puzzles that needed a hint are sent back with the feedback, so later episodes
+explain those ideas better. There are no Reddit links on the page or in the show notes.
 
 ## Files you edit
 
@@ -49,7 +55,8 @@ It covers threads that didn't make the episode, so you don't need to open Reddit
 |---|---|
 | Writing | Gemini API free key, then OpenRouter free models (Nemotron 3 Ultra, Nemotron 3.5 Super VL, Gemma 4 31B), then GitHub Models. Once a model works, it keeps writing the rest of the episode. A model that times out or fails twice is skipped for the rest of the run. |
 | Scoring | Each thread judged on its own by Nemotron 3.5 Lightning (free), Nemotron 3.5 Super VL as backup, about 70 requests per episode. A model that fails six times in a row is dropped for the run; threads it misses are scored in one batched call. |
-| Topics, quiz, digest | Gemini Flash-Lite free key, then OpenRouter free models (Nemotron 3.5 Super VL, Gemma 4). |
+| Puzzles | Written by the writing chain, checked by the helper chain: two requests per episode. |
+| Topics, quiz, dossier notes | Gemini Flash-Lite free key, then OpenRouter free models (Nemotron 3.5 Super VL, Gemma 4). |
 | Voices | Fish Audio (OpenRouter free, three requests in flight), then Gemini TTS (free key), then Edge. |
 
 Nemotron 3 Super lost its free version on 2 November 2026; Nemotron 3.5 Super VL replaced it. NVIDIA's free endpoints
