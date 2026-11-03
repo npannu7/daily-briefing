@@ -571,13 +571,15 @@ def free_pace(gap=3.2):
         _LAST_FREE[0] = time.time()
 
 
-def decide_chat(model, state_obj, questions):
-    """Ask a free chat model the scoring questions for one thread; answers in the Decisions API's shape."""
+def decide_chat(model, state_obj, questions, subject="AI discussion thread"):
+    """Ask a free chat model typed questions about one item; answers in the Decisions API's shape."""
     asks = "\n".join(f'- "{k}" ({q["type"]}): {q["instructions"]} Criteria: {json.dumps(q["criteria"])}'
                      for k, q in questions.items())
-    prompt = f"""Judge this AI discussion thread. Answer each question carefully, on its own merits.
+    example = json.dumps({k: 0.8 if q["type"] == "noul" else 1 if q["type"] == "score" else "<one criteria key>"
+                          for k, q in questions.items()})
+    prompt = f"""Judge this {subject}. Answer each question carefully, on its own merits.
 
-THREAD:
+ITEM:
 {json.dumps(state_obj, ensure_ascii=False)}
 
 QUESTIONS:
@@ -586,8 +588,8 @@ QUESTIONS:
 Return JSON only, with one key per question:
 - type "noul": a probability 0-1 that the answer is true
 - type "score": an integer index into the criteria list (0 = first)
-- type "choice": one of the criteria keys
-Example: {{"relevant": 0.9, "substance": 2, "level": "technical", "needs_check": 0.7, "hype": 0.1}}"""
+- type "choice": one of the criteria keys, exactly as written
+Example: {example}"""
     for attempt in (1, 2):
         if model in DEAD:
             return None
@@ -674,8 +676,8 @@ def decide_api(model, state_obj, questions):
     return None
 
 
-def decide(state_obj, questions):
-    """Answers for one thread: free chat models via JSON, paid decision models via the Decisions API."""
+def decide(state_obj, questions, subject="AI discussion thread"):
+    """Answers for one item: free chat models via JSON, paid decision models via the Decisions API."""
     if not OPENROUTER_API_KEY:
         return None
     for model in DECISION_MODELS:
@@ -685,7 +687,7 @@ def decide(state_obj, questions):
         if free and not free_allowed(1, "helper"):
             return None
         if free and not model.startswith(DECISIONS_ONLY):
-            ans = decide_chat(model, state_obj, questions)
+            ans = decide_chat(model, state_obj, questions, subject)
         elif not free and OPENROUTER_DAILY_USD > 0 and spent_today() >= OPENROUTER_DAILY_USD:
             continue
         else:
@@ -2429,9 +2431,18 @@ def encode_mp3(pcm, out_path, title="", chapters=()):
 # work out, steps to put in order); the page brings them to life. The model never writes code, and every formula
 # is run here first, so a lesson that does not compute never reaches the page. The same tiny formula language is
 # implemented in quiz.html.
+def _ncdf(x):
+    """Share of a normal (bell-curve) population below x standard deviations. Abramowitz & Stegun 7.1.26
+    (error under 1.5e-7); quiz.html uses the same formula, so both give identical numbers."""
+    z = abs(x) / math.sqrt(2)
+    t = 1 / (1 + 0.3275911 * z)
+    y = 1 - (((((1.061405429 * t - 1.453152027) * t) + 1.421413741) * t - 0.284496736) * t + 0.254829592) * t * math.exp(-z * z)
+    return 0.5 * (1 + (y if x >= 0 else -y))
+
+
 EXPR_FUNCS = {"min": min, "max": max, "abs": abs, "sqrt": math.sqrt, "exp": math.exp, "ln": math.log,
               "log10": math.log10, "pow": pow, "round": round, "floor": math.floor, "ceil": math.ceil,
-              "sin": math.sin, "cos": math.cos, "tan": math.tan}
+              "sin": math.sin, "cos": math.cos, "tan": math.tan, "ncdf": _ncdf}
 EXPR_CONST = {"pi": math.pi, "e": math.e}
 _EXPR_TOKEN = re.compile(r"\s*(?:(\d+\.?\d*(?:[eE][-+]?\d+)?|\.\d+(?:[eE][-+]?\d+)?)|([A-Za-z_]\w*)|(\S))")
 IDENT = re.compile(r"^[A-Za-z_]\w{0,24}$")
@@ -2578,9 +2589,10 @@ def _slider_values(inp, count):
     return [min(inp["max"], inp["min"] + k * inp["step"]) for k in ks]
 
 
-def check_explore(step):
-    """An exploration: 1-3 sliders, 1-4 live readouts computed from formulas, an optional chart and goal.
-    Every formula is evaluated over the sliders' whole range; a goal must be reachable with the sliders."""
+def check_explore(step, max_outputs=4):
+    """An exploration: 1-3 sliders, 1-4 live readouts computed from formulas (templates: up to 6), an optional
+    chart and goal. Every formula is evaluated over the sliders' whole range; a goal must be reachable with the
+    sliders and must not already be met where the sliders start."""
     inputs, seen = [], set(EXPR_FUNCS) | set(EXPR_CONST)
     for raw in (step.get("inputs") or [])[:3]:
         lo, hi, st = _num(raw.get("min")), _num(raw.get("max")), _num(raw.get("step"))
@@ -2595,8 +2607,8 @@ def check_explore(step):
                        "min": lo, "max": hi, "step": st, "value": val})
     if not inputs:
         raise ValueError("no sliders")
-    outputs, known = [], {i["id"] for i in inputs}
-    for raw in (step.get("outputs") or [])[:4]:
+    outputs, known, trees = [], {i["id"] for i in inputs}, {}
+    for raw in (step.get("outputs") or [])[:max_outputs]:
         oid = str(raw.get("id", ""))
         if not IDENT.match(oid) or oid in seen:
             raise ValueError(f"bad readout {oid!r}")
@@ -2605,8 +2617,9 @@ def check_explore(step):
         if missing:
             raise ValueError(f"readout {oid} uses unknown {sorted(missing)}")
         digits = _num(raw.get("digits"))
+        trees[oid] = tree
         outputs.append({"id": oid, "label": _txt(raw.get("label") or oid, 40), "unit": _txt(raw.get("unit"), 14),
-                        "expr": str(raw["expr"]), "_tree": tree,
+                        "expr": str(raw["expr"]),
                         **({"digits": int(min(4, max(0, digits)))} if digits is not None else {})})
         seen.add(oid)
         known.add(oid)
@@ -2618,7 +2631,7 @@ def check_explore(step):
     def run(values):
         env = dict(zip([i["id"] for i in inputs], values))
         for o in outputs:
-            env[o["id"]] = expr_eval(o["_tree"], env)
+            env[o["id"]] = expr_eval(trees[o["id"]], env)
         return env
 
     run([i["value"] for i in inputs])   # must work where the sliders start
@@ -2635,7 +2648,6 @@ def check_explore(step):
     for o in outputs:
         vals = [env[o["id"]] for env in good]
         o["lo"], o["hi"] = min(vals), max(vals)
-        del o["_tree"]
     out = {"type": "explore", "text": _txt(step.get("text"), 420), "inputs": inputs, "outputs": outputs}
     chart = step.get("chart") or {}
     ys = [y for y in (chart.get("y") if isinstance(chart.get("y"), list) else [chart.get("y")])
@@ -2646,16 +2658,371 @@ def check_explore(step):
     target = goal.get("output") or goal.get("input")
     lo, hi = _num(goal.get("min")), _num(goal.get("max"))
     if target in known and lo is not None and hi is not None and lo <= hi and goal.get("text"):
-        if any(lo <= env[target] <= hi for env in good):
-            out["goal"] = {"target": target, "min": lo, "max": hi, "text": _txt(goal["text"], 260),
-                           "success": _txt(goal.get("success") or step.get("success"), 420)}
-        else:
+        if not any(lo <= env[target] <= hi for env in good):
             log(f"    puzzle goal dropped: {target} never reaches {lo}..{hi} with these sliders")
+            return out
+        # A mission already solved where the sliders start is no mission: start the first slider at an end.
+        if lo <= run([i["value"] for i in inputs])[target] <= hi:
+            for end in (inputs[0]["min"], inputs[0]["max"]):
+                values = [end] + [i["value"] for i in inputs[1:]]
+                try:
+                    if not lo <= run(values)[target] <= hi:
+                        inputs[0]["value"] = end
+                        break
+                except (ValueError, ZeroDivisionError, OverflowError, TypeError):
+                    continue
+            else:
+                log(f"    puzzle goal dropped: already met where the sliders start")
+                return out
+        out["goal"] = {"target": target, "min": lo, "max": hi, "text": _txt(goal["text"], 260),
+                       "success": _txt(goal.get("success") or step.get("success"), 420)}
     return out
+
+
+# ----- Puzzle templates -----
+# Hands-on pictures built once and tested, like Brilliant's interactives. The maths of each is fixed here as
+# formulas (so the page and this check compute the same numbers); a model only fills in the story: labels,
+# realistic values and a mission. quiz.html draws each one with its own picture ("view").
+def _c(x):
+    """A number inside a formula (negative numbers in brackets)."""
+    return f"({x:.6g})" if x < 0 else f"{x:.6g}"
+
+
+def nice_step(lo, hi, n=100):
+    raw = max((hi - lo) / n, 1e-9)
+    mag = 10 ** math.floor(math.log10(raw))
+    return next(round(m * mag, 10) for m in (1, 2, 5, 10) if raw <= m * mag + 1e-15)
+
+
+def _inp(iid, label, unit, lo, hi, value, step=None):
+    step = step or nice_step(lo, hi)
+    return {"id": iid, "label": label, "unit": unit, "min": lo, "max": hi, "step": step, "value": min(hi, max(lo, value))}
+
+
+def _out(oid, label, unit, expr, digits=None):
+    return {"id": oid, "label": label, "unit": unit, "expr": expr, **({"digits": digits} if digits is not None else {})}
+
+
+def _span(lo, hi, minimum=1e-6):
+    lo, hi = sorted((lo, hi))
+    return (lo, hi) if hi - lo > minimum else (lo, lo + max(1.0, abs(lo)))
+
+
+def _t_saturation(p):
+    lo, hi = _span(p["level_min"], p["level_max"])
+    ins = [_inp("t", "Time", p["time_unit"], 0, p["time_max"], 0)]
+    if p["vary"] == "halftime":
+        hmin, hmax = _span(max(1e-3, p["halftime_min"]), p["halftime_max"])
+        ins.append(_inp("hl", "Half-time", p["time_unit"], hmin, hmax, p["halftime"]))
+        level, hl, vlo, vhi = _c(p["level"]), "hl", min(p["start"], p["level"]), max(p["start"], p["level"])
+    else:
+        ins.append(_inp("L", p["level_label"], p["unit"], lo, hi, p["level"]))
+        level, hl, vlo, vhi = "L", _c(p["halftime"]), min(p["start"], lo), max(p["start"], hi)
+    outs = [_out("x", p["quantity"], p["unit"], f"{level}+({_c(p['start'])}-{level})*2^(-t/{hl})"),
+            _out("lvl", p["level_label"], p["unit"], level),
+            _out("gap", "Still to go", p["unit"], "abs(lvl-x)")]
+    return {"inputs": ins, "outputs": outs, "chart": {"x": "t", "y": ["x", "lvl"]},
+            "view": {"kind": "tank", "value": "x", "target": "lvl", "lo": vlo, "hi": vhi, "start": p["start"],
+                     "label": p["quantity"], "unit": p["unit"]}}
+
+
+def _t_doubling(p):
+    grow = p["mode"] == "grow"
+    pmin, pmax = _span(max(1e-6, p["period_min"]), p["period_max"])
+    pmin = max(pmin, p["time_max"] / 40)          # at most 40 doublings: the numbers stay readable
+    pmax = max(pmax, pmin * 2)
+    sign = "" if grow else "-"
+    name = "Doubling time" if grow else "Half-life"
+    ins = [_inp("t", "Time", p["time_unit"], 0, p["time_max"], 0), _inp("T", name, p["time_unit"], pmin, pmax, p["period"])]
+    outs = [_out("fold", "Times the start" if grow else "Share left", "x" if grow else "", f"2^({sign}t/T)", 3 if not grow else None),
+            _out("x", p["quantity"], p["unit"], f"{_c(p['start'])}*fold"),
+            _out("n", "Doublings so far" if grow else "Half-lives so far", "", "t/T", 1)]
+    return {"inputs": ins, "outputs": outs, "chart": {"x": "t", "y": ["x"]},
+            "view": {"kind": "blocks", "fold": "fold", "mode": p["mode"]}}
+
+
+def _t_chain(p):
+    pmin, pmax = _span(p["p_min"], p["p_max"], 0.05)
+    step, run = p["step_label"], p["run_label"]
+    ins = [_inp("p", f"Each {step} works", "%", pmin, min(99.99, pmax), p["p"], 0.1 if pmax - pmin > 2 else 0.01),
+           _inp("n", f"{step[:1].upper() + step[1:]}s in a {run}", "", 1, int(p["n_max"]), int(p["n"]), 1)]
+    outs = [_out("ok", f"Whole {run} works", "%", "100*(p/100)^n", 1),
+            _out("fails", f"{run[:1].upper() + run[1:]}s that fail, of 100", "", "100-ok", 0)]
+    return {"inputs": ins, "outputs": outs, "chart": {"x": "n", "y": ["ok"]},
+            "view": {"kind": "runs", "p": "p", "n": "n", "step": step, "run": run}}
+
+
+def _t_base_rate(p):
+    lo, hi = _span(max(0.01, p["prev_min"]), p["prev_max"], 0.01)
+    fl = p["flagged"]
+    ins = [_inp("prev", f"Share who {p['condition']}", "%", lo, hi, p["prev"]),
+           _inp("sens", "Catches real cases (sensitivity)", "%", 50, 99.9, p["sens"], 0.1),
+           _inp("spec", "Clears the rest (specificity)", "%", 50, 99.9, p["spec"], 0.1)]
+    outs = [_out("tp", f"Real cases {fl}, of 1000", "", "1000*prev/100*sens/100", 1),
+            _out("fp", f"{fl[:1].upper() + fl[1:]} by mistake, of 1000", "", "1000*(1-prev/100)*(1-spec/100)", 1),
+            _out("ppv", f"Of those {fl}, really {p['condition']}", "%", "100*tp/(tp+fp)", 1)]
+    return {"inputs": ins, "outputs": outs,
+            "view": {"kind": "dots", "prev": "prev", "tp": "tp", "fp": "fp", "who": p["who"],
+                     "condition": p["condition"], "flagged": fl}}
+
+
+def _t_threshold(p):
+    neg, pos, nl, pl = p["neg_mean"], p["pos_mean"], p["neg_label"], p["pos_label"]
+    if pos < neg:
+        neg, pos, nl, pl = pos, neg, pl, nl
+    if pos - neg < 1e-9:
+        pos = neg + p["spread"]
+    sd, lo, hi = p["spread"], neg - 3.5 * p["spread"], pos + 3.5 * p["spread"]
+    ins = [_inp("th", f"Reject above ({p['measure']})", p["unit"], lo, hi, (neg + pos) / 2)]
+    outs = [_out("miss", f"{pl[:1].upper() + pl[1:]} let through", "%", f"100*ncdf((th-{_c(pos)})/{_c(sd)})", 1),
+            _out("fa", f"{nl[:1].upper() + nl[1:]} rejected by mistake", "%", f"100*(1-ncdf((th-{_c(neg)})/{_c(sd)}))", 1)]
+    return {"inputs": ins, "outputs": outs,
+            "view": {"kind": "bells", "th": "th", "neg": neg, "pos": pos, "sd": sd, "lo": lo, "hi": hi,
+                     "neg_label": nl, "pos_label": pl}}
+
+
+def _t_sampling(p):
+    lo, hi = _span(max(1, round(p["n_min"])), max(2, round(p["n_max"])))
+    step = max(1, round(nice_step(lo, hi, 200)))
+    tv, sd = p["true_value"], p["sd"]
+    ins = [_inp("n", "Sample size", "", lo, hi, max(lo, min(hi, round(p["n"]))), step)]
+    outs = [_out("margin", "Margin of error (95%)", p["unit"], f"1.96*{_c(sd)}/sqrt(n)"),
+            _out("lo", "Could be as low as", p["unit"], f"{_c(tv)}-margin"),
+            _out("hi", "Or as high as", p["unit"], f"{_c(tv)}+margin")]
+    return {"inputs": ins, "outputs": outs, "chart": {"x": "n", "y": ["margin"]},
+            "view": {"kind": "spread", "n": "n", "true": tv, "sd": sd, "lo": "lo", "hi": "hi", "measure": p["measure"],
+                     "unit": p["unit"]}}
+
+
+def _t_gradient_descent(p):
+    ins = [_inp("lr", "Learning rate", "", 0.01, max(0.2, p["lr_max"]), p["lr"], 0.01),
+           _inp("k", "Training steps", "", 0, int(p["steps"]), int(p["steps"]), 1)]   # whole path visible at once
+    outs = [_out("w", "Distance from the best setting", "", f"{_c(p['start'])}*(1-2*lr)^k", 2),
+            _out("loss", "Error (loss)", "", "w^2", 3)]
+    return {"inputs": ins, "outputs": outs,
+            "view": {"kind": "bowl", "lr": "lr", "k": "k", "w": "w", "start": p["start"], "model": p["model"]}}
+
+
+def _t_softmax(p):
+    words = []
+    for w in (p["words"] if isinstance(p["words"], list) else [])[:5]:
+        if isinstance(w, dict) and _txt(w.get("word"), 24) and _num(w.get("score")) is not None:
+            words.append((_txt(w["word"], 24), max(-10.0, min(10.0, _num(w["score"])))))
+    if len(words) < 3 or len({w for w, _ in words}) != len(words):
+        raise ValueError("softmax needs 3-5 different words with scores")
+    total = "+".join(f"exp({_c(s)}/T)" for _, s in words)
+    outs = [_out(f"p{i + 1}", w, "%", f"100*exp({_c(s)}/T)/({total})", 1) for i, (w, s) in enumerate(words)]
+    return {"inputs": [_inp("T", "Temperature", "", 0.1, 2.5, p["temp"], 0.05)], "outputs": outs,
+            "view": {"kind": "bars", "prompt": p["prompt"], "outs": [o["id"] for o in outs], "readouts": False}}
+
+
+def _t_flow(p):
+    lo, hi = _span(p["lo"], p["hi"])
+    ins = [_inp("a", p["side_a"][:1].upper() + p["side_a"][1:], p["unit"], lo, hi, p["a"]),
+           _inp("b", p["side_b"][:1].upper() + p["side_b"][1:], p["unit"], lo, hi, p["b"])]
+    outs = [_out("diff", "Difference (the push)", p["unit"], "a-b"),
+            _out("flow", f"Net flow, {p['side_a']} to {p['side_b']}", p["flow_unit"], f"{_c(p['ease'])}*diff")]
+    return {"inputs": ins, "outputs": outs,
+            "view": {"kind": "membrane", "a": "a", "b": "b", "flow": "flow", "lo": lo, "hi": hi, "thing": p["thing"],
+                     "side_a": p["side_a"], "side_b": p["side_b"]}}
+
+
+def _t_inverse_square(p):
+    lo, hi = _span(max(1e-9, p["d_min"]), p["d_max"])
+    d0 = max(1e-9, p["d0"])
+    ins = [_inp("d", f"Distance from {p['source']}", p["d_unit"], lo, hi, lo)]
+    outs = [_out("rel", f"{p['quantity']}, % of the value at {d0:g} {p['d_unit']}", "%", f"100*({_c(d0)}/d)^2"),
+            _out("area", "Area it spreads over", "x", f"(d/{_c(d0)})^2", 1)]
+    return {"inputs": ins, "outputs": outs, "chart": {"x": "d", "y": ["rel"]},
+            "view": {"kind": "rays", "d": "d", "rel": "rel", "dmin": lo, "dmax": hi, "source": p["source"]}}
+
+
+def _t_bottleneck(p):
+    stages = []
+    for st in (p["stages"] if isinstance(p["stages"], list) else [])[:3]:
+        if isinstance(st, dict) and _txt(st.get("label"), 24) and (_num(st.get("max")) or 0) > 0:
+            top = _num(st["max"])
+            stages.append((_txt(st["label"], 24), top, min(top, max(top / 20, _num(st.get("value"), top / 2)))))
+    if len(stages) < 2:
+        raise ValueError("bottleneck needs 2-3 stages")
+    ids = [f"c{i + 1}" for i in range(len(stages))]
+    ins = [_inp(i, label, p["unit"], top / 20, top, val) for i, (label, top, val) in zip(ids, stages)]
+    outs = [_out("thr", "Line output", p["unit"], f"min({','.join(ids)})")] + \
+           [_out(f"u{n + 1}", f"{label} busy", "%", f"100*thr/{i}", 0) for n, (i, (label, _, _)) in enumerate(zip(ids, stages))]
+    return {"inputs": ins, "outputs": outs,
+            "view": {"kind": "pipes", "caps": ids, "thr": "thr", "labels": [s[0] for s in stages], "unit": p["unit"]}}
+
+
+_TEXT = "text"
+TEMPLATES = {
+    "saturation": {
+        "pick": "Something fills up (or cools, charges, loads) towards a level and slows down as it gets close: "
+                "gases loading into tissue, a drug building up, a battery charging, a cup of tea cooling.",
+        "build": _t_saturation, "goals": "x (the amount), gap (still to go), lvl (the level)",
+        "params": {"quantity": (_TEXT, "Amount", 40), "unit": (_TEXT, "", 12), "start": ("num", 0, -1e6, 1e6),
+                   "level": ("num", 100, -1e6, 1e6), "level_min": ("num", 0, -1e6, 1e6), "level_max": ("num", 200, -1e6, 1e6),
+                   "halftime": ("num", 10, 1e-3, 1e6), "halftime_min": ("num", 2, 1e-3, 1e6),
+                   "halftime_max": ("num", 40, 1e-3, 1e6), "time_max": ("num", 60, 1e-3, 1e6), "time_unit": (_TEXT, "min", 12),
+                   "level_label": (_TEXT, "Level it heads for", 40), "vary": ("enum", "level", ("level", "halftime"))},
+        "example": {"quantity": "Nitrogen in tissue", "unit": "kPa", "start": 79, "level": 316, "level_min": 79,
+                    "level_max": 395, "halftime": 20, "time_max": 120, "time_unit": "min",
+                    "level_label": "Nitrogen pushing in", "vary": "level"}},
+    "doubling": {
+        "pick": "Exponential growth or decay with a doubling time or half-life: compute or costs doubling, bacteria, "
+                "radioactive decay, a drug clearing from the body, compound interest.",
+        "build": _t_doubling, "goals": "x (the amount), fold (times the start / share left), n (doublings so far)",
+        "params": {"quantity": (_TEXT, "Amount", 40), "unit": (_TEXT, "", 12), "start": ("num", 1, 1e-9, 1e12),
+                   "mode": ("enum", "grow", ("grow", "decay")), "period": ("num", 2, 1e-6, 1e6),
+                   "period_min": ("num", 1, 1e-6, 1e6), "period_max": ("num", 10, 1e-6, 1e6),
+                   "time_max": ("num", 20, 1e-3, 1e6), "time_unit": (_TEXT, "years", 12)},
+        "example": {"quantity": "Training compute", "unit": "x 2020", "start": 1, "mode": "grow", "period": 0.5,
+                    "period_min": 0.25, "period_max": 2, "time_max": 6, "time_unit": "years"}},
+    "chain": {
+        "pick": "Many steps that must all work: an AI agent's multi-step task, a production line's rolled throughput "
+                "yield, a supply chain, a long calculation - small error rates multiply.",
+        "build": _t_chain, "goals": "ok (% of runs that fully work), fails (runs that fail, of 100)",
+        "params": {"step_label": (_TEXT, "step", 24), "run_label": (_TEXT, "run", 24), "p": ("num", 95, 50, 99.99),
+                   "p_min": ("num", 80, 50, 99.9), "p_max": ("num", 99.9, 51, 99.99), "n": ("num", 10, 1, 100),
+                   "n_max": ("num", 30, 2, 100)},
+        "example": {"step_label": "tool call", "run_label": "task", "p": 95, "p_min": 90, "p_max": 99.9, "n": 20, "n_max": 50}},
+    "base_rate": {
+        "pick": "A test, detector or screen applied to a large group where the thing is rare: medical screening, "
+                "AI-text detectors, defect inspection, fraud alerts - why most positives can be false.",
+        "build": _t_base_rate, "goals": "ppv (% of flagged that are real), tp, fp (counts out of 1000)",
+        "params": {"who": (_TEXT, "people", 24), "condition": (_TEXT, "have it", 40), "flagged": (_TEXT, "flagged", 24),
+                   "prev": ("num", 1, 0.01, 60), "prev_min": ("num", 0.1, 0.01, 50), "prev_max": ("num", 20, 0.1, 90),
+                   "sens": ("num", 90, 50, 99.9), "spec": ("num", 95, 50, 99.9)},
+        "example": {"who": "essays", "condition": "are AI-written", "flagged": "flagged", "prev": 5, "prev_min": 1,
+                    "prev_max": 50, "sens": 95, "spec": 95}},
+    "threshold": {
+        "pick": "Two overlapping groups told apart by one measurement and a cut-off: good vs bad parts, healthy vs "
+                "sick, real vs fake, spam vs not - moving the threshold trades misses for false alarms.",
+        "build": _t_threshold, "goals": "miss (% of the second group let through), fa (% of the first group rejected)",
+        "params": {"neg_label": (_TEXT, "good parts", 30), "pos_label": (_TEXT, "bad parts", 30),
+                   "measure": (_TEXT, "Measurement", 30), "unit": (_TEXT, "", 12), "neg_mean": ("num", 10, -1e6, 1e6),
+                   "pos_mean": ("num", 14, -1e6, 1e6), "spread": ("num", 1.5, 1e-6, 1e6)},
+        "example": {"neg_label": "healthy people", "pos_label": "people with diabetes", "measure": "fasting glucose",
+                    "unit": "mmol/L", "neg_mean": 5.0, "pos_mean": 8.0, "spread": 1.0}},
+    "sampling": {
+        "pick": "Measuring an average from a sample with noise: benchmark scores, clinical trials, polls, sampling "
+                "inspection - how sample size shrinks the margin of error (by the square root).",
+        "build": _t_sampling, "goals": "margin (the +/- margin), lo, hi",
+        "params": {"measure": (_TEXT, "Average", 40), "unit": (_TEXT, "", 12), "true_value": ("num", 50, -1e9, 1e9),
+                   "sd": ("num", 10, 1e-9, 1e9), "n": ("num", 10, 1, 1e6), "n_min": ("num", 2, 1, 1e6),
+                   "n_max": ("num", 400, 2, 1e6)},
+        "example": {"measure": "Benchmark score", "unit": "%", "true_value": 72, "sd": 45, "n": 50, "n_min": 10,
+                    "n_max": 5000}},
+    "gradient_descent": {
+        "pick": "Training a model: an error that is reduced step by step, and the learning rate - too small is slow, "
+                "too big overshoots or blows up. Also any feedback loop that over-corrects.",
+        "build": _t_gradient_descent, "goals": "loss (the error), w (distance from the best setting)",
+        "params": {"model": (_TEXT, "the model", 60), "lr": ("num", 0.05, 0.01, 1.2), "lr_max": ("num", 1.1, 0.2, 1.5),
+                   "steps": ("num", 10, 1, 40), "start": ("num", 4, 1, 10)},
+        "example": {"model": "a model that predicts weld strength", "lr": 0.05, "lr_max": 1.1, "steps": 8, "start": 4}},
+    "softmax": {
+        "pick": "How a language model picks the next word from probabilities, and how temperature makes it safer or "
+                "more creative (and more likely to say something wrong).",
+        "build": _t_softmax, "goals": "p1..p5 (% chance of each word, in the order given)",
+        "params": {"prompt": (_TEXT, "The next word is ___", 120), "words": ("list", []), "temp": ("num", 1, 0.1, 2.5)},
+        "example": {"prompt": "The patient's blood pressure is ___", "temp": 1,
+                    "words": [{"word": "normal", "score": 3}, {"word": "high", "score": 2.5}, {"word": "low", "score": 1},
+                              {"word": "purple", "score": -2}]}},
+    "flow": {
+        "pick": "Something moves from high to low across a barrier, driven by a difference: gases between lungs and "
+                "blood (partial pressure), heat through a wall, ions in a battery, a drug through skin.",
+        "build": _t_flow, "goals": "flow (net flow, a to b), diff (the difference)",
+        "params": {"thing": (_TEXT, "oxygen", 30), "side_a": (_TEXT, "lungs", 30), "side_b": (_TEXT, "blood", 30),
+                   "unit": (_TEXT, "kPa", 12), "a": ("num", 13, -1e9, 1e9), "b": ("num", 5, -1e9, 1e9),
+                   "lo": ("num", 0, -1e9, 1e9), "hi": ("num", 20, -1e9, 1e9), "ease": ("num", 1, 1e-6, 1e6),
+                   "flow_unit": (_TEXT, "units/min", 16)},
+        "example": {"thing": "oxygen", "side_a": "air sacs", "side_b": "blood", "unit": "kPa", "a": 13, "b": 5,
+                    "lo": 0, "hi": 20, "ease": 1, "flow_unit": "units/min"}},
+    "inverse_square": {
+        "pick": "Something that spreads out from a source and weakens with distance squared: light, radiation dose, "
+                "radio signal, gravity, sound - space, physics and safety topics.",
+        "build": _t_inverse_square, "goals": "rel (% of the value at the reference distance), area",
+        "params": {"source": (_TEXT, "the source", 40), "quantity": (_TEXT, "Brightness", 30), "d_min": ("num", 1, 1e-9, 1e12),
+                   "d_max": ("num", 10, 1e-9, 1e12), "d0": ("num", 1, 1e-9, 1e12), "d_unit": (_TEXT, "m", 12)},
+        "example": {"source": "the Sun", "quantity": "Sunlight", "d_min": 0.4, "d_max": 5.2, "d0": 1, "d_unit": "AU"}},
+    "bottleneck": {
+        "pick": "A pipeline or process with stages of different capacity, where the slowest stage limits the output: "
+                "AI inference (memory vs compute), a production line, a hospital, a data pipeline.",
+        "build": _t_bottleneck, "goals": "thr (line output), u1..u3 (% busy of each stage)",
+        "params": {"stages": ("list", []), "unit": (_TEXT, "items/hour", 16)},
+        "example": {"unit": "tokens/s", "stages": [{"label": "Memory reads", "value": 40, "max": 200},
+                                                   {"label": "Compute", "value": 120, "max": 200}]}},
+}
+
+
+def template_params(spec, given):
+    """The model's values for a template, kept inside each parameter's allowed range."""
+    given = given if isinstance(given, dict) else {}
+    out = {}
+    for name, (kind, default, *rest) in spec.items():
+        v = given.get(name, default)
+        if kind == "num":
+            out[name] = min(rest[1], max(rest[0], _num(v, default)))
+        elif kind == _TEXT:
+            out[name] = _txt(v, rest[0]) or default
+        elif kind == "enum":
+            out[name] = v if v in rest[0] else default
+        else:
+            out[name] = v if isinstance(v, list) else default
+    return out
+
+
+def check_template(step):
+    key = str(step.get("template", ""))
+    tpl = TEMPLATES.get(key)
+    if not tpl:
+        raise ValueError(f"unknown template {key!r}")
+    raw = tpl["build"](template_params(tpl["params"], step.get("params")))
+    raw.update(text=step.get("text") or "Try it.", goal=step.get("goal"))
+    out = check_explore(raw, max_outputs=6)
+    out.update(template=key, view=raw["view"])
+    return out
+
+
+def template_catalog():
+    rows = []
+    for key, t in TEMPLATES.items():
+        params = ", ".join(f"{n} ({'text' if s[0] == _TEXT else '/'.join(s[2]) if s[0] == 'enum' else s[0]})"
+                           for n, s in t["params"].items())
+        rows.append(f"- {key}: {t['pick']}\n  params: {params}\n  goal outputs: {t['goals']}\n"
+                    f"  example params: {json.dumps(t['example'], ensure_ascii=False)}")
+    return "\n".join(rows)
+
+
+def pick_templates(segs, recent):
+    """The decision model chooses a template for each segment (a multiple-choice question, which is what decision
+    models are for). Returns {segment title: template or "none"}; missing when no decision model answered."""
+    criteria = {"none": "No template fits: the main idea is not about a quantity that changes (a debate, a policy, "
+                        "a story), or none of the others matches."} | {k: t["pick"] for k, t in TEMPLATES.items()}
+    picks, today = {}, []
+    for s, turns in segs:
+        state_obj = {"segment": s["title"], "angle": s.get("angle", ""),
+                     "excerpt": " ".join(t for _, t in turns)[:2500],
+                     "recently_used": list(recent)[-6:], "already_used_today": list(today)}
+        ans = decide(state_obj, {"template": {
+            "type": "choice", "criteria": criteria,
+            "instructions": "Which hands-on puzzle template would let a curious engineer DISCOVER this segment's "
+                            "main idea by playing with it? Pick the one whose mechanism really matches. When two fit "
+                            "about equally, prefer one not recently used or already used today."}},
+            subject="podcast segment, to choose an interactive puzzle for it")
+        key = ((ans or {}).get("template") or {}).get("choice")
+        if key in TEMPLATES or key == "none":
+            picks[s["title"]] = key
+            if key != "none":
+                today.append(key)
+    if picks:
+        log(f"  puzzle templates chosen by the decision model: {', '.join(f'{k[:40]} -> {v}' for k, v in picks.items())}")
+    return picks
 
 
 def check_step(step):
     kind = step.get("type")
+    if kind == "template":
+        return check_template(step)
     if kind == "concept":
         text = _txt(step.get("text"), 600)
         if not text:
@@ -2714,52 +3081,75 @@ def check_lessons(data, titles):
 LESSON_GUIDE = """Write short interactive lessons in the style of Brilliant.org for the page that goes with today's
 episode. The listener does them on his phone after the drive. He learns by doing, not by reading: minimal text,
 logic and intuition, real-life examples. He is happy to meet concepts he does not fully know yet (that is how
-new words stick), so pick the ideas that are worth understanding - especially ones the episode rushed through.
+new words stick), so pick the ideas worth understanding - especially ones the episode rushed through.
 
-LESSON SHAPE (one lesson per main idea, at most 3 lessons; 5-8 steps each; every step 15-45 words):
-- Open with a real-life situation or question, not a definition ("You are a diver at 30 m...", "You are
-  tuning a model that keeps overshooting...", "Your line inspects 10,000 parts a day...").
-- Then let him DO something: move sliders and watch what changes, predict before being told, work out a
-  number, put steps of a mechanism in order. At least 3 interactive steps per lesson; concepts in between.
-- Build up: each step uses the previous one. Finish with a step that applies the idea somewhere new.
+EVERY LESSON MUST BE INTERESTING. First find each lesson's one "aha": the surprising thing he will discover with
+his own hands (a 99%-accurate test that is wrong most of the time; a learning rate a little too big makes
+training explode; thirty 99% steps fail one run in four). Then build the lesson around it:
+1. HOOK - a concrete situation and a question he cannot answer yet: a puzzle, a paradox, a bet or a "what would
+   you do?", with real numbers from the episode. Never a definition, never "today we'll learn".
+2. PREDICT - a "choice" step where he commits to a guess before touching anything. Wrong guesses are fine;
+   the hint makes him think, it does not give the answer away.
+3. PLAY - the hands-on template (below). Its goal is the aha, phrased as a mission ("Find...", "Make...", "Get
+   the error under..."), reachable but only after some exploring. The success text names what he discovered.
+4. EXPLAIN - a short concept: why it works, the mechanism in plain words, one analogy from his world.
+5. TRANSFER - a number, order or choice step that uses the same idea somewhere new (his factory and QA work, a
+   hospital, the car, the sky), with different numbers, so he has to think rather than copy.
+Add a sixth or seventh step only if it brings a second surprise. Every step 15-45 words. No trivia (names,
+dates, who said what): every question needs reasoning. Light humour is welcome.
+VARIETY: do not repeat the angles of recent lessons (listed below) and vary the hook from lesson to lesson
+(a bet, a mystery, a mistake to spot, a design decision, a race against time).
 
-STEP TYPES (JSON):
+THE HANDS-ON TEMPLATE. A decision model has chosen a template for each segment (TEMPLATE PLAN below). Use it
+exactly once per lesson:
+{"type": "template", "template": "<name>", "text": "<what to try, one or two sentences>",
+ "params": {<the template's params>},
+ "goal": {"text": "<the mission>", "output": "<one of its goal outputs>", "min": <n>, "max": <n>,
+          "success": "<the aha, one or two sentences>"}}
+You only fill it in: realistic values from the episode (or a clearly labelled simple example) and plain labels.
+The maths is built in - never write formulas for a template. If a segment's plan says "none", use no template:
+build that lesson from predict / number / order / concept steps (or, only for a real quantity that no template
+covers, one "explore" step with your own formulas, as shown below).
+
+OTHER STEP TYPES (JSON):
 {"type": "concept", "text": "...", "example": "<optional real-life example>"}
-{"type": "explore", "text": "<what to try>",
- "inputs": [{"id": "depth", "label": "Depth", "unit": "m", "min": 0, "max": 40, "step": 1, "value": 0}],
- "outputs": [{"id": "p", "label": "Total pressure", "unit": "kPa", "expr": "101.3*(1+depth/10)", "digits": 0},
-             {"id": "pn2", "label": "Nitrogen partial pressure", "unit": "kPa", "expr": "0.78*p", "digits": 0}],
- "chart": {"x": "depth", "y": ["pn2"]},
- "goal": {"text": "Find the depth where nitrogen pushes twice as hard as at the surface.", "output": "pn2",
-          "min": 155, "max": 162, "success": "<what he just discovered, one or two sentences>"}}
 {"type": "choice", "text": "<question or prediction>", "options": ["...", "...", "..."], "answer": <index>,
  "hint": "<nudge shown after a wrong try>", "explain": "<why, shown when right>"}
 {"type": "number", "text": "<question>", "answer_expr": "<formula of numbers only, e.g. 0.21*101.3>",
  "unit": "kPa", "tolerance": 0.05, "hint": "...", "explain": "..."}
 {"type": "order", "text": "<put these in order>", "items": ["<first>", "<second>", "<third>", "<fourth>"],
  "explain": "..."}   (items in the CORRECT order; the page shuffles them)
-
-FORMULAS: numbers, slider and readout ids, + - * / ^ ( ) and min max abs sqrt exp ln log10 pow round floor ceil
-sin cos tan, constants pi and e. A readout may use earlier readouts. Use only standard, textbook relationships
-(or a clearly labelled simple model), with realistic units and ranges. 1-3 sliders, 1-4 readouts. Use an
-explore step whenever the idea has any quantity (pressure, rate, probability, error rate, cost, size, speed,
-learning rate, accuracy). Goals must be reachable with the sliders.
+{"type": "explore", "text": "...", "inputs": [{"id": "depth", "label": "Depth", "unit": "m", "min": 0,
+ "max": 40, "step": 1, "value": 0}], "outputs": [{"id": "p", "label": "Total pressure", "unit": "kPa",
+ "expr": "101.3*(1+depth/10)"}], "goal": {"text": "...", "output": "p", "min": 300, "max": 310, "success": "..."}}
+ (formulas: numbers, ids, + - * / ^ ( ), min max abs sqrt exp ln log10 pow round floor ceil sin cos tan ncdf,
+ pi, e; textbook relationships only)
 
 WORDS: for each lesson, 3-6 terms from the episode worth keeping, with a plain one-line meaning.
 Never explain {expert} (his own field) - use them freely as analogies.
-Return JSON only: {"lessons": [{"title": "<short, plain>", "segment": "<exact segment title>",
+Return JSON only: {"lessons": [{"title": "<short, intriguing, plain>", "segment": "<exact segment title>",
                                 "words": [{"term": "...", "means": "..."}], "steps": [...]}]}"""
 
 
-def make_lessons(written, theme):
-    """Interactive lessons for the day's segments: written by a model, run here, then checked by a second model."""
-    segs = [(s, turns) for s, turns in written if s.get("format") != "followup"][:4]
+def make_lessons(written, theme, recent=()):
+    """Interactive lessons for the day's segments: the decision model picks a template for each, the writer fills
+    in the story and numbers, everything is run here, then a second model checks the science."""
+    segs = [(s, turns) for s, turns in written if s.get("format") != "followup"][:3]
     if not segs:
         return []
+    recent = list(recent)
     titles = [s["title"] for s, _ in segs]
+    picks = pick_templates(segs, [r.get("template") for r in recent if r.get("template")])
+    plan = "\n".join(f'- "{s["title"]}": ' + (picks[s["title"]] if s["title"] in picks else
+                                               "(no decision: choose the best-fitting template yourself, or none)")
+                     for s, _ in segs)
+    seen = "\n".join(f"- {r.get('date', '')}: {r.get('title', '')} ({r.get('template') or 'no template'})"
+                     for r in recent[-10:]) or "(none yet)"
     script = "\n\n".join(f"[SEGMENT: {s['title']}]\n" + "\n".join(f"{spk}: {t}" for spk, t in turns)[:9000]
                          for s, turns in segs)
     prompt = (LESSON_GUIDE.replace("{expert}", EXPERT_AREAS) +
+              f"\n\nTEMPLATES:\n{template_catalog()}\n\nTEMPLATE PLAN (one lesson per segment):\n{plan}"
+              f"\n\nRECENT LESSONS (do not repeat these angles):\n{seen}"
               f"\n\nListener: {LISTENER_PROFILE}\nToday's theme: {theme}\n\nEPISODE SCRIPT:\n{script}")
     try:
         text, _ = llm(prompt, json_mode=True, min_words=80, label="puzzles", role="writer")
@@ -2771,9 +3161,13 @@ def make_lessons(written, theme):
         lessons, more = review_lessons(lessons, titles)
         dropped += more
     n = sum(len(x["steps"]) for x in lessons)
-    log(f"  puzzles: {len(lessons)} lesson(s), {n} steps "
-        f"({sum(1 for x in lessons for s in x['steps'] if s['type'] == 'explore')} with sliders), {dropped} dropped")
+    used = [s.get("template") for x in lessons for s in x["steps"] if s.get("template")]
+    log(f"  puzzles: {len(lessons)} lesson(s), {n} steps, templates: {', '.join(used) or 'none'}; {dropped} dropped")
     return lessons
+
+
+def lesson_template(lesson):
+    return next((s["template"] for s in lesson["steps"] if s.get("template")), "")
 
 
 def review_lessons(lessons, titles):
@@ -2789,7 +3183,8 @@ def review_lessons(lessons, titles):
     prompt = f"""You check interactive science lessons before a learner sees them. For each step, look for:
 wrong science or maths, formulas that are not the standard relationship (or have wrong units or magnitudes),
 a marked answer that is wrong or ambiguous, an explanation that contradicts the answer, an "order" whose
-items are not in the correct order. Ignore style. Be strict about facts, not about wording.
+items are not in the correct order, template values that are unrealistic for the story, and trivia questions
+(a name, date or who-said-what that needs no reasoning). Ignore style. Be strict about facts, not wording.
 
 STEPS:
 {json.dumps(shown, ensure_ascii=False)[:30000]}
@@ -3079,7 +3474,9 @@ def main():
         raise RuntimeError(f"Script too short ({total_words} words) - not publishing.")
 
     log("  writing the puzzles")
-    lessons = make_lessons(written, theme)
+    lessons = make_lessons(written, theme, state.get("lesson_log", []))
+    state["lesson_log"] = (state.get("lesson_log", []) +
+                           [{"date": date_key, "title": x["title"], "template": lesson_template(x)} for x in lessons])[-30:]
 
     log("7/8 Greeting and voices")
     greeting, closing, summary, threads = write_bookends(state, written, theme, edition, now, bool(deep), source_note,
@@ -3157,7 +3554,8 @@ def main():
                 "feedback": [f for f in state["feedback"] if f.get("received", "") >= fb_cut],
                 "tts_log": state.get("tts_log", []), "or_spend": [s for s in SPEND if s[0] >= day_ago],
                 "free_log": [t for t in FREE_LOG if t >= utc_yesterday], "free_day_out": FREE_DAY_OUT[0],
-                "pace_adjust": state.get("pace_adjust", 0.0), "topics": state["topics"]})
+                "pace_adjust": state.get("pace_adjust", 0.0), "lesson_log": state.get("lesson_log", []),
+                "topics": state["topics"]})
 
     transcript = "\n\n".join(f"## {lbl}\n" + "\n".join(f"{spk}: {t}" for spk, t in turns) for lbl, turns in sections)
     write_quiz_files(keep, {

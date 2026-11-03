@@ -35,13 +35,41 @@ between segments, and chapter markers in the MP3, so podcast apps (and the car's
 stories.
 
 Each episode's page has **puzzles**: short, Brilliant-style lessons on the episode's ideas, done on the phone
-after the drive. A model writes them as data, never as code: sliders that drive real formulas, with a live chart
-and a challenge ("find the depth where nitrogen pushes twice as hard"), predictions, numbers to work out, and
-steps to put in order. Every formula is run before publishing; a step that doesn't compute, a challenge the
-sliders can't reach, or anything a second model flags as wrong science is removed. Number answers are computed,
-not taken from the model. The page also keeps **words to keep** (new terms with a one-line meaning), a quick
-recap quiz and the feedback form. Puzzles that needed a hint are sent back with the feedback, so later episodes
-explain those ideas better. There are no Reddit links on the page or in the show notes.
+after the drive. Each lesson is built around one hands-on **template**: a picture with sliders whose maths is
+written and tested once, in `generate_briefing.py` (`TEMPLATES`) and drawn by `quiz.html`:
+
+| Template | The picture | Fits stories about |
+|---|---|---|
+| `saturation` | a tank filling towards a level | gases loading into tissue, drugs building up, charging, cooling |
+| `doubling` | a grid of blocks doubling or halving | compute growth, bacteria, radioactive decay, drug clearance |
+| `chain` | 12 runs, each breaking at its first failed step | AI agents' multi-step tasks, rolled throughput yield |
+| `base_rate` | 1000 dots: real cases, misses and false alarms | screening tests, AI-text detectors, inspection |
+| `threshold` | two overlapping bell curves and a cut-off | good vs bad parts, healthy vs sick, spam filters |
+| `sampling` | 20 repeat experiments closing in on the truth | benchmarks, clinical trials, polls, sampling plans |
+| `gradient_descent` | a ball stepping down an error bowl | training a model, learning rate, over-correcting loops |
+| `softmax` | next-word bars and a "Generate" button | how a language model picks words, temperature |
+| `flow` | particles crossing a membrane from high to low | partial pressure in the lungs, heat, batteries |
+| `inverse_square` | light spreading over a growing area | sunlight, radiation dose, signal strength, gravity |
+| `bottleneck` | pipes with the narrowest stage marked | AI inference, production lines, hospitals |
+
+How a lesson is made:
+
+1. The **decision model** chooses the template for each segment: a multiple-choice question over the
+   library, or "none" when no template fits. It sees the templates used recently, so they rotate.
+2. The **writing model** fills in only the story: realistic values, plain labels and a mission ("Find the
+   learning rate that settles in 8 steps"). It never writes code or formulas for a template. Around it, it
+   writes the rest of the lesson to fixed rules: a hook (a puzzle, paradox or bet), a prediction, the
+   hands-on template with the "aha" as its mission, a short explanation, and a transfer to a new setting such
+   as a factory, a hospital or the sky. No trivia, and no repeating recent angles.
+3. **Checks**: every value is held to the template's limits; every formula runs before publishing; a mission
+   the sliders can't reach is dropped, and one already solved at the start gets a new starting point; a
+   second model removes wrong science, unrealistic values and trivia; number answers are computed, not
+   taken from the model.
+
+When no template fits, the lesson uses predictions, numbers and ordering (or a slider with its own checked
+formulas). The page also keeps **words to keep** (new terms with a one-line meaning), a quick recap quiz and
+the feedback form. Puzzles that needed a hint are sent back with the feedback, so later episodes explain
+those ideas better. There are no Reddit links on the page or in the show notes.
 
 ## Files you edit
 
@@ -55,7 +83,7 @@ explain those ideas better. There are no Reddit links on the page or in the show
 |---|---|
 | Writing | Gemini API free key, then OpenRouter free models (Nemotron 3 Ultra, Nemotron 3.5 Super VL, Gemma 4 31B), then GitHub Models. Once a model works, it keeps writing the rest of the episode. A model that times out or fails twice is skipped for the rest of the run. |
 | Scoring | Each thread judged on its own by Nemotron 3.5 Lightning (free), Nemotron 3.5 Super VL as backup, about 70 requests per episode. A model that fails six times in a row is dropped for the run; threads it misses are scored in one batched call. |
-| Puzzles | Written by the writing chain, checked by the helper chain: two requests per episode. |
+| Puzzles | Template chosen by the decision models (one request per segment), filled in by the writing chain, checked by the helper chain. |
 | Topics, quiz, dossier notes | Gemini Flash-Lite free key, then OpenRouter free models (Nemotron 3.5 Super VL, Gemma 4). |
 | Voices | Fish Audio (OpenRouter free, three requests in flight), then Gemini TTS (free key), then Edge. |
 
