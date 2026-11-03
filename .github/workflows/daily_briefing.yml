@@ -3,10 +3,13 @@ name: Weights and Measures
 on:
   schedule:
     # GitHub cron is in UTC. India = UTC + 5:30.
-    - cron: '30 2 * * *'    # 08:00 IST  morning edition
-    - cron: '30 3 * * *'    # 09:00 IST  morning backup (skips if already made)
-    - cron: '30 10 * * *'   # 16:00 IST  evening edition
-    - cron: '30 11 * * *'   # 17:00 IST  evening backup (skips if already made)
+    # GitHub starts scheduled runs 30-50 minutes late (Oct-Nov 2026: an 08:00 run started at 08:40-08:46) and
+    # an episode takes 15-30 minutes to make, so the runs are set early enough to be ready for the 08:00 and
+    # 16:00 commutes. Minutes off :00 and :30, when GitHub's scheduler is busiest.
+    - cron: '50 0 * * *'    # 06:20 IST  morning edition  (ready about 07:15)
+    - cron: '35 1 * * *'    # 07:05 IST  morning backup (skips if already made)
+    - cron: '50 8 * * *'    # 14:20 IST  evening edition  (ready about 15:15)
+    - cron: '35 9 * * *'    # 15:05 IST  evening backup (skips if already made)
   workflow_dispatch:
     inputs:
       edition:
@@ -97,6 +100,9 @@ jobs:
           FISH_TEMPO_B: ${{ vars.FISH_TEMPO_B }}
           FISH_VOICE_A: ${{ vars.FISH_VOICE_A }}
           FISH_VOICE_B: ${{ vars.FISH_VOICE_B }}
+          FISH_WORKERS: ${{ vars.FISH_WORKERS }}
+          TARGET_LUFS: ${{ vars.TARGET_LUFS }}
+          SEGMENT_CHIME: ${{ vars.SEGMENT_CHIME }}
           GEMINI_TTS_MODEL: ${{ vars.GEMINI_TTS_MODEL }}
           GH_TOKEN: ${{ github.token }}
           GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}

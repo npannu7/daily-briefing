@@ -3,19 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Weights &amp; Measures · Quiz</title>
+<title>Weights &amp; Measures · Puzzles</title>
 <link rel="icon" href="artwork.jpg">
 <style>
 :root{
   --bg:#F6F4EE; --card:#FFFFFF; --ink:#141A2B; --muted:#5E6A82; --line:#E3E0D7;
   --accent:#C77A00; --accent-ink:#FFFFFF; --soft:#FFF4DF; --good:#1F8A5B; --good-soft:#E3F4EC;
-  --bad:#C2413B; --bad-soft:#FBE9E7; --chip:#EFEDE6;
+  --bad:#C2413B; --bad-soft:#FBE9E7; --chip:#EFEDE6; --blue:#2F6FD0;
 }
 @media (prefers-color-scheme: dark){
   :root{
     --bg:#0A0F1E; --card:#121A2E; --ink:#F1EEE6; --muted:#9AA8C4; --line:#24304A;
     --accent:#FFB547; --accent-ink:#0A0F1E; --soft:#2A2312; --good:#4CC38A; --good-soft:#0F2A1F;
-    --bad:#FF7A70; --bad-soft:#2E1414; --chip:#1B2540;
+    --bad:#FF7A70; --bad-soft:#2E1414; --chip:#1B2540; --blue:#7FB0FF;
   }
 }
 *{box-sizing:border-box}
@@ -34,17 +34,135 @@ header p{margin:2px 0 0;color:var(--muted);font-size:14px}
 .ep-head h2{font-size:19px;margin:0 0 4px;line-height:1.3}
 .meta{color:var(--muted);font-size:13px}
 .theme{margin:10px 0 0;font-size:15px}
-.sec{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:22px 0 10px;font-weight:600}
+.sec{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:24px 0 10px;font-weight:600}
+.btn{display:inline-block;border:0;border-radius:12px;padding:12px 18px;font:inherit;font-weight:600;cursor:pointer;
+  background:var(--accent);color:var(--accent-ink)}
+.btn:disabled{opacity:.35;cursor:default}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.small{padding:8px 12px;font-size:14px;border-radius:10px}
+.link{background:none;border:0;padding:6px 0;color:var(--muted);font:inherit;font-size:14px;cursor:pointer}
+.hint{color:var(--muted);font-size:13px}
+a{color:var(--accent)}
+.empty{color:var(--muted);text-align:center;padding:40px 0}
+
+/* ---------- lessons ---------- */
+.lesson{border:1px solid var(--line);border-radius:14px;margin:0 0 12px;overflow:hidden}
+.lesson-top{display:flex;gap:12px;align-items:center;padding:14px;cursor:pointer;width:100%;text-align:left;
+  background:transparent;border:0;color:var(--ink);font:inherit}
+.lesson-top .ttl{display:block;font-weight:700;font-size:16px;line-height:1.3}
+.lesson-top .sub{display:block;color:var(--muted);font-size:13px;margin-top:2px}
+.lesson-top .grow{display:block;flex:1;min-width:0}
+.ring{flex:none;width:38px;height:38px}
+.ring circle{fill:none;stroke-width:4}
+.ring .bg{stroke:var(--chip)} .ring .fg{stroke:var(--accent);stroke-linecap:round;transition:stroke-dashoffset .3s}
+.ring.done .fg{stroke:var(--good)}
+.ring text{font-size:11px;font-weight:700;fill:var(--ink);text-anchor:middle;dominant-baseline:central}
+.lesson-body{padding:0 14px 14px}
+.dots{display:flex;gap:4px;margin:0 0 14px}
+.dots span{flex:1;height:5px;border-radius:3px;background:var(--chip)}
+.dots span.on{background:var(--accent)} .dots span.ok{background:var(--good)}
+.step-text{font-size:17px;line-height:1.45;margin:0 0 14px}
+.example{background:var(--soft);border-radius:12px;padding:10px 12px;font-size:15px;margin:0 0 6px}
+.example b{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:2px}
+.slider{margin:0 0 12px}
+.slider .top{display:flex;justify-content:space-between;gap:8px;font-size:14px;color:var(--muted)}
+.slider .top b{color:var(--ink);font-variant-numeric:tabular-nums}
+input[type=range]{width:100%;accent-color:var(--accent);height:28px;margin:2px 0 0}
+.readouts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin:4px 0 12px}
+.ro{background:var(--chip);border-radius:12px;padding:8px 10px}
+.ro .l{font-size:12px;color:var(--muted);line-height:1.3}
+.ro .v{font-size:21px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.3}
+.ro .v small{font-size:13px;font-weight:500;color:var(--muted);margin-left:3px}
+.robar{height:4px;background:var(--line);border-radius:2px;margin-top:5px;overflow:hidden}
+.robar span{display:block;height:100%;background:var(--accent);border-radius:2px;transition:width .15s}
+.ro.k1 .robar span{background:var(--blue)} .ro.k2 .robar span{background:var(--good)} .ro.k3 .robar span{background:var(--muted)}
+.ro .l i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px;vertical-align:0}
+.chart{margin:0 0 12px}
+.chart svg{width:100%;height:auto;display:block}
+.chart .axis{stroke:var(--line);stroke-width:1}
+.chart .tick{fill:var(--muted);font-size:10px}
+.chart .curve{fill:none;stroke-width:2.5;stroke-linejoin:round}
+.chart .c0{stroke:var(--accent)} .chart .c1{stroke:var(--blue)} .chart .c2{stroke:var(--good)} .chart .c3{stroke:var(--muted)}
+.chart .d0{fill:var(--accent)} .chart .d1{fill:var(--blue)} .chart .d2{fill:var(--good)} .chart .d3{fill:var(--muted)}
+.chart .now{stroke:var(--muted);stroke-dasharray:3 3}
+.legend{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:12px;color:var(--muted);margin-top:2px}
+.legend i{display:inline-block;width:10px;height:3px;border-radius:2px;margin-right:4px;vertical-align:3px}
+.goal{border:1.5px dashed var(--accent);border-radius:12px;padding:10px 12px;font-size:15px}
+.goal b{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:2px}
+.goal.met{border-style:solid;border-color:var(--good);background:var(--good-soft)}
+.goal.met b{color:var(--good)}
+.opt{display:block;width:100%;text-align:left;border:1.5px solid var(--line);background:transparent;color:var(--ink);
+  border-radius:12px;padding:11px 13px;margin:0 0 8px;font:inherit;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--muted)}
+.opt.right{border-color:var(--good);background:var(--good-soft)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft);opacity:.75}
+.opt:disabled{cursor:default}
+.numrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.numrow input{width:150px;font:inherit;font-size:18px;padding:9px 12px;border:1.5px solid var(--line);border-radius:12px;
+  background:transparent;color:var(--ink);font-variant-numeric:tabular-nums}
+.numrow input.right{border-color:var(--good);background:var(--good-soft)}
+.numrow input.wrong{border-color:var(--bad)}
+.numrow .unit{color:var(--muted)}
+.olist{list-style:none;margin:0 0 10px;padding:0}
+.olist li{display:flex;gap:10px;align-items:center;margin:0 0 6px}
+.olist .n{flex:none;width:24px;height:24px;border-radius:50%;background:var(--chip);color:var(--muted);font-size:12px;
+  font-weight:700;display:flex;align-items:center;justify-content:center}
+.olist .slot{flex:1;border:1.5px dashed var(--line);border-radius:10px;padding:8px 10px;min-height:40px;font-size:15px;
+  text-align:left;background:transparent;color:var(--ink);font-family:inherit;cursor:pointer}
+.olist .slot.filled{border-style:solid;border-color:var(--muted)}
+.olist .slot.right{border-color:var(--good);background:var(--good-soft)}
+.olist .slot.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.pool{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 10px}
+.pool button{border:1.5px solid var(--line);background:var(--chip);color:var(--ink);border-radius:10px;padding:8px 11px;
+  font:inherit;font-size:15px;text-align:left;cursor:pointer}
+.say{min-height:24px;font-size:15px;margin:12px 0 0}
+.say.good{color:var(--good)} .say.bad{color:var(--bad)}
+.say .why{display:block;color:var(--ink);margin-top:4px}
+.nav{display:flex;justify-content:space-between;align-items:center;margin-top:16px;gap:8px}
+.finish{text-align:center;padding:10px 0 4px}
+.finish .big{font-size:20px;font-weight:700;margin:4px 0}
+.badge-ok{display:inline-flex;width:44px;height:44px;border-radius:50%;background:var(--good-soft);color:var(--good);
+  align-items:center;justify-content:center;font-size:24px;font-weight:700}
+
+
+/* ---------- template pictures ---------- */
+.view{margin:0 0 12px;background:var(--chip);border-radius:14px;padding:10px}
+.view-svg{width:100%;height:auto;display:block;overflow:visible}
+.vt{font-size:11px;fill:var(--ink)} .vt.big{font-size:20px;font-weight:700} .vt.muted{fill:var(--muted)}
+.vt.good{fill:var(--good);font-weight:700} .vt.bad{fill:var(--bad);font-weight:700} .vt.blue{fill:var(--blue)} .vt.red{fill:var(--bad)}
+.v-vessel{fill:var(--card);stroke:var(--muted);stroke-width:1.5} .v-vessel.bad{stroke:var(--bad);stroke-width:2.5}
+.v-fill{fill:var(--accent);opacity:.85;transition:all .15s} .v-target{stroke:var(--bad);stroke-width:2;stroke-dasharray:5 4}
+.v-on{fill:var(--accent)} .v-on2{fill:var(--blue);opacity:.75} .v-off{fill:var(--line)}
+.v-good{fill:var(--good)} .v-bad{fill:var(--bad)}
+.v-tp{fill:var(--accent)} .v-fn{fill:none;stroke:var(--accent);stroke-width:1.3} .v-fp{fill:var(--bad)} .v-tn{fill:var(--line)}
+.v-line{fill:none;stroke-width:2.5} .v-line.blue{stroke:var(--blue)} .v-line.red{stroke:var(--bad)} .v-line.muted{stroke:var(--muted)}
+.v-shade-bad{fill:var(--bad);opacity:.25} .v-shade-acc{fill:var(--blue);opacity:.25}
+.v-cut{stroke:var(--ink);stroke-width:1.5;stroke-dasharray:4 3}
+.v-band{fill:var(--accent);opacity:.2} .v-dot{fill:var(--blue)}
+.v-trail{fill:none;stroke:var(--accent);stroke-width:1.5;stroke-dasharray:3 2} .v-ball{fill:var(--accent);stroke:var(--card);stroke-width:2}
+.v-goal{fill:var(--good)}
+.v-arrow{stroke:var(--accent);stroke-linecap:round} .v-arrowhead{fill:var(--accent)}
+.v-sun{fill:var(--accent)} .v-cone{fill:var(--accent)} .v-panel{fill:var(--accent)} .v-panel-edge{fill:none;stroke:var(--muted);stroke-width:1}
+.v-flow{fill:var(--blue);opacity:.45}
+.v-miss{fill:var(--bad);opacity:.25} .v-fluid{fill:var(--blue);opacity:.22} .v-sunk{fill:var(--accent);opacity:.45}
+.v-waterline{stroke:var(--blue);stroke-width:2} .v-balloon{fill:var(--accent);opacity:.8} .v-drop{fill:var(--blue);opacity:.8}
+.v-vec-a{stroke:var(--accent);stroke-width:3;fill:var(--accent)} .v-vec-b{stroke:var(--blue);stroke-width:3;fill:var(--blue)}
+.v-vec-left{stroke:var(--bad);stroke-width:2;fill:var(--bad)} .v-along{stroke:var(--accent);stroke-width:6;opacity:.35}
+.head{stroke-width:0}
+.v-prompt{font-size:16px;margin:0 0 10px} .v-prompt .blank{color:var(--muted);letter-spacing:2px} .v-prompt .filled{color:var(--accent)}
+/* ---------- words ---------- */
+.word{border-top:1px solid var(--line);padding:9px 0}
+.word:first-of-type{border-top:0;padding-top:0}
+.word b{font-size:15px}
+.word p{margin:2px 0 0;font-size:14px;color:var(--muted)}
+.word a{font-size:12px;margin-left:6px}
+
+/* ---------- quiz + feedback ---------- */
 .q{border-top:1px solid var(--line);padding:14px 0 4px}
 .q:first-of-type{border-top:0;padding-top:0}
 .q p{margin:0 0 10px;font-weight:600}
 .q .seg{display:block;font-weight:400;color:var(--muted);font-size:12px;margin-bottom:4px}
-.opt{display:block;width:100%;text-align:left;border:1px solid var(--line);background:transparent;color:var(--ink);
-  border-radius:10px;padding:10px 12px;margin:0 0 8px;font:inherit;cursor:pointer}
-.opt:hover{border-color:var(--muted)}
-.opt.pick{border-color:var(--accent);background:var(--soft)}
-.opt.right{border-color:var(--good);background:var(--good-soft)}
-.opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.q .opt.pick{border-color:var(--accent);background:var(--soft)}
 .explain{display:none;font-size:14px;color:var(--muted);margin:4px 0 8px}
 .checked .explain{display:block}
 .checked .opt{cursor:default}
@@ -60,33 +178,16 @@ header p{margin:2px 0 0;color:var(--muted);font-size:14px}
 .segrow .row{margin:0;flex:none}
 textarea{width:100%;min-height:90px;border:1px solid var(--line);border-radius:10px;padding:10px;font:inherit;
   background:transparent;color:var(--ink)}
-.btn{display:inline-block;border:0;border-radius:12px;padding:12px 18px;font:inherit;font-weight:600;cursor:pointer;
-  background:var(--accent);color:var(--accent-ink)}
-.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
 .score{font-weight:600;margin-left:10px}
-.footer{position:sticky;bottom:0;background:var(--bg);padding:12px 0;border-top:1px solid var(--line);
-  display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.hint{color:var(--muted);font-size:13px}
-a{color:var(--accent)}
-.empty{color:var(--muted);text-align:center;padding:40px 0}
-.dg{border-top:1px solid var(--line);padding:10px 0}
-.dg:first-of-type{border-top:0;padding-top:0}
-.dg a.t{font-weight:600;text-decoration:none;color:var(--ink)}
-.dg a.t:hover{text-decoration:underline}
-.dg p{margin:4px 0 2px;font-size:14px}
-.badge{display:inline-block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;
-  border-radius:6px;padding:1px 6px;margin-right:6px;background:var(--chip);color:var(--muted);vertical-align:1px}
-.badge.confirmed{background:var(--good-soft);color:var(--good)}
-.badge.hype{background:var(--bad-soft);color:var(--bad)}
-.badge.ep{background:var(--soft);color:var(--accent)}
-details.digest summary{cursor:pointer;color:var(--muted);font-size:14px;margin:0 0 10px}
+.footer{padding:12px 0;border-top:1px solid var(--line);display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+details.more summary{cursor:pointer;color:var(--muted);font-size:14px;margin:0 0 10px}
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
     <img src="artwork.jpg" alt="">
-    <div><h1 id="show">Weights &amp; Measures</h1><p id="sub">Digest, quiz and feedback</p></div>
+    <div><h1 id="show">Weights &amp; Measures</h1><p id="sub">Puzzles, quiz and feedback</p></div>
   </header>
   <div class="tabs" id="tabs" role="toolbar" aria-label="Episodes"></div>
   <div id="list"><p class="empty">Loading episodes…</p></div>
@@ -101,26 +202,749 @@ details.digest summary{cursor:pointer;color:var(--muted);font-size:14px;margin:0
     get: function(k, d){ try { var v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch(e){ return d; } },
     set: function(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
   };
-  var DATA = null, selected = [], state = {};
+  var DATA = null, selected = [], state = {}, openLesson = {};
+  var SVGNS = 'http://www.w3.org/2000/svg';
 
   function el(tag, attrs, kids){
     var n = document.createElement(tag);
     for (var k in (attrs||{})) {
+      if (attrs[k] === undefined || attrs[k] === null) continue;
       if (k === 'text') n.textContent = attrs[k];
       else if (k === 'on') for (var ev in attrs.on) n.addEventListener(ev, attrs.on[ev]);
       else n.setAttribute(k, attrs[k]);
     }
-    (kids||[]).forEach(function(c){ if (c) n.appendChild(c); });
+    (kids||[]).forEach(function(c){ if (c) n.appendChild(typeof c === 'string' ? document.createTextNode(c) : c); });
     return n;
   }
-  function safeUrl(u){ return /^https?:\/\//i.test(u || '') ? u : ''; }
+  function svg(tag, attrs){
+    var n = document.createElementNS(SVGNS, tag);
+    for (var k in attrs) { if (k === 'text') n.textContent = attrs[k]; else n.setAttribute(k, attrs[k]); }
+    return n;
+  }
   function fmtDur(s){ s = +s||0; return Math.floor(s/60) + ' min'; }
   function st(file){
-    if (!state[file]) state[file] = store.get('wm:' + file, {answers:{}, checked:false, ratings:{}, segments:{}, comment:''});
-    return state[file];
+    if (!state[file]) state[file] = store.get('wm:' + file, {});
+    var s = state[file];
+    s.answers = s.answers || {}; s.ratings = s.ratings || {}; s.segments = s.segments || {};
+    s.puz = s.puz || {}; s.comment = s.comment || ''; s.checked = !!s.checked;
+    return s;
   }
   function save(file){ store.set('wm:' + file, state[file]); }
 
+  /* ---------- formulas: the same small language the generator checks (generate_briefing.py) ---------- */
+  var FUNCS = {min:Math.min, max:Math.max, abs:Math.abs, sqrt:Math.sqrt, exp:Math.exp, ln:Math.log,
+    log10:function(x){ return Math.log(x) / Math.LN10; }, pow:Math.pow, round:Math.round, floor:Math.floor,
+    ceil:Math.ceil, sin:Math.sin, cos:Math.cos, tan:Math.tan, ncdf:ncdf};
+  function ncdf(x){   // same approximation as generate_briefing.py (Abramowitz & Stegun 7.1.26)
+    var z = Math.abs(x) / Math.SQRT2, t = 1 / (1 + 0.3275911 * z);
+    var y = 1 - (((((1.061405429 * t - 1.453152027) * t) + 1.421413741) * t - 0.284496736) * t + 0.254829592) * t * Math.exp(-z * z);
+    return 0.5 * (1 + (x >= 0 ? y : -y));
+  }
+  var CONSTS = {pi:Math.PI, e:Math.E};
+  var CACHE = {};
+  function parseExpr(src){
+    if (CACHE[src]) return CACHE[src];
+    var re = /\s*(?:(\d+\.?\d*(?:[eE][-+]?\d+)?|\.\d+(?:[eE][-+]?\d+)?)|([A-Za-z_]\w*)|(\S))/g, toks = [], m;
+    re.lastIndex = 0;
+    while (re.lastIndex < src.length && (m = re.exec(src)) && m[0].length) {
+      if (m[1] !== undefined) toks.push(['num', parseFloat(m[1])]);
+      else if (m[2] !== undefined) toks.push(['id', m[2]]);
+      else if (m[3] !== undefined) { if ('+-*/^(),'.indexOf(m[3]) < 0) throw new Error('bad char'); toks.push(['op', m[3]]); }
+    }
+    var i = 0;
+    function is(v){ return i < toks.length && toks[i][0] === 'op' && toks[i][1] === v; }
+    function expr(){ var n = term(); while (is('+') || is('-')) { var op = toks[i++][1]; n = ['bin', op, n, term()]; } return n; }
+    function term(){ var n = unary(); while (is('*') || is('/')) { var op = toks[i++][1]; n = ['bin', op, n, unary()]; } return n; }
+    function unary(){
+      if (is('-')) { i++; return ['neg', unary()]; }
+      if (is('+')) { i++; return unary(); }
+      var n = atom(); if (is('^')) { i++; n = ['bin', '^', n, unary()]; } return n;
+    }
+    function atom(){
+      var t = toks[i];
+      if (!t) throw new Error('incomplete');
+      if (t[0] === 'num') { i++; return ['num', t[1]]; }
+      if (t[0] === 'id') {
+        i++;
+        if (is('(')) {
+          if (!FUNCS[t[1]]) throw new Error('unknown function');
+          i++; var args = [expr()]; while (is(',')) { i++; args.push(expr()); }
+          if (!is(')')) throw new Error('expected )'); i++;
+          return ['call', t[1], args];
+        }
+        return CONSTS.hasOwnProperty(t[1]) ? ['num', CONSTS[t[1]]] : ['var', t[1]];
+      }
+      if (is('(')) { i++; var n = expr(); if (!is(')')) throw new Error('expected )'); i++; return n; }
+      throw new Error('unexpected');
+    }
+    var tree = expr();
+    if (i !== toks.length) throw new Error('trailing');
+    return (CACHE[src] = tree);
+  }
+  function evalTree(t, env){
+    switch (t[0]) {
+      case 'num': return t[1];
+      case 'var': return env.hasOwnProperty(t[1]) ? env[t[1]] : NaN;
+      case 'neg': return -evalTree(t[1], env);
+      case 'call': return FUNCS[t[1]].apply(null, t[2].map(function(a){ return evalTree(a, env); }));
+    }
+    var a = evalTree(t[2], env), b = evalTree(t[3], env);
+    return t[1] === '+' ? a + b : t[1] === '-' ? a - b : t[1] === '*' ? a * b : t[1] === '/' ? a / b : Math.pow(a, b);
+  }
+  function compute(step, values){
+    var env = {};
+    step.inputs.forEach(function(inp){ env[inp.id] = values[inp.id]; });
+    step.outputs.forEach(function(o){
+      var v; try { v = evalTree(parseExpr(o.expr), env); } catch(e){ v = NaN; }
+      env[o.id] = isFinite(v) ? v : NaN;
+    });
+    return env;
+  }
+  function decimals(x){ var s = String(x); return s.indexOf('.') < 0 ? 0 : Math.min(4, s.length - s.indexOf('.') - 1); }
+  function fmt(v, digits){
+    if (!isFinite(v)) return '—';
+    var a = Math.abs(v), d = digits !== undefined ? digits : a >= 100 ? 0 : a >= 10 ? 1 : a >= 1 ? 2 : a === 0 ? 0 : 3;
+    return v.toLocaleString('en', {minimumFractionDigits: d, maximumFractionDigits: d});
+  }
+  function hashStr(s){ var h = 2166136261; for (var i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; }
+  function shuffled(items, seed){
+    var idx = items.map(function(_, i){ return i; }), h = hashStr(seed);
+    for (var i = idx.length - 1; i > 0; i--) { h = Math.imul(h ^ (h >>> 15), 2246822519) >>> 0; var j = h % (i + 1); var t = idx[i]; idx[i] = idx[j]; idx[j] = t; }
+    if (idx.every(function(v, i){ return v === i; })) idx.push(idx.shift());
+    return idx;
+  }
+
+  /* ---------- lesson steps ---------- */
+  // Each renderer gets (step, p) where p = per-step progress {solved, tries, shown, ...} and solve(struggled)
+  // to call when the step is done. Returns the step's element.
+  function say(box, kind, msg, why){
+    box.className = 'say' + (kind ? ' ' + kind : '');
+    box.innerHTML = '';
+    if (msg) box.appendChild(document.createTextNode(msg));
+    if (why) box.appendChild(el('span', {class:'why', text: why}));
+  }
+
+  function stepConcept(step, p, solve){
+    var n = el('div', {}, [el('p', {class:'step-text', text: step.text})]);
+    if (step.example) n.appendChild(el('div', {class:'example'}, [el('b', {text:'Real life'}), step.example]));
+    if (!p.solved) setTimeout(function(){ solve(false); }, 0);
+    return n;
+  }
+
+
+  /* ---------- template pictures: one per puzzle template (generate_briefing.py TEMPLATES) ---------- */
+  function rnd(a, b){ var h = hashStr(a + ':' + b); return (h % 100000) / 100000; }
+  function gauss(a, b){ var u = Math.max(1e-6, rnd(a, b)), v = rnd(b, a + 7); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); }
+  function clamp(v, lo, hi){ return Math.max(lo, Math.min(hi, v)); }
+  function txt(s, x, y, t, cls, anchor){ s.appendChild(svg('text', {x:x, y:y, class: cls || 'vt', 'text-anchor': anchor || 'start', text: t})); }
+  function outOf(step, id){ return step.outputs.filter(function(o){ return o.id === id; })[0] || {lo:0, hi:1}; }
+  function inOf(step, id){ return step.inputs.filter(function(i){ return i.id === id; })[0]; }
+  function frame(h){ return svg('svg', {viewBox:'0 0 320 ' + h, class:'view-svg', role:'img'}); }
+
+  var VIEWS = {
+    tank: function(box, step, v){
+      return function(env){
+        var x = env[v.value], L = env[v.target], span = (v.hi - v.lo) || 1, s = frame(150);
+        var f = clamp((x - v.lo) / span, 0, 1), tl = clamp((L - v.lo) / span, 0, 1);
+        s.appendChild(svg('rect', {x:20, y:10, width:86, height:130, rx:10, class:'v-vessel'}));
+        s.appendChild(svg('rect', {x:22, y:12 + 126 * (1 - f), width:82, height:126 * f, rx:8, class:'v-fill'}));
+        s.appendChild(svg('line', {x1:14, x2:112, y1:12 + 126 * (1 - tl), y2:12 + 126 * (1 - tl), class:'v-target'}));
+        var way = L !== v.start ? clamp((x - v.start) / (L - v.start), 0, 1) : 1;
+        txt(s, 128, 30, v.label, 'vt muted'); txt(s, 128, 62, fmt(x) + ' ' + (v.unit || ''), 'vt big');
+        txt(s, 128, 92, 'heading for ' + fmt(L) + ' ' + (v.unit || ''), 'vt muted');
+        txt(s, 128, 118, Math.round(way * 100) + '% of the way there', 'vt');
+        return s;
+      };
+    },
+    blocks: function(box, step, v){
+      return function(env){
+        var fold = env[v.fold], s = frame(185), grow = v.mode === 'grow', lit = grow ? Math.min(128, Math.round(fold)) : Math.round(128 * clamp(fold, 0, 1));
+        for (var i = 0; i < 128; i++) s.appendChild(svg('rect', {x: 8 + (i % 16) * 19, y: 6 + Math.floor(i / 16) * 19, width:16, height:16, rx:3,
+          class: i < lit ? 'v-on' : 'v-off'}));
+        txt(s, 160, 178, grow ? (fold > 128 ? '×' + fmt(fold) + ' (more than the grid holds)' : '×' + fmt(fold) + ' the start') : fmt(fold * 100) + '% left', 'vt big', 'middle');
+        return s;
+      };
+    },
+    runs: function(box, step, v){
+      return function(env, values){
+        var p = values[v.p] / 100, n = Math.round(values[v.n]), R = 12, s = frame(R * 16 + 30), done = 0;
+        var w = Math.min(16, 270 / n);
+        for (var r = 0; r < R; r++) {
+          var failed = false;
+          for (var c = 0; c < n; c++) {
+            var cls = 'v-off';                       // after a failure the run stops
+            if (!failed) { if (rnd('run' + r, c) < p) cls = 'v-good'; else { cls = 'v-bad'; failed = true; } }
+            s.appendChild(svg('rect', {x: 4 + c * w, y: 4 + r * 16, width: Math.max(1, w - 1.5), height:12, rx:2, class: cls}));
+          }
+          if (!failed) done++;
+          txt(s, 288, 14 + r * 16, failed ? '✗' : '✓', failed ? 'vt bad' : 'vt good');
+        }
+        txt(s, 4, R * 16 + 22, done + ' of ' + R + ' ' + v.run + 's finished all ' + n + ' ' + v.step + 's', 'vt');
+        return s;
+      };
+    },
+    dots: function(box, step, v){
+      var s = frame(215), cells = [];
+      for (var i = 0; i < 1000; i++) { var c = svg('circle', {cx: 6 + (i % 40) * 7.8, cy: 6 + Math.floor(i / 40) * 7.8, r:3}); cells.push(c); s.appendChild(c); }
+      var legend = svg('text', {x:4, y:210, class:'vt'}); s.appendChild(legend);
+      return function(env, values){
+        var real = Math.round(values[v.prev] * 10), tp = Math.min(real, Math.round(env[v.tp])), fp = Math.round(env[v.fp]);
+        cells.forEach(function(c, i){
+          c.setAttribute('class', i < tp ? 'v-tp' : i < real ? 'v-fn' : i < real + fp ? 'v-fp' : 'v-tn');
+        });
+        legend.textContent = tp + ' real & ' + v.flagged + ' · ' + (real - tp) + ' real but missed · ' + fp + ' ' + v.flagged + ' by mistake';
+        return s;
+      };
+    },
+    bells: function(box, step, v){
+      return function(env, values){
+        var s = frame(170), th = values[v.th], L = 10, W = 300, H = 130;
+        function X(x){ return L + (x - v.lo) / (v.hi - v.lo) * W; }
+        function Y(y){ return 10 + H * (1 - y); }
+        function curve(m, from, to){
+          var pts = [], N = 60;
+          for (var j = 0; j <= N; j++) { var x = from + (to - from) * j / N; pts.push(X(x).toFixed(1) + ',' + Y(Math.exp(-(x - m) * (x - m) / (2 * v.sd * v.sd)) * 0.95).toFixed(1)); }
+          return pts;
+        }
+        var thc = clamp(th, v.lo, v.hi);
+        s.appendChild(svg('polygon', {points: [X(v.lo) + ',' + Y(0)].concat(curve(v.pos, v.lo, thc), [X(thc) + ',' + Y(0)]).join(' '), class:'v-shade-bad'}));
+        s.appendChild(svg('polygon', {points: [X(thc) + ',' + Y(0)].concat(curve(v.neg, thc, v.hi), [X(v.hi) + ',' + Y(0)]).join(' '), class:'v-shade-acc'}));
+        s.appendChild(svg('polyline', {points: curve(v.neg, v.lo, v.hi).join(' '), class:'v-line blue'}));
+        s.appendChild(svg('polyline', {points: curve(v.pos, v.lo, v.hi).join(' '), class:'v-line red'}));
+        s.appendChild(svg('line', {x1:X(thc), x2:X(thc), y1:6, y2:Y(0), class:'v-cut'}));
+        s.appendChild(svg('line', {x1:L, x2:L + W, y1:Y(0), y2:Y(0), class:'axis'}));
+        txt(s, 12, 12, '— ' + v.neg_label, 'vt blue', 'start'); txt(s, 308, 12, v.pos_label + ' —', 'vt red', 'end');
+        txt(s, X(thc), 164, 'cut-off', 'vt muted', 'middle');
+        return s;
+      };
+    },
+    spread: function(box, step, v){
+      var nIn = inOf(step, v.n), widest = 1.96 * v.sd / Math.sqrt(nIn.min) * 1.25;
+      return function(env, values){
+        var s = frame(150), lo = v.true - widest, hi = v.true + widest, se = v.sd / Math.sqrt(values[v.n]);
+        function X(x){ return 10 + (x - lo) / (hi - lo) * 300; }
+        s.appendChild(svg('rect', {x: X(env[v.lo]), y:18, width: Math.max(1, X(env[v.hi]) - X(env[v.lo])), height:84, rx:6, class:'v-band'}));
+        s.appendChild(svg('line', {x1:X(v.true), x2:X(v.true), y1:12, y2:108, class:'v-cut'}));
+        for (var k = 0; k < 20; k++) {
+          var m = v.true + se * gauss('exp' + k, k);
+          s.appendChild(svg('circle', {cx: X(clamp(m, lo, hi)), cy: 26 + (k % 10) * 8, r:3.4, class:'v-dot'}));
+        }
+        s.appendChild(svg('line', {x1:10, x2:310, y1:112, y2:112, class:'axis'}));
+        txt(s, X(v.true), 128, 'true ' + v.measure.toLowerCase() + ': ' + fmt(v.true) + (v.unit ? ' ' + v.unit : ''), 'vt', 'middle');
+        txt(s, 160, 146, '20 repeat experiments: where each average lands', 'vt muted', 'middle');
+        return s;
+      };
+    },
+    bowl: function(box, step, v){
+      return function(env, values){
+        var S = v.start * 1.3, s = frame(175), k = Math.round(values[v.k]), trail = [], flew = false;
+        function X(w){ return 160 + w / S * 140; }
+        function Y(w){ return 150 - Math.min(1.2, (w * w) / (S * S)) * 125; }
+        var pts = [];
+        for (var j = 0; j <= 60; j++) { var w = -S + 2 * S * j / 60; pts.push(X(w).toFixed(1) + ',' + Y(w).toFixed(1)); }
+        s.appendChild(svg('polyline', {points: pts.join(' '), class:'v-line muted'}));
+        for (var t = 0; t <= k; t++) {
+          var vals = {}; for (var key in values) vals[key] = values[key]; vals[v.k] = t;
+          var wt = compute(step, vals)[v.w];
+          if (!isFinite(wt) || Math.abs(wt) > S) { flew = true; break; }
+          trail.push(wt);
+        }
+        if (trail.length > 1) s.appendChild(svg('polyline', {points: trail.map(function(w){ return X(w).toFixed(1) + ',' + Y(w).toFixed(1); }).join(' '), class:'v-trail'}));
+        trail.forEach(function(w, i){ s.appendChild(svg('circle', {cx:X(w), cy:Y(w), r: i === trail.length - 1 ? 7 : 3, class: i === trail.length - 1 ? 'v-ball' : 'v-dot'})); });
+        s.appendChild(svg('circle', {cx:X(0), cy:Y(0) + 2, r:3, class:'v-goal'}));
+        var w0 = trail[0], wk = trail[trail.length - 1], zig = trail.some(function(w, i){ return i && w * trail[i - 1] < 0; });
+        var msg = flew ? 'Flew out of the bowl: steps far too big!' : Math.abs(wk) < 0.05 * v.start ? 'Settled at the bottom.' :
+          k === 0 ? 'Start training: move the steps slider.' : zig && Math.abs(wk) > Math.abs(w0) * 0.7 ? 'Zig-zagging across the bowl.' : zig ? 'Overshooting, but getting there.' : 'Creeping down the slope.';
+        txt(s, 160, 14, msg, flew ? 'vt bad' : Math.abs(wk) < 0.05 * v.start ? 'vt good' : 'vt', 'middle');
+        txt(s, 160, 170, 'training ' + v.model, 'vt muted', 'middle');
+        return s;
+      };
+    },
+    bars: function(box, step, v){
+      var shown = el('div', {class:'v-prompt'}), pick = null;
+      var gen = el('button', {class:'btn ghost small', type:'button', text:'Generate a word'});
+      return function(env){
+        var probs = v.outs.map(function(id){ return env[id] / 100; }), words = v.outs.map(function(id){ return outOf(step, id).label; });
+        var s = frame(28 * words.length + 6), top = probs.indexOf(Math.max.apply(null, probs));
+        words.forEach(function(w, i){
+          txt(s, 0, 20 + i * 28, w, 'vt', 'start');
+          s.appendChild(svg('rect', {x:96, y:6 + i * 28, width:180, height:18, rx:4, class:'v-off'}));
+          s.appendChild(svg('rect', {x:96, y:6 + i * 28, width: Math.max(1, 180 * probs[i]), height:18, rx:4, class: i === top ? 'v-on' : 'v-on2'}));
+          txt(s, 316, 20 + i * 28, fmt(probs[i] * 100, 1) + '%', 'vt', 'end');
+        });
+        function showPrompt(){
+          var parts = String(v.prompt || '___').split('___');
+          shown.innerHTML = '';
+          shown.appendChild(document.createTextNode(parts[0]));
+          shown.appendChild(el('b', {class: pick === null ? 'blank' : 'filled', text: pick === null ? '_____' : words[pick]}));
+          shown.appendChild(document.createTextNode(parts.slice(1).join('___')));
+        }
+        gen.onclick = function(){ var r = Math.random(), acc = 0; pick = probs.length - 1; for (var i = 0; i < probs.length; i++) { acc += probs[i]; if (r < acc) { pick = i; break; } } showPrompt(); };
+        showPrompt();
+        var wrap = el('div', {}, [shown, s, el('div', {class:'row', style:'margin:6px 0 0'}, [gen])]);
+        return wrap;
+      };
+    },
+    membrane: function(box, step, v){
+      var fo = outOf(step, v.flow), fmax = Math.max(Math.abs(fo.lo), Math.abs(fo.hi)) || 1;
+      return function(env, values){
+        var s = frame(160), a = values[v.a], b = values[v.b], flow = env[v.flow];
+        function side(x0, val, tag){
+          var n = Math.round(clamp((val - v.lo) / ((v.hi - v.lo) || 1), 0, 1) * 70);
+          s.appendChild(svg('rect', {x:x0, y:22, width:134, height:110, rx:10, class:'v-vessel'}));
+          for (var i = 0; i < n; i++) s.appendChild(svg('circle', {cx: x0 + 8 + rnd(tag, i) * 118, cy: 30 + rnd(tag + 'y', i) * 94, r:3, class:'v-dot'}));
+        }
+        side(8, a, 'a'); side(178, b, 'b');
+        s.appendChild(svg('line', {x1:160, x2:160, y1:16, y2:138, class:'v-cut'}));
+        var mag = Math.abs(flow) / fmax;
+        if (mag > 0.01) {
+          var dir = flow > 0 ? 1 : -1, sw = 2 + 9 * mag, x1 = 160 - dir * 26, x2 = 160 + dir * 26;
+          s.appendChild(svg('line', {x1:x1, x2:x2 - dir * 8, y1:77, y2:77, class:'v-arrow', 'stroke-width': sw}));
+          s.appendChild(svg('polygon', {points: x2 + ',77 ' + (x2 - dir * 12) + ',' + (77 - 6 - sw / 2) + ' ' + (x2 - dir * 12) + ',' + (77 + 6 + sw / 2), class:'v-arrowhead'}));
+        } else txt(s, 160, 80, 'no net flow', 'vt good', 'middle');
+        txt(s, 75, 14, v.side_a, 'vt muted', 'middle'); txt(s, 245, 14, v.side_b, 'vt muted', 'middle');
+        txt(s, 160, 154, v.thing + ' moves from high to low', 'vt muted', 'middle');
+        return s;
+      };
+    },
+    rays: function(box, step, v){
+      return function(env, values){
+        var s = frame(160), d = values[v.d], rel = env[v.rel];
+        var x = 70 + (d - v.dmin) / ((v.dmax - v.dmin) || 1) * 210, side = 14 + 110 * d / v.dmax;
+        var shine = clamp(rel / 100, 0.06, 1);
+        s.appendChild(svg('polygon', {points: '26,76 ' + x + ',' + (76 - side / 2) + ' ' + x + ',' + (76 + side / 2), class:'v-cone', style:'opacity:' + (0.08 + 0.3 * shine)}));
+        s.appendChild(svg('circle', {cx:26, cy:76, r:12, class:'v-sun'}));
+        s.appendChild(svg('rect', {x:x - 5, y:76 - side / 2, width:10, height:side, rx:3, class:'v-panel', style:'opacity:' + shine}));
+        s.appendChild(svg('rect', {x:x - 5, y:76 - side / 2, width:10, height:side, rx:3, class:'v-panel-edge'}));
+        txt(s, 26, 104, v.source, 'vt muted', 'middle');
+        txt(s, 160, 150, fmt(rel, 1) + '% as strong, spread over ×' + fmt(env.area || 1, 1) + ' the area', 'vt', 'middle');
+        return s;
+      };
+    },
+    pipes: function(box, step, v){
+      var maxes = v.caps.map(function(id){ return inOf(step, id).max; }), top = Math.max.apply(null, maxes);
+      return function(env, values){
+        var s = frame(170), n = v.caps.length, w = 300 / n, thr = env[v.thr];
+        var caps = v.caps.map(function(id){ return values[id]; }), low = caps.indexOf(Math.min.apply(null, caps));
+        caps.forEach(function(c, i){
+          var h = 110 * c / top, x = 10 + i * w;
+          s.appendChild(svg('rect', {x:x + 4, y:70 - h / 2, width:w - 8, height:h, rx:6, class: i === low ? 'v-vessel bad' : 'v-vessel'}));
+          txt(s, x + w / 2, 142, v.labels[i], 'vt', 'middle');
+          txt(s, x + w / 2, 158, fmt(c) + ' ' + v.unit, i === low ? 'vt bad' : 'vt muted', 'middle');
+        });
+        var fh = 110 * thr / top;
+        s.appendChild(svg('rect', {x:10, y:70 - fh / 2, width:300, height:fh, rx:4, class:'v-flow'}));
+        txt(s, 160, 12, 'output ' + fmt(thr) + ' ' + v.unit + ': limited by ' + v.labels[low], 'vt', 'middle');
+        return s;
+      };
+    },
+    memory: function(box, step, v){
+      return function(env){
+        var s = frame(160), size = env[v.size], speed = env[v.speed], cap = v.vram, W = 200;
+        var fits = size <= cap, used = Math.min(size, cap) / cap * W, over = fits ? 0 : Math.min(96, (size - cap) / cap * W);
+        txt(s, 10, 16, v.device + ': ' + fmt(cap, 0) + ' GB', 'vt muted');
+        s.appendChild(svg('rect', {x:10, y:24, width:W, height:38, rx:6, class:'v-vessel'}));
+        s.appendChild(svg('rect', {x:12, y:26, width:Math.max(0, used - 4), height:34, rx:5, class:'v-fill'}));
+        if (over) s.appendChild(svg('rect', {x:10 + W + 2, y:26, width:over, height:34, rx:5, class:'v-bad'}));
+        txt(s, 10, 80, v.model + ' needs ' + fmt(size) + ' GB', 'vt');
+        txt(s, 10, 98, fits ? 'Fits, with ' + fmt(cap - size) + ' GB to spare' : "Doesn't fit: it would spill into much slower memory", fits ? 'vt good' : 'vt bad');
+        txt(s, 10, 130, '~' + fmt(speed, speed < 10 ? 1 : 0) + ' tokens/s', 'vt big');
+        txt(s, 10, 152, !fits ? 'at best - far less once it spills over' : speed >= 7 ? 'faster than you can read' : 'slower than you can read', 'vt muted');
+        return s;
+      };
+    },
+    attempts: function(box, step, v){
+      return function(env, values){
+        var p = values[v.p] / 100, k = Math.round(values[v.k]), R = 12, cols = Math.min(k, 60), w = Math.min(16, 260 / cols);
+        var s = frame(R * 16 + 30), got = 0;
+        for (var r = 0; r < R; r++) {
+          var first = -1;
+          for (var c = 0; c < k; c++) if (rnd('try' + r, c) < p) { first = c; break; }
+          for (var c2 = 0; c2 < cols; c2++) {
+            var cls = first >= 0 && c2 > first ? 'v-off' : c2 === first ? 'v-good' : 'v-miss';
+            s.appendChild(svg('rect', {x: 4 + c2 * w, y: 4 + r * 16, width: Math.max(1, w - 1.5), height:12, rx:2, class: cls}));
+          }
+          if (first >= 0) got++;
+          txt(s, 288, 14 + r * 16, first >= 0 ? '✓' : '✗', first >= 0 ? 'vt good' : 'vt bad');
+        }
+        txt(s, 4, R * 16 + 22, 'In ' + got + ' of ' + R + ' runs, ' + v.success + ' within ' + k + ' ' + v.try + 's' + (k > cols ? ' (first ' + cols + ' shown)' : ''), 'vt');
+        return s;
+      };
+    },
+    people: function(box, step, v){
+      return function(env, values){
+        var base = values[v.base], treated = env[v.treated], per = base >= 5 ? 100 : 1000, s = frame(per === 100 ? 190 : 205);
+        var cols = per === 100 ? 10 : 25, gap = per === 100 ? 13 : 5.5, r = per === 100 ? 4.6 : 2, top = 30;
+        var sick0 = Math.round(base / 100 * per), sick1 = Math.round(treated / 100 * per);
+        [[0, sick0, 'without ' + v.treatment], [168, sick1, 'with ' + v.treatment]].forEach(function(g, gi){
+          txt(s, g[0] + 76, 14, g[2], 'vt muted', 'middle');
+          for (var i = 0; i < per; i++) {
+            var cls = i < g[1] ? 'v-bad' : (gi === 1 && i < sick0 ? 'v-good' : 'v-off');
+            s.appendChild(svg('circle', {cx: g[0] + 10 + (i % cols) * gap, cy: top + Math.floor(i / cols) * gap, r:r, class: cls}));
+          }
+        });
+        var y = per === 100 ? 182 : 198;
+        txt(s, 4, y, 'of ' + per + ' ' + v.who + ': ' + sick0 + ' → ' + sick1 + ' ' + v.outcome + ' · ' + (sick0 - sick1) + ' spared', 'vt');
+        return s;
+      };
+    },
+    float: function(box, step, v){
+      return function(env, values){
+        var s = frame(200), h = values[v.h], px = 150 * h / v.hmax, frac = env[v.below] / h, wl = 46;
+        var above = px * (1 - frac), below = px * frac;
+        s.appendChild(svg('rect', {x:0, y:wl, width:320, height:154, class:'v-fluid'}));
+        s.appendChild(svg('rect', {x:110, y:wl - above, width:100, height:Math.max(0.5, above), rx:3, class:'v-fill'}));
+        s.appendChild(svg('rect', {x:110, y:wl, width:100, height:Math.max(0.5, below), rx:3, class:'v-sunk'}));
+        s.appendChild(svg('line', {x1:0, x2:320, y1:wl, y2:wl, class:'v-waterline'}));
+        txt(s, 220, wl - above / 2 + 4, 'above: ' + fmt(env[v.above]) + ' ' + v.unit, 'vt');
+        txt(s, 220, wl + below / 2 + 4, 'below: ' + fmt(env[v.below]) + ' ' + v.unit, 'vt');
+        txt(s, 100, wl - 6, v.object, 'vt muted', 'end'); txt(s, 8, 194, v.fluid, 'vt muted');
+        return s;
+      };
+    },
+    squeeze: function(box, step, v){
+      return function(env, values){
+        var s = frame(175), d = values[v.depth], gas = env[v.gas], liq = env[v.liq];
+        s.appendChild(svg('rect', {x:0, y:0, width:320, height:150, rx:10, class:'v-fluid', style:'opacity:' + (0.12 + 0.55 * d / v.dmax)}));
+        var rg = 52 * Math.cbrt(Math.max(0, gas) / v.v0), rl = 34 * Math.cbrt(Math.max(0, 1 - liq / 100));
+        s.appendChild(svg('circle', {cx:90, cy:78, r:Math.max(1.5, rg), class:'v-balloon'}));
+        s.appendChild(svg('circle', {cx:236, cy:78, r:rl, class:'v-drop'}));
+        txt(s, 160, 16, fmt(d) + ' m deep · ' + fmt(env[v.P] / 101.3, 1) + ' atmospheres', 'vt', 'middle');
+        txt(s, 90, 146, v.gas_label + ': ' + fmt(gas) + ' ' + v.unit, 'vt', 'middle');
+        txt(s, 236, 146, v.liquid_label + ': −' + fmt(liq, 2) + '%', 'vt', 'middle');
+        txt(s, 160, 170, 'gas halves when pressure doubles; liquid hardly gives', 'vt muted', 'middle');
+        return s;
+      };
+    },
+    arrows: function(box, step, v){
+      function arrow(s, x1, y1, x2, y2, cls){
+        s.appendChild(svg('line', {x1:x1, y1:y1, x2:x2, y2:y2, class: cls}));
+        var a = Math.atan2(y2 - y1, x2 - x1), L = 9;
+        if (Math.hypot(x2 - x1, y2 - y1) > 4) s.appendChild(svg('polygon', {class: cls + ' head', points: x2 + ',' + y2 + ' ' +
+          (x2 - L * Math.cos(a - 0.4)) + ',' + (y2 - L * Math.sin(a - 0.4)) + ' ' + (x2 - L * Math.cos(a + 0.4)) + ',' + (y2 - L * Math.sin(a + 0.4))}));
+      }
+      return function(env, values){
+        var s = frame(170), ang = values[v.angle] * Math.PI / 180, len = values[v.len], U = 62, ox = 160, oy = 140;
+        var ax = ox + len * U * Math.cos(ang), ay = oy - len * U * Math.sin(ang), fx = ox + len * U * Math.cos(ang);
+        s.appendChild(svg('line', {x1:20, x2:300, y1:oy, y2:oy, class:'axis'}));
+        arrow(s, ox, oy, ox + U * 2, oy, 'v-vec-b');
+        s.appendChild(svg('line', {x1:ax, y1:ay, x2:fx, y2:oy, class:'v-cut'}));
+        s.appendChild(svg('line', {x1:ox, y1:oy, x2:fx, y2:oy, class:'v-along'}));
+        arrow(s, fx, oy, ax, ay, 'v-vec-left');
+        arrow(s, ox, oy, ax, ay, 'v-vec-a');
+        txt(s, ox + U * 2, oy + 14, v.b_label, 'vt blue', 'end');
+        txt(s, ax + (Math.cos(ang) >= 0 ? 6 : -6), ay - 6, v.a_label, 'vt', Math.cos(ang) >= 0 ? 'start' : 'end');
+        txt(s, 160, 14, 'similarity ' + fmt(env.sim, 2) + ' · red: what is left if the blue direction is removed', 'vt muted', 'middle');
+        return s;
+      };
+    }
+  };
+
+  function stepExplore(step, p, solve){
+    var n = el('div', {}, [el('p', {class:'step-text', text: step.text})]);
+    var values = {}, viewBox = null, drawView = null;
+    if (step.view && VIEWS[step.view.kind]) {   // a template's own picture, above the sliders
+      viewBox = el('div', {class:'view'});
+      n.appendChild(viewBox);
+      drawView = VIEWS[step.view.kind](viewBox, step, step.view);
+    }
+    step.inputs.forEach(function(inp){ values[inp.id] = (p.values && p.values[inp.id] !== undefined) ? p.values[inp.id] : inp.value; });
+    var labels = {}, readouts = {}, goalBox = null, chartBox = null;
+    step.inputs.forEach(function(inp){
+      var val = el('b'), range = el('input', {type:'range', min: inp.min, max: inp.max, step: inp.step, value: values[inp.id],
+        'aria-label': inp.label});
+      labels[inp.id] = val;
+      range.addEventListener('input', function(){ values[inp.id] = parseFloat(range.value); p.values = values; update(); });
+      range.addEventListener('change', function(){ p.values = values; p.persist(); });
+      n.appendChild(el('div', {class:'slider'}, [el('div', {class:'top'}, [el('span', {text: inp.label}), val]), range]));
+    });
+    var ro = el('div', {class:'readouts'});
+    if (step.view && step.view.readouts === false) ro.style.display = 'none';
+    step.outputs.forEach(function(o, k){
+      var v = el('div', {class:'v'}), bar = el('span');
+      readouts[o.id] = {v: v, bar: bar, o: o};
+      var onChart = step.chart && step.chart.y.indexOf(o.id) >= 0;
+      ro.appendChild(el('div', {class:'ro k' + (k % 4)}, [el('div', {class:'l'}, [onChart ? el('i', {style: 'background:var(' + COLOURS[k % 4] + ')'}) : null, o.label]),
+        v, el('div', {class:'robar'}, [bar])]));
+    });
+    n.appendChild(ro);
+    if (step.chart) { chartBox = el('div', {class:'chart'}); n.appendChild(chartBox); }
+    if (step.goal) {
+      goalBox = el('div', {class:'goal'});
+      n.appendChild(goalBox);
+    } else if (!p.solved) setTimeout(function(){ solve(false); }, 0);
+
+    function inputById(id){ return step.inputs.filter(function(i){ return i.id === id; })[0]; }
+    function outputById(id){ return step.outputs.filter(function(o){ return o.id === id; })[0]; }
+    function update(){
+      var env = compute(step, values);
+      step.inputs.forEach(function(inp){ labels[inp.id].textContent = fmt(values[inp.id], decimals(inp.step)) + (inp.unit ? ' ' + inp.unit : ''); });
+      step.outputs.forEach(function(o){
+        var r = readouts[o.id], v = env[o.id];
+        r.v.innerHTML = ''; r.v.appendChild(document.createTextNode(fmt(v, o.digits)));
+        if (o.unit) r.v.appendChild(el('small', {text: o.unit}));
+        var lo = Math.min(0, o.lo), hi = Math.max(0, o.hi), w = hi > lo ? (v - lo) / (hi - lo) : 0;
+        r.bar.style.width = (isFinite(w) ? Math.max(0, Math.min(1, w)) * 100 : 0) + '%';
+      });
+      if (chartBox) drawChart(chartBox, step, values);
+      if (drawView) { var pic = drawView(env, values); if (pic && pic.parentNode !== viewBox) { viewBox.innerHTML = ''; viewBox.appendChild(pic); } }
+      if (goalBox) {
+        var g = step.goal, tv = env[g.target];
+        var met = p.solved || (isFinite(tv) && tv >= g.min - 1e-9 && tv <= g.max + 1e-9);
+        goalBox.className = 'goal' + (met ? ' met' : '');
+        goalBox.innerHTML = '';
+        goalBox.appendChild(el('b', {text: met ? 'You found it' : 'Challenge'}));
+        goalBox.appendChild(document.createTextNode(met && g.success ? g.success : g.text));
+        if (met && !p.solved) solve(false);
+      }
+    }
+    update();
+    return n;
+  }
+
+  var COLOURS = ['--accent', '--blue', '--good', '--muted'];
+  function drawChart(box, step, values){
+    function colour(o){ return step.outputs.indexOf(o) % 4; }
+    var xi = step.inputs.filter(function(i){ return i.id === step.chart.x; })[0];
+    var ys = step.chart.y.map(function(id){ return step.outputs.filter(function(o){ return o.id === id; })[0]; }).filter(Boolean);
+    var W = 320, H = 170, L = 40, R = 10, T = 10, B = 28;
+    var lo = Math.min.apply(null, ys.map(function(o){ return o.lo; })), hi = Math.max.apply(null, ys.map(function(o){ return o.hi; }));
+    if (lo > 0 && lo < hi * 0.5) lo = 0;
+    if (!(hi > lo)) { hi = lo + 1; lo = lo - 1; }
+    var pad = (hi - lo) * 0.06; lo -= (lo === 0 ? 0 : pad); hi += pad;
+    function X(v){ return L + (v - xi.min) / (xi.max - xi.min) * (W - L - R); }
+    function Y(v){ return T + (1 - (v - lo) / (hi - lo)) * (H - T - B); }
+    var s = svg('svg', {viewBox: '0 0 ' + W + ' ' + H, role: 'img', 'aria-label': 'Chart of ' + ys.map(function(o){ return o.label; }).join(', ') + ' against ' + xi.label});
+    s.appendChild(svg('line', {class:'axis', x1:L, y1:H - B, x2:W - R, y2:H - B}));
+    s.appendChild(svg('line', {class:'axis', x1:L, y1:T, x2:L, y2:H - B}));
+    s.appendChild(svg('text', {class:'tick', x:L, y:H - B + 14, 'text-anchor':'start', text: fmt(xi.min, decimals(xi.step))}));
+    s.appendChild(svg('text', {class:'tick', x:W - R, y:H - B + 14, 'text-anchor':'end', text: fmt(xi.max, decimals(xi.step))}));
+    s.appendChild(svg('text', {class:'tick', x:(L + W - R) / 2, y:H - 3, 'text-anchor':'middle', text: xi.label + (xi.unit ? ' (' + xi.unit + ')' : '')}));
+    s.appendChild(svg('text', {class:'tick', x:L - 4, y:T + 8, 'text-anchor':'end', text: fmt(hi)}));
+    s.appendChild(svg('text', {class:'tick', x:L - 4, y:H - B, 'text-anchor':'end', text: fmt(lo)}));
+    var N = 80, env0 = {};
+    for (var k in values) env0[k] = values[k];
+    ys.forEach(function(o, c){
+      var pts = [];
+      for (var j = 0; j <= N; j++) {
+        var xv = xi.min + (xi.max - xi.min) * j / N; env0[xi.id] = xv;
+        var yv = compute(step, env0)[o.id];
+        if (isFinite(yv)) pts.push(X(xv).toFixed(1) + ',' + Y(Math.max(lo, Math.min(hi, yv))).toFixed(1));
+      }
+      s.appendChild(svg('polyline', {class:'curve c' + colour(o), points: pts.join(' ')}));
+    });
+    var cur = compute(step, values), cx = X(values[xi.id]);
+    s.appendChild(svg('line', {class:'now', x1:cx, y1:T, x2:cx, y2:H - B}));
+    ys.forEach(function(o){ var yv = cur[o.id]; if (isFinite(yv)) s.appendChild(svg('circle', {class:'d' + colour(o), cx:cx, cy:Y(Math.max(lo, Math.min(hi, yv))), r:4.5})); });
+    box.innerHTML = '';
+    box.appendChild(s);
+    if (ys.length > 1) {
+      var lg = el('div', {class:'legend'});
+      ys.forEach(function(o){ lg.appendChild(el('span', {}, [el('i', {style: 'background:var(' + COLOURS[colour(o)] + ')'}), o.label])); });
+      box.appendChild(lg);
+    }
+  }
+
+  function stepChoice(step, p, solve){
+    var n = el('div', {}, [el('p', {class:'step-text', text: step.text})]);
+    var msg = el('div', {class:'say', 'aria-live':'polite'}), btns = [], reveal = null;
+    p.wrong = p.wrong || [];
+    function finish(struggled){
+      btns.forEach(function(b, i){ b.disabled = true; if (i === step.answer) b.classList.add('right'); });
+      if (reveal) reveal.remove();
+      say(msg, 'good', p.shown ? 'The answer:' : 'Right.', step.explain);
+      if (!p.solved) solve(struggled);
+    }
+    step.options.forEach(function(o, i){
+      var b = el('button', {class:'opt', type:'button', text: o});
+      if (p.wrong.indexOf(i) >= 0) { b.classList.add('wrong'); b.disabled = true; }
+      b.addEventListener('click', function(){
+        if (p.solved) return;
+        if (i === step.answer) { finish(p.wrong.length > 0); return; }
+        p.wrong.push(i); p.tries = (p.tries || 0) + 1; p.persist();
+        b.classList.add('wrong'); b.disabled = true;
+        say(msg, 'bad', 'Not quite.', step.hint || 'Think about what changes and what stays the same.');
+        if (p.tries >= 2 && !reveal) addReveal();
+      });
+      btns.push(b); n.appendChild(b);
+    });
+    function addReveal(){
+      reveal = el('button', {class:'link', type:'button', text:'Show me the answer'});
+      reveal.addEventListener('click', function(){ p.shown = true; p.persist(); finish(true); });
+      n.appendChild(reveal);
+    }
+    n.appendChild(msg);
+    if (p.solved) finish(false); else if ((p.tries || 0) >= 2) addReveal();
+    return n;
+  }
+
+  function stepNumber(step, p, solve){
+    var n = el('div', {}, [el('p', {class:'step-text', text: step.text})]);
+    var input = el('input', {type:'text', inputmode:'decimal', autocomplete:'off', placeholder:'Your answer', 'aria-label':'Your answer'});
+    var go = el('button', {class:'btn small', type:'button', text:'Check'});
+    var msg = el('div', {class:'say', 'aria-live':'polite'}), reveal = null;
+    n.appendChild(el('div', {class:'numrow'}, [input, step.unit ? el('span', {class:'unit', text: step.unit}) : null, go]));
+    n.appendChild(msg);
+    function close(x){ var a = step.answer, tol = Math.abs(a) * step.tolerance; return Math.abs(x - a) <= Math.max(tol, 1e-9); }
+    function finish(struggled){
+      input.value = fmt(step.answer); input.disabled = true; go.disabled = true; input.className = 'right';
+      if (reveal) reveal.remove();
+      say(msg, 'good', (p.shown ? 'The answer: ' : 'Right: ') + fmt(step.answer) + (step.unit ? ' ' + step.unit : '') + '.', step.explain);
+      if (!p.solved) solve(struggled);
+    }
+    function check(){
+      if (p.solved) return;
+      var x = parseFloat(String(input.value).replace(/,/g, '.').replace(/[^0-9eE+\-.]/g, ''));
+      if (!isFinite(x)) { say(msg, 'bad', 'Type a number first.'); return; }
+      if (close(x)) { finish((p.tries || 0) > 0); return; }
+      p.tries = (p.tries || 0) + 1; p.persist(); input.className = 'wrong';
+      say(msg, 'bad', x > step.answer ? 'A bit high.' : 'A bit low.', step.hint);
+      if (p.tries >= 3 && !reveal) addReveal();
+    }
+    function addReveal(){
+      reveal = el('button', {class:'link', type:'button', text:'Show me the answer'});
+      reveal.addEventListener('click', function(){ p.shown = true; p.persist(); finish(true); });
+      n.appendChild(reveal);
+    }
+    go.addEventListener('click', check);
+    input.addEventListener('keydown', function(e){ if (e.key === 'Enter') check(); });
+    if (p.solved) finish(false); else if ((p.tries || 0) >= 3) addReveal();
+    return n;
+  }
+
+  function stepOrder(step, p, solve){
+    // Tap items into numbered slots. On a wrong check, the items already in the right place lock in (green) and
+    // the rest go back to the pool, so each try keeps what was learned.
+    var n = el('div', {}, [el('p', {class:'step-text', text: step.text})]);
+    var order = shuffled(step.items, step.text + step.items.join('|')), N = step.items.length;
+    var placed = (p.placed && p.placed.length === N) ? p.placed : step.items.map(function(){ return null; });
+    var locked = (p.locked && p.locked.length === N) ? p.locked : step.items.map(function(){ return false; });
+    var list = el('ol', {class:'olist'}), pool = el('div', {class:'pool'});
+    var go = el('button', {class:'btn small', type:'button', text:'Check order'});
+    var msg = el('div', {class:'say', 'aria-live':'polite'}), reveal = null;
+    n.appendChild(list); n.appendChild(pool); n.appendChild(go); n.appendChild(msg);
+    function keep(){ p.placed = placed; p.locked = locked; p.persist(); }
+    function draw(){
+      list.innerHTML = ''; pool.innerHTML = '';
+      var firstEmpty = placed.indexOf(null);
+      placed.forEach(function(idx, pos){
+        var slot = el('button', {class:'slot' + (idx !== null ? ' filled' : '') + (locked[pos] ? ' right' : ''), type:'button',
+          text: idx !== null ? step.items[idx] : (pos === firstEmpty && !p.solved ? 'Tap an item below' : '')});
+        slot.addEventListener('click', function(){
+          if (p.solved || idx === null || locked[pos]) return;
+          placed[pos] = null; keep(); draw();
+        });
+        list.appendChild(el('li', {}, [el('span', {class:'n', text: String(pos + 1)}), slot]));
+      });
+      order.forEach(function(idx){
+        if (placed.indexOf(idx) >= 0 || p.solved) return;
+        var b = el('button', {type:'button', text: step.items[idx]});
+        b.addEventListener('click', function(){ var at = placed.indexOf(null); if (at < 0) return; placed[at] = idx; keep(); draw(); });
+        pool.appendChild(b);
+      });
+      go.disabled = p.solved || placed.indexOf(null) >= 0;
+      go.style.display = p.solved ? 'none' : '';
+    }
+    function finish(struggled){
+      placed = step.items.map(function(_, i){ return i; }); locked = placed.map(function(){ return true; });
+      if (reveal) reveal.remove();
+      say(msg, 'good', p.shown ? 'The right order is above.' : 'Right order.', step.explain);
+      if (!p.solved) solve(struggled);
+      keep(); draw();
+    }
+    go.addEventListener('click', function(){
+      var good = 0;
+      placed.forEach(function(idx, pos){ if (idx === pos) { locked[pos] = true; good++; } else placed[pos] = null; });
+      if (good === N) { finish((p.tries || 0) > 0); return; }
+      p.tries = (p.tries || 0) + 1; keep();
+      say(msg, 'bad', good + ' of ' + N + ' in the right place. Those stay; place the others again.', step.hint);
+      draw();
+      if (p.tries >= 2 && !reveal) {
+        reveal = el('button', {class:'link', type:'button', text:'Show me the answer'});
+        reveal.addEventListener('click', function(){ p.shown = true; p.persist(); finish(true); });
+        n.appendChild(reveal);
+      }
+    });
+    if (p.solved) finish(false); else draw();
+    return n;
+  }
+
+  var STEPS = {concept: stepConcept, explore: stepExplore, choice: stepChoice, number: stepNumber, order: stepOrder};
+
+  function ring(frac, done, label){
+    var r = 15, c = 2 * Math.PI * r, s = svg('svg', {class:'ring' + (done ? ' done' : ''), viewBox:'0 0 38 38', 'aria-hidden':'true'});
+    s.appendChild(svg('circle', {class:'bg', cx:19, cy:19, r:r}));
+    s.appendChild(svg('circle', {class:'fg', cx:19, cy:19, r:r, 'stroke-dasharray': c, 'stroke-dashoffset': c * (1 - frac),
+      transform:'rotate(-90 19 19)'}));
+    s.appendChild(svg('text', {x:19, y:19, text: done ? '✓' : label}));
+    return s;
+  }
+
+  function renderLesson(ep, li, les){
+    var s = st(ep.file), key = ep.file + '#' + li;
+    var lp = s.puz[li] = s.puz[li] || {at: 0, steps: {}, done: false};
+    var box = el('div', {class:'lesson'});
+    function solvedCount(){ return les.steps.filter(function(_, i){ return lp.steps[i] && lp.steps[i].solved; }).length; }
+    function persist(){ save(ep.file); }
+
+    function draw(){
+      box.innerHTML = '';
+      var n = solvedCount(), open = !!openLesson[key];
+      var top = el('button', {class:'lesson-top', type:'button', 'aria-expanded': String(open)}, [
+        ring(n / les.steps.length, lp.done, n + '/' + les.steps.length),
+        el('span', {class:'grow'}, [el('span', {class:'ttl', text: les.title}),
+          el('span', {class:'sub', text: lp.done ? 'Done · tap to review' : n ? 'Continue · step ' + (lp.at + 1) + ' of ' + les.steps.length
+            : les.steps.length + ' steps · about ' + Math.max(2, Math.round(les.steps.length * 0.6)) + ' min'})])
+      ]);
+      top.addEventListener('click', function(){ openLesson[key] = !open; draw(); });
+      box.appendChild(top);
+      if (!open) return;
+      var body = el('div', {class:'lesson-body'});
+      if (lp.finished) {
+        body.appendChild(el('div', {class:'finish'}, [el('span', {class:'badge-ok', text:'✓'}),
+          el('div', {class:'big', text:'Lesson complete'}),
+          el('div', {class:'hint', text:'The words from this lesson are kept below.'})]));
+        var again = el('button', {class:'btn ghost small', type:'button', text:'Go through it again'});
+        again.addEventListener('click', function(){ lp.finished = false; lp.at = 0; persist(); draw(); });
+        body.appendChild(el('div', {class:'nav', style:'justify-content:center'}, [again]));
+        box.appendChild(body);
+        return;
+      }
+      var dots = el('div', {class:'dots'});
+      les.steps.forEach(function(_, i){
+        dots.appendChild(el('span', {class: i === lp.at ? 'on' : (lp.steps[i] && lp.steps[i].solved ? 'ok' : '')}));
+      });
+      body.appendChild(dots);
+      var step = les.steps[lp.at];
+      var p = lp.steps[lp.at] = lp.steps[lp.at] || {};
+      Object.defineProperty(p, 'persist', {value: persist, enumerable: false, configurable: true});
+      var next = el('button', {class:'btn', type:'button', text: lp.at === les.steps.length - 1 ? 'Finish' : 'Continue'});
+      next.disabled = !p.solved;
+      function solve(struggled){
+        p.solved = true; if (struggled) p.struggled = true;
+        if (lp.at === les.steps.length - 1 && solvedCount() === les.steps.length) lp.done = true;
+        next.disabled = false; persist();
+        var ringBox = box.querySelector('.ring'); if (ringBox) ringBox.replaceWith(ring(solvedCount() / les.steps.length, lp.done, solvedCount() + '/' + les.steps.length));
+        var dot = dots.children[lp.at]; if (dot) dot.className = 'on';
+      }
+      body.appendChild((STEPS[step.type] || stepConcept)(step, p, solve));
+      var back = el('button', {class:'link', type:'button', text: lp.at ? '← Back' : ''});
+      back.addEventListener('click', function(){ if (lp.at) { lp.at--; persist(); draw(); } });
+      next.addEventListener('click', function(){
+        if (!p.solved) return;
+        if (lp.at < les.steps.length - 1) lp.at++;
+        else { lp.finished = true; lp.done = solvedCount() === les.steps.length; }
+        persist(); draw();
+        box.scrollIntoView({block:'nearest', behavior:'smooth'});
+      });
+      body.appendChild(el('div', {class:'nav'}, [back, next]));
+      box.appendChild(body);
+    }
+    draw();
+    return box;
+  }
+
+  /* ---------- episode ---------- */
   function chips(file, group, options, key){
     var s = st(file), row = el('div', {class:'row'});
     options.forEach(function(o){
@@ -135,82 +959,86 @@ details.digest summary{cursor:pointer;color:var(--muted);font-size:14px;margin:0
     return row;
   }
 
+  function renderQuiz(ep, card){
+    var s = st(ep.file);
+    var qbox = el('div', {class: s.checked ? 'checked' : ''});
+    ep.quiz.forEach(function(q, qi){
+      var wrap = el('div', {class:'q'});
+      var p = el('p'); p.appendChild(el('span', {class:'seg', text: q.segment || ''})); p.appendChild(document.createTextNode(q.q));
+      wrap.appendChild(p);
+      q.options.forEach(function(o, oi){
+        var b = el('button', {class:'opt', type:'button', text:o});
+        if (s.answers[qi] === oi) b.classList.add('pick');
+        if (s.checked){
+          if (oi === q.answer) b.classList.add('right');
+          else if (s.answers[qi] === oi) b.classList.add('wrong');
+        }
+        b.addEventListener('click', function(){
+          if (s.checked) return;
+          s.answers[qi] = oi; save(ep.file);
+          Array.prototype.forEach.call(wrap.querySelectorAll('.opt'), function(x){ x.classList.remove('pick'); });
+          b.classList.add('pick');
+        });
+        wrap.appendChild(b);
+      });
+      wrap.appendChild(el('div', {class:'explain', text: q.explain || ''}));
+      qbox.appendChild(wrap);
+    });
+    card.appendChild(qbox);
+    var scoreEl = el('span', {class:'score'});
+    var check = el('button', {class:'btn ghost', type:'button', text: s.checked ? 'Answers shown' : 'Check answers'});
+    if (s.checked) {
+      var n = 0; ep.quiz.forEach(function(q, i){ if (s.answers[i] === q.answer) n++; });
+      scoreEl.textContent = n + ' / ' + ep.quiz.length;
+    }
+    check.addEventListener('click', function(){ if (s.checked) return; s.checked = true; save(ep.file); render(); });
+    card.appendChild(el('div', {class:'row', style:'margin-top:8px'}, [check, scoreEl]));
+  }
+
   function renderEpisode(ep){
     var s = st(ep.file), card = el('section', {class:'card'});
     card.appendChild(el('div', {class:'ep-head'}, [
       el('h2', {text: ep.title}),
-      el('div', {class:'meta', text: ep.label + ' · ' + fmtDur(ep.duration) + (ep.writer ? ' · written by ' + ep.writer : '') + (ep.voices ? ' · voices: ' + ep.voices : '')}),
+      el('div', {class:'meta', text: ep.label + ' · ' + fmtDur(ep.duration)}),
       ep.theme ? el('p', {class:'theme', text: ep.theme}) : null
     ]));
 
-    // At a glance: the day's top threads, so there is no need to open Reddit
-    if (ep.digest && ep.digest.length){
-      card.appendChild(el('div', {class:'sec', text:'At a glance — top threads'}));
-      var box = el('details', {class:'digest'});
-      if (ep === DATA.episodes[0]) box.setAttribute('open', '');
-      box.appendChild(el('summary', {text: ep.digest.length + ' threads · ' +
-        ep.digest.filter(function(d){ return d.in_episode; }).length + ' discussed in this episode'}));
-      ep.digest.forEach(function(d){
-        var badges = [];
-        if (d.verdict) badges.push(el('span', {class:'badge ' + d.verdict.toLowerCase(), text: d.verdict}));
-        if (d.in_episode) badges.push(el('span', {class:'badge ep', text:'in episode'}));
-        var meta = (d.subs || []).join(', ') + (d.also_in && d.also_in.length ? ' · also in ' + d.also_in.join(', ') : '');
-        box.appendChild(el('div', {class:'dg'}, [
-          el('div', {}, badges.concat([safeUrl(d.thread) ? el('a', {class:'t', href: safeUrl(d.thread), target:'_blank', rel:'noopener', text: d.title}) : el('span', {class:'t', text: d.title})])),
-          el('p', {text: d.line || ''}),
-          el('div', {class:'meta'}, [document.createTextNode(meta)].concat(safeUrl(d.link) ? [document.createTextNode(' · '),
-            el('a', {href: safeUrl(d.link), target:'_blank', rel:'noopener', text:'source'})] : []))
-        ]));
-      });
-      card.appendChild(box);
-    }
-
-    // Quiz
-    if (ep.quiz && ep.quiz.length){
-      card.appendChild(el('div', {class:'sec', text:'Quiz'}));
-      var qbox = el('div', {class: s.checked ? 'checked' : ''});
-      ep.quiz.forEach(function(q, qi){
-        var wrap = el('div', {class:'q'});
-        var p = el('p'); p.appendChild(el('span', {class:'seg', text: q.segment || ''})); p.appendChild(document.createTextNode(q.q));
-        wrap.appendChild(p);
-        q.options.forEach(function(o, oi){
-          var b = el('button', {class:'opt', type:'button', text:o});
-          if (s.answers[qi] === oi) b.classList.add('pick');
-          if (s.checked){
-            if (oi === q.answer) b.classList.add('right');
-            else if (s.answers[qi] === oi) b.classList.add('wrong');
-          }
-          b.addEventListener('click', function(){
-            if (s.checked) return;
-            s.answers[qi] = oi; save(ep.file);
-            Array.prototype.forEach.call(wrap.querySelectorAll('.opt'), function(x){ x.classList.remove('pick'); });
-            b.classList.add('pick');
-          });
-          wrap.appendChild(b);
+    var lessons = ep.lessons || [];
+    if (lessons.length){
+      card.appendChild(el('div', {class:'sec', text:'Puzzles from this episode'}));
+      lessons.forEach(function(les, li){ card.appendChild(renderLesson(ep, li, les)); });
+      var words = [], seen = {};
+      lessons.forEach(function(les){ (les.words || []).forEach(function(w){
+        var k = w.term.toLowerCase(); if (!seen[k]) { seen[k] = 1; words.push(w); } }); });
+      if (words.length){
+        card.appendChild(el('div', {class:'sec', text:'Words to keep'}));
+        var wbox = el('div');
+        card.appendChild(wbox);
+        words.forEach(function(w){
+          wbox.appendChild(el('div', {class:'word'}, [el('b', {text: w.term}),
+            el('a', {href:'https://en.wikipedia.org/w/index.php?search=' + encodeURIComponent(w.term), target:'_blank', rel:'noopener', text:'look up'}),
+            el('p', {text: w.means})]));
         });
-        wrap.appendChild(el('div', {class:'explain', text: q.explain || ''}));
-        qbox.appendChild(wrap);
-      });
-      card.appendChild(qbox);
-      var scoreEl = el('span', {class:'score'});
-      var check = el('button', {class:'btn ghost', type:'button', text: s.checked ? 'Answers shown' : 'Check answers'});
-      function showScore(){
-        var n = 0; ep.quiz.forEach(function(q, i){ if (s.answers[i] === q.answer) n++; });
-        scoreEl.textContent = n + ' / ' + ep.quiz.length;
       }
-      if (s.checked) showScore();
-      check.addEventListener('click', function(){ if (s.checked) return; s.checked = true; save(ep.file); render(); });
-      card.appendChild(el('div', {class:'row', style:'margin-top:8px'}, [check, scoreEl]));
     }
 
-    // Feedback
+    if (ep.quiz && ep.quiz.length){
+      card.appendChild(el('div', {class:'sec', text: lessons.length ? 'Quick recap' : 'Quiz'}));
+      if (lessons.length) {
+        var more = el('details', {class:'more'});
+        if (s.checked || Object.keys(s.answers).length) more.setAttribute('open', '');
+        more.appendChild(el('summary', {text: ep.quiz.length + ' questions on the whole episode'}));
+        card.appendChild(more);
+        renderQuiz(ep, more);
+      } else renderQuiz(ep, card);
+    }
+
     card.appendChild(el('div', {class:'sec', text:'Feedback'}));
     function field(label, row){ return el('div', {class:'field'}, [el('div', {class:'flabel', text:label}), row]); }
     card.appendChild(field('Overall', chips(ep.file, 'overall', [1,2,3,4,5].map(function(n){ return {v:n, t:n + ' ★'}; }), 'ratings')));
     card.appendChild(field('Depth', chips(ep.file, 'depth', [{v:'too basic',t:'Too basic'},{v:'right',t:'Right'},{v:'too technical',t:'Too technical'}], 'ratings')));
     card.appendChild(field('Pace', chips(ep.file, 'pace', [{v:'too slow',t:'Too slow'},{v:'right',t:'Right'},{v:'too fast',t:'Too fast'}], 'ratings')));
     card.appendChild(field('Voices', chips(ep.file, 'voices', [{v:'good',t:'Good'},{v:'ok',t:'OK'},{v:'poor',t:'Poor'}], 'ratings')));
-
     if (ep.segments && ep.segments.length){
       card.appendChild(el('div', {class:'sec', text:'Segments — more or less of this?'}));
       ep.segments.forEach(function(sg){
@@ -220,7 +1048,7 @@ details.digest summary{cursor:pointer;color:var(--muted);font-size:14px;margin:0
       });
     }
     card.appendChild(el('div', {class:'sec', text:'Anything else?'}));
-    var ta = el('textarea', {placeholder:'Topics you want, things that were unclear, what to drop…'});
+    var ta = el('textarea', {placeholder:'Topics you want, puzzles you liked, things that were unclear…'});
     ta.value = s.comment || '';
     ta.addEventListener('input', function(){ s.comment = ta.value; save(ep.file); });
     card.appendChild(ta);
@@ -249,6 +1077,22 @@ details.digest summary{cursor:pointer;color:var(--muted);font-size:14px;margin:0
     });
   }
 
+  function puzzleSummary(ep, s){
+    var lessons = ep.lessons || [];
+    var done = 0, started = false, struggled = [];
+    lessons.forEach(function(les, li){
+      var lp = s.puz[li]; if (!lp || !lp.steps) return;
+      if (lp.done) done++;
+      les.steps.forEach(function(step, si){
+        var p = lp.steps[si];
+        if (p && p.solved && step.type !== 'concept') started = true;   // opening a lesson is not doing it
+        if (p && (p.struggled || p.shown)) struggled.push(les.title + ': ' + step.text.slice(0, 140));
+      });
+    });
+    if (!started) return null;
+    return {done: done, total: lessons.length, struggled: struggled.slice(0, 8)};
+  }
+
   function buildFeedback(){
     var out = [];
     DATA.episodes.filter(function(e){ return selected.indexOf(e.file) >= 0; }).forEach(function(ep){
@@ -260,10 +1104,11 @@ details.digest summary{cursor:pointer;color:var(--muted);font-size:14px;margin:0
         });
         quiz = {score:n, total:ep.quiz.length, missed:missed};
       }
+      var puzzles = puzzleSummary(ep, s);
       var segs = {}; Object.keys(s.segments).forEach(function(k){ if (s.segments[k]) segs[k] = s.segments[k]; });
       var r = {}; Object.keys(s.ratings).forEach(function(k){ if (s.ratings[k] !== undefined) r[k] = s.ratings[k]; });
-      if (!quiz && !Object.keys(segs).length && !Object.keys(r).length && !(s.comment||'').trim()) return;
-      out.push({episode:ep.file, date:ep.date, edition:ep.edition, quiz:quiz, ratings:r, segments:segs,
+      if (!quiz && !puzzles && !Object.keys(segs).length && !Object.keys(r).length && !(s.comment||'').trim()) return;
+      out.push({episode:ep.file, date:ep.date, edition:ep.edition, quiz:quiz, puzzles:puzzles, ratings:r, segments:segs,
                 comment:(s.comment||'').trim().slice(0, 1500)});
     });
     return out;
@@ -272,12 +1117,13 @@ details.digest summary{cursor:pointer;color:var(--muted);font-size:14px;margin:0
   document.getElementById('send').addEventListener('click', function(){
     if (!DATA) return;
     var fb = buildFeedback(), hint = document.getElementById('hint');
-    if (!fb.length){ hint.textContent = 'Answer a question or rate something first.'; return; }
+    if (!fb.length){ hint.textContent = 'Do a puzzle, answer a question or rate something first.'; return; }
     var lines = fb.map(function(f){
-      return '- ' + f.date + ' ' + f.edition + (f.quiz ? ' · quiz ' + f.quiz.score + '/' + f.quiz.total : '') +
+      return '- ' + f.date + ' ' + f.edition + (f.puzzles ? ' · puzzles ' + f.puzzles.done + '/' + f.puzzles.total : '') +
+        (f.quiz ? ' · quiz ' + f.quiz.score + '/' + f.quiz.total : '') +
         (f.ratings.overall ? ' · ' + f.ratings.overall + '★' : '') + (f.comment ? ' · "' + f.comment.slice(0, 120) + '"' : '');
     });
-    var body = 'Feedback from the quiz page.\n\n' + lines.join('\n') + '\n\n```json\n' +
+    var body = 'Feedback from the puzzle page.\n\n' + lines.join('\n') + '\n\n```json\n' +
       JSON.stringify({feedback: fb}) + '\n```\n';
     var title = 'Feedback: ' + fb.map(function(f){ return f.date + ' ' + f.edition; }).join(', ');
     var url = 'https://github.com/' + DATA.repo + '/issues/new?labels=feedback&title=' +
@@ -286,15 +1132,17 @@ details.digest summary{cursor:pointer;color:var(--muted);font-size:14px;margin:0
     hint.textContent = 'GitHub opened in a new tab — press “Create” to submit.';
   });
 
-  fetch('quiz.json?t=' + Date.now()).then(function(r){ return r.json(); }).then(function(d){
+  function start(d){
     DATA = d;
     DATA.episodes.sort(function(a, b){ return a.published < b.published ? 1 : -1; });
     document.getElementById('show').textContent = d.show || 'Weights & Measures';
-    document.getElementById('sub').textContent = 'Digest, quiz and feedback for ' + (d.listener || 'you');
+    document.getElementById('sub').textContent = 'Puzzles, quiz and feedback for ' + (d.listener || 'you');
+    if (!DATA.episodes.length){ document.getElementById('list').innerHTML = '<p class="empty">No episodes yet.</p>'; return; }
     selected = DATA.episodes.slice(0, 2).map(function(e){ return e.file; });
-    if (!DATA.episodes.length){ document.getElementById('list').innerHTML = '<p class="empty">No episodes with a quiz yet.</p>'; return; }
     renderTabs(); render();
-  }).catch(function(){
+  }
+  if (window.WM_DATA) start(window.WM_DATA);   // a preview with the data built in
+  else fetch('quiz.json?t=' + Date.now()).then(function(r){ return r.json(); }).then(start).catch(function(){
     document.getElementById('list').innerHTML = '<p class="empty">Could not load quiz.json.</p>';
   });
 })();
