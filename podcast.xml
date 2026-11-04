@@ -8,9 +8,25 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Tue, 03 Nov 2026 11:52:31 GMT</lastBuildDate>
+<lastBuildDate>Wed, 04 Nov 2026 02:29:14 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Morning - 4 Nov: A Home-Built Inference Wall: Three GPUs, 3D-Printed Parts, and the Thermal Reality</title>
+<description>Morning edition - Wednesday, 4 November 2026
+Engineering sovereignty at the edge: a home-built multi-GPU inference rig and the mechanical reality of sinking data centers into whale habitat
+
+00:38  A Home-Built Inference Wall: Three GPUs, 3D-Printed Parts, and the Thermal Reality
+09:00  Underwater Data Centers and the Whale Habitat Conflict
+
+Puzzles: Why Your Three-GPU Wall Hits a Wall - puzzles, quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
+Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (178 threads)</description>
+<pubDate>Wed, 04 Nov 2026 07:15:37 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-11-04_morning_0715.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-04_morning_0715.mp3" length="8385414" type="audio/mpeg"/>
+<itunes:duration>1048</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Evening - 3 Nov: Weight-space programming: when an LLM edits neural weights directly</title>
 <description>Evening edition - Tuesday, 3 November 2026
