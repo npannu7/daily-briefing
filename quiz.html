@@ -127,7 +127,7 @@ input[type=range]{width:100%;accent-color:var(--accent);height:28px;margin:2px 0
 
 /* ---------- template pictures ---------- */
 .view{margin:0 0 12px;background:var(--chip);border-radius:14px;padding:10px}
-.view-svg{width:100%;height:auto;display:block;overflow:visible}
+.view-svg{width:100%;max-width:520px;height:auto;display:block;overflow:visible;margin:0 auto}
 .vt{font-size:11px;fill:var(--ink)} .vt.big{font-size:20px;font-weight:700} .vt.muted{fill:var(--muted)}
 .vt.good{fill:var(--good);font-weight:700} .vt.bad{fill:var(--bad);font-weight:700} .vt.blue{fill:var(--blue)} .vt.red{fill:var(--bad)}
 .v-vessel{fill:var(--card);stroke:var(--muted);stroke-width:1.5} .v-vessel.bad{stroke:var(--bad);stroke-width:2.5}
@@ -150,6 +150,23 @@ input[type=range]{width:100%;accent-color:var(--accent);height:28px;margin:2px 0
 .v-vec-left{stroke:var(--bad);stroke-width:2;fill:var(--bad)} .v-along{stroke:var(--accent);stroke-width:6;opacity:.35}
 .head{stroke-width:0}
 .v-prompt{font-size:16px;margin:0 0 10px} .v-prompt .blank{color:var(--muted);letter-spacing:2px} .v-prompt .filled{color:var(--accent)}
+.pic-title{font-size:15px;font-weight:600;margin:0 0 6px;line-height:1.3}
+.pic-cols{display:grid;gap:8px;margin:6px 0 0}
+.pic-col{font-size:13px;line-height:1.3;text-align:center;overflow-wrap:anywhere}
+.pic-col .name{color:var(--ink)} .pic-col .sub{color:var(--muted);font-weight:600;font-variant-numeric:tabular-nums}
+.pic-col.bad .sub{color:var(--bad)} .pic-cols + svg{margin-top:6px}
+.pic-legend{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:12px;color:var(--muted);margin:8px 0 0}
+.pic-legend span{display:inline-flex;align-items:center;gap:5px;overflow-wrap:anywhere}
+.sw{display:inline-block;flex:none;width:11px;height:11px;border-radius:3px}
+.sw-acc{background:var(--accent)} .sw-blue{background:var(--blue)} .sw-bad{background:var(--bad)} .sw-good{background:var(--good)}
+.sw-off{background:var(--line)} .sw-hollow{border:1.5px solid var(--accent);border-radius:50%}
+.sw-miss{background:var(--bad);opacity:.3} .sw-fluid{background:var(--blue);opacity:.35} .sw-band{background:var(--accent);opacity:.3}
+.sw-shade{background:linear-gradient(90deg,rgba(194,65,59,.35),rgba(47,111,208,.35))}
+.sw-line{height:2px;background:var(--ink)} .sw-line-bad{height:0;border-top:2px dashed var(--bad);border-radius:0}
+.pic-cap{font-size:13px;color:var(--ink);margin:6px 0 0;line-height:1.4}
+.pic-cap.big{font-size:18px;font-weight:700} .pic-cap.strong{font-weight:600}
+.pic-cap.good{color:var(--good);font-weight:600} .pic-cap.bad{color:var(--bad);font-weight:600}
+.v-joint{stroke:var(--muted);stroke-width:3}
 /* ---------- words ---------- */
 .word{border-top:1px solid var(--line);padding:9px 0}
 .word:first-of-type{border-top:0;padding-top:0}
@@ -332,7 +349,9 @@ details.more summary{cursor:pointer;color:var(--muted);font-size:14px;margin:0 0
   }
 
 
-  /* ---------- template pictures: one per puzzle template (generate_briefing.py TEMPLATES) ---------- */
+  /* ---------- template pictures: one per puzzle template (generate_briefing.py TEMPLATES) ----------
+     Shapes and short numbers are drawn in SVG; every label that comes from the lesson (names of stages, groups,
+     people, objects) is ordinary page text beside the picture, so long labels wrap instead of colliding. */
   function rnd(a, b){ var h = hashStr(a + ':' + b); return (h % 100000) / 100000; }
   function gauss(a, b){ var u = Math.max(1e-6, rnd(a, b)), v = rnd(b, a + 7); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); }
   function clamp(v, lo, hi){ return Math.max(lo, Math.min(hi, v)); }
@@ -340,6 +359,28 @@ details.more summary{cursor:pointer;color:var(--muted);font-size:14px;margin:0 0
   function outOf(step, id){ return step.outputs.filter(function(o){ return o.id === id; })[0] || {lo:0, hi:1}; }
   function inOf(step, id){ return step.inputs.filter(function(i){ return i.id === id; })[0]; }
   function frame(h){ return svg('svg', {viewBox:'0 0 320 ' + h, class:'view-svg', role:'img'}); }
+  // The picture plus its words: title above, columns (aligned with the drawing's sections), legend and captions below.
+  function pic(svgEl, o){
+    o = o || {};
+    var w = el('div', {class:'pic'});
+    if (o.title) w.appendChild(el('div', {class:'pic-title', text: o.title}));
+    if (o.top) w.appendChild(cols(o.top));
+    if (svgEl) w.appendChild(svgEl);
+    if (o.cols) w.appendChild(cols(o.cols));
+    if (o.legend) {
+      var lg = el('div', {class:'pic-legend'});
+      o.legend.forEach(function(it){ lg.appendChild(el('span', {}, [el('i', {class:'sw ' + it[0]}), it[1]])); });
+      w.appendChild(lg);
+    }
+    (o.cap || []).forEach(function(c){ if (c) w.appendChild(el('div', {class:'pic-cap ' + (c.cls || ''), text: c.t || c})); });
+    return w;
+  }
+  function cols(list){
+    var r = el('div', {class:'pic-cols', style:'grid-template-columns:repeat(' + list.length + ',minmax(0,1fr))'});
+    list.forEach(function(c){ r.appendChild(el('div', {class:'pic-col ' + (c.cls || '')}, [el('div', {class:'name', text: c.name}),
+      c.sub !== undefined ? el('div', {class:'sub', text: c.sub}) : null])); });
+    return r;
+  }
 
   var VIEWS = {
     tank: function(box, step, v){
@@ -350,24 +391,24 @@ details.more summary{cursor:pointer;color:var(--muted);font-size:14px;margin:0 0
         s.appendChild(svg('rect', {x:22, y:12 + 126 * (1 - f), width:82, height:126 * f, rx:8, class:'v-fill'}));
         s.appendChild(svg('line', {x1:14, x2:112, y1:12 + 126 * (1 - tl), y2:12 + 126 * (1 - tl), class:'v-target'}));
         var way = L !== v.start ? clamp((x - v.start) / (L - v.start), 0, 1) : 1;
-        txt(s, 128, 30, v.label, 'vt muted'); txt(s, 128, 62, fmt(x) + ' ' + (v.unit || ''), 'vt big');
-        txt(s, 128, 92, 'heading for ' + fmt(L) + ' ' + (v.unit || ''), 'vt muted');
-        txt(s, 128, 118, Math.round(way * 100) + '% of the way there', 'vt');
-        return s;
+        txt(s, 128, 52, fmt(x) + ' ' + (v.unit || ''), 'vt big');
+        txt(s, 128, 82, 'heading for ' + fmt(L) + ' ' + (v.unit || ''), 'vt muted');
+        txt(s, 128, 108, Math.round(way * 100) + '% of the way there', 'vt');
+        return pic(s, {title: v.label, legend: [['sw-acc', v.label], ['sw-line-bad', 'the level it heads for']]});
       };
     },
     blocks: function(box, step, v){
       return function(env){
-        var fold = env[v.fold], s = frame(185), grow = v.mode === 'grow', lit = grow ? Math.min(128, Math.round(fold)) : Math.round(128 * clamp(fold, 0, 1));
+        var fold = env[v.fold], s = frame(160), grow = v.mode === 'grow', lit = grow ? Math.min(128, Math.round(fold)) : Math.round(128 * clamp(fold, 0, 1));
         for (var i = 0; i < 128; i++) s.appendChild(svg('rect', {x: 8 + (i % 16) * 19, y: 6 + Math.floor(i / 16) * 19, width:16, height:16, rx:3,
           class: i < lit ? 'v-on' : 'v-off'}));
-        txt(s, 160, 178, grow ? (fold > 128 ? '×' + fmt(fold) + ' (more than the grid holds)' : '×' + fmt(fold) + ' the start') : fmt(fold * 100) + '% left', 'vt big', 'middle');
-        return s;
+        return pic(s, {cap: [{t: grow ? (fold > 128 ? '×' + fmt(fold) + ' the start (more than the grid holds)' : '×' + fmt(fold) + ' the start')
+          : fmt(fold * 100) + '% left', cls: 'big'}]});
       };
     },
     runs: function(box, step, v){
       return function(env, values){
-        var p = values[v.p] / 100, n = Math.round(values[v.n]), R = 12, s = frame(R * 16 + 30), done = 0;
+        var p = values[v.p] / 100, n = Math.round(values[v.n]), R = 12, s = frame(R * 16 + 6), done = 0;
         var w = Math.min(16, 270 / n);
         for (var r = 0; r < R; r++) {
           var failed = false;
@@ -379,26 +420,28 @@ details.more summary{cursor:pointer;color:var(--muted);font-size:14px;margin:0 0
           if (!failed) done++;
           txt(s, 288, 14 + r * 16, failed ? '✗' : '✓', failed ? 'vt bad' : 'vt good');
         }
-        txt(s, 4, R * 16 + 22, done + ' of ' + R + ' ' + v.run + 's finished all ' + n + ' ' + v.step + 's', 'vt');
-        return s;
+        return pic(s, {legend: [['sw-good', v.step + ' worked'], ['sw-bad', 'first failure']],
+          cap: [done + ' of ' + R + ' ' + v.run + 's finished all ' + n + ' ' + v.step + 's']});
       };
     },
     dots: function(box, step, v){
-      var s = frame(215), cells = [];
+      var s = frame(196), cells = [], wrap = null, cap = null;
       for (var i = 0; i < 1000; i++) { var c = svg('circle', {cx: 6 + (i % 40) * 7.8, cy: 6 + Math.floor(i / 40) * 7.8, r:3}); cells.push(c); s.appendChild(c); }
-      var legend = svg('text', {x:4, y:210, class:'vt'}); s.appendChild(legend);
       return function(env, values){
         var real = Math.round(values[v.prev] * 10), tp = Math.min(real, Math.round(env[v.tp])), fp = Math.round(env[v.fp]);
-        cells.forEach(function(c, i){
-          c.setAttribute('class', i < tp ? 'v-tp' : i < real ? 'v-fn' : i < real + fp ? 'v-fp' : 'v-tn');
-        });
-        legend.textContent = tp + ' real & ' + v.flagged + ' · ' + (real - tp) + ' real but missed · ' + fp + ' ' + v.flagged + ' by mistake';
-        return s;
+        cells.forEach(function(c, i){ c.setAttribute('class', i < tp ? 'v-tp' : i < real ? 'v-fn' : i < real + fp ? 'v-fp' : 'v-tn'); });
+        if (!wrap) {
+          wrap = pic(s, {legend: [['sw-acc', 'real, ' + v.flagged], ['sw-hollow', 'real, missed'], ['sw-bad', v.flagged + ' by mistake'], ['sw-off', 'the rest']],
+            cap: [' ']});
+          cap = wrap.querySelector('.pic-cap');
+        }
+        cap.textContent = 'Out of 1000 ' + v.who + ': ' + tp + ' real cases ' + v.flagged + ', ' + (real - tp) + ' missed, ' + fp + ' ' + v.flagged + ' by mistake.';
+        return wrap;
       };
     },
     bells: function(box, step, v){
       return function(env, values){
-        var s = frame(170), th = values[v.th], L = 10, W = 300, H = 130;
+        var s = frame(150), th = values[v.th], L = 10, W = 300, H = 120;
         function X(x){ return L + (x - v.lo) / (v.hi - v.lo) * W; }
         function Y(y){ return 10 + H * (1 - y); }
         function curve(m, from, to){
@@ -413,15 +456,14 @@ details.more summary{cursor:pointer;color:var(--muted);font-size:14px;margin:0 0
         s.appendChild(svg('polyline', {points: curve(v.pos, v.lo, v.hi).join(' '), class:'v-line red'}));
         s.appendChild(svg('line', {x1:X(thc), x2:X(thc), y1:6, y2:Y(0), class:'v-cut'}));
         s.appendChild(svg('line', {x1:L, x2:L + W, y1:Y(0), y2:Y(0), class:'axis'}));
-        txt(s, 12, 12, '— ' + v.neg_label, 'vt blue', 'start'); txt(s, 308, 12, v.pos_label + ' —', 'vt red', 'end');
-        txt(s, X(thc), 164, 'cut-off', 'vt muted', 'middle');
-        return s;
+        txt(s, clamp(X(thc), 24, 296), 146, 'cut-off', 'vt muted', 'middle');   // stays inside at the extremes
+        return pic(s, {legend: [['sw-blue', v.neg_label], ['sw-bad', v.pos_label], ['sw-shade', 'shaded: wrongly sorted']]});
       };
     },
     spread: function(box, step, v){
       var nIn = inOf(step, v.n), widest = 1.96 * v.sd / Math.sqrt(nIn.min) * 1.25;
       return function(env, values){
-        var s = frame(150), lo = v.true - widest, hi = v.true + widest, se = v.sd / Math.sqrt(values[v.n]);
+        var s = frame(122), lo = v.true - widest, hi = v.true + widest, se = v.sd / Math.sqrt(values[v.n]);
         function X(x){ return 10 + (x - lo) / (hi - lo) * 300; }
         s.appendChild(svg('rect', {x: X(env[v.lo]), y:18, width: Math.max(1, X(env[v.hi]) - X(env[v.lo])), height:84, rx:6, class:'v-band'}));
         s.appendChild(svg('line', {x1:X(v.true), x2:X(v.true), y1:12, y2:108, class:'v-cut'}));
@@ -430,14 +472,13 @@ details.more summary{cursor:pointer;color:var(--muted);font-size:14px;margin:0 0
           s.appendChild(svg('circle', {cx: X(clamp(m, lo, hi)), cy: 26 + (k % 10) * 8, r:3.4, class:'v-dot'}));
         }
         s.appendChild(svg('line', {x1:10, x2:310, y1:112, y2:112, class:'axis'}));
-        txt(s, X(v.true), 128, 'true ' + v.measure.toLowerCase() + ': ' + fmt(v.true) + (v.unit ? ' ' + v.unit : ''), 'vt', 'middle');
-        txt(s, 160, 146, '20 repeat experiments: where each average lands', 'vt muted', 'middle');
-        return s;
+        return pic(s, {legend: [['sw-blue', 'one experiment\'s average'], ['sw-line', 'true ' + v.measure.toLowerCase() + ': ' + fmt(v.true) + (v.unit ? ' ' + v.unit : '')], ['sw-band', 'margin of error']],
+          cap: ['20 repeat experiments: where each average lands.']});
       };
     },
     bowl: function(box, step, v){
       return function(env, values){
-        var S = v.start * 1.3, s = frame(175), k = Math.round(values[v.k]), trail = [], flew = false;
+        var S = v.start * 1.3, s = frame(160), k = Math.round(values[v.k]), trail = [], flew = false;
         function X(w){ return 160 + w / S * 140; }
         function Y(w){ return 150 - Math.min(1.2, (w * w) / (S * S)) * 125; }
         var pts = [];
@@ -453,11 +494,10 @@ details.more summary{cursor:pointer;color:var(--muted);font-size:14px;margin:0 0
         trail.forEach(function(w, i){ s.appendChild(svg('circle', {cx:X(w), cy:Y(w), r: i === trail.length - 1 ? 7 : 3, class: i === trail.length - 1 ? 'v-ball' : 'v-dot'})); });
         s.appendChild(svg('circle', {cx:X(0), cy:Y(0) + 2, r:3, class:'v-goal'}));
         var w0 = trail[0], wk = trail[trail.length - 1], zig = trail.some(function(w, i){ return i && w * trail[i - 1] < 0; });
-        var msg = flew ? 'Flew out of the bowl: steps far too big!' : Math.abs(wk) < 0.05 * v.start ? 'Settled at the bottom.' :
+        var settled = !flew && Math.abs(wk) < 0.05 * v.start;
+        var msg = flew ? 'Flew out of the bowl: steps far too big!' : settled ? 'Settled at the bottom.' :
           k === 0 ? 'Start training: move the steps slider.' : zig && Math.abs(wk) > Math.abs(w0) * 0.7 ? 'Zig-zagging across the bowl.' : zig ? 'Overshooting, but getting there.' : 'Creeping down the slope.';
-        txt(s, 160, 14, msg, flew ? 'vt bad' : Math.abs(wk) < 0.05 * v.start ? 'vt good' : 'vt', 'middle');
-        txt(s, 160, 170, 'training ' + v.model, 'vt muted', 'middle');
-        return s;
+        return pic(s, {cap: [{t: msg, cls: flew ? 'bad' : settled ? 'good' : 'strong'}, 'Training ' + v.model + ': the green dot is the best setting.']});
       };
     },
     bars: function(box, step, v){
@@ -465,12 +505,12 @@ details.more summary{cursor:pointer;color:var(--muted);font-size:14px;margin:0 0
       var gen = el('button', {class:'btn ghost small', type:'button', text:'Generate a word'});
       return function(env){
         var probs = v.outs.map(function(id){ return env[id] / 100; }), words = v.outs.map(function(id){ return outOf(step, id).label; });
-        var s = frame(28 * words.length + 6), top = probs.indexOf(Math.max.apply(null, probs));
-        words.forEach(function(w, i){
-          txt(s, 0, 20 + i * 28, w, 'vt', 'start');
-          s.appendChild(svg('rect', {x:96, y:6 + i * 28, width:180, height:18, rx:4, class:'v-off'}));
-          s.appendChild(svg('rect', {x:96, y:6 + i * 28, width: Math.max(1, 180 * probs[i]), height:18, rx:4, class: i === top ? 'v-on' : 'v-on2'}));
-          txt(s, 316, 20 + i * 28, fmt(probs[i] * 100, 1) + '%', 'vt', 'end');
+        var s = frame(34 * words.length + 2), top = probs.indexOf(Math.max.apply(null, probs));
+        words.forEach(function(w, i){                     // each word on its own line above its bar: long words cannot collide
+          txt(s, 0, 12 + i * 34, w, 'vt', 'start');
+          txt(s, 320, 12 + i * 34, fmt(probs[i] * 100, 1) + '%', 'vt', 'end');
+          s.appendChild(svg('rect', {x:0, y:17 + i * 34, width:320, height:12, rx:4, class:'v-off'}));
+          s.appendChild(svg('rect', {x:0, y:17 + i * 34, width: Math.max(1, 320 * probs[i]), height:12, rx:4, class: i === top ? 'v-on' : 'v-on2'}));
         });
         function showPrompt(){
           var parts = String(v.prompt || '___').split('___');
@@ -481,82 +521,77 @@ details.more summary{cursor:pointer;color:var(--muted);font-size:14px;margin:0 0
         }
         gen.onclick = function(){ var r = Math.random(), acc = 0; pick = probs.length - 1; for (var i = 0; i < probs.length; i++) { acc += probs[i]; if (r < acc) { pick = i; break; } } showPrompt(); };
         showPrompt();
-        var wrap = el('div', {}, [shown, s, el('div', {class:'row', style:'margin:6px 0 0'}, [gen])]);
-        return wrap;
+        return el('div', {class:'pic'}, [shown, s, el('div', {class:'row', style:'margin:6px 0 0'}, [gen])]);
       };
     },
     membrane: function(box, step, v){
       var fo = outOf(step, v.flow), fmax = Math.max(Math.abs(fo.lo), Math.abs(fo.hi)) || 1;
       return function(env, values){
-        var s = frame(160), a = values[v.a], b = values[v.b], flow = env[v.flow];
+        var s = frame(124), a = values[v.a], b = values[v.b], flow = env[v.flow];
         function side(x0, val, tag){
           var n = Math.round(clamp((val - v.lo) / ((v.hi - v.lo) || 1), 0, 1) * 70);
-          s.appendChild(svg('rect', {x:x0, y:22, width:134, height:110, rx:10, class:'v-vessel'}));
-          for (var i = 0; i < n; i++) s.appendChild(svg('circle', {cx: x0 + 8 + rnd(tag, i) * 118, cy: 30 + rnd(tag + 'y', i) * 94, r:3, class:'v-dot'}));
+          s.appendChild(svg('rect', {x:x0, y:6, width:134, height:110, rx:10, class:'v-vessel'}));
+          for (var i = 0; i < n; i++) s.appendChild(svg('circle', {cx: x0 + 8 + rnd(tag, i) * 118, cy: 14 + rnd(tag + 'y', i) * 94, r:3, class:'v-dot'}));
         }
         side(8, a, 'a'); side(178, b, 'b');
-        s.appendChild(svg('line', {x1:160, x2:160, y1:16, y2:138, class:'v-cut'}));
+        s.appendChild(svg('line', {x1:160, x2:160, y1:0, y2:122, class:'v-cut'}));
         var mag = Math.abs(flow) / fmax;
         if (mag > 0.01) {
           var dir = flow > 0 ? 1 : -1, sw = 2 + 9 * mag, x1 = 160 - dir * 26, x2 = 160 + dir * 26;
-          s.appendChild(svg('line', {x1:x1, x2:x2 - dir * 8, y1:77, y2:77, class:'v-arrow', 'stroke-width': sw}));
-          s.appendChild(svg('polygon', {points: x2 + ',77 ' + (x2 - dir * 12) + ',' + (77 - 6 - sw / 2) + ' ' + (x2 - dir * 12) + ',' + (77 + 6 + sw / 2), class:'v-arrowhead'}));
-        } else txt(s, 160, 80, 'no net flow', 'vt good', 'middle');
-        txt(s, 75, 14, v.side_a, 'vt muted', 'middle'); txt(s, 245, 14, v.side_b, 'vt muted', 'middle');
-        txt(s, 160, 154, v.thing + ' moves from high to low', 'vt muted', 'middle');
-        return s;
+          s.appendChild(svg('line', {x1:x1, x2:x2 - dir * 8, y1:61, y2:61, class:'v-arrow', 'stroke-width': sw}));
+          s.appendChild(svg('polygon', {points: x2 + ',61 ' + (x2 - dir * 12) + ',' + (61 - 6 - sw / 2) + ' ' + (x2 - dir * 12) + ',' + (61 + 6 + sw / 2), class:'v-arrowhead'}));
+        }
+        return pic(s, {top: [{name: v.side_a, sub: fmt(a)}, {name: v.side_b, sub: fmt(b)}],
+          cap: [mag > 0.01 ? null : {t: 'No net flow: both sides are equal.', cls: 'good'},
+                v.thing + ' moves from high to low, across the barrier (dashed).']});
       };
     },
     rays: function(box, step, v){
       return function(env, values){
-        var s = frame(160), d = values[v.d], rel = env[v.rel];
+        var s = frame(150), d = values[v.d], rel = env[v.rel];
         var x = 70 + (d - v.dmin) / ((v.dmax - v.dmin) || 1) * 210, side = 14 + 110 * d / v.dmax;
         var shine = clamp(rel / 100, 0.06, 1);
         s.appendChild(svg('polygon', {points: '26,76 ' + x + ',' + (76 - side / 2) + ' ' + x + ',' + (76 + side / 2), class:'v-cone', style:'opacity:' + (0.08 + 0.3 * shine)}));
         s.appendChild(svg('circle', {cx:26, cy:76, r:12, class:'v-sun'}));
         s.appendChild(svg('rect', {x:x - 5, y:76 - side / 2, width:10, height:side, rx:3, class:'v-panel', style:'opacity:' + shine}));
         s.appendChild(svg('rect', {x:x - 5, y:76 - side / 2, width:10, height:side, rx:3, class:'v-panel-edge'}));
-        txt(s, 26, 104, v.source, 'vt muted', 'middle');
-        txt(s, 160, 150, fmt(rel, 1) + '% as strong, spread over ×' + fmt(env.area || 1, 1) + ' the area', 'vt', 'middle');
-        return s;
+        return pic(s, {legend: [['sw-acc', v.source]],
+          cap: [fmt(rel, 1) + '% as strong, spread over ×' + fmt(env.area || 1, 1) + ' the area.']});
       };
     },
     pipes: function(box, step, v){
       var maxes = v.caps.map(function(id){ return inOf(step, id).max; }), top = Math.max.apply(null, maxes);
       return function(env, values){
-        var s = frame(170), n = v.caps.length, w = 300 / n, thr = env[v.thr];
+        var s = frame(120), n = v.caps.length, w = 320 / n, thr = env[v.thr];
         var caps = v.caps.map(function(id){ return values[id]; }), low = caps.indexOf(Math.min.apply(null, caps));
         caps.forEach(function(c, i){
-          var h = 110 * c / top, x = 10 + i * w;
-          s.appendChild(svg('rect', {x:x + 4, y:70 - h / 2, width:w - 8, height:h, rx:6, class: i === low ? 'v-vessel bad' : 'v-vessel'}));
-          txt(s, x + w / 2, 142, v.labels[i], 'vt', 'middle');
-          txt(s, x + w / 2, 158, fmt(c) + ' ' + v.unit, i === low ? 'vt bad' : 'vt muted', 'middle');
+          var h = 108 * c / top, fh = 108 * thr / top, x = i * w;
+          s.appendChild(svg('rect', {x:x + 5, y:60 - h / 2, width:w - 10, height:h, rx:6, class: i === low ? 'v-vessel bad' : 'v-vessel'}));
+          s.appendChild(svg('rect', {x:x + 9, y:60 - fh / 2 + 2, width:w - 18, height:Math.max(1, fh - 4), rx:4, class:'v-flow'}));
+          if (i < n - 1) s.appendChild(svg('line', {x1:x + w - 5, x2:x + w + 5, y1:60, y2:60, class:'v-joint'}));
         });
-        var fh = 110 * thr / top;
-        s.appendChild(svg('rect', {x:10, y:70 - fh / 2, width:300, height:fh, rx:4, class:'v-flow'}));
-        txt(s, 160, 12, 'output ' + fmt(thr) + ' ' + v.unit + ': limited by ' + v.labels[low], 'vt', 'middle');
-        return s;
+        return pic(s, {title: 'Output ' + fmt(thr) + ' ' + v.unit + ', limited by ' + v.labels[low],
+          cols: caps.map(function(c, i){ return {name: v.labels[i], sub: fmt(c) + ' ' + v.unit, cls: i === low ? 'bad' : ''}; }),
+          cap: ['Each box is a stage\'s capacity; the blue flow is the same through all of them.']});
       };
     },
     memory: function(box, step, v){
       return function(env){
-        var s = frame(160), size = env[v.size], speed = env[v.speed], cap = v.vram, W = 200;
-        var fits = size <= cap, used = Math.min(size, cap) / cap * W, over = fits ? 0 : Math.min(96, (size - cap) / cap * W);
-        txt(s, 10, 16, v.device + ': ' + fmt(cap, 0) + ' GB', 'vt muted');
-        s.appendChild(svg('rect', {x:10, y:24, width:W, height:38, rx:6, class:'v-vessel'}));
-        s.appendChild(svg('rect', {x:12, y:26, width:Math.max(0, used - 4), height:34, rx:5, class:'v-fill'}));
-        if (over) s.appendChild(svg('rect', {x:10 + W + 2, y:26, width:over, height:34, rx:5, class:'v-bad'}));
-        txt(s, 10, 80, v.model + ' needs ' + fmt(size) + ' GB', 'vt');
-        txt(s, 10, 98, fits ? 'Fits, with ' + fmt(cap - size) + ' GB to spare' : "Doesn't fit: it would spill into much slower memory", fits ? 'vt good' : 'vt bad');
-        txt(s, 10, 130, '~' + fmt(speed, speed < 10 ? 1 : 0) + ' tokens/s', 'vt big');
-        txt(s, 10, 152, !fits ? 'at best - far less once it spills over' : speed >= 7 ? 'faster than you can read' : 'slower than you can read', 'vt muted');
-        return s;
+        var s = frame(52), size = env[v.size], speed = env[v.speed], cap = v.vram, W = 200;
+        var fits = size <= cap, used = Math.min(size, cap) / cap * W, over = fits ? 0 : Math.min(106, (size - cap) / cap * W);
+        s.appendChild(svg('rect', {x:4, y:6, width:W, height:40, rx:6, class:'v-vessel'}));
+        s.appendChild(svg('rect', {x:6, y:8, width:Math.max(0, used - 4), height:36, rx:5, class:'v-fill'}));
+        if (over) s.appendChild(svg('rect', {x:4 + W + 4, y:8, width:over, height:36, rx:5, class:'v-bad'}));
+        return pic(s, {title: v.device + ': ' + fmt(cap, 0) + ' GB of memory',
+          cap: [v.model + ' needs ' + fmt(size) + ' GB.',
+                {t: fits ? 'Fits, with ' + fmt(cap - size) + ' GB to spare.' : "Doesn't fit: it would spill into much slower memory.", cls: fits ? 'good' : 'bad'},
+                {t: '~' + fmt(speed, speed < 10 ? 1 : 0) + ' tokens per second ' + (!fits ? '(at best; far less once it spills over)' : speed >= 7 ? '- faster than you can read' : '- slower than you can read'), cls: 'big'}]});
       };
     },
     attempts: function(box, step, v){
       return function(env, values){
         var p = values[v.p] / 100, k = Math.round(values[v.k]), R = 12, cols = Math.min(k, 60), w = Math.min(16, 260 / cols);
-        var s = frame(R * 16 + 30), got = 0;
+        var s = frame(R * 16 + 6), got = 0;
         for (var r = 0; r < R; r++) {
           var first = -1;
           for (var c = 0; c < k; c++) if (rnd('try' + r, c) < p) { first = c; break; }
@@ -567,25 +602,24 @@ details.more summary{cursor:pointer;color:var(--muted);font-size:14px;margin:0 0
           if (first >= 0) got++;
           txt(s, 288, 14 + r * 16, first >= 0 ? '✓' : '✗', first >= 0 ? 'vt good' : 'vt bad');
         }
-        txt(s, 4, R * 16 + 22, 'In ' + got + ' of ' + R + ' runs, ' + v.success + ' within ' + k + ' ' + v.try + 's' + (k > cols ? ' (first ' + cols + ' shown)' : ''), 'vt');
-        return s;
+        return pic(s, {legend: [['sw-miss', v.try + ' that did not work'], ['sw-good', v.success]],
+          cap: ['In ' + got + ' of ' + R + ' runs, ' + v.success + ' within ' + k + ' ' + v.try + 's' + (k > cols ? ' (first ' + cols + ' shown).' : '.')]});
       };
     },
     people: function(box, step, v){
       return function(env, values){
-        var base = values[v.base], treated = env[v.treated], per = base >= 5 ? 100 : 1000, s = frame(per === 100 ? 190 : 205);
-        var cols = per === 100 ? 10 : 25, gap = per === 100 ? 13 : 5.5, r = per === 100 ? 4.6 : 2, top = 30;
+        var base = values[v.base], treated = env[v.treated], per = base >= 5 ? 100 : 1000, s = frame(per === 100 ? 132 : 142);
+        var cols = per === 100 ? 10 : 25, gap = per === 100 ? 13 : 5.5, r = per === 100 ? 4.6 : 2, top = 8;
         var sick0 = Math.round(base / 100 * per), sick1 = Math.round(treated / 100 * per);
-        [[0, sick0, 'without ' + v.treatment], [168, sick1, 'with ' + v.treatment]].forEach(function(g, gi){
-          txt(s, g[0] + 76, 14, g[2], 'vt muted', 'middle');
+        [[8, sick0], [176, sick1]].forEach(function(g, gi){
           for (var i = 0; i < per; i++) {
             var cls = i < g[1] ? 'v-bad' : (gi === 1 && i < sick0 ? 'v-good' : 'v-off');
-            s.appendChild(svg('circle', {cx: g[0] + 10 + (i % cols) * gap, cy: top + Math.floor(i / cols) * gap, r:r, class: cls}));
+            s.appendChild(svg('circle', {cx: g[0] + (i % cols) * gap, cy: top + Math.floor(i / cols) * gap, r:r, class: cls}));
           }
         });
-        var y = per === 100 ? 182 : 198;
-        txt(s, 4, y, 'of ' + per + ' ' + v.who + ': ' + sick0 + ' → ' + sick1 + ' ' + v.outcome + ' · ' + (sick0 - sick1) + ' spared', 'vt');
-        return s;
+        return pic(s, {top: [{name: 'Without ' + v.treatment}, {name: 'With ' + v.treatment}],
+          legend: [['sw-bad', v.outcome], ['sw-good', 'spared by ' + v.treatment]],
+          cap: ['Of ' + per + ' ' + v.who + ': ' + sick0 + ' → ' + sick1 + ', so ' + (sick0 - sick1) + ' spared.']});
       };
     },
     float: function(box, step, v){
@@ -593,27 +627,24 @@ details.more summary{cursor:pointer;color:var(--muted);font-size:14px;margin:0 0
         var s = frame(200), h = values[v.h], px = 150 * h / v.hmax, frac = env[v.below] / h, wl = 46;
         var above = px * (1 - frac), below = px * frac;
         s.appendChild(svg('rect', {x:0, y:wl, width:320, height:154, class:'v-fluid'}));
-        s.appendChild(svg('rect', {x:110, y:wl - above, width:100, height:Math.max(0.5, above), rx:3, class:'v-fill'}));
-        s.appendChild(svg('rect', {x:110, y:wl, width:100, height:Math.max(0.5, below), rx:3, class:'v-sunk'}));
+        s.appendChild(svg('rect', {x:90, y:wl - above, width:100, height:Math.max(0.5, above), rx:3, class:'v-fill'}));
+        s.appendChild(svg('rect', {x:90, y:wl, width:100, height:Math.max(0.5, below), rx:3, class:'v-sunk'}));
         s.appendChild(svg('line', {x1:0, x2:320, y1:wl, y2:wl, class:'v-waterline'}));
-        txt(s, 220, wl - above / 2 + 4, 'above: ' + fmt(env[v.above]) + ' ' + v.unit, 'vt');
-        txt(s, 220, wl + below / 2 + 4, 'below: ' + fmt(env[v.below]) + ' ' + v.unit, 'vt');
-        txt(s, 100, wl - 6, v.object, 'vt muted', 'end'); txt(s, 8, 194, v.fluid, 'vt muted');
-        return s;
+        txt(s, 200, Math.min(wl - 6, wl - above / 2 + 4), 'above: ' + fmt(env[v.above]) + ' ' + v.unit, 'vt');   // never closer
+        txt(s, 200, Math.max(wl + 17, wl + below / 2 + 4), 'below: ' + fmt(env[v.below]) + ' ' + v.unit, 'vt');  // than one line
+        return pic(s, {legend: [['sw-acc', v.object], ['sw-fluid', v.fluid]]});
       };
     },
     squeeze: function(box, step, v){
       return function(env, values){
-        var s = frame(175), d = values[v.depth], gas = env[v.gas], liq = env[v.liq];
+        var s = frame(150), d = values[v.depth], gas = env[v.gas], liq = env[v.liq];
         s.appendChild(svg('rect', {x:0, y:0, width:320, height:150, rx:10, class:'v-fluid', style:'opacity:' + (0.12 + 0.55 * d / v.dmax)}));
         var rg = 52 * Math.cbrt(Math.max(0, gas) / v.v0), rl = 34 * Math.cbrt(Math.max(0, 1 - liq / 100));
-        s.appendChild(svg('circle', {cx:90, cy:78, r:Math.max(1.5, rg), class:'v-balloon'}));
-        s.appendChild(svg('circle', {cx:236, cy:78, r:rl, class:'v-drop'}));
-        txt(s, 160, 16, fmt(d) + ' m deep · ' + fmt(env[v.P] / 101.3, 1) + ' atmospheres', 'vt', 'middle');
-        txt(s, 90, 146, v.gas_label + ': ' + fmt(gas) + ' ' + v.unit, 'vt', 'middle');
-        txt(s, 236, 146, v.liquid_label + ': −' + fmt(liq, 2) + '%', 'vt', 'middle');
-        txt(s, 160, 170, 'gas halves when pressure doubles; liquid hardly gives', 'vt muted', 'middle');
-        return s;
+        s.appendChild(svg('circle', {cx:80, cy:82, r:Math.max(1.5, rg), class:'v-balloon'}));
+        s.appendChild(svg('circle', {cx:240, cy:82, r:rl, class:'v-drop'}));
+        txt(s, 160, 18, fmt(d) + ' m deep · ' + fmt(env[v.P] / 101.3, 1) + ' atmospheres', 'vt', 'middle');
+        return pic(s, {cols: [{name: v.gas_label, sub: fmt(gas) + ' ' + v.unit}, {name: v.liquid_label, sub: '−' + fmt(liq, 2) + '%'}],
+          cap: ['Gas halves when the pressure doubles; liquid hardly gives.']});
       };
     },
     arrows: function(box, step, v){
@@ -624,7 +655,7 @@ details.more summary{cursor:pointer;color:var(--muted);font-size:14px;margin:0 0
           (x2 - L * Math.cos(a - 0.4)) + ',' + (y2 - L * Math.sin(a - 0.4)) + ' ' + (x2 - L * Math.cos(a + 0.4)) + ',' + (y2 - L * Math.sin(a + 0.4))}));
       }
       return function(env, values){
-        var s = frame(170), ang = values[v.angle] * Math.PI / 180, len = values[v.len], U = 62, ox = 160, oy = 140;
+        var s = frame(150), ang = values[v.angle] * Math.PI / 180, len = values[v.len], U = 62, ox = 160, oy = 136;
         var ax = ox + len * U * Math.cos(ang), ay = oy - len * U * Math.sin(ang), fx = ox + len * U * Math.cos(ang);
         s.appendChild(svg('line', {x1:20, x2:300, y1:oy, y2:oy, class:'axis'}));
         arrow(s, ox, oy, ox + U * 2, oy, 'v-vec-b');
@@ -632,10 +663,8 @@ details.more summary{cursor:pointer;color:var(--muted);font-size:14px;margin:0 0
         s.appendChild(svg('line', {x1:ox, y1:oy, x2:fx, y2:oy, class:'v-along'}));
         arrow(s, fx, oy, ax, ay, 'v-vec-left');
         arrow(s, ox, oy, ax, ay, 'v-vec-a');
-        txt(s, ox + U * 2, oy + 14, v.b_label, 'vt blue', 'end');
-        txt(s, ax + (Math.cos(ang) >= 0 ? 6 : -6), ay - 6, v.a_label, 'vt', Math.cos(ang) >= 0 ? 'start' : 'end');
-        txt(s, 160, 14, 'similarity ' + fmt(env.sim, 2) + ' · red: what is left if the blue direction is removed', 'vt muted', 'middle');
-        return s;
+        return pic(s, {legend: [['sw-acc', v.a_label], ['sw-blue', v.b_label + ' (the direction)'], ['sw-bad', 'what is left if that direction is removed']],
+          cap: [{t: 'Cosine similarity ' + fmt(env.sim, 2), cls: 'strong'}]});
       };
     }
   };
@@ -687,7 +716,7 @@ details.more summary{cursor:pointer;color:var(--muted);font-size:14px;margin:0 0
         r.bar.style.width = (isFinite(w) ? Math.max(0, Math.min(1, w)) * 100 : 0) + '%';
       });
       if (chartBox) drawChart(chartBox, step, values);
-      if (drawView) { var pic = drawView(env, values); if (pic && pic.parentNode !== viewBox) { viewBox.innerHTML = ''; viewBox.appendChild(pic); } }
+      if (drawView) { var picture = drawView(env, values); if (picture && picture.parentNode !== viewBox) { viewBox.innerHTML = ''; viewBox.appendChild(picture); } }
       if (goalBox) {
         var g = step.goal, tv = env[g.target];
         var met = p.solved || (isFinite(tv) && tv >= g.min - 1e-9 && tv <= g.max + 1e-9);

@@ -3,13 +3,13 @@ name: Weights and Measures
 on:
   schedule:
     # GitHub cron is in UTC. India = UTC + 5:30.
-    # GitHub starts scheduled runs 30-50 minutes late (Oct-Nov 2026: an 08:00 run started at 08:40-08:46) and
-    # an episode takes 15-30 minutes to make, so the runs are set early enough to be ready for the 08:00 and
-    # 16:00 commutes. Minutes off :00 and :30, when GitHub's scheduler is busiest.
-    - cron: '50 0 * * *'    # 06:20 IST  morning edition  (ready about 07:15)
-    - cron: '35 1 * * *'    # 07:05 IST  morning backup (skips if already made)
-    - cron: '50 8 * * *'    # 14:20 IST  evening edition  (ready about 15:15)
-    - cron: '35 9 * * *'    # 15:05 IST  evening backup (skips if already made)
+    # GitHub starts scheduled runs 30-60 minutes late (the 06:20 run of 4 Nov 2026 started at 07:15) and an
+    # episode takes 20-30 minutes to make, so the runs start early enough to be ready for the 08:00 and 16:00
+    # commutes. Minutes off :00 and :30, when GitHub's scheduler is busiest.
+    - cron: '20 0 * * *'    # 05:50 IST  morning edition  (ready about 07:00)
+    - cron: '5 1 * * *'     # 06:35 IST  morning backup (skips if already made)
+    - cron: '20 8 * * *'    # 13:50 IST  evening edition  (ready about 15:00)
+    - cron: '5 9 * * *'     # 14:35 IST  evening backup (skips if already made)
   workflow_dispatch:
     inputs:
       edition:
@@ -101,6 +101,8 @@ jobs:
           FISH_VOICE_A: ${{ vars.FISH_VOICE_A }}
           FISH_VOICE_B: ${{ vars.FISH_VOICE_B }}
           FISH_WORKERS: ${{ vars.FISH_WORKERS }}
+          SCORING_BUDGET_S: ${{ vars.SCORING_BUDGET_S }}
+          CHECK_MODELS: ${{ vars.CHECK_MODELS }}
           TARGET_LUFS: ${{ vars.TARGET_LUFS }}
           SEGMENT_CHIME: ${{ vars.SEGMENT_CHIME }}
           GEMINI_TTS_MODEL: ${{ vars.GEMINI_TTS_MODEL }}
