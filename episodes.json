@@ -1,17 +1,6 @@
 {
   "episodes": [
     {
-      "file": "ai_2026-10-28_morning_0840.mp3",
-      "date": "2026-10-28",
-      "edition": "morning",
-      "title": "Morning - 28 Oct: When the coding agent bills you for its own errors",
-      "published": "2026-10-28T08:40:56.826453+05:30",
-      "pubDate": "Wed, 28 Oct 2026 08:40:56 +0530",
-      "size": 8483372,
-      "duration": 1060,
-      "description": "Morning edition - Wednesday, 28 October 2026\nValidating the tools you pay for, and the physics of a everyday breath\n\n00:37  When the coding agent bills you for its own errors\n   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1xh3yyu/claude_code_usage_exploded_8x_today_anthropic/\n   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1xguw7r/claude_is_performing_38x_poorer_compared_to_last/\n09:39  Why your breath feels cold through pursed lips but warm with an open mouth\n   askscience: https://www.reddit.com/r/askscience/comments/1xgpqsy/what_fluid_dynamic_or_thermodynamic_mechanisms/\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nWritten by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (196 threads)"
-    },
-    {
       "file": "ai_2026-10-28_evening_1638.mp3",
       "date": "2026-10-28",
       "edition": "evening",
@@ -164,6 +153,17 @@
       "size": 8385414,
       "duration": 1048,
       "description": "Morning edition - Wednesday, 4 November 2026\nEngineering sovereignty at the edge: a home-built multi-GPU inference rig and the mechanical reality of sinking data centers into whale habitat\n\n00:38  A Home-Built Inference Wall: Three GPUs, 3D-Printed Parts, and the Thermal Reality\n09:00  Underwater Data Centers and the Whale Habitat Conflict\n\nPuzzles: Why Your Three-GPU Wall Hits a Wall - puzzles, quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nWritten by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (178 threads)"
+    },
+    {
+      "file": "ai_2026-11-04_evening_1443.mp3",
+      "date": "2026-11-04",
+      "edition": "evening",
+      "title": "Evening - 4 Nov: Xiaomi's humanoid robots complete an eight-hour shift sorting EV parts",
+      "published": "2026-11-04T14:43:52.146825+05:30",
+      "pubDate": "Wed, 04 Nov 2026 14:43:52 +0530",
+      "size": 8435686,
+      "duration": 1054,
+      "description": "Evening edition - Wednesday, 4 November 2026\nHumanoid robots on the factory floor and the hidden synchronization shaking power grids\n\n00:30  Xiaomi's humanoid robots complete an eight-hour shift sorting EV parts\n10:44  Why the power grid wobbles every sixty seconds\n\nPuzzles: The 60-Second Heartbeat Nobody Designed - puzzles, quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nWritten by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (161 threads)"
     }
   ],
   "memory": [
@@ -1510,6 +1510,26 @@
       ],
       "deep_topic": "",
       "topics": []
+    },
+    {
+      "label": "Wednesday 04 Nov evening",
+      "date": "2026-11-04",
+      "edition": "evening",
+      "published": "2026-11-04T14:43:52.146825+05:30",
+      "file": "ai_2026-11-04_evening_1443.mp3",
+      "writer": "nemotron-3-ultra-550b-a55b (free)",
+      "voices": "Fish Audio (free)",
+      "summary": "The episode examines how Xiaomi’s humanoid robots completed an uninterrupted eight‑hour shift sorting EV components, covering perception, grasp planning, error recovery, thermal management, and safety certification. It then explores a continent‑wide 60‑second power‑grid oscillation caused by thousands of battery‑storage and UPS controllers synchronizing their self‑tests at the top of each minute. Both segments relate to the validation and CAPA processes Nikhil oversees and to control‑system dynamics familiar from structural engineering.",
+      "threads": [
+        "Independent benchmarks of heterogeneous multi‑GPU inference under deterministic latency constraints",
+        "Design‑history file requirements for subsea pressure vessels in regulated marine habitats"
+      ],
+      "segments": [
+        "Xiaomi's humanoid robots complete an eight-hour shift sorting EV parts",
+        "Why the power grid wobbles every sixty seconds"
+      ],
+      "deep_topic": "",
+      "topics": []
     }
   ],
   "seen": [
@@ -2468,6 +2488,18 @@
     {
       "date": "2026-11-04",
       "link": "https://www.scientificamerican.com/article/underwater-data-centers-may-be-coming-to-the-u-s-smack-in-the-middle-of-endangered-whale-habitat/"
+    },
+    {
+      "date": "2026-11-04",
+      "link": "https://www.reddit.com/r/science/comments/1xn93n8/researchers_have_solved_the_mystery_behind/"
+    },
+    {
+      "date": "2026-11-04",
+      "link": "https://www.nature.com/articles/s41560-026-02144-0"
+    },
+    {
+      "date": "2026-11-04",
+      "link": "https://www.reddit.com/r/singularity/comments/1xn5g1f/xiaomis_humanoid_robots_spotted_doing_their_first/"
     }
   ],
   "feedback": [
@@ -2742,6 +2774,31 @@
       },
       "comment": "",
       "received": "2026-10-29T16:39:52.835740+05:30"
+    },
+    {
+      "episode": "ai_2026-11-04_morning_0715.mp3",
+      "date": "2026-11-04",
+      "edition": "morning",
+      "quiz": null,
+      "puzzles": {
+        "done": 0,
+        "total": 1,
+        "struggled": [
+          "Why Your Three-GPU Wall Hits a Wall: The builder runs a MoE model on two 4070s (x8, x8) and a 3060 on x1. They claim near-linear scaling. You bet a coffee the real throughput is"
+        ]
+      },
+      "ratings": {
+        "overall": 4,
+        "depth": "too technical",
+        "pace": "right",
+        "voices": "ok"
+      },
+      "segments": {
+        "A Home-Built Inference Wall: Three GPUs, 3D-Printed Parts, and the Thermal Reality": "less",
+        "Underwater Data Centers and the Whale Habitat Conflict": "ok"
+      },
+      "comment": "i asked for more what individual people are building with ai but that doesn't mean every podcast should be about that. try to make a balance i will keep rating but circle type of content. todays indie developer part is too complex for me because i am not into own hardware to run ai model so that is not intersted for me. also the puzzle is also not intrested due to the topic.",
+      "received": "2026-11-04T14:43:52.632251+05:30"
     }
   ],
   "tts_log": [
@@ -3418,7 +3475,151 @@
     "2026-11-04T02:28:01.444654+00:00",
     "2026-11-04T02:28:01.473802+00:00",
     "2026-11-04T02:28:05.769243+00:00",
-    "2026-11-04T02:28:09.847674+00:00"
+    "2026-11-04T02:28:09.847674+00:00",
+    "2026-11-04T09:14:26.120350+00:00",
+    "2026-11-04T09:14:37.629195+00:00",
+    "2026-11-04T09:14:42.315409+00:00",
+    "2026-11-04T09:14:48.651511+00:00",
+    "2026-11-04T09:14:58.303932+00:00",
+    "2026-11-04T09:15:03.596333+00:00",
+    "2026-11-04T09:15:05.506073+00:00",
+    "2026-11-04T09:15:16.592353+00:00",
+    "2026-11-04T09:15:16.792177+00:00",
+    "2026-11-04T09:15:21.444543+00:00",
+    "2026-11-04T09:15:26.625267+00:00",
+    "2026-11-04T09:15:40.500519+00:00",
+    "2026-11-04T09:15:41.570576+00:00",
+    "2026-11-04T09:15:45.096856+00:00",
+    "2026-11-04T09:15:47.177124+00:00",
+    "2026-11-04T09:15:54.869990+00:00",
+    "2026-11-04T09:16:00.448337+00:00",
+    "2026-11-04T09:16:06.740491+00:00",
+    "2026-11-04T09:16:19.926768+00:00",
+    "2026-11-04T09:16:20.761099+00:00",
+    "2026-11-04T09:16:25.842857+00:00",
+    "2026-11-04T09:16:26.741243+00:00",
+    "2026-11-04T09:16:33.000074+00:00",
+    "2026-11-04T09:16:36.699607+00:00",
+    "2026-11-04T09:16:40.796484+00:00",
+    "2026-11-04T09:16:43.834969+00:00",
+    "2026-11-04T09:16:43.938534+00:00",
+    "2026-11-04T09:16:44.306103+00:00",
+    "2026-11-04T09:16:59.813414+00:00",
+    "2026-11-04T09:17:03.274204+00:00",
+    "2026-11-04T09:17:11.131529+00:00",
+    "2026-11-04T09:17:14.160032+00:00",
+    "2026-11-04T09:17:22.408576+00:00",
+    "2026-11-04T09:17:28.006933+00:00",
+    "2026-11-04T09:17:29.542168+00:00",
+    "2026-11-04T09:17:33.255391+00:00",
+    "2026-11-04T09:17:51.663401+00:00",
+    "2026-11-04T09:17:53.926643+00:00",
+    "2026-11-04T09:18:02.544823+00:00",
+    "2026-11-04T09:18:11.457327+00:00",
+    "2026-11-04T09:18:12.372234+00:00",
+    "2026-11-04T09:18:21.673359+00:00",
+    "2026-11-04T09:18:22.279638+00:00",
+    "2026-11-04T09:18:28.367135+00:00",
+    "2026-11-04T09:18:39.310437+00:00",
+    "2026-11-04T09:18:49.404781+00:00",
+    "2026-11-04T09:18:55.244832+00:00",
+    "2026-11-04T09:18:59.251722+00:00",
+    "2026-11-04T09:19:12.878454+00:00",
+    "2026-11-04T09:19:16.160958+00:00",
+    "2026-11-04T09:19:17.433243+00:00",
+    "2026-11-04T09:19:25.795937+00:00",
+    "2026-11-04T09:19:26.410881+00:00",
+    "2026-11-04T09:19:30.846285+00:00",
+    "2026-11-04T09:23:11.877821+00:00",
+    "2026-11-04T09:24:29.760653+00:00",
+    "2026-11-04T09:25:09.961455+00:00",
+    "2026-11-04T09:26:03.813531+00:00",
+    "2026-11-04T09:27:13.437131+00:00",
+    "2026-11-04T09:28:52.478348+00:00",
+    "2026-11-04T09:29:22.706893+00:00",
+    "2026-11-04T09:31:14.919741+00:00",
+    "2026-11-04T09:32:33.533020+00:00",
+    "2026-11-04T09:36:02.506576+00:00",
+    "2026-11-04T09:37:53.150191+00:00",
+    "2026-11-04T09:38:33.048322+00:00",
+    "2026-11-04T09:38:35.235899+00:00",
+    "2026-11-04T09:38:39.277960+00:00",
+    "2026-11-04T09:38:43.234769+00:00",
+    "2026-11-04T09:38:46.442558+00:00",
+    "2026-11-04T09:38:48.407137+00:00",
+    "2026-11-04T09:38:53.846865+00:00",
+    "2026-11-04T09:38:57.561304+00:00",
+    "2026-11-04T09:38:59.416313+00:00",
+    "2026-11-04T09:39:01.107888+00:00",
+    "2026-11-04T09:39:06.887348+00:00",
+    "2026-11-04T09:39:07.628324+00:00",
+    "2026-11-04T09:39:14.197776+00:00",
+    "2026-11-04T09:39:16.993709+00:00",
+    "2026-11-04T09:39:24.619531+00:00",
+    "2026-11-04T09:39:25.746449+00:00",
+    "2026-11-04T09:39:26.247020+00:00",
+    "2026-11-04T09:39:28.598257+00:00",
+    "2026-11-04T09:39:34.909643+00:00",
+    "2026-11-04T09:39:37.901217+00:00",
+    "2026-11-04T09:39:40.055995+00:00",
+    "2026-11-04T09:39:43.964235+00:00",
+    "2026-11-04T09:39:45.102162+00:00",
+    "2026-11-04T09:39:48.521382+00:00",
+    "2026-11-04T09:39:57.274984+00:00",
+    "2026-11-04T09:40:08.332086+00:00",
+    "2026-11-04T09:40:13.709403+00:00",
+    "2026-11-04T09:40:17.839261+00:00",
+    "2026-11-04T09:40:18.964310+00:00",
+    "2026-11-04T09:40:24.402710+00:00",
+    "2026-11-04T09:40:26.078035+00:00",
+    "2026-11-04T09:40:33.709055+00:00",
+    "2026-11-04T09:40:36.526152+00:00",
+    "2026-11-04T09:40:37.087028+00:00",
+    "2026-11-04T09:40:47.371660+00:00",
+    "2026-11-04T09:40:50.378152+00:00",
+    "2026-11-04T09:41:01.061687+00:00",
+    "2026-11-04T09:41:08.591089+00:00",
+    "2026-11-04T09:41:12.598522+00:00",
+    "2026-11-04T09:41:12.983247+00:00",
+    "2026-11-04T09:41:20.286486+00:00",
+    "2026-11-04T09:41:23.985656+00:00",
+    "2026-11-04T09:41:26.176817+00:00",
+    "2026-11-04T09:41:26.334283+00:00",
+    "2026-11-04T09:41:31.646901+00:00",
+    "2026-11-04T09:41:34.663087+00:00",
+    "2026-11-04T09:41:35.906718+00:00",
+    "2026-11-04T09:41:37.948425+00:00",
+    "2026-11-04T09:41:39.693141+00:00",
+    "2026-11-04T09:41:46.726480+00:00",
+    "2026-11-04T09:41:46.873606+00:00",
+    "2026-11-04T09:41:53.919658+00:00",
+    "2026-11-04T09:41:54.015150+00:00",
+    "2026-11-04T09:42:01.633023+00:00",
+    "2026-11-04T09:42:02.661265+00:00",
+    "2026-11-04T09:42:05.420189+00:00",
+    "2026-11-04T09:42:15.188948+00:00",
+    "2026-11-04T09:42:18.509498+00:00",
+    "2026-11-04T09:42:23.550668+00:00",
+    "2026-11-04T09:42:30.589879+00:00",
+    "2026-11-04T09:42:35.888577+00:00",
+    "2026-11-04T09:42:38.703611+00:00",
+    "2026-11-04T09:42:39.174273+00:00",
+    "2026-11-04T09:42:41.503842+00:00",
+    "2026-11-04T09:42:48.864578+00:00",
+    "2026-11-04T09:42:48.924963+00:00",
+    "2026-11-04T09:42:55.863390+00:00",
+    "2026-11-04T09:42:56.182451+00:00",
+    "2026-11-04T09:42:59.507265+00:00",
+    "2026-11-04T09:43:06.442571+00:00",
+    "2026-11-04T09:43:09.070472+00:00",
+    "2026-11-04T09:43:10.397070+00:00",
+    "2026-11-04T09:43:13.875983+00:00",
+    "2026-11-04T09:43:16.216082+00:00",
+    "2026-11-04T09:43:17.024392+00:00",
+    "2026-11-04T09:43:19.597301+00:00",
+    "2026-11-04T09:43:21.939319+00:00",
+    "2026-11-04T09:43:24.928912+00:00",
+    "2026-11-04T09:43:27.310832+00:00"
   ],
   "free_day_out": "",
   "pace_adjust": 0.0,
@@ -3427,6 +3628,11 @@
       "date": "2026-11-04",
       "title": "Why Your Three-GPU Wall Hits a Wall",
       "template": "bottleneck"
+    },
+    {
+      "date": "2026-11-04",
+      "title": "The 60-Second Heartbeat Nobody Designed",
+      "template": ""
     }
   ],
   "topics": {
@@ -3497,15 +3703,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 71,
+      "mentions": 72,
       "refs": [
-        {
-          "date": "2026-10-29",
-          "title": "Has anyone else noticed that Opus has become nearly perfect?",
-          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xi0b7c/has_anyone_else_noticed_that_opus_has_become/",
-          "link": "",
-          "comment": "Yes and I honestly hope this is where they all level off. Anymore and we are likely all fucked."
-        },
         {
           "date": "2026-10-29",
           "title": "Opus 5.5 just shared my email address",
@@ -3589,6 +3788,13 @@
           "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xmcwbt/opus_55_medium_with_blender_mcp_is_insane_with/",
           "link": "https://www.reddit.com/gallery/1xmcwbt",
           "comment": "TL;DR of the discussion generated automatically after 30 comments. Looks like the whole thread is giving OP a standing ovation and begging for the recipe. The consensus is that OP's method is a game-changer for complex creative work. The big takeaway: Stop trying to get Claude to do everything at on"
+        },
+        {
+          "date": "2026-11-04",
+          "title": "Nobody else seems to have as hard of a time with Claude as I do. I just want to understand why Claude hates me.",
+          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xmzcjz/nobody_else_seems_to_have_as_hard_of_a_time_with/",
+          "link": "",
+          "comment": "TL;DR of the discussion generated automatically after 50 comments. The consensus here is that Claude doesn't hate you, your security practices are just... questionable. The community is in firm agreement that this is 100% on you, OP, for giving an LLM direct write access to a production environment."
         },
         {
           "date": "2026-11-04",
@@ -4015,35 +4221,16 @@
       "subs": [
         "ArtificialInteligence",
         "ClaudeAI",
+        "LocalLLM",
         "OpenAI",
         "antiai",
         "artificial",
+        "biotech",
         "singularity",
         "technology"
       ],
-      "mentions": 23,
+      "mentions": 26,
       "refs": [
-        {
-          "date": "2026-10-11",
-          "title": "We should stop defending jobs and start planning for a world without them",
-          "thread": "https://www.reddit.com/r/singularity/comments/1x2q7sf/we_should_stop_defending_jobs_and_start_planning/",
-          "link": "",
-          "comment": ""
-        },
-        {
-          "date": "2026-10-11",
-          "title": "Nicolas Cage Says He’s ‘Probably Not’ Working With Amazon Again After Refusing to Sign AI Waiver for ‘Spider-Noir,’ “I am not an AI-friendly actor.”",
-          "thread": "https://www.reddit.com/r/antiai/comments/1x2ku5s/nicolas_cage_says_hes_probably_not_working_with/",
-          "link": "https://variety.com/2026/tv/news/nicolas-cage-ai-waiver-amazon-spider-noir-1236907564/",
-          "comment": ""
-        },
-        {
-          "date": "2026-10-11",
-          "title": "First, they came for the call centers...",
-          "thread": "https://www.reddit.com/r/OpenAI/comments/1x2fcws/first_they_came_for_the_call_centers/",
-          "link": "",
-          "comment": ""
-        },
         {
           "date": "2026-10-11",
           "title": "Pillaging is profitable for them, not us.",
@@ -4120,6 +4307,27 @@
           "thread": "https://www.reddit.com/r/technology/comments/1xmnf96/the_ai_layoff_experiment_is_backfiring_and/",
           "link": "https://www.gadgetreview.com/the-ai-layoff-experiment-is-backfiring-and-companies-are-quietly-rehiring-humans",
           "comment": "\"Quietly\". LOL. Such an AI word."
+        },
+        {
+          "date": "2026-11-04",
+          "title": "The AI Layoff Experiment Is Backfiring – And Companies Are Quietly Rehiring Humans",
+          "thread": "https://www.reddit.com/r/technology/comments/1xmnf96/the_ai_layoff_experiment_is_backfiring_and/",
+          "link": "https://www.gadgetreview.com/the-ai-layoff-experiment-is-backfiring-and-companies-are-quietly-rehiring-humans",
+          "comment": "\"Quietly\". LOL. Such an AI word."
+        },
+        {
+          "date": "2026-11-04",
+          "title": "Terrible Job Market",
+          "thread": "https://www.reddit.com/r/biotech/comments/1xn88s1/terrible_job_market/",
+          "link": "",
+          "comment": "Brother, its not just new graduates who are desperate for roles."
+        },
+        {
+          "date": "2026-11-04",
+          "title": "Claude was laid off",
+          "thread": "https://www.reddit.com/r/LocalLLM/comments/1xmzwfo/claude_was_laid_off/",
+          "link": "",
+          "comment": "So, AI take people's jobs, and now local AI take AI's jobs. That's some beautiful irony."
         }
       ],
       "deep_dive": "",
@@ -4310,22 +4518,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 125,
+      "mentions": 127,
       "refs": [
-        {
-          "date": "2026-10-31",
-          "title": "Cisco gives 27-year-old engineer unlimited AI tokens to rewrite 98% of the company's legacy code in 24 months — president plucks former startup founder, telling him to 'go nuts'",
-          "thread": "https://www.reddit.com/r/technology/comments/1xjn25u/cisco_gives_27yearold_engineer_unlimited_ai/",
-          "link": "https://www.tomshardware.com/tech-industry/big-tech/cisco-gives-27-year-old-engineer-unlimited-ai-tokens-to-rewrite-98-percent-of-the-companys-legacy-code-in-24-months-president-plucks-former-startup-founder-telling-him-to-go-nuts",
-          "comment": "In my experience, legacy code becomes “legacy” because no one remembers all the hacks and edge cases that went into decisions about the code, almost all of which is undocumented. And if you say to yourself, “Oh this would be so easy to modernize and streamline” you end up breaking a dozen downstream"
-        },
-        {
-          "date": "2026-11-01",
-          "title": "Claude Code found a root backdoor on my cheap Android TV stick, then ported mainline Linux to it over USB, with Sonnet building and Opus auditing every step before anything touched the hardware",
-          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xjtuwx/claude_code_found_a_root_backdoor_on_my_cheap/",
-          "link": "https://www.reddit.com/gallery/1xjtuwx",
-          "comment": "Thats not a back-door, its a deliberate front door for the makers of these Android boxes/botnet slave"
-        },
         {
           "date": "2026-11-01",
           "title": "If you’re letting Claude Code clean up your smart TV, do these things first",
@@ -4409,6 +4603,20 @@
           "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xmhy1d/the_karpathy_claudemd_clearly_changed_claude/",
           "link": "",
           "comment": "Back when Karpathy talked about how high-end agents couldn't tell you that you should drive your car to the car wash to wash it , I burned some tokens to write an agent to fix it: --- name: structured-thinker description: Use for questions involving judgment, design choices, advice, recommendations,"
+        },
+        {
+          "date": "2026-11-04",
+          "title": "I have 3 days to save our most capable developer from getting fired. Help me teach him Claude Code",
+          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xmz7p0/i_have_3_days_to_save_our_most_capable_developer/",
+          "link": "",
+          "comment": "Tell him to treat it like a junior dev. Seriously like he's talking over a messaging service with a junior dev."
+        },
+        {
+          "date": "2026-11-04",
+          "title": "Goldman Sachs restricted Claude Code to engineers only",
+          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xn82hc/goldman_sachs_restricted_claude_code_to_engineers/",
+          "link": "",
+          "comment": "Because you can spend $1k doing a basic spreadsheet update if a model is complex.. I once managed to spend $50 doing a PowerPoint update (and yeah, prompted like a noob - but that's what 99% of real life users are doing...) This whole AI thing is going to collapse when the world realises even GS are"
         }
       ],
       "deep_dive": "2026-10-18",
@@ -4545,7 +4753,8 @@
         "2026-10-30",
         "2026-10-31",
         "2026-11-01",
-        "2026-11-02"
+        "2026-11-02",
+        "2026-11-04"
       ],
       "subs": [
         "AI_Agents",
@@ -4560,15 +4769,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 66,
+      "mentions": 67,
       "refs": [
-        {
-          "date": "2026-10-25",
-          "title": "Qwen3.8-Flash-Next on 4x R9700 with Radiance at TP4: 11.3 ms steps, 236 tok/s single stream, 1,190 tok/s at 16 streams. Also tried 2x TP2, it lost.",
-          "thread": "https://www.reddit.com/r/LocalLLM/comments/1xe1u1i/qwen38flashnext_on_4x_r9700_with_radiance_at_tp4/",
-          "link": "https://www.reddit.com/gallery/1xe1u1i",
-          "comment": "Anyone else who thought this was a 2 meters sized server in a garage before realizing it is a desktop under a table?"
-        },
         {
           "date": "2026-10-27",
           "title": "Have 8 GB of VRAM and 32 GB of RAM? You can run Qwen 3.8 Flash Next at up to 900 t/s PP and 30 t/s TG!",
@@ -4659,10 +4861,17 @@
           "thread": "https://www.reddit.com/r/LocalLLM/comments/1xknvog/4_strix_halo_boxes_finally_joined_local_ai/",
           "link": "",
           "comment": "what was the decent price? :)"
+        },
+        {
+          "date": "2026-11-04",
+          "title": "I used Qwen3.8 Flash-Next to reverse-engineer an Android car stereo",
+          "thread": "https://www.reddit.com/r/LocalLLM/comments/1xn2q8a/i_used_qwen38_flashnext_to_reverseengineer_an/",
+          "link": "https://www.reddit.com/gallery/1xn2q8a",
+          "comment": "Impressive use of a local model; fixing the slop manufacturers push out."
         }
       ],
       "deep_dive": "2026-11-01",
-      "last_seen": "2026-11-02",
+      "last_seen": "2026-11-04",
       "subject": "ai"
     },
     "openai-company-updates": {
@@ -4820,7 +5029,8 @@
         "2026-10-22",
         "2026-10-25",
         "2026-10-26",
-        "2026-10-30"
+        "2026-10-30",
+        "2026-11-04"
       ],
       "subs": [
         "AI_Agents",
@@ -4837,15 +5047,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 25,
+      "mentions": 26,
       "refs": [
-        {
-          "date": "2026-10-14",
-          "title": "Gemini Argon costs twice as much as GPT Sol 6.1 for similar intelligence.",
-          "thread": "https://www.reddit.com/r/codex/comments/1x510ju/gemini_argon_costs_twice_as_much_as_gpt_sol_61/",
-          "link": "",
-          "comment": "Honestly, it’s tough to tell from benchmarks alone. You really have to try them yourself. In my experience, even Opus 5.5 medium feels smarter than Sol max."
-        },
         {
           "date": "2026-10-14",
           "title": "PSA: Claude Code wrote me an uncapped test loop, ran it in the background, told me it was “idle,” then hit its daily usage limit. It ran 17 hours and cost about $2.1K",
@@ -4936,10 +5139,17 @@
           "thread": "https://www.reddit.com/r/codex/comments/1xipj7s/day_25_we_are_doubling_all_usage_limits_for_all/",
           "link": "",
           "comment": "Below is a GPT-generated summary of the conversation below after reaching 320 comments (323 currently observed) . The consensus: good news for Pro users, hilariously bad optics for OpenAI. The announced doubling is real in practice for the $100 and $500 tiers, while Pro 200 is mostly getting its thr"
+        },
+        {
+          "date": "2026-11-04",
+          "title": "British fintech Revolut slashes AI coding costs 10x by cutting out Claude and going self-hosted",
+          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xn568h/british_fintech_revolut_slashes_ai_coding_costs/",
+          "link": "https://www.theregister.com/ai-and-ml/2026/11/03/british-fintech-revolut-slashes-ai-coding-costs-10x-by-cutting-out-claude-and-going-self-hosted/5307345",
+          "comment": "It was only a matter of time, this is why I chuckle when people try to make us think running local LLMs is a waste of time, no it isn't."
         }
       ],
       "deep_dive": "",
-      "last_seen": "2026-10-30",
+      "last_seen": "2026-11-04",
       "subject": "ai"
     },
     "glp1-drugs-beyond-weight-loss": {
@@ -5019,7 +5229,8 @@
         "2026-10-16",
         "2026-10-18",
         "2026-10-25",
-        "2026-10-30"
+        "2026-10-30",
+        "2026-11-04"
       ],
       "subs": [
         "EverythingScience",
@@ -5027,7 +5238,7 @@
         "science",
         "technology"
       ],
-      "mentions": 7,
+      "mentions": 8,
       "refs": [
         {
           "date": "2026-10-16",
@@ -5077,11 +5288,18 @@
           "thread": "https://www.reddit.com/r/technology/comments/1xih1ic/man_granted_firstofitskind_religious_exemption/",
           "link": "https://www.tomshardware.com/tech-industry/artificial-intelligence/secular-humanist-gets-religious-exemption-from-using-ai-argues-that-offloading-his-thinking-to-llms-violates-his-beliefs-american-humanist-association-says-its-the-first-case-of-its-kind",
           "comment": "Nothing says we've officially entered a cyberpunk dystopia quite like having to file a religious exemption because your boss is forcing you to outsource your cognitive faculties to a hallucinating chatbot"
+        },
+        {
+          "date": "2026-11-04",
+          "title": "ChatGPT Is Giving Voters Serious Misinformation as the Midterms Hit: Fake Candidates and Wrong Election Information",
+          "thread": "https://www.reddit.com/r/technology/comments/1xmx4rs/chatgpt_is_giving_voters_serious_misinformation/",
+          "link": "https://www.gadgetreview.com/chatgpt-is-giving-voters-serious-misinformation-as-the-midterms-hit-fake-candidates-and-wrong-election-information",
+          "comment": "If you are asking AI/Chat GPT to help you vote, please don't vote."
         }
       ],
       "deep_dive": "2026-10-18",
       "subject": "science",
-      "last_seen": "2026-10-30"
+      "last_seen": "2026-11-04"
     },
     "open-weight-models": {
       "name": "Open-Weight Models",
@@ -5099,7 +5317,8 @@
         "2026-10-30",
         "2026-11-01",
         "2026-11-02",
-        "2026-11-03"
+        "2026-11-03",
+        "2026-11-04"
       ],
       "subs": [
         "ClaudeAI",
@@ -5110,15 +5329,8 @@
         "artificial",
         "singularity"
       ],
-      "mentions": 42,
+      "mentions": 43,
       "refs": [
-        {
-          "date": "2026-10-29",
-          "title": "DeepSeek V5 spotted in DeepSeek Harness tests — are we getting closer to a release?",
-          "thread": "https://www.reddit.com/r/DeepSeek/comments/1xhokec/deepseek_v5_spotted_in_deepseek_harness_tests_are/",
-          "link": "",
-          "comment": "Dude, thats a test about models that it cannot serve"
-        },
         {
           "date": "2026-10-30",
           "title": "Alibaba previews four Qwen4 models: Max, Flash, Plus and 27B",
@@ -5209,11 +5421,18 @@
           "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xls4cj/the_772tb_alleged_anthropic_ai_model_is_fake_i/",
           "link": "",
           "comment": "TL;DR of the discussion generated automatically after 50 comments. The consensus is a resounding \"Yeah, it's fake,\" and the community is fully behind OP's technical takedown. Everyone's seriously impressed with the forensic work, with many calling the bit-for-bit reconstruction of the weights the ul"
+        },
+        {
+          "date": "2026-11-04",
+          "title": "Alibaba's Qwen Code repo just leaked qwen4-max, qwen4-coder-plus, and qwen4-omni-120b",
+          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xmitzx/alibabas_qwen_code_repo_just_leaked_qwen4max/",
+          "link": "https://github.com/QwenLM/qwen-code/pull/15762",
+          "comment": "Two days later: new PR \"remove wrong model names\". I've seen this so many times."
         }
       ],
       "deep_dive": "2026-10-25",
       "subject": "ai",
-      "last_seen": "2026-11-03"
+      "last_seen": "2026-11-04"
     },
     "anthropic-company-strategy": {
       "name": "Anthropic Company Strategy and Governance",
@@ -5225,26 +5444,21 @@
         "2026-10-27",
         "2026-10-29",
         "2026-10-30",
-        "2026-11-03"
+        "2026-11-03",
+        "2026-11-04"
       ],
       "subs": [
         "ClaudeAI",
         "ClaudeCode",
+        "EverythingScience",
         "OpenAI",
         "antiai",
         "biotech",
         "singularity",
         "technology"
       ],
-      "mentions": 16,
+      "mentions": 17,
       "refs": [
-        {
-          "date": "2026-10-22",
-          "title": "Anthropic logged net loss of over $80 billion in first half of 2026",
-          "thread": "https://www.reddit.com/r/technology/comments/1xb7op7/anthropic_logged_net_loss_of_over_80_billion_in/",
-          "link": "https://www.reuters.com/business/anthropic-recorded-net-loss-over-80-billion-first-half-this-year-wsj-reports-2026-10-20/",
-          "comment": "I mean this is actually insane."
-        },
         {
           "date": "2026-10-22",
           "title": "Anthropic posts staggering $80.7 billion net loss in first half of 2026 as IPO approaches",
@@ -5335,11 +5549,18 @@
           "thread": "https://www.reddit.com/r/technology/comments/1xm178q/anthropics_internal_ai_use_valued_at_retail/",
           "link": "https://www.businessinsider.com/anthropic-claude-internal-ai-use-exceeds-employee-pay-tokens-2026-11",
           "comment": "I have an idea to fix that problem with AI they just have to commit $50 billion to my business and I’ll fix it for them in the future at some point undetermined date"
+        },
+        {
+          "date": "2026-11-04",
+          "title": "Anthropic Claims to Be Near Recursive Self-Improvement",
+          "thread": "https://www.reddit.com/r/EverythingScience/comments/1xmom43/anthropic_claims_to_be_near_recursive/",
+          "link": "https://gizmodo.com/anthropic-claims-to-be-closing-in-on-recursive-self-improvement-2000834175",
+          "comment": "I’m sure this has nothing to do with the upcoming IPO"
         }
       ],
       "deep_dive": "",
       "subject": "ai",
-      "last_seen": "2026-11-03"
+      "last_seen": "2026-11-04"
     },
     "cancer-vaccines-and-immunotherapy": {
       "name": "Cancer Vaccines and Immunotherapy Breakthroughs",
@@ -5670,6 +5891,38 @@
       "deep_dive": "",
       "subject": "ai",
       "last_seen": "2026-10-30"
+    },
+    "ai-company-updates": {
+      "name": "AI Company Updates",
+      "first_seen": "2026-11-04",
+      "days": [
+        "2026-11-04"
+      ],
+      "subs": [
+        "antiai",
+        "singularity",
+        "technology"
+      ],
+      "mentions": 2,
+      "refs": [
+        {
+          "date": "2026-11-04",
+          "title": "Google Will Turn Off Search for Schools That Reject A.I.",
+          "thread": "https://www.reddit.com/r/singularity/comments/1xmxcxl/google_will_turn_off_search_for_schools_that/",
+          "link": "https://www.nytimes.com/2026/11/03/us/google-search-schools-restrict-ai.html",
+          "comment": "Yeah that’ll do wonders for US approval of AI"
+        },
+        {
+          "date": "2026-11-04",
+          "title": "Google criticized by NYC mayor Zohran Mamdani following AI policy change: 'Google is trying to use its monopoly power to force AI into our public schools'",
+          "thread": "https://www.reddit.com/r/technology/comments/1xn85kj/google_criticized_by_nyc_mayor_zohran_mamdani/",
+          "link": "https://www.pcgamer.com/software/ai/google-criticized-by-nyc-mayor-zohran-mamdani-following-ai-policy-change-google-is-trying-to-use-its-monopoly-power-to-force-ai-into-our-public-schools/",
+          "comment": "That’s wild on two fronts. AI doesn’t help kids learn. It’s basically a machine to make you think less. And google exercising its power in this way just shows how bad monopolies are"
+        }
+      ],
+      "deep_dive": "",
+      "subject": "ai",
+      "last_seen": "2026-11-04"
     }
   }
 }
