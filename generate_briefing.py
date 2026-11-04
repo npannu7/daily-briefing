@@ -123,6 +123,10 @@ WRITER_CHAIN = os.getenv("WRITER_MODELS") or (
     "gemini:gemini-3.8-flash,gemini:gemini-3.7-flash,openrouter:free,gemini:gemini-3.5-flash-lite,github:auto")
 HELPER_CHAIN = os.getenv("HELPER_MODELS") or (
     "gemini:gemini-3.5-flash-lite,gemini:gemini-3.1-flash-lite,openrouter:free,github:auto")
+# Checks the puzzles. Flash-Lite passed an unsolvable question and an ambiguous ranking on 4 Nov 2026, so the
+# check uses stronger models first (OpenRouter's free helpers here are different models from the main writer).
+CHECK_CHAIN = os.getenv("CHECK_MODELS") or (
+    "gemini:gemini-3.8-flash,gemini:gemini-3.7-flash,openrouter:free,gemini:gemini-3.5-flash-lite,github:auto")
 # OpenRouter free models (checked 3 Nov 2026). "openrouter:free" in a chain expands to these, then to any other
 # free model OpenRouter lists. OPENROUTER_FREE_MODELS replaces both lists.
 # Nemotron 3 Super lost its free version on 2 Nov 2026 (HTTP 404 "unavailable for free"); Nemotron 3.5 Super VL
@@ -144,6 +148,10 @@ DECISION_MODELS = [m.strip() for m in (os.getenv("DECISION_MODELS") or
 # e.g. DECISION_MODELS=respan/span-01-lite:free
 DECISIONS_ONLY = ("respan/",)
 SCORING = (os.getenv("SCORING") or "auto").lower()      # auto | batch | decisions
+# Per-thread scoring may take this long; threads not reached by then are scored in one batched call. The free
+# Nemotron 3.5 Lightning takes about 50 s a thread, so without a limit scoring took 16 minutes (4 Nov 2026).
+SCORING_BUDGET_S = float(os.getenv("SCORING_BUDGET_S") or 300)
+SCORING_WORKERS = max(1, int(os.getenv("SCORING_WORKERS") or 8))
 OPENROUTER_DAILY_USD = float(os.getenv("OPENROUTER_DAILY_USD") or 0)   # spend cap for paid models
 # OpenRouter's free models (text and Fish voices) share one daily request limit that resets at 00:00 UTC:
 # 1000 a day on accounts that have bought at least $10 of credits, 50 otherwise. Writing keeps a reserve.
@@ -314,7 +322,7 @@ def _gemini_stream(model, prompt, json_mode, role="writer"):
     url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:streamGenerateContent?alt=sse"
     payload = {"contents": [{"parts": [{"text": prompt}]}], "generationConfig": cfg}
     headers = {"x-goog-api-key": GEMINI_API_KEY, "Content-Type": "application/json"}
-    with requests.post(url, json=payload, headers=headers, stream=True, timeout=(20, 180)) as r:
+    with requests.post(url, json=payload, headers=headers, stream=True, timeout=(20, 100)) as r:
         r.encoding = "utf-8"   # SSE has no charset header; without this, dashes became 'â€”'
         if r.status_code != 200:
             return r.status_code, "", r.text[:300].replace("\n", " ")
@@ -474,7 +482,7 @@ def expand_chain(chain, role="writer"):
 
 def llm(prompt, json_mode=False, min_words=0, label="", role="writer"):
     """Returns (text, model). role 'writer' = quality chain, 'helper' = free-first chain."""
-    chain = expand_chain(WRITER_CHAIN if role == "writer" else HELPER_CHAIN, role)
+    chain = expand_chain(WRITER_CHAIN if role == "writer" else CHECK_CHAIN if role == "checker" else HELPER_CHAIN, role)
     if not chain:
         raise RuntimeError("No LLM provider configured")
     if role == "writer" and WRITER_PICK and WRITER_PICK[0] in chain:
@@ -771,8 +779,7 @@ def apply_pace(adj):
 def new_feedback_text(new_feedback, pace_change):
     """What the listener said since the last episode - the only feedback the greeting may mention."""
     if not new_feedback and not pace_change:
-        return ("NEW FEEDBACK SINCE THE LAST EPISODE: none. Do NOT mention feedback, past requests or the pace in "
-                "the greeting (the listener has already heard those acknowledged).")
+        return ""   # nothing to say: even "no feedback today" was said on air when this was a section
     out = ["NEW FEEDBACK SINCE THE LAST EPISODE (acknowledge it once, in one sentence):"]
     for f in new_feedback:
         r = f.get("ratings") or {}
@@ -1169,7 +1176,11 @@ def level_bonus(state):
 def score_stories(stories, state, limit=70, batch_only=False):
     top = stories[:limit]
 
+    deadline = [time.time() + SCORING_BUDGET_S]
+
     def one(s):
+        if time.time() > deadline[0]:   # out of time: this thread goes to the batched call
+            return s["id"], None
         st = {"title": s["title"], "communities": sorted(set(s["subs"])), "linked_site": urlparse(s["link"]).netloc,
               "post": s["text"][:1500], "top_comments": [c[:300] for c in s["comments"][:8]]}
         return s["id"], decide(st, SCORE_QUESTIONS)
@@ -1177,11 +1188,13 @@ def score_stories(stories, state, limit=70, batch_only=False):
     results = {}
     if DECISION_MODELS and SCORING in ("auto", "decisions") and not batch_only:
         t0 = time.time()
-        with cf.ThreadPoolExecutor(max_workers=4) as ex:
+        deadline[0] = t0 + SCORING_BUDGET_S
+        with cf.ThreadPoolExecutor(max_workers=SCORING_WORKERS) as ex:
             for sid, ans in ex.map(one, top):
                 if ans:
                     results[sid] = ans
-        log(f"  decision models scored {len(results)}/{len(top)} in {time.time() - t0:.0f}s")
+        log(f"  decision models scored {len(results)}/{len(top)} in {time.time() - t0:.0f}s "
+            f"(limit {SCORING_BUDGET_S:.0f}s; the rest are scored in one batch)")
     missing = [s for s in top if s["id"] not in results]
     if missing:
         results.update(llm_score(missing))
@@ -1803,6 +1816,7 @@ FORMATS = {
 
 def write_segment(seg, items, state, position, total, theme):
     target = int(seg["words"])
+    ask = int(target * 1.15)   # the writers deliver about 85% of the words asked for (1250 for 1475 on 4 Nov 2026)
     fmt = seg.get("format", "thread")
     topic = state["topics"].get(seg.get("topic", "")) if fmt == "deepdive" else None
     claims = "; ".join(seg.get("claims_to_check") or []) or "(identify them from the thread)"
@@ -1842,7 +1856,7 @@ PAST EPISODES (mention one only if it genuinely connects):
 SOURCES:
 {sources}
 
-WRITE about {target} words of natural spoken dialogue (between {int(target * 0.9)} and {int(target * 1.1)}).
+WRITE about {ask} words of natural spoken dialogue (between {int(ask * 0.9)} and {int(ask * 1.1)}).
 FORMAT - every line starts with a speaker name and a colon:
 {A}: ...
 {B}: ...
@@ -1890,7 +1904,7 @@ Return an empty list if the segment is accurate and clear."""
     except Exception as e:
         log(f"    fact-check skipped: {str(e)[:120]}")
         return turns
-    off_length = not 0.8 * target <= n <= 1.25 * target
+    off_length = not 0.9 * target <= n <= 1.25 * target   # short segments made 20-minute episodes 17-18 minutes
     log(f"    check {position}: {len(problems)} problem(s), {n} words for a target of {target}")
     if not problems and not off_length:
         return turns
@@ -1899,7 +1913,7 @@ Return an empty list if the segment is accurate and clear."""
 and the format (every line "{A}: ..." or "{B}: ..."). Fix every problem listed. Remove or soften any claim the
 sources do not support (say it is unclear or only claimed on Reddit). At most ONE number per turn. Explain each
 computer-science or AI term once in plain words; never explain {LISTENER}'s own field ({EXPERT_AREAS}).
-Length: about {target} words (now {n}).
+Length: about {target if n >= target else int(target * 1.1)} words (now {n}).
 
 PROBLEMS:
 {fixes or '- none: only bring it to the right length'}
@@ -1960,8 +1974,8 @@ def turns_words(turns):
 def next_episode(edition, now):
     """When the listener hears the show next. There are two episodes every day, weekends included."""
     if edition == "morning":
-        return "this evening" + (" (Sunday's long science edition)" if now.weekday() == 6 else "")
-    return "tomorrow morning" + (" (Sunday's long AI edition)" if now.weekday() == 5 else "")
+        return "this evening, ready before 4 pm" + (" (Sunday's long science edition)" if now.weekday() == 6 else "")
+    return "tomorrow morning, ready before 8 am" + (" (Sunday's long AI edition)" if now.weekday() == 5 else "")
 
 
 def write_bookends(state, segments_written, theme, edition, now, deep_dive, source_note, fresh_feedback="",
@@ -1984,7 +1998,7 @@ TODAY'S SEGMENTS:
 PAST EPISODES (most recent last):
 {memory_text(state)}
 
-{fresh_feedback or new_feedback_text([], 0)}
+{fresh_feedback}
 
 Return JSON only:
 {{"greeting": [["{A}", "..."], ["{B}", "..."], ...],
@@ -1994,9 +2008,11 @@ Return JSON only:
 
 Greeting: 60-110 words, 3-5 turns, upbeat ({A} especially). Greet {LISTENER} by name naturally; the hosts do not
 introduce themselves by name. Link to past episodes only where it truly connects. Preview each segment in ONE
-plain sentence - no lists of numbers or names. Mention feedback only as the NEW FEEDBACK section above allows.
+plain sentence - no lists of numbers or names. Only if a NEW FEEDBACK section appears above, acknowledge it in
+one sentence; otherwise say nothing at all about feedback.
 {'For a deep dive, say why this topic is ready now (it built up over the week).' if deep_dive else ''}
-Vary the wording every time. Closing: 2-3 short turns, 30-60 words, no hype; say when the next episode is."""
+Vary the wording every time. Closing: 2-3 short turns, 30-60 words, no hype; say when the next episode is,
+exactly as given above (never invent a time)."""
     text, _ = llm(prompt, json_mode=True, label="greeting")
     data = as_obj(parse_json(text), "greeting")
 
@@ -2661,19 +2677,11 @@ def check_explore(step, max_outputs=4):
         if not any(lo <= env[target] <= hi for env in good):
             log(f"    puzzle goal dropped: {target} never reaches {lo}..{hi} with these sliders")
             return out
-        # A mission already solved where the sliders start is no mission: start the first slider at an end.
+        # A mission already solved where the sliders start is no mission. (Moving a slider to an end instead,
+        # as tried first, produced nonsense such as a graphics card at its 10 tokens/s minimum.)
         if lo <= run([i["value"] for i in inputs])[target] <= hi:
-            for end in (inputs[0]["min"], inputs[0]["max"]):
-                values = [end] + [i["value"] for i in inputs[1:]]
-                try:
-                    if not lo <= run(values)[target] <= hi:
-                        inputs[0]["value"] = end
-                        break
-                except (ValueError, ZeroDivisionError, OverflowError, TypeError):
-                    continue
-            else:
-                log(f"    puzzle goal dropped: already met where the sliders start")
-                return out
+            log("    puzzle goal dropped: already met where the sliders start")
+            return out
         out["goal"] = {"target": target, "min": lo, "max": hi, "text": _txt(goal["text"], 260),
                        "success": _txt(goal.get("success") or step.get("success"), 420)}
     return out
@@ -2840,9 +2848,9 @@ def _t_inverse_square(p):
 def _t_bottleneck(p):
     stages = []
     for st in (p["stages"] if isinstance(p["stages"], list) else [])[:3]:
-        if isinstance(st, dict) and _txt(st.get("label"), 24) and (_num(st.get("max")) or 0) > 0:
+        if isinstance(st, dict) and _txt(st.get("label"), 40) and (_num(st.get("max")) or 0) > 0:
             top = _num(st["max"])
-            stages.append((_txt(st["label"], 24), top, min(top, max(top / 20, _num(st.get("value"), top / 2)))))
+            stages.append((_txt(st["label"], 40), top, min(top, max(top / 20, _num(st.get("value"), top / 2)))))
     if len(stages) < 2:
         raise ValueError("bottleneck needs 2-3 stages")
     ids = [f"c{i + 1}" for i in range(len(stages))]
@@ -3126,13 +3134,28 @@ def check_template(step):
     return out
 
 
-def template_catalog():
+def template_sliders(key):
+    """What the listener can actually move, with the labels a template builds from its text params."""
+    t = TEMPLATES[key]
+    shown = dict(t["example"])
+    shown.update({n: f"<{n}>" for n, sp in t["params"].items() if sp[0] == _TEXT and n not in ("unit", "time_unit")})
+    if key == "bottleneck":
+        shown["stages"] = [{"label": "<stage label>", "value": 1, "max": 2}, {"label": "<stage label>", "value": 1, "max": 2}]
+    try:
+        built = t["build"](template_params(t["params"], shown))
+    except (ValueError, TypeError, KeyError):
+        return "?"
+    return "; ".join(f"{i['label']}" + (f" ({i['unit']})" if i["unit"] else "") for i in built["inputs"])
+
+
+def template_catalog(keys=None):
     rows = []
-    for key, t in TEMPLATES.items():
+    for key in keys or TEMPLATES:
+        t = TEMPLATES[key]
         params = ", ".join(f"{n} ({'text' if s[0] == _TEXT else '/'.join(s[2]) if s[0] == 'enum' else s[0]})"
                            for n, s in t["params"].items())
-        rows.append(f"- {key}: {t['pick']}\n  params: {params}\n  goal outputs: {t['goals']}\n"
-                    f"  example params: {json.dumps(t['example'], ensure_ascii=False)}")
+        rows.append(f"- {key}: {t['pick']}\n  sliders the listener moves: {template_sliders(key)}\n  params: {params}\n"
+                    f"  goal outputs: {t['goals']}\n  example params: {json.dumps(t['example'], ensure_ascii=False)}")
     return "\n".join(rows)
 
 
@@ -3250,7 +3273,11 @@ exactly once per lesson:
  "goal": {"text": "<the mission>", "output": "<one of its goal outputs>", "min": <n>, "max": <n>,
           "success": "<the aha, one or two sentences>"}}
 You only fill it in: realistic values from the episode (or a clearly labelled simple example) and plain labels.
-The maths is built in - never write formulas for a template. If a segment's plan says "none", use no template:
+The maths is built in - never write formulas for a template. Its text must talk about exactly the sliders the
+template has (listed under it) - never promise controls it does not have. Set the params so the sliders start
+at a realistic "before" state where the mission is NOT yet achieved; the mission must need the sliders moved.
+If the chosen template cannot make an honest, meaningful puzzle about the segment's main idea, do not force
+it: write the lesson without a template. If a segment's plan says "none", use no template:
 build that lesson from predict / number / order / concept steps (or, only for a real quantity that no template
 covers, one "explore" step with your own formulas, as shown below).
 
@@ -3261,7 +3288,10 @@ OTHER STEP TYPES (JSON):
 {"type": "number", "text": "<question>", "answer_expr": "<formula of numbers only, e.g. 0.21*101.3>",
  "unit": "kPa", "tolerance": 0.05, "hint": "...", "explain": "..."}
 {"type": "order", "text": "<put these in order>", "items": ["<first>", "<second>", "<third>", "<fourth>"],
- "explain": "..."}   (items in the CORRECT order; the page shuffles them)
+ "explain": "..."}   (items in the CORRECT order; the page shuffles them. Only a real sequence in time or cause
+ and effect with one right order - never a ranking or a matter of opinion)
+A "number" question must state every value needed to work it out, and answer_expr must compute exactly what it
+asks. Use real figures from the episode or clearly labelled simple examples - never invent technical data.
 {"type": "explore", "text": "...", "inputs": [{"id": "depth", "label": "Depth", "unit": "m", "min": 0,
  "max": 40, "step": 1, "value": 0}], "outputs": [{"id": "p", "label": "Total pressure", "unit": "kPa",
  "expr": "101.3*(1+depth/10)"}], "goal": {"text": "...", "output": "p", "min": 300, "max": 310, "success": "..."}}
@@ -3270,42 +3300,53 @@ OTHER STEP TYPES (JSON):
 
 WORDS: for each lesson, 3-6 terms from the episode worth keeping, with a plain one-line meaning.
 Never explain {expert} (his own field) - use them freely as analogies.
-Return JSON only: {"lessons": [{"title": "<short, intriguing, plain>", "segment": "<exact segment title>",
-                                "words": [{"term": "...", "means": "..."}], "steps": [...]}]}"""
+Return JSON only, with exactly one lesson: {"lessons": [{"title": "<short, intriguing, plain>",
+ "segment": "<exact segment title>", "words": [{"term": "...", "means": "..."}], "steps": [...]}]}"""
 
 
 def make_lessons(written, theme, recent=()):
     """Interactive lessons for the day's segments: the decision model picks a template for each, the writer fills
-    in the story and numbers, everything is run here, then a second model checks the science."""
+    in one lesson per segment (one request each, so none is skipped), everything is run here, then a second,
+    stronger model checks the science."""
     segs = [(s, turns) for s, turns in written if s.get("format") != "followup"][:3]
     if not segs:
         return []
     recent = list(recent)
-    titles = [s["title"] for s, _ in segs]
     picks = pick_templates(segs, [r.get("template") for r in recent if r.get("template")])
-    plan = "\n".join(f'- "{s["title"]}": ' + (picks[s["title"]] if s["title"] in picks else
-                                               "(no decision: choose the best-fitting template yourself, or none)")
-                     for s, _ in segs)
     seen = "\n".join(f"- {r.get('date', '')}: {r.get('title', '')} ({r.get('template') or 'no template'})"
                      for r in recent[-10:]) or "(none yet)"
-    script = "\n\n".join(f"[SEGMENT: {s['title']}]\n" + "\n".join(f"{spk}: {t}" for spk, t in turns)[:9000]
-                         for s, turns in segs)
-    prompt = (LESSON_GUIDE.replace("{expert}", EXPERT_AREAS) +
-              f"\n\nTEMPLATES:\n{template_catalog()}\n\nTEMPLATE PLAN (one lesson per segment):\n{plan}"
-              f"\n\nRECENT LESSONS (do not repeat these angles):\n{seen}"
-              f"\n\nListener: {LISTENER_PROFILE}\nToday's theme: {theme}\n\nEPISODE SCRIPT:\n{script}")
-    try:
-        text, _ = llm(prompt, json_mode=True, min_words=80, label="puzzles", role="writer")
-        lessons, dropped = check_lessons(parse_json(text), titles)
-    except Exception as e:
-        log(f"  puzzles skipped: {str(e)[:160]}")
-        return []
+    lessons, dropped = [], 0
+    for n, (seg, turns) in enumerate(segs, 1):
+        pick = picks.get(seg["title"])
+        if pick and pick != "none":
+            plan = f'"{pick}" (chosen by the decision model):\n{template_catalog([pick])}'
+        elif pick == "none":
+            plan = '"none" (the decision model found no template that fits): use no template.'
+        else:
+            plan = f"(no decision) choose the best-fitting template below, or none:\n{template_catalog()}"
+        today = "\n".join(f"- {x['title']} ({lesson_template(x) or 'no template'})" for x in lessons) or "(none yet)"
+        script = "\n".join(f"{spk}: {t}" for spk, t in turns)[:12000]
+        prompt = (LESSON_GUIDE.replace("{expert}", EXPERT_AREAS) +
+                  f"\n\nTEMPLATE FOR THIS SEGMENT: {plan}"
+                  f"\n\nRECENT LESSONS (do not repeat these angles):\n{seen}\nEARLIER TODAY (vary the hook):\n{today}"
+                  f"\n\nListener: {LISTENER_PROFILE}\nToday's theme: {theme}"
+                  f"\n\nSEGMENT: {seg['title']}\n{script}")
+        try:
+            text, _ = llm(prompt, json_mode=True, min_words=80, label=f"puzzle {n}", role="writer")
+            got, lost = check_lessons(parse_json(text), [seg["title"]])
+        except Exception as e:
+            log(f"  puzzle {n} skipped: {str(e)[:160]}")
+            continue
+        dropped += lost
+        if got:
+            lessons.append(dict(got[0], segment=seg["title"]))
     if lessons:
-        lessons, more = review_lessons(lessons, titles)
+        lessons, more = review_lessons(lessons, [s["title"] for s, _ in segs])
         dropped += more
-    n = sum(len(x["steps"]) for x in lessons)
-    used = [s.get("template") for x in lessons for s in x["steps"] if s.get("template")]
-    log(f"  puzzles: {len(lessons)} lesson(s), {n} steps, templates: {', '.join(used) or 'none'}; {dropped} dropped")
+    steps = sum(len(x["steps"]) for x in lessons)
+    used = [lesson_template(x) for x in lessons if lesson_template(x)]
+    log(f"  puzzles: {len(lessons)} of {len(segs)} segment(s), {steps} steps, templates: {', '.join(used) or 'none'}; "
+        f"{dropped} step(s) dropped")
     return lessons
 
 
@@ -3326,15 +3367,18 @@ def review_lessons(lessons, titles):
     prompt = f"""You check interactive science lessons before a learner sees them. For each step, look for:
 wrong science or maths, formulas that are not the standard relationship (or have wrong units or magnitudes),
 a marked answer that is wrong or ambiguous, an explanation that contradicts the answer, an "order" whose
-items are not in the correct order, template values that are unrealistic for the story, and trivia questions
-(a name, date or who-said-what that needs no reasoning). Ignore style. Be strict about facts, not wording.
+items are not in the correct order or that is a ranking or opinion rather than one real sequence, a "number"
+question that cannot be worked out from the values its own text gives, invented technical data presented as
+fact, a template step whose text promises controls its sliders (inputs) do not have, template values that are
+unrealistic for the story, and trivia questions (a name, date or who-said-what that needs no reasoning).
+Ignore style. Be strict about facts, not wording.
 
 STEPS:
 {json.dumps(shown, ensure_ascii=False)[:30000]}
 
 Return JSON only: {{"problems": [{{"lesson": <n>, "step": <n>, "issue": "<what is wrong>"}}]}} (empty if all correct)"""
     try:
-        text, _ = llm(prompt, json_mode=True, label="puzzle check", role="helper")
+        text, _ = llm(prompt, json_mode=True, label="puzzle check", role="checker")
         problems = [p for p in as_obj(parse_json(text), "problems").get("problems", []) if isinstance(p, dict)]
     except Exception as e:
         log(f"  puzzle check skipped: {str(e)[:120]}")

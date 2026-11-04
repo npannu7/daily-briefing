@@ -28,7 +28,7 @@ quality, regulation, manufacturing, engineering).
 | Workflow | When | What it does |
 |---|---|---|
 | **Collect Reddit** (`collect_reddit.yml`) | every hour | About 10 Reddit requests, one a minute. Threads and their comments build up in a pool (the `reddit-pool` release asset). Comments are read again once a thread is a few hours old. |
-| **Weights and Measures** (`daily_briefing.yml`) | starts 06:20 and 14:20 IST | Scores the pool, checks stories against trusted sources, writes the script, voices it and publishes. GitHub starts scheduled runs 30–50 minutes late, so episodes are ready at about 07:15 and 15:15. |
+| **Weights and Measures** (`daily_briefing.yml`) | starts 05:50 and 13:50 IST | Scores the pool, checks stories against trusted sources, writes the script, voices it and publishes. GitHub starts scheduled runs 30–60 minutes late, so episodes are ready at about 07:00 and 15:00. |
 
 Each episode is mastered to podcast loudness (−16 LUFS), with the two hosts matched in level, a soft chime
 between segments, and chapter markers in the MP3, so podcast apps (and the car's skip buttons) can jump between
@@ -92,8 +92,8 @@ those ideas better. There are no Reddit links on the page or in the show notes.
 | Job | Used, in order |
 |---|---|
 | Writing | Gemini API free key, then OpenRouter free models (Nemotron 3 Ultra, Nemotron 3.5 Super VL, Gemma 4 31B), then GitHub Models. Once a model works, it keeps writing the rest of the episode. A model that times out or fails twice is skipped for the rest of the run. |
-| Scoring | Each thread judged on its own by Nemotron 3.5 Lightning (free), Nemotron 3.5 Super VL as backup, about 70 requests per episode. A model that fails six times in a row is dropped for the run; threads it misses are scored in one batched call. |
-| Puzzles | Template chosen by the decision models (one request per segment), filled in by the writing chain, checked by the helper chain. |
+| Scoring | Each thread judged on its own by Nemotron 3.5 Lightning (free), Nemotron 3.5 Super VL as backup, eight at a time for up to 5 minutes (`SCORING_BUDGET_S`). A model that fails six times in a row is dropped for the run; threads not scored by then are scored in one batched call. |
+| Puzzles | Template chosen by the decision models, one lesson per segment written by the writing chain, checked by a stronger model (`CHECK_MODELS`, Gemini Flash first). |
 | Topics, quiz, dossier notes | Gemini Flash-Lite free key, then OpenRouter free models (Nemotron 3.5 Super VL, Gemma 4). |
 | Voices | Fish Audio (OpenRouter free, three requests in flight), then Gemini TTS (free key), then Edge. |
 
