@@ -3753,7 +3753,7 @@ def main():
         "lessons": lessons, "quiz": quiz, "transcript": f"transcripts/{Path(filename).stem}.txt"}, transcript)
     build_rss(keep)
     for n in close_issues:
-        gh("issue", "close", str(n), "--comment", "Thanks - recorded. It will shape the next episodes.", check=False)
+        gh("issue", "close", str(n), check=False)  # no comment: it only triggered an empty notification email
     log(f"Done. Feed: {PAGES_URL}/podcast.xml | OpenRouter spend last 24 h: ${spent_today():.3f} | "
         f"free requests today (UTC): {free_used()}/{OPENROUTER_FREE_DAILY}")
     gh_note("notice", "Episode ready", f"{filename} - {fmt_ts(duration)} - {len(written)} segments - {total_words} words "
