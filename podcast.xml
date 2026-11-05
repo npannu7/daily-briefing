@@ -8,9 +8,27 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Wed, 04 Nov 2026 09:44:18 GMT</lastBuildDate>
+<lastBuildDate>Thu, 05 Nov 2026 02:19:05 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Morning - 5 Nov: Can running your own artificial intelligence models cut coding costs tenfold?</title>
+<description>Morning edition - Thursday, 5 November 2026
+Checking a tenfold artificial intelligence cost claim at a fintech company and a failed replication in mouse neuroscience
+
+00:38  Can running your own artificial intelligence models cut coding costs tenfold?
+04:17  Mouse studies fail to repeat earlier psilocybin findings
+08:22  What effect will modern burial practices have on human fossilization rate?
+12:59  Goldman Sachs restricted Claude Code to engineers only
+
+Puzzles: Fitting a Beast into VRAM, Hunting Ghosts in the Mouse Lab - puzzles, quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
+Written by: Gemini 3.5 Flash-Lite · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (156 threads)</description>
+<pubDate>Thu, 05 Nov 2026 07:00:08 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-11-05_morning_0700.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-05_morning_0700.mp3" length="7512986" type="audio/mpeg"/>
+<itunes:duration>938</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Evening - 4 Nov: Xiaomi's humanoid robots complete an eight-hour shift sorting EV parts</title>
 <description>Evening edition - Wednesday, 4 November 2026
@@ -310,25 +328,6 @@ Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Di
 <guid isPermaLink="false">ai_2026-10-29_morning_0841.mp3</guid>
 <enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-29_morning_0841.mp3" length="10394732" type="audio/mpeg"/>
 <itunes:duration>1299</itunes:duration>
-<itunes:episodeType>full</itunes:episodeType>
-</item>
-<item>
-<title>Evening - 28 Oct: A new benchmark shows coding agents still struggle with real software tasks</title>
-<description>Evening edition - Wednesday, 28 October 2026
-How a new coding-agent benchmark exposes the gap between demo performance and real software engineering, and a catalyst that could turn Mars atmosphere into rocket fuel.
-
-00:36  A new benchmark shows coding agents still struggle with real software tasks
-   codex: https://www.reddit.com/r/codex/comments/1xh1uiu/cognition_has_released_frontiercode_20_a_tougher/
-09:50  A catalyst that could make rocket fuel from Mars air
-   EverythingScience: https://www.reddit.com/r/EverythingScience/comments/1xgmfha/chinese_scientists_create_powerful_catalyst_to/
-   Source: https://www.scmp.com/news/china/science/article/3372123/chinese-scientists-create-powerful-catalyst-turn-air-mars-rocket-fuel?utm_source=Reddit&amp;utm_medium=Social
-
-Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
-Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (172 threads)</description>
-<pubDate>Wed, 28 Oct 2026 16:38:58 +0530</pubDate>
-<guid isPermaLink="false">ai_2026-10-28_evening_1638.mp3</guid>
-<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-28_evening_1638.mp3" length="8841836" type="audio/mpeg"/>
-<itunes:duration>1105</itunes:duration>
 <itunes:episodeType>full</itunes:episodeType>
 </item>
 </channel>

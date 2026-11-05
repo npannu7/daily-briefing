@@ -4,6 +4,287 @@
  "repo": "npannu7/daily-briefing",
  "episodes": [
   {
+   "file": "ai_2026-11-05_morning_0700.mp3",
+   "title": "Morning - 5 Nov: Can running your own artificial intelligence models cut coding costs tenfold?",
+   "label": "Thursday 05 Nov morning",
+   "date": "2026-11-05",
+   "edition": "morning",
+   "published": "2026-11-05T07:00:08.485989+05:30",
+   "duration": 938,
+   "theme": "Checking a tenfold artificial intelligence cost claim at a fintech company and a failed replication in mouse neuroscience",
+   "writer": "Gemini 3.5 Flash-Lite",
+   "voices": "Fish Audio (free)",
+   "deep_dive": false,
+   "segments": [
+    {
+     "title": "Can running your own artificial intelligence models cut coding costs tenfold?",
+     "category": "thread"
+    },
+    {
+     "title": "Mouse studies fail to repeat earlier psilocybin findings",
+     "category": "thread"
+    },
+    {
+     "title": "What effect will modern burial practices have on human fossilization rate?",
+     "category": "thread"
+    },
+    {
+     "title": "Goldman Sachs restricted Claude Code to engineers only",
+     "category": "thread"
+    }
+   ],
+   "lessons": [
+    {
+     "title": "Fitting a Beast into VRAM",
+     "segment": "Can running your own artificial intelligence models cut coding costs tenfold?",
+     "steps": [
+      {
+       "type": "choice",
+       "text": "Your company wants to deploy a 32-billion parameter model locally on a server with a 24 GB graphics card. At standard 16-bit precision, each parameter takes 2 bytes. Will it fit out of the box?",
+       "options": [
+        "Yes, it fits easily with room to spare",
+        "No, it exceeds the available VRAM",
+        "It fits exactly with zero overhead"
+       ],
+       "answer": 1,
+       "explain": "32 billion parameters times 2 bytes equals 64 GB. A 24 GB card cannot hold it, so you need quantization to shrink the footprint.",
+       "hint": "Multiply the billions of parameters by the number of bytes per parameter."
+      },
+      {
+       "type": "concept",
+       "text": "Quantization reduces the precision of model weights from 16-bit floating point down to 8, 4, or even 2 bits. You trade a tiny fraction of output accuracy for massive memory savings, letting giant models run on modest local hardware.",
+       "example": "Storing technical drawings as compressed PDFs instead of uncompressed raw CAD files to save hard drive space."
+      },
+      {
+       "type": "explore",
+       "text": "Calculate the VRAM needed for a model given its parameter count and bit-width.",
+       "inputs": [
+        {
+         "id": "b",
+         "label": "Parameters",
+         "unit": "B",
+         "min": 7.0,
+         "max": 70.0,
+         "step": 1.0,
+         "value": 32.0
+        },
+        {
+         "id": "bits",
+         "label": "Precision",
+         "unit": "bits",
+         "min": 2.0,
+         "max": 16.0,
+         "step": 2.0,
+         "value": 4.0
+        }
+       ],
+       "outputs": [
+        {
+         "id": "mem",
+         "label": "Memory required",
+         "unit": "GB",
+         "expr": "b * bits / 8",
+         "lo": 1.75,
+         "hi": 140.0
+        }
+       ],
+       "goal": {
+        "target": "mem",
+        "min": 0.0,
+        "max": 12.0,
+        "text": "Adjust parameters and precision until the memory requirement is under 12 GB.",
+        "success": "You found a configuration light enough for an ordinary desktop workstation."
+       }
+      },
+      {
+       "type": "choice",
+       "text": "When moving from a commercial API to self-hosted hardware, what financial trade-off are you actually making?",
+       "options": [
+        "Trading variable operational token costs for fixed capital expenditure and maintenance liability",
+        "Eliminating all engineering overhead and hardware depreciation",
+        "Trading upfront hardware savings for unpredictable vendor price spikes"
+       ],
+       "answer": 0,
+       "explain": "You swap a per-use fee for heavy upfront metal purchases, taking full ownership of uptime, thermal throttling, and hardware failures.",
+       "hint": "Think about buying machines versus paying a monthly software subscription."
+      }
+     ],
+     "words": [
+      {
+       "term": "Quantization",
+       "means": "Compressing model weights from 16-bit to lower bit depths to save memory."
+      },
+      {
+       "term": "Capital Expenditure",
+       "means": "Upfront investment in physical hardware rather than paying per-use service fees."
+      },
+      {
+       "term": "API",
+       "means": "A software doorway letting your applications talk to a vendor's remote servers."
+      }
+     ]
+    },
+    {
+     "title": "Hunting Ghosts in the Mouse Lab",
+     "segment": "Mouse studies fail to repeat earlier psilocybin findings",
+     "steps": [
+      {
+       "type": "choice",
+       "text": "Five elite labs tried to reproduce a famous mouse psilocybin study across multiple sites and found zero lasting behavioral changes a day later. Why do single-lab breakthroughs so often vanish when tested broadly?",
+       "options": [
+        "Small samples and isolated labs capture random noise instead of real signals",
+        "Mice quickly develop a tolerance to the drug compound over time",
+        "Different lab lighting conditions completely alter mouse metabolism"
+       ],
+       "answer": 0,
+       "explain": "Single labs with small samples often mistake statistical noise for a true breakthrough, publishing flukes that collapse under multi-site scrutiny.",
+       "hint": "Think about running a single validation batch and assuming your entire factory process is flawless."
+      },
+      {
+       "type": "explore",
+       "text": "Adjust the sample size below to see how widening your observational net changes your margin of error when measuring biological responses.",
+       "inputs": [
+        {
+         "id": "n",
+         "label": "Sample size",
+         "unit": "",
+         "min": 5.0,
+         "max": 1000.0,
+         "step": 5.0,
+         "value": 10.0
+        }
+       ],
+       "outputs": [
+        {
+         "id": "margin",
+         "label": "Margin of error (95%)",
+         "unit": "%",
+         "expr": "1.96*50/sqrt(n)",
+         "lo": 3.0990321069650117,
+         "hi": 43.826932358995876
+        },
+        {
+         "id": "lo",
+         "label": "Could be as low as",
+         "unit": "%",
+         "expr": "0-margin",
+         "lo": -43.826932358995876,
+         "hi": -3.0990321069650117
+        },
+        {
+         "id": "hi",
+         "label": "Or as high as",
+         "unit": "%",
+         "expr": "0+margin",
+         "lo": 3.0990321069650117,
+         "hi": 43.826932358995876
+        }
+       ],
+       "chart": {
+        "x": "n",
+        "y": [
+         "margin"
+        ]
+       },
+       "goal": {
+        "target": "margin",
+        "min": 0.0,
+        "max": 5.0,
+        "text": "Get the margin of error under 5% to reliably separate signal from noise.",
+        "success": "You found that as sample size grows, the margin of error shrinks via the square root, washing away false positives!"
+       },
+       "template": "sampling",
+       "view": {
+        "kind": "spread",
+        "n": "n",
+        "true": 0.0,
+        "sd": 50.0,
+        "lo": "lo",
+        "hi": "hi",
+        "measure": "Behavioral score shift",
+        "unit": "%"
+       }
+      },
+      {
+       "type": "concept",
+       "text": "An isolated positive result in one lab is like a single pass on a shaky test fixture. Without multi-site verification, you are looking at an anomaly, not a law of nature.",
+       "example": "You would never sign off on a new pharmaceutical manufacturing line based on one lucky test tube; you demand multi-batch capability indices."
+      },
+      {
+       "type": "number",
+       "text": "A single lab runs 9 mice and reports a massive behavioral shift with a high standard error. To cut that error in half, how many mice do they need to test instead?",
+       "answer": 36.0,
+       "tolerance": 0.05,
+       "unit": "mice",
+       "explain": "Because precision scales with the square root of n, cutting your error in half requires multiplying your sample size by four (9 × 4 = 36).",
+       "hint": "Remember that error scales inversely with the square root of the sample size."
+      }
+     ],
+     "words": [
+      {
+       "term": "Replication",
+       "means": "Repeating an experiment independently to check if the original result holds true."
+      },
+      {
+       "term": "Sample size",
+       "means": "The number of observations or subjects included in a study."
+      }
+     ]
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What is the primary trade-off when a fintech company replaces commercial vendor APIs with self-hosted AI models on its own hardware?",
+     "options": [
+      "It eliminates all maintenance liabilities and power bills.",
+      "It trades variable per-token operational costs for heavy capital expenditure and total hardware reliability ownership.",
+      "It removes the need for data residency and compliance checks.",
+      "It guarantees that model weights will never need to be updated or maintained."
+     ],
+     "answer": 1,
+     "explain": "Switching to self-hosted iron removes variable vendor API fees based on token volume, but requires a massive upfront capital investment in hardware and full accountability for uptime, cooling, and maintenance.",
+     "segment": "Can running your own artificial intelligence models cut coding costs tenfold?"
+    },
+    {
+     "q": "What did the multi-lab replication study across five universities discover regarding the long-term behavioral effects of psilocybin on mice?",
+     "options": [
+      "It proved that mice consistently lose all fear responses permanently.",
+      "It showed that a single dose successfully cures anxiety and depression for weeks.",
+      "It found zero lasting behavioral changes twenty-four hours after dosing, showing that single-lab positive results were mostly noise.",
+      "It confirmed that social reward learning critical periods are permanently reopened."
+     ],
+     "answer": 2,
+     "explain": "When pooled across five independent labs, the previous claims of long-term behavioral changes vanished, revealing that earlier single-lab papers were publishing unverified anomalies or noise.",
+     "segment": "Mouse studies fail to repeat earlier psilocybin findings"
+    },
+    {
+     "q": "Why do modern burial practices involving caskets and concrete vaults ultimately make human remains less likely to fossilize over millions of years?",
+     "options": [
+      "Because concrete vaults speed up bacterial decomposition and tissue destruction.",
+      "Because sealing bodies away from natural sedimentation and mineral-rich groundwater prevents the mineral substitution process required for true fossilization.",
+      "Because metallic implants completely dissolve and destroy surrounding bone over short timescales.",
+      "Because modern cemeteries are placed exclusively in river deltas and active floodplains."
+     ],
+     "answer": 1,
+     "explain": "True fossilization requires rapid burial in active sedimentary systems where minerals can infiltrate porous bone, whereas concrete vaults and waterproof caskets actively isolate remains from those dynamic geological processes.",
+     "segment": "What effect will modern burial practices have on human fossilization rate?"
+    },
+    {
+     "q": "According to the engineering logic discussed regarding corporate tool access, what happens when non-technical users have unfettered write access to powerful AI reasoning models?",
+     "options": [
+      "Token consumption and compute costs spike dramatically due to running heavy reasoning on simple tasks.",
+      "Deterministic pipelines become completely immune to configuration management drift.",
+      "Software deployment speeds double without generating technical debt.",
+      "Local script automation automatically handles all heavy lifting."
+     ],
+     "answer": 0,
+     "explain": "Allowing users to throw maximum reasoning at basic tasks without architectural guardrails or deterministic pre-filtering causes token burn and compute costs to skyrocket.",
+     "segment": "Goldman Sachs restricted Claude Code to engineers only"
+    }
+   ],
+   "transcript": "transcripts/ai_2026-11-05_morning_0700.txt"
+  },
+  {
    "file": "ai_2026-11-04_evening_1443.mp3",
    "title": "Evening - 4 Nov: Xiaomi's humanoid robots complete an eight-hour shift sorting EV parts",
    "label": "Wednesday 04 Nov evening",
@@ -3097,233 +3378,6 @@
     }
    ],
    "transcript": "transcripts/ai_2026-10-29_morning_0841.txt"
-  },
-  {
-   "file": "ai_2026-10-28_evening_1638.mp3",
-   "title": "Evening - 28 Oct: A new benchmark shows coding agents still struggle with real software tasks",
-   "label": "Wednesday 28 Oct evening",
-   "date": "2026-10-28",
-   "edition": "evening",
-   "published": "2026-10-28T16:38:58.549031+05:30",
-   "duration": 1105,
-   "theme": "How a new coding-agent benchmark exposes the gap between demo performance and real software engineering, and a catalyst that could turn Mars atmosphere into rocket fuel.",
-   "writer": "nemotron-3-ultra-550b-a55b (free)",
-   "voices": "Fish Audio (free)",
-   "deep_dive": false,
-   "segments": [
-    {
-     "title": "A new benchmark shows coding agents still struggle with real software tasks",
-     "category": "thread"
-    },
-    {
-     "title": "A catalyst that could make rocket fuel from Mars air",
-     "category": "thread"
-    }
-   ],
-   "quiz": [
-    {
-     "q": "What major limitation did Sarah and Laura point out regarding the new FrontierCode 2.0 coding-agent benchmark?",
-     "options": [
-      "It was published by Cognition in a peer-reviewed journal.",
-      "Its scores and leaderboard exist solely as an unverified Reddit thread.",
-      "It showed that smaller models like DeepSeek outperformed Claude Opus 5.5.",
-      "It proved that coding agents have achieved 100% reliability in production software."
-     ],
-     "answer": 1,
-     "explain": "Sarah and Laura noted that the benchmark, scores, and cost comparisons could not be found anywhere outside of a single unverified Reddit thread.",
-     "segment": "A new benchmark shows coding agents still struggle with real software tasks"
-    },
-    {
-     "q": "According to the discussion on software engineering benchmarks, why are unit tests alone insufficient for system-level validation?",
-     "options": [
-      "Unit tests check sub-components in isolation rather than integration across modules and downstream impacts.",
-      "Unit tests are only used for hardware testing in medical device shops.",
-      "Unit tests are universally skipped by all modern coding agents.",
-      "Unit tests require a high-temperature ceramic cell to run properly."
-     ],
-     "answer": 0,
-     "explain": "Laura compared unit tests to checking sub-components, whereas system-level validation requires verifying how modules integrate without breaking downstream dependencies.",
-     "segment": "A new benchmark shows coding agents still struggle with real software tasks"
-    },
-    {
-     "q": "What specific technological advancement did the Chinese research team claim in their Mars catalyst paper?",
-     "options": [
-      "A high-temperature solid-oxide ceramic stack that cracks CO2 for breathing oxygen.",
-      "A copper-indium alloy catalyst that hydrogenates Martian CO2 into liquid methanol with high selectivity.",
-      "A scroll pump that compresses the thin Martian atmosphere without using electrical energy.",
-      "A direct methanol fuel cell that operates efficiently without any water source."
-     ],
-     "answer": 1,
-     "explain": "The paper detailed a copper-indium catalyst with a specific surface structure that suppresses side reactions to produce liquid methanol.",
-     "segment": "A catalyst that could make rocket fuel from Mars air"
-    },
-    {
-     "q": "Why did the discussion emphasize that the new methanol-producing system is not yet 'flight-ready'?",
-     "options": [
-      "Methanol is a gas at room temperature and cannot be stored easily.",
-      "The system has only been tested in a lab cell and introduces complex balance-of-plant requirements like liquid management and water feed.",
-      "It produces pure methane instead of methanol, failing the mission parameters.",
-      "It requires zero electrical energy, which violates the laws of thermodynamics."
-     ],
-     "answer": 1,
-     "explain": "Laura noted that while the lab-scale selectivity is promising, a real space mission requires handling thousands of hours of durability, liquid loops, compression, and water management.",
-     "segment": "A catalyst that could make rocket fuel from Mars air"
-    }
-   ],
-   "digest": [
-    {
-     "title": "Young adults with cancer report getting dismissed by doctors",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1xh1fgk/young_adults_with_cancer_report_getting_dismissed/",
-     "link": "https://www.futurity.org/young-adults-cancer-3350622-2/?utm_campaign=young-adults-cancer-3350622-2",
-     "line": "Users share personal stories of young adults with cancer being dismissed by doctors, concluding that age-based dismissal is a widespread problem.",
-     "verdict": "opinion",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Surgeon left sponge in abdominal cavity. Patient dies from peritonitis. Defense expert claims patient ate it.",
-     "subs": [
-      "medicine"
-     ],
-     "thread": "https://www.reddit.com/r/medicine/comments/1xgxmnz/surgeon_left_sponge_in_abdominal_cavity_patient/",
-     "link": "",
-     "line": "A discussion on a medical malpractice case where a defense expert claimed a patient ate a surgical sponge, with commenters expressing outrage over the absurdity.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Cognition has released FrontierCode 2.0, a tougher benchmark for Al coding agents. The results are brutal: Claude Opus 5.5 leads with just 45.5%, followed by GPT-6 Astra at 42.8%.",
-     "subs": [
-      "codex"
-     ],
-     "thread": "https://www.reddit.com/r/codex/comments/1xh1uiu/cognition_has_released_frontiercode_20_a_tougher/",
-     "link": "",
-     "line": "Users discuss the brutal results of the new FrontierCode 2.0 benchmark for AI coding agents, debating the omission of certain models.",
-     "verdict": "opinion",
-     "also_in": [],
-     "in_episode": true
-    },
-    {
-     "title": "'Constant surveillance is pushing us toward an authoritarian state': voters demand regulation of Flock cameras",
-     "subs": [
-      "technology"
-     ],
-     "thread": "https://www.reddit.com/r/technology/comments/1xgrezg/constant_surveillance_is_pushing_us_toward_an/",
-     "link": "https://english.elpais.com/technology/2026-10-27/constant-surveillance-is-pushing-us-toward-an-authoritarian-state-voters-demand-regulation-of-flock-cameras.html",
-     "line": "Voters express outrage over constant surveillance and AI bumper-sticker cameras, demanding strict government regulation.",
-     "verdict": "opinion",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Hold your fucking breath! PrP-targeting siRNA Safety & Mechanism Study (PRiSM) is a go.",
-     "subs": [
-      "medicine"
-     ],
-     "thread": "https://www.reddit.com/r/medicine/comments/1xguk6n/hold_your_fucking_breath_prptargeting_sirna/",
-     "link": "",
-     "line": "Users discuss the launch of a prion disease siRNA safety study driven by a personal mission, with commenters remaining skeptical about efficacy.",
-     "verdict": "plausible",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "How dismissed symptoms can push patients to breaking point: Patients with autoimmune diseases have been left feeling suicidal after feeling like their doctor was saying their symptoms were ‘all in their head’. Only 7% agreed with being told that their symptoms were “psychosomatic”.",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1xgq57z/how_dismissed_symptoms_can_push_patients_to/",
-     "link": "https://www.uea.ac.uk/about/news/article/how-dismissed-symptoms-can-push-patients-to-breaking-point",
-     "line": "Patients with autoimmune diseases share experiences of doctors dismissing their symptoms as psychosomatic, leading to severe distress.",
-     "verdict": "opinion",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Brazil election: many scientists relieved as Lula wins surprise victory",
-     "subs": [
-      "EverythingScience"
-     ],
-     "thread": "https://www.reddit.com/r/EverythingScience/comments/1xh262w/brazil_election_many_scientists_relieved_as_lula/",
-     "link": "https://www.nature.com/articles/d41586-026-03446-9?e",
-     "line": "Scientists express relief over Lula's surprise victory in the Brazil election, sparking a debate on scientists and politics.",
-     "verdict": "confirmed",
-     "also_in": [
-      "Nature News"
-     ],
-     "in_episode": false
-    },
-    {
-     "title": "Two physicists asked AI to choose a problem on its own, solve it and write a paper that could be published in a prestigious journal. In two hours, AI produced a paper with a novel, significant result.",
-     "subs": [
-      "ArtificialInteligence",
-      "OpenAI",
-      "singularity"
-     ],
-     "thread": "https://www.reddit.com/r/ArtificialInteligence/comments/1xgo1i9/two_physicists_asked_ai_to_choose_a_problem_on/",
-     "link": "",
-     "line": "Users discuss physicists having an AI independently choose, solve, and write a publishable paper in two hours.",
-     "verdict": "plausible",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Terra 6.1 is practically dead on arrival; Luna often beats it at a fraction of the cost in many cases, while being faster",
-     "subs": [
-      "codex"
-     ],
-     "thread": "https://www.reddit.com/r/codex/comments/1xgnfmm/terra_61_is_practically_dead_on_arrival_luna/",
-     "link": "",
-     "line": "Users debate whether the Terra 6.1 model is dead on arrival compared to Luna, criticizing labs for cherry-picking benchmarks.",
-     "verdict": "opinion",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Dirt cheap GPUs coming next year",
-     "subs": [
-      "LocalLLaMA"
-     ],
-     "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xhep6w/dirt_cheap_gpus_coming_next_year/",
-     "link": "",
-     "line": "A poster speculates that dirt-cheap GPUs are coming due to a potential crash in data center buildouts, greeted mostly by skepticism.",
-     "verdict": "hype",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Artiva to discontinue cell therapy after two patient deaths, cut workforce by 94%",
-     "subs": [
-      "biotech"
-     ],
-     "thread": "https://www.reddit.com/r/biotech/comments/1xguqyu/artiva_to_discontinue_cell_therapy_after_two/",
-     "link": "https://www.reuters.com/legal/litigation/artiva-discontinues-cell-therapy-after-two-patient-deaths-cuts-workforce-by-94-2026-10-27/",
-     "line": "Artiva is discontinuing cell therapy after two patient deaths and cutting its workforce by 94%, leading to industry discussions on allo NK therapy.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Genie 4: A new generation of world simulation",
-     "subs": [
-      "GeminiAI",
-      "singularity"
-     ],
-     "thread": "https://www.reddit.com/r/singularity/comments/1xgwsjx/genie_4_a_new_generation_of_world_simulation/",
-     "link": "https://youtu.be/sFfPkUJd_Jk?si=lxnHNFGx9tXxyInb",
-     "line": "Google DeepMind's announcement of Genie 4 world simulation sparks excitement about the future of video games and GPU availability.",
-     "verdict": "confirmed",
-     "also_in": [
-      "Google DeepMind Blog"
-     ],
-     "in_episode": false
-    }
-   ],
-   "transcript": "transcripts/ai_2026-10-28_evening_1638.txt"
   }
  ]
 }
