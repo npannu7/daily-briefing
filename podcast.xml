@@ -8,9 +8,25 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Thu, 05 Nov 2026 02:19:05 GMT</lastBuildDate>
+<lastBuildDate>Thu, 05 Nov 2026 09:55:55 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Evening - 5 Nov: When an AI writes a neural network's weights by hand</title>
+<description>Evening edition - Thursday, 5 November 2026
+Hand-crafted neural weights and the physics of accidental location signals
+
+00:36  When an AI writes a neural network's weights by hand
+14:58  How aircraft noise in your video gives away your location
+
+Puzzles: The 99% Trap: When Verification Masquerades as Validation, The 8-Hz Whisper That Betrays Your Position - puzzles, quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
+Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (142 threads)</description>
+<pubDate>Thu, 05 Nov 2026 14:49:15 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-11-05_evening_1449.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-05_evening_1449.mp3" length="12249549" type="audio/mpeg"/>
+<itunes:duration>1531</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Morning - 5 Nov: Can running your own artificial intelligence models cut coding costs tenfold?</title>
 <description>Morning edition - Thursday, 5 November 2026
@@ -309,25 +325,6 @@ Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Di
 <guid isPermaLink="false">ai_2026-10-29_evening_1639.mp3</guid>
 <enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-29_evening_1639.mp3" length="9151724" type="audio/mpeg"/>
 <itunes:duration>1143</itunes:duration>
-<itunes:episodeType>full</itunes:episodeType>
-</item>
-<item>
-<title>Morning - 29 Oct: Building a Computer Inside a Language Model</title>
-<description>Morning edition - Thursday, 29 October 2026
-Deterministic State Machines in Stochastic Weights and Quality Boundaries in Peptide Manufacturing
-
-00:40  Building a Computer Inside a Language Model
-   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1xhmo1q/someone_built_a_32bit_riscv_cpu_directly_inside/
-11:30  Bypassing Drug Approvals for Injectable Peptides
-   EverythingScience: https://www.reddit.com/r/EverythingScience/comments/1xhy21u/rfk_jr_to_allow_broad_use_of_unapproved_peptide/
-   Source: https://www.nytimes.com/2026/10/28/health/peptides-kennedy-fda.html?smid=re-share
-
-Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
-Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (181 threads)</description>
-<pubDate>Thu, 29 Oct 2026 08:41:42 +0530</pubDate>
-<guid isPermaLink="false">ai_2026-10-29_morning_0841.mp3</guid>
-<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-10-29_morning_0841.mp3" length="10394732" type="audio/mpeg"/>
-<itunes:duration>1299</itunes:duration>
 <itunes:episodeType>full</itunes:episodeType>
 </item>
 </channel>

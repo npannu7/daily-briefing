@@ -4,6 +4,272 @@
  "repo": "npannu7/daily-briefing",
  "episodes": [
   {
+   "file": "ai_2026-11-05_evening_1449.mp3",
+   "title": "Evening - 5 Nov: When an AI writes a neural network's weights by hand",
+   "label": "Thursday 05 Nov evening",
+   "date": "2026-11-05",
+   "edition": "evening",
+   "published": "2026-11-05T14:49:15.577506+05:30",
+   "duration": 1531,
+   "theme": "Hand-crafted neural weights and the physics of accidental location signals",
+   "writer": "nemotron-3-ultra-550b-a55b (free)",
+   "voices": "Fish Audio (free)",
+   "deep_dive": false,
+   "segments": [
+    {
+     "title": "When an AI writes a neural network's weights by hand",
+     "category": "concept"
+    },
+    {
+     "title": "How aircraft noise in your video gives away your location",
+     "category": "thread"
+    }
+   ],
+   "lessons": [
+    {
+     "title": "The 99% Trap: When Verification Masquerades as Validation",
+     "segment": "When an AI writes a neural network's weights by hand",
+     "steps": [
+      {
+       "type": "choice",
+       "text": "A Reddit post claims a hand-written citation classifier hits 99% accuracy. The weights were authored by an LLM from citation-format rules — no training data. You're the QA lead reviewing this for a legal-tech client. What's your first question?",
+       "options": [
+        "What's the false-positive rate on real citations?",
+        "What exactly was in the test set?",
+        "How many parameters does the network have?",
+        "Which LLM authored the weights?"
+       ],
+       "answer": 1,
+       "explain": "In regulated environments, the test set composition *is* the validation evidence. If the test set was generated from the same rules used to write the weights, you're verifying the implementation, not validating the detector.",
+       "hint": "The episode mentions the commenters asked for test set composition — and OP never replied. The claim is unconfirmed."
+      },
+      {
+       "type": "explore",
+       "text": "The hand-written weights implement a perfect rule-checker. Valid citations score low on 'rule violations'; synthetic fabricated citations (wrong volumes, impossible pages) score high. Move the reject threshold to catch 99% of synthetic fakes — then see what happens to valid citations.",
+       "inputs": [
+        {
+         "id": "th",
+         "label": "Reject above (Rule violation score)",
+         "unit": "points",
+         "min": -3.25,
+         "max": 13.25,
+         "step": 0.2,
+         "value": 4.950000000000001
+        }
+       ],
+       "outputs": [
+        {
+         "id": "miss",
+         "label": "Synthetic fabricated citations let through",
+         "unit": "%",
+         "expr": "100*ncdf((th-8)/1.5)",
+         "digits": 1,
+         "lo": 3.219646771412954e-12,
+         "hi": 99.97018465190477
+        },
+        {
+         "id": "fa",
+         "label": "Valid citations rejected by mistake",
+         "unit": "%",
+         "expr": "100*(1-ncdf((th-2)/1.5))",
+         "digits": 1,
+         "lo": 5.329070518200751e-12,
+         "hi": 99.97673266159303
+        }
+       ],
+       "goal": {
+        "target": "miss",
+        "min": 0.0,
+        "max": 1.0,
+        "text": "Set the threshold to catch ≥99% of synthetic fakes (miss ≤1%), then note the false-alarm rate on valid citations",
+        "success": "You caught 99% of synthetic fakes — but rejected ~16% of valid citations. A perfect rule-checker still hurts real users when the threshold is tight."
+       },
+       "template": "threshold",
+       "view": {
+        "kind": "bells",
+        "th": "th",
+        "neg": 2.0,
+        "pos": 8.0,
+        "sd": 1.5,
+        "lo": -3.25,
+        "hi": 13.25,
+        "neg_label": "Valid citations",
+        "pos_label": "Synthetic fabricated citations"
+       }
+      },
+      {
+       "type": "concept",
+       "text": "The 99% accuracy came from circular validation: the synthetic test set was generated from the *same citation rules* used to author the weights. The hand-written network is a compiled lookup table for those rules — it verifies perfectly against its own spec. But real adversarial fakes (plausible reporter, volume, page, year — case never existed) score like valid citations because they *follow* the rules. The trained model sometimes catches them because it learned the statistical texture of real case names, not just the syntax.",
+       "example": "Like validating a sterile filter only with rigid spherical test particles — real bacteria are deformable and slip through pores the test particles couldn't."
+      },
+      {
+       "type": "number",
+       "text": "Your legal-tech client processes 50,000 citations/month. At the threshold you just set, ~16% of valid citations get falsely flagged for human review. If 95% of citations are valid, how many valid citations are falsely flagged per month?",
+       "answer": 7600.0,
+       "tolerance": 0.25,
+       "unit": "citations",
+       "explain": "7,600 valid citations flagged monthly — each needs a lawyer's eyes. That's the operational cost of a threshold tuned on synthetic data.",
+       "hint": "Multiply total citations × fraction valid × false-alarm rate."
+      },
+      {
+       "type": "choice",
+       "text": "Now imagine the same hand-written weights face adversarial fakes: citations that follow every Bluebook rule but reference fabricated cases. These score like valid citations (mean ~2). If adversarial fakes are 2% of all citations, and your threshold rejects scores >3.5, what happens to them?",
+       "options": [
+        "Caught at ~99% — same as synthetic fakes",
+        "Mostly pass through — miss rate near 100%",
+        "Caught at ~50% — partial overlap",
+        "Rejected as false alarms on valid citations"
+       ],
+       "answer": 1,
+       "explain": "This is the verification/validation gap. The spec (citation rules) doesn't capture the real requirement (detect *any* fake citation). The trained model learned a fuzzy boundary from data; the hand-written model only knows the explicit spec.",
+       "hint": "Adversarial fakes follow the rules, so their rule-violation score matches valid citations. The threshold can't distinguish them."
+      },
+      {
+       "type": "order",
+       "text": "Put these validation steps in the order they *should* happen for a regulated AI/ML medical device — from spec to real-world evidence:",
+       "items": [
+        "Requirements specification (the prompt)",
+        "Weight-authoring process verification (traceability matrix)",
+        "Testing on synthetic data from the spec",
+        "Testing on independent real-world data with adversarial challenge",
+        "Post-market surveillance with statistical process control"
+       ],
+       "explain": "The Reddit thread only reached step 3 — circular validation. Steps 4 and 5 are where you discover adversarial fakes and distribution shift. In FDA-regulated SaMD, the prompt becomes your requirements spec; the weight-output is your design output; traceability maps each requirement to weight patterns. But validation requires independent evidence."
+      }
+     ],
+     "words": [
+      {
+       "term": "Weight-space synthesis",
+       "means": "Writing neural network weights directly from a specification, skipping training entirely"
+      },
+      {
+       "term": "Verification vs Validation",
+       "means": "Verification = built to spec; Validation = built the right thing for real-world use"
+      },
+      {
+       "term": "Circular validation",
+       "means": "Testing a system only on data generated from the same rules used to build it"
+      },
+      {
+       "term": "Adversarial examples",
+       "means": "Inputs that follow all explicit rules but are still wrong (e.g., plausible fake case names)"
+      }
+     ]
+    },
+    {
+     "title": "The 8-Hz Whisper That Betrays Your Position",
+     "segment": "How aircraft noise in your video gives away your location",
+     "steps": [
+      {
+       "type": "choice",
+       "text": "A security camera records 60 seconds of mono audio. Three 737s pass at 10 km altitude, 250 m/s. ADS-B gives their paths to ~10 m. The Doppler shift on a 1 kHz tone peaks at ~8 Hz. You need <1 Hz frequency resolution for 100 m accuracy. What is the single biggest reason this fails in practice?",
+       "options": [
+        "Aircraft too high — shift too small",
+        "Phone clock drifts tens of ms in 60 s",
+        "Only three planes — geometry weak",
+        "Audio codec throws away the signal"
+       ],
+       "answer": 1,
+       "explain": "10 ms × 250 m/s = 2.5 m range error per aircraft. But the solver treats clock offset as an extra unknown — it couples with position, stretching the error ellipse. Without sub-ms sync, the 100 m target evaporates.",
+       "hint": "A 10 ms clock error at 250 m/s mimics a position error of... how many meters?"
+      },
+      {
+       "type": "concept",
+       "text": "The optimization landscape is a steep, narrow canyon. Clock drift rotates the canyon walls. A learning rate too small (over-smoothing) gets stuck on noise ridges. Too large (over-fitting) follows the rotated walls into kilometers of error. The sweet spot treats each Doppler curve as a soft constraint — weighted by its SNR — and solves for position + clock offset jointly.",
+       "example": "Like tuning a PID loop on a vibrating machine: gain too low → sluggish; gain too high → oscillation. The 'integral term' here is the clock offset estimate."
+      },
+      {
+       "type": "number",
+       "text": "Your factory uses an ultrasonic sensor (40 kHz) to measure weld depth. The sensor timestamps drift 50 ppm relative to the PLC clock. Over a 2-second weld, how much does the timestamp error grow? (Answer in milliseconds)",
+       "answer": 0.1,
+       "tolerance": 0.01,
+       "unit": "ms",
+       "explain": "0.1 ms drift → at sound speed 340 m/s, that's 34 microns range error. For a 100-micron tolerance weld, that's 34% of your budget — from clock drift alone. Same math as the aircraft case.",
+       "hint": "50 ppm = 50 microseconds per second. Multiply by weld duration."
+      },
+      {
+       "type": "choice",
+       "text": "The YouTuber claims 100 m accuracy from one 60-second demo. In your QA world, what would you demand before accepting this as a validated method?",
+       "options": [
+        "A) Monte Carlo over 1000 geometries, noise levels, mic types",
+        "B) Three more demo videos from different cities",
+        "C) Peer-reviewed paper with equations",
+        "D) Open-source code release"
+       ],
+       "answer": 0,
+       "explain": "Validation means: 95% of estimates within 100 m under specified conditions (aircraft types, altitudes, receiver heights, SNR, mic quality). One demo proves possibility; a design-history file proves reliability.",
+       "hint": "IQ/OQ/PQ — you test across the *intended use envelope*, not cherry-picked demos."
+      }
+     ],
+     "words": [
+      {
+       "term": "Doppler multilateration",
+       "means": "Finding a receiver's position by measuring frequency shifts from multiple moving sources with known trajectories"
+      },
+      {
+       "term": "Cramér-Rao bound",
+       "means": "The theoretical best precision you can achieve estimating a parameter (like frequency) from noisy data"
+      },
+      {
+       "term": "Clock drift",
+       "means": "A clock running slightly fast or slow, so its timestamps gradually desynchronize from true time"
+      }
+     ]
+    }
+   ],
+   "quiz": [
+    {
+     "q": "In the context of 'weight-space synthesis,' why does the hand-written neural network approach pose a significant validation challenge compared to traditional training?",
+     "options": [
+      "It lacks a statistical training dataset, making it impossible to perform standard statistical process control on error rates.",
+      "The weights are too large to be stored in a standard design history file.",
+      "It requires backpropagation to be performed every time the network is queried.",
+      "The weights are fundamentally incompatible with existing hardware accelerators."
+     ],
+     "answer": 0,
+     "explain": "Without a training dataset, you lack the statistical foundation for process control and adversarial testing, making it difficult to generate a standard design history file and verify the absence of unintended behaviors.",
+     "segment": "When an AI writes a neural network's weights by hand"
+    },
+    {
+     "q": "Why might a hand-written 'weight-module' for legal citation checking fail to detect fabricated cases that a trained model might catch?",
+     "options": [
+      "Hand-written weights cannot perform floating-point arithmetic.",
+      "The hand-written model only encodes explicitly specified rules, whereas a trained model learns the fuzzy statistical distribution of real-world legal writing.",
+      "Trained models are inherently more efficient at storing large lookup tables than hand-written ones.",
+      "Hand-written weights are prone to catastrophic forgetting during the inference phase."
+     ],
+     "answer": 1,
+     "explain": "A hand-written model acts like a lookup table for explicit rules, failing on edge cases not in the spec, while a trained model learns the 'fuzzy' boundaries and patterns of real legal writing.",
+     "segment": "When an AI writes a neural network's weights by hand"
+    },
+    {
+     "q": "What is the primary physical principle that allows for the geolocation of a receiver using aircraft noise from a video?",
+     "options": [
+      "Measurement of the aircraft's absolute altitude via barometric pressure sensors.",
+      "Analysis of electromagnetic interference patterns between the aircraft and the microphone.",
+      "Multilateration via Doppler shifts in the aircraft's frequency signature relative to known flight paths.",
+      "Detection of the exact time-of-flight difference between the aircraft's visual light and acoustic signal."
+     ],
+     "answer": 2,
+     "explain": "The technique uses Doppler shifts in the frequency of aircraft engine noise, matched against public ADS-B trajectory data, to solve for the receiver's ground position.",
+     "segment": "How aircraft noise in your video gives away your location"
+    },
+    {
+     "q": "Why is the claim of 100-meter accuracy for the aircraft-based geolocation method considered unvalidated?",
+     "options": [
+      "It relies on proprietary military-grade hardware that is not available to the public.",
+      "The methodology lacks a formal design history file, statistical uncertainty quantification, and testing across a representative envelope of conditions.",
+      "The speed of sound varies too much over a 60-second window to allow for precise calculations.",
+      "ADS-B data is encrypted and cannot be used to verify the aircraft's position."
+     ],
+     "answer": 1,
+     "explain": "The claim is based on a single, uncontrolled demo; without rigorous testing across different noise conditions and geometries, it lacks the necessary validation to be considered a reliable tool.",
+     "segment": "How aircraft noise in your video gives away your location"
+    }
+   ],
+   "transcript": "transcripts/ai_2026-11-05_evening_1449.txt"
+  },
+  {
    "file": "ai_2026-11-05_morning_0700.mp3",
    "title": "Morning - 5 Nov: Can running your own artificial intelligence models cut coding costs tenfold?",
    "label": "Thursday 05 Nov morning",
@@ -3153,231 +3419,6 @@
     }
    ],
    "transcript": "transcripts/ai_2026-10-29_evening_1639.txt"
-  },
-  {
-   "file": "ai_2026-10-29_morning_0841.mp3",
-   "title": "Morning - 29 Oct: Building a Computer Inside a Language Model",
-   "label": "Thursday 29 Oct morning",
-   "date": "2026-10-29",
-   "edition": "morning",
-   "published": "2026-10-29T08:41:42.106504+05:30",
-   "duration": 1299,
-   "theme": "Deterministic State Machines in Stochastic Weights and Quality Boundaries in Peptide Manufacturing",
-   "writer": "nemotron-3-ultra-550b-a55b (free)",
-   "voices": "Fish Audio (free)",
-   "deep_dive": false,
-   "segments": [
-    {
-     "title": "Building a Computer Inside a Language Model",
-     "category": "thread"
-    },
-    {
-     "title": "Bypassing Drug Approvals for Injectable Peptides",
-     "category": "thread"
-    }
-   ],
-   "quiz": [
-    {
-     "q": "How was the 32-bit RISC-V processor integrated into the Qwen model in the discussed setup?",
-     "options": [
-      "By training the entire model via gradient descent using a reinforcement learning reward function",
-      "By compiling eleven transformer layers in front of the frozen base model weights using a compiler to handle instruction semantics",
-      "By routing all model inputs to an external Python interpreter running a virtual machine sandbox",
-      "By fine-tuning the base model's feed-forward networks through standard error backpropagation"
-     ],
-     "answer": 1,
-     "explain": "A compiler computed the values for eleven transformer layers inserted in front of the base Qwen model, while the base weights remained frozen without training.",
-     "segment": "Building a Computer Inside a Language Model"
-    },
-    {
-     "q": "What component of Qwen's architecture serves as the RAM and register file for the embedded virtual CPU?",
-     "options": [
-      "The external Triton GPU execution framework",
-      "The standard multi-head attention cache buffer",
-      "Gated DeltaNet's recurrent hidden state, which gets updated token by token",
-      "The final tokenizer output vocabulary table"
-     ],
-     "answer": 2,
-     "explain": "The hidden state carried forward by the linear attention variant DeltaNet acts as the RAM, allowing rows to be overwritten one at a time.",
-     "segment": "Building a Computer Inside a Language Model"
-    },
-    {
-     "q": "According to the discussion, why does solid-phase peptide synthesis (SPPS) naturally result in purity challenges?",
-     "options": [
-      "Because each coupling step is not 100 percent efficient, accumulating truncated sequences and side reactions over many cycles",
-      "Because peptides are typically manufactured using low-temperature gas-phase deposition rather than liquid chemistry",
-      "Because modern compounding pharmacies intentionally dilute batches to lower production costs",
-      "Because amino acids spontaneously degrade when exposed to standard room lighting"
-     ],
-     "answer": 0,
-     "explain": "Even with high efficiency per cycle, a long peptide chain accumulates missing links, deletion impurities, and side reactions like racemization.",
-     "segment": "Bypassing Drug Approvals for Injectable Peptides"
-    },
-    {
-     "q": "What major regulatory and quality trade-off occurs when compounded peptides are distributed without full FDA approval trials?",
-     "options": [
-      "The manufacturing process automatically shifts from batch-based production to high-throughput continuous manufacturing",
-      "The full quality and testing burden shifts to compounding pharmacies that often lack cGMP analytics for impurity profiling and sterility",
-      "Insurance companies automatically cover all resulting medical complications under federal liability statutes",
-      "The primary synthesis route changes from solid-phase to biological fermentation using engineered yeast"
-     ],
-     "answer": 1,
-     "explain": "Bypassing the standard drug approval pathway places the entire quality and validation burden onto compounding pharmacies, which often lack the specialized analytical labs needed for full impurity profiling.",
-     "segment": "Bypassing Drug Approvals for Injectable Peptides"
-    }
-   ],
-   "digest": [
-    {
-     "title": "Alphabet introducing Gemini 4 Carbon, next frontier model.",
-     "subs": [
-      "GeminiAI"
-     ],
-     "thread": "https://www.reddit.com/r/GeminiAI/comments/1xhtyol/alphabet_introducing_gemini_4_carbon_next/",
-     "link": "https://www.reddit.com/gallery/1xhtyol",
-     "line": "Users discussed Alphabet's new Gemini 4 Carbon model and its poor practical performance despite a Pro subscription.",
-     "verdict": "confirmed",
-     "also_in": [
-      "Google DeepMind Blog"
-     ],
-     "in_episode": false
-    },
-    {
-     "title": "After 20+ years of decline, US colorectal cancer rates are rising again, and not just in young people. A new NEJM Evidence study finds rates climbing in every age group up to 65-69, even where screening is high. COVID doesn't explain it, so scientists are studying environmental chemicals as a cause.",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1xhn2sd/after_20_years_of_decline_us_colorectal_cancer/",
-     "link": "https://www.uchicagomedicine.org/forefront/cancer/rising-rates-of-colorectal-cancer",
-     "line": "US colorectal cancer rates are rising across age groups up to 65-69, prompting scientists to study environmental chemicals.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Landmark study finds three in four NFL players die with CTE",
-     "subs": [
-      "EverythingScience"
-     ],
-     "thread": "https://www.reddit.com/r/EverythingScience/comments/1xhrj1x/landmark_study_finds_three_in_four_nfl_players/",
-     "link": "https://www.scientificamerican.com/article/landmark-study-finds-three-in-four-nfl-players-die-with-cte/",
-     "line": "A landmark study found three in four NFL players die with CTE, raising concerns about children playing football.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "RFK Jr. to Allow Broad Use of Unapproved Peptide Injections",
-     "subs": [
-      "EverythingScience"
-     ],
-     "thread": "https://www.reddit.com/r/EverythingScience/comments/1xhy21u/rfk_jr_to_allow_broad_use_of_unapproved_peptide/",
-     "link": "https://www.nytimes.com/2026/10/28/health/peptides-kennedy-fda.html?smid=re-share",
-     "line": "Commenters mocked RFK Jr. allowing unapproved peptide injections and relying on YouTube influencers instead of studies.",
-     "verdict": "opinion",
-     "also_in": [],
-     "in_episode": true
-    },
-    {
-     "title": "Someone built a 32-bit RISC-V CPU directly inside Qwen's model weights so it can execute instructions internaly!",
-     "subs": [
-      "LocalLLaMA"
-     ],
-     "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xhmo1q/someone_built_a_32bit_riscv_cpu_directly_inside/",
-     "link": "",
-     "line": "A developer built a 32-bit RISC-V CPU directly inside Qwen model weights, sparking discussion on tool calling.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": true
-    },
-    {
-     "title": "Epileptic woman dies after going to ChatGPT for medical advice; family files lawsuit against OpenAI",
-     "subs": [
-      "medicine",
-      "technology"
-     ],
-     "thread": "https://www.reddit.com/r/medicine/comments/1xhx7e6/epileptic_woman_dies_after_going_to_chatgpt_for/",
-     "link": "",
-     "line": "An epileptic woman died after using ChatGPT for medical advice, leading her family to file a lawsuit against OpenAI.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Men and women report similar levels of “duty sex,” and similar reasons behind it. People who worry their partner might cheat, who see their partner as a more desirable catch than themselves, or who experience higher levels of emotional instability tend to report having sex out of duty more often.",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1xhl74d/men_and_women_report_similar_levels_of_duty_sex/",
-     "link": "https://www.psypost.org/men-and-women-report-similar-levels-of-duty-sex-and-similar-reasons-behind-it/",
-     "line": "A study showed men and women report similar levels of duty sex, linked to relationship fears and emotional instability.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "IT vendor lists massive $60 million AI supercomputer on eBay with 9,600 Nvidia A100 GPUs and 4,200 AMD EPYC CPUs, plus free shipping — 300 racks of decommissioned GPUs on offer",
-     "subs": [
-      "LocalLLaMA",
-      "technology"
-     ],
-     "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xhsvmy/it_vendor_lists_massive_60_million_ai/",
-     "link": "https://www.tomshardware.com/desktops/servers/it-vendor-lists-massive-usd60-million-ai-cluster-on-ebay-300x-racks-of-decommissioned-gpus-includes-9-600-nvidia-a100-gpus-and-4-200-amd-epyc-cpus-plus-free-shipping",
-     "line": "An IT vendor listed a $60 million AI supercomputer with thousands of Nvidia GPUs on eBay, amusing commenters.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Dirt cheap GPUs coming next year",
-     "subs": [
-      "LocalLLaMA"
-     ],
-     "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xhep6w/dirt_cheap_gpus_coming_next_year/",
-     "link": "",
-     "line": "A user argued that a GPU price crash is coming due to data center cancellations and hardware efficiency.",
-     "verdict": "hype",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Code-execution flaw in UEFI firmware affects most servers on planet Earth",
-     "subs": [
-      "singularity",
-      "technology"
-     ],
-     "thread": "https://www.reddit.com/r/technology/comments/1xh6x0z/codeexecution_flaw_in_uefi_firmware_affects_most/",
-     "link": "https://arstechnica.com/security/2026/10/code-execution-flaw-in-uefi-firmware-threatens-most-servers-on-planet-earth/",
-     "line": "A critical code-execution vulnerability in UEFI firmware affects most servers globally, stemming from the TianoCore EDK II codebase.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "In Jerusalem neighborhoods where measles vaccine coverage had fallen to about 55%, the measles death rate in young children was about 160 times higher than in the rest of Israel (80.1 vs 0.5 deaths per 100,000).",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1xi0ljj/in_jerusalem_neighborhoods_where_measles_vaccine/",
-     "link": "https://wwwnc.cdc.gov/eid/article/32/11/26-1397_article",
-     "line": "Jerusalem neighborhoods with low measles vaccination coverage saw a child death rate 160 times higher than the rest of Israel.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "US biotechs take lion’s share of $54.5B VC money raised since 2025",
-     "subs": [
-      "biotech"
-     ],
-     "thread": "https://www.reddit.com/r/biotech/comments/1xhbnow/us_biotechs_take_lions_share_of_545b_vc_money/",
-     "link": "https://www.biospace.com/business/us-biotechs-take-lions-share-of-54-5b-vc-money-raised-since-2025",
-     "line": "US biotechs captured the majority of $54.5 billion in venture capital raised since 2025, sparking debate on fund burning.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    }
-   ],
-   "transcript": "transcripts/ai_2026-10-29_morning_0841.txt"
   }
  ]
 }

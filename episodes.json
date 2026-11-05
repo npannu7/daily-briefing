@@ -1,17 +1,6 @@
 {
   "episodes": [
     {
-      "file": "ai_2026-10-29_morning_0841.mp3",
-      "date": "2026-10-29",
-      "edition": "morning",
-      "title": "Morning - 29 Oct: Building a Computer Inside a Language Model",
-      "published": "2026-10-29T08:41:42.106504+05:30",
-      "pubDate": "Thu, 29 Oct 2026 08:41:42 +0530",
-      "size": 10394732,
-      "duration": 1299,
-      "description": "Morning edition - Thursday, 29 October 2026\nDeterministic State Machines in Stochastic Weights and Quality Boundaries in Peptide Manufacturing\n\n00:40  Building a Computer Inside a Language Model\n   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1xhmo1q/someone_built_a_32bit_riscv_cpu_directly_inside/\n11:30  Bypassing Drug Approvals for Injectable Peptides\n   EverythingScience: https://www.reddit.com/r/EverythingScience/comments/1xhy21u/rfk_jr_to_allow_broad_use_of_unapproved_peptide/\n   Source: https://www.nytimes.com/2026/10/28/health/peptides-kennedy-fda.html?smid=re-share\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nWritten by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (181 threads)"
-    },
-    {
       "file": "ai_2026-10-29_evening_1639.mp3",
       "date": "2026-10-29",
       "edition": "evening",
@@ -164,6 +153,17 @@
       "size": 7512986,
       "duration": 938,
       "description": "Morning edition - Thursday, 5 November 2026\nChecking a tenfold artificial intelligence cost claim at a fintech company and a failed replication in mouse neuroscience\n\n00:38  Can running your own artificial intelligence models cut coding costs tenfold?\n04:17  Mouse studies fail to repeat earlier psilocybin findings\n08:22  What effect will modern burial practices have on human fossilization rate?\n12:59  Goldman Sachs restricted Claude Code to engineers only\n\nPuzzles: Fitting a Beast into VRAM, Hunting Ghosts in the Mouse Lab - puzzles, quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nWritten by: Gemini 3.5 Flash-Lite · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (156 threads)"
+    },
+    {
+      "file": "ai_2026-11-05_evening_1449.mp3",
+      "date": "2026-11-05",
+      "edition": "evening",
+      "title": "Evening - 5 Nov: When an AI writes a neural network's weights by hand",
+      "published": "2026-11-05T14:49:15.577506+05:30",
+      "pubDate": "Thu, 05 Nov 2026 14:49:15 +0530",
+      "size": 12249549,
+      "duration": 1531,
+      "description": "Evening edition - Thursday, 5 November 2026\nHand-crafted neural weights and the physics of accidental location signals\n\n00:36  When an AI writes a neural network's weights by hand\n14:58  How aircraft noise in your video gives away your location\n\nPuzzles: The 99% Trap: When Verification Masquerades as Validation, The 8-Hz Whisper That Betrays Your Position - puzzles, quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nWritten by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (142 threads)"
     }
   ],
   "memory": [
@@ -1555,6 +1555,28 @@
         "ai-coding-agents",
         "ai-pricing-and-costs"
       ]
+    },
+    {
+      "label": "Thursday 05 Nov evening",
+      "date": "2026-11-05",
+      "edition": "evening",
+      "published": "2026-11-05T14:49:15.577506+05:30",
+      "file": "ai_2026-11-05_evening_1449.mp3",
+      "writer": "nemotron-3-ultra-550b-a55b (free)",
+      "voices": "Fish Audio (free)",
+      "summary": "This evening edition examined two inverse problems: an AI authoring neural weights by hand to detect fabricated legal citations without training, and aircraft Doppler shifts in ambient video audio enabling precise geolocation. Both segments emphasized validation frameworks for systems built by inspection rather than optimization, and the privacy implications of infrastructure becoming a positioning layer.",
+      "threads": [
+        "Independent replication of hand-authored weight performance across tasks and model families",
+        "Real-world deployment of Doppler-based geolocation from consumer video and its privacy fallout"
+      ],
+      "segments": [
+        "When an AI writes a neural network's weights by hand",
+        "How aircraft noise in your video gives away your location"
+      ],
+      "deep_topic": "",
+      "topics": [
+        "ai-benchmarks"
+      ]
     }
   ],
   "seen": [
@@ -2477,6 +2499,22 @@
     {
       "date": "2026-11-05",
       "link": "https://www.theregister.com/ai-and-ml/2026/11/03/british-fintech-revolut-slashes-ai-coding-costs-10x-by-cutting-out-claude-and-going-self-hosted/5307345"
+    },
+    {
+      "date": "2026-11-05",
+      "link": "https://www.reddit.com/r/singularity/comments/1xnplmi/claude_writes_a_neural_networks_weights_by_hand/"
+    },
+    {
+      "date": "2026-11-05",
+      "link": "https://www.reddit.com/r/EverythingScience/comments/1xnzoh8/youtuber_discovers_inaudible_aircraft_noise_can/"
+    },
+    {
+      "date": "2026-11-05",
+      "link": "https://www.reddit.com/r/technology/comments/1xnzmmf/youtuber_discovers_aircraft_noise_trick_that_can/"
+    },
+    {
+      "date": "2026-11-05",
+      "link": "https://www.techradar.com/computing/cyber-security/youtuber-discovers-aircraft-noise-trick-that-can-geolocate-your-videos-to-within-100m-doppler-effect-pinpoints-locations-from-just-60-seconds-of-audio"
     }
   ],
   "feedback": [
@@ -2801,6 +2839,38 @@
       },
       "comment": "i asked for more what individual people are building with ai but that doesn't mean every podcast should be about that. try to make a balance i will keep rating but circle type of content. todays indie developer part is too complex for me because i am not into own hardware to run ai model so that is not intersted for me. also the puzzle is also not intrested due to the topic.",
       "received": "2026-11-05T07:00:08.861882+05:30"
+    },
+    {
+      "episode": "ai_2026-11-05_morning_0700.mp3",
+      "date": "2026-11-05",
+      "edition": "morning",
+      "quiz": {
+        "score": 4,
+        "total": 4,
+        "missed": []
+      },
+      "puzzles": {
+        "done": 1,
+        "total": 2,
+        "struggled": [
+          "Hunting Ghosts in the Mouse Lab: Five elite labs tried to reproduce a famous mouse psilocybin study across multiple sites and found zero lasting behavioral changes a day lat",
+          "Hunting Ghosts in the Mouse Lab: A single lab runs 9 mice and reports a massive behavioral shift with a high standard error. To cut that error in half, how many mice do they"
+        ]
+      },
+      "ratings": {
+        "overall": 5,
+        "depth": "right",
+        "pace": "right",
+        "voices": "good"
+      },
+      "segments": {
+        "Can running your own artificial intelligence models cut coding costs tenfold?": "more",
+        "Mouse studies fail to repeat earlier psilocybin findings": "more",
+        "What effect will modern burial practices have on human fossilization rate?": "more",
+        "Goldman Sachs restricted Claude Code to engineers only": "more"
+      },
+      "comment": "the depth and length of todays topic is correct. it better to have more topic if single topic don't have much to discuss",
+      "received": "2026-11-05T14:49:16.055216+05:30"
     }
   ],
   "tts_log": [
@@ -3266,7 +3336,179 @@
     "2026-11-05T02:18:13.503642+00:00",
     "2026-11-05T02:18:14.388729+00:00",
     "2026-11-05T02:18:15.447873+00:00",
-    "2026-11-05T02:18:21.297862+00:00"
+    "2026-11-05T02:18:21.297862+00:00",
+    "2026-11-05T09:19:45.199143+00:00",
+    "2026-11-05T09:19:49.624735+00:00",
+    "2026-11-05T09:20:06.410217+00:00",
+    "2026-11-05T09:20:13.680794+00:00",
+    "2026-11-05T09:20:23.892721+00:00",
+    "2026-11-05T09:20:41.713105+00:00",
+    "2026-11-05T09:20:43.511172+00:00",
+    "2026-11-05T09:20:44.319912+00:00",
+    "2026-11-05T09:20:47.925268+00:00",
+    "2026-11-05T09:21:00.076366+00:00",
+    "2026-11-05T09:21:02.315896+00:00",
+    "2026-11-05T09:21:08.014852+00:00",
+    "2026-11-05T09:21:11.716047+00:00",
+    "2026-11-05T09:21:21.156708+00:00",
+    "2026-11-05T09:21:31.151618+00:00",
+    "2026-11-05T09:21:31.998303+00:00",
+    "2026-11-05T09:21:36.950379+00:00",
+    "2026-11-05T09:21:41.258607+00:00",
+    "2026-11-05T09:21:50.868773+00:00",
+    "2026-11-05T09:21:51.397407+00:00",
+    "2026-11-05T09:21:58.298371+00:00",
+    "2026-11-05T09:22:12.295038+00:00",
+    "2026-11-05T09:22:19.138212+00:00",
+    "2026-11-05T09:22:25.080850+00:00",
+    "2026-11-05T09:22:29.917839+00:00",
+    "2026-11-05T09:22:42.790570+00:00",
+    "2026-11-05T09:22:46.762809+00:00",
+    "2026-11-05T09:22:53.972888+00:00",
+    "2026-11-05T09:23:04.472371+00:00",
+    "2026-11-05T09:23:04.725717+00:00",
+    "2026-11-05T09:23:05.683808+00:00",
+    "2026-11-05T09:23:08.254625+00:00",
+    "2026-11-05T09:23:13.992660+00:00",
+    "2026-11-05T09:23:23.337506+00:00",
+    "2026-11-05T09:23:26.931366+00:00",
+    "2026-11-05T09:23:33.887052+00:00",
+    "2026-11-05T09:23:34.001796+00:00",
+    "2026-11-05T09:23:47.203871+00:00",
+    "2026-11-05T09:24:01.981238+00:00",
+    "2026-11-05T09:24:02.832843+00:00",
+    "2026-11-05T09:24:04.266058+00:00",
+    "2026-11-05T09:24:06.316988+00:00",
+    "2026-11-05T09:24:17.800774+00:00",
+    "2026-11-05T09:24:31.571236+00:00",
+    "2026-11-05T09:24:32.022466+00:00",
+    "2026-11-05T09:24:34.177776+00:00",
+    "2026-11-05T09:24:41.453458+00:00",
+    "2026-11-05T09:24:42.513638+00:00",
+    "2026-11-05T09:24:54.335754+00:00",
+    "2026-11-05T09:24:59.695247+00:00",
+    "2026-11-05T09:30:17.923478+00:00",
+    "2026-11-05T09:33:25.498313+00:00",
+    "2026-11-05T09:34:29.929550+00:00",
+    "2026-11-05T09:35:49.390879+00:00",
+    "2026-11-05T09:39:44.444575+00:00",
+    "2026-11-05T09:40:07.602054+00:00",
+    "2026-11-05T09:41:17.766857+00:00",
+    "2026-11-05T09:41:29.762833+00:00",
+    "2026-11-05T09:42:35.888305+00:00",
+    "2026-11-05T09:45:36.704604+00:00",
+    "2026-11-05T09:48:06.775708+00:00",
+    "2026-11-05T09:48:09.999446+00:00",
+    "2026-11-05T09:48:25.855825+00:00",
+    "2026-11-05T09:48:28.381289+00:00",
+    "2026-11-05T09:48:32.159448+00:00",
+    "2026-11-05T09:48:39.377034+00:00",
+    "2026-11-05T09:48:40.832102+00:00",
+    "2026-11-05T09:48:42.120372+00:00",
+    "2026-11-05T09:48:48.833719+00:00",
+    "2026-11-05T09:48:53.015043+00:00",
+    "2026-11-05T09:48:59.025100+00:00",
+    "2026-11-05T09:49:02.033493+00:00",
+    "2026-11-05T09:49:06.091794+00:00",
+    "2026-11-05T09:49:07.137678+00:00",
+    "2026-11-05T09:49:09.282291+00:00",
+    "2026-11-05T09:49:09.348721+00:00",
+    "2026-11-05T09:49:13.837432+00:00",
+    "2026-11-05T09:49:17.293755+00:00",
+    "2026-11-05T09:49:23.391388+00:00",
+    "2026-11-05T09:49:25.619469+00:00",
+    "2026-11-05T09:49:31.530225+00:00",
+    "2026-11-05T09:49:33.920491+00:00",
+    "2026-11-05T09:49:35.069629+00:00",
+    "2026-11-05T09:49:40.621435+00:00",
+    "2026-11-05T09:49:46.162357+00:00",
+    "2026-11-05T09:49:55.380492+00:00",
+    "2026-11-05T09:49:56.966082+00:00",
+    "2026-11-05T09:50:01.397605+00:00",
+    "2026-11-05T09:50:06.465744+00:00",
+    "2026-11-05T09:50:09.867620+00:00",
+    "2026-11-05T09:50:11.051398+00:00",
+    "2026-11-05T09:50:15.846782+00:00",
+    "2026-11-05T09:50:18.129256+00:00",
+    "2026-11-05T09:50:24.520558+00:00",
+    "2026-11-05T09:50:26.911010+00:00",
+    "2026-11-05T09:50:28.163414+00:00",
+    "2026-11-05T09:50:29.274381+00:00",
+    "2026-11-05T09:50:34.376443+00:00",
+    "2026-11-05T09:50:34.781205+00:00",
+    "2026-11-05T09:50:40.652666+00:00",
+    "2026-11-05T09:50:46.054655+00:00",
+    "2026-11-05T09:50:46.191361+00:00",
+    "2026-11-05T09:50:49.919136+00:00",
+    "2026-11-05T09:50:51.567185+00:00",
+    "2026-11-05T09:50:56.659732+00:00",
+    "2026-11-05T09:51:04.460246+00:00",
+    "2026-11-05T09:51:10.929237+00:00",
+    "2026-11-05T09:51:14.847973+00:00",
+    "2026-11-05T09:51:15.981396+00:00",
+    "2026-11-05T09:51:19.802223+00:00",
+    "2026-11-05T09:51:22.226392+00:00",
+    "2026-11-05T09:51:24.160244+00:00",
+    "2026-11-05T09:51:25.122088+00:00",
+    "2026-11-05T09:51:37.794080+00:00",
+    "2026-11-05T09:51:39.696238+00:00",
+    "2026-11-05T09:51:40.701815+00:00",
+    "2026-11-05T09:51:41.586837+00:00",
+    "2026-11-05T09:51:48.091110+00:00",
+    "2026-11-05T09:51:49.344391+00:00",
+    "2026-11-05T09:51:50.689063+00:00",
+    "2026-11-05T09:51:51.795091+00:00",
+    "2026-11-05T09:51:58.800051+00:00",
+    "2026-11-05T09:52:00.690233+00:00",
+    "2026-11-05T09:52:06.192440+00:00",
+    "2026-11-05T09:52:07.613655+00:00",
+    "2026-11-05T09:52:17.962785+00:00",
+    "2026-11-05T09:52:23.379187+00:00",
+    "2026-11-05T09:52:29.278860+00:00",
+    "2026-11-05T09:52:33.920842+00:00",
+    "2026-11-05T09:52:35.800834+00:00",
+    "2026-11-05T09:52:38.814357+00:00",
+    "2026-11-05T09:52:41.355480+00:00",
+    "2026-11-05T09:52:42.327636+00:00",
+    "2026-11-05T09:52:47.182657+00:00",
+    "2026-11-05T09:52:53.397142+00:00",
+    "2026-11-05T09:52:53.486457+00:00",
+    "2026-11-05T09:52:59.877052+00:00",
+    "2026-11-05T09:53:01.133476+00:00",
+    "2026-11-05T09:53:05.801801+00:00",
+    "2026-11-05T09:53:07.350813+00:00",
+    "2026-11-05T09:53:07.543187+00:00",
+    "2026-11-05T09:53:12.401263+00:00",
+    "2026-11-05T09:53:17.579585+00:00",
+    "2026-11-05T09:53:19.268928+00:00",
+    "2026-11-05T09:53:22.396423+00:00",
+    "2026-11-05T09:53:26.512606+00:00",
+    "2026-11-05T09:53:28.902590+00:00",
+    "2026-11-05T09:53:35.412104+00:00",
+    "2026-11-05T09:53:36.354444+00:00",
+    "2026-11-05T09:53:38.186554+00:00",
+    "2026-11-05T09:53:38.365919+00:00",
+    "2026-11-05T09:53:45.550241+00:00",
+    "2026-11-05T09:53:48.416275+00:00",
+    "2026-11-05T09:53:52.990533+00:00",
+    "2026-11-05T09:53:59.196265+00:00",
+    "2026-11-05T09:53:59.209811+00:00",
+    "2026-11-05T09:54:01.041521+00:00",
+    "2026-11-05T09:54:07.101049+00:00",
+    "2026-11-05T09:54:09.254060+00:00",
+    "2026-11-05T09:54:09.959573+00:00",
+    "2026-11-05T09:54:11.400651+00:00",
+    "2026-11-05T09:54:17.235812+00:00",
+    "2026-11-05T09:54:22.456743+00:00",
+    "2026-11-05T09:54:24.981284+00:00",
+    "2026-11-05T09:54:27.246000+00:00",
+    "2026-11-05T09:54:28.660174+00:00",
+    "2026-11-05T09:54:29.013081+00:00",
+    "2026-11-05T09:54:37.173247+00:00",
+    "2026-11-05T09:54:38.267862+00:00",
+    "2026-11-05T09:54:41.368597+00:00",
+    "2026-11-05T09:54:42.675622+00:00",
+    "2026-11-05T09:54:47.080500+00:00"
   ],
   "free_day_out": "",
   "pace_adjust": 0.0,
@@ -3290,6 +3532,16 @@
       "date": "2026-11-05",
       "title": "Hunting Ghosts in the Mouse Lab",
       "template": "sampling"
+    },
+    {
+      "date": "2026-11-05",
+      "title": "The 99% Trap: When Verification Masquerades as Validation",
+      "template": "threshold"
+    },
+    {
+      "date": "2026-11-05",
+      "title": "The 8-Hz Whisper That Betrays Your Position",
+      "template": ""
     }
   ],
   "topics": {
@@ -3741,7 +3993,8 @@
         "2026-10-25",
         "2026-10-26",
         "2026-10-27",
-        "2026-10-31"
+        "2026-10-31",
+        "2026-11-05"
       ],
       "subs": [
         "AI_Agents",
@@ -3758,15 +4011,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 29,
+      "mentions": 30,
       "refs": [
-        {
-          "date": "2026-10-24",
-          "title": "Altman admits the cybersecurity crisis is going to get worse: \"I no longer think we're gonna be able to patch all the bugs.\"",
-          "thread": "https://www.reddit.com/r/ArtificialInteligence/comments/1xdcowt/altman_admits_the_cybersecurity_crisis_is_going/",
-          "link": "",
-          "comment": "Sounds like he’s selling his product by saying that the only way to protect from cyberattacks is to use new ai technology. $$$"
-        },
         {
           "date": "2026-10-24",
           "title": "3% of critical software security bugs, in all of recorded history, have been found in the last month - \"Black October\"",
@@ -3857,10 +4103,17 @@
           "thread": "https://www.reddit.com/r/technology/comments/1xjdg5q/the_63_billion_binance_hack_was_pulled_off_in/",
           "link": "https://www.wired.com/story/the-dollar63-billion-binance-hack-was-pulled-off-in-just-20-minutes/",
           "comment": "Lmao future of finance amiright guys LOL"
+        },
+        {
+          "date": "2026-11-05",
+          "title": "Hackers Hijacked French Blood Plasma Freezers, Changing Temperature Settings From −30°C to 110°C",
+          "thread": "https://www.reddit.com/r/technology/comments/1xnf7mc/hackers_hijacked_french_blood_plasma_freezers/",
+          "link": "https://cybersecuritynews.com/french-blood-plasma-freezers-hacked/amp/",
+          "comment": ""
         }
       ],
       "deep_dive": "",
-      "last_seen": "2026-10-31",
+      "last_seen": "2026-11-05",
       "subject": "ai"
     },
     "ai-and-jobs": {
@@ -4177,22 +4430,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 133,
+      "mentions": 135,
       "refs": [
-        {
-          "date": "2026-11-03",
-          "title": "Apparently, using Claude Code to build something is now considered stealing.",
-          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xloh1l/apparently_using_claude_code_to_build_something/",
-          "link": "",
-          "comment": "It's adorable to realize that people genuinely think that people didn't steal code before AI, or didn't produce bad code. Just ignore them. They'll come around in a few years, or get left behind."
-        },
-        {
-          "date": "2026-11-03",
-          "title": "[GLB-3D-Coder] A tiny 4B coding model that creates 3D assets for Godot and other game engines",
-          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xlh0zw/glb3dcoder_a_tiny_4b_coding_model_that_creates_3d/",
-          "link": "",
-          "comment": "I'm starting to wonder if this could eventually grow into a bigger MoE model where each expert would do different kind of task - agentic works, frontend coding, backend coding, 2D, 3D, audio coding, etc. All of the experts would be separate small models like this one cobbled together."
-        },
         {
           "date": "2026-11-03",
           "title": "Switched from Codex to Claude Code on the same $20 plan, and I'm blown away",
@@ -4276,6 +4515,20 @@
           "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xn7jti/from_a_notebook_sketch_to_an_animated_godot_boss/",
           "link": "",
           "comment": "TL;DR of the discussion generated automatically after 30 comments. The thread is pretty divided on this one. On one hand, a lot of you are seriously impressed. You see a cool penguin boss and a great workflow, calling it the \"opposite of AI slop\" and a prime example of how to use these tools effecti"
+        },
+        {
+          "date": "2026-11-05",
+          "title": "Asking Opus 5.5 to Build a Website",
+          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xnjsig/asking_opus_55_to_build_a_website/",
+          "link": "",
+          "comment": "Guys, I've been a web developer for over 10 years as my day job. There are bots that crawl the web on behalf of font licensing sites that specifically look for sites with unlicensed fonts. They'll threaten you with legal action and fines if they detect that you're using unlicensed fonts. If this eve"
+        },
+        {
+          "date": "2026-11-05",
+          "title": "Show me Claude Code projects that DON’T look vibecoded",
+          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xnnqkg/show_me_claude_code_projects_that_dont_look/",
+          "link": "",
+          "comment": ""
         }
       ],
       "deep_dive": "2026-10-18",
@@ -4295,7 +4548,8 @@
         "2026-10-20",
         "2026-10-24",
         "2026-10-28",
-        "2026-10-29"
+        "2026-10-29",
+        "2026-11-05"
       ],
       "subs": [
         "DeepSeek",
@@ -4303,7 +4557,7 @@
         "Physics",
         "singularity"
       ],
-      "mentions": 12,
+      "mentions": 13,
       "refs": [
         {
           "date": "2026-10-09",
@@ -4388,10 +4642,17 @@
           "thread": "https://www.reddit.com/r/DeepSeek/comments/1xhjn95/new_aaintelligence_index_v50_open_weight_models/",
           "link": "",
           "comment": "AA's ratings have become a joke. They're the \"UserBenchMark\" of the LLM scene."
+        },
+        {
+          "date": "2026-11-05",
+          "title": "Claude writes a neural network's weights by hand, without training, to detect fake legal citations—achieving 97.8% test accuracy and outperforming a conventionally trained model that scored 94.6%.",
+          "thread": "https://www.reddit.com/r/singularity/comments/1xnplmi/claude_writes_a_neural_networks_weights_by_hand/",
+          "link": "",
+          "comment": ""
         }
       ],
       "deep_dive": "",
-      "last_seen": "2026-10-29",
+      "last_seen": "2026-11-05",
       "subject": "ai"
     },
     "local-llms": {
@@ -4546,7 +4807,8 @@
         "2026-10-30",
         "2026-11-01",
         "2026-11-02",
-        "2026-11-03"
+        "2026-11-03",
+        "2026-11-05"
       ],
       "subs": [
         "ArtificialInteligence",
@@ -4562,17 +4824,11 @@
         "antiai",
         "artificial",
         "codex",
-        "singularity"
+        "singularity",
+        "technology"
       ],
-      "mentions": 22,
+      "mentions": 23,
       "refs": [
-        {
-          "date": "2026-10-11",
-          "title": "OpenAI and Anthropic expect a catastrophe by 2027, and they're secretly planning... the PR response.",
-          "thread": "https://www.reddit.com/r/OpenAI/comments/1x2jll0/openai_and_anthropic_expect_a_catastrophe_by_2027/",
-          "link": "",
-          "comment": ""
-        },
         {
           "date": "2026-10-11",
           "title": "Elon Musk has rebranded SpaceX AI to SpaceX Super Intelligence",
@@ -4663,10 +4919,17 @@
           "thread": "https://www.reddit.com/r/singularity/comments/1xm44jm/sam_altman_at_the_start_of_this_year_ai_was/",
           "link": "",
           "comment": "we need ubi or we will be scavengers at this rate."
+        },
+        {
+          "date": "2026-11-05",
+          "title": "Sam Altman Pulls Spectacular 180 After Unpopular Comments About RAM: 'It Is F**king Annoying'",
+          "thread": "https://www.reddit.com/r/OpenAI/comments/1xnta2w/sam_altman_pulls_spectacular_180_after_unpopular/",
+          "link": "https://kotaku.com/sam-altman-pulls-spectacular-180-after-unpopular-comments-about-ram-it-is-fking-annoying-2000753328",
+          "comment": ""
         }
       ],
       "deep_dive": "",
-      "last_seen": "2026-11-03",
+      "last_seen": "2026-11-05",
       "subject": "ai"
     },
     "ai-pricing-and-costs": {
@@ -4707,22 +4970,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 27,
+      "mentions": 29,
       "refs": [
-        {
-          "date": "2026-10-15",
-          "title": "Max subscription but only Pro usage",
-          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1x62sro/max_subscription_but_only_pro_usage/",
-          "link": "",
-          "comment": "If this is real, let them know that you are handing this over to your State’s AG office, department is typically called “consumer protection” or something similar. Do NOT say you have an attorney. Do NOT threaten legal action. You are simply informing that since no reasonable remedy is being offered"
-        },
-        {
-          "date": "2026-10-16",
-          "title": "Accenture Tells Employees They Can Now Spend Only $29 on Claude Per Month",
-          "thread": "https://www.reddit.com/r/technology/comments/1x6v7tg/accenture_tells_employees_they_can_now_spend_only/",
-          "link": "https://www.404media.co/accenture-tells-employees-they-can-now-spend-only-29-on-claude-per-month/",
-          "comment": "Boy, it’s going to be hard to IPO at $2T when companies are limiting employee budgets to your product to less than lunch allocations or a gym membership."
-        },
         {
           "date": "2026-10-17",
           "title": "claude pro gives 10x more usage than gpt plus now",
@@ -4806,6 +5055,20 @@
           "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xn568h/british_fintech_revolut_slashes_ai_coding_costs/",
           "link": "https://www.theregister.com/ai-and-ml/2026/11/03/british-fintech-revolut-slashes-ai-coding-costs-10x-by-cutting-out-claude-and-going-self-hosted/5307345",
           "comment": "It was only a matter of time, this is why I chuckle when people try to make us think running local LLMs is a waste of time, no it isn't."
+        },
+        {
+          "date": "2026-11-05",
+          "title": "Stock futures fall on speculation Democrats to win big in midterms, slow data center buildout",
+          "thread": "https://www.reddit.com/r/technology/comments/1xnec0k/stock_futures_fall_on_speculation_democrats_to/",
+          "link": "https://www.cnbc.com/2026/11/03/stock-market-today-live-updates.html",
+          "comment": "Yeah cuz tariff man was so good for business"
+        },
+        {
+          "date": "2026-11-05",
+          "title": "AI stocks slide as Texas governor result raises data center risks",
+          "thread": "https://www.reddit.com/r/technology/comments/1xnh94y/ai_stocks_slide_as_texas_governor_result_raises/",
+          "link": "https://www.cnbc.com/2026/11/04/ai-stocks-texas-governor-data-centers.html",
+          "comment": ""
         }
       ],
       "deep_dive": "",
@@ -4827,7 +5090,7 @@
         "biotech",
         "science"
       ],
-      "mentions": 8,
+      "mentions": 9,
       "refs": [
         {
           "date": "2026-10-16",
@@ -4884,6 +5147,13 @@
           "thread": "https://www.reddit.com/r/science/comments/1xntvrh/food_noise_us_study_finds_that_18_frequently_or/",
           "link": "https://www.psu.edu/news/research/story/nearly-1-5-people-us-think-about-food-even-when-they-are-not-hungry",
           "comment": ""
+        },
+        {
+          "date": "2026-11-05",
+          "title": "“Food noise”: US study finds that 18% frequently or constantly experience intrusive thoughts and cravings for food even when not hungry, while over 80% experience “food noise” at least occasionally, with women and younger adults reporting it more often. Only 17% never experiencing food noise",
+          "thread": "https://www.reddit.com/r/science/comments/1xntvrh/food_noise_us_study_finds_that_18_frequently_or/",
+          "link": "https://www.psu.edu/news/research/story/nearly-1-5-people-us-think-about-food-even-when-they-are-not-hungry",
+          "comment": "Welcome to r/science ! This is a heavily moderated subreddit in order to keep the discussion on science. However, we recognize that many people want to discuss how they feel the research relates to their own personal lives, so to give people a space to do that, personal anecdotes are allowed as resp"
         }
       ],
       "deep_dive": "2026-10-25",
@@ -4902,14 +5172,16 @@
         "2026-11-05"
       ],
       "subs": [
+        "ChatGPT",
         "ClaudeCode",
         "ControlProblem",
         "EverythingScience",
         "LocalLLM",
+        "OpenAI",
         "science",
         "technology"
       ],
-      "mentions": 11,
+      "mentions": 13,
       "refs": [
         {
           "date": "2026-10-16",
@@ -4987,6 +5259,20 @@
           "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xnpluu/i_have_an_ominous_feeling_that_they_will_take/",
           "link": "",
           "comment": ""
+        },
+        {
+          "date": "2026-11-05",
+          "title": "Leading AI models from Google/ OpenAI are biased against certain accents when scoring job interviews, presentations and tests. The AI models ranked Chinese and Nigerian accents lowest, Indian in the middle, and American and British highest, even when the content was exactly the same.",
+          "thread": "https://www.reddit.com/r/science/comments/1xnmjb7/leading_ai_models_from_google_openai_are_biased/",
+          "link": "https://www.eurekalert.org/news-releases/1150339",
+          "comment": "Just reveals how companies score people in real life, because AI just reflects them."
+        },
+        {
+          "date": "2026-11-05",
+          "title": "Democratic Arizona Congresswoman: Top of the Democratic agenda on day 1 needs to be a pause on advanced AI development, regulation of this out of control industry, and a ban on artificial superintelligence",
+          "thread": "https://www.reddit.com/r/OpenAI/comments/1xo0c4d/democratic_arizona_congresswoman_top_of_the/",
+          "link": "",
+          "comment": ""
         }
       ],
       "deep_dive": "2026-10-18",
@@ -5022,29 +5308,8 @@
         "artificial",
         "singularity"
       ],
-      "mentions": 45,
+      "mentions": 48,
       "refs": [
-        {
-          "date": "2026-10-30",
-          "title": "Alibaba previews four Qwen4 models: Max, Flash, Plus and 27B",
-          "thread": "https://www.reddit.com/r/LocalLLM/comments/1ximftk/alibaba_previews_four_qwen4_models_max_flash_plus/",
-          "link": "https://www.reddit.com/gallery/1ximetv",
-          "comment": "For most of us, the only thing to be excited about is the 27B if you’re being honest to yourself. Max and Plus will be probably API only and Flash is mostly only going to relevant to the 128GB or more crowd."
-        },
-        {
-          "date": "2026-10-30",
-          "title": "Apsara conference: Qwen4 next week",
-          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xif6lf/apsara_conference_qwen4_next_week/",
-          "link": "",
-          "comment": "Praying they don't lobotomise the cybersec skills🙏"
-        },
-        {
-          "date": "2026-11-01",
-          "title": "DeepSeek has open-sourced again! Unveils Super agent architecture",
-          "thread": "https://www.reddit.com/r/DeepSeek/comments/1xkg08h/deepseek_has_opensourced_again_unveils_super/",
-          "link": "",
-          "comment": "https://github.com/deepseek-ai/dsh-superagent-prototype Op is advertising their site here's the gh"
-        },
         {
           "date": "2026-11-02",
           "title": "[GLB-3D-Coder] A tiny 4B coding model that creates 3D assets for Godot and other game engines",
@@ -5120,6 +5385,27 @@
           "title": "Kimi-K3.1-Pro is now open-weights",
           "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xnrhvb/kimik31pro_is_now_openweights/",
           "link": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro",
+          "comment": ""
+        },
+        {
+          "date": "2026-11-05",
+          "title": "Insane that Deepseek alone accounted for 53% of all tokens on openrouter yesterday, the next 10 labs total under 47%.",
+          "thread": "https://www.reddit.com/r/DeepSeek/comments/1xnz5jl/insane_that_deepseek_alone_accounted_for_53_of/",
+          "link": "",
+          "comment": ""
+        },
+        {
+          "date": "2026-11-05",
+          "title": "I removed 85% of gemma's weights (and it is mostly fine)",
+          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xnoqyy/i_removed_85_of_gemmas_weights_and_it_is_mostly/",
+          "link": "",
+          "comment": ""
+        },
+        {
+          "date": "2026-11-05",
+          "title": "Deepseek alone accounted for 53% of all (27 trillion) tokens on Openrouter yesterday. Open-weights labs totaling over 75% now",
+          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xnz8ct/deepseek_alone_accounted_for_53_of_all_27/",
+          "link": "",
           "comment": ""
         }
       ],
@@ -5467,7 +5753,8 @@
         "2026-10-25",
         "2026-10-26",
         "2026-10-27",
-        "2026-10-30"
+        "2026-10-30",
+        "2026-11-05"
       ],
       "subs": [
         "ArtificialInteligence",
@@ -5480,15 +5767,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 20,
+      "mentions": 21,
       "refs": [
-        {
-          "date": "2026-10-25",
-          "title": "Proton hosts Flock map revealing over 300,000 cameras, defying cease-and-desist threats against creator — privacy-focused company hosts site on Swiss servers, says users have the right to know who’s recording them",
-          "thread": "https://www.reddit.com/r/technology/comments/1xebubm/proton_hosts_flock_map_revealing_over_300000/",
-          "link": "https://www.tomshardware.com/software/maps/proton-hosts-flock-map-revealing-over-300-000-cameras-defying-cease-and-desist-threats-against-creator-privacy-focused-company-hosts-site-on-swiss-servers-says-users-have-the-right-to-know-whos-recording-them",
-          "comment": "Proton is the way here. And let's be clear... someone is paying them to keep them there long after your local police drops their contracts. Flock is selling their services to the likes of Palantir to augment their AI surveillance tools. This in turn is given to govt entities like ICE and DHS."
-        },
         {
           "date": "2026-10-25",
           "title": "Hacker reverse engineers his Samsung TV and finds on-board AI listening for sounds of dog and baby, proceeds to get his account suspended by OpenAI",
@@ -5579,11 +5859,18 @@
           "thread": "https://www.reddit.com/r/antiai/comments/1xii209/ai_misidentifies_man_despite_overwhelming/",
           "link": "",
           "comment": "Wow AI face recognition, it's supposed to know that some people have nearly identical faces"
+        },
+        {
+          "date": "2026-11-05",
+          "title": "Singapore lawmaker proposes national digital identity system for AI agents in Parliament",
+          "thread": "https://www.reddit.com/r/ArtificialInteligence/comments/1xnqhbe/singapore_lawmaker_proposes_national_digital/",
+          "link": "",
+          "comment": ""
         }
       ],
       "deep_dive": "",
       "subject": "ai",
-      "last_seen": "2026-10-30"
+      "last_seen": "2026-11-05"
     },
     "ai-company-updates": {
       "name": "AI Company Updates",
@@ -5594,10 +5881,11 @@
       ],
       "subs": [
         "antiai",
+        "artificial",
         "singularity",
         "technology"
       ],
-      "mentions": 3,
+      "mentions": 6,
       "refs": [
         {
           "date": "2026-11-04",
@@ -5619,6 +5907,27 @@
           "thread": "https://www.reddit.com/r/technology/comments/1xn85kj/google_criticized_by_nyc_mayor_zohran_mamdani/",
           "link": "https://www.pcgamer.com/software/ai/google-criticized-by-nyc-mayor-zohran-mamdani-following-ai-policy-change-google-is-trying-to-use-its-monopoly-power-to-force-ai-into-our-public-schools/",
           "comment": "That’s wild on two fronts. AI doesn’t help kids learn. It’s basically a machine to make you think less. And google exercising its power in this way just shows how bad monopolies are"
+        },
+        {
+          "date": "2026-11-05",
+          "title": "10 States With Data Centers on the Ballot All Voted to Ban Them",
+          "thread": "https://www.reddit.com/r/technology/comments/1xnrvcr/10_states_with_data_centers_on_the_ballot_all/",
+          "link": "https://newrepublic.com/post/217485/data-centers-ballot-initiatives-midterms?utm_source=newsletter&utm_medium=email&utm_campaign=tnr_daily",
+          "comment": ""
+        },
+        {
+          "date": "2026-11-05",
+          "title": "Does anybody else feel like, given the Democrats’ landslide victory last night, the AI companies should get busy demonstrating the benefits of AI to the average person… or risk more data center moratoriums?",
+          "thread": "https://www.reddit.com/r/singularity/comments/1xnnvgd/does_anybody_else_feel_like_given_the_democrats/",
+          "link": "",
+          "comment": ""
+        },
+        {
+          "date": "2026-11-05",
+          "title": "Congressional Progressive Caucus Chair calls for AI to be a top issue next year and for testimony from CEOs",
+          "thread": "https://www.reddit.com/r/artificial/comments/1xnf3ks/congressional_progressive_caucus_chair_calls_for/",
+          "link": "",
+          "comment": ""
         }
       ],
       "deep_dive": "",
