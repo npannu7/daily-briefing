@@ -91,6 +91,13 @@ input[type=range]{width:100%;accent-color:var(--accent);height:28px;margin:2px 0
 .goal b{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:2px}
 .goal.met{border-style:solid;border-color:var(--good);background:var(--good-soft)}
 .goal.met b{color:var(--good)}
+.goal-row{margin-top:10px}
+.guess-track{position:relative;height:14px;margin:0 8px}
+.guess-track .mark{position:absolute;top:0;width:3px;height:14px;border-radius:2px;transform:translateX(-50%)}
+.guess-track .mark.you{background:var(--muted)} .guess-track .mark.real{background:var(--good);width:4px}
+.guess-key{font-size:12px;color:var(--muted);margin-top:4px}
+.guess-key i{display:inline-block;width:8px;height:8px;border-radius:2px;margin:0 4px 0 10px;vertical-align:0}
+.guess-key i:first-child{margin-left:0} .guess-key i.you{background:var(--muted)} .guess-key i.real{background:var(--good)}
 .opt{display:block;width:100%;text-align:left;border:1.5px solid var(--line);background:transparent;color:var(--ink);
   border-radius:12px;padding:11px 13px;margin:0 0 8px;font:inherit;cursor:pointer}
 .opt:hover:not(:disabled){border-color:var(--muted)}
@@ -678,11 +685,11 @@ details.more summary{cursor:pointer;color:var(--muted);font-size:14px;margin:0 0
       drawView = VIEWS[step.view.kind](viewBox, step, step.view);
     }
     step.inputs.forEach(function(inp){ values[inp.id] = (p.values && p.values[inp.id] !== undefined) ? p.values[inp.id] : inp.value; });
-    var labels = {}, readouts = {}, goalBox = null, chartBox = null;
+    var labels = {}, readouts = {}, ranges = {}, goalBox = null, chartBox = null, goalMsg = null, reveal = null;
     step.inputs.forEach(function(inp){
       var val = el('b'), range = el('input', {type:'range', min: inp.min, max: inp.max, step: inp.step, value: values[inp.id],
         'aria-label': inp.label});
-      labels[inp.id] = val;
+      labels[inp.id] = val; ranges[inp.id] = range;
       range.addEventListener('input', function(){ values[inp.id] = parseFloat(range.value); p.values = values; update(); });
       range.addEventListener('change', function(){ p.values = values; p.persist(); });
       n.appendChild(el('div', {class:'slider'}, [el('div', {class:'top'}, [el('span', {text: inp.label}), val]), range]));
@@ -699,9 +706,51 @@ details.more summary{cursor:pointer;color:var(--muted);font-size:14px;margin:0 0
     n.appendChild(ro);
     if (step.chart) { chartBox = el('div', {class:'chart'}); n.appendChild(chartBox); }
     if (step.goal) {
+      // Checked on request, not while dragging: sweeping a slider across the target must not "solve" it.
       goalBox = el('div', {class:'goal'});
+      goalMsg = el('div', {class:'say', 'aria-live':'polite'});
+      var checkBtn = el('button', {class:'btn small', type:'button', text:'Check'});
+      checkBtn.addEventListener('click', checkGoal);
       n.appendChild(goalBox);
+      n.appendChild(el('div', {class:'goal-row'}, [checkBtn]));
+      n.appendChild(goalMsg);
     } else if (!p.solved) setTimeout(function(){ solve(false); }, 0);
+
+    function targetRange(){   // the goal in words: "4.5 to 5 %", "at most 12 GB", "at least 300 kPa"
+      var g = step.goal, o = outputById(g.target), i = inputById(g.target);
+      var lo = o ? o.lo : i.min, hi = o ? o.hi : i.max, unit = (o || i).unit, u = unit ? (unit === '%' ? '%' : ' ' + unit) : '';
+      function sh(v){ return parseFloat(v.toPrecision(4)).toLocaleString('en'); }
+      if (g.min <= lo + 1e-9) return 'at most ' + sh(g.max) + u;
+      if (g.max >= hi - 1e-9) return 'at least ' + sh(g.min) + u;
+      return sh(g.min) + ' to ' + sh(g.max) + u;
+    }
+    function checkGoal(){
+      if (p.solved) return;
+      var g = step.goal, env = compute(step, values), tv = env[g.target];
+      if (isFinite(tv) && tv >= g.min - 1e-9 && tv <= g.max + 1e-9) { finishGoal((p.tries || 0) > 0); return; }
+      p.tries = (p.tries || 0) + 1; p.persist();
+      var o = outputById(g.target) || inputById(g.target);
+      say(goalMsg, 'bad', 'Not yet: ' + o.label + ' is ' + fmt(tv, o.digits) + (o.unit ? (o.unit === '%' ? '%' : ' ' + o.unit) : '') +
+        (tv > g.max ? ', too high.' : ', too low.'), 'The target is ' + targetRange() + '. Watch which way each slider moves it.');
+      if (p.tries >= 3 && g.solution && !reveal) addReveal();
+    }
+    function addReveal(){
+      reveal = el('button', {class:'link', type:'button', text:'Show me a setting that works'});
+      reveal.addEventListener('click', function(){
+        step.inputs.forEach(function(inp){
+          if (step.goal.solution[inp.id] === undefined) return;
+          values[inp.id] = step.goal.solution[inp.id]; ranges[inp.id].value = values[inp.id];
+        });
+        p.values = values; p.shown = true; update(); finishGoal(true);
+      });
+      goalMsg.parentNode.insertBefore(reveal, goalMsg.nextSibling);
+    }
+    function finishGoal(struggled){
+      if (reveal) { reveal.remove(); reveal = null; }
+      say(goalMsg, 'good', p.shown ? 'Here is one that works.' : 'Right on target.', '');
+      if (!p.solved) solve(struggled);
+      update();
+    }
 
     function inputById(id){ return step.inputs.filter(function(i){ return i.id === id; })[0]; }
     function outputById(id){ return step.outputs.filter(function(o){ return o.id === id; })[0]; }
@@ -718,16 +767,16 @@ details.more summary{cursor:pointer;color:var(--muted);font-size:14px;margin:0 0
       if (chartBox) drawChart(chartBox, step, values);
       if (drawView) { var picture = drawView(env, values); if (picture && picture.parentNode !== viewBox) { viewBox.innerHTML = ''; viewBox.appendChild(picture); } }
       if (goalBox) {
-        var g = step.goal, tv = env[g.target];
-        var met = p.solved || (isFinite(tv) && tv >= g.min - 1e-9 && tv <= g.max + 1e-9);
+        var g = step.goal, met = !!p.solved;
         goalBox.className = 'goal' + (met ? ' met' : '');
         goalBox.innerHTML = '';
         goalBox.appendChild(el('b', {text: met ? 'You found it' : 'Challenge'}));
         goalBox.appendChild(document.createTextNode(met && g.success ? g.success : g.text));
-        if (met && !p.solved) solve(false);
+        if (met) { var row = goalBox.parentNode && goalBox.parentNode.querySelector('.goal-row'); if (row) row.style.display = 'none'; }
       }
     }
     update();
+    if (goalBox && !p.solved && (p.tries || 0) >= 3 && step.goal.solution) addReveal();
     return n;
   }
 
@@ -804,6 +853,42 @@ details.more summary{cursor:pointer;color:var(--muted);font-size:14px;margin:0 0
     }
     n.appendChild(msg);
     if (p.solved) finish(false); else if ((p.tries || 0) >= 2) addReveal();
+    return n;
+  }
+
+  function stepGuess(step, p, solve){
+    // A prediction on a slider: commit to an estimate, then see the real value. A guess is never "wrong".
+    var n = el('div', {}, [el('p', {class:'step-text', text: step.text})]);
+    var u = step.unit ? (step.unit === '%' ? '%' : ' ' + step.unit) : '';
+    var mid = step.min + Math.round((step.max - step.min) / 2 / step.step) * step.step;
+    var moved = p.guess !== undefined;
+    var val = el('b'), range = el('input', {type:'range', min: step.min, max: step.max, step: step.step,
+      value: moved ? p.guess : mid, 'aria-label':'Your guess'});
+    var track = el('div', {class:'guess-track'});
+    var lock = el('button', {class:'btn small', type:'button', text:'Lock in my guess'});
+    var msg = el('div', {class:'say', 'aria-live':'polite'});
+    n.appendChild(el('div', {class:'slider'}, [el('div', {class:'top'}, [el('span', {text:'Your guess'}), val]), range, track]));
+    n.appendChild(el('div', {class:'goal-row'}, [lock]));
+    n.appendChild(msg);
+    function show(){ val.textContent = moved ? fmt(parseFloat(range.value), decimals(step.step)) + u : 'drag to guess'; }
+    function pos(x){ return Math.max(0, Math.min(100, (x - step.min) / (step.max - step.min) * 100)) + '%'; }
+    function finish(){
+      var g = p.guess, a = step.answer, off = Math.abs(g - a) / Math.max(Math.abs(a), (step.max - step.min) * 0.02);
+      range.value = g; range.disabled = true; lock.parentNode.style.display = 'none'; show();
+      track.innerHTML = '';
+      track.appendChild(el('span', {class:'mark you', style:'left:' + pos(g), title:'Your guess'}));
+      track.appendChild(el('span', {class:'mark real', style:'left:' + pos(a), title:'The real value'}));
+      if (!track.nextSibling) track.parentNode.appendChild(el('div', {class:'guess-key'}, [el('i', {class:'you'}), 'your guess',
+        el('i', {class:'real'}), 'the real value']));
+      var verdict = off <= 0.1 ? 'Spot on.' : off <= 0.3 ? 'Close.' : (a > g ? 'Higher than you guessed.' : 'Lower than you guessed.');
+      say(msg, 'good', 'The real value: ' + fmt(a) + u + '. You guessed ' + fmt(g, decimals(step.step)) + u + '. ' + verdict, step.explain);
+      if (!p.solved) solve(false);
+    }
+    range.addEventListener('input', function(){ if (p.solved) return; moved = true; lock.disabled = false; show(); });
+    lock.addEventListener('click', function(){ if (p.solved || !moved) return; p.guess = parseFloat(range.value); p.persist(); finish(); });
+    lock.disabled = !moved;
+    show();
+    if (p.solved && p.guess !== undefined) finish();
     return n;
   }
 
@@ -898,7 +983,7 @@ details.more summary{cursor:pointer;color:var(--muted);font-size:14px;margin:0 0
     return n;
   }
 
-  var STEPS = {concept: stepConcept, explore: stepExplore, choice: stepChoice, number: stepNumber, order: stepOrder};
+  var STEPS = {concept: stepConcept, explore: stepExplore, choice: stepChoice, guess: stepGuess, number: stepNumber, order: stepOrder};
 
   function ring(frac, done, label){
     var r = 15, c = 2 * Math.PI * r, s = svg('svg', {class:'ring' + (done ? ' done' : ''), viewBox:'0 0 38 38', 'aria-hidden':'true'});

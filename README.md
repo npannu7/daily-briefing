@@ -68,11 +68,16 @@ How a lesson is made:
    library, or "none" when no template fits. It sees the templates used recently, so they rotate.
 2. The **writing model** fills in only the story: realistic values, plain labels and a mission ("Find the
    learning rate that settles in 8 steps"). It never writes code or formulas for a template. Around it, it
-   writes the rest of the lesson to fixed rules: a hook (a puzzle, paradox or bet), a prediction, the
-   hands-on template with the "aha" as its mission, a short explanation, and a transfer to a new setting such
-   as a factory, a hospital or the sky. No trivia, and no repeating recent angles.
+   writes the rest of the lesson to fixed rules: a hook (a puzzle, paradox or bet), a prediction made on a
+   slider (guess the number, then see the real one), the hands-on template with the "aha" as its mission, a
+   short explanation, and a transfer to a new setting such as a factory, a hospital or the sky. No trivia, no
+   repeating recent angles, and no multiple-choice steps (the recap quiz below the puzzles is the only
+   multiple choice, and it is told what the puzzles already cover so it asks about other things).
 3. **Checks**: every value is held to the template's limits; every formula runs before publishing; a mission
-   the sliders can't reach is dropped, and one already solved at the start gets a new starting point; a
+   the sliders can't reach is dropped, one already solved at the start is dropped too, and one solved just by
+   pushing the sliders to their ends becomes "only just" (e.g. "under 5%" becomes "land between 4.5 and 5%").
+   On the page a mission is checked when he taps **Check**, never while a slider is being dragged; after three
+   tries he can ask to be shown a setting that works; a
    second model removes wrong science, unrealistic values and trivia; number answers are computed, not
    taken from the model.
 

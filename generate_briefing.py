@@ -34,6 +34,7 @@ import datetime as dt
 import email.utils
 import html
 import io
+import itertools
 import json
 import math
 import os
@@ -2679,12 +2680,67 @@ def check_explore(step, max_outputs=4):
             return out
         # A mission already solved where the sliders start is no mission. (Moving a slider to an end instead,
         # as tried first, produced nonsense such as a graphics card at its 10 tokens/s minimum.)
-        if lo <= run([i["value"] for i in inputs])[target] <= hi:
+        start = run([i["value"] for i in inputs])
+        if lo <= start[target] <= hi:
             log("    puzzle goal dropped: already met where the sliders start")
             return out
-        out["goal"] = {"target": target, "min": lo, "max": hi, "text": _txt(goal["text"], 260),
-                       "success": _txt(goal.get("success") or step.get("success"), 420)}
+        text = _txt(goal["text"], 260)
+        # Nor is one solved by pushing every slider to an end: the listener slid the sample size to the far right
+        # on 4 Nov 2026 and got "You found it" before understanding anything. Such a mission becomes "only just".
+        if _met_at_corner(inputs, run, target, lo, hi):
+            tight = _tighten_goal(inputs, run, good, start, target, lo, hi)
+            if not tight:
+                log(f"    puzzle goal dropped: pushing the sliders to their ends meets it and no 'only just' band works")
+                return out
+            unit = next((o["unit"] for o in outputs if o["id"] == target), "") or \
+                next((i["unit"] for i in inputs if i["id"] == target), "")
+            lo, hi = tight
+            text = (f"{_txt(goal['text'], 190).rstrip('.!')}. Only just, though: land between "
+                    f"{_short_num(lo)} and {_short_num(hi)}{'' if unit in ('', '%') else ' '}{unit}.")
+            log(f"    puzzle goal narrowed to {_short_num(lo)}..{_short_num(hi)} (sliders at their ends met it)")
+        inside = [env for env in good if lo <= env[target] <= hi]
+        spans = {i["id"]: (i["max"] - i["min"]) or 1 for i in inputs}
+        best = min(inside, key=lambda env: sum(((env[k] - start[k]) / s) ** 2 for k, s in spans.items()))
+        out["goal"] = {"target": target, "min": lo, "max": hi, "text": text,
+                       "success": _txt(goal.get("success") or step.get("success"), 420),
+                       # one setting that works, for "Show me" after a few tries
+                       "solution": {k: round(best[k], 10) for k in spans}}
     return out
+
+
+def _met_at_corner(inputs, run, target, lo, hi):
+    """True when some combination of sliders at their ends (min or max) meets the goal."""
+    for corner in itertools.product(*[(i["min"], i["max"]) for i in inputs]):
+        try:
+            if lo - 1e-9 <= run(list(corner))[target] <= hi + 1e-9:
+                return True
+        except (ValueError, ZeroDivisionError, OverflowError, TypeError):
+            continue
+    return False
+
+
+def _short_num(x):
+    return f"{x:,.0f}" if abs(x) >= 100 else f"{float(f'{x:.3g}'):g}"
+
+
+def _tighten_goal(inputs, run, good, start, target, lo, hi):
+    """A narrow band at the goal's real edge ('under 5%' -> '4.5 to 5%'): reachable, not met where the sliders
+    start and not met with the sliders at their ends. Returns (lo, hi) or None."""
+    vals = [env[target] for env in good]
+    vlo, vhi = min(vals), max(vals)
+    span = (vhi - vlo) or 1.0
+    edges = [e for e, inner in ((hi, hi < vhi - 1e-9 * span), (lo, lo > vlo + 1e-9 * span)) if inner]
+    for edge in edges:
+        for frac in (0.1, 0.05, 0.2):
+            w = frac * abs(edge) if abs(edge) > 0.02 * span else frac * 0.2 * span
+            w = min(w, 0.5 * (hi - lo)) if hi > lo else w
+            a, b = (edge - w, edge) if edge == hi else (edge, edge + w)
+            a, b = max(lo, float(f"{a:.3g}")), min(hi, float(f"{b:.3g}"))
+            if not a < b or a <= start[target] <= b:
+                continue
+            if any(a <= v <= b for v in vals) and not _met_at_corner(inputs, run, target, a, b):
+                return a, b
+    return None
 
 
 # ----- Puzzle templates -----
@@ -3197,12 +3253,20 @@ def check_step(step):
     if kind == "explore":
         return check_explore(step)
     if kind == "choice":
-        opts = [_txt(o, 180) for o in (step.get("options") or [])][:5]
-        ans = int(_num(step.get("answer"), -1))
-        if len(opts) < 2 or len(set(opts)) != len(opts) or not 0 <= ans < len(opts) or not step.get("text"):
-            raise ValueError("bad choice")
-        return {"type": "choice", "text": _txt(step["text"], 420), "options": opts, "answer": ans,
-                "explain": _txt(step.get("explain"), 420), "hint": _txt(step.get("hint"), 260)}
+        # The quiz under the puzzles is multiple choice already; the listener found choice steps inside the
+        # puzzles repetitive (5 Nov 2026). Predictions are "guess" steps now.
+        raise ValueError("multiple-choice step (puzzles use guess / number / order instead)")
+    if kind == "guess":
+        # A prediction on a slider: he commits to an estimate, then sees the real value. Never marked wrong.
+        answer = expr_eval(expr_parse(step.get("answer_expr", "")), {})   # computed here, not by the model
+        lo, hi = _num(step.get("min")), _num(step.get("max"))
+        if not step.get("text") or lo is None or hi is None or not lo < hi or not lo <= answer <= hi:
+            raise ValueError("bad guess (the answer must lie inside the slider's range)")
+        if answer > hi - 0.1 * (hi - lo):   # an answer at the far end of the slider gives itself away
+            hi = float(f"{answer + 0.3 * (hi - lo):.3g}")
+        return {"type": "guess", "text": _txt(step["text"], 420), "answer": round(answer, 6), "min": lo, "max": hi,
+                "step": nice_step(lo, hi, 200), "unit": _txt(step.get("unit"), 14),
+                "explain": _txt(step.get("explain"), 420)}
     if kind == "number":
         answer = expr_eval(expr_parse(step.get("answer_expr", "")), {})   # computed here, not by the model
         tol = min(0.25, max(0.005, _num(step.get("tolerance"), 0.03)))
@@ -3220,6 +3284,12 @@ def check_step(step):
     raise ValueError(f"unknown step type {kind!r}")
 
 
+def lesson_ok(steps):
+    """Enough to be a lesson: three steps, or two when one of them is hands-on; never only reading."""
+    hands_on = any(s["type"] == "explore" for s in steps)
+    return len(steps) >= (2 if hands_on else 3) and any(s["type"] != "concept" for s in steps)
+
+
 def check_lessons(data, titles):
     """Keep only lessons and steps that work; returns (lessons, number of steps dropped)."""
     lessons, dropped = [], 0
@@ -3233,7 +3303,7 @@ def check_lessons(data, titles):
             except (ValueError, TypeError, KeyError, ZeroDivisionError, OverflowError) as e:
                 dropped += 1
                 log(f"    puzzle step dropped ({str(e)[:100]})")
-        if len(steps) < 3 or all(s["type"] == "concept" for s in steps):
+        if not lesson_ok(steps):
             dropped += len(steps)
             continue
         words = [{"term": _txt(w.get("term"), 50), "means": _txt(w.get("means"), 240)}
@@ -3254,13 +3324,18 @@ his own hands (a 99%-accurate test that is wrong most of the time; a learning ra
 training explode; thirty 99% steps fail one run in four). Then build the lesson around it:
 1. HOOK - a concrete situation and a question he cannot answer yet: a puzzle, a paradox, a bet or a "what would
    you do?", with real numbers from the episode. Never a definition, never "today we'll learn".
-2. PREDICT - a "choice" step where he commits to a guess before touching anything. Wrong guesses are fine;
-   the hint makes him think, it does not give the answer away.
-3. PLAY - the hands-on template (below). Its goal is the aha, phrased as a mission ("Find...", "Make...", "Get
-   the error under..."), reachable but only after some exploring. The success text names what he discovered.
+2. PREDICT - a "guess" step: he drags a slider to estimate a number before touching anything, then sees the
+   real value. Ask for the number the aha is about (how much memory, what share is wrong, how many samples).
+3. PLAY - the hands-on template (below). Its goal is the aha, phrased as a mission ("Find the smallest...",
+   "Land between...", "Get the error just under..."), reachable but only after some exploring. It must NOT be
+   solvable by pushing every slider to one end (sliding the sample size to its maximum is not a discovery):
+   aim at a narrow band or the boundary, e.g. "find the smallest sample that gets the error under 5%" as
+   min 4.5, max 5. The success text names what he discovered.
 4. EXPLAIN - a short concept: why it works, the mechanism in plain words, one analogy from his world.
-5. TRANSFER - a number, order or choice step that uses the same idea somewhere new (his factory and QA work, a
+5. TRANSFER - a number or order step that uses the same idea somewhere new (his factory and QA work, a
    hospital, the car, the sky), with different numbers, so he has to think rather than copy.
+NO MULTIPLE-CHOICE STEPS: the quiz under the puzzles is multiple choice already, so the puzzles are only
+guess, template/explore, concept, number and order steps.
 Add a sixth or seventh step only if it brings a second surprise. Every step 15-45 words. No trivia (names,
 dates, who said what): every question needs reasoning. Light humour is welcome.
 VARIETY: do not repeat the angles of recent lessons (listed below) and vary the hook from lesson to lesson
@@ -3278,13 +3353,14 @@ template has (listed under it) - never promise controls it does not have. Set th
 at a realistic "before" state where the mission is NOT yet achieved; the mission must need the sliders moved.
 If the chosen template cannot make an honest, meaningful puzzle about the segment's main idea, do not force
 it: write the lesson without a template. If a segment's plan says "none", use no template:
-build that lesson from predict / number / order / concept steps (or, only for a real quantity that no template
+build that lesson from guess / number / order / concept steps (or, only for a real quantity that no template
 covers, one "explore" step with your own formulas, as shown below).
 
 OTHER STEP TYPES (JSON):
 {"type": "concept", "text": "...", "example": "<optional real-life example>"}
-{"type": "choice", "text": "<question or prediction>", "options": ["...", "...", "..."], "answer": <index>,
- "hint": "<nudge shown after a wrong try>", "explain": "<why, shown when right>"}
+{"type": "guess", "text": "<what to estimate>", "answer_expr": "<formula of numbers only, e.g. 32*2>",
+ "unit": "GB", "min": 0, "max": 200, "explain": "<why it is that number, shown after he locks in his guess>"}
+ (min and max: a sensible slider range that contains the answer well inside it, not at an end)
 {"type": "number", "text": "<question>", "answer_expr": "<formula of numbers only, e.g. 0.21*101.3>",
  "unit": "kPa", "tolerance": 0.05, "hint": "...", "explain": "..."}
 {"type": "order", "text": "<put these in order>", "items": ["<first>", "<second>", "<third>", "<fourth>"],
@@ -3366,7 +3442,8 @@ def review_lessons(lessons, titles):
             shown.append({"lesson": li, "step": si, **row})
     prompt = f"""You check interactive science lessons before a learner sees them. For each step, look for:
 wrong science or maths, formulas that are not the standard relationship (or have wrong units or magnitudes),
-a marked answer that is wrong or ambiguous, an explanation that contradicts the answer, an "order" whose
+a marked answer that is wrong or ambiguous, a "guess" or "number" whose answer does not match what its text
+asks, an explanation that contradicts the answer, an "order" whose
 items are not in the correct order or that is a ranking or opinion rather than one real sequence, a "number"
 question that cannot be worked out from the values its own text gives, invented technical data presented as
 fact, a template step whose text promises controls its sliders (inputs) do not have, template values that are
@@ -3393,7 +3470,7 @@ Return JSON only: {{"problems": [{{"lesson": <n>, "step": <n>, "issue": "<what i
     for li, les in enumerate(lessons):
         steps = [s for si, s in enumerate(les["steps"]) if (li, si) not in bad]
         dropped += len(les["steps"]) - len(steps)
-        if len(steps) >= 3 and any(s["type"] != "concept" for s in steps):
+        if lesson_ok(steps):
             out.append(dict(les, steps=steps))
         else:
             dropped += len(steps)
@@ -3401,7 +3478,12 @@ Return JSON only: {{"problems": [{{"lesson": <n>, "step": <n>, "issue": "<what i
 
 
 # =============================== 8. QUIZ + PUBLISH ===============================
-def make_quiz(written, theme):
+def make_quiz(written, theme, lessons=()):
+    covered = "\n".join(f"- {x['title']}: " + " | ".join(st["text"][:120] for st in x["steps"] if st["type"] != "concept")
+                        for x in lessons)
+    puzzles = (f"\nThe page's hands-on puzzles already work through these points. Do not ask about the same "
+               f"calculations or ideas again; ask about other things the segment explained.\n{covered}\n"
+               if covered else "")
     script = "\n\n".join(f"[SEGMENT: {s['title']}]\n" + "\n".join(f"{spk}: {t}" for spk, t in turns)
                          for s, turns in written)
     prompt = f"""Write a short quiz for {LISTENER} about today's episode of "{SHOW_TITLE}".
@@ -3416,7 +3498,7 @@ Return JSON only:
                  "explain": "<1-2 sentences>", "segment": "<segment title>"}}]}}
 Rules: 4 questions, one per major segment. Test understanding of how things work, why a claim did or did not
 hold up, and the concepts explained - not dates or trivia. Every answer must be stated in the script.
-Plausible distractors; vary the position of the correct answer."""
+Plausible distractors; vary the position of the correct answer.{puzzles}"""
     try:
         text, _ = llm(prompt, json_mode=True, label="quiz", role="helper")
         out = []
@@ -3729,7 +3811,7 @@ def main():
         sync_release_assets({e["file"] for e in keep})
 
     log("  writing quiz (and thread notes for the weekly dossier)")
-    quiz = make_quiz(written, theme)
+    quiz = make_quiz(written, theme, lessons)
     digest = make_digest(stories, used)
     update_dossier(stories, used, digest, state, date_key)
     save_dossier(dry)
