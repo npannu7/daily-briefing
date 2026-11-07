@@ -8,9 +8,25 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Sat, 07 Nov 2026 06:42:49 GMT</lastBuildDate>
+<lastBuildDate>Sat, 07 Nov 2026 07:27:06 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Evening - 7 Nov: Open AI models quietly dropping security skills</title>
+<description>Evening edition - Saturday, 7 November 2026
+When safety controls disappear — from AI capabilities to workplace air
+
+00:34  Open AI models quietly dropping security skills
+10:15  What nail salon air tells us about chemical exposure limits
+
+Puzzles: The Safety Threshold That Blocks Your Own Work, The Grab-Sample Gamble - puzzles, quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
+Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (142 threads)</description>
+<pubDate>Sat, 07 Nov 2026 12:25:11 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-11-07_evening_1225.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-07_evening_1225.mp3" length="7769989" type="audio/mpeg"/>
+<itunes:duration>971</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Morning - 7 Nov: Anthropic's merge velocity versus its open issue backlog</title>
 <description>Morning edition - Saturday, 7 November 2026

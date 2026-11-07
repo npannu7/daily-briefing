@@ -4,6 +4,248 @@
  "repo": "npannu7/daily-briefing",
  "episodes": [
   {
+   "file": "ai_2026-11-07_evening_1225.mp3",
+   "title": "Evening - 7 Nov: Open AI models quietly dropping security skills",
+   "label": "Saturday 07 Nov evening",
+   "date": "2026-11-07",
+   "edition": "evening",
+   "published": "2026-11-07T12:25:11.246196+05:30",
+   "duration": 971,
+   "theme": "When safety controls disappear — from AI capabilities to workplace air",
+   "writer": "nemotron-3-ultra-550b-a55b (free)",
+   "voices": "Fish Audio (free)",
+   "deep_dive": false,
+   "segments": [
+    {
+     "title": "Open AI models quietly dropping security skills",
+     "category": "thread"
+    },
+    {
+     "title": "What nail salon air tells us about chemical exposure limits",
+     "category": "thread"
+    }
+   ],
+   "lessons": [
+    {
+     "title": "The Safety Threshold That Blocks Your Own Work",
+     "segment": "Open AI models quietly dropping security skills",
+     "steps": [
+      {
+       "type": "concept",
+       "text": "Refusal training doesn't delete knowledge — it learns a decision boundary. Like a metal detector at your factory: crank sensitivity to catch every contaminant (miss ↓) and you start rejecting good product (false alarms ↑). Attackers bypass the boundary with prompt engineering (adversarial examples); defenders just get blocked.",
+       "example": "Anthropic's Opus blocked 'game cloning' but allowed 'educational analysis of game mechanics' — same capability, different framing. The boundary lives in the prompt layer, not the weights."
+      },
+      {
+       "type": "number",
+       "text": "In your incoming inspection, seal-strength measurements for good pouches average 18 N with SD 2 N; defective pouches average 10 N with SD 3 N. You set the accept threshold at 14 N to catch 99% of defects. What % of good pouches get wrongly rejected? (Use normal CDF: good pouch rejected if strength < 14.)",
+       "answer": 2.275006,
+       "tolerance": 0.25,
+       "unit": "%",
+       "explain": "~2.3% of good pouches rejected — the cost of 99% defect detection. Same math as the AI safety threshold: overlapping distributions force a trade-off. In regulated QA, you document this threshold, validate it, and change-control it. The AI vendor gave you a Reddit post instead.",
+       "hint": "Good pouches ~ N(18, 2). P(X < 14) = P(Z < (14-18)/2) = P(Z < -2). Look up or approximate."
+      },
+      {
+       "type": "choice",
+       "text": "The vendor pushes a new model version. Your acceptance test: \"Model identifies CWE-787 (out-of-bounds write) in C snippets.\" Previous version scored 78% on CyberSecEval; new version scores 12%. No changelog, no PCN. What is your first regulatory move?",
+       "options": [
+        "Accept the model — 12% is still some capability",
+        "Open a deviation, freeze use, demand Design History File diff",
+        "Fine-tune a LoRA immediately and skip vendor",
+        "Switch to cloud API — they never drop capabilities"
+       ],
+       "answer": 1,
+       "explain": "Capability removal is a design change. You treat it like a raw-material alloy swap without notification: open deviation, assess impact on validated workflows, demand DHF diff (training data, benchmarks, guardrail spec), then decide re-qualify or roll back. The security researcher in the episode did exactly this — built their own LoRA under their own change control.",
+       "hint": "Think 21 CFR 820.30/13485: design change affecting critical-to-quality characteristic → change control, risk analysis, validation. Silence ≠ no change."
+      }
+     ],
+     "words": [
+      {
+       "term": "Refusal training",
+       "means": "Fine-tuning a model to say \"I can't help\" on certain topics — a guardrail, not knowledge deletion."
+      },
+      {
+       "term": "Decision boundary",
+       "means": "The invisible line a classifier draws between allowed and refused prompts; moving it trades false refusals for misses."
+      },
+      {
+       "term": "Silent specification drift",
+       "means": "A model's behavior changes (e.g., stops detecting CVEs) without version notice, changelog, or PCN."
+      }
+     ]
+    },
+    {
+     "title": "The Grab-Sample Gamble",
+     "segment": "What nail salon air tells us about chemical exposure limits",
+     "steps": [
+      {
+       "type": "choice",
+       "text": "You're validating ventilation for a new nail salon. OSHA compliance uses 8-hr TWA badges (3 per week). The study shows 15-min peaks hit 31 ppm median, 113 ppm max. Benzene risk lives in the peaks. You can run either: A) 3 grab samples (15-min each) per shift, 5 days B) Continuous PID monitor for 1 day (96 × 15-min readings) Which strategy gives you confidence the *true average peak* exceeds 25 ppm?",
+       "options": [
+        "A) 3 grabs/shift — compliance standard, good enough",
+        "B) Continuous — more data always wins",
+        "C) They're equivalent — same total samples"
+       ],
+       "answer": 1,
+       "explain": "With SD=25 ppm, 3 grabs give margin ≈28 ppm → lower bound ≈3 ppm. You need ~67 readings (margin <6 ppm) to confidently say true mean peak >25 ppm. Continuous monitoring delivers that in one day; compliance badges take weeks.",
+       "hint": "The median peak is 31 ppm but one salon hit 113 ppm. That spread (SD ~25 ppm) means few grabs give a huge margin of error. How many 15-min readings to shrink the 95% CI lower bound above 25 ppm?"
+      },
+      {
+       "type": "explore",
+       "text": "Adjust the number of 15-min grab samples. The true median peak is 31 ppm with high variability (SD 25 ppm). Watch how the 95% confidence interval tightens — or doesn't.",
+       "inputs": [
+        {
+         "id": "n",
+         "label": "Sample size",
+         "unit": "",
+         "min": 3.0,
+         "max": 200.0,
+         "step": 1.0,
+         "value": 3.0
+        }
+       ],
+       "outputs": [
+        {
+         "id": "margin",
+         "label": "Margin of error (95%)",
+         "unit": "ppm",
+         "expr": "1.96*25/sqrt(n)",
+         "lo": 3.4648232278140827,
+         "hi": 28.290163190291665
+        },
+        {
+         "id": "lo",
+         "label": "Could be as low as",
+         "unit": "ppm",
+         "expr": "31-margin",
+         "lo": 2.709836809708335,
+         "hi": 27.535176772185917
+        },
+        {
+         "id": "hi",
+         "label": "Or as high as",
+         "unit": "ppm",
+         "expr": "31+margin",
+         "lo": 34.46482322781408,
+         "hi": 59.290163190291665
+        }
+       ],
+       "chart": {
+        "x": "n",
+        "y": [
+         "margin"
+        ]
+       },
+       "goal": {
+        "target": "lo",
+        "min": 25.0,
+        "max": 31.0,
+        "text": "Find the sample size where the lower confidence bound (lo) first exceeds 25 ppm — the level where benzene cancer risk becomes quantifiable.",
+        "success": "You needed ~67 grab samples (17 hours of 15-min readings) just to prove the *average* peak is concerning. Continuous monitoring caught the 113 ppm spike on day one — the excursion that drives lifetime risk."
+       },
+       "template": "sampling",
+       "view": {
+        "kind": "spread",
+        "n": "n",
+        "true": 31.0,
+        "sd": 25.0,
+        "lo": "lo",
+        "hi": "hi",
+        "measure": "15-min peak VOC",
+        "unit": "ppm"
+       }
+      },
+      {
+       "type": "concept",
+       "text": "Margin of error shrinks with √n, but peaks are rare, high-leverage events. Grab sampling estimates the *mean*; continuous monitoring captures the *distribution*. In sterilization, you validate the routine cycle — but the venting excursion is where bioburden escapes. Same math: averaging hides the tail that kills.",
+       "example": "Your CNC coolant mist: 8-hr TWA looks fine. But the 15-min peak during tool change? That's where operators inhale the dose that matters."
+      },
+      {
+       "type": "number",
+       "text": "Your factory runs 3 shifts. You currently take 2 grab samples per shift for welding fume (hexavalent chromium). True mean peak = 4.8 µg/m³, SD = 3.2 µg/m³. Action level = 2.5 µg/m³. How many total grab samples per week (6 days) to get the lower 95% CI bound above 2.5 µg/m³? (Use 1.96 for z-score)",
+       "answer": 8.0,
+       "tolerance": 0.25,
+       "unit": "samples",
+       "explain": "You need 8 samples/week. At 2/shift × 3 shifts × 6 days = 36 samples, you're oversampling the mean but still missing the 15-min peak during electrode change — just like the nail salon's 113 ppm spike.",
+       "hint": "Solve for n: 1.96 * SD / sqrt(n) < (mean - action_level). Plug in mean=4.8, SD=3.2, action=2.5."
+      }
+     ],
+     "words": [
+      {
+       "term": "TWA",
+       "means": "Time-Weighted Average — 8-hour exposure metric that smooths out peaks"
+      },
+      {
+       "term": "VOC",
+       "means": "Volatile Organic Compound — carbon chemicals that evaporate at room temperature"
+      },
+      {
+       "term": "Hierarchy of controls",
+       "means": "Ranking safeguards: elimination > substitution > engineering > admin > PPE"
+      },
+      {
+       "term": "Breakthrough curve",
+       "means": "How a filter's capture efficiency drops as it saturates over time"
+      },
+      {
+       "term": "Photoionization detector",
+       "means": "Real-time VOC sensor using UV light to ionize molecules"
+      }
+     ]
+    }
+   ],
+   "quiz": [
+    {
+     "q": "How can open-weight models like Kimi K3.1 or Tencent's Hy4 effectively restrict security capabilities if their parameters are fully downloadable?",
+     "options": [
+      "By surgically excising the specific neurons responsible for security knowledge",
+      "By using refusal training or preference alignment, meaning the latent capability remains and can be fine-tuned away",
+      "By deleting the pretraining data sources from the upstream servers",
+      "By permanently encrypting the model weights so certain tokens cannot be processed"
+     ],
+     "answer": 1,
+     "explain": "You cannot surgically remove distributed knowledge from a trained model; rather, labs use refusal training or preference alignment, meaning the underlying capability remains latent and easily recovered via fine-tuning.",
+     "segment": "Open AI models quietly dropping security skills"
+    },
+    {
+     "q": "What regulatory parallel does the podcast draw when an open-weight model drops a capability like vulnerability detection without a changelog?",
+     "options": [
+      "A component supplier quietly changing raw-material alloy composition without a Product Change Notification (PCN)",
+      "A cleanroom failing its annual environmental certification audit",
+      "A calibration laboratory drifting past its maximum permissible error limit",
+      "A manufacturing facility exceeding its permitted hazardous waste discharge limits"
+     ],
+     "answer": 0,
+     "explain": "Silently dropping a capability without notification is likened to a raw-material supplier quietly changing the alloy composition without a PCN, breaking downstream validation.",
+     "segment": "Open AI models quietly dropping security skills"
+    },
+    {
+     "q": "Why did the nail salon air-monitoring study argue that traditional risk assessments underestimate exposure?",
+     "options": [
+      "They rely on grab samples that completely miss the working hours",
+      "They only measure particulate matter rather than total volatile organic compounds",
+      "They smooth out spikes by focusing on daily averages, missing intermittent peak concentrations",
+      "They assume all technicians are wearing proper organic vapor respirators"
+     ],
+     "answer": 2,
+     "explain": "Traditional risk assessments often smooth out data into eight-hour time-weighted averages, missing the intermittent peaks and excursions where the actual dose accumulates.",
+     "segment": "What nail salon air tells us about chemical exposure limits"
+    },
+    {
+     "q": "According to the discussion on chemical exposures in nail salons, why are surgical and cloth masks ineffective against the detected solvent vapors?",
+     "options": [
+      "They lack activated carbon adsorption beds to capture volatile organic compounds",
+      "They are only designed to filter particulates, allowing vapor-phase organic molecules to pass straight through",
+      "They do not form an airtight seal around the breathing zone",
+      "They quickly degrade and break down when exposed to high concentrations of ethyl acetate"
+     ],
+     "answer": 1,
+     "explain": "Surgical and cloth masks are particulate filters; vapor-phase organic molecules pass right through them because it is a PPE-to-hazard mismatch.",
+     "segment": "What nail salon air tells us about chemical exposure limits"
+    }
+   ],
+   "transcript": "transcripts/ai_2026-11-07_evening_1225.txt"
+  },
+  {
    "file": "ai_2026-11-07_morning_1142.mp3",
    "title": "Morning - 7 Nov: Anthropic's merge velocity versus its open issue backlog",
    "label": "Saturday 07 Nov morning",
