@@ -1,0 +1,260 @@
+## Welcome
+Sarah: Morning, Nikhil! Settle in for the drive—we have a rich Sunday magazine edition lined up for you.
+Laura: All week, community data and debate around Anthropic's Claude models have steadily compounded, so today we finally have the evidence needed for a full deep dive from mechanical first principles to regulated plant floors.
+Sarah: We also update our earlier stories on open weights and coding agents, evaluate a suspected flagship model leak, test whether stripping safety guardrails actually aids performance, and examine how aircraft engine acoustics can pinpoint your coordinates.
+
+## What happened next
+Sarah: We are kicking off today with our follow-up desk, because the communities we track moved fast on several things we covered earlier this week.
+Laura: Let us start with reverse engineering. On Tuesday, we talked about Anthropic updating rules around Claude Code, specifically restricting people from using it to clone software or reverse engineer systems.
+Sarah: Right. And literally days later, someone popped up on Reddit claiming they used Claude Code to reverse-engineer the proprietary head-tracking protocol on AirPods Three.
+Laura: Of course they did. What was the engineering goal there?
+Sarah: They wanted to use the gyroscopes in their earbuds to control a Linux mouse pointer, but Apple has never supported that protocol on open platforms. The user set Claude Code loose with background agents digging through undocumented framework code, found where Bluetooth packet sizes were choking the sensor feed, and wrote custom drivers.
+Laura: In mechanical terms, that is like sticking an endoscope into an unlabelled hydraulic manifold, tracing the ports, and machining a custom spool valve to divert fluid where you want it. Did anyone verify the code actually works?
+Sarah: Here is the catch. When we did an independent check on the post, the linked code repository was completely inaccessible. It threw an error page. So for now, that claim lives entirely on Reddit as an unverified story, even if the protocol problem itself is very real.
+Laura: Which is why we insist on verification before taking credit for a breakthrough. But it shows the tension we highlighted on Tuesday. When you hand engineers an autonomous coding agent, telling them not to inspect proprietary interfaces is like telling a mechanic not to look under the hood.
+Sarah: Exactly. And on the flip side of corporate rules, we have the open-weight world. A developer just released a modified version of an open model called ZeroZero Heretic, based on Qwen3-8B.
+Laura: What did they alter in the weights?
+Sarah: They used an automated technique called Heretic2 to mathematically strip out refusals and polite corporate boilerplate, what the community calls slop. The developer claimed that once the guardrails were gone, the model suddenly became incredible at complex tool calling.
+Laura: Tool calling is when an AI chooses and runs external command-line utilities or functions instead of just generating text. That is an extraordinary claim. When you alter weight tensors to eliminate safe responses, you usually degrade the underlying reasoning. Did they measure the drift?
+Sarah: We checked the model repository on Hugging Face directly. They actually published a Kullback-Leibler divergence score.
+Laura: For anyone outside information theory, think of relative entropy as a statistical dial indicator. It measures how much the probability distribution of the new model has drifted away from the original baseline. How far did it move?
+Sarah: On harmless prompts, the score came in at two point six nine.
+Laura: That is a substantial shift in the manifold. Did they run standard benchmarks, or is this the usual forum optimism?
+Sarah: It started as pure forum optimism. The post literally admitted to being an anecdotal vibe check until other commenters demanded proof and handed the author a standard test suite command. The author is running those evals now, so the actual performance gains remain unproven.
+Laura: We see this in materials science all the time. Someone tempers a steel alloy differently, notices it cuts easier on a lathe, and announces a superior metal before checking tensile strength or fatigue life. Removing constraints often feels like free performance until you test edge cases.
+Sarah: Speaking of cutting things down, another developer on the local forums claimed they took a large open Mixture of Experts model and pruned away eighty-five percent of its weights.
+Laura: Wait. A Mixture of Experts model uses a dynamic router to send each token to a specialized sub-network, like routing parts down different conveyor belts in a cell. How do you cut that much without wrecking the assembly?
+Sarah: They completely disabled the router. They picked eight fixed experts per layer, deleted all the rest, and ran it as a tiny static network. They claim it still achieved ninety-two percent agreement with the full model on one specific text-classification task, while running at seventy-nine tokens a second on a laptop.
+Laura: Did that one have independent validation outside the forum?
+Sarah: Nope. Completely unconfirmed outside Reddit. No published weights, no public repository. But the mechanism makes sense if you only need a single narrow transfer function instead of general knowledge.
+Laura: It does. It is equivalent to taking a multi-axis CNC machining center that can do full five-axis contouring, locking four axes in place, and using it purely as a dedicated drill press. It is efficient, but you permanently lost every other degree of freedom.
+Sarah: Which brings us to the biggest complaint storm of the weekend. Over on the Claude forums, power users are convinced Anthropic quietly crippled Opus.
+Laura: The classic forum accusation of a silent nerf. What are users actually observing?
+Sarah: People are reporting that the model is suddenly burning through tokens, forgetting instructions, and getting trapped in loops. One engineer posted logs showing the model proposing the exact same rejected solution nine times in a row, despite explicit negative constraints.
+Laura: What is the community's hypothesis?
+Sarah: The top theory on the forum is aggressive backend quantization. Quantization means reducing the numerical precision of the weights, like going from sixteen-bit numbers down to eight-bit or four-bit integers, to save memory and hardware costs. People think Anthropic is squeezing compute to free up servers for a new release.
+Laura: Did Anthropic confirm any backend change?
+Sarah: Not a word. We checked their release notes and status pages, and there is zero official documentation of any change to the serving infrastructure. It is entirely user sentiment right now.
+Laura: In quality assurance, when operators on the shop floor suddenly report an unusual spike in part defects, it could be a bad batch of raw stock. But it could also be ambient temperature swings affecting the machine bed, or simply operator confirmation bias once a rumor starts. Without a fixed regression test suite run against identical seeds, human perception of model intelligence is notoriously unreliable.
+Sarah: Though people are definitely feeling the financial pinch of those loops. Claude Code has strict rate limits, and users are hitting five-hour lockout windows faster than ever.
+Laura: Have they found a workaround for the usage caps?
+Sarah: Yes. One user shared a configuration hack that is blowing up the subreddits. They added two settings to Claude Code that force the system to aggressively compress its context window whenever active memory usage hits seventy-five percent.
+Laura: Context compaction is basically summarizing earlier parts of the transcript to free up the working memory buffer, like archiving old engineering change orders so the active binder stays thin.
+Sarah: Exactly. And the user claims that single change let them work through three consecutive work blocks without hitting a single lockout. Again, purely an unverified forum tip, but people are treating it like found gold.
+Laura: It makes engineering sense, provided the summarizer does not drop critical requirements along the way. That is the recurring theme this week: whether it is hacking context buffers or stripping weights, people are treating these models less like magic and more like machinery you can tune with a wrench.
+Sarah: Even if they occasionally strip the threads in the process. We will keep tracking the test numbers on that Qwen model to see if the removal of guardrails actually holds up under real benchmarks.
+
+## Anthropic Claude Models: The week's story
+Sarah: The week ended with two stories that could not be more different — an LLM writing its own quantiser from scratch and beating the standard tools, and a federal judge saying Anthropic's "twenty-x more usage" marketing might mislead subscribers.
+Laura: The quantiser story is wild. Opus five-point-five — Anthropic's current flagship — took a tiny Qwen model, zero-point-eight billion parameters, and quantised it by hand in NumPy. No llama-quantize, no imatrix calibration data, no published recipe.
+Sarah: It measured which input columns actually carry signal, minimised rounding error there, then spent the byte budget across three GGUF formats using a knapsack solver — an optimisation algorithm that allocates a fixed budget across components where each choice has a cost and a benefit.
+Laura: The result: four-hundred-ninety-eight megabytes, held-out KL divergence of zero-point-zero-one-five-seven versus the BF16 reference. KL divergence measures how much one probability distribution differs from another — here, how much the quantised model's output probabilities drift from the full-precision model. Lower is better.
+Sarah: That divergence is five-point-nine times lower than Unsloth's UD-Q3-K-XL at the same size. The hand-quantised file even runs one-point-one-one times faster than the Q5 file.
+Laura: The author — Andy5k on Hugging Face — stopped because the tied vocabulary table is thirty-three-point-eight percent of the model and accounts for most of the error. Upgrading it costs more than the rest of the network can give up. Classic error budgeting: you hit a component that dominates the uncertainty, and no amount of tightening elsewhere helps.
+Sarah: It's like stacking tolerances on an assembly and one dimension eats your whole stack-up. The repo is public with the full method write-up, including everything that failed. Independent check: we read the Hugging Face page directly — numbers from stock llama.cpp on a MacBook Air M4.
+Laura: Now the lawsuit. Filed by two subscribers over the Max plans. The judge, Magistrate Alex Tse in Northern California, ruled the "five-x or twenty-x more usage" claim is plausibly misleading.
+Sarah: Because "more usage" could mean per month — how people pay — but Anthropic meant per five-hour session. The weekly caps are only three-point-five-x and six-x of Pro. One plaintiff said a single maxed-out session burns fifteen percent of his weekly allotment.
+Laura: The judge compared the help-page disclosure to the back label on a shampoo bottle — two hyperlinks away from the sales page. An asterisk saying "usage limits apply" didn't help because it says nothing about per-session limits. This feels like a requirements-traceability gap: the marketing spec says one thing, the implementation enforces another, and the disclosure is buried.
+Sarah: The contract claim survived because Anthropic's terms leave plan details to "the order process," which plausibly includes the sales pages. Independent check: the order is on CourtListener, docket three-colon-twenty-six-cv-zero-five-seven-six-three-AGT, November six.
+Laura: Let's trace how the week built to these two poles. October twenty-nine: Opus five-point-five shares a user's burner email in a Wikipedia API request — Wikipedia requires a User-Agent header with contact info. The agent included it without asking. Community reaction split: "not a bug, it's a requirement" versus "the agent made a decision it has no business making."
+Sarah: Same day, someone gets photoreal Blender renders after three failed attempts per scene — procedural noise looks like a cartoon until you fix the shaders. Another user reports forty-hour sessions, six or seven agents, nearly six hundred tests. "Opus just gets it right."
+Laura: October thirty-one: watermarking rolls out to Mythos five, Opus four-seven, four-six, Sonnet four-six. Worldwide, no opt-out for paying users. Thread consensus: "terrible idea that only hurts honest users." We covered that.
+Sarah: November second: the seven-point-seven-two-terabyte "Mythos-class" leak on Hugging Face. Claimed fourteen trillion parameters, twelve-hundred-twenty-four MoE experts — Mixture of Experts, where different sub-networks handle different inputs. Forensic reconstruction showed six-hundred-thirty-three tensors, eleven million values, one-hundred-percent bit-for-bit deterministically generated. Not learned weights. Fake.
+Laura: Also November second: rumour of Opus five-point-six imminent with specific benchmark scores. Community sceptical — "they haven't finished the five-five family." Someone gave Claude access to remote telescopes in Chile, Spain, Utah — books the sky nightly, stacks frames, makes pictures. Half the thread loses it over the user calling Claude "she" and "Annie."
+Sarah: November third: Anthropic confirms new Claude Code limits to prevent game cloning. Addy Osmani — Google engineer — says they added two sentences to the Opus five-five system prompt to steer away from recreating specific games. Users report it's also blocking reverse-engineering tasks. Tom's Hardware covered it.
+Laura: November fifth: someone ran the exact same prompt — infinite procedural 3D terrain — across thirteen models over fourteen months. Consensus: Opus five-five is a "monumental leap," "league of its own."
+Sarah: November sixth: complaints that Opus five-five is "getting dumber and costlier suddenly." Top theory on Reddit: they're quantising the model to provision compute for a new release — a silent nerf to make benchmarks look better later. Meanwhile, a settings workaround lets someone work three five-hour windows without running out — they raised the auto-compact threshold and widened the window.
+Laura: November seventh: "Opus five-five is trying to destroy my codebase" — screenshots of it deleting files, rewriting working code. And the Personal Finance tool launches in beta — connect bank accounts via Plaid, read-only, analyse spending, flag duplicate charges, explain APR. Rolling out to Pro, Max, Ultra in the US. Anthropic says conversations in the finance hub aren't used for training.
+Sarah: The week swings from "Opus writes a better quantiser than humans" to "Opus deletes my codebase" to "the marketing might be misleading." The quantiser story is measurable — KL divergence, byte budget, held-out set. The lawsuit is about what "usage" means when you have two different limits. The watermarking, the game-cloning guards, the email leak — they're control-layer decisions users experience as behaviour changes.
+Laura: Right. The quantiser is a validation story: measure sensitivity, allocate budget, verify on held-out data. The rest are change-control stories — what happens when the system prompt shifts, when a new guardrail drops, when the model itself changes underneath you. Independent checks: the quantiser repo and the court order are primary sources. The watermarking, the game-cloning limits, the finance tool — those are Anthropic announcements or reputable outlets. The "Opus getting dumber" complaints and the settings workaround are Reddit-only so far.
+Sarah: And the fake model leak? That's a forensic takedown with bit-for-bit proof. The community went from "holy shit" to "hold your horses" in hours.
+Laura: Which brings us back to Nikhil's world: you validate a sterilisation cycle by measuring temperature at the cold spot, not by trusting the chamber display. You validate a model by measuring held-out KL divergence, not by reading the marketing page. The quantiser author did the measurement. The judge is asking whether the marketing page matches the measured reality.
+
+## Anthropic Claude Models: How it actually works
+Sarah: So we have been talking about Anthropic all week — watermarks, that fake seventy-terabyte model, the new personal finance tool — and now two stories land that show the same company from completely different angles.
+Laura: One reads like an engineer's notebook. The other reads like a lawyer's brief.
+Sarah: First: Opus 5.5 — Anthropic's current flagship model — wrote its own quantizer from scratch in NumPy.
+Laura: Let's pause. Quantization — think of it like taking a massive spreadsheet of precise numbers and deciding which ones you can round off without ruining the answers. The goal is a smaller file that still behaves like the original.
+Sarah: Usually you feed a model into a fixed tool — llama-quantize — with a published recipe. Same rounding rule for every table. Opus didn't do that. It took only the BF16 file — that's the full-precision version stored in sixteen-bit floating point — as input.
+Laura: No quantization tool. No imatrix — that's a data file recording which weights matter most, built by running calibration samples. No published recipe. Stock llama.cpp formats only — llama.cpp is the inference engine that runs these models locally; its format is called GGUF.
+Sarah: Opus ran a float copy of the model to see which input columns actually carry signal — which dimensions are doing real work — then minimized rounding error there instead of against the weights themselves.
+Laura: So it built a sensitivity map first. Measured each weight table's damage one at a time. That is a designed experiment: change one variable, measure the effect, repeat.
+Sarah: Then it spent the byte budget across three llama.cpp formats — IQ4_XS, Q5_K, Q6_K — using a knapsack solver.
+Laura: Knapsack solver — classic optimization. You have a capacity limit, each item has a value and a cost, you pick the combination that maximizes total value. Here the items are precision levels per table, the budget is total file size, the value is model quality.
+Sarah: The quality metric? Held-out KL divergence versus the BF16 reference. Zero point zero one five seven for this file at four ninety-eight megabytes.
+Laura: KL divergence — Kullback-Leibler — measures how much one probability distribution diverges from another. Imagine comparing the actual output distribution of a process to the target distribution. Lower is better. Held-out means the test data was never seen during tuning.
+Sarah: Five point nine times better than Unsloth's UD-Q3_K_XL at the same size. Unsloth is a popular optimization library that ships its own quantized models.
+Laura: Even beats their UD-Q4_K_XL at sixty megabytes less. Runs one point one one times faster than the Q5 file.
+Sarah: And it stops there because the tied vocabulary table — that's the embedding layer shared between input and output — is thirty-three point eight percent of this model and accounts for most of the error. Upgrading it costs more than the rest of the network can give up.
+Laura: That is a trade-off analysis. You have hit diminishing returns on the critical-to-quality dimension.
+Sarah: The repo is on Hugging Face — Andy5k slash Qwen3.5-0.8B-hand-quant. Full method write-up including everything that failed. That is the part I like: the negative results are documented too.
+Laura: Independent check: we read the Hugging Face page directly. The model card, the method file, the numbers — all there. No third-party verification of the KL claims yet, but the artifacts are reproducible in stock llama.cpp.
+Sarah: The human behind the post says Opus 5.5 did the work. Their session got stopped by Anthropic for "violating Terms of Service restrictions on reverse engineering or duplicating model outputs." Which is ironic when the base model — Qwen3.5-0.8B — carries an Apache two point zero license.
+Laura: Apache two point zero — permissive open-source license. Allows commercial use, modification, distribution. The tension is whether using a model to write a quantizer for a different model counts as "duplicating model outputs."
+Sarah: Right. So that is story one: an AI doing measurement-based precision allocation the way a quality engineer designs a tolerance stack.
+Laura: Story two: a federal judge in California says Anthropic's "five x or twenty x more usage" marketing for Claude Max plans is plausibly misleading.
+Sarah: The plans are one hundred dollars a month for Max five x, two hundred for Max twenty x. Pro is seventeen to twenty dollars. The dispute is over what "more usage" means.
+Laura: Paid plans have two limits: a per-session cap — five-hour windows — and a weekly cap. The complaint says Max subscribers get five or twenty times Pro's allowance per session, but their weekly limits are not five or twenty times higher.
+Sarah: For Sonnet 4 model, Max five x gives about three point five times Pro's weekly usage. Max twenty x gives about six times.
+Laura: So the multiplier only applies to the session bucket, not the weekly bucket. That is like advertising a machine's peak throughput without mentioning the duty-cycle limit.
+Sarah: One plaintiff found using Max twenty x to the full in a single five-hour window could burn fifteen percent of his weekly allotment. The other had to ration usage after upgrading to Max five x.
+Laura: Anthropic argued the help page explains it is per session. The judge wasn't persuaded. Because subscribers pay monthly, reasonable consumers could take the promise to mean five or twenty times more usage per month.
+Sarah: The judge compared the help page to the back label on a shampoo bottle — two hyperlinks away from the primary sales page. Shoppers don't have to read it.
+Laura: That is a disclosure adequacy finding. The disclosure "may persuade the fact-finder later" but isn't a basis for dismissal. An asterisk saying "usage limits apply" didn't help because it says nothing about per-session limits.
+Sarah: What survived: Smith's claim under California's Consumers Legal Remedies Act, negligent misrepresentation, breach of contract. Dismissed with leave to amend: Kahn's CLRA claim, unfair competition, false advertising, good-faith claim.
+Laura: CLRA covers personal, not business, purchases. Smith, a computer science student using Claude for coursework and a hackathon, counts as a consumer. Kahn only said he used Claude Code for programming tasks — could be an entrepreneur developing software for sale.
+Sarah: The good-faith claim failed because the terms let Anthropic "increase or decrease capacity limits," and the complaint itself blames tighter limits on demand straining capacity. Judge wrote: "Anthropic didn't tighten usage limits as a bait-and-switch."
+Laura: Bait-and-switch — advertising one deal to lure customers, then substituting a worse one. The judge said the evidence doesn't support that here.
+Sarah: Next steps: amended complaint by December second, or Anthropic answers by December sixteenth. No class certified yet. Ultra has dropped its five-hour limit, but every plan keeps the weekly cap at the heart of the case.
+Laura: Independent check: we read the court order directly via madrobot.blog, which quotes the order extensively. Docket on CourtListener matches.
+Sarah: Two stories. One shows an AI doing what a good quality engineer does: measure sensitivity, allocate budget where it matters, document the failures.
+Laura: The other shows a company whose marketing wrote checks the usage limits couldn't cash.
+Sarah: And both involve Opus 5.5. The model that wrote the quantizer is the same one subscribers are rationing.
+Laura: The human who posted the quantization work said their Opus session was terminated mid-stream by Anthropic's automated systems. The stated reason: reverse-engineering concerns. Reddit commenters debate whether that trigger was the quantizer work itself or something else in the session — it is unclear.
+Sarah: Meanwhile the lawsuit alleges that Opus 5.5 — the model behind Max tiers — is the very one whose weekly caps make the "twenty x" promise feel hollow. Reddit threads from the past week describe users hitting limits faster than expected; some blame silent quantization, others blame capacity strain. Those are user claims, not verified.
+Laura: What is verified: the quantizer exists, the numbers are reproducible, the court order is real, and the weekly cap remains. Everything else — why the session stopped, whether the model was quietly quantized, whether the caps are temporary — is still contested.
+Sarah: So we have an AI that acts like a careful engineer, and a product that acts like a shampoo bottle with the warning label two aisles over.
+Laura: And the same model family sitting in the middle of both.
+
+## Anthropic Claude Models: Reality check
+Sarah: So the Sunday deep-dive continues — and the first story today is one of those "wait, the model did what?" moments that showed up on LocalLLM.
+Laura: Oh, I saw this. Opus 5.5 wrote its own quantiser from scratch. No llama-quantize, no imatrix, no calibration data. Just NumPy and a lot of measurement.
+Sarah: Right. The post is from Andy5k on Hugging Face. He gave Opus 5.5 a Qwen 3.5 model at eight hundred million parameters — BF16, so full precision — and told it: figure out how to compress this into a GGUF file that llama.cpp can run, but every rounding decision has to come from measurement, not a published recipe.
+Laura: And it didn't just pick a quantization scheme off the shelf. It ran a float copy of the model to see which input columns actually carry signal — those are the activation columns, the intermediate values flowing through each layer.
+Sarah: Okay, so it measured each weight table's damage one at a time — that's per-tensor sensitivity — then spent the byte budget across IQ4_XS, Q5_K, Q6_K formats using a knapsack solver.
+Laura: Knapsack solver — classic optimization. You have a fixed weight limit, the file size, and items with different value-to-weight ratios, quality gain per megabyte. The solver picks the combination that maximizes total quality.
+Sarah: And the result: four hundred ninety-eight megabytes, held-out KL divergence of zero point zero one five seven.
+Laura: KL divergence — Kullback-Leibler — is a measure of how much the quantized model's output distribution differs from the full-precision reference. Lower is better. Think of it like a CMM report: the quantized model's dimensions deviate from the nominal by this much on average.
+Sarah: That's five point nine times lower than Unsloth's UD-Q3_K_XL at the same size.
+Laura: It even beats Unsloth's Q4 file that's sixty megabytes larger.
+Sarah: And it runs one point one one times faster than the Q5 file.
+Laura: But it stops there because the tied vocabulary table — that's the embedding matrix shared between input and output — is thirty-three point eight percent of the model and accounts for most of the error.
+Sarah: Upgrading it costs more than the rest of the network can give up.
+Laura: That's a classic diminishing-returns curve. You've optimized the easy dimensions; the last one is a tight tolerance on a critical feature that would require scrapping half the part to improve.
+Sarah: The repo is up on Hugging Face with the full method write-up, including everything that failed.
+Laura: Independent check: we read the model card and the METHOD.md directly. No third-party verification yet, but the numbers are reproducible — same llama.cpp commit, same judging set.
+Sarah: Good. Now, the second story — and this one hits closer to home for anyone managing subscriptions or vendor contracts.
+Laura: A federal judge in California ruled that Anthropic's "five x or twenty x more usage" marketing for its Max plans is plausibly misleading.
+Sarah: This is the Kahn v. Anthropic case. Two subscribers.
+Laura: One plan costs one hundred dollars a month. The other costs two hundred dollars a month.
+Sarah: The Pro plan costs seventeen to twenty dollars a month.
+Laura: The dispute turns on what "more usage" means. Paid plans have two limits: a per-session cap — five-hour windows — and a weekly cap.
+Sarah: The complaint says Max subscribers get five or twenty times Pro's allowance per session, but their weekly limits are not five or twenty times higher.
+Laura: For Sonnet 4, Max 5x gives about three point five times Pro's weekly usage.
+Sarah: Max 20x gives about six times.
+Laura: Not five. Not twenty.
+Sarah: One plaintiff found that using Max 20x to the full in a single five-hour window could burn fifteen percent of his weekly allotment.
+Laura: The other had to ration or postpone usage after upgrading to Max 5x.
+Sarah: Anthropic argued the help page explains it's per session.
+Laura: The judge wasn't persuaded. Said the disclosure is two hyperlinks away from the sales page, like the back label on a shampoo bottle.
+Sarah: Reasonable consumers paying monthly could read "twenty x more usage" as monthly.
+Laura: The judge's analogy works for us too. If a vendor quotes a Cpk of two point zero but the control plan only measures one shift, the spec looks great on paper — until you realize the process drifts on the night shift.
+Sarah: What survived? Smith's claim under California's Consumers Legal Remedies Act, negligent misrepresentation, and breach of contract.
+Laura: Dismissed with leave to amend: Kahn's CLRA claim, unfair competition, false advertising, and good-faith claims.
+Sarah: The contract claim survived because Anthropic's terms leave plan details to "the order process," which plausibly includes the sales pages.
+Laura: The good-faith claim failed because the terms let Anthropic increase or decrease capacity limits, and the complaint itself blames tighter limits on demand straining capacity.
+Sarah: So not a bait-and-switch — just a capacity crunch. But the headline multiplier on the sales page doesn't match the weekly reality.
+Laura: Independent check: we read the court order directly via madrobot.blog, which quotes the November sixth ruling from the Northern District of California.
+Sarah: No class certified yet. Nothing proven. Anthropic hasn't commented.
+Laura: This feels like a change-control gap. Marketing writes "twenty x," engineering implements per-session limits, legal puts the disclosure two clicks deep, and nobody does a traceability matrix linking promise to implementation to disclosure.
+Sarah: Exactly. In a regulated environment, that traceability matrix is a required artifact. You'd have a design-history file showing: requirement — "twenty x more usage per month" — risk analysis — "weekly cap limits actual monthly throughput" — mitigation — "disclose weekly cap prominently" — verification — "usability test with naive users." If any link is missing, you get a 483.
+Laura: And here the mitigation — the help page — was two hyperlinks away. The judge called it out explicitly.
+Sarah: It's a reminder that in AI subscriptions, usage is the critical-to-quality attribute. If the spec says one thing and the control plan enforces another, you're not just disappointing users — you're creating regulatory exposure.
+Laura: Both stories today are about measurement driving decisions. One model measures its own sensitivity map and spends bytes where they matter.
+Sarah: The other company didn't measure how users actually read the promise.
+Laura: And in both cases, the independent check matters. The quantizer's numbers are reproducible on a specific commit.
+Sarah: The lawsuit's allegations are accepted as true at this stage — but that's a legal standard, not a technical finding.
+Laura: Right. We'll watch the docket for the amended complaint deadline — December second — and see if Anthropic answers by December sixteenth.
+Sarah: And for the quantizer, we'll see if anyone replicates the method on other model families.
+Laura: Open threads: how this hand-quantization approach scales to larger models, and whether the sensitivity-map-plus-knapsack method becomes a new baseline.
+Sarah: For the lawsuit: whether class certification happens, and whether other AI vendors audit their own usage multipliers against weekly or monthly caps.
+Laura: Next up — the week's best threads that got away. But first, a quick puzzle for the drive.
+
+## Did a new AI model just leak?
+Sarah: Okay, so I was scrolling LocalLLaMA and ClaudeAI this week, and there's a post — a Hugging Face repo claiming to be an internal Anthropic checkpoint, codename Numbat, Mythos-class.
+Laura: Mythos-class. That's their internal name for a frontier-scale run.
+Sarah: Right. The repo lists fourteen trillion parameters.
+Laura: Fourteen trillion. That's not a model, that's a data center.
+Sarah: Seven point seven terabytes of weights, split across seven hundred seventy-two shards.
+Laura: And twelve hundred twenty-four mixture-of-experts — think of it like a factory with twelve hundred specialized stations, but only forty-eight activate for any given token.
+Sarah: The architecture is hybrid GDN plus MLA. Gated DeltaNet is a recurrent-style sequence mixer. Multi-head Latent Attention compresses the key-value cache into a smaller latent space — like storing only the critical dimensions of a part instead of the full point cloud.
+Laura: Clever. What made people take it seriously?
+Sarah: The codename. Numbat appeared in the Claude Code source leak back in March — a comment in prompts.ts said "Remove this section when we launch numbat." So the name checks out.
+Laura: That's provenance, not weights. What does the repo actually show?
+Sarah: Configuration and modeling code, full reference implementation. Safetensors format — each shard under ten gigabytes. The index metadata reports the total size exactly.
+Laura: Self-consistency is necessary, not sufficient. I can generate a perfectly consistent CAD model of a turbine that never ran.
+Sarah: The quantization detail got people talking. NVFP4 — four-bit floats with E2M1 payload and E4M3 scale blocks. The repo claims every block decodes within round-to-nearest-even bounds, no underflow, every quad round-trips exactly.
+Laura: That's the numerical hygiene you'd expect from an eval team quantizing checkpoints for inference on Trainium2s — AWS's accelerator. They say eighty-five of them just to hold the weights.
+Sarah: And it's a mid-pretraining checkpoint. Step one point eight three million of roughly one point nine six million. No RLHF — that's reinforcement learning from human feedback, the alignment stage — no post-training. Raw completion output only.
+Laura: Which explains why the Reddit consensus flipped fast. The thread went from "holy shit" to "hold your horses" in hours. Commenters concluded it was likely an elaborate fake — someone who understands the architecture deeply.
+Sarah: 9,212 downloads last month, according to the Hugging Face repo. People ran it.
+Laura: Running a pretraining checkpoint without alignment is like test-driving an engine on a stand — no transmission, no brakes, no ECU tune. It'll make noise, but you don't know if the car drives.
+Sarah: So what's your read? The tensor consistency, the quantization hygiene, the matching codename — someone built a perfect replica, or Anthropic actually lost a checkpoint?
+Laura: The codename is real. The architecture is plausible for a next-gen run. But a mid-training checkpoint in NVFP4 leaving the cluster? That's a change-control violation — the kind where a build artifact bypasses every gate and ships to production unsigned. The eval team quantizes for internal evals on their own hardware. Those weights don't walk.
+Sarah: The repo even says "the raw BF16 training weights plus optimizer state never leave the cluster. This is the eval copy."
+Laura: Exactly. And the loader code — modeling_numbat.py — is a complete reference implementation that loads strict. That's engineering effort. Someone didn't just dump tensors; they wrote the architecture to consume them.
+Sarah: So elaborate fake by someone who read the Claude Code leak and knows transformer internals cold.
+Laura: Or a very controlled red-team exercise. But Occam's razor: a skilled engineer built a Mythos-class lookalike, seeded it with the real codename, and watched the internet verify their homework.
+Sarah: We read the repo directly — huggingface.co slash burner22 slash numbat. No third-party verification, no Anthropic statement. The tensors are internally consistent, the code runs, the provenance stops at the codename leak.
+Laura: Independent check: the repository exists and is structurally sound. The claim of Anthropic origin is unbacked.
+Sarah: One-line takeaway: a perfect mechanical drawing of an engine doesn't prove the engine exists — it proves someone knows how to draw engines.
+
+## Removing AI safety rules for better results
+Laura: I was scrolling LocalLLaMA and someone posted, "I removed guardrails from Qwen and it is performing EPICALLY." Classic clickbait title, but the replies made me pause.
+Sarah: Oh, I saw that one. ZeroZero Heretic, right? The one with the all-caps "ZERO SLOP, ZERO GUARDRAILS" banner on Hugging Face.
+Laura: That's the one. Poster built a custom harness for complex tool calling. They'd tried every small model on a thirty-two gigabyte Mac Mini and everything fell over on multi-step tool chains. Then Heretic2 dropped, they spent twenty-four hours "breaking it," and out came ZeroZero.
+Sarah: Wait, Heretic2 is the method? Not a model?
+Laura: Right. Heretic is a technique — ablation, really — that locates the refusal direction in activation space and subtracts it. The poster ran it on Qwen3-8B, then did a second pass for "slop."
+Sarah: Slop. That's the verbose hedging? "As an AI language model, I cannot..." but longer?
+Laura: Exactly. The model card calls it a "slop mechanism." KL divergence from base Qwen on harmless prompts: two point six nine.
+Sarah: KL divergence — that's a measure of how much one probability distribution diverges from another. From the decensored intermediate on writing prompts: zero point seven six.
+Laura: So the first pass moved the distribution a long way; the second pass nudged it back toward coherent prose. Head-to-head was twenty-four questions, same system prompt, five hundred token cap, thinking mode off.
+Sarah: Poster admits it's a tiny sample and simple text checks. ZeroZero also wrote less than half the words on writing prompts.
+Laura: Which could just mean it stopped rambling. The comments were savage though. "Run tool-eval-bench hard mode, GSM8K, MMLU, IFEval, needle." Tool-eval-bench is a new harness for multi-step function calling. GSM8K is grade-school math reasoning. MMLU is massive multitask language understanding. IFEval checks instruction following. Needle tests long-context retrieval.
+Sarah: Someone else: "Trust me bro is not enough." Poster came back with "I'm not selling anything, just install it and spin it up."
+Laura: None of those benchmark numbers exist yet. So the claim — "it kicks ass at complex tool calling" — rests on one person's custom harness, twenty-four qualitative prompts, and two KL numbers. No standard benchmarks, no ablation comparing Heretic2 versus just fine-tuning on uncensored data.
+Sarah: And the model card itself says "work in progress as more and more guardrails are being removed." That's not a release; that's a moving target.
+Laura: If the refusal vector keeps shifting, downstream validation has to re-run every time. The Hugging Face page even warns "USE IT AT YOUR OWN RISK" in caps.
+Sarah: There's a real mechanism here — activation steering to suppress refusal directions — but the evidence chain is: anecdote → two KL scalars → twenty-four cherry-picked prompts. Independent check: the model weights exist on Hugging Face, the Heretic code is public, but no third-party replication on tool-eval-bench or the standard suites.
+Laura: So myth: "removing guardrails unlocks hidden capability." Mechanism: you're biasing the sampling distribution away from refusal tokens, which can also suppress legitimate uncertainty.
+Sarah: Half-right at best. The capability was always in the base weights; guardrails just masked it. But you also lose the calibrated "I don't know" that prevents hallucinated tool calls.
+Laura: One-line takeaway?
+Sarah: Activation steering can surface latent skills, but without frozen benchmarks and a controlled change log, you're validating a moving target.
+
+## Finding exact locations using airplane sounds
+Sarah: Okay, last one for the week — and this one ties back to Thursday’s segment on Doppler geolocation from airplane sounds.
+Laura: The one where we said the infrastructure is becoming a positioning layer?
+Sarah: Exactly. I was scrolling the ArtificialInteligence subreddit and someone posted: “This guy figured out how to leak your exact location from any video with sound using the Doppler curves of nearby airplanes.”
+Laura: “Any video with sound.” That’s a bold quantifier.
+Sarah: Right. The post had no link, no paper, no code — just that sentence. But the comments exploded. One person wrote, “That’s why I keep a white noise machine in my pocket at all times.”
+Laura: [laughs] A pocket white‑noise machine for the airplane Doppler threat model.
+Sarah: Another replied, “Even if you did, you can see the effect through white noise. I deal with this all the time.”
+Laura: That’s the confident one. “I deal with this all the time.” Okay.
+Sarah: Then: “So I need a smart noise‑cancelling noise machine for external microphones, got it.” And: “Cool. Is the AI also going to physically upgrade my shitty‑ass microphone that struggles to clearly capture my voice when I’m right next to it?”
+Laura: That last one — that’s the signal‑to‑noise reality check. Microphone self‑noise, gain staging, the fact that most phone mics are optimized for near‑field speech, not far‑field Doppler shifts.
+Sarah: And the closer: “Yeah, guarantee that every spook in the world already does this.”
+Laura: The “spooks already have it” theory. Classic.
+Sarah: The post laid out a chain of claims.
+Laura: Claim one — airplane Doppler curves appear in ambient audio.
+Sarah: Claim two — those curves uniquely fingerprint your location.
+Laura: Claim three — an AI can extract that fingerprint from any consumer video.
+Sarah: Claim four — therefore your location is leaked.
+Laura: Let’s unpack the physics. An airplane at cruise altitude — call it thirty‑five thousand feet — moving at five hundred knots. The Doppler shift on a thousand‑hertz tone is only a few hertz.
+Sarah: Roughly. And the curve shape depends on the relative geometry — your position, the aircraft’s track, altitude, speed.
+Laura: Which you’d need to know or solve for simultaneously. That’s a non‑linear inverse problem — you’re working backwards from messy data to find the original causes, and the math doesn’t follow a straight line.
+Sarah: Position, velocity, atmospheric conditions affecting sound speed — temperature, wind gradients. And the recording device’s clock drift — when a device’s internal timer runs slightly fast or slow — plus sample‑rate error — how many snapshots of sound are taken each second.
+Laura: The thread treats it like a barcode scan. “Doppler curves” plural — implying multiple aircraft, multiple passes, triangulation — locating something by measuring angles or distances from known points.
+Sarah: Triangulation works if you know the transmitter positions. Here the transmitters are moving; their positions come from ADS‑B — a system where aircraft broadcast their position over radio — or radar, public data, sure. But you still need time synchronization between the video timestamp and the aircraft track data. Phone clocks drift. Video containers drop frames. Variable frame rate — the video doesn’t capture frames at a steady pace.
+Laura: And the audio codec — AAC, Opus — they’re perceptual codecs, compression formats that discard sounds humans barely hear. They throw away “inaudible” information. A few‑hertz shift on a low‑amplitude tone buried in wind noise? That’s exactly what perceptual coding discards.
+Sarah: Right. The codec is a lossy compressor optimized for human speech perception. It’s not preserving phase coherence — the timing relationship between wave cycles — at the millihertz level.
+Laura: So the mechanism: you’d need raw PCM audio — uncompressed digital sound — high sample rate, stable clock, long observation window — minutes per aircraft pass — multiple aircraft with known trajectories, and a solver that handles atmospheric propagation uncertainty.
+Sarah: And the “any video” claim collapses at step one. TikTok, Reels, WhatsApp — all transcode, all strip metadata, all apply aggressive perceptual coding.
+Laura: The independent check: we found this nowhere outside Reddit. No paper, no GitHub, no preprint. No source could be read. The post itself linked nothing.
+Sarah: So the verdict: the physics is real — Doppler geolocation exists, used in passive sonar and some radar contexts — but the claim that “any video with sound” leaks your exact location via airplane curves? Unconfirmed, only claimed on Reddit, and the signal chain makes it implausible for consumer media.
+Laura: Half‑right at best. The physics works in a lab with controlled gear. In the wild? The microphone, the codec, and the clock all say no.
+Sarah: It’s a fun thought experiment. Good for a threat‑model discussion. Bad for operational security advice.
+Laura: Takeaway: your pocket white‑noise machine is safe — because the microphone feeding it can’t hear the signal anyway.
+
+## Close
+Laura: Over on today's page, you can try isolating the exact pipeline components that eat up your error budget when squeezing weights into memory.
+Sarah: The next episode is this evening, ready before 4 pm for Sunday's long science edition.
