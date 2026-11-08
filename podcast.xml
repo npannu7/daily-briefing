@@ -8,9 +8,30 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Sun, 08 Nov 2026 07:09:14 GMT</lastBuildDate>
+<lastBuildDate>Sun, 08 Nov 2026 07:55:03 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Sunday - 8 Nov: AI Safety and Alignment</title>
+<description>Sunday edition - Sunday, 8 November 2026
+Sunday edition: AI Safety and Alignment - plus the week's best threads that got away
+
+00:44  What happened next
+09:14  AI Safety and Alignment: The week's story
+17:19  AI Safety and Alignment: How it actually works
+30:42  AI Safety and Alignment: Reality check
+44:00  Clearing Brain Waste While We Are Awake
+47:18  Growing Up with Self-Absorbed Parents
+51:43  Can Useless Body Parts Evolve Again
+
+Puzzles: The Verification Chain That Breaks at 48%, The Confidence Gauge That Reads the Furnace Wall, The Pipeline That Uses a Model With a Broken Interlock - puzzles, quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
+Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (156 threads)</description>
+<pubDate>Sun, 08 Nov 2026 12:39:37 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-11-08_evening_1239.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-08_evening_1239.mp3" length="25856550" type="audio/mpeg"/>
+<itunes:duration>3231</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Sunday - 8 Nov: Anthropic Claude Models</title>
 <description>Sunday edition - Sunday, 8 November 2026
