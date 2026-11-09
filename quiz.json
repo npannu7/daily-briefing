@@ -4,6 +4,229 @@
  "repo": "npannu7/daily-briefing",
  "episodes": [
   {
+   "file": "ai_2026-11-09_evening_1220.mp3",
+   "title": "Evening - 9 Nov: Apple researchers run a humanoid robot on a Mac mini",
+   "label": "Monday 09 Nov evening",
+   "date": "2026-11-09",
+   "edition": "evening",
+   "published": "2026-11-09T12:20:53.158100+05:30",
+   "duration": 1117,
+   "theme": "Robotics validation on local compute; grid-scale energy transition claims under scrutiny",
+   "writer": "nemotron-3-ultra-550b-a55b (free)",
+   "voices": "Fish Audio (free)",
+   "deep_dive": false,
+   "segments": [
+    {
+     "title": "Apple researchers run a humanoid robot on a Mac mini",
+     "category": "thread"
+    },
+    {
+     "title": "What it would actually take to run the world on wind, water, and solar",
+     "category": "thread"
+    }
+   ],
+   "lessons": [
+    {
+     "title": "The Mac mini Brain Squeeze",
+     "segment": "Apple researchers run a humanoid robot on a Mac mini",
+     "steps": [
+      {
+       "type": "explore",
+       "text": "Configure the model parameters and quantization bits so the model fits within the 16 GB memory limit while keeping speed above 10 tokens per second.",
+       "inputs": [
+        {
+         "id": "P",
+         "label": "Parameters",
+         "unit": "billion",
+         "min": 7.0,
+         "max": 70.0,
+         "step": 1.0,
+         "value": 32.0
+        },
+        {
+         "id": "bits",
+         "label": "Bits per weight (quantization)",
+         "unit": "bits",
+         "min": 2.0,
+         "max": 16.0,
+         "step": 0.5,
+         "value": 16.0
+        }
+       ],
+       "outputs": [
+        {
+         "id": "size",
+         "label": "Memory needed (incl. ~10% extra)",
+         "unit": "GB",
+         "expr": "P*bits/8*1.1",
+         "digits": 1,
+         "lo": 1.9250000000000003,
+         "hi": 154.0
+        },
+        {
+         "id": "free",
+         "label": "Left over on Mac mini 16GB",
+         "unit": "GB",
+         "expr": "16-size",
+         "digits": 1,
+         "lo": -138.0,
+         "hi": 14.075
+        },
+        {
+         "id": "speed",
+         "label": "Tokens per second, at best",
+         "unit": "",
+         "expr": "800/(P*1*bits/8)",
+         "digits": 0,
+         "lo": 5.714285714285714,
+         "hi": 457.14285714285717
+        }
+       ],
+       "goal": {
+        "target": "size",
+        "min": 1.0,
+        "max": 14.0,
+        "text": "Get the required model size under 14 GB so it fits safely in memory.",
+        "success": "You found that quantization trades precision for memory capacity, letting massive models run on local silicon without hitting swap memory."
+       },
+       "template": "model_memory",
+       "view": {
+        "kind": "memory",
+        "size": "size",
+        "speed": "speed",
+        "vram": 16.0,
+        "device": "Mac mini 16GB",
+        "model": "Qwen local policy"
+       }
+      },
+      {
+       "type": "concept",
+       "text": "Quantization is like rounding your high-precision sensor readings to the nearest coarse tick: you lose a fraction of resolution, but your data pipeline speeds up and memory footprint plummets.",
+       "example": "Compressing 32-bit floating-point calibration curves down to 4-bit integers for an edge controller."
+      },
+      {
+       "type": "number",
+       "text": "If a 14 billion parameter model is quantized from 16-bit (2 bytes) down to 4-bit (0.5 bytes), what is the new model weight size in gigabytes?",
+       "answer": 7.0,
+       "tolerance": 0.05,
+       "unit": "GB",
+       "explain": "Fourteen billion parameters at 0.5 bytes per parameter equals 7 GB.",
+       "hint": "Multiply the number of billion parameters by the number of bytes per parameter (0.5 GB per billion)."
+      }
+     ],
+     "words": [
+      {
+       "term": "Quantization",
+       "means": "Compressing model weights from 16-bit or 32-bit floats to smaller integers (like 4-bit) to save memory."
+      },
+      {
+       "term": "Unified Memory",
+       "means": "A single memory pool shared directly between CPU, GPU, and NPU without copying over a bus."
+      },
+      {
+       "term": "Sim-to-Real",
+       "means": "Transferring a control policy trained purely in a physics simulator to a physical machine."
+      }
+     ]
+    },
+    {
+     "title": "The Perfect-Foresight Trap",
+     "segment": "What it would actually take to run the world on wind, water, and solar",
+     "steps": [
+      {
+       "type": "choice",
+       "text": "A wind and solar grid simulation claims perfect stability using existing storage. But the model uses an optimization routine with exact weather forecasts for the entire year. What happens when you replace those exact forecasts with real-world forecasting error?",
+       "options": [
+        "The system adapts instantly with zero penalty",
+        "Unpredicted drops in generation trigger rapid frequency collapse unless cushioned by physical or synthetic inertia",
+        "The storage capacity automatically expands to absorb the variance"
+       ],
+       "answer": 1,
+       "explain": "Real grids lack crystal balls. Without real-time buffering or inertia, unexpected weather dips cause immediate frequency excursions.",
+       "hint": "Think about what happens in a factory when a supplier's shipment fails to arrive on Monday morning as promised."
+      },
+      {
+       "type": "concept",
+       "text": "Theoretical models assume you can schedule power flows with infinite precision. Real equipment deals with control-loop delays, ramping limits, and unexpected component faults.",
+       "example": "Running a chemical reactor based on a theoretical reaction rate without accounting for thermocouple lag and valve stiction."
+      },
+      {
+       "type": "order",
+       "text": "Put these stages of energy model validation in the correct chronological sequence from paper to reality.",
+       "items": [
+        "Theoretical energy-balance spreadsheet",
+        "Dynamic control-system simulation with noise",
+        "Hardware-in-the-loop inverter testbench",
+        "Continental-scale grid deployment"
+       ],
+       "explain": "You must verify basic energy conservation first, test control dynamics under noise, validate physical firmware on a bench, and only then risk real grids."
+      }
+     ],
+     "words": [
+      {
+       "term": "Perfect foresight",
+       "means": "An optimization assumption that knows future weather and load state without error."
+      },
+      {
+       "term": "Synthetic inertia",
+       "means": "Control-loop firmware that mimics the stabilizing physical mass of rotating generators."
+      }
+     ]
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What architectural feature of the Mac mini allowed the Qwen LLM weights and inference tensors to be processed without crossing a PCIe bus?",
+     "options": [
+      "A dedicated high-speed NPU interconnect bridge",
+      "Unified memory where CPU, GPU, and neural engine share one pool",
+      "Direct memory access channels linked to an external accelerator rack",
+      "A proprietary caching layer between the neural engine and system memory"
+     ],
+     "answer": 1,
+     "explain": "The Mac mini's unified memory lets the CPU, GPU, and neural engine share a single memory pool, meaning inference tensors never cross a PCIe bus.",
+     "segment": "Apple researchers run a humanoid robot on a Mac mini"
+    },
+    {
+     "q": "What critical risk was highlighted regarding the use of four-bit quantization in the robot's control loop?",
+     "options": [
+      "Quantization noise can cause a policy output LSB flip that unexpectedly reverses commands",
+      "It entirely eliminates the neural engine's native matrix multiplication capability",
+      "It causes permanent thermal damage to the Mac mini during sustained operation",
+      "It increases the model size beyond the sixteen-gigabyte memory threshold"
+     ],
+     "answer": 0,
+     "explain": "Four-bit weights introduce quantization noise, and if the policy head is overly sensitive, a single LSB flip could change a command like 'step left' to 'step right'.",
+     "segment": "Apple researchers run a humanoid robot on a Mac mini"
+    },
+    {
+     "q": "According to the discussion on Mark Jacobson's energy transition model, what major limitation applies to its use of perfect foresight optimization?",
+     "options": [
+      "It assumes real-time markets operate with identical pricing structures globally",
+      "It relies on infinite material reserves for rare earth mining",
+      "Real grids do not possess perfect foresight and must handle day-ahead markets and real-time balancing",
+      "It requires every wind turbine to use synchronous rotating mass generators"
+     ],
+     "answer": 2,
+     "explain": "Real grids operate with day-ahead markets and real-time balancing rather than the perfect foresight optimization used in his model.",
+     "segment": "What it would actually take to run the world on wind, water, and solar"
+    },
+    {
+     "q": "Why is the integration of inverter-based resources compared to a control-system stability problem?",
+     "options": [
+      "Inverters automatically generate their own synthetic inertia without any firmware programming",
+      "Thousands of inverters attempt to regulate frequency simultaneously, risking oscillation if tuning is uncoordinated",
+      "Inverters rely entirely on mechanical flywheels to absorb excess electrical energy",
+      "Grid-following inverters completely eliminate the need for voltage references during faults"
+     ],
+     "answer": 1,
+     "explain": "When thousands of inverters try to regulate frequency simultaneously without coordination, it creates control-system instability and oscillation.",
+     "segment": "What it would actually take to run the world on wind, water, and solar"
+    }
+   ],
+   "transcript": "transcripts/ai_2026-11-09_evening_1220.txt"
+  },
+  {
    "file": "ai_2026-11-08_evening_1239.mp3",
    "title": "Sunday - 8 Nov: AI Safety and Alignment",
    "label": "Sunday 08 Nov evening deep dive",
@@ -3247,468 +3470,6 @@
     }
    ],
    "transcript": "transcripts/ai_2026-11-02_evening_1648.txt"
-  },
-  {
-   "file": "ai_2026-11-02_morning_0846.mp3",
-   "title": "Morning - 2 Nov: Modifying Model Weights Without Retraining",
-   "label": "Monday 02 Nov morning",
-   "date": "2026-11-02",
-   "edition": "morning",
-   "published": "2026-11-02T08:46:15.582852+05:30",
-   "duration": 1119,
-   "theme": "Surgical weight modification in local models, and the physical engineering and sovereignty limits of edge surveillance hardware.",
-   "writer": "Gemini 3.8 Flash",
-   "voices": "Fish Audio (free)",
-   "deep_dive": false,
-   "segments": [
-    {
-     "title": "Modifying Model Weights Without Retraining",
-     "category": "concept"
-    },
-    {
-     "title": "Why a Police Chief Had to Physically Unplug His City's Cameras",
-     "category": "thread"
-    }
-   ],
-   "quiz": [
-    {
-     "q": "How does the 'Heretic' software modify an AI model's behavior without running traditional fine-tuning or backpropagation?",
-     "options": [
-      "It trains a secondary model to intercept and override outputs.",
-      "It edits the internal connection weights directly using directional ablation to make them orthogonal to a targeted behavior vector.",
-      "It flushes the residual stream and re-downloads compressed weights from the cloud.",
-      "It changes the loss function dynamically during runtime using gradient descent."
-     ],
-     "answer": 1,
-     "explain": "Directional ablation identifies the internal coordinate axis of a specific behavior and mathematically projects the weight matrices to sit at a right angle (orthogonal) to it, eliminating that behavior without a backward training pass.",
-     "segment": "Modifying Model Weights Without Retraining"
-    },
-    {
-     "q": "Why does Laura, speaking from an engineering perspective, compare widening ablation from rank-one paths to Arbitrary-Rank Ablation to widening a notch filter too much?",
-     "options": [
-      "It will cause the device to draw too much electrical current and trip a circuit breaker.",
-      "It will increase the manufacturing time and cost of producing the hardware.",
-      "It risks carving out broader multi-dimensional subspaces, accidentally removing entangled capabilities like conversational tact and calibrated uncertainty.",
-      "It introduces mechanical vibrations that loosen the housing bolts."
-     ],
-     "answer": 2,
-     "explain": "In high-dimensional activation spaces, concepts are deeply entangled; carving out broad multi-dimensional subspaces alters the geometric manifold and risks destroying subtle, useful capabilities alongside the unwanted habits.",
-     "segment": "Modifying Model Weights Without Retraining"
-    },
-    {
-     "q": "Why did the police chief of Plymouth, Minnesota physically unplug the surveillance cameras rather than unmounting them or cutting them down?",
-     "options": [
-      "The city signed a Hardware-as-a-Service lease agreement and did not legally own the physical hardware on the poles.",
-      "The cameras were bolted to high-voltage power lines that required specialized utility workers to detach.",
-      "The vendor had a court order prohibiting anyone from touching the camera housings.",
-      "The city police department secretly wanted to keep using the data feeds."
-     ],
-     "answer": 0,
-     "explain": "Under a Hardware-as-a-Service model, the city leased access to ongoing data rather than owning the equipment, meaning destroying or unmounting the vendor's physical hardware would constitute a breach of contract.",
-     "segment": "Why a Police Chief Had to Physically Unplug His City's Cameras"
-    },
-    {
-     "q": "What optical and hardware engineering techniques allow off-grid automated license plate readers to capture sharp images of fast-moving cars without melting from heat?",
-     "options": [
-      "Using mechanical focal-plane shutters and liquid-cooled computer graphics cards.",
-      "Using rolling shutters combined with high-intensity xenon flashbulbs and uncompressed floating-point processors.",
-      "Using global shutters paired with synchronized near-infrared strobes and quantized neural networks running on low-power application-specific processors.",
-      "Using wide-aperture analog lenses and streaming raw video directly to a cloud server over fiber optics."
-     ],
-     "answer": 2,
-     "explain": "Global shutters freeze motion without rolling-shutter spatial shear, infrared strobes illuminate retroreflective plates invisibly, and quantized neural networks on low-power chips prevent thermal overload in sealed enclosures.",
-     "segment": "Why a Police Chief Had to Physically Unplug His City's Cameras"
-    }
-   ],
-   "digest": [
-    {
-     "title": "Kids of insecure, self-absorbed (narcissistic) parents were more likely to be depressed as young adults, mostly because they were made to act as the parent's emotional partner or therapist growing up, a study of 513 students in the US and Turkey has found. Surprisingly, it was more common in the US.",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1xl12we/kids_of_insecure_selfabsorbed_narcissistic/",
-     "link": "https://www.psypost.org/how-parental-narcissism-links-to-depression-in-adult-children-across-cultures/",
-     "line": "A study found children of self-absorbed parents face higher depression risks from emotional parentification, though commenters noted some narcissistic parents are merely neglectful.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Anthropic's Mythos-class model allegedly leaked on Hugging Face 💀",
-     "subs": [
-      "AI_India",
-      "ClaudeAI"
-     ],
-     "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xl47f5/anthropics_mythosclass_model_allegedly_leaked_on/",
-     "link": "",
-     "line": "A repository allegedly containing Anthropic's Mythos model leaked on Hugging Face, with commenters quickly doubting its legitimacy.",
-     "verdict": "plausible",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "A randomized, placebo-controlled study found that experimentally inducing brief inflammation in healthy women temporarily increased symptoms of anhedonia and reduced their motivation to socialize, highlighting a specific pathway through which immune activation may contribute to depression.",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1xlbu83/a_randomized_placebocontrolled_study_found_that/",
-     "link": "https://www.psypost.org/inflammation-briefly-dampens-pleasure-and-the-desire-to-socialize-placebo-controlled-study-finds/",
-     "line": "A study showed temporary inflammation increases anhedonia and reduces social motivation in healthy women, while commenters discussed historical biases in medical research.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "A study found a chatbot that speaks naturally is more likely to be perceived by users as intelligent and useful, even if it spouts nonsense. These language models still tend to run wild with so-called ‘hallucinations’: unreliable, dubious answers that are presented with great certainty as the truth.",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1xlamlf/a_study_found_a_chatbot_that_speaks_naturally_is/",
-     "link": "https://www.ru.nl/en/research/research-news/fluent-language-makes-a-hallucinatory-chatbot-just-as-credible-as-a-curt-flawless-one",
-     "line": "A study found natural-sounding chatbots are seen as more intelligent even when hallucinating, and commenters joked about human overconfidence.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Research estimates that nearly 75% of all NFL players who died between 2008 and 2023 had chronic traumatic encephalopathy (CTE) neuropathology. CTE is a neurodegenerative disease that has been diagnosed in individuals with substantial exposure to repetitive head impacts",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1xkzvl8/research_estimates_that_nearly_75_of_all_nfl/",
-     "link": "https://www.theguardian.com/us-news/2026/oct/28/cte-nfl-brain-disease-research",
-     "line": "Research estimates nearly 75% of deceased NFL players studied had CTE, sparking discussion on contact sports participation.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Teens whose rule-breaking and aggression persisted were roughly twice as likely to vote populist-right as adults, while teens with anxiety or depression tended to lean left and vote less, according to a new 28-year study that followed 2,215 Norwegians from age 15 all the way into their early forties",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1xl1lsc/teens_whose_rulebreaking_and_aggression_persisted/",
-     "link": "https://www.psypost.org/how-adolescent-mental-health-predicts-adult-political-views/",
-     "line": "A long-term study linked persistent teen aggression to voting populist-right and anxiety to leaning left, with commenters discussing political alignments.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Heretic 2.0 released: Model modification for everyone",
-     "subs": [
-      "LocalLLaMA"
-     ],
-     "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xl2tcm/heretic_20_released_model_modification_for/",
-     "link": "",
-     "line": "Heretic 2.0 released as software for removing censorship from language models, with users celebrating its success.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": true
-    },
-    {
-     "title": "Has there ever been an instance of a vestigial organ \"re-evolving\" into something useful?",
-     "subs": [
-      "askscience"
-     ],
-     "thread": "https://www.reddit.com/r/askscience/comments/1xl8wtq/has_there_ever_been_an_instance_of_a_vestigial/",
-     "link": "",
-     "line": "Users discussed whether vestigial organs can re-evolve useful functions, with an expert confirming that it does happen.",
-     "verdict": "opinion",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "How's it like internally at Lilly/Novo? Are y'all swimming in cash?",
-     "subs": [
-      "biotech"
-     ],
-     "thread": "https://www.reddit.com/r/biotech/comments/1xl34rb/hows_it_like_internally_at_lillynovo_are_yall/",
-     "link": "",
-     "line": "Users discussed corporate culture and financials at Eli Lilly and Novo Nordisk, mentioning hiring difficulties and layoffs.",
-     "verdict": "opinion",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Neursurgery resident caught and convicted to five years for secretly recording staff in bathroom (Bodycam footage)",
-     "subs": [
-      "medicine"
-     ],
-     "thread": "https://www.reddit.com/r/medicine/comments/1xl7m5v/neursurgery_resident_caught_and_convicted_to_five/",
-     "link": "",
-     "line": "A neurosurgery resident was convicted and sentenced to five years for secretly recording staff in a bathroom, with commenters noting similar recurring incidents.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "The sheer confidence [Sarvam AI] to start lowest plan with 9999🤌 on the sidenote, we are the only people who give free passes to these incompetent scammer companies",
-     "subs": [
-      "AI_India"
-     ],
-     "thread": "https://www.reddit.com/r/AI_India/comments/1xkr4w7/the_sheer_confidence_sarvam_ai_to_start_lowest/",
-     "link": "",
-     "line": "A user criticized Sarvam AI's pricing and accused them of copying models without innovation, comparing them to failed domestic tech startups.",
-     "verdict": "opinion",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Scientists think our recent ancestors may have run hotter -- but why?",
-     "subs": [
-      "EverythingScience"
-     ],
-     "thread": "https://www.reddit.com/r/EverythingScience/comments/1xkxb79/scientists_think_our_recent_ancestors_may_have/",
-     "link": "https://ca.news.yahoo.com/scientists-think-recent-ancestors-may-100000230.html",
-     "line": "Scientists suggest recent human ancestors may have run hotter, with commenters attributing it to chronic diseases and infections.",
-     "verdict": "plausible",
-     "also_in": [],
-     "in_episode": false
-    }
-   ],
-   "transcript": "transcripts/ai_2026-11-02_morning_0846.txt"
-  },
-  {
-   "file": "ai_2026-11-01_evening_1632.mp3",
-   "title": "Sunday - 1 Nov: Cancer Vaccines and Immunotherapy Breakthroughs",
-   "label": "Sunday 01 Nov evening deep dive",
-   "date": "2026-11-01",
-   "edition": "evening",
-   "published": "2026-11-01T16:32:05.714154+05:30",
-   "duration": 2666,
-   "theme": "Sunday edition: Cancer Vaccines and Immunotherapy Breakthroughs - plus the week's best threads that got away",
-   "writer": "nemotron-3-ultra-550b-a55b (free)",
-   "voices": "Fish Audio (free)",
-   "deep_dive": true,
-   "segments": [
-    {
-     "title": "What happened next",
-     "category": "followup"
-    },
-    {
-     "title": "Cancer Vaccines and Immunotherapy Breakthroughs: The week's story",
-     "category": "deepdive"
-    },
-    {
-     "title": "Cancer Vaccines and Immunotherapy Breakthroughs: How it actually works",
-     "category": "deepdive"
-    },
-    {
-     "title": "Cancer Vaccines and Immunotherapy Breakthroughs: Reality check",
-     "category": "deepdive"
-    },
-    {
-     "title": "How Magic Mushrooms Repair the Brain",
-     "category": "thread"
-    },
-    {
-     "title": "Why Colon Cancer Rates Are Rising",
-     "category": "thread"
-    },
-    {
-     "title": "The Global Crisis in Mens Health",
-     "category": "thread"
-    }
-   ],
-   "quiz": [
-    {
-     "q": "How did the developer access the unbranded streaming stick to install clean mainline Linux without using a soldering iron?",
-     "options": [
-      "By broadcasting an unencrypted Wi-Fi payload via a nearby laptop",
-      "By using a physical button to trigger FEL mode, the chip's hard-wired bootstrap loader over USB",
-      "By executing a remote script through the factory root backdoor and botnet malware",
-      "By flashing the firmware wirelessly through an open Bluetooth debugging profile"
-     ],
-     "answer": 1,
-     "explain": "The developer relied entirely on a physical button on the board that forces the silicon into FEL mode, a low-level USB recovery mode connected to read-only memory.",
-     "segment": "What happened next"
-    },
-    {
-     "q": "Why was KRAS historically considered an 'undruggable' target for pancreatic cancer treatments?",
-     "options": [
-      "It mutates too quickly for any known chemotherapy drug to bind to its active site.",
-      "It is located deep inside the cell nucleus where small-molecule drugs cannot penetrate.",
-      "It is a smooth, spherical protein lacking deep pockets for drugs to bind to.",
-      "It actively destroys messenger RNA before therapeutic lipid nanoparticles can release their payload."
-     ],
-     "answer": 2,
-     "explain": "KRAS is a smooth, spherical protein with no deep pockets for drugs to bind, which is why vaccines bypassing traditional binding pockets are needed.",
-     "segment": "Cancer Vaccines and Immunotherapy Breakthroughs: How it actually works"
-    },
-    {
-     "q": "What mechanism does psilocybin use according to the mouse study claims discussed in the podcast?",
-     "options": [
-      "It repairs circuits damaged by chronic stress via a pathway supposedly separated from the psychedelic trip itself.",
-      "It permanently downregulates 5-HT2A receptors to completely eliminate immediate pharmacological tolerance.",
-      "It triggers immediate neurogenesis by directly binding to prefrontal cortex dendritic spines within hours.",
-      "It mimics ketamine's IV pharmacokinetics to bypass first-pass liver metabolism."
-     ],
-     "answer": 0,
-     "explain": "The mouse study claimed the rewiring runs on a completely different pathway than the psychedelic trip itself, offering antidepressant effects without hallucinations.",
-     "segment": "How Magic Mushrooms Repair the Brain"
-    },
-    {
-     "q": "What explains the sharp jump in colorectal cancer incidence observed in the 45-to-49 age cohort?",
-     "options": [
-      "A severe multi-year backlog in screening appointments caused by pandemic restrictions",
-      "A biological shift in the gut microbiome driven entirely by microplastics and dietary additives",
-      "A screening artifact resulting from official guidelines lowering the recommended starting age",
-      "An absolute increase in severe, late-stage metastatic presentations across all demographic groups"
-     ],
-     "answer": 2,
-     "explain": "The authors noted that the sharp jump in the 45-to-49 group is largely a screening artifact because guidelines dropped the start age from 50 to 45.",
-     "segment": "Why Colon Cancer Rates Are Rising"
-    }
-   ],
-   "digest": [
-    {
-     "title": "Men lose 16% more healthy years than women worldwide, yet only a handful of countries have a men's health policy. A new Lancet series says much of it is preventable (poverty, jobs, masculinity norms) and warns that this policy vacuum is being filled by 'manosphere' influencers and companies instead.",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1xk8h41/men_lose_16_more_healthy_years_than_women/",
-     "link": "https://www.gla.ac.uk/news/headline_1300273_en.html",
-     "line": "A Lancet series discusses how men lose more healthy years than women due to preventable factors, with commenters agreeing resources are lacking.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Solving biology is not a weekend project and “epigenetic” is not a flavor",
-     "subs": [
-      "biotech"
-     ],
-     "thread": "https://www.reddit.com/r/biotech/comments/1xk5c38/solving_biology_is_not_a_weekend_project_and/",
-     "link": "",
-     "line": "A user criticizes a longevity serum for using epigenetic buzzwords, and commenters agree it is cosmetic pseudoscience.",
-     "verdict": "opinion",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "How can you find our solar system if you are lost in our galaxy?",
-     "subs": [
-      "askscience"
-     ],
-     "thread": "https://www.reddit.com/r/askscience/comments/1xkcy26/how_can_you_find_our_solar_system_if_you_are_lost/",
-     "link": "",
-     "line": "A discussion asks how to locate our solar system in the galaxy, noting the Voyager golden record used pulsars.",
-     "verdict": "opinion",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "How Trump Is Dismantling America’s Scientific Research Machine",
-     "subs": [
-      "EverythingScience",
-      "biotech"
-     ],
-     "thread": "https://www.reddit.com/r/biotech/comments/1xk8tkj/how_trump_is_dismantling_americas_scientific/",
-     "link": "https://www.nytimes.com/2026/10/31/climate/how-trump-is-dismantling-americas-scientific-research-machine.html?unlocked_article_code=1.M1E.RQvA.tPEOudMcw6HX&smid=re-share",
-     "line": "An article discusses how political actions are dismantling American scientific research, which commenters view as disastrous.",
-     "verdict": "opinion",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "A study of 12 fruits and vegetables found that commonly discarded parts, including peels, skins and seeds, contained more dietary fibre than the portions typically eaten in 10 of 12 cases. Pineapple skin and core had over five times more fibre than the flesh, suggesting ways to reduce food waste.",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1xkdbq4/a_study_of_12_fruits_and_vegetables_found_that/",
-     "link": "https://www.tandfonline.com/doi/full/10.1080/09637486.2026.2734852",
-     "line": "A study found that discarded fruit parts contain more dietary fiber, though commenters expressed skepticism about eating things like pineapple skins.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "ChatGPT-Codex merge is happening",
-     "subs": [
-      "codex"
-     ],
-     "thread": "https://www.reddit.com/r/codex/comments/1xkc5p1/chatgptcodex_merge_is_happening/",
-     "link": "",
-     "line": "Users discuss an email regarding a ChatGPT and Codex merge, with some expressing frustration over subscription changes.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "A new study found that untrained dogs can spontaneously detect the unique scent of an epileptic seizure from a complete stranger's sweat sample, suggesting that canines may have an innate ability to prioritize and recognize these olfactory cues without any prior medical training.",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1xkipc7/a_new_study_found_that_untrained_dogs_can/",
-     "link": "https://www.sciencealert.com/dogs-may-smell-a-complete-strangers-seizure-without-ever-being-trained-study-finds",
-     "line": "A study found untrained dogs can detect epileptic seizure scents in sweat, and commenters shared personal anecdotes.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "A randomized trial found that urinating posture does not clinically affect urine flow or volume in healthy men, making the choice between sitting or standing a matter of personal preference.",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1xk6uxn/a_randomized_trial_found_that_urinating_posture/",
-     "link": "https://www.sciencealert.com/does-it-matter-if-men-pee-sitting-or-standing-a-randomized-test-has-an-answer",
-     "line": "A trial found urinating posture does not clinically affect urine flow in healthy men, and commenters discussed hygiene and noise.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Extreme liberals who rely on traditional news sources are most likely to overestimate their own science knowledge, revealing a gap between perceived and actual scientific understanding.",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1xkl1yw/extreme_liberals_who_rely_on_traditional_news/",
-     "link": "https://www.psypost.org/extreme-liberals-who-rely-on-traditional-sources-are-the-most-likely-to-overrate-their-science-knowledge/",
-     "line": "A study indicates extreme liberals relying on traditional news overestimate their science knowledge, sparking lighthearted definitional jokes.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Ontario's measles outbreak hit 2,377 people over nearly a year, and 89% were not vaccinated. Most were kids and teens. 166 were hospitalized, 10 babies were infected before birth, and one infant died. This outbreak helped Canada lose its measles elimination status, which it had held ever since 1998.",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1xk8kar/ontarios_measles_outbreak_hit_2377_people_over/",
-     "link": "https://bmjgroup.com/measles-outbreak-that-contributed-to-canada-losing-elimination-status-highlights-risks-from-persistent-immunity-gaps/",
-     "line": "An Ontario measles outbreak mostly affecting the unvaccinated caused Canada to lose its elimination status, with commenters blaming disinformation.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Premature birth alters the brain’s developmental clock: when a baby is born prematurely, the cerebellum, the part of the brain with a critical role in motor function, language and cognition, grows and develops in a different way than it would if the baby remains in utero full term",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1xkg0rx/premature_birth_alters_the_brains_developmental/",
-     "link": "https://innovationdistrict.childrensnational.org/premature-birth-alters-the-brains-developmental-clock/",
-     "line": "Research shows premature birth alters cerebellum development, prompting humorous personal reflections from commenters.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "I built a collection of undergraduate level interactive physics simulations, structured to help visualize the Feynman Lectures.",
-     "subs": [
-      "Physics"
-     ],
-     "thread": "https://www.reddit.com/r/Physics/comments/1xkb4ri/i_built_a_collection_of_undergraduate_level/",
-     "link": "https://physin.org",
-     "line": "An author shared a website of undergraduate physics simulations visualizing the Feynman Lectures, receiving positive feedback.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    }
-   ],
-   "transcript": "transcripts/ai_2026-11-01_evening_1632.txt"
   }
  ]
 }

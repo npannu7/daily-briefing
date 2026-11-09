@@ -8,9 +8,25 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Sun, 08 Nov 2026 07:55:03 GMT</lastBuildDate>
+<lastBuildDate>Mon, 09 Nov 2026 07:29:18 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Evening - 9 Nov: Apple researchers run a humanoid robot on a Mac mini</title>
+<description>Evening edition - Monday, 9 November 2026
+Robotics validation on local compute; grid-scale energy transition claims under scrutiny
+
+00:40  Apple researchers run a humanoid robot on a Mac mini
+11:10  What it would actually take to run the world on wind, water, and solar
+
+Puzzles: The Mac mini Brain Squeeze, The Perfect-Foresight Trap - puzzles, quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
+Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (155 threads)</description>
+<pubDate>Mon, 09 Nov 2026 12:20:53 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-11-09_evening_1220.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-09_evening_1220.mp3" length="8939098" type="audio/mpeg"/>
+<itunes:duration>1117</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Sunday - 8 Nov: AI Safety and Alignment</title>
 <description>Sunday edition - Sunday, 8 November 2026
@@ -227,59 +243,6 @@ Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Di
 <guid isPermaLink="false">ai_2026-11-02_evening_1648.mp3</guid>
 <enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-02_evening_1648.mp3" length="9526316" type="audio/mpeg"/>
 <itunes:duration>1190</itunes:duration>
-<itunes:episodeType>full</itunes:episodeType>
-</item>
-<item>
-<title>Morning - 2 Nov: Modifying Model Weights Without Retraining</title>
-<description>Morning edition - Monday, 2 November 2026
-Surgical weight modification in local models, and the physical engineering and sovereignty limits of edge surveillance hardware.
-
-00:33  Modifying Model Weights Without Retraining
-   LocalLLaMA: https://www.reddit.com/r/LocalLLaMA/comments/1xl2tcm/heretic_20_released_model_modification_for/
-10:37  Why a Police Chief Had to Physically Unplug His City's Cameras
-   technology: https://www.reddit.com/r/technology/comments/1xl3u8r/police_chief_physically_unplugs_flock_cameras/
-   Source: https://www.tomshardware.com/tech-industry/big-tech/police-chief-physically-unplugs-flock-cameras-after-the-company-ignores-contract-cancellation-city-takes-matters-into-its-own-hands-amid-privacy-controversies
-
-Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
-Written by: Gemini 3.8 Flash · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (198 threads)</description>
-<pubDate>Mon, 02 Nov 2026 08:46:15 +0530</pubDate>
-<guid isPermaLink="false">ai_2026-11-02_morning_0846.mp3</guid>
-<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-02_morning_0846.mp3" length="8960492" type="audio/mpeg"/>
-<itunes:duration>1119</itunes:duration>
-<itunes:episodeType>full</itunes:episodeType>
-</item>
-<item>
-<title>Sunday - 1 Nov: Cancer Vaccines and Immunotherapy Breakthroughs</title>
-<description>Sunday edition - Sunday, 1 November 2026
-Sunday edition: Cancer Vaccines and Immunotherapy Breakthroughs - plus the week's best threads that got away
-
-00:51  What happened next
-   ClaudeCode: https://www.reddit.com/r/ClaudeCode/comments/1xjtuwx/claude_code_found_a_root_backdoor_on_my_cheap/
-   Source: https://www.reddit.com/gallery/1xjtuwx
-   ClaudeCode: https://www.reddit.com/r/ClaudeCode/comments/1xj7d4p/the_official_claude_code_vs_code_extension_was/
-   codex: https://www.reddit.com/r/codex/comments/1xi2e86/chatgpt_chat_and_work_merged/
-   singularity: https://www.reddit.com/r/singularity/comments/1xiwplq/sam_altman_reveals_openai_barely_understood_how/
-   ClaudeCode: https://www.reddit.com/r/ClaudeCode/comments/1xhqvzn/opus_55_just_shared_my_email_address/
-   ClaudeCode: https://www.reddit.com/r/ClaudeCode/comments/1xi0b7c/has_anyone_else_noticed_that_opus_has_become/
-07:59  Cancer Vaccines and Immunotherapy Breakthroughs: The week's story
-15:29  Cancer Vaccines and Immunotherapy Breakthroughs: How it actually works
-25:58  Cancer Vaccines and Immunotherapy Breakthroughs: Reality check
-33:10  How Magic Mushrooms Repair the Brain
-   science: https://www.reddit.com/r/science/comments/1xf1bbn/magic_mushroom_compound_psilocybin_grows_new/
-   Source: https://news.ucsc.edu/2026/10/how-psilocybin-reshapes-brain-circuits/
-37:08  Why Colon Cancer Rates Are Rising
-   science: https://www.reddit.com/r/science/comments/1xhn2sd/after_20_years_of_decline_us_colorectal_cancer/
-   Source: https://www.uchicagomedicine.org/forefront/cancer/rising-rates-of-colorectal-cancer
-40:40  The Global Crisis in Mens Health
-   science: https://www.reddit.com/r/science/comments/1xk8h41/men_lose_16_more_healthy_years_than_women/
-   Source: https://www.gla.ac.uk/news/headline_1300273_en.html
-
-Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
-Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (169 threads)</description>
-<pubDate>Sun, 01 Nov 2026 16:32:05 +0530</pubDate>
-<guid isPermaLink="false">ai_2026-11-01_evening_1632.mp3</guid>
-<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-01_evening_1632.mp3" length="21334892" type="audio/mpeg"/>
-<itunes:duration>2666</itunes:duration>
 <itunes:episodeType>full</itunes:episodeType>
 </item>
 </channel>
