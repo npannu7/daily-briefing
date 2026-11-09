@@ -1,17 +1,6 @@
 {
   "episodes": [
     {
-      "file": "ai_2026-11-02_evening_1648.mp3",
-      "date": "2026-11-02",
-      "edition": "evening",
-      "title": "Evening - 2 Nov: Giving an AI Agent the Keys to Robotic Telescopes",
-      "published": "2026-11-02T16:48:22.072812+05:30",
-      "pubDate": "Mon, 02 Nov 2026 16:48:22 +0530",
-      "size": 9526316,
-      "duration": 1190,
-      "description": "Evening edition - Monday, 2 November 2026\nFrom delegating physical robotic observatories to AI agents, to the fluid mechanics and partial pressures governing every breath we take.\n\n00:38  Giving an AI Agent the Keys to Robotic Telescopes\n   ClaudeAI: https://www.reddit.com/r/ClaudeAI/comments/1xkxsca/i_gave_claude_access_to_remote_telescopes_now_she/\n   Source: https://www.reddit.com/gallery/1xkxsca\n08:35  What Happens to the Nitrogen and Other Gases We Breathe\n   askscience: https://www.reddit.com/r/askscience/comments/1xll95d/when_we_breathe_in_oxygen_co₂_n₂_and_other_gases/\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nWritten by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (166 threads)"
-    },
-    {
       "file": "ai_2026-11-03_morning_0846.mp3",
       "date": "2026-11-03",
       "edition": "morning",
@@ -142,6 +131,17 @@
       "size": 8939098,
       "duration": 1117,
       "description": "Evening edition - Monday, 9 November 2026\nRobotics validation on local compute; grid-scale energy transition claims under scrutiny\n\n00:40  Apple researchers run a humanoid robot on a Mac mini\n11:10  What it would actually take to run the world on wind, water, and solar\n\nPuzzles: The Mac mini Brain Squeeze, The Perfect-Foresight Trap - puzzles, quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nWritten by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (155 threads)"
+    },
+    {
+      "file": "ai_2026-11-10_morning_0024.mp3",
+      "date": "2026-11-10",
+      "edition": "morning",
+      "title": "Morning - 10 Nov: Is Your AI Assistant Being Secretly Tested?",
+      "published": "2026-11-10T00:24:01.119094+05:30",
+      "pubDate": "Tue, 10 Nov 2026 00:24:01 +0530",
+      "size": 7636589,
+      "duration": 954,
+      "description": "Morning edition - Tuesday, 10 November 2026\nHidden AI tests on users and whether pandemic stress accelerated teenage biological aging\n\n00:38  Is Your AI Assistant Being Secretly Tested?\n04:29  Did Pandemic Stress Age Teenagers' DNA Faster?\n09:13  Teens with authoritarian parents tend to hold more antisocial beliefs, study fin\n12:44  I used Claude Code to rebuild IDM as a free, open-source download manager, the A\n\nPuzzles: The Ghost in the Log File, The Baseline Drift That Reads Phantom Wear - puzzles, quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nWritten by: Gemini 3.5 Flash-Lite · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (119 threads)"
     }
   ],
   "memory": [
@@ -1695,37 +1695,34 @@
       ],
       "deep_topic": "",
       "topics": []
+    },
+    {
+      "label": "Tuesday 10 Nov morning",
+      "date": "2026-11-10",
+      "edition": "morning",
+      "published": "2026-11-10T00:24:01.119094+05:30",
+      "file": "ai_2026-11-10_morning_0024.mp3",
+      "writer": "Gemini 3.5 Flash-Lite",
+      "voices": "Fish Audio (free)",
+      "summary": "This Tuesday morning edition examines unverified Reddit claims regarding hidden A/B testing experiment IDs on Anthropic accounts through a regulated change-control lens, and evaluates a report linking pandemic stress to faster epigenetic aging in adolescents. Additional segments cover antisocial beliefs tied to authoritarian parenting and an open-source download manager rebuild.",
+      "threads": [
+        "Independent verification of hidden Anthropic experiment IDs and user performance drops",
+        "Replication and biomarker validation of pandemic-stress epigenetic aging claims in adolescents"
+      ],
+      "segments": [
+        "Is Your AI Assistant Being Secretly Tested?",
+        "Did Pandemic Stress Age Teenagers' DNA Faster?",
+        "Teens with authoritarian parents tend to hold more antisocial beliefs, study fin",
+        "I used Claude Code to rebuild IDM as a free, open-source download manager, the A"
+      ],
+      "deep_topic": "",
+      "topics": [
+        "ai-coding-agents",
+        "anthropic-claude-models"
+      ]
     }
   ],
   "seen": [
-    {
-      "date": "2026-10-19",
-      "link": "https://www.reddit.com/r/science/comments/1x8zytx/more_than_half_of_people_with_earlyonset_type_2/"
-    },
-    {
-      "date": "2026-10-19",
-      "link": "https://www.sciencealert.com/this-diet-and-exercise-combination-put-early-onset-diabetes-into-remission-in-half-of-participants"
-    },
-    {
-      "date": "2026-10-19",
-      "link": "https://www.reddit.com/r/robotics/comments/1x8zyvp/i_built_a_drone_with_only_one_motor_and_a_poor/"
-    },
-    {
-      "date": "2026-10-19",
-      "link": "https://www.reddit.com/r/science/comments/1x9ek4k/a_single_dose_of_psilocybin_eased_depression/"
-    },
-    {
-      "date": "2026-10-19",
-      "link": "https://www.reddit.com/r/EverythingScience/comments/1x9h1hi/a_single_dose_of_psilocybin_eased_depression/"
-    },
-    {
-      "date": "2026-10-19",
-      "link": "https://www.psypost.org/a-single-dose-of-psilocybin-eased-depression-within-days-but-its-edge-over-placebo-faded-within-a-year/"
-    },
-    {
-      "date": "2026-10-19",
-      "link": "https://www.reddit.com/r/ClaudeAI/comments/1x91lor/rebuilt_a_2000_rts_from_scratch_with_claude_code/"
-    },
     {
       "date": "2026-10-20",
       "link": "https://www.reddit.com/r/science/comments/1x9r8ks/a_clinical_trial_has_found_that_hydrodissection/"
@@ -2557,6 +2554,30 @@
     {
       "date": "2026-11-09",
       "link": "https://www.reddit.com/r/singularity/comments/1xr6w6w/apple_researchers_use_a_mac_mini_running_qwen/"
+    },
+    {
+      "date": "2026-11-10",
+      "link": "https://www.reddit.com/r/science/comments/1xqzyam/teens_with_authoritarian_parents_tend_to_hold/"
+    },
+    {
+      "date": "2026-11-10",
+      "link": "https://www.psypost.org/teens-with-authoritarian-parents-tend-to-hold-more-antisocial-beliefs-study-finds/"
+    },
+    {
+      "date": "2026-11-10",
+      "link": "https://www.reddit.com/r/ClaudeAI/comments/1xqy0s6/i_used_claude_code_to_rebuild_idm_as_a_free/"
+    },
+    {
+      "date": "2026-11-10",
+      "link": "https://www.reddit.com/r/ClaudeCode/comments/1xr9x5y/the_nerf_is_real_thank_you_uwum1ha1nho/"
+    },
+    {
+      "date": "2026-11-10",
+      "link": "https://www.reddit.com/r/science/comments/1xr3lsc/the_covid19_pandemic_caused_stress_that_sped_up/"
+    },
+    {
+      "date": "2026-11-10",
+      "link": "https://www.mpg.de/27071988/covid-related-stress-causes-adolescents-to-age-faster-epigenetically"
     }
   ],
   "feedback": [
@@ -3620,7 +3641,156 @@
     "2026-11-09T07:28:24.753712+00:00",
     "2026-11-09T07:28:26.233679+00:00",
     "2026-11-09T07:28:27.933445+00:00",
-    "2026-11-09T07:28:30.068538+00:00"
+    "2026-11-09T07:28:30.068538+00:00",
+    "2026-11-09T18:54:57.958039+00:00",
+    "2026-11-09T18:54:59.665509+00:00",
+    "2026-11-09T18:55:05.457926+00:00",
+    "2026-11-09T18:55:17.394682+00:00",
+    "2026-11-09T18:55:19.304606+00:00",
+    "2026-11-09T18:55:25.830627+00:00",
+    "2026-11-09T18:55:30.231451+00:00",
+    "2026-11-09T18:55:39.512894+00:00",
+    "2026-11-09T18:55:45.313553+00:00",
+    "2026-11-09T18:55:46.566324+00:00",
+    "2026-11-09T18:55:48.238190+00:00",
+    "2026-11-09T18:55:57.622615+00:00",
+    "2026-11-09T18:55:59.161690+00:00",
+    "2026-11-09T18:56:07.225138+00:00",
+    "2026-11-09T18:56:15.611775+00:00",
+    "2026-11-09T18:56:20.058709+00:00",
+    "2026-11-09T18:56:31.868674+00:00",
+    "2026-11-09T18:56:36.475980+00:00",
+    "2026-11-09T18:56:39.316018+00:00",
+    "2026-11-09T18:56:40.040169+00:00",
+    "2026-11-09T18:56:45.722658+00:00",
+    "2026-11-09T18:57:00.135039+00:00",
+    "2026-11-09T18:57:07.970096+00:00",
+    "2026-11-09T18:57:16.374300+00:00",
+    "2026-11-09T18:57:27.339131+00:00",
+    "2026-11-09T18:57:30.452569+00:00",
+    "2026-11-09T18:57:33.754868+00:00",
+    "2026-11-09T18:57:35.436363+00:00",
+    "2026-11-09T18:57:44.403431+00:00",
+    "2026-11-09T18:57:45.518863+00:00",
+    "2026-11-09T18:57:50.564765+00:00",
+    "2026-11-09T18:57:58.056393+00:00",
+    "2026-11-09T18:58:07.094352+00:00",
+    "2026-11-09T18:58:14.924661+00:00",
+    "2026-11-09T18:58:16.850708+00:00",
+    "2026-11-09T18:58:18.177180+00:00",
+    "2026-11-09T18:58:20.657668+00:00",
+    "2026-11-09T18:58:33.823820+00:00",
+    "2026-11-09T18:58:45.361313+00:00",
+    "2026-11-09T18:58:49.100566+00:00",
+    "2026-11-09T18:58:49.976582+00:00",
+    "2026-11-09T18:58:58.724798+00:00",
+    "2026-11-09T18:59:00.159956+00:00",
+    "2026-11-09T18:59:01.337472+00:00",
+    "2026-11-09T18:59:02.989945+00:00",
+    "2026-11-09T18:59:14.028433+00:00",
+    "2026-11-09T18:59:21.325535+00:00",
+    "2026-11-09T18:59:34.666193+00:00",
+    "2026-11-09T18:59:41.538970+00:00",
+    "2026-11-09T18:59:46.381930+00:00",
+    "2026-11-09T19:00:18.410263+00:00",
+    "2026-11-09T19:02:01.519798+00:00",
+    "2026-11-09T19:08:20.802003+00:00",
+    "2026-11-09T19:13:35.958557+00:00",
+    "2026-11-09T19:15:09.950240+00:00",
+    "2026-11-09T19:16:40.783409+00:00",
+    "2026-11-09T19:25:01.238631+00:00",
+    "2026-11-09T19:30:16.518540+00:00",
+    "2026-11-09T19:30:16.745827+00:00",
+    "2026-11-09T19:32:55.070413+00:00",
+    "2026-11-09T19:32:55.268809+00:00",
+    "2026-11-09T19:36:20.285953+00:00",
+    "2026-11-09T19:37:50.611824+00:00",
+    "2026-11-09T19:39:41.247602+00:00",
+    "2026-11-09T19:40:43.172552+00:00",
+    "2026-11-09T19:42:04.468412+00:00",
+    "2026-11-09T19:42:53.798683+00:00",
+    "2026-11-09T19:43:56.511258+00:00",
+    "2026-11-09T19:44:03.124068+00:00",
+    "2026-11-09T19:44:06.530658+00:00",
+    "2026-11-09T19:44:09.556622+00:00",
+    "2026-11-09T19:44:10.984396+00:00",
+    "2026-11-09T19:44:18.065960+00:00",
+    "2026-11-09T19:44:22.433640+00:00",
+    "2026-11-09T19:44:27.016803+00:00",
+    "2026-11-09T19:44:31.704228+00:00",
+    "2026-11-09T19:44:33.033688+00:00",
+    "2026-11-09T19:44:34.999750+00:00",
+    "2026-11-09T19:44:39.835432+00:00",
+    "2026-11-09T19:44:45.781613+00:00",
+    "2026-11-09T19:44:46.769884+00:00",
+    "2026-11-09T19:44:52.540487+00:00",
+    "2026-11-09T19:45:01.821363+00:00",
+    "2026-11-09T19:45:01.965016+00:00",
+    "2026-11-09T19:45:04.789986+00:00",
+    "2026-11-09T19:45:06.611174+00:00",
+    "2026-11-09T19:45:12.392344+00:00",
+    "2026-11-09T19:45:13.600382+00:00",
+    "2026-11-09T19:45:19.266818+00:00",
+    "2026-11-09T19:45:20.468977+00:00",
+    "2026-11-09T19:45:20.962335+00:00",
+    "2026-11-09T19:45:29.800240+00:00",
+    "2026-11-09T19:45:29.939345+00:00",
+    "2026-11-09T19:45:33.362982+00:00",
+    "2026-11-09T19:45:35.917780+00:00",
+    "2026-11-09T19:45:40.323585+00:00",
+    "2026-11-09T19:45:41.758577+00:00",
+    "2026-11-09T19:45:45.917715+00:00",
+    "2026-11-09T19:45:49.832320+00:00",
+    "2026-11-09T19:45:53.375998+00:00",
+    "2026-11-09T19:45:54.908631+00:00",
+    "2026-11-09T19:46:01.344873+00:00",
+    "2026-11-09T19:46:02.303590+00:00",
+    "2026-11-09T19:46:06.746395+00:00",
+    "2026-11-09T19:46:07.626248+00:00",
+    "2026-11-09T19:46:13.088482+00:00",
+    "2026-11-09T19:46:18.540677+00:00",
+    "2026-11-09T19:46:22.568578+00:00",
+    "2026-11-09T19:46:22.613556+00:00",
+    "2026-11-09T19:46:29.932958+00:00",
+    "2026-11-09T19:46:32.976139+00:00",
+    "2026-11-09T19:46:35.297417+00:00",
+    "2026-11-09T19:46:38.323528+00:00",
+    "2026-11-09T19:46:40.001958+00:00",
+    "2026-11-09T19:46:46.352996+00:00",
+    "2026-11-09T19:46:47.243450+00:00",
+    "2026-11-09T19:46:51.084589+00:00",
+    "2026-11-09T19:46:51.909368+00:00",
+    "2026-11-09T19:46:58.571658+00:00",
+    "2026-11-09T19:47:01.602878+00:00",
+    "2026-11-09T19:47:03.931389+00:00",
+    "2026-11-09T19:47:03.977190+00:00",
+    "2026-11-09T19:47:11.231926+00:00",
+    "2026-11-09T19:47:12.184196+00:00",
+    "2026-11-09T19:47:18.987008+00:00",
+    "2026-11-09T19:47:20.573719+00:00",
+    "2026-11-09T19:47:23.980158+00:00",
+    "2026-11-09T19:47:25.885118+00:00",
+    "2026-11-09T19:47:29.735040+00:00",
+    "2026-11-09T19:47:30.602914+00:00",
+    "2026-11-09T19:47:36.153942+00:00",
+    "2026-11-09T19:47:43.107724+00:00",
+    "2026-11-09T19:47:44.454964+00:00",
+    "2026-11-09T19:47:48.367512+00:00",
+    "2026-11-09T19:47:49.762100+00:00",
+    "2026-11-09T19:47:55.116418+00:00",
+    "2026-11-09T19:48:00.499528+00:00",
+    "2026-11-09T19:48:03.413578+00:00",
+    "2026-11-09T19:48:06.000517+00:00",
+    "2026-11-09T19:48:08.908764+00:00",
+    "2026-11-09T19:48:12.919245+00:00",
+    "2026-11-09T19:48:16.395642+00:00",
+    "2026-11-09T19:48:19.354376+00:00",
+    "2026-11-09T19:48:20.126145+00:00",
+    "2026-11-09T19:48:26.229702+00:00",
+    "2026-11-09T19:48:27.972852+00:00",
+    "2026-11-09T19:48:29.774728+00:00",
+    "2026-11-09T19:48:31.227677+00:00",
+    "2026-11-09T19:48:34.074655+00:00"
   ],
   "free_day_out": "",
   "pace_adjust": 0.0,
@@ -3724,6 +3894,16 @@
       "date": "2026-11-09",
       "title": "The Perfect-Foresight Trap",
       "template": ""
+    },
+    {
+      "date": "2026-11-10",
+      "title": "The Ghost in the Log File",
+      "template": "chain"
+    },
+    {
+      "date": "2026-11-10",
+      "title": "The Baseline Drift That Reads Phantom Wear",
+      "template": "chain"
     }
   ],
   "topics": {
@@ -3758,7 +3938,8 @@
         "2026-11-06",
         "2026-11-07",
         "2026-11-08",
-        "2026-11-09"
+        "2026-11-09",
+        "2026-11-10"
       ],
       "subs": [
         "AI_India",
@@ -3777,29 +3958,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 85,
+      "mentions": 88,
       "refs": [
-        {
-          "date": "2026-11-04",
-          "title": "Nobody else seems to have as hard of a time with Claude as I do. I just want to understand why Claude hates me.",
-          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xmzcjz/nobody_else_seems_to_have_as_hard_of_a_time_with/",
-          "link": "",
-          "comment": "TL;DR of the discussion generated automatically after 50 comments. The consensus here is that Claude doesn't hate you, your security practices are just... questionable. The community is in firm agreement that this is 100% on you, OP, for giving an LLM direct write access to a production environment."
-        },
-        {
-          "date": "2026-11-05",
-          "title": "I gave every Claude model the exact same prompt since July 2025. 13 models, 14 months, here's the evolution",
-          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xn6eli/i_gave_every_claude_model_the_exact_same_prompt/",
-          "link": "",
-          "comment": "TL;DR of the discussion generated automatically after 30 comments. The overwhelming consensus in this thread is that Opus 5.5 is a monumental leap forward. People are floored by its performance, calling it an \"incredible upgrade\" that's in a \"league of its own\" compared to everything that came befor"
-        },
-        {
-          "date": "2026-11-06",
-          "title": "Opus 5.5 is definitely getting dumber and costlier suddenly",
-          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xodr56/opus_55_is_definitely_getting_dumber_and_costlier/",
-          "link": "",
-          "comment": "They are probably quantizing the model because, most likely a new model is about to release and they need to provision compute for it. It doesn't justify their behavior, but it's a plausible explanation."
-        },
         {
           "date": "2026-11-06",
           "title": "Thanks to two lines in the Claude setting , I was able to work 3 x 5H window without running out ,.",
@@ -3876,10 +4036,31 @@
           "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xr9x5y/the_nerf_is_real_thank_you_uwum1ha1nho/",
           "link": "",
           "comment": ""
+        },
+        {
+          "date": "2026-11-10",
+          "title": "Opus 5.5 in the past two weeks",
+          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xr4urz/opus_55_in_the_past_two_weeks/",
+          "link": "",
+          "comment": "To everybody calling this \"mass hysteria\", skill issue, \"the problem is infront of the keyboard\" or anything like that: I swear it's not. I was on your side until yesterday. \"People don't care about token efficiency, they just prompt ahead with no plan\" was my take. I saw the A/B testing posts and t"
+        },
+        {
+          "date": "2026-11-10",
+          "title": "The nerf is real. Thank you u/WuM1ha1nho!!!!",
+          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xr9x5y/the_nerf_is_real_thank_you_uwum1ha1nho/",
+          "link": "",
+          "comment": ""
+        },
+        {
+          "date": "2026-11-10",
+          "title": "Opus High 5.5 Nerfed?",
+          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xr8jod/opus_high_55_nerfed/",
+          "link": "",
+          "comment": ""
         }
       ],
       "deep_dive": "2026-11-08",
-      "last_seen": "2026-11-09",
+      "last_seen": "2026-11-10",
       "subject": "ai"
     },
     "anthropic-usage-policy": {
@@ -3898,7 +4079,8 @@
         "2026-10-31",
         "2026-11-01",
         "2026-11-02",
-        "2026-11-09"
+        "2026-11-09",
+        "2026-11-10"
       ],
       "subs": [
         "ClaudeAI",
@@ -3909,15 +4091,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 29,
+      "mentions": 30,
       "refs": [
-        {
-          "date": "2026-10-24",
-          "title": "Anthropic appears to sneak in a legal loophole in Claude Code to train on \"feedback\" even with training off as in Claude Code's source theres a legal term that counts every \"Allow edit\" you press as feedback.",
-          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xd5ruf/anthropic_appears_to_sneak_in_a_legal_loophole_in/",
-          "link": "",
-          "comment": "TL;DR of the discussion generated automatically after 50 comments. Looks like OP kicked a hornet's nest by finding some text in the Claude Code binary suggesting that every time you accept an edit, it's considered \"Feedback\" for training—potentially overriding the privacy opt-out toggle. The consens"
-        },
         {
           "date": "2026-10-24",
           "title": "Anthropic appears to sneak in a legal loophole in Claude Code to train on \"feedback\" even with training off as in Claude Code's source theres a legal term that counts every \"Allow edit\" you press as feedback.",
@@ -4008,10 +4183,17 @@
           "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xr0nz5/either_a_lawsuit_an_apology_or_never_touching/",
           "link": "",
           "comment": ""
+        },
+        {
+          "date": "2026-11-10",
+          "title": "Are we not allowed to ask any sh*t about biology to Opus 5.5?",
+          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xr2pir/are_we_not_allowed_to_ask_any_sht_about_biology/",
+          "link": "",
+          "comment": ""
         }
       ],
       "deep_dive": "",
-      "last_seen": "2026-11-09",
+      "last_seen": "2026-11-10",
       "subject": "ai"
     },
     "gemini-model-releases": {
@@ -4584,7 +4766,8 @@
         "2026-11-06",
         "2026-11-07",
         "2026-11-08",
-        "2026-11-09"
+        "2026-11-09",
+        "2026-11-10"
       ],
       "subs": [
         "AgentsOfAI",
@@ -4602,43 +4785,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 161,
+      "mentions": 166,
       "refs": [
-        {
-          "date": "2026-11-08",
-          "title": "opus 5.5 XHIGH just deleted all my apps data, passwords and macOS configs",
-          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xqfp7m/opus_55_xhigh_just_deleted_all_my_apps_data/",
-          "link": "",
-          "comment": ""
-        },
-        {
-          "date": "2026-11-08",
-          "title": "I gave Astra \"Extra High\" 10 minutes of \"free time\" on a computer with full access as a reward, here's what it did",
-          "thread": "https://www.reddit.com/r/OpenAI/comments/1xpzuce/i_gave_astra_extra_high_10_minutes_of_free_time/",
-          "link": "",
-          "comment": ""
-        },
-        {
-          "date": "2026-11-08",
-          "title": "Professor returns from lunch to find AI deleted year’s worth of lecture notes",
-          "thread": "https://www.reddit.com/r/artificial/comments/1xq9os9/professor_returns_from_lunch_to_find_ai_deleted/",
-          "link": "https://www.dexerto.com/entertainment/professor-returns-from-lunch-to-find-ai-deleted-years-worth-of-lecture-notes-3425652/",
-          "comment": ""
-        },
-        {
-          "date": "2026-11-08",
-          "title": "Anyone else running Claude Code mostly by voice? Mine has a \"chief\" agent that delegates to the others",
-          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xpxec0/anyone_else_running_claude_code_mostly_by_voice/",
-          "link": "",
-          "comment": ""
-        },
-        {
-          "date": "2026-11-08",
-          "title": "Someone used Claude Code to reverse-engineer the Apple AirPods 3, and now head-tracking works on Linux",
-          "thread": "https://www.reddit.com/r/technology/comments/1xq2xd3/someone_used_claude_code_to_reverseengineer_the/",
-          "link": "https://www.xda-developers.com/someone-used-claude-code-to-reverse-engineer-the-apple-airpods-3-and-now-head-tracking-works-on-linux/",
-          "comment": ""
-        },
         {
           "date": "2026-11-08",
           "title": "A year after the 100% AI mandate nobody understands our code",
@@ -4701,10 +4849,45 @@
           "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xr3gbs/i_built_an_mcp_with_claude_code_that_lets_claude/",
           "link": "",
           "comment": ""
+        },
+        {
+          "date": "2026-11-10",
+          "title": "I built an MCP with Claude Code that lets Claude play PC games in the background. Here it is driving, flying a heli and walking in GTA on its own",
+          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xr3gbs/i_built_an_mcp_with_claude_code_that_lets_claude/",
+          "link": "",
+          "comment": ""
+        },
+        {
+          "date": "2026-11-10",
+          "title": "I used Claude Code to rebuild IDM as a free, open-source download manager, the ArtCraft way. Mister Download Manager, in Rust, 0.5 just shipped",
+          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xqy0s6/i_used_claude_code_to_rebuild_idm_as_a_free/",
+          "link": "",
+          "comment": ""
+        },
+        {
+          "date": "2026-11-10",
+          "title": "DeepSeek V4.1 Flash used REA to reverse-engineer a 1984 DOS game and rebuild it for Chrome, for $0.68",
+          "thread": "https://www.reddit.com/r/DeepSeek/comments/1xr3g3i/deepseek_v41_flash_used_rea_to_reverseengineer_a/",
+          "link": "",
+          "comment": ""
+        },
+        {
+          "date": "2026-11-10",
+          "title": "Developer Meng To uses Claude Opus 5.5 and Three.js to build a Baldur’s Gate 3-inspired turn-based RPG, complete with character creation, tactical combat, spells, and a fully rendered 3D world.",
+          "thread": "https://www.reddit.com/r/singularity/comments/1xrentf/developer_meng_to_uses_claude_opus_55_and_threejs/",
+          "link": "",
+          "comment": ""
+        },
+        {
+          "date": "2026-11-10",
+          "title": "Banks ban AI from accounts over fears of rogue agents",
+          "thread": "https://www.reddit.com/r/technology/comments/1xqyxhh/banks_ban_ai_from_accounts_over_fears_of_rogue/",
+          "link": "https://www.telegraph.co.uk/business/2026/11/08/banks-ban-ai-from-accounts-over-fears-of-rogue-agents/",
+          "comment": ""
         }
       ],
       "deep_dive": "2026-10-18",
-      "last_seen": "2026-11-09",
+      "last_seen": "2026-11-10",
       "subject": "ai"
     },
     "ai-benchmarks": {
@@ -4858,7 +5041,8 @@
         "2026-11-02",
         "2026-11-04",
         "2026-11-06",
-        "2026-11-07"
+        "2026-11-07",
+        "2026-11-10"
       ],
       "subs": [
         "AI_Agents",
@@ -4873,22 +5057,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 73,
+      "mentions": 75,
       "refs": [
-        {
-          "date": "2026-10-31",
-          "title": "Another reason to own your own compute. Your account may get banned in a sneaky update.",
-          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xjgfuv/another_reason_to_own_your_own_compute_your/",
-          "link": "",
-          "comment": "They will keep altering the deal... Just wait until you see all of the nonsense they start coming up with once they are public and miss the first quarterly earnings report."
-        },
-        {
-          "date": "2026-11-01",
-          "title": "Local Qwen 27B is practically unusable for coding tasks. Are we doing something wrong?",
-          "thread": "https://www.reddit.com/r/LocalLLM/comments/1xjvc08/local_qwen_27b_is_practically_unusable_for_coding/",
-          "link": "",
-          "comment": "I can already tell you're running ollama."
-        },
         {
           "date": "2026-11-01",
           "title": "Your IQ1 \"100 tok/s\" recipe isn't the flex you think it is.",
@@ -4972,10 +5142,24 @@
           "thread": "https://www.reddit.com/r/LocalLLM/comments/1xp127a/qwen38_27b_fp8_on_4_radeon_ai_pro_r9700_7k_toks/",
           "link": "",
           "comment": ""
+        },
+        {
+          "date": "2026-11-10",
+          "title": "Intel Arc Pro B70 32GB ($1,299) vs NVIDIA RTX 5090 ($6,500+) on Qwen3.8-27B: about 1/2 speed gen (1/3 speed prefill) for 1/5 price, after best setup",
+          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xr78s5/intel_arc_pro_b70_32gb_1299_vs_nvidia_rtx_5090/",
+          "link": "https://www.reddit.com/gallery/1xr78s5",
+          "comment": ""
+        },
+        {
+          "date": "2026-11-10",
+          "title": "Joined the 4x R9700 Club | Initial Benchmarks for QFN 3.8 Below",
+          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xrcia4/joined_the_4x_r9700_club_initial_benchmarks_for/",
+          "link": "",
+          "comment": ""
         }
       ],
       "deep_dive": "2026-11-01",
-      "last_seen": "2026-11-07",
+      "last_seen": "2026-11-10",
       "subject": "ai"
     },
     "openai-company-updates": {
@@ -6079,7 +6263,8 @@
       "days": [
         "2026-11-04",
         "2026-11-05",
-        "2026-11-07"
+        "2026-11-07",
+        "2026-11-10"
       ],
       "subs": [
         "GeminiAI",
@@ -6088,7 +6273,7 @@
         "singularity",
         "technology"
       ],
-      "mentions": 7,
+      "mentions": 9,
       "refs": [
         {
           "date": "2026-11-04",
@@ -6138,11 +6323,25 @@
           "thread": "https://www.reddit.com/r/GeminiAI/comments/1xozxt9/if_you_have_gemini_pro_and_havent_tried_building/",
           "link": "",
           "comment": ""
+        },
+        {
+          "date": "2026-11-10",
+          "title": "Nvidia Opens Investigation Into Jensen Huang’s Relationship With Chinese Spy",
+          "thread": "https://www.reddit.com/r/technology/comments/1xr7tzk/nvidia_opens_investigation_into_jensen_huangs/",
+          "link": "https://www.nytimes.com/2026/11/08/technology/nvidia-investigation-jensen-huang-china.html?smid=nytcore-ios-share",
+          "comment": ""
+        },
+        {
+          "date": "2026-11-10",
+          "title": "Nvidia has launched an investigation on CEO Jensen Huang after, he admitted to having had a romantic relationship with a chinese spy",
+          "thread": "https://www.reddit.com/r/artificial/comments/1xrbxim/nvidia_has_launched_an_investigation_on_ceo/",
+          "link": "",
+          "comment": ""
         }
       ],
       "deep_dive": "",
       "subject": "ai",
-      "last_seen": "2026-11-07"
+      "last_seen": "2026-11-10"
     }
   }
 }
