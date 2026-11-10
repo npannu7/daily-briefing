@@ -4,6 +4,226 @@
  "repo": "npannu7/daily-briefing",
  "episodes": [
   {
+   "file": "ai_2026-11-10_evening_1259.mp3",
+   "title": "Evening - 10 Nov: One neuron that flips a model from confident errors to poetry",
+   "label": "Tuesday 10 Nov evening",
+   "date": "2026-11-10",
+   "edition": "evening",
+   "published": "2026-11-10T12:59:08.099942+05:30",
+   "duration": 1185,
+   "theme": "Finding the control knobs inside a neural network, and a plant-based coating that passes the boiling-water test for paper cups.",
+   "writer": "nemotron-3-ultra-550b-a55b (free)",
+   "voices": "Fish Audio (free)",
+   "deep_dive": false,
+   "segments": [
+    {
+     "title": "One neuron that flips a model from confident errors to poetry",
+     "category": "concept"
+    },
+    {
+     "title": "A plant-based coating that survives boiling water and cuts microplastics",
+     "category": "thread"
+    }
+   ],
+   "lessons": [
+    {
+     "title": "The Neuron That Isn't a Knob",
+     "segment": "One neuron that flips a model from confident errors to poetry",
+     "steps": [
+      {
+       "type": "choice",
+       "text": "Reddit claims neuron L11 N8147 in Qwen-3.5-4B is a 'contrarian dial' — crank it, get confident errors plus poetry. Only one user, few examples, no replication. As QA lead, would you qualify this neuron as a validated control knob?",
+       "options": [
+        "Yes — consistent behavioral shift in demos",
+        "No — uncontrolled test, no replication, no root cause",
+        "Maybe — needs SAE feature mapping first",
+        "Only if activation patching confirms causality"
+       ],
+       "answer": 1,
+       "explain": "Single-user Reddit post = anecdote. No replication, no intervention proof, no causal mapping. In GMP you'd reject this evidence for a critical control point.",
+       "hint": "Think sterilization validation: spore strips alone don't prove the cycle. You need the temperature-pressure-time record."
+      },
+      {
+       "type": "concept",
+       "text": "Superposition means each neuron is a multiplexed channel — like one data logger carrying temperature, pressure, and vibration mixed together. Cranking one 'clean' neuron actually forces an impossible combination: high 'contrarian' signal WITHOUT the correlated context that normally accompanies it. Downstream layers improvise. The poetry is the language prior — the path of least resistance in token space — filling the void when the reasoning circuit gets jammed by impossible inputs.",
+       "example": "Like a sterilizer controller seeing 300°C from a thermocouple that maxes at 140°C. The PID loop doesn't 'understand' — it integrates error and drives the valve wide open. Fluent nonsense."
+      },
+      {
+       "type": "order",
+       "text": "Put these in causal order: what actually happens when you artificially crank a raw neuron high",
+       "items": [
+        "Neuron driven to activation values never seen in training (distribution shift)",
+        "Downstream layers receive impossible activation combinations",
+        "Language prior generates fluent text — poetry — as path of least resistance",
+        "Output shows confident errors wrapped in grammatical coherence"
+       ],
+       "explain": "The crank creates the shift (1), which breaks downstream expectations (2), triggering the language model's default fluent generation (3), producing coherent but ungrounded output (4). The neuron isn't a dial — it's a distribution-shift bomb."
+      },
+      {
+       "type": "choice",
+       "text": "Your factory uses a vision system to inspect vial seals. You find one neuron in its net that, when cranked, makes it reject good vials but write poetic defect descriptions. The vendor says 'it's a sensitivity dial.' Your move:",
+       "options": [
+        "Qualify it — consistent behavioral shift",
+        "Reject — distribution shift, no causal proof, poetry = hallucinated style",
+        "Ask for SAE feature map and activation patching evidence",
+        "Run 10k vials and track neuron activation vs. ground truth"
+       ],
+       "answer": 2,
+       "explain": "Without mechanistic evidence (SAE features + causal patching), you have a black box that fails fluently. In regulated manufacturing, fluent failure is still failure — and harder to catch.",
+       "hint": "What would FDA say about a sensor that 'works' but you don't know why, and fails poetically?"
+      }
+     ],
+     "words": [
+      {
+       "term": "superposition",
+       "means": "One neuron carries multiple mixed concepts because the network has more concepts than neurons"
+      },
+      {
+       "term": "sparse autoencoder",
+       "means": "A side network that separates mixed neuron signals into cleaner, single-concept features"
+      },
+      {
+       "term": "activation patching",
+       "means": "Swapping a component's activations between two prompts to see how output changes — like injecting test voltage on a PCB"
+      },
+      {
+       "term": "distribution shift",
+       "means": "Feeding downstream layers activation patterns they never saw during training — they improvise"
+      },
+      {
+       "term": "mechanistic interpretability",
+       "means": "Mapping internal cause-effect logic, not just input-output behavior — the design-history file for neural nets"
+      }
+     ]
+    },
+    {
+     "title": "The Boiling Water Test That Misses the Vinegar Syndrome",
+     "segment": "A plant-based coating that survives boiling water and cuts microplastics",
+     "steps": [
+      {
+       "type": "choice",
+       "text": "Your cup supplier sends the Waterloo release: 'Plant-based coating survives boiling water, cuts microplastics, recycles easier.' Change-control board meets in 48h. Which claim hides a failure mode that boiling water tests WON'T catch?",
+       "options": [
+        "Boiling water stability (2 hr, 100°C)",
+        "Microplastic reduction vs. PE liner",
+        "Fiber reduction via composite action",
+        "Recyclability — cellulose on cellulose"
+       ],
+       "answer": 3,
+       "explain": "Cellulose acetate hydrolyzes to acetic acid — 'vinegar syndrome' — crashing repulper pH, creating stickies, corroding equipment. The release's 'potential to simplify' is lab-scale language, not a qualified recycling stream.",
+       "hint": "Boiling water is a single-use test. Recycling means repeated hot, wet, alkaline passes through a closed-loop repulper."
+      },
+      {
+       "type": "concept",
+       "text": "Boiling water tests one hot fill. Recycling repeats that stress 10–20 times in alkaline water with shear. Each pass cleaves acetyl groups, releasing acetic acid. pH falls, stickies precipitate, sizing fails, equipment corrodes. The coating passes the sprint but fails the marathon.",
+       "example": "Like a medical device passing sterilization validation but failing accelerated aging — the shelf-life test that simulates years in the warehouse."
+      },
+      {
+       "type": "order",
+       "text": "Put the change-control validation sequence in the right order for this coating substitution:",
+       "items": [
+        "Food-contact notification / GRAS determination for the new cellulose acetate + nanocrystal formulation",
+        "Migration testing on final coated board under worst-case simulants (boiling water, 10% ethanol, 2 hr)",
+        "Process validation for coating line: slot-die weight uniformity, drying kinetics, adhesion after conversion",
+        "Design history file update: new material specs, drawings, process parameters, validation protocol & report"
+       ],
+       "explain": "Regulatory clearance first (you can't test food contact on an unapproved material). Then migration on the real article. Then prove the line makes it consistently. Finally close the DHF — the auditor's roadmap."
+      },
+      {
+       "type": "choice",
+       "text": "Dr. Ganguly says the coating lets them use 'much thinner paper' — the coating carries hoop stress like a composite skin. If baseline cup board is 200 gsm, what basis-weight drop is structurally plausible for a 250 ml cup?",
+       "options": [
+        "200 → 190 gsm (5% drop)",
+        "200 → 170 gsm (15% drop)",
+        "200 → 150 gsm (25% drop)",
+        "200 → 110 gsm (45% drop)"
+       ],
+       "answer": 2,
+       "explain": "25% fiber reduction is realistic for a reinforced skin — but converting trials (die-cut force, stack height, sleeve fit) are the real gate. A materials win that still needs a full V&V package.",
+       "hint": "Cellulose nanocrystals ~150 GPa modulus. At 15 µm coating thickness, they're a high-modulus skin. But the core still needs enough fiber to prevent buckling and survive converting."
+      }
+     ],
+     "words": [
+      {
+       "term": "Cellulose acetate",
+       "means": "Plant-derived polymer, hydrophobic when acetylated, but hydrolyzes to acetic acid over time"
+      },
+      {
+       "term": "Degree of substitution",
+       "means": "Average acetyl groups per sugar unit (2.5 typical); controls hydrophobicity and hydrolysis rate"
+      },
+      {
+       "term": "Repulpability",
+       "means": "Ability to disperse in water under shear; measured by fiber yield, stickies, drainage time (PTS-RH 021)"
+      },
+      {
+       "term": "Overall migration limit",
+       "means": "Regulatory cap (10 mg/dm² EU) on total substances migrating into food simulant"
+      },
+      {
+       "term": "Accelerated aging",
+       "means": "ASTM F1980 protocol (e.g., 40°C/75% RH, 1000 hr) to simulate years of shelf life"
+      },
+      {
+       "term": "Vinegar syndrome",
+       "means": "Autocatalytic hydrolysis of cellulose acetate releasing acetic acid; lowers pH, corrodes equipment"
+      }
+     ]
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What is the core technical challenge that makes 'neuron-hunting' in a neural network like the Qwen-3.5-4B model difficult?",
+     "options": [
+      "The neurons are too small to be identified by current code",
+      "The model uses superposition, where a single neuron represents multiple, mixed concepts",
+      "The model's weights are encrypted, preventing direct access to individual neurons",
+      "The activation functions are too complex to be interpreted by human observers"
+     ],
+     "answer": 1,
+     "explain": "Superposition causes neurons to be polysemantic, meaning they fire for unrelated concepts, making it difficult to map a single neuron to a specific, isolated behavior.",
+     "segment": "One neuron that flips a model from confident errors to poetry"
+    },
+    {
+     "q": "Why does the episode suggest that the 'snarky poetry' produced by the Qwen neuron is likely not a sign of 'creativity'?",
+     "options": [
+      "The poetry follows a pre-programmed template stored in the model's memory",
+      "The model is simply outputting random noise that humans interpret as poetry",
+      "The poetry is the model's language prior filling the gap when the reasoning circuit is jammed",
+      "The model is incapable of generating text that is both snarky and poetic"
+     ],
+     "answer": 2,
+     "explain": "The poetry is interpreted as the model's language prior taking over when the logic circuit is overridden, rather than the neuron itself possessing creative intent.",
+     "segment": "One neuron that flips a model from confident errors to poetry"
+    },
+    {
+     "q": "From a regulatory and quality perspective, what is the primary deficiency in the evidence provided for the new plant-based cup coating?",
+     "options": [
+      "The coating is known to be toxic when exposed to high temperatures",
+      "The paper lacks a peer-reviewed publication in a reputable journal",
+      "The claims are based on qualitative observations rather than quantitative migration and durability data",
+      "The coating is incompatible with existing paperboard manufacturing equipment"
+     ],
+     "answer": 2,
+     "explain": "The claims rely on qualitative observations of 'degradation' rather than the quantitative migration studies and accelerated aging data required for regulatory validation.",
+     "segment": "A plant-based coating that survives boiling water and cuts microplastics"
+    },
+    {
+     "q": "What is a potential technical risk identified regarding the recycling of cellulose acetate-coated cups?",
+     "options": [
+      "The coating may hydrolyze and release acetic acid, potentially lowering pH and causing corrosion in repulping systems",
+      "The cellulose nanocrystals are too heavy and will sink to the bottom of the recycling vats",
+      "The coating is impossible to remove from the paper fiber under any circumstances",
+      "The coating requires a higher temperature to recycle than standard polyethylene"
+     ],
+     "answer": 0,
+     "explain": "Cellulose acetate can hydrolyze over time, releasing acetic acid, which could negatively impact the chemistry of a closed-loop recycling water system.",
+     "segment": "A plant-based coating that survives boiling water and cuts microplastics"
+    }
+   ],
+   "transcript": "transcripts/ai_2026-11-10_evening_1259.txt"
+  },
+  {
    "file": "ai_2026-11-10_morning_0024.mp3",
    "title": "Morning - 10 Nov: Is Your AI Assistant Being Secretly Tested?",
    "label": "Tuesday 10 Nov morning",
@@ -3338,229 +3558,6 @@
     }
    ],
    "transcript": "transcripts/ai_2026-11-03_evening_1647.txt"
-  },
-  {
-   "file": "ai_2026-11-03_morning_0846.mp3",
-   "title": "Morning - 3 Nov: Anthropic restricts Claude Code for game cloning and reverse engineering",
-   "label": "Tuesday 03 Nov morning",
-   "date": "2026-11-03",
-   "edition": "morning",
-   "published": "2026-11-03T08:46:19.791483+05:30",
-   "duration": 1025,
-   "theme": "How AI tool policies shift under pressure, and what a hallucination audit reveals about search validation",
-   "writer": "nemotron-3-ultra-550b-a55b (free)",
-   "voices": "Fish Audio (free)",
-   "deep_dive": false,
-   "segments": [
-    {
-     "title": "Anthropic restricts Claude Code for game cloning and reverse engineering",
-     "category": "thread"
-    },
-    {
-     "title": "Study finds one in ten facts in Google AI search summaries lack support",
-     "category": "thread"
-    }
-   ],
-   "quiz": [
-    {
-     "q": "How was Anthropic's new restriction against game cloning implemented in Claude Code?",
-     "options": [
-      "By updating the model weights of Opus 5.5 during a retrain",
-      "By adding a hard-coded refusal list of banned phrases",
-      "By injecting two sentences into the system prompt for Opus 5.5",
-      "By restricting all user access to Ollama and local wrappers"
-     ],
-     "answer": 2,
-     "explain": "Anthropic added a surgical prompt-level interlock consisting of two sentences to Claude Code's prompt on Opus 5.5 rather than retraining the model weights.",
-     "segment": "Anthropic restricts Claude Code for game cloning and reverse engineering"
-    },
-    {
-     "q": "Why does a vendor-added prompt restriction present a compliance challenge for medical-device quality validation under FDA 21 CFR Part 11?",
-     "options": [
-      "It invalidates the physical machine's spindle tooling",
-      "It changes system behavior via a hidden cloud prompt that the user cannot see or control, breaking traceability",
-      "It automatically encrypts all electronic records with a proprietary statistical watermark",
-      "It causes the model to consume all available display advertising revenue"
-     ],
-     "answer": 1,
-     "explain": "Because the rule lives in a hidden vendor prompt in the cloud, users cannot see or control the change, meaning they cannot prove their electronic records are trustworthy and tamper-proof.",
-     "segment": "Anthropic restricts Claude Code for game cloning and reverse engineering"
-    },
-    {
-     "q": "What did a recent Washington University preprint audit reveal about Google's AI search summaries (AI Overviews)?",
-     "options": [
-      "Over ten percent of the factual claims in the summaries lacked support from their cited sources",
-      "Higher website credibility successfully eliminated all summarization errors",
-      "Nearly thirty percent of cited websites appeared on the first page of regular search results",
-      "Procedural questions about app settings achieved a one hundred percent accuracy rate"
-     ],
-     "answer": 0,
-     "explain": "The study found that eleven percent of factual claims in the summaries were unsupported by their cited sources, primarily due to omissions or direct contradictions.",
-     "segment": "Study finds one in ten facts in Google AI search summaries lack support"
-    },
-    {
-     "q": "In the context of RAG systems and technical documentation, what does a failure in citation faithfulness mean?",
-     "options": [
-      "The AI retrieved a document from the wrong version of an app",
-      "The model's generated conclusion is correct, but the linked citation does not actually support the statement",
-      "The AI relied too heavily on user-generated content like Reddit comments",
-      "The retrieval step failed to pull any batch records from the corpus"
-     ],
-     "answer": 1,
-     "explain": "Citation faithfulness specifically measures whether the cited source actually supports the sentence attached to it, distinct from whether the answer happens to be correct by coincidence.",
-     "segment": "Study finds one in ten facts in Google AI search summaries lack support"
-    }
-   ],
-   "digest": [
-    {
-     "title": "Scientists asked 50 people who nearly died to sketch the spaces they saw. Four shapes kept showing up: tunnels, archways, gently curved spaces, and sphere-like bubbles. The strangest finding: Tunnels were almost always colorless (22 of 28), while archways were almost always full of color (27 of 31).",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1xlti49/scientists_asked_50_people_who_nearly_died_to/",
-     "link": "https://www.sciencealert.com/scientists-asked-50-people-to-map-their-near-death-experiences-an-eerie-pattern-emerged",
-     "line": "Discussing near-death experience tunnel and archway shapes, with users debating whether pupil constriction causes the tunnel vision effect.",
-     "verdict": "opinion",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Over 10% of factual claims in Google’s AI search summaries aren’t backed by their cited sources, study finds",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1xlz2zh/over_10_of_factual_claims_in_googles_ai_search/",
-     "link": "https://www.psypost.org/how-google-ai-search-summaries-alter-online-information-and-publisher-revenue/",
-     "line": "A study found over 10% of factual claims in Google AI search summaries lack backing from cited sources, pleasing critics of the feature.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": true
-    },
-    {
-     "title": "Anthropic confirms new Claude Code limits to prevent game cloning — users report Opus 5.5 is also actively blocking reverse engineering tasks",
-     "subs": [
-      "ClaudeAI",
-      "technology"
-     ],
-     "thread": "https://www.reddit.com/r/technology/comments/1xlwaqx/anthropic_confirms_new_claude_code_limits_to/",
-     "link": "https://www.tomshardware.com/tech-industry/artificial-intelligence/anthropic-confirms-new-claude-code-limits-to-prevent-game-cloning-users-report-opus-5-5-is-also-actively-blocking-reverse-engineering-tasks",
-     "line": "Users discuss Anthropic's new limits in Claude Code and Opus 5.5 to prevent game cloning and reverse engineering, criticizing their data practices.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": true
-    },
-    {
-     "title": "I said, “doctor” - thoughts about Zofran being OTC?",
-     "subs": [
-      "medicine"
-     ],
-     "thread": "https://www.reddit.com/r/medicine/comments/1xlwbi9/i_said_doctor_thoughts_about_zofran_being_otc/",
-     "link": "",
-     "line": "A pharmacist asks about supporting Zofran as an over-the-counter medication, leading to debates on its safety profile regarding QTc prolongation.",
-     "verdict": "opinion",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Sparks of Weight-Space Programming: LLMs can natively read & write neural network weights",
-     "subs": [
-      "LocalLLaMA",
-      "accelerate",
-      "singularity"
-     ],
-     "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xm6jow/sparks_of_weightspace_programming_llms_can/",
-     "link": "https://rikiyat.github.io/blog/weight-space-programming/",
-     "line": "Users discuss whether LLMs can natively read and write neural network weights without training, following an experiment with Qwen3.5-0.8B.",
-     "verdict": "plausible",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "The 7.72TB Alleged Anthropic AI Model Is Fake — I Reconstructed Its Generated Weights",
-     "subs": [
-      "ClaudeAI"
-     ],
-     "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xls4cj/the_772tb_alleged_anthropic_ai_model_is_fake_i/",
-     "link": "",
-     "line": "An investigation concluded that a 7.72TB checkpoint claiming to be an internal Anthropic Mythos model was fake and deterministically generated.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Official Statement: Qwen Models Will Stick to Open Source to the End!",
-     "subs": [
-      "LocalLLaMA"
-     ],
-     "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xm28e6/official_statement_qwen_models_will_stick_to_open/",
-     "link": "",
-     "line": "An official statement clarifies that future Qwen models will remain open source, drawing praise and jokes from the community.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Those with significant career experience at multiple companies — Abbvie, RevMed, Lilly, Genentech, etc — have you observed major scientific competence differences between companies?",
-     "subs": [
-      "biotech"
-     ],
-     "thread": "https://www.reddit.com/r/biotech/comments/1xlfk7c/those_with_significant_career_experience_at/",
-     "link": "",
-     "line": "Biotech professionals share career experiences and debate scientific competence differences and management qualities across various pharmaceutical companies.",
-     "verdict": "opinion",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "A new dinosaur species discovered in North America reveals the first known specialized fruit-eating dinosaur: Infernogallus jamesi (or ‘Hell Chicken’), a turkey-sized, feathered dinosaur with a skull specialized for mashing stone fruits to remove the flesh from the main seed",
-     "subs": [
-      "science"
-     ],
-     "thread": "https://www.reddit.com/r/science/comments/1xm37ol/a_new_dinosaur_species_discovered_in_north/",
-     "link": "https://news.stonybrook.edu/newsroom/press-release/medical/dinosaur-discovery-reveals-a-specialized-fruit-eater/",
-     "line": "A new North American dinosaur species, Infernogallus jamesi or hell chicken, was discovered as the first known specialized fruit-eating dinosaur.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Why breathe any nitrogen when diving?",
-     "subs": [
-      "askscience"
-     ],
-     "thread": "https://www.reddit.com/r/askscience/comments/1xluapg/why_breathe_any_nitrogen_when_diving/",
-     "link": "",
-     "line": "Discussing why nitrogen is used in diving tanks and explaining that deep diving replaces it with other gases like heliox due to physics and costs.",
-     "verdict": "confirmed",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Opus 5.5 surviving the entire October AI release cycle 😂",
-     "subs": [
-      "ClaudeAI"
-     ],
-     "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xlkghv/opus_55_surviving_the_entire_october_ai_release/",
-     "link": "",
-     "line": "Users discuss whether Opus 5.5 remains their go-to model for coding after surviving recent AI releases, expressing strong preference for it.",
-     "verdict": "opinion",
-     "also_in": [],
-     "in_episode": false
-    },
-    {
-     "title": "Apparently, using Claude Code to build something is now considered stealing.",
-     "subs": [
-      "ClaudeCode"
-     ],
-     "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xloh1l/apparently_using_claude_code_to_build_something/",
-     "link": "",
-     "line": "A non-programmer built a custom tabletop RPG system using Claude Code, sparking discussion about whether AI-assisted coding is considered stealing.",
-     "verdict": "opinion",
-     "also_in": [],
-     "in_episode": false
-    }
-   ],
-   "transcript": "transcripts/ai_2026-11-03_morning_0846.txt"
   }
  ]
 }
