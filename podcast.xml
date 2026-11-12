@@ -8,9 +8,25 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Wed, 11 Nov 2026 07:29:15 GMT</lastBuildDate>
+<lastBuildDate>Thu, 12 Nov 2026 07:51:01 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Evening - 12 Nov: An AI that predicts what a DNA change does to a cell</title>
+<description>Evening edition - Thursday, 12 November 2026
+How AI predicts biology and how regulators update drug labels — both validation problems at heart.
+
+00:41  An AI that predicts what a DNA change does to a cell
+12:26  FDA adds vision-loss warning to every GLP-1 drug
+
+Puzzles: The Variant That Only Hurts Macrophages, The Signal That Cries Wolf - puzzles, quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
+Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (148 threads)</description>
+<pubDate>Thu, 12 Nov 2026 12:54:28 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-11-12_evening_1254.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-12_evening_1254.mp3" length="10329349" type="audio/mpeg"/>
+<itunes:duration>1291</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Evening - 11 Nov: Why machine learning models give different answers every time</title>
 <description>Evening edition - Wednesday, 11 November 2026
@@ -181,40 +197,6 @@ Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Di
 <guid isPermaLink="false">ai_2026-11-05_evening_1449.mp3</guid>
 <enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-05_evening_1449.mp3" length="12249549" type="audio/mpeg"/>
 <itunes:duration>1531</itunes:duration>
-<itunes:episodeType>full</itunes:episodeType>
-</item>
-<item>
-<title>Morning - 5 Nov: Can running your own artificial intelligence models cut coding costs tenfold?</title>
-<description>Morning edition - Thursday, 5 November 2026
-Checking a tenfold artificial intelligence cost claim at a fintech company and a failed replication in mouse neuroscience
-
-00:38  Can running your own artificial intelligence models cut coding costs tenfold?
-04:17  Mouse studies fail to repeat earlier psilocybin findings
-08:22  What effect will modern burial practices have on human fossilization rate?
-12:59  Goldman Sachs restricted Claude Code to engineers only
-
-Puzzles: Fitting a Beast into VRAM, Hunting Ghosts in the Mouse Lab - puzzles, quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
-Written by: Gemini 3.5 Flash-Lite · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (156 threads)</description>
-<pubDate>Thu, 05 Nov 2026 07:00:08 +0530</pubDate>
-<guid isPermaLink="false">ai_2026-11-05_morning_0700.mp3</guid>
-<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-05_morning_0700.mp3" length="7512986" type="audio/mpeg"/>
-<itunes:duration>938</itunes:duration>
-<itunes:episodeType>full</itunes:episodeType>
-</item>
-<item>
-<title>Evening - 4 Nov: Xiaomi's humanoid robots complete an eight-hour shift sorting EV parts</title>
-<description>Evening edition - Wednesday, 4 November 2026
-Humanoid robots on the factory floor and the hidden synchronization shaking power grids
-
-00:30  Xiaomi's humanoid robots complete an eight-hour shift sorting EV parts
-10:44  Why the power grid wobbles every sixty seconds
-
-Puzzles: The 60-Second Heartbeat Nobody Designed - puzzles, quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
-Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (161 threads)</description>
-<pubDate>Wed, 04 Nov 2026 14:43:52 +0530</pubDate>
-<guid isPermaLink="false">ai_2026-11-04_evening_1443.mp3</guid>
-<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-04_evening_1443.mp3" length="8435686" type="audio/mpeg"/>
-<itunes:duration>1054</itunes:duration>
 <itunes:episodeType>full</itunes:episodeType>
 </item>
 </channel>
