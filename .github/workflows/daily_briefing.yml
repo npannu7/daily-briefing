@@ -3,17 +3,72 @@ name: Weights and Measures
 on:
   schedule:
     # GitHub cron is in UTC. India = UTC + 5:30.
-    # GitHub starts scheduled runs 30-60 minutes late (the 06:20 run of 4 Nov 2026 started at 07:15) and an
-    # episode takes 20-30 minutes to make, so the runs start early enough to be ready for the 08:00 and 16:00
-    # commutes. Minutes off :00 and :30, when GitHub's scheduler is busiest.
-    - cron: '20 0 * * *'    # 05:50 IST  morning edition  (ready about 07:00)
-    - cron: '5 1 * * *'     # 06:35 IST  morning backup (skips if already made)
-    - cron: '20 8 * * *'    # 13:50 IST  evening edition  (ready about 15:00)
-    - cron: '5 9 * * *'     # 14:35 IST  evening backup (skips if already made)
+    #
+    # GitHub does not start scheduled runs on time: 30-60 minutes late in October 2026, then 6-10 hours late
+    # from 6 Nov 2026 (the 05:50 IST run started after 12:30, the 13:50 IST run after 21:30). So the schedule
+    # below is not "when to make an episode". It is a check every half hour, and due.py decides what is due:
+    #
+    #     morning edition: made from 06:00 IST, ready by 09:00
+    #     evening edition: made from 15:00 IST, ready by 18:00
+    #
+    # A check that finds nothing due ends in a few seconds. One that arrives up to 2.5 hours before a start
+    # time waits for it (and reads Reddit meanwhile) rather than trusting the next check to come in time.
+    # Each check is its own line on purpose. While GitHub ran late, the four once-a-day lines this file used
+    # to have each still ran every day, but the Reddit collector's single "every hour" line ran only 3-4
+    # times a day: it looks as if checks that pile up behind one line are dropped. Minutes off :00 and :30,
+    # when GitHub's scheduler is busiest.
+    - cron: '7 0 * * *'    # 05:37 IST
+    - cron: '37 0 * * *'    # 06:07 IST
+    - cron: '7 1 * * *'    # 06:37 IST
+    - cron: '37 1 * * *'    # 07:07 IST
+    - cron: '7 2 * * *'    # 07:37 IST
+    - cron: '37 2 * * *'    # 08:07 IST
+    - cron: '7 3 * * *'    # 08:37 IST
+    - cron: '37 3 * * *'    # 09:07 IST
+    - cron: '7 4 * * *'    # 09:37 IST
+    - cron: '37 4 * * *'    # 10:07 IST
+    - cron: '7 5 * * *'    # 10:37 IST
+    - cron: '37 5 * * *'    # 11:07 IST
+    - cron: '7 6 * * *'    # 11:37 IST
+    - cron: '37 6 * * *'    # 12:07 IST
+    - cron: '7 7 * * *'    # 12:37 IST
+    - cron: '37 7 * * *'    # 13:07 IST
+    - cron: '7 8 * * *'    # 13:37 IST
+    - cron: '37 8 * * *'    # 14:07 IST
+    - cron: '7 9 * * *'    # 14:37 IST
+    - cron: '37 9 * * *'    # 15:07 IST
+    - cron: '7 10 * * *'    # 15:37 IST
+    - cron: '37 10 * * *'    # 16:07 IST
+    - cron: '7 11 * * *'    # 16:37 IST
+    - cron: '37 11 * * *'    # 17:07 IST
+    - cron: '7 12 * * *'    # 17:37 IST
+    - cron: '37 12 * * *'    # 18:07 IST
+    - cron: '7 13 * * *'    # 18:37 IST
+    - cron: '37 13 * * *'    # 19:07 IST
+    - cron: '7 14 * * *'    # 19:37 IST
+    - cron: '37 14 * * *'    # 20:07 IST
+    - cron: '7 15 * * *'    # 20:37 IST
+    - cron: '37 15 * * *'    # 21:07 IST
+    - cron: '7 16 * * *'    # 21:37 IST
+    - cron: '37 16 * * *'    # 22:07 IST
+    - cron: '7 17 * * *'    # 22:37 IST
+    - cron: '37 17 * * *'    # 23:07 IST
+    - cron: '7 18 * * *'    # 23:37 IST
+    - cron: '37 18 * * *'    # 00:07 IST
+    - cron: '7 19 * * *'    # 00:37 IST
+    - cron: '37 19 * * *'    # 01:07 IST
+    - cron: '7 20 * * *'    # 01:37 IST
+    - cron: '37 20 * * *'    # 02:07 IST
+    - cron: '7 21 * * *'    # 02:37 IST
+    - cron: '37 21 * * *'    # 03:07 IST
+    - cron: '7 22 * * *'    # 03:37 IST
+    - cron: '37 22 * * *'    # 04:07 IST
+    - cron: '7 23 * * *'    # 04:37 IST
+    - cron: '37 23 * * *'    # 05:07 IST
   workflow_dispatch:
     inputs:
       edition:
-        description: 'Which edition to make'
+        description: 'Which edition to make (auto = whichever is due now)'
         type: choice
         options: [auto, morning, evening]
         default: auto
@@ -40,39 +95,53 @@ permissions:
   contents: write      # commit feed, quiz and cover; upload audio
   issues: write        # read and close feedback sent from quiz.html
   models: read         # GitHub Models, the last free fallback for writing
+  actions: read        # see whether an earlier run is already making the edition
 
-concurrency:
-  group: daily-briefing
-  cancel-in-progress: false
+env:
+  EDITION: ${{ inputs.edition || 'auto' }}
+  FORCE: ${{ inputs.force || 'false' }}
+  MORNING_START: ${{ vars.MORNING_START }}
+  EVENING_START: ${{ vars.EVENING_START }}
+  WAIT_AHEAD_MIN: ${{ vars.WAIT_AHEAD_MIN }}
 
 jobs:
-  build:
+  # A few seconds: is an edition due, and is nobody else already making it?
+  gate:
     runs-on: ubuntu-latest
-    timeout-minutes: 120   # Sunday deep dives are long
+    timeout-minutes: 5
+    outputs:
+      edition: ${{ steps.due.outputs.edition }}
+    steps:
+      - name: Checkout (the schedule and the list of episodes only)
+        uses: actions/checkout@v5
+        with:
+          ref: main
+          sparse-checkout: |
+            due.py
+            episodes.json
+          sparse-checkout-cone-mode: false
+
+      - name: Is an edition due?
+        id: due
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 due.py --github-output
+
+  build:
+    needs: gate
+    if: needs.gate.outputs.edition != 'none'
+    runs-on: ubuntu-latest
+    timeout-minutes: 300   # up to 2.5 hours of waiting for the start time, plus a long Sunday edition
+    concurrency:
+      group: daily-briefing
+      cancel-in-progress: false
     steps:
       - name: Checkout
         uses: actions/checkout@v5
         with:
-          # The latest main, not the commit from when this run was queued: a backup run that waited behind
-          # the main run must see the episode it made, or it makes a second one and deletes the first's audio.
+          # The latest main, not the commit from when this run was queued: a run that waited behind another
+          # must see the episode it made, or it makes a second one and deletes the first's audio.
           ref: main
-
-      - name: Set up Python
-        uses: actions/setup-python@v6
-        with:
-          python-version: '3.12'
-          cache: 'pip'
-
-      - name: Install dependencies
-        run: |
-          pip install -U -r requirements.txt
-
-      - name: Draw cover art (first run only)
-        run: |
-          if [ ! -f artwork.jpg ]; then
-            pip install -q matplotlib numpy
-            python make_cover.py
-          fi
 
       - name: Download Reddit pool and weekly dossier
         env:
@@ -81,13 +150,47 @@ jobs:
           gh release download reddit-pool -p pool.json -D reddit --clobber || echo "No Reddit pool yet."
           gh release download reddit-pool -p dossier.json -D reddit --clobber || echo "No weekly dossier yet."
 
+      - name: Wait for the start time (reading Reddit meanwhile)
+        id: due
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          before=$(cksum reddit/pool.json 2>/dev/null || true)
+          python3 due.py --wait --pool reddit/pool.json --github-output
+          if [ -f reddit/pool.json ] && [ "$before" != "$(cksum reddit/pool.json)" ]; then
+            gh release upload reddit-pool reddit/pool.json --clobber || echo "Pool not uploaded (kept for this episode)."
+          fi
+
+      - name: Set up Python
+        if: steps.due.outputs.edition != 'none'
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        if: steps.due.outputs.edition != 'none'
+        run: |
+          pip install -U -r requirements.txt
+
+      - name: Draw cover art (first run only)
+        if: steps.due.outputs.edition != 'none'
+        run: |
+          if [ ! -f artwork.jpg ]; then
+            pip install -q matplotlib numpy
+            python make_cover.py
+          fi
+
       - name: Generate briefing
+        if: steps.due.outputs.edition != 'none'
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           WRITER_MODELS: ${{ vars.WRITER_MODELS }}
           HELPER_MODELS: ${{ vars.HELPER_MODELS }}
+          CODER_MODELS: ${{ vars.CODER_MODELS }}
           DECISION_MODELS: ${{ vars.DECISION_MODELS }}
+          WEB_CHECK_MODEL: ${{ vars.WEB_CHECK_MODEL }}
           SCORING: ${{ vars.SCORING }}
           OPENROUTER_DAILY_USD: ${{ vars.OPENROUTER_DAILY_USD }}
           OPENROUTER_FREE_DAILY: ${{ vars.OPENROUTER_FREE_DAILY }}
@@ -109,13 +212,13 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
           GITHUB_REPOSITORY: ${{ github.repository }}
-          EDITION: ${{ inputs.edition || 'auto' }}
-          FORCE: ${{ inputs.force || 'false' }}
+          EDITION: ${{ steps.due.outputs.edition }}
           TTS_ENGINE: ${{ inputs.tts || 'auto' }}
           DEEP_DIVE: ${{ inputs.deep_dive || 'false' }}
         run: python generate_briefing.py
 
       - name: Commit feed
+        if: steps.due.outputs.edition != 'none'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"

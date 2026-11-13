@@ -4,7 +4,33 @@ name: Collect Reddit
 # in a pool (kept as a release asset, so the repository history stays clean) that the episodes read.
 on:
   schedule:
-    - cron: '5 * * * *'
+    # One line per hour, not '22 * * * *'. From 4 Nov 2026 GitHub ran the single hourly line only 3-4 times
+    # a day (5 of 148 threads had comments), while the episode workflow's once-a-day lines each still ran,
+    # late. It looks as if runs that pile up behind one line are dropped, so each hour has its own line.
+    - cron: '22 0 * * *'
+    - cron: '22 1 * * *'
+    - cron: '22 2 * * *'
+    - cron: '22 3 * * *'
+    - cron: '22 4 * * *'
+    - cron: '22 5 * * *'
+    - cron: '22 6 * * *'
+    - cron: '22 7 * * *'
+    - cron: '22 8 * * *'
+    - cron: '22 9 * * *'
+    - cron: '22 10 * * *'
+    - cron: '22 11 * * *'
+    - cron: '22 12 * * *'
+    - cron: '22 13 * * *'
+    - cron: '22 14 * * *'
+    - cron: '22 15 * * *'
+    - cron: '22 16 * * *'
+    - cron: '22 17 * * *'
+    - cron: '22 18 * * *'
+    - cron: '22 19 * * *'
+    - cron: '22 20 * * *'
+    - cron: '22 21 * * *'
+    - cron: '22 22 * * *'
+    - cron: '22 23 * * *'
   workflow_dispatch:
     inputs:
       requests:
@@ -13,6 +39,7 @@ on:
 
 permissions:
   contents: write      # read and replace the pool asset
+  actions: write       # start the episode workflow when an edition is due
 
 concurrency:
   group: reddit-pool
@@ -21,12 +48,26 @@ concurrency:
 jobs:
   collect:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 50
     env:
       GH_TOKEN: ${{ github.token }}
+      MORNING_START: ${{ vars.MORNING_START }}
+      EVENING_START: ${{ vars.EVENING_START }}
+      WAIT_AHEAD_MIN: ${{ vars.WAIT_AHEAD_MIN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v5
+        with:
+          ref: main
+
+      - name: Start the episode if one is due
+        # A second way in: GitHub's schedule for the episode workflow has been hours late, so every collector
+        # run also checks. The episode workflow itself ignores the nudge when nothing is due or a run is on it.
+        run: |
+          python3 due.py | tee due.txt
+          if ! grep -q '^edition=none' due.txt; then
+            gh workflow run daily_briefing.yml --ref main || echo "Could not start the episode workflow."
+          fi
 
       - name: Set up Python
         uses: actions/setup-python@v6
@@ -43,7 +84,7 @@ jobs:
       - name: Collect one step
         run: |
           python collector/reddit_collector.py --pool reddit/pool.json --repo "${{ github.repository }}" \
-            --requests "${{ inputs.requests || '10' }}" --pause 60
+            --requests "${{ inputs.requests || '10' }}" --pause 60 --catch-up
 
       - name: Upload pool
         run: gh release upload reddit-pool reddit/pool.json --clobber

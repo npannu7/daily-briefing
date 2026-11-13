@@ -2,65 +2,250 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Weights &amp; Measures · Puzzles</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Weights &amp; Measures · Play</title>
 <link rel="icon" href="artwork.jpg">
 <style>
 :root{
   --bg:#F6F4EE; --card:#FFFFFF; --ink:#141A2B; --muted:#5E6A82; --line:#E3E0D7;
-  --accent:#C77A00; --accent-ink:#FFFFFF; --soft:#FFF4DF; --good:#1F8A5B; --good-soft:#E3F4EC;
-  --bad:#C2413B; --bad-soft:#FBE9E7; --chip:#EFEDE6; --blue:#2F6FD0;
+  --accent:#A86400; --accent-ink:#FFFFFF; --soft:#FFF1D6; --good:#17794F; --good-soft:#E3F4EC;
+  --bad:#B93A34; --bad-soft:#FBE9E7; --chip:#EFEDE6; --blue:#2A63C4; --shadow:0 6px 24px rgba(20,26,43,.10);
 }
+[data-theme="exchange"]{--accent:#0B7D62; --soft:#DDF4EC}
+[data-theme="bench"]{--accent:#2A63C4; --soft:#E2ECFB}
+[data-theme="case"]{--accent:#7D3FB5; --soft:#F0E6FA}
 @media (prefers-color-scheme: dark){
   :root{
     --bg:#0A0F1E; --card:#121A2E; --ink:#F1EEE6; --muted:#9AA8C4; --line:#24304A;
     --accent:#FFB547; --accent-ink:#0A0F1E; --soft:#2A2312; --good:#4CC38A; --good-soft:#0F2A1F;
-    --bad:#FF7A70; --bad-soft:#2E1414; --chip:#1B2540; --blue:#7FB0FF;
+    --bad:#FF7A70; --bad-soft:#2E1414; --chip:#1B2540; --blue:#7FB0FF; --shadow:0 6px 24px rgba(0,0,0,.45);
   }
+  [data-theme="exchange"]{--accent:#4CD4A8; --soft:#10291F}
+  [data-theme="bench"]{--accent:#7FB0FF; --soft:#14213D}
+  [data-theme="case"]{--accent:#C8A2FF; --soft:#241A38}
 }
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);
   font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
-.wrap{max-width:720px;margin:0 auto;padding:20px 16px 80px}
-header{display:flex;gap:14px;align-items:center;margin:4px 0 18px}
-header img{width:64px;height:64px;border-radius:12px;flex:none}
-header h1{font-size:22px;margin:0;line-height:1.2}
-header p{margin:2px 0 0;color:var(--muted);font-size:14px}
-.tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;margin-bottom:14px}
-.tab{flex:none;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;
-  padding:7px 14px;font-size:14px;cursor:pointer}
-.tab[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin:0 0 16px}
-.ep-head h2{font-size:19px;margin:0 0 4px;line-height:1.3}
-.meta{color:var(--muted);font-size:13px}
-.theme{margin:10px 0 0;font-size:15px}
-.sec{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:24px 0 10px;font-weight:600}
-.btn{display:inline-block;border:0;border-radius:12px;padding:12px 18px;font:inherit;font-weight:600;cursor:pointer;
-  background:var(--accent);color:var(--accent-ink)}
-.btn:disabled{opacity:.35;cursor:default}
-.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
-.btn.small{padding:8px 12px;font-size:14px;border-radius:10px}
-.link{background:none;border:0;padding:6px 0;color:var(--muted);font:inherit;font-size:14px;cursor:pointer}
-.hint{color:var(--muted);font-size:13px}
+button{font:inherit;color:inherit}
 a{color:var(--accent)}
+.wrap{max-width:640px;margin:0 auto;padding:16px 16px 72px}
+.hint{color:var(--muted);font-size:13px}
 .empty{color:var(--muted);text-align:center;padding:40px 0}
+.sec{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:26px 0 10px;font-weight:700}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:14px;padding:14px 20px;
+  font-weight:700;cursor:pointer;background:var(--accent);color:var(--accent-ink);min-height:48px;
+  transition:transform .08s ease, opacity .15s}
+.btn:active:not(:disabled){transform:scale(.97)}
+.btn:disabled{opacity:.35;cursor:default}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn.small{padding:8px 14px;font-size:14px;border-radius:10px;min-height:38px}
+.btn.wide{width:100%}
+.link{background:none;border:0;padding:8px 0;color:var(--muted);font-size:14px;cursor:pointer;text-decoration:underline}
 
-/* ---------- lessons ---------- */
-.lesson{border:1px solid var(--line);border-radius:14px;margin:0 0 12px;overflow:hidden}
-.lesson-top{display:flex;gap:12px;align-items:center;padding:14px;cursor:pointer;width:100%;text-align:left;
-  background:transparent;border:0;color:var(--ink);font:inherit}
-.lesson-top .ttl{display:block;font-weight:700;font-size:16px;line-height:1.3}
-.lesson-top .sub{display:block;color:var(--muted);font-size:13px;margin-top:2px}
-.lesson-top .grow{display:block;flex:1;min-width:0}
-.ring{flex:none;width:38px;height:38px}
-.ring circle{fill:none;stroke-width:4}
-.ring .bg{stroke:var(--chip)} .ring .fg{stroke:var(--accent);stroke-linecap:round;transition:stroke-dashoffset .3s}
-.ring.done .fg{stroke:var(--good)}
-.ring text{font-size:11px;font-weight:700;fill:var(--ink);text-anchor:middle;dominant-baseline:central}
-.lesson-body{padding:0 14px 14px}
-.dots{display:flex;gap:4px;margin:0 0 14px}
-.dots span{flex:1;height:5px;border-radius:3px;background:var(--chip)}
-.dots span.on{background:var(--accent)} .dots span.ok{background:var(--good)}
+/* ---------- home ---------- */
+.top{display:flex;gap:12px;align-items:center;margin:2px 0 14px}
+.top img{width:44px;height:44px;border-radius:10px;flex:none}
+.top h1{font-size:17px;margin:0;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.top p{margin:1px 0 0;color:var(--muted);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.top .grow{flex:1;min-width:0}
+.pills{display:flex;gap:6px;flex:none}
+.pill{display:inline-flex;align-items:center;gap:4px;background:var(--card);border:1px solid var(--line);border-radius:999px;
+  padding:5px 10px;font-size:14px;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.pill.cold{color:var(--muted);font-weight:600}
+.status{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px}
+.status span{font-size:13px;border-radius:999px;padding:4px 10px;background:var(--chip);color:var(--muted)}
+.status .ok{background:var(--good-soft);color:var(--good);font-weight:600}
+.status .late{background:var(--bad-soft);color:var(--bad);font-weight:600}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;margin:0 0 14px}
+.hero{position:relative;overflow:hidden;border:0;box-shadow:var(--shadow);padding:18px}
+.hero::before{content:"";position:absolute;inset:0 0 auto 0;height:6px;background:var(--accent)}
+.hero .kick{display:flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--accent);font-weight:700;margin:2px 0 6px}
+.hero h2{font-size:22px;line-height:1.2;margin:0 0 4px}
+.hero .ep{color:var(--muted);font-size:13px;margin:0 0 10px}
+.hero .brief{font-size:15px;margin:0 0 14px}
+.hero .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.hero .meta{color:var(--muted);font-size:13px}
+.meter{height:6px;border-radius:3px;background:var(--chip);overflow:hidden;margin:12px 0 0}
+.meter span{display:block;height:100%;background:var(--accent);border-radius:3px;transition:width .3s}
+.eprow{display:flex;gap:12px;align-items:center;width:100%;text-align:left;background:var(--card);border:1px solid var(--line);
+  border-radius:14px;padding:12px;margin:0 0 8px;cursor:pointer}
+.eprow .ic{flex:none;width:38px;height:38px;border-radius:10px;background:var(--soft);display:flex;align-items:center;
+  justify-content:center;font-size:18px}
+.eprow .t{display:block;font-weight:600;font-size:15px;line-height:1.3}
+.eprow .s{display:block;color:var(--muted);font-size:13px}
+.eprow .grow{flex:1;min-width:0}
+.eprow .pts{flex:none;font-weight:700;font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums}
+.eprow .pts.done{color:var(--good)}
+.heard{border-left:4px solid var(--good)}
+.heard .pair{margin:0 0 8px;font-size:14px}
+.heard .pair:last-child{margin:0}
+.heard .said{color:var(--muted)}
+.heard .did{display:block;font-weight:600}
+.nudge{border-left:4px solid var(--accent);font-size:14px}
+.calib{display:grid;grid-template-columns:auto 1fr auto;gap:6px 10px;align-items:center;font-size:13px}
+.calib .bar{position:relative;height:10px;background:var(--chip);border-radius:5px}
+.calib .bar i{position:absolute;inset:0 auto 0 0;background:var(--blue);border-radius:5px}
+.calib .bar b{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--ink)}
+.calib .n{color:var(--muted);font-variant-numeric:tabular-nums}
+.week{display:flex;gap:6px;margin:10px 0 0}
+.week div{flex:1;text-align:center;font-size:11px;color:var(--muted)}
+.week i{display:block;height:28px;border-radius:8px;background:var(--chip);margin-bottom:3px}
+.week i.on{background:var(--accent)}
+.word{border-top:1px solid var(--line);padding:8px 0}
+.word:first-child{border-top:0;padding-top:0}
+.word b{font-size:15px}
+.word p{margin:1px 0 0;font-size:14px;color:var(--muted)}
+details.fold summary{cursor:pointer;font-weight:600;font-size:15px;list-style:none;display:flex;justify-content:space-between;gap:8px}
+details.fold summary::-webkit-details-marker{display:none}
+details.fold summary::after{content:"+";color:var(--muted);font-weight:400}
+details.fold[open] summary::after{content:"–"}
+details.fold > div{margin-top:12px}
+input[type=password],input[type=text].tok{width:100%;font:inherit;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;
+  background:transparent;color:var(--ink);margin:8px 0}
+
+/* ---------- stage (the game) ---------- */
+.stage{position:fixed;inset:0;z-index:10;background:var(--bg);display:flex;flex-direction:column}
+.stage[hidden]{display:none}
+.stage-top{display:flex;align-items:center;gap:10px;padding:calc(10px + env(safe-area-inset-top)) 14px 8px}
+.x{flex:none;width:40px;height:40px;border-radius:50%;border:0;background:var(--chip);font-size:18px;cursor:pointer;line-height:1}
+.prog{flex:1;display:flex;gap:3px}
+.prog i{flex:1;height:6px;border-radius:3px;background:var(--chip);transition:background .2s}
+.prog i.done{background:var(--accent)} .prog i.now{background:var(--accent);opacity:.45}
+.score{flex:none;min-width:56px;text-align:right;font-weight:800;font-variant-numeric:tabular-nums;position:relative}
+.pop{position:absolute;right:100%;top:0;margin-right:8px;font-weight:800;white-space:nowrap;animation:pop .9s ease-out forwards;pointer-events:none}
+.pop.plus{color:var(--good)} .pop.minus{color:var(--bad)}
+@keyframes pop{0%{opacity:0;transform:translateY(8px)}20%{opacity:1}100%{opacity:0;transform:translateY(-26px)}}
+.stage-body{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:6px 16px 20px}
+.stage-foot{padding:10px 16px calc(12px + env(safe-area-inset-bottom));display:flex;gap:10px;align-items:center;
+  border-top:1px solid var(--line);background:var(--bg)}
+.stage-foot .btn{flex:1}
+.back{flex:none;width:48px;height:48px;border-radius:14px;border:1.5px solid var(--line);background:transparent;font-size:18px;cursor:pointer}
+.back:disabled{opacity:.3}
+.cardc{max-width:560px;margin:0 auto;animation:enter .28s ease-out}
+@keyframes enter{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.kicker{display:inline-flex;align-items:center;gap:6px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+  font-weight:800;color:var(--accent);background:var(--soft);border-radius:999px;padding:4px 10px;margin:8px 0 12px}
+.q{font-size:21px;line-height:1.3;font-weight:700;margin:0 0 16px}
+.q.big{font-size:24px}
+.q.long{font-size:17px;font-weight:600;line-height:1.4}
+.sub{color:var(--muted);font-size:14px;margin:-8px 0 14px}
+.opt{display:flex;align-items:center;gap:10px;width:100%;text-align:left;border:2px solid var(--line);background:var(--card);
+  border-radius:14px;padding:13px 14px;margin:0 0 10px;cursor:pointer;font-size:16px;line-height:1.35;min-height:52px;
+  transition:transform .08s ease,border-color .15s,background .15s}
+.opt:active:not(:disabled){transform:scale(.98)}
+.opt:disabled{cursor:default}
+.opt .mk{flex:none;width:26px;height:26px;border-radius:50%;background:var(--chip);display:flex;align-items:center;
+  justify-content:center;font-size:13px;font-weight:800;color:var(--muted)}
+.opt.right{border-color:var(--good);background:var(--good-soft)} .opt.right .mk{background:var(--good);color:#fff}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft);opacity:.8} .opt.wrong .mk{background:var(--bad);color:#fff}
+.opt.sel{border-color:var(--accent);background:var(--soft)}
+.opt.dim{opacity:.55}
+.shake{animation:shake .3s}
+@keyframes shake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.say{min-height:22px;font-size:15px;margin:10px 0 0}
+.say.good{color:var(--good);font-weight:700} .say.bad{color:var(--bad);font-weight:700}
+.say .why{display:block;color:var(--ink);font-weight:400;margin-top:4px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tf{border:2px solid var(--line);background:var(--card);border-radius:16px;padding:18px 10px;font-size:18px;font-weight:800;
+  cursor:pointer;min-height:64px;transition:transform .08s ease,border-color .15s,background .15s}
+.tf:active:not(:disabled){transform:scale(.97)}
+.tf.sel{border-color:var(--accent);background:var(--soft)}
+.tf.right{border-color:var(--good);background:var(--good-soft)} .tf.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.conf{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0 4px}
+.conf button{border:2px solid var(--line);background:var(--card);border-radius:12px;padding:8px 2px;cursor:pointer;text-align:center}
+.conf button b{display:block;font-size:17px} .conf button span{display:block;font-size:11px;color:var(--muted)}
+.conf button.sel{border-color:var(--accent);background:var(--soft)}
+.stake{text-align:center;font-size:14px;color:var(--muted);margin:8px 0 0;min-height:21px}
+.stake b.plus{color:var(--good)} .stake b.minus{color:var(--bad)}
+.stamp{display:inline-block;border:3px solid currentColor;border-radius:10px;padding:2px 12px;font-weight:900;font-size:26px;
+  letter-spacing:.06em;transform:rotate(-4deg);margin:2px 0 12px;animation:stamp .35s ease-out}
+.stamp.t{color:var(--good)} .stamp.f{color:var(--bad)}
+@keyframes stamp{from{opacity:0;transform:rotate(-4deg) scale(1.8)}to{opacity:1;transform:rotate(-4deg) scale(1)}}
+.claim{font-size:17px;color:var(--muted);margin:0 0 8px}
+.result{border-radius:14px;padding:12px 14px;margin:0 0 12px;font-size:15px}
+.result.win{background:var(--good-soft)} .result.lose{background:var(--bad-soft)} .result.flat{background:var(--chip)}
+.result b{font-size:17px}
+.takeaway{border-left:4px solid var(--accent);padding:4px 0 4px 12px;margin:12px 0;font-size:16px;font-weight:600}
+.react{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:8px 0 0}
+.react button{border:2px solid var(--line);background:var(--card);border-radius:14px;padding:10px 4px;cursor:pointer;font-size:14px;font-weight:600}
+.react button span{display:block;font-size:22px;line-height:1.2}
+.react button.sel{border-color:var(--accent);background:var(--soft)}
+.est-val{text-align:center;font-size:34px;font-weight:800;font-variant-numeric:tabular-nums;margin:6px 0 0}
+.est-val small{font-size:15px;font-weight:600;color:var(--muted);margin-left:6px}
+.est-ends{display:flex;justify-content:space-between;color:var(--muted);font-size:12px;font-variant-numeric:tabular-nums}
+.est-track{position:relative;height:44px;margin:8px 0 0}
+.est-track .line{position:absolute;left:0;right:0;top:20px;height:6px;border-radius:3px;background:var(--chip)}
+.est-track .mark{position:absolute;top:8px;width:4px;height:30px;border-radius:2px;margin-left:-2px}
+.est-track .mark.you{background:var(--ink)} .est-track .mark.true{background:var(--good)}
+.est-track .lab{position:absolute;top:-10px;font-size:11px;font-weight:700;transform:translateX(-50%);white-space:nowrap}
+.est-track .lab.you{color:var(--ink)} .est-track .lab.true{color:var(--good);top:38px}
+.duel{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.duel button{border:2px solid var(--line);background:var(--card);border-radius:16px;padding:16px 10px;cursor:pointer;min-height:120px;
+  display:flex;flex-direction:column;justify-content:center;gap:8px;text-align:center;font-size:16px;font-weight:600;line-height:1.3}
+.duel button .v{font-size:22px;font-weight:800;font-variant-numeric:tabular-nums}
+.duel button .v small{display:block;font-size:12px;font-weight:600;color:var(--muted)}
+.duel button.right{border-color:var(--good);background:var(--good-soft)} .duel button.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.clue{background:var(--soft);border-radius:12px;padding:10px 12px;margin:0 0 8px;font-size:16px}
+.clue.new{animation:enter .25s ease-out}
+.clue b{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);display:block}
+.worth{font-size:13px;color:var(--muted);margin:2px 0 10px}
+.mcols{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:8px}
+.mcols button{border:2px solid var(--line);background:var(--card);border-radius:12px;padding:10px;cursor:pointer;font-size:14px;line-height:1.3;
+  min-height:56px;text-align:left;width:100%;margin:0 0 8px}
+.mcols .l button{font-weight:700}
+.mcols button.sel{border-color:var(--accent);background:var(--soft)}
+.mcols button.right{border-color:var(--good);background:var(--good-soft);cursor:default}
+.olist{list-style:none;margin:0 0 10px;padding:0}
+.olist li{display:flex;gap:10px;align-items:center;margin:0 0 8px}
+.olist .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--chip);color:var(--muted);font-size:13px;
+  font-weight:800;display:flex;align-items:center;justify-content:center}
+.olist .slot{flex:1;border:2px dashed var(--line);border-radius:12px;padding:10px 12px;min-height:46px;font-size:15px;
+  text-align:left;background:transparent;cursor:pointer}
+.olist .slot.filled{border-style:solid;border-color:var(--muted);background:var(--card)}
+.olist .slot.right{border-color:var(--good);background:var(--good-soft)}
+.pool{display:flex;flex-direction:column;gap:8px;margin:0 0 12px}
+.pool button{border:2px solid var(--line);background:var(--chip);border-radius:12px;padding:10px 12px;font-size:15px;text-align:left;cursor:pointer}
+.timer{height:6px;border-radius:3px;background:var(--chip);overflow:hidden;margin:0 0 14px}
+.timer i{display:block;height:100%;background:var(--accent);width:100%}
+.qf-count{color:var(--muted);font-size:13px;margin:0 0 6px;font-weight:700}
+.qf-list{list-style:none;margin:0;padding:0}
+.qf-list li{display:flex;gap:10px;padding:8px 0;border-top:1px solid var(--line);font-size:15px}
+.qf-list li:first-child{border-top:0}
+.qf-list .m{flex:none;font-weight:800;width:20px} .qf-list .m.ok{color:var(--good)} .qf-list .m.no{color:var(--bad)}
+.qf-list small{display:block;color:var(--muted)}
+.note{background:var(--soft);border-radius:14px;padding:12px 14px;font-size:15px;margin:0 0 6px}
+.note b{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:2px}
+.center{text-align:center}
+.bigicon{font-size:54px;line-height:1.1;margin:16px 0 6px}
+.total{font-size:52px;font-weight:900;line-height:1;font-variant-numeric:tabular-nums;margin:8px 0 2px}
+.total small{font-size:16px;font-weight:700;color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 6px;text-align:center}
+.stat b{display:block;font-size:20px;font-variant-numeric:tabular-nums} .stat span{font-size:12px;color:var(--muted)}
+.stars{display:flex;justify-content:center;gap:6px;margin:6px 0 10px}
+.stars button{border:0;background:none;font-size:34px;line-height:1;cursor:pointer;color:var(--line);padding:2px;transition:transform .08s}
+.stars button.on{color:var(--accent)} .stars button:active{transform:scale(1.2)}
+.fb{text-align:left}
+.frow{display:flex;gap:8px;align-items:center;margin:0 0 10px;flex-wrap:wrap}
+.frow > span{flex:none;width:56px;font-size:13px;color:var(--muted)}
+.chip{border:1.5px solid var(--line);background:var(--card);border-radius:999px;padding:7px 13px;font-size:14px;cursor:pointer}
+.chip.sel{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+textarea{width:100%;min-height:72px;border:1.5px solid var(--line);border-radius:12px;padding:10px;font:inherit;
+  background:transparent;color:var(--ink)}
+.sent{font-size:14px;margin:8px 0 0;min-height:21px}
+.sent.ok{color:var(--good);font-weight:600} .sent.err{color:var(--bad)}
+.wchips{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:6px 0}
+.wchips button{border:1.5px solid var(--line);background:var(--card);border-radius:999px;padding:6px 12px;font-size:14px;font-weight:600;cursor:pointer}
+.wmean{font-size:14px;color:var(--muted);min-height:21px;margin:4px 0 0}
+canvas.confetti{position:fixed;inset:0;pointer-events:none;z-index:20}
+@media (prefers-reduced-motion: reduce){
+  *{animation:none !important;transition:none !important}
+}
+
+/* ---------- hands-on labs (sliders, readouts, charts): unchanged from the first puzzle page ---------- */
 .step-text{font-size:17px;line-height:1.45;margin:0 0 14px}
 .example{background:var(--soft);border-radius:12px;padding:10px 12px;font-size:15px;margin:0 0 6px}
 .example b{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:2px}
@@ -91,40 +276,7 @@ input[type=range]{width:100%;accent-color:var(--accent);height:28px;margin:2px 0
 .goal b{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:2px}
 .goal.met{border-style:solid;border-color:var(--good);background:var(--good-soft)}
 .goal.met b{color:var(--good)}
-.opt{display:block;width:100%;text-align:left;border:1.5px solid var(--line);background:transparent;color:var(--ink);
-  border-radius:12px;padding:11px 13px;margin:0 0 8px;font:inherit;cursor:pointer}
-.opt:hover:not(:disabled){border-color:var(--muted)}
-.opt.right{border-color:var(--good);background:var(--good-soft)}
-.opt.wrong{border-color:var(--bad);background:var(--bad-soft);opacity:.75}
-.opt:disabled{cursor:default}
-.numrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-.numrow input{width:150px;font:inherit;font-size:18px;padding:9px 12px;border:1.5px solid var(--line);border-radius:12px;
-  background:transparent;color:var(--ink);font-variant-numeric:tabular-nums}
-.numrow input.right{border-color:var(--good);background:var(--good-soft)}
-.numrow input.wrong{border-color:var(--bad)}
-.numrow .unit{color:var(--muted)}
-.olist{list-style:none;margin:0 0 10px;padding:0}
-.olist li{display:flex;gap:10px;align-items:center;margin:0 0 6px}
-.olist .n{flex:none;width:24px;height:24px;border-radius:50%;background:var(--chip);color:var(--muted);font-size:12px;
-  font-weight:700;display:flex;align-items:center;justify-content:center}
-.olist .slot{flex:1;border:1.5px dashed var(--line);border-radius:10px;padding:8px 10px;min-height:40px;font-size:15px;
-  text-align:left;background:transparent;color:var(--ink);font-family:inherit;cursor:pointer}
-.olist .slot.filled{border-style:solid;border-color:var(--muted)}
-.olist .slot.right{border-color:var(--good);background:var(--good-soft)}
-.olist .slot.wrong{border-color:var(--bad);background:var(--bad-soft)}
-.pool{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 10px}
-.pool button{border:1.5px solid var(--line);background:var(--chip);color:var(--ink);border-radius:10px;padding:8px 11px;
-  font:inherit;font-size:15px;text-align:left;cursor:pointer}
-.say{min-height:24px;font-size:15px;margin:12px 0 0}
-.say.good{color:var(--good)} .say.bad{color:var(--bad)}
-.say .why{display:block;color:var(--ink);margin-top:4px}
-.nav{display:flex;justify-content:space-between;align-items:center;margin-top:16px;gap:8px}
-.finish{text-align:center;padding:10px 0 4px}
-.finish .big{font-size:20px;font-weight:700;margin:4px 0}
-.badge-ok{display:inline-flex;width:44px;height:44px;border-radius:50%;background:var(--good-soft);color:var(--good);
-  align-items:center;justify-content:center;font-size:24px;font-weight:700}
-
-
+input[type=range]{width:100%;accent-color:var(--accent);height:32px;margin:2px 0 0}
 /* ---------- template pictures ---------- */
 .view{margin:0 0 12px;background:var(--chip);border-radius:14px;padding:10px}
 .view-svg{width:100%;max-width:520px;height:auto;display:block;overflow:visible;margin:0 auto}
@@ -167,65 +319,48 @@ input[type=range]{width:100%;accent-color:var(--accent);height:28px;margin:2px 0
 .pic-cap.big{font-size:18px;font-weight:700} .pic-cap.strong{font-weight:600}
 .pic-cap.good{color:var(--good);font-weight:600} .pic-cap.bad{color:var(--bad);font-weight:600}
 .v-joint{stroke:var(--muted);stroke-width:3}
-/* ---------- words ---------- */
-.word{border-top:1px solid var(--line);padding:9px 0}
-.word:first-of-type{border-top:0;padding-top:0}
-.word b{font-size:15px}
-.word p{margin:2px 0 0;font-size:14px;color:var(--muted)}
-.word a{font-size:12px;margin-left:6px}
-
-/* ---------- quiz + feedback ---------- */
-.q{border-top:1px solid var(--line);padding:14px 0 4px}
-.q:first-of-type{border-top:0;padding-top:0}
-.q p{margin:0 0 10px;font-weight:600}
-.q .seg{display:block;font-weight:400;color:var(--muted);font-size:12px;margin-bottom:4px}
-.q .opt.pick{border-color:var(--accent);background:var(--soft)}
-.explain{display:none;font-size:14px;color:var(--muted);margin:4px 0 8px}
-.checked .explain{display:block}
-.checked .opt{cursor:default}
-.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 12px}
-.field{margin:0 0 12px}
-.flabel{color:var(--muted);font-size:14px;margin:0 0 6px}
-.field .row{margin:0}
-.chip{border:1px solid var(--line);background:var(--chip);color:var(--ink);border-radius:999px;padding:6px 12px;
-  font:inherit;font-size:14px;cursor:pointer}
-.chip[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
-.segrow{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:8px 0;border-top:1px solid var(--line)}
-.segrow span{font-size:14px}
-.segrow .row{margin:0;flex:none}
-textarea{width:100%;min-height:90px;border:1px solid var(--line);border-radius:10px;padding:10px;font:inherit;
-  background:transparent;color:var(--ink)}
-.score{font-weight:600;margin-left:10px}
-.footer{padding:12px 0;border-top:1px solid var(--line);display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-details.more summary{cursor:pointer;color:var(--muted);font-size:14px;margin:0 0 10px}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <header>
+  <header class="top">
     <img src="artwork.jpg" alt="">
-    <div><h1 id="show">Weights &amp; Measures</h1><p id="sub">Puzzles, quiz and feedback</p></div>
+    <div class="grow"><h1 id="show">Weights &amp; Measures</h1><p id="sub">Three-minute games on each episode</p></div>
+    <div class="pills" id="pills"></div>
   </header>
-  <div class="tabs" id="tabs" role="toolbar" aria-label="Episodes"></div>
   <div id="list"><p class="empty">Loading episodes…</p></div>
-  <div class="footer">
-    <button class="btn" id="send">Send feedback</button>
-    <span class="hint" id="hint">Opens GitHub with your feedback filled in. Press “Create” there to submit.</span>
+</div>
+<div class="stage" id="stage" hidden role="dialog" aria-modal="true" aria-label="Episode game">
+  <div class="stage-top">
+    <button class="x" id="x" type="button" aria-label="Close the game">✕</button>
+    <div class="prog" id="prog" aria-hidden="true"></div>
+    <div class="score" id="score" aria-label="Points">0</div>
+  </div>
+  <div class="stage-body" id="stage-body"></div>
+  <div class="stage-foot">
+    <button class="back" id="back" type="button" aria-label="Back">←</button>
+    <button class="btn" id="next" type="button">Continue</button>
   </div>
 </div>
 <script>
 (function(){
+  /* Weights & Measures - the play page.
+     quiz.json is written by generate_briefing.py. Each episode has a "play" object: a session theme, and for each
+     segment a bet and two or three cards. The card formats (ROUNDS in generate_briefing.py) each have one renderer
+     here, with the same name. Episodes made before 13 Nov 2026 have "lessons" instead; legacyPlay() turns those
+     into cards. Nothing here is written by a model: models only supply the data. */
   var store = {
     get: function(k, d){ try { var v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch(e){ return d; } },
     set: function(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
   };
-  var DATA = null, selected = [], state = {}, openLesson = {};
+  var DATA = null, state = {};
   var SVGNS = 'http://www.w3.org/2000/svg';
+  var REDUCED = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function el(tag, attrs, kids){
     var n = document.createElement(tag);
     for (var k in (attrs||{})) {
-      if (attrs[k] === undefined || attrs[k] === null) continue;
+      if (attrs[k] === undefined || attrs[k] === null || attrs[k] === false) continue;
       if (k === 'text') n.textContent = attrs[k];
       else if (k === 'on') for (var ev in attrs.on) n.addEventListener(ev, attrs.on[ev]);
       else n.setAttribute(k, attrs[k]);
@@ -238,15 +373,7 @@ details.more summary{cursor:pointer;color:var(--muted);font-size:14px;margin:0 0
     for (var k in attrs) { if (k === 'text') n.textContent = attrs[k]; else n.setAttribute(k, attrs[k]); }
     return n;
   }
-  function fmtDur(s){ s = +s||0; return Math.floor(s/60) + ' min'; }
-  function st(file){
-    if (!state[file]) state[file] = store.get('wm:' + file, {});
-    var s = state[file];
-    s.answers = s.answers || {}; s.ratings = s.ratings || {}; s.segments = s.segments || {};
-    s.puz = s.puz || {}; s.comment = s.comment || ''; s.checked = !!s.checked;
-    return s;
-  }
-  function save(file){ store.set('wm:' + file, state[file]); }
+  function buzz(ms){ try { if (navigator.vibrate) navigator.vibrate(ms); } catch(e){} }
 
   /* ---------- formulas: the same small language the generator checks (generate_briefing.py) ---------- */
   var FUNCS = {min:Math.min, max:Math.max, abs:Math.abs, sqrt:Math.sqrt, exp:Math.exp, ln:Math.log,
@@ -330,24 +457,6 @@ details.more summary{cursor:pointer;color:var(--muted);font-size:14px;margin:0 0
     if (idx.every(function(v, i){ return v === i; })) idx.push(idx.shift());
     return idx;
   }
-
-  /* ---------- lesson steps ---------- */
-  // Each renderer gets (step, p) where p = per-step progress {solved, tries, shown, ...} and solve(struggled)
-  // to call when the step is done. Returns the step's element.
-  function say(box, kind, msg, why){
-    box.className = 'say' + (kind ? ' ' + kind : '');
-    box.innerHTML = '';
-    if (msg) box.appendChild(document.createTextNode(msg));
-    if (why) box.appendChild(el('span', {class:'why', text: why}));
-  }
-
-  function stepConcept(step, p, solve){
-    var n = el('div', {}, [el('p', {class:'step-text', text: step.text})]);
-    if (step.example) n.appendChild(el('div', {class:'example'}, [el('b', {text:'Real life'}), step.example]));
-    if (!p.solved) setTimeout(function(){ solve(false); }, 0);
-    return n;
-  }
-
 
   /* ---------- template pictures: one per puzzle template (generate_briefing.py TEMPLATES) ----------
      Shapes and short numbers are drawn in SVG; every label that comes from the lesson (names of stages, groups,
@@ -774,401 +883,915 @@ details.more summary{cursor:pointer;color:var(--muted);font-size:14px;margin:0 0
     }
   }
 
-  function stepChoice(step, p, solve){
-    var n = el('div', {}, [el('p', {class:'step-text', text: step.text})]);
-    var msg = el('div', {class:'say', 'aria-live':'polite'}), btns = [], reveal = null;
-    p.wrong = p.wrong || [];
-    function finish(struggled){
-      btns.forEach(function(b, i){ b.disabled = true; if (i === step.answer) b.classList.add('right'); });
-      if (reveal) reveal.remove();
-      say(msg, 'good', p.shown ? 'The answer:' : 'Right.', step.explain);
-      if (!p.solved) solve(struggled);
+  /* ================================ state ================================ */
+  function st(file){
+    if (!state[file]) state[file] = store.get('wm:' + file, {});
+    var s = state[file];
+    s.ratings = s.ratings || {}; s.segments = s.segments || {}; s.comment = s.comment || '';
+    s.play = s.play || {at: 0, cards: {}, bets: {}};
+    s.play.cards = s.play.cards || {}; s.play.bets = s.play.bets || {};
+    s.bonus = s.bonus || {at: 0, cards: {}};
+    return s;
+  }
+  function save(file){ store.set('wm:' + file, state[file]); }
+  var PROFILE = store.get('wm2:profile', {});
+  PROFILE.days = PROFILE.days || {}; PROFILE.calib = PROFILE.calib || {}; PROFILE.words = PROFILE.words || {};
+  PROFILE.review = PROFILE.review || []; PROFILE.sent = PROFILE.sent || {}; PROFILE.xp = PROFILE.xp || 0;
+  function saveProfile(){ store.set('wm2:profile', PROFILE); }
+  function dayKey(d){ d = d || new Date(); return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2); }
+  function addDays(d, n){ var x = new Date(d); x.setDate(x.getDate() + n); return x; }
+  function award(pts){
+    PROFILE.xp += pts;
+    var k = dayKey(); PROFILE.days[k] = (PROFILE.days[k] || 0) + pts;   // a day with an entry counts as played
+    saveProfile();
+  }
+  function touchDay(){ var k = dayKey(); if (PROFILE.days[k] === undefined) { PROFILE.days[k] = 0; saveProfile(); } }
+  function streak(){
+    var n = 0, d = new Date();
+    if (PROFILE.days[dayKey(d)] === undefined) d = addDays(d, -1);   // today not played yet: yesterday still counts
+    while (PROFILE.days[dayKey(d)] !== undefined) { n++; d = addDays(d, -1); }
+    return n;
+  }
+
+  /* ================================ themes and names ================================ */
+  var THEMES = {
+    audit:    {name: 'Audit day', icon: '🔎', go: 'Start the audit', bet: 'Before the audit'},
+    exchange: {name: 'The evidence exchange', icon: '📈', go: 'Open trading', bet: 'Opening position'},
+    bench:    {name: 'On the bench', icon: '🧪', go: 'Step up to the bench', bet: 'Before you measure'},
+    'case':   {name: 'Case file', icon: '🗂️', go: 'Open the case', bet: 'First hunch'},
+    classic:  {name: 'Episode game', icon: '🎧', go: 'Play', bet: 'Opening bet'}
+  };
+  var KIND = {estimate: 'Gut number', flaw: 'Spot the flaw', sequence: 'Chain of events', match: 'Pair them up',
+    duel: 'Which is bigger?', clues: 'Name it', call: 'Your call', quickfire: 'Quickfire', lab: 'Hands on', note: 'Why it works'};
+  var KIND_BY_THEME = {audit: {flaw: 'Find the finding', call: 'Your ruling', lab: 'Test it yourself'},
+    exchange: {estimate: 'Price it', duel: 'Long or short?'}, bench: {lab: 'On the bench', estimate: 'Read the gauge'},
+    'case': {clues: 'Name the culprit', sequence: 'Reconstruct it', flaw: 'The story that does not add up'}};
+  var ICON = {estimate: '🎯', flaw: '🚩', sequence: '⛓️', match: '🧩', duel: '⚖️', clues: '🕵️', call: '🧭', quickfire: '⚡', lab: '🎛️', note: '💡'};
+  function kindName(theme, type){ return (KIND_BY_THEME[theme] || {})[type] || KIND[type] || 'Card'; }
+  // Bets: how sure are you? Points follow a proper scoring rule (quadratic), so the best strategy is to say what
+  // you really believe: being 95% sure and wrong costs far more than it could have won.
+  var CONF = [{c: 55, t: 'Hunch', win: 5, lose: -5}, {c: 70, t: 'Probably', win: 16, lose: -24},
+              {c: 85, t: 'Confident', win: 23, lose: -47}, {c: 95, t: 'Certain', win: 25, lose: -65}];
+  function confOf(c){ return CONF.filter(function(x){ return x.c === c; })[0] || CONF[1]; }
+
+  /* ================================ decks ================================ */
+  function legacyRound(step){
+    if (step.type === 'choice') return {type: 'call', q: step.text, options: step.options, answer: step.answer, hint: step.hint, why: step.explain};
+    if (step.type === 'order') return {type: 'sequence', q: step.text, items: step.items, why: step.explain};
+    if (step.type === 'explore') { var lab = {}; for (var k in step) lab[k] = step[k]; lab.type = 'lab'; return lab; }
+    if (step.type === 'concept') return {type: 'note', text: step.text, example: step.example};
+    if (step.type === 'number') {
+      var a = step.answer, lo = a > 0 ? a / 5 : a - 3 * Math.max(1, Math.abs(a)), hi = a > 0 ? a * 4 : a + 5 * Math.max(1, Math.abs(a));
+      return {type: 'estimate', q: step.text, answer: a, unit: step.unit, lo: +lo.toPrecision(2), hi: +hi.toPrecision(2), log: false, why: step.explain};
     }
-    step.options.forEach(function(o, i){
-      var b = el('button', {class:'opt', type:'button', text: o});
-      if (p.wrong.indexOf(i) >= 0) { b.classList.add('wrong'); b.disabled = true; }
-      b.addEventListener('click', function(){
-        if (p.solved) return;
-        if (i === step.answer) { finish(p.wrong.length > 0); return; }
-        p.wrong.push(i); p.tries = (p.tries || 0) + 1; p.persist();
-        b.classList.add('wrong'); b.disabled = true;
-        say(msg, 'bad', 'Not quite.', step.hint || 'Think about what changes and what stays the same.');
-        if (p.tries >= 2 && !reveal) addReveal();
-      });
-      btns.push(b); n.appendChild(b);
+    return null;
+  }
+  function legacyPlay(ep){
+    var lessons = ep.lessons || [];
+    if (!lessons.length) return null;
+    var words = [], seen = {};
+    var segs = lessons.map(function(les){
+      (les.words || []).forEach(function(w){ var k = w.term.toLowerCase(); if (!seen[k]) { seen[k] = 1; words.push(w); } });
+      return {title: les.segment || les.title, rounds: les.steps.map(legacyRound).filter(Boolean), bet: null, takeaway: ''};
     });
-    function addReveal(){
-      reveal = el('button', {class:'link', type:'button', text:'Show me the answer'});
-      reveal.addEventListener('click', function(){ p.shown = true; p.persist(); finish(true); });
-      n.appendChild(reveal);
+    return {v: 1, theme: 'classic', title: lessons[0].title, brief: ep.theme || '', segments: segs, words: words, chips: []};
+  }
+  function playOf(ep){
+    if (ep._play === undefined) ep._play = (ep.play && ep.play.segments && ep.play.segments.length) ? ep.play : legacyPlay(ep);
+    return ep._play;
+  }
+  function deckFor(ep){
+    var play = playOf(ep);
+    if (!play) return null;
+    var cards = [];
+    play.segments.forEach(function(sg, i){ if (sg.bet) cards.push({k: 'bet', seg: i, id: 'b' + i}); });
+    if (cards.length) cards.push({k: 'gate', id: 'gate'});
+    play.segments.forEach(function(sg, i){
+      sg.rounds.forEach(function(r, j){ cards.push({k: 'round', seg: i, r: r, id: 's' + i + 'r' + j}); });
+      cards.push({k: 'settle', seg: i, id: 'x' + i});
+    });
+    cards.push({k: 'finish', id: 'fin'});
+    return {mode: 'play', ep: ep, play: play, theme: play.theme || 'classic', cards: cards, prog: st(ep.file).play};
+  }
+  function bonusDeck(ep){
+    var cards = (ep.quiz || []).map(function(q, i){
+      return {k: 'round', seg: -1, id: 'q' + i, label: q.segment, r: {type: 'call', q: q.q, options: q.options, answer: q.answer, why: q.explain}};
+    });
+    cards.push({k: 'finish', id: 'fin', lite: true});
+    return {mode: 'bonus', ep: ep, play: playOf(ep) || {segments: [], words: []}, theme: (playOf(ep) || {}).theme || 'classic',
+            cards: cards, prog: st(ep.file).bonus};
+  }
+  function reviewDeck(){
+    var due = PROFILE.review.filter(function(x){ return x.due <= dayKey(); }).slice(0, 6);
+    var cards = due.map(function(x, i){ return {k: 'round', seg: -1, id: 'r' + i, label: x.title, r: x.r, rid: x.id}; });
+    cards.push({k: 'finish', id: 'fin', lite: true});
+    return {mode: 'review', ep: null, play: {segments: [], words: []}, theme: 'classic', cards: cards, prog: {at: 0, cards: {}}};
+  }
+  function scoring(card){ return card.k === 'round' && card.r.type !== 'note'; }
+  function deckStats(deck){
+    var pts = 0, max = 0, done = 0, n = 0, right = 0;
+    deck.cards.forEach(function(c){
+      var p = deck.prog.cards[c.id];
+      if (scoring(c)) { n++; if (p && p.done) { done++; pts += p.pts || 0; max += p.max || 0; if (p.ok) right++; } }
+      if (c.k === 'settle' && p && p.done && p.pts) pts += p.pts;
+    });
+    return {pts: pts, max: max, done: done, n: n, right: right, finished: !!deck.prog.finished};
+  }
+
+  /* ================================ card renderers ================================ */
+  // Each gets (r, p, done): r = the card's data, p = saved progress for this card, done({pts, max, ok}) to finish.
+  // A card that is already done draws itself finished (so Back shows the answer) and awards nothing.
+  function say(box, kind, msg, why){
+    box.className = 'say' + (kind ? ' ' + kind : '');
+    box.innerHTML = '';
+    if (msg) box.appendChild(document.createTextNode(msg));
+    if (why) box.appendChild(el('span', {class: 'why', text: why}));
+  }
+  function letters(i){ return 'ABCDE'.charAt(i); }
+  function num(v){ return Math.abs(v - Math.round(v)) < 1e-9 ? fmt(v, 0) : fmt(v); }
+
+  function pickOne(r, p, done, opts){
+    // Shared by "call" and "flaw": tap one option. Right first time 15 points, second try 8, third 3; when only
+    // one option is left it is shown as the answer, for nothing.
+    var n = el('div'), msg = el('div', {class: 'say', 'aria-live': 'polite'}), btns = [];
+    p.wrong = p.wrong || [];
+    var order = opts.shuffle ? shuffled(opts.items, (r.q || '') + opts.items.join('|')) : opts.items.map(function(_, i){ return i; });
+    function finish(silent){
+      btns.forEach(function(b){
+        b.el.disabled = true;
+        if (b.i === opts.answer) { b.el.classList.add('right'); b.mk.textContent = opts.rightMark || '✓'; }
+        else if (p.wrong.indexOf(b.i) < 0) b.el.classList.add('dim');
+      });
+      var first = p.wrong.length === 0;
+      say(msg, first ? 'good' : '', first ? opts.praise || 'Right first time.' : p.gave ? 'The answer is marked.' : 'Got it.', r.why);
+      if (!silent) done({pts: p.gave ? 0 : first ? 15 : p.wrong.length === 1 ? 8 : 3, max: 15, ok: first});
     }
+    order.forEach(function(i, pos){
+      var mk = el('span', {class: 'mk', text: letters(pos)});
+      var b = el('button', {class: 'opt', type: 'button'}, [mk, el('span', {text: opts.items[i]})]);
+      if (p.wrong.indexOf(i) >= 0) { b.classList.add('wrong'); b.disabled = true; mk.textContent = '✗'; }
+      b.addEventListener('click', function(){
+        if (p.done) return;
+        if (i === opts.answer) { buzz(15); finish(false); return; }
+        p.wrong.push(i); p.persist(); buzz([20, 40, 20]);
+        b.classList.add('wrong', 'shake'); b.disabled = true; mk.textContent = '✗';
+        if (opts.items.length - p.wrong.length <= 1) { p.gave = true; finish(false); return; }
+        say(msg, 'bad', opts.miss || 'Not that one.', r.hint || '');
+      });
+      btns.push({el: b, mk: mk, i: i}); n.appendChild(b);
+    });
     n.appendChild(msg);
-    if (p.solved) finish(false); else if ((p.tries || 0) >= 2) addReveal();
+    if (p.done) finish(true);
+    return n;
+  }
+  function rCall(r, p, done){
+    var n = el('div', {}, [el('p', {class: 'q' + (String(r.q).length > 130 ? ' long' : ''), text: r.q})]);
+    n.appendChild(pickOne(r, p, done, {items: r.options, answer: r.answer}));
+    return n;
+  }
+  function rFlaw(r, p, done){
+    var n = el('div', {}, [el('p', {class: 'q', text: r.q || 'One of these is wrong. Which?'}), el('p', {class: 'sub', text: 'Tap the statement that does not hold up.'})]);
+    n.appendChild(pickOne(r, p, done, {items: r.items, answer: r.flaw, shuffle: true, rightMark: '🚩', praise: 'That is the one.', miss: 'That one holds up.'}));
     return n;
   }
 
-  function stepNumber(step, p, solve){
-    var n = el('div', {}, [el('p', {class:'step-text', text: step.text})]);
-    var input = el('input', {type:'text', inputmode:'decimal', autocomplete:'off', placeholder:'Your answer', 'aria-label':'Your answer'});
-    var go = el('button', {class:'btn small', type:'button', text:'Check'});
-    var msg = el('div', {class:'say', 'aria-live':'polite'}), reveal = null;
-    n.appendChild(el('div', {class:'numrow'}, [input, step.unit ? el('span', {class:'unit', text: step.unit}) : null, go]));
-    n.appendChild(msg);
-    function close(x){ var a = step.answer, tol = Math.abs(a) * step.tolerance; return Math.abs(x - a) <= Math.max(tol, 1e-9); }
-    function finish(struggled){
-      input.value = fmt(step.answer); input.disabled = true; go.disabled = true; input.className = 'right';
-      if (reveal) reveal.remove();
-      say(msg, 'good', (p.shown ? 'The answer: ' : 'Right: ') + fmt(step.answer) + (step.unit ? ' ' + step.unit : '') + '.', step.explain);
-      if (!p.solved) solve(struggled);
+  function rEstimate(r, p, done){
+    var n = el('div', {}, [el('p', {class: 'q', text: r.q})]);
+    var lo = r.lo, hi = r.hi, lg = !!r.log && lo > 0;
+    function toVal(f){ return lg ? lo * Math.pow(hi / lo, f) : lo + (hi - lo) * f; }
+    function toFrac(v){ return clamp(lg ? Math.log(v / lo) / Math.log(hi / lo) : (v - lo) / (hi - lo), 0, 1); }
+    function show(v){ var span = Math.abs(hi - lo); return lg ? (v >= 100 ? fmt(+v.toPrecision(2), 0) : fmt(+v.toPrecision(2))) : fmt(v, span >= 50 ? 0 : span >= 5 ? 1 : 2); }
+    var val = el('div', {class: 'est-val'}), slider = el('input', {type: 'range', min: 0, max: 1000, step: 1, value: p.f !== undefined ? p.f * 1000 : 500, 'aria-label': 'Your guess'});
+    var go = el('button', {class: 'btn wide', type: 'button', text: 'Lock it in'}), msg = el('div', {class: 'say', 'aria-live': 'polite'});
+    var track = el('div', {class: 'est-track'});
+    function paint(){ val.innerHTML = ''; val.appendChild(document.createTextNode(show(toVal(slider.value / 1000)))); if (r.unit) val.appendChild(el('small', {text: r.unit})); }
+    function reveal(silent){
+      var f = p.f, t = toFrac(r.answer), err = Math.abs(f - t);
+      slider.style.display = 'none'; go.style.display = 'none';
+      track.innerHTML = '';
+      track.appendChild(el('div', {class: 'line'}));
+      track.appendChild(el('div', {class: 'mark you', style: 'left:' + (f * 100) + '%'}));
+      track.appendChild(el('div', {class: 'lab you', style: 'left:' + clamp(f * 100, 8, 92) + '%', text: 'You: ' + show(toVal(f))}));
+      track.appendChild(el('div', {class: 'mark true', style: 'left:' + (t * 100) + '%'}));
+      track.appendChild(el('div', {class: 'lab true', style: 'left:' + clamp(t * 100, 12, 88) + '%', text: 'Answer: ' + num(r.answer) + (r.unit ? ' ' + r.unit : '')}));
+      val.innerHTML = ''; val.appendChild(document.createTextNode(num(r.answer))); if (r.unit) val.appendChild(el('small', {text: r.unit}));
+      var pts = Math.round(20 * Math.max(0, 1 - err / 0.3));
+      say(msg, err < 0.04 ? 'good' : '', err < 0.04 ? 'Bullseye.' : err < 0.12 ? 'Close.' : err < 0.3 ? 'In the right region.' : 'Well off - which is the point of asking.', r.why);
+      if (!silent) { buzz(15); done({pts: pts, max: 20, ok: err < 0.15}); }
     }
-    function check(){
-      if (p.solved) return;
-      var x = parseFloat(String(input.value).replace(/,/g, '.').replace(/[^0-9eE+\-.]/g, ''));
-      if (!isFinite(x)) { say(msg, 'bad', 'Type a number first.'); return; }
-      if (close(x)) { finish((p.tries || 0) > 0); return; }
-      p.tries = (p.tries || 0) + 1; p.persist(); input.className = 'wrong';
-      say(msg, 'bad', x > step.answer ? 'A bit high.' : 'A bit low.', step.hint);
-      if (p.tries >= 3 && !reveal) addReveal();
-    }
-    function addReveal(){
-      reveal = el('button', {class:'link', type:'button', text:'Show me the answer'});
-      reveal.addEventListener('click', function(){ p.shown = true; p.persist(); finish(true); });
-      n.appendChild(reveal);
-    }
-    go.addEventListener('click', check);
-    input.addEventListener('keydown', function(e){ if (e.key === 'Enter') check(); });
-    if (p.solved) finish(false); else if ((p.tries || 0) >= 3) addReveal();
+    slider.addEventListener('input', paint);
+    go.addEventListener('click', function(){ if (p.done) return; p.f = slider.value / 1000; p.persist(); reveal(false); });
+    n.appendChild(val); n.appendChild(slider);
+    n.appendChild(el('div', {class: 'est-ends'}, [el('span', {text: show(lo)}), el('span', {text: lg ? 'each step multiplies' : ''}), el('span', {text: show(hi)})]));
+    n.appendChild(track); n.appendChild(el('div', {style: 'height:10px'})); n.appendChild(go); n.appendChild(msg);
+    paint();
+    if (p.done) reveal(true);
     return n;
   }
 
-  function stepOrder(step, p, solve){
-    // Tap items into numbered slots. On a wrong check, the items already in the right place lock in (green) and
-    // the rest go back to the pool, so each try keeps what was learned.
-    var n = el('div', {}, [el('p', {class:'step-text', text: step.text})]);
-    var order = shuffled(step.items, step.text + step.items.join('|')), N = step.items.length;
-    var placed = (p.placed && p.placed.length === N) ? p.placed : step.items.map(function(){ return null; });
-    var locked = (p.locked && p.locked.length === N) ? p.locked : step.items.map(function(){ return false; });
-    var list = el('ol', {class:'olist'}), pool = el('div', {class:'pool'});
-    var go = el('button', {class:'btn small', type:'button', text:'Check order'});
-    var msg = el('div', {class:'say', 'aria-live':'polite'}), reveal = null;
+  function rSequence(r, p, done){
+    // Tap the items into numbered slots. After a wrong check the ones in the right place lock in and the rest return.
+    var n = el('div', {}, [el('p', {class: 'q', text: r.q})]);
+    var N = r.items.length, order = shuffled(r.items, (r.q || '') + r.items.join('|'));
+    var placed = (p.placed && p.placed.length === N) ? p.placed : r.items.map(function(){ return null; });
+    var locked = (p.locked && p.locked.length === N) ? p.locked : r.items.map(function(){ return false; });
+    var list = el('ol', {class: 'olist'}), pool = el('div', {class: 'pool'});
+    var go = el('button', {class: 'btn wide', type: 'button', text: 'Check the order'}), msg = el('div', {class: 'say', 'aria-live': 'polite'});
     n.appendChild(list); n.appendChild(pool); n.appendChild(go); n.appendChild(msg);
     function keep(){ p.placed = placed; p.locked = locked; p.persist(); }
     function draw(){
       list.innerHTML = ''; pool.innerHTML = '';
       var firstEmpty = placed.indexOf(null);
       placed.forEach(function(idx, pos){
-        var slot = el('button', {class:'slot' + (idx !== null ? ' filled' : '') + (locked[pos] ? ' right' : ''), type:'button',
-          text: idx !== null ? step.items[idx] : (pos === firstEmpty && !p.solved ? 'Tap an item below' : '')});
-        slot.addEventListener('click', function(){
-          if (p.solved || idx === null || locked[pos]) return;
-          placed[pos] = null; keep(); draw();
-        });
-        list.appendChild(el('li', {}, [el('span', {class:'n', text: String(pos + 1)}), slot]));
+        var slot = el('button', {class: 'slot' + (idx !== null ? ' filled' : '') + (locked[pos] ? ' right' : ''), type: 'button',
+          text: idx !== null ? r.items[idx] : (pos === firstEmpty && !p.done ? 'Tap what comes ' + (pos ? 'next' : 'first') : '')});
+        slot.addEventListener('click', function(){ if (p.done || idx === null || locked[pos]) return; placed[pos] = null; keep(); draw(); });
+        list.appendChild(el('li', {}, [el('span', {class: 'n', text: String(pos + 1)}), slot]));
       });
       order.forEach(function(idx){
-        if (placed.indexOf(idx) >= 0 || p.solved) return;
-        var b = el('button', {type:'button', text: step.items[idx]});
+        if (placed.indexOf(idx) >= 0 || p.done) return;
+        var b = el('button', {type: 'button', text: r.items[idx]});
         b.addEventListener('click', function(){ var at = placed.indexOf(null); if (at < 0) return; placed[at] = idx; keep(); draw(); });
         pool.appendChild(b);
       });
-      go.disabled = p.solved || placed.indexOf(null) >= 0;
-      go.style.display = p.solved ? 'none' : '';
+      go.disabled = placed.indexOf(null) >= 0;
+      go.style.display = p.done ? 'none' : '';
     }
-    function finish(struggled){
-      placed = step.items.map(function(_, i){ return i; }); locked = placed.map(function(){ return true; });
-      if (reveal) reveal.remove();
-      say(msg, 'good', p.shown ? 'The right order is above.' : 'Right order.', step.explain);
-      if (!p.solved) solve(struggled);
+    function finish(silent){
+      placed = r.items.map(function(_, i){ return i; }); locked = placed.map(function(){ return true; });
+      var t = p.tries || 0;
+      say(msg, t === 0 ? 'good' : '', p.gave ? 'Here is the order.' : t === 0 ? 'Right order, first go.' : 'That is the order.', r.why);
+      if (!silent) { buzz(15); done({pts: p.gave ? 0 : t === 0 ? 15 : t === 1 ? 8 : 3, max: 15, ok: t === 0}); }
       keep(); draw();
     }
     go.addEventListener('click', function(){
       var good = 0;
       placed.forEach(function(idx, pos){ if (idx === pos) { locked[pos] = true; good++; } else placed[pos] = null; });
-      if (good === N) { finish((p.tries || 0) > 0); return; }
-      p.tries = (p.tries || 0) + 1; keep();
-      say(msg, 'bad', good + ' of ' + N + ' in the right place. Those stay; place the others again.', step.hint);
-      draw();
-      if (p.tries >= 2 && !reveal) {
-        reveal = el('button', {class:'link', type:'button', text:'Show me the answer'});
-        reveal.addEventListener('click', function(){ p.shown = true; p.persist(); finish(true); });
-        n.appendChild(reveal);
-      }
+      if (good === N) { finish(false); return; }
+      p.tries = (p.tries || 0) + 1; buzz([20, 40, 20]);
+      if (p.tries >= 3) { p.gave = true; finish(false); return; }
+      keep(); say(msg, 'bad', good + ' of ' + N + ' in the right place. Those stay.', ''); draw();
     });
-    if (p.solved) finish(false); else draw();
+    if (p.done) finish(true); else draw();
     return n;
   }
 
-  var STEPS = {concept: stepConcept, explore: stepExplore, choice: stepChoice, number: stepNumber, order: stepOrder};
-
-  function ring(frac, done, label){
-    var r = 15, c = 2 * Math.PI * r, s = svg('svg', {class:'ring' + (done ? ' done' : ''), viewBox:'0 0 38 38', 'aria-hidden':'true'});
-    s.appendChild(svg('circle', {class:'bg', cx:19, cy:19, r:r}));
-    s.appendChild(svg('circle', {class:'fg', cx:19, cy:19, r:r, 'stroke-dasharray': c, 'stroke-dashoffset': c * (1 - frac),
-      transform:'rotate(-90 19 19)'}));
-    s.appendChild(svg('text', {x:19, y:19, text: done ? '✓' : label}));
-    return s;
-  }
-
-  function renderLesson(ep, li, les){
-    var s = st(ep.file), key = ep.file + '#' + li;
-    var lp = s.puz[li] = s.puz[li] || {at: 0, steps: {}, done: false};
-    var box = el('div', {class:'lesson'});
-    function solvedCount(){ return les.steps.filter(function(_, i){ return lp.steps[i] && lp.steps[i].solved; }).length; }
-    function persist(){ save(ep.file); }
-
-    function draw(){
-      box.innerHTML = '';
-      var n = solvedCount(), open = !!openLesson[key];
-      var top = el('button', {class:'lesson-top', type:'button', 'aria-expanded': String(open)}, [
-        ring(n / les.steps.length, lp.done, n + '/' + les.steps.length),
-        el('span', {class:'grow'}, [el('span', {class:'ttl', text: les.title}),
-          el('span', {class:'sub', text: lp.done ? 'Done · tap to review' : n ? 'Continue · step ' + (lp.at + 1) + ' of ' + les.steps.length
-            : les.steps.length + ' steps · about ' + Math.max(2, Math.round(les.steps.length * 0.6)) + ' min'})])
-      ]);
-      top.addEventListener('click', function(){ openLesson[key] = !open; draw(); });
-      box.appendChild(top);
-      if (!open) return;
-      var body = el('div', {class:'lesson-body'});
-      if (lp.finished) {
-        body.appendChild(el('div', {class:'finish'}, [el('span', {class:'badge-ok', text:'✓'}),
-          el('div', {class:'big', text:'Lesson complete'}),
-          el('div', {class:'hint', text:'The words from this lesson are kept below.'})]));
-        var again = el('button', {class:'btn ghost small', type:'button', text:'Go through it again'});
-        again.addEventListener('click', function(){ lp.finished = false; lp.at = 0; persist(); draw(); });
-        body.appendChild(el('div', {class:'nav', style:'justify-content:center'}, [again]));
-        box.appendChild(body);
-        return;
-      }
-      var dots = el('div', {class:'dots'});
-      les.steps.forEach(function(_, i){
-        dots.appendChild(el('span', {class: i === lp.at ? 'on' : (lp.steps[i] && lp.steps[i].solved ? 'ok' : '')}));
-      });
-      body.appendChild(dots);
-      var step = les.steps[lp.at];
-      var p = lp.steps[lp.at] = lp.steps[lp.at] || {};
-      Object.defineProperty(p, 'persist', {value: persist, enumerable: false, configurable: true});
-      var next = el('button', {class:'btn', type:'button', text: lp.at === les.steps.length - 1 ? 'Finish' : 'Continue'});
-      next.disabled = !p.solved;
-      function solve(struggled){
-        p.solved = true; if (struggled) p.struggled = true;
-        if (lp.at === les.steps.length - 1 && solvedCount() === les.steps.length) lp.done = true;
-        next.disabled = false; persist();
-        var ringBox = box.querySelector('.ring'); if (ringBox) ringBox.replaceWith(ring(solvedCount() / les.steps.length, lp.done, solvedCount() + '/' + les.steps.length));
-        var dot = dots.children[lp.at]; if (dot) dot.className = 'on';
-      }
-      body.appendChild((STEPS[step.type] || stepConcept)(step, p, solve));
-      var back = el('button', {class:'link', type:'button', text: lp.at ? '← Back' : ''});
-      back.addEventListener('click', function(){ if (lp.at) { lp.at--; persist(); draw(); } });
-      next.addEventListener('click', function(){
-        if (!p.solved) return;
-        if (lp.at < les.steps.length - 1) lp.at++;
-        else { lp.finished = true; lp.done = solvedCount() === les.steps.length; }
-        persist(); draw();
-        box.scrollIntoView({block:'nearest', behavior:'smooth'});
-      });
-      body.appendChild(el('div', {class:'nav'}, [back, next]));
-      box.appendChild(body);
+  function rMatch(r, p, done){
+    var n = el('div', {}, [el('p', {class: 'q', text: r.q || 'Match each one to what it does.'}), el('p', {class: 'sub', text: 'Tap a name, then its match.'})]);
+    var N = r.pairs.length, rightOrder = shuffled(r.pairs, r.pairs.map(function(x){ return x[1]; }).join('|'));
+    p.got = p.got || []; p.miss = p.miss || 0;
+    var cols = el('div', {class: 'mcols'}), L = el('div', {class: 'l'}), R = el('div'), msg = el('div', {class: 'say', 'aria-live': 'polite'});
+    var sel = null, lb = [], rb = [];
+    function finish(silent){
+      say(msg, p.miss === 0 ? 'good' : '', p.miss === 0 ? 'All matched, no misses.' : 'All matched.', r.why || '');
+      if (!silent) { buzz(15); done({pts: Math.max(3, 15 - 4 * p.miss), max: 15, ok: p.miss === 0}); }
     }
-    draw();
-    return box;
+    function paint(){
+      lb.forEach(function(b, i){ b.className = p.got.indexOf(i) >= 0 ? 'right' : sel === i ? 'sel' : ''; b.disabled = p.got.indexOf(i) >= 0; });
+      rb.forEach(function(b){ b.el.className = p.got.indexOf(b.i) >= 0 ? 'right' : ''; b.el.disabled = p.got.indexOf(b.i) >= 0; });
+    }
+    r.pairs.forEach(function(pair, i){
+      var b = el('button', {type: 'button', text: pair[0]});
+      b.addEventListener('click', function(){ sel = sel === i ? null : i; paint(); });
+      lb.push(b); L.appendChild(b);
+    });
+    rightOrder.forEach(function(i){
+      var b = el('button', {type: 'button', text: r.pairs[i][1]});
+      b.addEventListener('click', function(){
+        if (sel === null) { say(msg, '', 'Tap a name on the left first.', ''); return; }
+        if (sel === i) { p.got.push(i); sel = null; p.persist(); buzz(10); paint(); say(msg, '', '', ''); if (p.got.length === N) finish(false); }
+        else { p.miss++; p.persist(); buzz([20, 40, 20]); b.classList.add('shake'); setTimeout(function(){ b.classList.remove('shake'); }, 320); say(msg, 'bad', 'Not a match.', ''); }
+      });
+      rb.push({el: b, i: i}); R.appendChild(b);
+    });
+    cols.appendChild(L); cols.appendChild(R); n.appendChild(cols); n.appendChild(msg);
+    paint();
+    if (p.done) { p.got = r.pairs.map(function(_, i){ return i; }); paint(); finish(true); }
+    return n;
   }
 
-  /* ---------- episode ---------- */
-  function chips(file, group, options, key){
-    var s = st(file), row = el('div', {class:'row'});
-    options.forEach(function(o){
-      var b = el('button', {class:'chip', type:'button', 'aria-pressed': String(s[key][group] === o.v), text:o.t});
+  function rDuel(r, p, done){
+    var n = el('div', {}, [el('p', {class: 'q', text: r.q})]);
+    var box = el('div', {class: 'duel'}), msg = el('div', {class: 'say', 'aria-live': 'polite'});
+    var big = r.a.value > r.b.value ? 'a' : 'b', btn = {};
+    function reveal(silent){
+      ['a', 'b'].forEach(function(k){
+        btn[k].disabled = true;
+        btn[k].appendChild(el('span', {class: 'v'}, [num(r[k].value), el('small', {text: r.unit || ''})]));
+        if (k === big) btn[k].classList.add('right'); else if (p.pick === k) btn[k].classList.add('wrong');
+      });
+      var ratio = Math.abs(r[big].value) / Math.max(1e-12, Math.abs(r[big === 'a' ? 'b' : 'a'].value));
+      say(msg, p.pick === big ? 'good' : 'bad', (p.pick === big ? 'Right' : 'The other one') + (isFinite(ratio) && ratio >= 1.5 ? ' - about ' + (ratio >= 10 ? fmt(ratio, 0) : num(+ratio.toFixed(1))) + ' times bigger.' : '.'), r.why);
+      if (!silent) { buzz(p.pick === big ? 15 : [20, 40, 20]); done({pts: p.pick === big ? 10 : 0, max: 10, ok: p.pick === big}); }
+    }
+    ['a', 'b'].forEach(function(k){
+      btn[k] = el('button', {type: 'button'}, [el('span', {text: r[k].label})]);
+      btn[k].addEventListener('click', function(){ if (p.done) return; p.pick = k; p.persist(); reveal(false); });
+      box.appendChild(btn[k]);
+    });
+    n.appendChild(box); n.appendChild(msg);
+    if (p.done) reveal(true);
+    return n;
+  }
+
+  function rClues(r, p, done){
+    var n = el('div', {}, [el('p', {class: 'q', text: r.q || 'What is it?'})]);
+    var WORTH = [20, 12, 6], cl = el('div'), worth = el('div', {class: 'worth'}), opts = el('div'), msg = el('div', {class: 'say', 'aria-live': 'polite'});
+    var more = el('button', {class: 'btn ghost small', type: 'button', text: 'Another clue'});
+    p.shown = p.shown || 1; p.wrong = p.wrong || [];
+    function value(){ return Math.max(0, (WORTH[p.shown - 1] || 6) - 6 * p.wrong.length); }
+    function draw(){
+      cl.innerHTML = '';
+      r.clues.slice(0, p.shown).forEach(function(c, i){ cl.appendChild(el('div', {class: 'clue' + (i === p.shown - 1 && !p.done ? ' new' : '')}, [el('b', {text: 'Clue ' + (i + 1)}), c])); });
+      worth.textContent = p.done ? '' : 'Answer now for ' + value() + ' points' + (p.shown < r.clues.length ? ', or take another clue.' : '.');
+      more.style.display = p.done || p.shown >= r.clues.length ? 'none' : '';
+      opts.innerHTML = '';
+      r.options.forEach(function(o, i){
+        var b = el('button', {class: 'opt', type: 'button'}, [el('span', {class: 'mk', text: letters(i)}), el('span', {text: o})]);
+        if (p.wrong.indexOf(i) >= 0) { b.classList.add('wrong'); b.disabled = true; }
+        if (p.done) { b.disabled = true; if (i === r.answer) b.classList.add('right'); }
+        b.addEventListener('click', function(){
+          if (p.done) return;
+          if (i === r.answer) { var v = value(), first = p.wrong.length === 0; buzz(15); done({pts: v, max: 20, ok: first && p.shown < r.clues.length}); finish(); return; }
+          p.wrong.push(i); if (p.shown < r.clues.length) p.shown++; p.persist(); buzz([20, 40, 20]);
+          if (r.options.length - p.wrong.length <= 1) { done({pts: 0, max: 20, ok: false}); finish(); return; }
+          say(msg, 'bad', 'No.' + (p.shown <= r.clues.length ? ' Here is more to go on.' : ''), ''); draw();
+        });
+        opts.appendChild(b);
+      });
+    }
+    function finish(){ p.shown = r.clues.length; draw(); say(msg, p.wrong.length ? '' : 'good', p.wrong.length ? 'It was: ' + r.options[r.answer] + '.' : 'Named it.', r.why); }
+    more.addEventListener('click', function(){ if (p.shown < r.clues.length) { p.shown++; p.persist(); draw(); } });
+    n.appendChild(cl); n.appendChild(worth); n.appendChild(opts); n.appendChild(more); n.appendChild(msg);
+    if (p.done) finish(); else draw();
+    return n;
+  }
+
+  function rQuickfire(r, p, done){
+    var n = el('div'), N = r.items.length, SECONDS = 8, timer = null;
+    p.ans = p.ans || [];
+    function summary(silent){
+      n.innerHTML = '';
+      var right = r.items.filter(function(it, i){ return p.ans[i] === it.truth; }).length;
+      n.appendChild(el('p', {class: 'q', text: right + ' of ' + N + (right === N ? ' - clean sheet.' : '.')}));
+      var ul = el('ul', {class: 'qf-list'});
+      r.items.forEach(function(it, i){
+        var ok = p.ans[i] === it.truth;
+        ul.appendChild(el('li', {}, [el('span', {class: 'm ' + (ok ? 'ok' : 'no'), text: ok ? '✓' : '✗'}),
+          el('span', {}, [it.text, el('small', {text: (it.truth ? 'True' : 'False') + (p.ans[i] === null ? ' · out of time' : '')})])]));
+      });
+      n.appendChild(ul);
+      if (!silent) done({pts: 4 * right, max: 4 * N, ok: right === N});
+    }
+    function ask(i){
+      if (i >= N) { summary(false); return; }
+      n.innerHTML = '';
+      var bar = el('i'), t0 = Date.now();
+      n.appendChild(el('div', {class: 'qf-count', text: (i + 1) + ' of ' + N + ' · true or false?'}));
+      n.appendChild(el('div', {class: 'timer'}, [bar]));
+      n.appendChild(el('p', {class: 'q big', text: r.items[i].text}));
+      var two = el('div', {class: 'two'});
+      function answer(v){
+        if (timer) { clearInterval(timer); timer = null; }
+        p.ans[i] = v; p.persist();
+        var ok = v === r.items[i].truth; buzz(ok ? 10 : [20, 40, 20]);
+        Array.prototype.forEach.call(two.children, function(b, k){ b.disabled = true; if ((k === 0) === r.items[i].truth) b.classList.add('right'); else if (v !== null && (k === 0) === v) b.classList.add('wrong'); });
+        setTimeout(function(){ if (n.isConnected) ask(i + 1); }, REDUCED ? 500 : 750);
+      }
+      [true, false].forEach(function(v){
+        var b = el('button', {class: 'tf', type: 'button', text: v ? 'True' : 'False'});
+        b.addEventListener('click', function(){ if (p.ans[i] === undefined) answer(v); });
+        two.appendChild(b);
+      });
+      n.appendChild(two);
+      timer = setInterval(function(){
+        if (!n.isConnected) { clearInterval(timer); timer = null; return; }   // left the card: this statement is asked again
+        var left = 1 - (Date.now() - t0) / (SECONDS * 1000);
+        bar.style.width = Math.max(0, left * 100) + '%';
+        if (left <= 0) answer(null);
+      }, 100);
+    }
+    if (p.done) summary(true);
+    else if (p.ans.length) ask(p.ans.length);
+    else {
+      n.appendChild(el('p', {class: 'q', text: r.q || 'True or false?'}));
+      n.appendChild(el('p', {class: 'sub', text: N + ' statements, ' + SECONDS + ' seconds each. Trust your first read.'}));
+      var go = el('button', {class: 'btn wide', type: 'button', text: 'Go'});
+      go.addEventListener('click', function(){ ask(0); });
+      n.appendChild(go);
+    }
+    return n;
+  }
+
+  function rLab(r, p, done){
+    var n = el('div'), skip = null;
+    n.appendChild(stepExplore(r, p, function(){
+      if (p.done) return;
+      p.solved = true;   // the lab's own flag: its "Challenge" box stays on "You found it"
+      if (r.goal) { buzz([15, 30, 15]); done({pts: 20, max: 20, ok: true}); if (skip) skip.remove(); }
+      else done({pts: 0, max: 0, ok: null});   // an older lab with nothing to find: free play
+    }));
+    if (!p.done && r.goal) {
+      skip = el('button', {class: 'link', type: 'button', text: 'Skip this one'});
+      skip.addEventListener('click', function(){ if (!p.done) { p.gave = true; done({pts: 0, max: 20, ok: false}); skip.remove(); } });
+      n.appendChild(skip);
+    }
+    return n;
+  }
+  function rNote(r, p, done){
+    var n = el('div', {}, [el('p', {class: 'step-text', text: r.text})]);
+    if (r.example) n.appendChild(el('div', {class: 'note'}, [el('b', {text: 'Real life'}), r.example]));
+    if (!p.done) setTimeout(function(){ done({pts: 0, max: 0, ok: null}); }, 0);
+    return n;
+  }
+  var RENDER = {call: rCall, flaw: rFlaw, estimate: rEstimate, sequence: rSequence, match: rMatch, duel: rDuel, clues: rClues,
+    quickfire: rQuickfire, lab: rLab, note: rNote};
+
+  /* ================================ the stage ================================ */
+  var stage = null, deck = null;
+  function openStage(d){
+    deck = d;
+    stage = document.getElementById('stage');
+    stage.setAttribute('data-theme', deck.theme);
+    stage.hidden = false; document.body.style.overflow = 'hidden';
+    if (deck.prog.at >= deck.cards.length) deck.prog.at = deck.cards.length - 1;
+    touchDay();
+    drawCard();
+  }
+  function closeStage(){
+    if (stage) stage.hidden = true;
+    document.body.style.overflow = '';
+    deck = null; renderHome(); maybeSend(false);
+  }
+  function persist(){ if (deck && deck.ep) save(deck.ep.file); }
+  function popPoints(pts){
+    var sc = document.getElementById('score');
+    sc.firstChild.textContent = String(deckStats(deck).pts);
+    if (!pts) return;
+    var pop = el('span', {class: 'pop ' + (pts > 0 ? 'plus' : 'minus'), text: (pts > 0 ? '+' : '') + pts});
+    sc.appendChild(pop); setTimeout(function(){ pop.remove(); }, 950);
+  }
+  function reviewId(card){ return deck.ep ? deck.ep.file + '#' + card.id : card.rid; }
+  function schedule(card, ok){
+    if (card.r.type === 'lab' || card.r.type === 'note') return;   // a lab's sliders are not worth repeating cold
+    var id = card.rid || reviewId(card);
+    PROFILE.review = PROFILE.review.filter(function(x){ return x.id !== id; });
+    if (!ok) PROFILE.review.push({id: id, r: card.r, title: deck.ep ? deck.ep.label : card.label, due: dayKey(addDays(new Date(), 2))});
+    PROFILE.review = PROFILE.review.slice(-30);
+    saveProfile();
+  }
+  function drawCard(){
+    var card = deck.cards[deck.prog.at], body = document.getElementById('stage-body');
+    var p = deck.prog.cards[card.id] = deck.prog.cards[card.id] || {};
+    Object.defineProperty(p, 'persist', {value: persist, enumerable: false, configurable: true});
+    var prog = document.getElementById('prog'); prog.innerHTML = '';
+    deck.cards.forEach(function(c, i){ prog.appendChild(el('i', {class: i < deck.prog.at ? 'done' : i === deck.prog.at ? 'now' : ''})); });
+    var sc = document.getElementById('score'); sc.innerHTML = ''; sc.appendChild(document.createTextNode(String(deckStats(deck).pts)));
+    var next = document.getElementById('next'), back = document.getElementById('back');
+    back.disabled = deck.prog.at === 0;
+    next.style.display = card.k === 'finish' ? 'none' : '';
+    back.style.display = card.k === 'finish' ? 'none' : '';
+    next.textContent = 'Continue';
+    function done(res){
+      p.done = true; p.pts = res.pts || 0; p.max = res.max || 0; p.ok = res.ok;
+      if (res.pts) award(res.pts);
+      if (card.k === 'round' && res.ok !== null && res.ok !== undefined) schedule(card, !!res.ok);
+      persist(); popPoints(res.pts || 0);
+      next.disabled = false;
+    }
+    var box = el('div', {class: 'cardc'});
+    if (card.k === 'round') {
+      var seg = card.seg >= 0 ? deck.play.segments[card.seg] : null;
+      box.appendChild(el('div', {class: 'kicker'}, [(ICON[card.r.type] || '') + ' ' + kindName(deck.theme, card.r.type)]));
+      if (seg || card.label) box.appendChild(el('p', {class: 'sub', style: 'margin:-4px 0 10px', text: seg ? seg.title : card.label}));
+      box.appendChild((RENDER[card.r.type] || rNote)(card.r, p, done));
+      next.disabled = !p.done;
+    } else if (card.k === 'bet') { box.appendChild(cardBet(card, p, done)); next.disabled = !p.done; }
+    else if (card.k === 'gate') { box.appendChild(cardGate(card, p)); next.disabled = false; next.textContent = 'I have listened - play on'; }
+    else if (card.k === 'settle') { box.appendChild(cardSettle(card, p, done)); next.disabled = false; }
+    else if (card.k === 'finish') box.appendChild(cardFinish(card, p));
+    body.innerHTML = ''; body.appendChild(box); body.scrollTop = 0;
+  }
+  function go(step){
+    if (!deck) return;
+    var at = deck.prog.at + step;
+    if (at < 0 || at >= deck.cards.length) return;
+    deck.prog.at = at; persist(); drawCard();
+  }
+
+  function cardBet(card, p, done){
+    var seg = deck.play.segments[card.seg], bets = deck.prog.bets, b = bets[card.seg] = bets[card.seg] || {};
+    var total = deck.play.segments.filter(function(s){ return s.bet; }).length, th = THEMES[deck.theme] || THEMES.classic;
+    var n = el('div', {}, [el('div', {class: 'kicker'}, ['🎲 ' + th.bet + (total > 1 ? ' · ' + (card.seg + 1) + ' of ' + total : '')]),
+      el('p', {class: 'q big', text: seg.bet.claim})]);
+    var two = el('div', {class: 'two'}), conf = el('div', {class: 'conf'}), stake = el('div', {class: 'stake'});
+    var lock = el('button', {class: 'btn wide', type: 'button', text: 'Place the bet', style: 'margin-top:12px'});
+    function paint(){
+      Array.prototype.forEach.call(two.children, function(x, i){ x.className = 'tf' + (b.pick === (i === 0) ? ' sel' : ''); x.disabled = !!p.done; });
+      Array.prototype.forEach.call(conf.children, function(x, i){ x.className = b.conf === CONF[i].c ? 'sel' : ''; x.disabled = !!p.done; });
+      var c = confOf(b.conf);
+      stake.innerHTML = '';
+      if (p.done) stake.textContent = 'Bet placed. It is settled when this story is done.';
+      else if (b.pick === undefined) stake.textContent = 'True or false - and how sure are you?';
+      else { stake.appendChild(document.createTextNode('Right: ')); stake.appendChild(el('b', {class: 'plus', text: '+' + c.win}));
+        stake.appendChild(document.createTextNode(' · wrong: ')); stake.appendChild(el('b', {class: 'minus', text: String(c.lose)})); }
+      lock.disabled = b.pick === undefined || !!p.done; lock.style.display = p.done ? 'none' : '';
+    }
+    [true, false].forEach(function(v){
+      var x = el('button', {class: 'tf', type: 'button', text: v ? 'True' : 'False'});
+      x.addEventListener('click', function(){ if (p.done) return; b.pick = v; if (!b.conf) b.conf = 70; persist(); paint(); });
+      two.appendChild(x);
+    });
+    CONF.forEach(function(c){
+      var x = el('button', {type: 'button'}, [el('b', {text: c.c + '%'}), el('span', {text: c.t})]);
+      x.addEventListener('click', function(){ if (p.done) return; b.conf = c.c; persist(); paint(); });
+      conf.appendChild(x);
+    });
+    lock.addEventListener('click', function(){
+      if (b.pick === undefined || p.done) return;
+      buzz(15); done({pts: 0, max: 0, ok: null}); paint();
+      setTimeout(function(){ if (deck && deck.cards[deck.prog.at] === card) go(1); }, REDUCED ? 250 : 550);
+    });
+    n.appendChild(two); n.appendChild(conf); n.appendChild(stake); n.appendChild(lock);
+    if (!b.conf) b.conf = 70;
+    paint();
+    return n;
+  }
+  function cardGate(card, p){
+    p.done = true;
+    var n = el('div', {class: 'center'}, [el('div', {class: 'bigicon', text: '🔒'}), el('p', {class: 'q', text: 'Your bets are in.'}),
+      el('p', {class: 'sub', style: 'margin:0 0 18px', text: 'They are settled as you play. The cards give the answers away, so if you have not heard the episode yet, listen first - your bets are kept.'})]);
+    var later = el('button', {class: 'btn ghost wide', type: 'button', text: 'Not yet - I will come back'});
+    later.addEventListener('click', function(){ deck.prog.at = Math.min(deck.prog.at + 1, deck.cards.length - 1); persist(); closeStage(); });
+    n.appendChild(later);
+    if (deck.ep) n.appendChild(el('p', {class: 'hint', style: 'margin-top:14px'}, [el('a', {href: audioUrl(deck.ep), target: '_blank', rel: 'noopener', text: '▶ Listen to the episode'})]));
+    return n;
+  }
+  function cardSettle(card, p, done){
+    var seg = deck.play.segments[card.seg], b = deck.prog.bets[card.seg], s = st(deck.ep.file);
+    var n = el('div', {}, [el('div', {class: 'kicker'}, ['✅ Story ' + (card.seg + 1) + ' of ' + deck.play.segments.length + ' done'])]);
+    if (seg.bet) {
+      n.appendChild(el('p', {class: 'claim', text: '“' + seg.bet.claim + '”'}));
+      n.appendChild(el('div', {class: 'stamp ' + (seg.bet.truth ? 't' : 'f'), text: seg.bet.truth ? 'TRUE' : 'FALSE'}));
+      if (b && b.pick !== undefined) {
+        var c = confOf(b.conf), right = b.pick === seg.bet.truth, pts = right ? c.win : c.lose;
+        n.appendChild(el('div', {class: 'result ' + (right ? 'win' : 'lose')}, [el('b', {text: (pts > 0 ? '+' : '') + pts + ' points. '}),
+          'You said ' + (b.pick ? 'true' : 'false') + ' at ' + c.c + '%.' + (right ? '' : c.c >= 85 ? ' Being that sure and wrong is expensive - that is the idea.' : '')]));
+        if (!p.done) {
+          var cal = PROFILE.calib[c.c] = PROFILE.calib[c.c] || [0, 0]; cal[1]++; if (right) cal[0]++; saveProfile();
+          buzz(right ? [15, 30, 15] : [30, 50, 30]);
+          setTimeout(function(){ done({pts: pts, max: 25, ok: null}); }, 0);
+        }
+      } else n.appendChild(el('div', {class: 'result flat', text: 'No bet was placed on this one.'}));
+      n.appendChild(el('p', {style: 'margin:0 0 4px', text: seg.bet.why}));
+    } else n.appendChild(el('p', {class: 'q', text: seg.title}));
+    if (seg.takeaway) n.appendChild(el('div', {class: 'takeaway', text: seg.takeaway}));
+    n.appendChild(el('p', {class: 'sub', style: 'margin:16px 0 0', text: 'This story on the show:'}));
+    var row = el('div', {class: 'react'});
+    [['more', '🔥', 'More like it'], ['ok', '👍', 'Fine'], ['less', '👎', 'Less of this']].forEach(function(o){
+      var x = el('button', {type: 'button', class: s.segments[seg.title] === o[0] ? 'sel' : ''}, [el('span', {text: o[1]}), o[2]]);
+      x.addEventListener('click', function(){
+        s.segments[seg.title] = s.segments[seg.title] === o[0] ? undefined : o[0]; save(deck.ep.file); buzz(10);
+        Array.prototype.forEach.call(row.children, function(y){ y.className = ''; });
+        if (s.segments[seg.title]) x.className = 'sel';
+      });
+      row.appendChild(x);
+    });
+    n.appendChild(row);
+    if (!seg.bet || !b || b.pick === undefined) p.done = true;
+    return n;
+  }
+
+  function chipRow(label, opts, get, set){
+    var row = el('div', {class: 'frow'}, [el('span', {text: label})]);
+    opts.forEach(function(o){
+      var b = el('button', {class: 'chip' + (get() === o.v ? ' sel' : ''), type: 'button', text: o.t});
       b.addEventListener('click', function(){
-        s[key][group] = (s[key][group] === o.v) ? undefined : o.v; save(file);
-        Array.prototype.forEach.call(row.querySelectorAll('.chip'), function(c){ c.setAttribute('aria-pressed', 'false'); });
-        if (s[key][group] !== undefined) b.setAttribute('aria-pressed', 'true');
+        set(get() === o.v ? undefined : o.v);
+        Array.prototype.forEach.call(row.querySelectorAll('.chip'), function(c){ c.classList.remove('sel'); });
+        if (get() === o.v) b.classList.add('sel');
       });
       row.appendChild(b);
     });
     return row;
   }
-
-  function renderQuiz(ep, card){
-    var s = st(ep.file);
-    var qbox = el('div', {class: s.checked ? 'checked' : ''});
-    ep.quiz.forEach(function(q, qi){
-      var wrap = el('div', {class:'q'});
-      var p = el('p'); p.appendChild(el('span', {class:'seg', text: q.segment || ''})); p.appendChild(document.createTextNode(q.q));
-      wrap.appendChild(p);
-      q.options.forEach(function(o, oi){
-        var b = el('button', {class:'opt', type:'button', text:o});
-        if (s.answers[qi] === oi) b.classList.add('pick');
-        if (s.checked){
-          if (oi === q.answer) b.classList.add('right');
-          else if (s.answers[qi] === oi) b.classList.add('wrong');
-        }
-        b.addEventListener('click', function(){
-          if (s.checked) return;
-          s.answers[qi] = oi; save(ep.file);
-          Array.prototype.forEach.call(wrap.querySelectorAll('.opt'), function(x){ x.classList.remove('pick'); });
-          b.classList.add('pick');
-        });
-        wrap.appendChild(b);
-      });
-      wrap.appendChild(el('div', {class:'explain', text: q.explain || ''}));
-      qbox.appendChild(wrap);
+  function feedbackForm(ep, chips){
+    var s = st(ep.file), box = el('div', {class: 'fb'});
+    var stars = el('div', {class: 'stars', role: 'group', 'aria-label': 'Rate the episode'});
+    function paintStars(){ Array.prototype.forEach.call(stars.children, function(b, i){ b.className = (s.ratings.overall || 0) > i ? 'on' : ''; }); }
+    [1, 2, 3, 4, 5].forEach(function(v){
+      var b = el('button', {type: 'button', 'aria-label': v + ' stars', text: '★'});
+      b.addEventListener('click', function(){ s.ratings.overall = s.ratings.overall === v ? undefined : v; save(ep.file); buzz(10); paintStars(); });
+      stars.appendChild(b);
     });
-    card.appendChild(qbox);
-    var scoreEl = el('span', {class:'score'});
-    var check = el('button', {class:'btn ghost', type:'button', text: s.checked ? 'Answers shown' : 'Check answers'});
-    if (s.checked) {
-      var n = 0; ep.quiz.forEach(function(q, i){ if (s.answers[i] === q.answer) n++; });
-      scoreEl.textContent = n + ' / ' + ep.quiz.length;
-    }
-    check.addEventListener('click', function(){ if (s.checked) return; s.checked = true; save(ep.file); render(); });
-    card.appendChild(el('div', {class:'row', style:'margin-top:8px'}, [check, scoreEl]));
-  }
-
-  function renderEpisode(ep){
-    var s = st(ep.file), card = el('section', {class:'card'});
-    card.appendChild(el('div', {class:'ep-head'}, [
-      el('h2', {text: ep.title}),
-      el('div', {class:'meta', text: ep.label + ' · ' + fmtDur(ep.duration)}),
-      ep.theme ? el('p', {class:'theme', text: ep.theme}) : null
-    ]));
-
-    var lessons = ep.lessons || [];
-    if (lessons.length){
-      card.appendChild(el('div', {class:'sec', text:'Puzzles from this episode'}));
-      lessons.forEach(function(les, li){ card.appendChild(renderLesson(ep, li, les)); });
-      var words = [], seen = {};
-      lessons.forEach(function(les){ (les.words || []).forEach(function(w){
-        var k = w.term.toLowerCase(); if (!seen[k]) { seen[k] = 1; words.push(w); } }); });
-      if (words.length){
-        card.appendChild(el('div', {class:'sec', text:'Words to keep'}));
-        var wbox = el('div');
-        card.appendChild(wbox);
-        words.forEach(function(w){
-          wbox.appendChild(el('div', {class:'word'}, [el('b', {text: w.term}),
-            el('a', {href:'https://en.wikipedia.org/w/index.php?search=' + encodeURIComponent(w.term), target:'_blank', rel:'noopener', text:'look up'}),
-            el('p', {text: w.means})]));
-        });
-      }
-    }
-
-    if (ep.quiz && ep.quiz.length){
-      card.appendChild(el('div', {class:'sec', text: lessons.length ? 'Quick recap' : 'Quiz'}));
-      if (lessons.length) {
-        var more = el('details', {class:'more'});
-        if (s.checked || Object.keys(s.answers).length) more.setAttribute('open', '');
-        more.appendChild(el('summary', {text: ep.quiz.length + ' questions on the whole episode'}));
-        card.appendChild(more);
-        renderQuiz(ep, more);
-      } else renderQuiz(ep, card);
-    }
-
-    card.appendChild(el('div', {class:'sec', text:'Feedback'}));
-    function field(label, row){ return el('div', {class:'field'}, [el('div', {class:'flabel', text:label}), row]); }
-    card.appendChild(field('Overall', chips(ep.file, 'overall', [1,2,3,4,5].map(function(n){ return {v:n, t:n + ' ★'}; }), 'ratings')));
-    card.appendChild(field('Depth', chips(ep.file, 'depth', [{v:'too basic',t:'Too basic'},{v:'right',t:'Right'},{v:'too technical',t:'Too technical'}], 'ratings')));
-    card.appendChild(field('Pace', chips(ep.file, 'pace', [{v:'too slow',t:'Too slow'},{v:'right',t:'Right'},{v:'too fast',t:'Too fast'}], 'ratings')));
-    card.appendChild(field('Voices', chips(ep.file, 'voices', [{v:'good',t:'Good'},{v:'ok',t:'OK'},{v:'poor',t:'Poor'}], 'ratings')));
-    if (ep.segments && ep.segments.length){
-      card.appendChild(el('div', {class:'sec', text:'Segments — more or less of this?'}));
-      ep.segments.forEach(function(sg){
-        var r = el('div', {class:'segrow'}, [el('span', {text: sg.title})]);
-        r.appendChild(chips(ep.file, sg.title, [{v:'more',t:'More'},{v:'ok',t:'OK'},{v:'less',t:'Less'}], 'segments'));
-        card.appendChild(r);
-      });
-    }
-    card.appendChild(el('div', {class:'sec', text:'Anything else?'}));
-    var ta = el('textarea', {placeholder:'Topics you want, puzzles you liked, things that were unclear…'});
+    paintStars();
+    box.appendChild(stars);
+    function rating(k){ return {get: function(){ return s.ratings[k]; }, set: function(v){ s.ratings[k] = v; save(ep.file); }}; }
+    var d = rating('depth'), pc = rating('pace'), vo = rating('voices');
+    box.appendChild(chipRow('Depth', [{v: 'too technical', t: 'Too technical'}, {v: 'right', t: 'Right'}, {v: 'too basic', t: 'Too basic'}], d.get, d.set));
+    box.appendChild(chipRow('Pace', [{v: 'too fast', t: 'Too fast'}, {v: 'right', t: 'Right'}, {v: 'too slow', t: 'Too slow'}], pc.get, pc.set));
+    box.appendChild(chipRow('Voices', [{v: 'good', t: 'Good'}, {v: 'ok', t: 'OK'}, {v: 'poor', t: 'Poor'}], vo.get, vo.set));
+    var ta = el('textarea', {placeholder: 'Anything else? (optional)', 'aria-label': 'Comment'});
     ta.value = s.comment || '';
     ta.addEventListener('input', function(){ s.comment = ta.value; save(ep.file); });
-    card.appendChild(ta);
-    if (ep.transcript) card.appendChild(el('p', {class:'hint'}, [el('a', {href: ep.transcript, target:'_blank', rel:'noopener', text:'Read the transcript'})]));
-    return card;
-  }
-
-  function render(){
-    var list = document.getElementById('list'); list.innerHTML = '';
-    var eps = DATA.episodes.filter(function(e){ return selected.indexOf(e.file) >= 0; });
-    if (!eps.length) list.appendChild(el('p', {class:'empty', text:'Pick an episode above.'}));
-    eps.forEach(function(ep){ list.appendChild(renderEpisode(ep)); });
-  }
-
-  function renderTabs(){
-    var tabs = document.getElementById('tabs'); tabs.innerHTML = '';
-    DATA.episodes.forEach(function(ep){
-      var on = selected.indexOf(ep.file) >= 0;
-      var b = el('button', {class:'tab', type:'button', 'aria-pressed': String(on), text: ep.label});
+    var quick = (chips || []).concat(['More physics and space', 'Fewer numbers', 'Shorter']).slice(0, 6);
+    var qrow = el('div', {class: 'frow'});
+    quick.forEach(function(t){
+      var b = el('button', {class: 'chip' + ((s.comment || '').indexOf(t) >= 0 ? ' sel' : ''), type: 'button', text: t});
       b.addEventListener('click', function(){
-        var i = selected.indexOf(ep.file);
-        if (i >= 0) selected.splice(i, 1); else selected.push(ep.file);
-        renderTabs(); render();
+        var has = (s.comment || '').indexOf(t) >= 0;
+        s.comment = has ? s.comment.replace(t, '').replace(/(^[\s.;]+|[\s.;]+$)/g, '').replace(/\.\s*\./g, '.') : ((s.comment || '').trim() ? s.comment.trim().replace(/\.?$/, '. ') : '') + t;
+        ta.value = s.comment; save(ep.file); b.classList.toggle('sel', !has);
       });
-      tabs.appendChild(b);
+      qrow.appendChild(b);
     });
+    box.appendChild(qrow); box.appendChild(ta);
+    return box;
+  }
+  function cardFinish(card, p){
+    var stt = deckStats(deck), ep = deck.ep, n = el('div', {class: 'center'});
+    var first = !deck.prog.finished;
+    deck.prog.finished = true; persist();
+    var perfect = stt.n > 0 && stt.right === stt.n;
+    n.appendChild(el('div', {class: 'bigicon', text: deck.mode === 'review' ? '🔁' : perfect ? '🏆' : stt.pts >= stt.max * 0.6 ? '🎉' : '👏'}));
+    n.appendChild(el('div', {class: 'total'}, [String(stt.pts), el('small', {text: ' points'})]));
+    n.appendChild(el('p', {class: 'sub', style: 'margin:4px 0 0', text: deck.mode === 'review' ? 'Rematch done.' : deck.mode === 'bonus' ? 'Bonus round done.' : (deck.play.title || 'Done') + ' - done.'}));
+    var sk = streak();
+    n.appendChild(el('div', {class: 'stats'}, [
+      el('div', {class: 'stat'}, [el('b', {text: stt.right + '/' + stt.n}), el('span', {text: 'first-time right'})]),
+      el('div', {class: 'stat'}, [el('b', {text: '🔥 ' + sk}), el('span', {text: sk === 1 ? 'day in a row' : 'days in a row'})]),
+      el('div', {class: 'stat'}, [el('b', {text: fmt(PROFILE.xp, 0)}), el('span', {text: 'all-time points'})])]));
+    if (first && !REDUCED && stt.pts > 0) confetti(perfect ? 90 : 40);
+    if (deck.mode !== 'play') {
+      var back = el('button', {class: 'btn wide', type: 'button', text: 'Done'});
+      back.addEventListener('click', closeStage); n.appendChild(back);
+      return n;
+    }
+    var words = deck.play.words || [];
+    if (words.length) {
+      words.forEach(function(w){ if (!PROFILE.words[w.term]) PROFILE.words[w.term] = {m: w.means, d: dayKey()}; });
+      saveProfile();
+      n.appendChild(el('div', {class: 'sec', text: 'Words you collected'}));
+      var wc = el('div', {class: 'wchips'}), wm = el('div', {class: 'wmean', text: 'Tap one for its meaning.'});
+      words.forEach(function(w){ var b = el('button', {type: 'button', text: w.term}); b.addEventListener('click', function(){ wm.textContent = w.term + ': ' + w.means; }); wc.appendChild(b); });
+      n.appendChild(wc); n.appendChild(wm);
+    }
+    n.appendChild(el('div', {class: 'sec', text: 'Ten seconds: how was the episode?'}));
+    n.appendChild(feedbackForm(ep, deck.play.chips));
+    var sent = el('div', {class: 'sent', 'aria-live': 'polite'});
+    var send = el('button', {class: 'btn wide', type: 'button', text: token() ? 'Send' : 'Send (opens GitHub)', style: 'margin-top:12px'});
+    send.addEventListener('click', function(){ sendFeedback(true, function(ok, text){ sent.className = 'sent ' + (ok ? 'ok' : 'err'); sent.textContent = text; }); });
+    n.appendChild(send); n.appendChild(sent);
+    var row = el('div', {style: 'display:flex;gap:10px;margin-top:10px'});
+    if (ep.quiz && ep.quiz.length && !st(ep.file).bonus.finished) {
+      var bonus = el('button', {class: 'btn ghost', type: 'button', text: '⚡ Bonus round (' + ep.quiz.length + ')', style: 'flex:1'});
+      bonus.addEventListener('click', function(){ openStage(bonusDeck(ep)); }); row.appendChild(bonus);
+    }
+    var close = el('button', {class: 'btn ghost', type: 'button', text: 'Done', style: 'flex:1'});
+    close.addEventListener('click', closeStage); row.appendChild(close);
+    n.appendChild(row);
+    return n;
+  }
+  function confetti(count){
+    var c = el('canvas', {class: 'confetti'}), ctx = c.getContext('2d'), W = c.width = innerWidth, H = c.height = innerHeight;
+    document.body.appendChild(c);
+    var cs = getComputedStyle(document.getElementById('stage')), cols = ['--accent', '--good', '--blue', '--bad'].map(function(v){ return cs.getPropertyValue(v).trim() || '#C77A00'; });
+    var ps = []; for (var i = 0; i < count; i++) ps.push({x: W / 2 + (Math.random() - .5) * 80, y: H * .3, vx: (Math.random() - .5) * 9, vy: -Math.random() * 9 - 3, s: 4 + Math.random() * 5, c: cols[i % 4], r: Math.random() * 6});
+    var t0 = Date.now();
+    (function frame(){
+      var t = Date.now() - t0; ctx.clearRect(0, 0, W, H);
+      ps.forEach(function(q){ q.vy += .25; q.x += q.vx; q.y += q.vy; q.r += .2; ctx.save(); ctx.translate(q.x, q.y); ctx.rotate(q.r); ctx.fillStyle = q.c; ctx.globalAlpha = Math.max(0, 1 - t / 1800); ctx.fillRect(-q.s / 2, -q.s / 2, q.s, q.s * .6); ctx.restore(); });
+      if (t < 1800) requestAnimationFrame(frame); else c.remove();
+    })();
   }
 
-  function puzzleSummary(ep, s){
-    var lessons = ep.lessons || [];
-    var done = 0, started = false, struggled = [];
-    lessons.forEach(function(les, li){
-      var lp = s.puz[li]; if (!lp || !lp.steps) return;
-      if (lp.done) done++;
-      les.steps.forEach(function(step, si){
-        var p = lp.steps[si];
-        if (p && p.solved && step.type !== 'concept') started = true;   // opening a lesson is not doing it
-        if (p && (p.struggled || p.shown)) struggled.push(les.title + ': ' + step.text.slice(0, 140));
+  /* ================================ feedback ================================ */
+  function token(){ return store.get('wm2:token', ''); }
+  function audioUrl(ep){ return 'https://github.com/' + DATA.repo + '/releases/download/episodes/' + ep.file; }
+  function feedbackOf(ep){
+    var s = st(ep.file), d = deckFor(ep), out = {episode: ep.file, date: ep.date, edition: ep.edition};
+    var quiz = null, puzzles = null, play = null;
+    if (ep.quiz && ep.quiz.length && Object.keys(s.bonus.cards).length) {
+      var n = 0, missed = [];
+      ep.quiz.forEach(function(q, i){ var p = s.bonus.cards['q' + i]; if (!p || !p.done) return; if (p.ok) n++; else missed.push((q.segment ? q.segment + ': ' : '') + q.q); });
+      quiz = {score: n, total: ep.quiz.length, missed: missed.slice(0, 6)};
+    }
+    if (d) {
+      var stt = deckStats(d), struggled = [], segDone = 0;
+      d.cards.forEach(function(c){
+        var p = d.prog.cards[c.id];
+        if (scoring(c) && p && p.done && p.ok === false) struggled.push((d.play.segments[c.seg] || {}).title + ': ' + String(c.r.q || c.r.text || (c.r.items && c.r.items[0] && (c.r.items[0].text || c.r.items[0])) || c.r.type).slice(0, 140));
+        if (c.k === 'settle' && p && p.done) segDone++;
       });
-    });
-    if (!started) return null;
-    return {done: done, total: lessons.length, struggled: struggled.slice(0, 8)};
-  }
-
-  function buildFeedback(){
-    var out = [];
-    DATA.episodes.filter(function(e){ return selected.indexOf(e.file) >= 0; }).forEach(function(ep){
-      var s = st(ep.file), quiz = null;
-      if (ep.quiz && ep.quiz.length && Object.keys(s.answers).length){
-        var n = 0, missed = [];
-        ep.quiz.forEach(function(q, i){
-          if (s.answers[i] === q.answer) n++; else missed.push((q.segment ? q.segment + ': ' : '') + q.q);
-        });
-        quiz = {score:n, total:ep.quiz.length, missed:missed};
+      if (stt.done) {
+        puzzles = {done: segDone, total: d.play.segments.length, struggled: struggled.slice(0, 8)};
+        var bets = [];
+        d.play.segments.forEach(function(sg, i){ var b = d.prog.bets[i]; if (sg.bet && b && b.pick !== undefined && (d.prog.cards['x' + i] || {}).done) bets.push({conf: b.conf, right: b.pick === sg.bet.truth}); });
+        play = {cards: stt.n, done: stt.done, right: stt.right, points: stt.pts, bets: bets, formats: d.cards.filter(scoring).map(function(c){ return c.r.type; })};
       }
-      var puzzles = puzzleSummary(ep, s);
-      var segs = {}; Object.keys(s.segments).forEach(function(k){ if (s.segments[k]) segs[k] = s.segments[k]; });
-      var r = {}; Object.keys(s.ratings).forEach(function(k){ if (s.ratings[k] !== undefined) r[k] = s.ratings[k]; });
-      if (!quiz && !puzzles && !Object.keys(segs).length && !Object.keys(r).length && !(s.comment||'').trim()) return;
-      out.push({episode:ep.file, date:ep.date, edition:ep.edition, quiz:quiz, puzzles:puzzles, ratings:r, segments:segs,
-                comment:(s.comment||'').trim().slice(0, 1500)});
+    }
+    var segs = {}; Object.keys(s.segments).forEach(function(k){ if (s.segments[k]) segs[k] = s.segments[k]; });
+    var r = {}; Object.keys(s.ratings).forEach(function(k){ if (s.ratings[k] !== undefined) r[k] = s.ratings[k]; });
+    var comment = (s.comment || '').trim().slice(0, 1500);
+    if (!quiz && !puzzles && !Object.keys(segs).length && !Object.keys(r).length && !comment) return null;
+    out.quiz = quiz; out.puzzles = puzzles; out.play = play; out.ratings = r; out.segments = segs; out.comment = comment;
+    return out;
+  }
+  function pending(explicit){
+    // Feedback not sent yet. Sent on its own only once it says something about the SHOW (a rating, a reaction, a
+    // comment) - a game score alone is not worth an issue. Pressing Send sends whatever there is.
+    var out = [];
+    (DATA ? DATA.episodes : []).forEach(function(ep){
+      var f = feedbackOf(ep); if (!f) return;
+      var said = Object.keys(f.ratings).length || Object.keys(f.segments).length || f.comment;
+      if (!explicit && !said) return;
+      var sig = JSON.stringify(f);
+      if (PROFILE.sent[ep.file] !== hashStr(sig)) out.push({f: f, file: ep.file, sig: hashStr(sig)});
     });
     return out;
   }
-
-  document.getElementById('send').addEventListener('click', function(){
-    if (!DATA) return;
-    var fb = buildFeedback(), hint = document.getElementById('hint');
-    if (!fb.length){ hint.textContent = 'Do a puzzle, answer a question or rate something first.'; return; }
+  function issueFor(list){
+    var fb = list.map(function(x){ return x.f; });
     var lines = fb.map(function(f){
-      return '- ' + f.date + ' ' + f.edition + (f.puzzles ? ' · puzzles ' + f.puzzles.done + '/' + f.puzzles.total : '') +
-        (f.quiz ? ' · quiz ' + f.quiz.score + '/' + f.quiz.total : '') +
-        (f.ratings.overall ? ' · ' + f.ratings.overall + '★' : '') + (f.comment ? ' · "' + f.comment.slice(0, 120) + '"' : '');
+      return '- ' + f.date + ' ' + f.edition + (f.play ? ' · game ' + f.play.points + ' pts, ' + f.play.done + '/' + f.play.cards + ' cards' : '') +
+        (f.quiz ? ' · quiz ' + f.quiz.score + '/' + f.quiz.total : '') + (f.ratings.overall ? ' · ' + f.ratings.overall + '★' : '') +
+        (f.comment ? ' · "' + f.comment.slice(0, 120) + '"' : '');
     });
-    var body = 'Feedback from the puzzle page.\n\n' + lines.join('\n') + '\n\n```json\n' +
-      JSON.stringify({feedback: fb}) + '\n```\n';
-    var title = 'Feedback: ' + fb.map(function(f){ return f.date + ' ' + f.edition; }).join(', ');
-    var url = 'https://github.com/' + DATA.repo + '/issues/new?labels=feedback&title=' +
-      encodeURIComponent(title) + '&body=' + encodeURIComponent(body);
-    window.open(url, '_blank', 'noopener');
-    hint.textContent = 'GitHub opened in a new tab — press “Create” to submit.';
-  });
+    return {title: 'Feedback: ' + fb.map(function(f){ return f.date + ' ' + f.edition; }).join(', '),
+            body: 'Feedback from the play page.\n\n' + lines.join('\n') + '\n\n```json\n' + JSON.stringify({feedback: fb}) + '\n```\n'};
+  }
+  function markSent(list){ list.forEach(function(x){ PROFILE.sent[x.file] = x.sig; }); saveProfile(); }
+  function sendFeedback(explicit, cb){
+    cb = cb || function(){};
+    var list = pending(explicit);
+    if (!list.length) { cb(true, explicit ? 'Nothing new to send - it is all in already.' : ''); return; }
+    var iss = issueFor(list), tok = token();
+    if (!tok) {
+      if (!explicit) return;
+      window.open('https://github.com/' + DATA.repo + '/issues/new?labels=feedback&title=' + encodeURIComponent(iss.title) + '&body=' + encodeURIComponent(iss.body), '_blank', 'noopener');
+      markSent(list);
+      cb(true, 'GitHub opened in a new tab - press “Create” there. (Set up one-tap sending under Settings to skip this step.)');
+      return;
+    }
+    fetch('https://api.github.com/repos/' + DATA.repo + '/issues', {method: 'POST', keepalive: true,
+      headers: {'Authorization': 'Bearer ' + tok, 'Accept': 'application/vnd.github+json', 'Content-Type': 'application/json'},
+      body: JSON.stringify({title: iss.title, body: iss.body, labels: ['feedback']})})
+      .then(function(r){ if (!r.ok) throw new Error(r.status === 401 || r.status === 403 ? 'the token was refused (expired, or without Issues: write on this repository)' : 'GitHub answered ' + r.status); markSent(list); cb(true, 'Sent. The next episode will use it.'); })
+      .catch(function(e){ cb(false, 'Not sent: ' + e.message + '. It is kept and will be tried again.'); });
+  }
+  function maybeSend(){ if (token()) sendFeedback(false); }
+  document.addEventListener('visibilitychange', function(){ if (document.visibilityState === 'hidden' && DATA) maybeSend(); });
+
+  /* ================================ home ================================ */
+  function istNow(){ return new Date(new Date().toLocaleString('en-US', {timeZone: 'Asia/Kolkata'})); }
+  function statusRow(){
+    var row = el('div', {class: 'status'}), now = istNow(), today = dayKey(now), mins = now.getHours() * 60 + now.getMinutes();
+    var ready = DATA.ready || {morning: '09:00', evening: '18:00'};
+    ['morning', 'evening'].forEach(function(ed){
+      var ep = DATA.episodes.filter(function(e){ return e.date === today && e.edition === ed; })[0];
+      var hm = (ready[ed] || '').split(':'), due = (+hm[0]) * 60 + (+hm[1] || 0), name = ed.charAt(0).toUpperCase() + ed.slice(1);
+      if (ep) row.appendChild(el('span', {class: 'ok', text: name + ' ✓ ' + String(ep.published).slice(11, 16)}));
+      else if (mins > due) row.appendChild(el('span', {class: 'late', text: name + ' edition is late (due ' + ready[ed] + ')'}));
+      else row.appendChild(el('span', {text: name + ' by ' + ready[ed]}));
+    });
+    return row;
+  }
+  function hero(ep){
+    var d = deckFor(ep), s = st(ep.file), play = d ? d.play : null, th = THEMES[(play || {}).theme] || THEMES.classic;
+    var card = el('section', {class: 'card hero', 'data-theme': (play || {}).theme || 'classic'});
+    if (!d) {
+      card.appendChild(el('div', {class: 'kick', text: ep.label}));
+      card.appendChild(el('h2', {text: ep.title}));
+      card.appendChild(el('p', {class: 'brief', text: 'No game was made for this episode.'}));
+      if (ep.quiz && ep.quiz.length) { var q = el('button', {class: 'btn', type: 'button', text: '⚡ Quick quiz (' + ep.quiz.length + ')'}); q.addEventListener('click', function(){ openStage(bonusDeck(ep)); }); card.appendChild(q); }
+      return card;
+    }
+    var stt = deckStats(d), started = d.prog.at > 0 || stt.done > 0, betsIn = d.cards.some(function(c){ return c.k === 'bet'; }) && d.cards.filter(function(c){ return c.k === 'bet'; }).every(function(c){ return (d.prog.cards[c.id] || {}).done; });
+    card.appendChild(el('div', {class: 'kick'}, [th.icon + ' ' + th.name]));
+    card.appendChild(el('h2', {text: play.title || ep.title}));
+    card.appendChild(el('p', {class: 'ep', text: ep.title + ' · ' + Math.floor((+ep.duration || 0) / 60) + ' min'}));
+    if (play.brief) card.appendChild(el('p', {class: 'brief', text: play.brief}));
+    var label = stt.finished ? 'Play again' : !started ? th.go : betsIn && stt.done === 0 ? 'Settle your bets' : 'Continue';
+    var go = el('button', {class: 'btn', type: 'button', text: label});
+    go.addEventListener('click', function(){
+      if (stt.finished) { s.play = {at: 0, cards: {}, bets: {}}; save(ep.file); }
+      openStage(deckFor(ep));
+    });
+    var nb = d.cards.filter(function(c){ return c.k === 'bet'; }).length;
+    var meta = stt.finished ? stt.pts + ' points · ' + stt.right + '/' + stt.n + ' first-time right'
+      : betsIn && stt.done === 0 ? 'Bets placed. Come back after listening.'
+      : 'About ' + Math.max(2, Math.round((stt.n * 25 + nb * 12) / 60)) + ' min · ' + (nb ? nb + (nb === 1 ? ' bet, ' : ' bets, ') : '') + stt.n + ' cards';
+    card.appendChild(el('div', {class: 'row'}, [go, el('span', {class: 'meta', text: meta})]));
+    if (started && !stt.finished) card.appendChild(el('div', {class: 'meter'}, [el('span', {style: 'width:' + Math.round(100 * d.prog.at / (d.cards.length - 1)) + '%'})]));
+    card.appendChild(el('p', {class: 'hint', style: 'margin:12px 0 0'}, [el('a', {href: audioUrl(ep), target: '_blank', rel: 'noopener', text: '▶ Listen'}),
+      ep.transcript ? ' · ' : null, ep.transcript ? el('a', {href: ep.transcript, target: '_blank', rel: 'noopener', text: 'Transcript'}) : null]));
+    return card;
+  }
+  function epRow(ep){
+    var d = deckFor(ep), stt = d ? deckStats(d) : null, th = THEMES[d ? d.theme : 'classic'] || THEMES.classic;
+    var b = el('button', {class: 'eprow', type: 'button'}, [el('span', {class: 'ic', text: th.icon}),
+      el('span', {class: 'grow'}, [el('span', {class: 't', text: ep.title.replace(/^[^:]*:\s*/, '')}), el('span', {class: 's', text: ep.label})]),
+      el('span', {class: 'pts' + (stt && stt.finished ? ' done' : ''), text: stt ? (stt.finished ? '✓ ' + stt.pts : stt.done ? stt.done + '/' + stt.n : 'Play') : ''})]);
+    b.addEventListener('click', function(){ if (d) openStage(deckFor(ep)); else if (ep.quiz && ep.quiz.length) openStage(bonusDeck(ep)); });
+    return b;
+  }
+  function heardCard(){
+    var h = DATA.heard || {}, lines = h.lines || [];
+    if (lines.length) {
+      var c = el('section', {class: 'card heard'}, [el('div', {class: 'sec', style: 'margin-top:0', text: 'You said → we did'})]);
+      lines.forEach(function(x){ c.appendChild(el('p', {class: 'pair'}, [el('span', {class: 'said', text: x.said + ' → '}), el('span', {class: 'did', text: x.did})])); });
+      return c;
+    }
+    var days = h.last ? Math.round((new Date(dayKey()) - new Date(h.last)) / 864e5) : null;
+    if (days !== null && days >= 4) return el('section', {class: 'card nudge', text: 'The show last heard from you ' + days + ' days ago. Stars and one tap per story at the end of a game are enough to steer it.'});
+    return null;
+  }
+  function statsCard(){
+    var c = el('section', {class: 'card'});
+    c.appendChild(el('div', {class: 'sec', style: 'margin-top:0', text: 'Your last 7 days'}));
+    var wk = el('div', {class: 'week'});
+    for (var i = 6; i >= 0; i--) { var d = addDays(new Date(), -i); wk.appendChild(el('div', {}, [el('i', {class: PROFILE.days[dayKey(d)] !== undefined ? 'on' : ''}), 'SMTWTFS'.charAt(d.getDay())])); }
+    c.appendChild(wk);
+    var any = CONF.some(function(x){ return (PROFILE.calib[x.c] || [0, 0])[1] > 0; });
+    c.appendChild(el('div', {class: 'sec', text: 'Calibration: when you say X%, how often are you right?'}));
+    if (!any) c.appendChild(el('p', {class: 'hint', style: 'margin:0', text: 'Place a few bets and this fills in. Well calibrated means your 70% bets come true about 70% of the time.'}));
+    else {
+      var g = el('div', {class: 'calib'});
+      CONF.forEach(function(x){
+        var v = PROFILE.calib[x.c] || [0, 0], rate = v[1] ? v[0] / v[1] : 0;
+        g.appendChild(el('span', {text: 'Said ' + x.c + '%'}));
+        g.appendChild(el('div', {class: 'bar'}, [v[1] ? el('i', {style: 'width:' + (rate * 100) + '%'}) : null, el('b', {style: 'left:' + x.c + '%', title: 'where a perfectly calibrated bar would end'})]));
+        g.appendChild(el('span', {class: 'n', text: v[1] ? Math.round(rate * 100) + '% of ' + v[1] : '–'}));
+      });
+      c.appendChild(g);
+      c.appendChild(el('p', {class: 'hint', style: 'margin:8px 0 0', text: 'The line marks where each bar should end. Bars short of it: overconfident.'}));
+    }
+    return c;
+  }
+  function wordsCard(){
+    var keys = Object.keys(PROFILE.words);
+    if (!keys.length) return null;
+    var dt = el('details', {class: 'fold card'}, [el('summary', {text: keys.length + ' words collected'})]), box = el('div');
+    keys.sort(function(a, b){ return PROFILE.words[b].d < PROFILE.words[a].d ? -1 : 1; }).slice(0, 60).forEach(function(k){ box.appendChild(el('div', {class: 'word'}, [el('b', {text: k}), el('p', {text: PROFILE.words[k].m})])); });
+    dt.appendChild(box);
+    return dt;
+  }
+  function settingsCard(){
+    var dt = el('details', {class: 'fold card'}, [el('summary', {text: 'Settings'})]), box = el('div');
+    box.appendChild(el('p', {style: 'margin:0 0 4px;font-weight:600', text: 'One-tap feedback'}));
+    box.appendChild(el('p', {class: 'hint', style: 'margin:0', text: 'Without this, sending feedback opens GitHub and you press “Create” there. With a token, it is sent from this page - and on its own when you finish a game. Make a fine-grained token on GitHub (Settings → Developer settings → Fine-grained tokens) for the repository ' + DATA.repo + ' only, with one permission: Issues → Read and write. It is stored only in this browser.'}));
+    var inp = el('input', {type: 'password', placeholder: 'github_pat_…', autocomplete: 'off', 'aria-label': 'GitHub token'}); inp.value = token();
+    var note = el('div', {class: 'sent'});
+    var saveB = el('button', {class: 'btn small', type: 'button', text: 'Save token'});
+    saveB.addEventListener('click', function(){ store.set('wm2:token', inp.value.trim()); note.className = 'sent ok'; note.textContent = inp.value.trim() ? 'Saved. Feedback now sends from this page.' : 'Removed. Feedback opens GitHub again.'; });
+    box.appendChild(inp); box.appendChild(saveB); box.appendChild(note);
+    var reset = el('button', {class: 'link', type: 'button', text: 'Reset my points, streak and progress'});
+    reset.addEventListener('click', function(){
+      if (!confirm('Erase points, streak, calibration, collected words and all game progress in this browser?')) return;
+      try { Object.keys(localStorage).forEach(function(k){ if (k.indexOf('wm:') === 0 || k === 'wm2:profile') localStorage.removeItem(k); }); } catch(e){}
+      location.reload();
+    });
+    box.appendChild(el('div', {style: 'margin-top:14px'}, [reset]));
+    dt.appendChild(box);
+    return dt;
+  }
+  function renderHome(){
+    var list = document.getElementById('list'); list.innerHTML = '';
+    var sk = streak(), played = PROFILE.days[dayKey()] !== undefined;
+    var pills = document.getElementById('pills'); pills.innerHTML = '';
+    pills.appendChild(el('span', {class: 'pill' + (played ? '' : ' cold'), title: played ? 'Played today' : 'Play today to keep the streak', text: '🔥 ' + sk}));
+    pills.appendChild(el('span', {class: 'pill', title: 'All-time points', text: '★ ' + fmt(PROFILE.xp, 0)}));
+    list.appendChild(statusRow());
+    if (!DATA.episodes.length) { list.appendChild(el('p', {class: 'empty', text: 'No episodes yet.'})); return; }
+    var h = heardCard(); if (h) list.appendChild(h);
+    var today = DATA.episodes.slice(0, 2), rest = DATA.episodes.slice(2);
+    today.forEach(function(ep){ list.appendChild(hero(ep)); });
+    var due = PROFILE.review.filter(function(x){ return x.due <= dayKey(); }).length;
+    if (due) {
+      var rc = el('section', {class: 'card'}, [el('div', {class: 'sec', style: 'margin-top:0', text: 'Rematch'}),
+        el('p', {style: 'margin:0 0 10px', text: due + (due === 1 ? ' card' : ' cards') + ' that got you earlier ' + (due === 1 ? 'is' : 'are') + ' back for another go.'})]);
+      var rb = el('button', {class: 'btn small', type: 'button', text: '🔁 Take the rematch'}); rb.addEventListener('click', function(){ openStage(reviewDeck()); });
+      rc.appendChild(rb); list.appendChild(rc);
+    }
+    if (rest.length) { list.appendChild(el('div', {class: 'sec', text: 'Earlier this week'})); rest.forEach(function(ep){ list.appendChild(epRow(ep)); }); }
+    list.appendChild(el('div', {class: 'sec', text: 'You'}));
+    list.appendChild(statsCard());
+    var w = wordsCard(); if (w) list.appendChild(w);
+    list.appendChild(settingsCard());
+  }
 
   function start(d){
     DATA = d;
     DATA.episodes.sort(function(a, b){ return a.published < b.published ? 1 : -1; });
     document.getElementById('show').textContent = d.show || 'Weights & Measures';
-    document.getElementById('sub').textContent = 'Puzzles, quiz and feedback for ' + (d.listener || 'you');
-    if (!DATA.episodes.length){ document.getElementById('list').innerHTML = '<p class="empty">No episodes yet.</p>'; return; }
-    selected = DATA.episodes.slice(0, 2).map(function(e){ return e.file; });
-    renderTabs(); render();
+    document.getElementById('sub').textContent = 'Three-minute games on each episode';
+    document.getElementById('x').addEventListener('click', closeStage);
+    document.getElementById('next').addEventListener('click', function(){ go(1); });
+    document.getElementById('back').addEventListener('click', function(){ go(-1); });
+    renderHome();
+    var m = /[#&]play=([^&]+)/.exec(location.hash);   // quiz.html#play=<file> opens that episode's game
+    if (m) { var ep = DATA.episodes.filter(function(e){ return e.file === decodeURIComponent(m[1]); })[0]; if (ep && deckFor(ep)) openStage(deckFor(ep)); }
+    maybeSend();
   }
   if (window.WM_DATA) start(window.WM_DATA);   // a preview with the data built in
   else fetch('quiz.json?t=' + Date.now()).then(function(r){ return r.json(); }).then(start).catch(function(){
