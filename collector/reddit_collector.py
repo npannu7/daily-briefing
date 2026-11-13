@@ -14,9 +14,10 @@ Standard library only - no pip installs needed.
 Usage
   python reddit_collector.py            collect + upload (uses collector_config.json)
   python reddit_collector.py --test     collect 3 subreddits, print a summary, no upload
-  python reddit_collector.py --pool reddit/pool.json [--requests 10] [--pause 60]
+  python reddit_collector.py --pool reddit/pool.json [--requests 10] [--pause 60] [--budget 900] [--catch-up]
                                         one small hourly step: add to a pool that builds up over the day
-                                        (used by the GitHub workflow collect_reddit.yml)
+                                        (used by the GitHub workflow collect_reddit.yml). --catch-up reads up
+                                        to three times as much when the last step was hours ago.
 """
 import base64
 import datetime as dt
@@ -349,9 +350,18 @@ def main_pool():
     repo = arg("--repo", DEFAULT_REPO)
     pool = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
     subs = read_subreddits(repo)
+    requests, budget = int(arg("--requests", 10)), float(arg("--budget", 900))
+    if "--catch-up" in sys.argv:
+        # GitHub sometimes starts this hourly job only every 6-8 hours (Nov 2026). Ten requests then cover the
+        # listings and little else: the pool had 148 threads and 5 with comments. After a gap, read more.
+        gap = _hours_since(pool.get("updated_at"), dt.datetime.now(dt.timezone.utc))
+        if gap > 1.5:
+            requests = min(30, int(requests * min(gap, 3)))
+            budget = max(budget, requests * 65)
+            log(f"Last step was {'%.1f h' % gap if gap < 1000 else 'never'} ago: catching up with {requests} requests")
     log(f"Pool step: {len(subs)} subreddits, {len(pool.get('posts', {}))} threads in pool")
     try:
-        pool = pool_step(pool, subs, max_requests=int(arg("--requests", 10)), pause=float(arg("--pause", 60)))
+        pool = pool_step(pool, subs, max_requests=requests, pause=float(arg("--pause", 60)), budget_s=budget)
     except Blocked as e:
         log(f"STOPPED: Reddit refused this connection ({e}); pool kept as it was.")
     path.parent.mkdir(parents=True, exist_ok=True)

@@ -53,6 +53,8 @@ from zoneinfo import ZoneInfo
 import edge_tts
 import requests
 
+import due   # which edition is due, and when each should be ready (shared with the workflows)
+
 try:
     import trafilatura
 except ImportError:  # optional: better article extraction
@@ -127,30 +129,47 @@ HELPER_CHAIN = os.getenv("HELPER_MODELS") or (
 # check uses stronger models first (OpenRouter's free helpers here are different models from the main writer).
 CHECK_CHAIN = os.getenv("CHECK_MODELS") or (
     "gemini:gemini-3.8-flash,gemini:gemini-3.7-flash,openrouter:free,gemini:gemini-3.5-flash-lite,github:auto")
-# OpenRouter free models (checked 3 Nov 2026). "openrouter:free" in a chain expands to these, then to any other
-# free model OpenRouter lists. OPENROUTER_FREE_MODELS replaces both lists.
+# Builds the play page's data: repairs cards that failed the checks and writes formulas. Free coding models
+# first (they follow a schema strictly), then the usual helpers.
+CODER_CHAIN = os.getenv("CODER_MODELS") or "openrouter:free,gemini:gemini-3.5-flash-lite,gemini:gemini-3.1-flash-lite"
+# OpenRouter free models (each model's page read on 13 Nov 2026). "openrouter:free" in a chain expands to these,
+# then to any other free model OpenRouter lists. OPENROUTER_FREE_MODELS replaces these lists.
 # Nemotron 3 Super lost its free version on 2 Nov 2026 (HTTP 404 "unavailable for free"); Nemotron 3.5 Super VL
-# (same family, 120B / 12B active) takes its place.
+# (same family, 120B / 12B active) takes its place. ERNIE 5.5 Flash Preview (free since 10 Nov, 1M context, JSON
+# schema, about 200 tokens a second) is the newest fallback. Not used: Inkling 2 Small (its free endpoint is for
+# agent harnesses only), LiquidAI's small models (LFM2.5 left on 13 Nov), Dots3-Note (leaves 31 Dec 2026).
 FREE_WRITERS = ["nvidia/nemotron-3-ultra-550b-a55b:free", "nvidia/nemotron-3.5-super-vl:free",
-                "google/gemma-4-31b-it:free"]
-FREE_HELPERS = ["nvidia/nemotron-3.5-super-vl:free", "google/gemma-4-31b-it:free",
-                "google/gemma-4-26b-a4b-it:free"]
+                "baidu/ernie-5.5-flash-preview:free", "google/gemma-4-31b-it:free"]
+FREE_HELPERS = ["nvidia/nemotron-3.5-super-vl:free", "baidu/ernie-5.5-flash-preview:free",
+                "google/gemma-4-31b-it:free", "google/gemma-4-26b-a4b-it:free"]
+# Checking facts and puzzles: Apodex 1.1 Mini is a reasoning-first model built for answers grounded in evidence.
+FREE_CHECKERS = ["apodex/apodex-1.1-mini:free", "nvidia/nemotron-3.5-super-vl:free",
+                 "baidu/ernie-5.5-flash-preview:free", "google/gemma-4-31b-it:free"]
+# Coding models: Particle-1 enforces a JSON schema; North Mini Code and Flint are trained for exact edits.
+FREE_CODERS = ["particle-ai/particle-1:free", "cohere/north-mini-code:free", "recursive/flint-v1.0:free",
+               "baidu/ernie-5.5-flash-preview:free"]
 # Free models without a JSON mode: asked for JSON in the prompt only.
 NO_JSON_MODE = ("nemotron-3-ultra", "nemotron-3.5-lightning", "nano-omni", "inkling", "laguna", "north-mini", "ling-")
-# Never picked automatically from OpenRouter's free list: coding-only, guardrail, tiny, audio or retiring models.
-NOT_FOR_WRITING = r"safety|lyria|code|flint|inkling|liquid|lfm|omni|span-|heygen|fish-audio"
-# Scoring: each thread is judged on its own by these models (free chat models answer the scoring questions as
-# JSON; Decisions-API models answer them directly). Threads they miss are scored in one batched call.
-# Nemotron 3.5 Lightning (3B active) is NVIDIA's high-throughput model, built for many small requests.
+# Never picked automatically from OpenRouter's free list: coding-only, guardrail, tiny, audio, decision-only or
+# retiring models.
+NOT_FOR_WRITING = r"safety|lyria|code|flint|particle|inkling|liquid|lfm|omni|span-|decider|decisions|heygen|fish-audio|dots-3"
+# Decisions: typed questions about one item (a yes/no probability, a choice, a level on a scale). Used to score
+# each thread and to choose the play page's templates. Perplexity's Decider models (free since 12 Nov 2026) are
+# made for exactly this - they return calibrated probabilities instead of text - and come first. The Nemotron
+# chat models answer the same questions as JSON when the Deciders are unavailable (Lightning took about 50 s a
+# thread and often returned no answers). Threads nobody scored are scored in one batched call.
 DECISION_MODELS = [m.strip() for m in (os.getenv("DECISION_MODELS") or
+                   "perplexity/pplx-decider-flash-v1.3:free,perplexity/pplx-decider-v1.3:free,"
                    "nvidia/nemotron-3.5-lightning:free,nvidia/nemotron-3.5-super-vl:free").split(",") if m.strip()]
-# Models that only answer through OpenRouter's Decisions API (they do not generate text), even when free,
-# e.g. DECISION_MODELS=respan/span-01-lite:free
-DECISIONS_ONLY = ("respan/",)
+# Models that only answer through OpenRouter's Decisions API (they do not generate text), even when free.
+DECISIONS_ONLY = ("respan/", "perplexity/pplx-decider", "parallel/decisions")
+# A web-grounded decision model: asked whether a claim found only on Reddit is reported anywhere else, with the
+# pages it used. "off" disables it.
+WEB_CHECK_MODEL = (os.getenv("WEB_CHECK_MODEL") or "parallel/decisions-fast:free").strip()
 SCORING = (os.getenv("SCORING") or "auto").lower()      # auto | batch | decisions
 # Per-thread scoring may take this long; threads not reached by then are scored in one batched call. The free
 # Nemotron 3.5 Lightning takes about 50 s a thread, so without a limit scoring took 16 minutes (4 Nov 2026).
-SCORING_BUDGET_S = float(os.getenv("SCORING_BUDGET_S") or 300)
+SCORING_BUDGET_S = float(os.getenv("SCORING_BUDGET_S") or 240)
 SCORING_WORKERS = max(1, int(os.getenv("SCORING_WORKERS") or 8))
 OPENROUTER_DAILY_USD = float(os.getenv("OPENROUTER_DAILY_USD") or 0)   # spend cap for paid models
 # OpenRouter's free models (text and Fish voices) share one daily request limit that resets at 00:00 UTC:
@@ -252,6 +271,39 @@ FREE_DAY_OUT = [""]   # UTC date on which OpenRouter said the free daily limit w
 WRITER_PICK = []      # the writer that last succeeded; later writing tries it first so the hosts sound the same
 FAIL_STREAK = Counter()   # failed calls in a row per model; a model that keeps failing is dropped for the run
 _FAIL_LOCK = threading.Lock()
+# Models that failed in earlier runs: {model: {"until": utc iso, "n": times in a row}}. Until then they go to
+# the back of every chain. On 6-12 Nov 2026 Gemini 3.8 Flash and 3.7 Flash timed out in every run, and each run
+# waited about four minutes to find that out again.
+HEALTH = {}
+COOLING = set()
+COOL_HOURS = 6
+
+
+def load_health(state):
+    now = dt.datetime.now(dt.timezone.utc).isoformat()
+    HEALTH.update({m: h for m, h in (state.get("model_health") or {}).items() if isinstance(h, dict)})
+    COOLING.update(m for m, h in HEALTH.items() if h.get("until", "") > now)
+    if COOLING:
+        log(f"  resting after failing in recent runs (tried last): {', '.join(sorted(COOLING))}")
+
+
+def save_health():
+    """Models dropped in this run rest for 6 hours, doubling each time in a row (at most 48); a model that
+    worked is cleared. A resting model is still used when everything ahead of it fails."""
+    now = dt.datetime.now(dt.timezone.utc)
+    for m in list(HEALTH):
+        if m in WORKED:
+            del HEALTH[m]
+    for m in DEAD - WORKED:
+        if m in COOLING:
+            continue   # failed again while resting: keep its date
+        n = int(HEALTH.get(m, {}).get("n", 0)) + 1
+        HEALTH[m] = {"n": n, "until": (now + dt.timedelta(hours=min(48, COOL_HOURS * 2 ** (n - 1)))).isoformat()}
+    cut = (now - dt.timedelta(days=4)).isoformat()
+    return {m: h for m, h in HEALTH.items() if h.get("until", "") > cut}
+
+
+WORKED = set()
 
 
 def model_failed(model, why, limit):
@@ -272,6 +324,7 @@ def model_failed(model, why, limit):
 def model_ok(model):
     with _FAIL_LOCK:
         FAIL_STREAK[model] = 0
+        WORKED.add(model)
 
 
 def utc_day():
@@ -356,7 +409,7 @@ def listed_free():
         free = [m for m in data if m.get("id", "").endswith(":free") and (m.get("context_length") or 0) >= 64000
                 and not re.search(NOT_FOR_WRITING, m["id"])
                 and "text" in ((m.get("architecture") or {}).get("output_modalities") or ["text"])]
-        pref = ["nemotron", "gemma", "deepseek", "qwen", "kimi", "glm", "dots", "apodex", "llama", "mistral"]
+        pref = ["nemotron", "ernie", "gemma", "apodex", "deepseek", "qwen", "kimi", "glm", "llama", "mistral"]
 
         def rank(m):
             mid = m["id"].lower()
@@ -373,8 +426,8 @@ def free_models(role="writer"):
         _FREE = {}
     if role not in _FREE:
         override = [m.strip() for m in os.getenv("OPENROUTER_FREE_MODELS", "").split(",") if m.strip()]
-        chosen = override or (FREE_WRITERS if role == "writer" else FREE_HELPERS)
-        extra = [] if override else [m for m in listed_free() if m not in chosen][:2]
+        chosen = override or {"writer": FREE_WRITERS, "checker": FREE_CHECKERS, "coder": FREE_CODERS}.get(role, FREE_HELPERS)
+        extra = [] if override or role == "coder" else [m for m in listed_free() if m not in chosen][:2]
         _FREE[role] = chosen + extra
         log(f"  OpenRouter free models ({role}): {', '.join(_FREE[role]) or 'none'}")
     return _FREE[role]
@@ -481,10 +534,12 @@ def expand_chain(chain, role="writer"):
 
 
 def llm(prompt, json_mode=False, min_words=0, label="", role="writer"):
-    """Returns (text, model). role 'writer' = quality chain, 'helper' = free-first chain."""
-    chain = expand_chain(WRITER_CHAIN if role == "writer" else CHECK_CHAIN if role == "checker" else HELPER_CHAIN, role)
+    """Returns (text, model). role 'writer' = quality chain, 'helper' = free-first chain, 'checker' = the
+    stricter chain that checks puzzles, 'coder' = free coding models that build exact JSON."""
+    chain = expand_chain({"writer": WRITER_CHAIN, "checker": CHECK_CHAIN, "coder": CODER_CHAIN}.get(role, HELPER_CHAIN), role)
     if not chain:
         raise RuntimeError("No LLM provider configured")
+    chain = [c for c in chain if c[1] not in COOLING] + [c for c in chain if c[1] in COOLING]
     if role == "writer" and WRITER_PICK and WRITER_PICK[0] in chain:
         chain.remove(WRITER_PICK[0])
         chain.insert(0, WRITER_PICK[0])
@@ -644,6 +699,39 @@ Example: {example}"""
     return None
 
 
+def norm_answers(answers, questions):
+    """The Decisions API is in alpha and its reply may change shape. Keep only answers that read cleanly as
+    {"noul": 0-1} / {"score": level} / {"choice": key, "probabilities": {...}}; anything else is left out."""
+    out = {}
+    for k, q in questions.items():
+        a = answers.get(k) if isinstance(answers, dict) else None
+        if isinstance(a, (int, float, str)) and not isinstance(a, bool):
+            a = {q["type"]: a}
+        if not isinstance(a, dict):
+            continue
+        v = a.get(q["type"], a.get("value", a.get("answer")))
+        probs = a.get("probabilities") or a.get("distribution")
+        try:
+            if q["type"] == "noul":
+                v = float(v.get("probability") if isinstance(v, dict) else v)
+                if 0 <= v <= 1:
+                    out[k] = {"noul": v}
+            elif q["type"] == "score":
+                n = len(q["criteria"])
+                if isinstance(probs, list) and len(probs) == n and all(isinstance(x, (int, float)) for x in probs) \
+                        and sum(probs) > 0:
+                    v = sum(i * x for i, x in enumerate(probs)) / sum(probs)   # expected level, counted from 0
+                out[k] = {"score": max(0.0, min(n - 1.0, float(v)))}
+            elif str(v) in q["criteria"]:
+                out[k] = {"choice": str(v)}
+                if isinstance(probs, dict):
+                    out[k]["probabilities"] = {str(c): float(x) for c, x in probs.items()
+                                               if isinstance(x, (int, float)) and str(c) in q["criteria"]}
+        except (TypeError, ValueError, AttributeError):
+            continue
+    return out
+
+
 def decide_api(model, state_obj, questions):
     """OpenRouter's Decisions API: typed answers with calibrated probabilities (no text generation)."""
     free = model.endswith(":free")
@@ -667,11 +755,14 @@ def decide_api(model, state_obj, questions):
             if OPENROUTER_DAILY_USD <= 0 and model not in DEAD:
                 log(f"    decision model {model} charges money -> dropped (OPENROUTER_DAILY_USD is 0)")
                 DEAD.add(model)
-        answers = data.get("answers")
-        if isinstance(answers, dict) and answers:
+        answers = norm_answers(data.get("answers"), questions)
+        if answers:
             model_ok(model)
+            cites = _urls(data.get("citations") or data.get("sources") or [])
+            if cites:
+                answers["_citations"] = cites
             return answers
-        model_failed(model, "no answers in the reply", 6)
+        model_failed(model, "no usable answers in the reply", 6)
         return None
     if free and free_limit_hit(r.status_code, r.text[:300]):
         return None
@@ -682,6 +773,24 @@ def decide_api(model, state_obj, questions):
         return None
     model_failed(model, f"HTTP {r.status_code} {r.text[:120]}", 6)
     return None
+
+
+def _urls(obj, limit=6):
+    """Every web address inside a reply's citations, whatever their shape."""
+    found = []
+
+    def walk(x):
+        if isinstance(x, str):
+            if x.startswith("http") and x not in found:
+                found.append(x)
+        elif isinstance(x, dict):
+            for v in x.values():
+                walk(v)
+        elif isinstance(x, list):
+            for v in x:
+                walk(v)
+    walk(obj)
+    return found[:limit]
 
 
 def decide(state_obj, questions, subject="AI discussion thread"):
@@ -730,8 +839,8 @@ def ingest_feedback(state):
              "--json", "number,title,body,labels", check=False)
     if res.returncode != 0:
         log(f"  could not read feedback issues: {res.stderr.strip()[:200]}")
-        return []
-    done = []
+        return [], []
+    done, fresh = [], []
     for iss in json.loads(res.stdout or "[]"):
         labels = {l.get("name") for l in iss.get("labels", [])}
         if "feedback" not in labels and not iss.get("title", "").lower().startswith("feedback"):
@@ -744,11 +853,24 @@ def ingest_feedback(state):
         except json.JSONDecodeError:
             continue
         for fb in data.get("feedback", [data]):
+            if not isinstance(fb, dict):
+                continue
+            # The page may send an episode's feedback again when something is added (the same issue was also
+            # read twice on 4 Nov 2026). The newest entry replaces the older one, and a pace vote that was
+            # already counted is not counted again.
+            old = next((f for f in state["feedback"] if fb.get("episode") and f.get("episode") == fb.get("episode")), None)
+            if old:
+                if {k: v for k, v in old.items() if k not in ("received", "pace_counted")} == fb:
+                    continue
+                state["feedback"].remove(old)
+                if (old.get("ratings") or {}).get("pace") == (fb.get("ratings") or {}).get("pace"):
+                    fb["pace_counted"] = True
             fb["received"] = dt.datetime.now(TZ).isoformat()
             state["feedback"].append(fb)
+            fresh.append(fb)
         done.append(iss["number"])
         log(f"  feedback issue #{iss['number']}: {iss.get('title', '')}")
-    return done
+    return done, fresh
 
 
 PACE_STEP, PACE_LIMIT = 0.04, 0.12
@@ -761,7 +883,7 @@ def update_pace(state, new_feedback):
     before = float(state.get("pace_adjust", 0.0))
     adj = before
     for f in new_feedback:
-        vote = (f.get("ratings") or {}).get("pace")
+        vote = None if f.get("pace_counted") else (f.get("ratings") or {}).get("pace")
         adj += -PACE_STEP if vote == "too fast" else PACE_STEP if vote == "too slow" else 0
     adj = round(max(-PACE_LIMIT, min(PACE_LIMIT, adj)), 3)
     state["pace_adjust"] = adj
@@ -787,6 +909,9 @@ def new_feedback_text(new_feedback, pace_change):
         pz = f.get("puzzles") or {}
         if pz.get("total"):
             bits.append(f"puzzles finished: {pz.get('done', 0)} of {pz['total']}")
+        pl = f.get("play") or {}
+        if pl.get("cards"):
+            bits.append(f"played {pl.get('done', 0)} of {pl['cards']} cards on the page, {pl.get('points', 0)} points")
         more = [s for s, v in (f.get("segments") or {}).items() if v == "more"]
         less = [s for s, v in (f.get("segments") or {}).items() if v == "less"]
         line = f"- {f.get('date', '')} {f.get('edition', '')}: " + ", ".join(bits)
@@ -1101,6 +1226,12 @@ def primary_link(s):
     return s.get("link", "")
 
 
+def outside_link(s):
+    """True when the thread points at something other than Reddit or social media."""
+    u = primary_link(s)
+    return bool(u) and not any(d in urlparse(u).netloc for d in SKIP_DOMAINS)
+
+
 def hn_lookup(s):
     """The same story on Hacker News - a second, independent community."""
     if "HackerNews" in s["subs"]:
@@ -1122,10 +1253,61 @@ def hn_lookup(s):
         return None
 
 
+def unconfirmed(s):
+    """Nothing outside Reddit backs this thread: no readable source, no trusted outlet, no Hacker News."""
+    return not ((s.get("evidence") and not s["evidence"].startswith("(could not")) or s.get("also_in") or s.get("hn"))
+
+
+WEB_CHECK = {"reported": {
+    "type": "choice",
+    "instructions": "Search the web. Is the central factual claim of this discussion thread reported by a primary "
+                    "source (the company, agency, journal or paper itself) or a reputable news outlet?",
+    "criteria": {"confirmed": "A primary source or reputable outlet reports the same thing.",
+                 "disputed": "Reputable sources contradict it, or report something materially different.",
+                 "not_found": "No primary source or reputable outlet reports it; it appears only on forums or "
+                              "social media."}}}
+
+
+def web_check(s):
+    """For a thread nothing else backs: ask the web-grounded decision model whether the claim is reported
+    anywhere, then READ the pages it cites. Only a page that could actually be read counts as a source - the
+    model's word alone never turns a rumour into a confirmed story."""
+    if "web" in s or not unconfirmed(s):
+        return
+    s["web"] = {}
+    model = WEB_CHECK_MODEL
+    if model.lower() in ("", "off", "none", "false") or not OPENROUTER_API_KEY or model in DEAD:
+        return
+    if model.endswith(":free") and not free_allowed(1, "helper"):
+        return
+    ans = decide_api(model, {"title": s["title"], "post": s["text"][:1500], "linked_site": urlparse(s.get("link", "")).netloc},
+                     WEB_CHECK)
+    if not ans:
+        return
+    verdict = (ans.get("reported") or {}).get("choice", "")
+    probs = (ans.get("reported") or {}).get("probabilities") or {}
+    s["web"] = {"verdict": verdict, "p": probs.get(verdict), "pages": []}
+    for url in ans.get("_citations", [])[:3]:
+        text = fetch_article(url, 5000)
+        if text and not text.startswith("(could not"):
+            s["web"]["pages"].append({"site": urlparse(url).netloc, "url": url})
+            if unconfirmed(s):   # the first readable page becomes the segment's source
+                s["source_url"], s["evidence"] = url, text
+    log(f"    web check ({nice_model(model)}): {verdict or '?'}"
+        + (f", read {', '.join(pg['site'] for pg in s['web']['pages'])}" if s["web"]["pages"] else ", no readable page"))
+
+
 def check_block(s):
     lines = []
     if s.get("evidence") and not s["evidence"].startswith("(could not"):
         lines.append(f"- Source read directly: {urlparse(s.get('source_url', '')).netloc or 'linked page'}")
+    web = s.get("web") or {}
+    if web.get("pages"):
+        lines.append(f"- A web search found it reported by: {', '.join(pg['site'] for pg in web['pages'])} "
+                     f"(text above; search verdict: {web.get('verdict')}).")
+    elif web.get("verdict") == "disputed":
+        lines.append("- A web search suggests reputable sources contradict this claim, but no page could be read: "
+                     "say the claim is disputed and unverified.")
     for t in s.get("also_in", []):
         lines.append(f"- {t['source']} has a matching item (use only if it is clearly the same story): "
                      f"\"{t['title']}\" - {t['summary'][:500]}")
@@ -1612,9 +1794,11 @@ def personal_rank(stories, state):
 # =============================== 4. PLAN ===============================
 EDITORIAL = f"""EDITORIAL STANDARD:
 - The listener: {LISTENER_PROFILE}
-- Pitch: a smart engineer outside computer science. Define each CS/ML term once, the first time, in plain words,
-  ideally with an analogy from mechanical engineering, control systems, optimisation, materials, or
-  manufacturing quality. One idea at a time; never stack jargon. Prefer the mechanism over the buzzword.
+- Pitch: a smart engineer outside computer science and outside biology. Define each specialist term (CS/ML,
+  genetics, cell biology, clinical medicine, physics) once, the first time, in plain words, ideally with an
+  analogy from mechanical engineering, control systems, optimisation, materials, or manufacturing quality.
+  One idea at a time; never stack jargon. Prefer the mechanism over the buzzword. If a term will not be
+  needed again, do not use it at all - say the plain thing instead.
 - {LISTENER} is the expert in: {EXPERT_AREAS}. Never explain those terms to him (no "validation - that's
   the process of proving..."); use them the way a colleague would, and as the analogies. Explaining his own
   field to him sounds patronising.
@@ -1642,6 +1826,8 @@ def candidate_listing(stories, n_ai=22, n_sci=12):
                                       "covered recently" if s.get("covered") else "",
                                       ("also in: " + ", ".join(t["source"] for t in s["also_in"]))
                                       if s.get("also_in") else "",
+                                      "no outside source" if s.get("needs_check") and not s.get("also_in")
+                                      and not outside_link(s) else "",
                                       ("interest: " + "/".join(s["interests"][:2])) if s.get("interests") else "") if x)
         rows.append(f"[{s['id']}] {s.get('subject', 'ai').upper()} ({', '.join(sorted(set(s['subs'])))}; "
                     f"{len(s['comments'])} comments; {flags}) "
@@ -1670,6 +1856,8 @@ the listener's commute). Fewer stories, told properly: depth over breadth. No qu
 - Format "thread" (the thread vs the evidence) for a news discussion with claims to check, or "concept" when the
   thread is really about an idea worth teaching from first principles{' - the evening suits one concept' if edition == 'evening' else ''}.
 - Prefer threads with real disagreement or checkable claims that an engineer outside the field can follow.
+- A news claim flagged "no outside source" exists only on Reddit so far: choose it only when nothing better is
+  on the list, or when the discussion itself (not the claim) is the story.
 - Titles are spoken: plain words a listener understands at once - no jargon, model numbers or acronyms."""
     prompt = f"""You are the editor of "{SHOW_TITLE}", a two-host podcast built from AI and science discussions
 on Reddit.
@@ -1769,6 +1957,7 @@ def sources_block(items, topic=None):
                         s["source_url"], s["evidence"] = t["link"], ev
                         break
             s["hn"] = hn_lookup(s)
+            web_check(s)
         comments = "\n".join(f"  - {c[:500]}" for c in s["comments"][:14])
         blocks.append(f"THREAD: {s['title']}\nCommunities: {', '.join(sorted(set(s['subs'])))}\n"
                       f"Post text: {s['text'][:2000] or '(link post, no text)'}\n"
@@ -1822,6 +2011,18 @@ def write_segment(seg, items, state, position, total, theme):
     claims = "; ".join(seg.get("claims_to_check") or []) or "(identify them from the thread)"
     presenter, asker = (A, B) if position % 2 == 1 else (B, A)   # the hosts take turns bringing stories
     sources = sources_block(items, topic)
+    # On 12 Nov 2026 a seven-minute segment on an FDA warning ended with "by the way, we could not confirm any
+    # of this". The listener must hear that first, not last.
+    if fmt in ("thread", "concept") and items and all(unconfirmed(s) for s in items):
+        confirm = ("CONFIRMATION: nothing outside Reddit confirms this story. Say so plainly within the first three "
+                   "turns (\"worth saying up front: we could not find this anywhere else\"). Keep the unconfirmed "
+                   "details brief and spend most of the segment on what IS established - the mechanism, the "
+                   "background, and how such a claim would be checked. Never leave the caveat to the end.")
+    elif fmt in ("thread", "concept"):
+        confirm = ("CONFIRMATION: within the first few turns, say in half a sentence where the facts come from (the "
+                   "paper, the company's own post, a named outlet) - see INDEPENDENT CHECK in the sources.")
+    else:
+        confirm = ""
     if fmt == "deepdive" and dossier_block(seg.get("topic", "")):
         sources += "\n\n-----\n\nTHE WEEK'S DOSSIER (what each day's threads, comments and sources said):\n" \
                    + dossier_block(seg.get("topic", ""))
@@ -1847,6 +2048,7 @@ Angle: {seg.get('angle', '')}
 Claims to check: {claims}
 {('Follows up on: ' + seg['connects_to']) if seg.get('connects_to') else ''}
 {FORMATS.get(fmt, FORMATS['thread'])}
+{confirm}
 
 PAST EPISODES (mention one only if it genuinely connects):
 {memory_text(state, 5)}
@@ -1861,8 +2063,9 @@ FORMAT - every line starts with a speaker name and a colon:
 {A}: ...
 {B}: ...
 RULES: real conversation with short and longer turns; at most ONE number per turn (a listener in a car cannot
-hold more), and round it ("about thirty thousand"); explain each computer-science or AI term once, briefly, in
-plain words - and never explain quality, regulatory, manufacturing or engineering terms ({LISTENER} knows them);
+hold more), and round it ("about thirty thousand"); explain each specialist term (computer science, AI, biology,
+medicine, physics) once, briefly, in plain words, and use at most one new term per turn - and never explain
+quality, regulatory, manufacturing or engineering terms ({LISTENER} knows them);
 do not chain several definitions in one turn; no greeting or sign-off; do not mention listener feedback;
 {"start directly with the story" if position == 1 else "open with a one-line transition"}; no markdown,
 stage directions, URLs or usernames; write numbers and abbreviations as a presenter would say them."""
@@ -1891,9 +2094,10 @@ Find:
 1. Numbers, names, dates, quotes or factual claims NOT supported by the sources (well-known background facts
    are fine). Also claims stated as fact that the sources only report as a Reddit opinion.
 2. Turns with more than one number.
-3. Computer-science or AI terms used without a short plain-words explanation the first time. Do NOT flag
-   terms from the listener's own field ({EXPERT_AREAS}); instead flag any place that EXPLAINS such a term
-   to him - he is an expert and it sounds patronising.
+3. Specialist terms from computer science, AI, genetics, cell biology, clinical medicine or physics used
+   without a short plain-words explanation the first time ("latent space", "chromatin accessibility"). Do NOT
+   flag terms from the listener's own field ({EXPERT_AREAS}); instead flag any place that EXPLAINS such a
+   term to him - he is an expert and it sounds patronising.
 4. Anything confusing to hear (lists of figures, long chains of acronyms, several definitions in one turn).
 Return JSON only:
 {{"problems": [{{"quote": "<a few words from the script>", "issue": "<what is wrong>", "fix": "<how to fix>"}}]}}
@@ -1912,7 +2116,8 @@ Return an empty list if the segment is accurate and clear."""
     prompt = f"""Revise this segment of the podcast "{SHOW_TITLE}". Keep the hosts, their voices and energy, the flow
 and the format (every line "{A}: ..." or "{B}: ..."). Fix every problem listed. Remove or soften any claim the
 sources do not support (say it is unclear or only claimed on Reddit). At most ONE number per turn. Explain each
-computer-science or AI term once in plain words; never explain {LISTENER}'s own field ({EXPERT_AREAS}).
+specialist term (computer science, AI, biology, medicine, physics) once in plain words, or replace it with
+plain words; never explain {LISTENER}'s own field ({EXPERT_AREAS}).
 Length: about {target if n >= target else int(target * 1.1)} words (now {n}).
 
 PROBLEMS:
@@ -1974,15 +2179,27 @@ def turns_words(turns):
 def next_episode(edition, now):
     """When the listener hears the show next. There are two episodes every day, weekends included."""
     if edition == "morning":
-        return "this evening, ready before 4 pm" + (" (Sunday's long science edition)" if now.weekday() == 6 else "")
-    return "tomorrow morning, ready before 8 am" + (" (Sunday's long AI edition)" if now.weekday() == 5 else "")
+        return (f"this evening, ready by {due.ready_by('evening')}"
+                + (" (Sunday's long science edition)" if now.weekday() == 6 else ""))
+    return (f"tomorrow morning, ready by {due.ready_by('morning')}"
+            + (" (Sunday's long AI edition)" if now.weekday() == 5 else ""))
 
 
 def write_bookends(state, segments_written, theme, edition, now, deep_dive, source_note, fresh_feedback="",
-                   puzzles=()):
+                   play=None):
     outline = "\n".join(f"- {s['title']}: {s.get('angle', '')}" for s, _ in segments_written)
-    puzzle_note = (f"Today's page has hands-on puzzles: {'; '.join(puzzles)}. In the closing, one host mentions "
-                   "them in one short, inviting sentence (what he gets to try, not a list)." if puzzles else "")
+    puzzle_note = ""
+    if play:
+        kinds = sorted({ROUNDS[r["type"]]["name"].lower() if r["type"] in ROUNDS else "a hands-on experiment"
+                        for sg in play["segments"] for r in sg["rounds"]})
+        bets = [sg["bet"]["claim"] for sg in play["segments"] if sg.get("bet")]
+        puzzle_note = (f"The episode's page has a three-minute game called \"{play['title']}\" ({', '.join(kinds)}). "
+                       "In the closing, one host invites him to play it in ONE short sentence that says what he "
+                       "gets to do - no list, no web address.")
+        if bets:
+            puzzle_note += ("\nA BET FOR THE DRIVE: at the end of the greeting, one host puts this to him as a quick "
+                            "true-or-false bet to keep in mind while listening, WITHOUT giving the answer or a hint: "
+                            f"\"{bets[0]}\"")
     prompt = f"""You write the opening and closing for "{SHOW_TITLE}" (hosts {A} and {B}).
 The listener is {LISTENER}; {'it is Sunday: a long magazine episode for a long drive' if now.weekday() == 6 else 'he listens on a short commute'}.
 Today is {now:%A, %d %B %Y}, {edition} edition.
@@ -2008,7 +2225,8 @@ Return JSON only:
 
 Greeting: 60-110 words, 3-5 turns, upbeat ({A} especially). Greet {LISTENER} by name naturally; the hosts do not
 introduce themselves by name. Link to past episodes only where it truly connects. Preview each segment in ONE
-plain sentence - no lists of numbers or names. Only if a NEW FEEDBACK section appears above, acknowledge it in
+plain sentence a stranger would understand - no lists of numbers or names, and no technical term or acronym
+the episode has not explained yet. Only if a NEW FEEDBACK section appears above, acknowledge it in
 one sentence; otherwise say nothing at all about feedback.
 {'For a deep dive, say why this topic is ready now (it built up over the week).' if deep_dive else ''}
 Vary the wording every time. Closing: 2-3 short turns, 30-60 words, no hype; say when the next episode is,
@@ -3159,245 +3377,586 @@ def template_catalog(keys=None):
     return "\n".join(rows)
 
 
-def pick_templates(segs, recent):
-    """The decision model chooses a template for each segment (a multiple-choice question, which is what decision
-    models are for). Returns {segment title: template or "none"}; missing when no decision model answered."""
-    criteria = {"none": "No template fits: the main idea is not about a quantity that changes (a debate, a policy, "
-                        "a story), or none of the others matches."} | {k: t["pick"] for k, t in TEMPLATES.items()}
-    picks, today = {}, []
+# ----- The play page -----
+# The page that goes with each episode (quiz.html) is a three-minute game, not a worksheet. It is assembled from
+# templates that were designed and tested once (here and in quiz.html), by three kinds of free model:
+#   1. the DECISION model chooses: the session's theme, the hands-on picture, and which card formats suit each
+#      segment (a probability per format - choosing is what decision models are for);
+#   2. the WRITING model fills the chosen formats with the episode's story;
+#   3. everything is checked here, and a CODING model repairs the cards that fail (it gets the format's schema and
+#      the exact error - strict structured edits are what coding models are good at). A stricter model then
+#      checks the facts.
+# No model writes HTML or JavaScript: a broken page cannot be published.
+THEMES = {
+    "audit": {"name": "Audit day",
+              "pick": "The episode is mostly about claims being checked: a study, a benchmark, a safety or product "
+                      "claim, a regulator's decision - things an auditor would probe.",
+              "frame": "He is the auditor today: each card is a claim or a record to probe, and wrong statements are "
+                       "'findings'."},
+    "exchange": {"name": "The evidence exchange",
+                 "pick": "The episode is full of surprising or contested claims where it is hard to know who is "
+                         "right: hype versus evidence, forecasts, debates.",
+                 "frame": "He is trading on evidence today: he stakes points on what will hold up."},
+    "bench": {"name": "On the bench",
+              "pick": "The episode is mostly about how something works and has real quantities to play with: a "
+                      "mechanism, physics, hardware, a dose, a scale.",
+              "frame": "He is at a test bench today: he turns the knobs and takes the measurement."},
+    "case": {"name": "Case file",
+             "pick": "The episode tells a story with a cause to find: something failed, surprised people or was "
+                     "discovered, and the question is why.",
+             "frame": "He is the investigator today: clues first, then the cause."},
+}
+
+# Card formats. "pick" is the yes/no question the decision model answers for each segment; "schema" and "rules"
+# go to the writer; quiz.html has one renderer per format (same names).
+ROUNDS = {
+    "estimate": {
+        "name": "Gut number",
+        "pick": "The segment states a number that would surprise most people (a rate, size, cost, share or count) "
+                "and that he could try to guess.",
+        "schema": '{"type": "estimate", "q": "<asks for the number, max 22 words>", "answer": <the number>, '
+                  '"unit": "<short unit>", "lo": <lowest plausible guess>, "hi": <highest plausible guess>, '
+                  '"why": "<the answer in context, max 35 words>"}',
+        "rules": "He drags a slider from lo to hi and scores by how close he lands. Use a number the segment "
+                 "states. lo..hi must be wide and plausible, with the answer well away from the middle and the ends."},
+    "flaw": {
+        "name": "Spot the flaw",
+        "pick": "The segment contains a mistaken belief, an overclaim or a reasoning error that could be hidden "
+                "among true statements.",
+        "schema": '{"type": "flaw", "q": "<one line setting it up, max 16 words>", "items": ["<statement, max 16 '
+                  'words>", "...", "...", "..."], "flaw": <index of the WRONG statement>, "why": "<why it is wrong, '
+                  'max 35 words>"}',
+        "rules": "Four statements about the segment: three true, one wrong in a way that matters (the myth the "
+                 "segment corrected, or a tempting wrong conclusion). All four the same length and tone."},
+    "sequence": {
+        "name": "Chain of events",
+        "pick": "The segment explains a chain of cause and effect, or steps that happen in one fixed order.",
+        "schema": '{"type": "sequence", "q": "<what to put in order, max 16 words>", "items": ["<first, max 12 '
+                  'words>", "<second>", "<third>", "<fourth>"], "why": "<max 35 words>"}',
+        "rules": "Items in the CORRECT order (the page shuffles them). One real order in time or cause and effect - "
+                 "never a ranking or an opinion. 3-5 items."},
+    "match": {
+        "name": "Pair them up",
+        "pick": "The segment introduces several terms, parts or players that each have a distinct job or meaning.",
+        "schema": '{"type": "match", "q": "<max 12 words>", "pairs": [["<term, max 4 words>", "<plain meaning or '
+                  'job, max 10 words>"], ["...", "..."], ["...", "..."]]}',
+        "rules": "3-4 pairs from the segment. Each meaning must fit only its own term."},
+    "duel": {
+        "name": "Which is bigger?",
+        "pick": "The segment allows a surprising comparison between two quantities (two risks, costs, sizes, "
+                "speeds or counts) where intuition often picks the wrong one.",
+        "schema": '{"type": "duel", "q": "<Which is bigger / faster / riskier ...?, max 16 words>", "a": {"label": '
+                  '"<max 8 words>", "value": <number>}, "b": {"label": "<max 8 words>", "value": <number>}, '
+                  '"unit": "<shared unit>", "why": "<max 35 words>"}',
+        "rules": "Two things measured in the same unit, both values from the segment or simple arithmetic on its "
+                 "numbers. The bigger one should be the less obvious."},
+    "clues": {
+        "name": "Name it",
+        "pick": "The segment centres on one concept, mechanism or object that could be recognised from clues.",
+        "schema": '{"type": "clues", "q": "<What is it? / What caused it?, max 10 words>", "clues": ["<vague clue, '
+                  'max 16 words>", "<clearer clue>", "<giveaway clue>"], "options": ["<max 5 words>", "...", "...", '
+                  '"..."], "answer": <index>, "why": "<max 35 words>"}',
+        "rules": "He may answer after any clue: fewer clues, more points. Clue 1 must be truly hard, clue 3 nearly "
+                 "gives it away. Four options that all sound possible after clue 1."},
+    "call": {
+        "name": "Your call",
+        "pick": "The segment's idea could be applied to a practical decision at work (a factory, a lab, an audit, a "
+                "clinic) with one clearly best action.",
+        "schema": '{"type": "call", "q": "<a concrete situation and the decision to make, max 40 words>", '
+                  '"options": ["<max 10 words>", "...", "..."], "answer": <index>, "hint": "<a nudge, max 16 '
+                  'words>", "why": "<max 35 words>"}',
+        "rules": "A new setting with its own numbers, so he must reason rather than remember. Three options, one "
+                 "clearly best for a reason from the segment."},
+    "quickfire": {
+        "name": "Quickfire",
+        "pick": "The segment makes several separate factual points that can each be judged true or false at a "
+                "glance.",
+        "schema": '{"type": "quickfire", "items": [{"text": "<statement, max 14 words>", "truth": true}, {"text": '
+                  '"...", "truth": false}, {"text": "...", "truth": true}, {"text": "...", "truth": false}]}',
+        "rules": "4-5 statements against the clock, a mix of true and false. The false ones are the wrong ideas the "
+                 "segment corrected - not tricks of wording."},
+}
+BET_SCHEMA = ('{"claim": "<a statement that is either true or false, max 20 words>", "truth": true or false, '
+              '"why": "<what the episode found, max 35 words>"}')
+TEXT_SLACK = 1.5   # a text up to this many times its limit is kept; longer ones go to the coding model to shorten
+
+
+def _fit(v, limit, what, optional=False):
+    t = _txt(v, 2000).replace("**", "").replace("`", "")
+    if not t:
+        if optional:
+            return ""
+        raise ValueError(f"{what} is empty")
+    if len(t) > limit * TEXT_SLACK:
+        raise ValueError(f"{what} is too long ({len(t)} characters; keep it under {limit})")
+    return t
+
+
+def _bool(v, what):
+    if isinstance(v, bool):
+        return v
+    if str(v).strip().lower() in ("true", "yes", "1"):
+        return True
+    if str(v).strip().lower() in ("false", "no", "0"):
+        return False
+    raise ValueError(f"{what} must be true or false")
+
+
+def _index(v, n, what):
+    i = _num(v)
+    if i is None or int(i) != i or not 0 <= int(i) < n:
+        raise ValueError(f"{what} must be an index from 0 to {n - 1}")
+    return int(i)
+
+
+def _texts(lst, lo, hi, limit, what):
+    items = [_fit(x, limit, f"{what} {i + 1}") for i, x in enumerate(lst if isinstance(lst, list) else [])][:hi]
+    if len(items) < lo:
+        raise ValueError(f"needs at least {lo} {what}s")
+    if len({x.lower() for x in items}) != len(items):
+        raise ValueError(f"two {what}s are the same")
+    return items
+
+
+def check_bet(raw):
+    raw = raw if isinstance(raw, dict) else {}
+    return {"claim": _fit(raw.get("claim"), 150, "claim"), "truth": _bool(raw.get("truth"), "truth"),
+            "why": _fit(raw.get("why"), 240, "why")}
+
+
+def _estimate_range(answer, lo, hi, seed, unit=""):
+    """The slider's range: wide, with the answer neither in the middle nor at an end (both give it away).
+    Returns (lo, hi, log scale?)."""
+    if lo is None or hi is None or not lo < answer < hi:
+        pad = 3 * max(1.0, abs(answer))
+        lo, hi = (answer / 6, answer * 6) if answer > 0 else (answer - pad, answer + pad)
+    floor = 0.0 if lo >= 0 else None
+    ceil = 100.0 if "%" in unit and hi <= 100 else None
+
+    def is_log(a, c):
+        return a > 0 and c / a >= 50
+
+    def pos(a, c):
+        return math.log(answer / a) / math.log(c / a) if is_log(a, c) else (answer - a) / (c - a)
+
+    def ok(a, c):
+        return a < answer < c and (0.15 <= pos(a, c) <= 0.4 or 0.6 <= pos(a, c) <= 0.85)
+
+    if not ok(lo, hi):
+        h = sum(ord(ch) * (i + 1) for i, ch in enumerate(seed)) % 1000
+        wants = [0.22 + 0.14 * h / 1000, 0.64 + 0.14 * h / 1000]
+        wants = wants if h % 2 else wants[::-1]
+        tries = []
+        for want in wants:   # first: the same width, moved
+            if is_log(lo, hi):
+                a = math.exp(math.log(answer) - want * math.log(hi / lo))
+                tries.append((a, a * hi / lo))
+            else:
+                a = answer - want * (hi - lo)
+                c = a + (hi - lo)
+                tries.append((floor if floor is not None and a < floor else a, ceil if ceil is not None and c > ceil else c))
+        for want in wants:   # then: a new width built around the answer, inside 0..100 where that applies
+            if floor is None or answer <= floor:
+                tries.append((answer - want * (hi - lo), answer + (1 - want) * (hi - lo)))
+                continue
+            a, c = floor, floor + (answer - floor) / want
+            if ceil is not None and c > ceil:
+                a, c = (answer - want * ceil) / (1 - want), ceil
+            if a >= floor:
+                tries.append((a, c))
+        lo, hi = next(((a, c) for a, c in tries if ok(a, c)), (lo, hi))
+
+    def tidy(x):
+        if x == 0:
+            return 0.0
+        mag = 10 ** (math.floor(math.log10(abs(x))) - 1)
+        return round(round(x / mag) * mag, 10)
+    if ok(tidy(lo), tidy(hi)):
+        lo, hi = tidy(lo), tidy(hi)
+    return lo, hi, is_log(lo, hi)
+
+
+def check_round(raw):
+    """One card, cleaned and held to its format's limits. Raises ValueError saying what is wrong, in words the
+    coding model can act on."""
+    raw = raw if isinstance(raw, dict) else {}
+    kind = str(raw.get("type", ""))
+
+    def why():
+        return _fit(raw.get("why") or raw.get("explain"), 240, "why")
+    if kind == "estimate":
+        answer = _num(raw.get("answer"))
+        if answer is None:
+            raise ValueError("answer must be a number")
+        q = _fit(raw.get("q"), 170, "q")
+        unit = _txt(raw.get("unit"), 16)
+        lo, hi, log_scale = _estimate_range(answer, _num(raw.get("lo")), _num(raw.get("hi")), q, unit)
+        if not lo < answer < hi:
+            raise ValueError("answer must lie between lo and hi")
+        return {"type": kind, "q": q, "answer": answer, "unit": unit, "lo": lo, "hi": hi,
+                "log": log_scale, "why": why()}
+    if kind == "flaw":
+        items = _texts(raw.get("items"), 3, 4, 120, "statement")
+        return {"type": kind, "q": _fit(raw.get("q"), 120, "q", optional=True) or "One of these is wrong. Which?",
+                "items": items, "flaw": _index(raw.get("flaw"), len(items), "flaw"), "why": why()}
+    if kind == "sequence":
+        return {"type": kind, "q": _fit(raw.get("q"), 120, "q"), "items": _texts(raw.get("items"), 3, 5, 95, "item"),
+                "why": why()}
+    if kind == "match":
+        pairs = [x for x in (raw.get("pairs") or []) if isinstance(x, (list, tuple)) and len(x) == 2][:4]
+        left = _texts([x[0] for x in pairs], 3, 4, 34, "term")
+        right = _texts([x[1] for x in pairs], 3, 4, 80, "meaning")
+        return {"type": kind, "q": _fit(raw.get("q"), 100, "q", optional=True) or "Match each one to what it does.",
+                "pairs": [list(x) for x in zip(left, right)]}
+    if kind == "duel":
+        a, b = (raw.get(k) if isinstance(raw.get(k), dict) else {} for k in ("a", "b"))
+        va, vb = _num(a.get("value")), _num(b.get("value"))
+        if va is None or vb is None:
+            raise ValueError("a.value and b.value must be numbers")
+        if abs(va - vb) <= 0.05 * max(abs(va), abs(vb)):
+            raise ValueError("the two values are too close to call a winner")
+        return {"type": kind, "q": _fit(raw.get("q"), 120, "q"), "unit": _txt(raw.get("unit"), 20),
+                "a": {"label": _fit(a.get("label"), 60, "a.label"), "value": va},
+                "b": {"label": _fit(b.get("label"), 60, "b.label"), "value": vb}, "why": why()}
+    if kind == "clues":
+        options = _texts(raw.get("options"), 3, 4, 44, "option")
+        return {"type": kind, "q": _fit(raw.get("q"), 80, "q", optional=True) or "What is it?",
+                "clues": _texts(raw.get("clues"), 2, 3, 120, "clue"), "options": options,
+                "answer": _index(raw.get("answer"), len(options), "answer"), "why": why()}
+    if kind == "call":
+        options = _texts(raw.get("options"), 2, 4, 80, "option")
+        return {"type": kind, "q": _fit(raw.get("q"), 280, "q"), "options": options,
+                "answer": _index(raw.get("answer"), len(options), "answer"),
+                "hint": _fit(raw.get("hint"), 120, "hint", optional=True), "why": why()}
+    if kind == "quickfire":
+        items = [{"text": _fit(x.get("text"), 105, f"statement {i + 1}"), "truth": _bool(x.get("truth"), "truth")}
+                 for i, x in enumerate(raw.get("items") or []) if isinstance(x, dict)][:5]
+        if len(items) < 3 or len({x["truth"] for x in items}) < 2:
+            raise ValueError("needs 4-5 statements, some true and some false")
+        return {"type": kind, "q": _fit(raw.get("q"), 80, "q", optional=True) or "True or false?", "items": items}
+    if kind == "lab":
+        out = check_template(raw) if raw.get("template") else check_explore(raw)
+        if not out.get("goal"):
+            raise ValueError("the lab's mission cannot be reached with its sliders, or is already met where they "
+                             "start: change the params or the goal's min/max")
+        out["type"] = "lab"
+        out["text"] = _fit(out.get("text"), 260, "text")
+        return out
+    raise ValueError(f"unknown card type {kind!r}")
+
+
+def _used(recent, key):
+    return sum(1 for r in list(recent)[-8:] if key in (r.get("formats") or []))
+
+
+def pick_formats(segs, recent, per_segment):
+    """One request to the decision model per segment: which hands-on picture fits (a choice), and for every card
+    format how well it would work here (a probability each). The formats are then ranked here, with a penalty
+    for ones used in recent episodes or already used today, so the page changes from day to day.
+    Returns {segment title: {"lab": template | "none" | None, "formats": [...], "decided": bool}}."""
+    labs = {"none": "No picture fits: the main idea is not about a quantity that changes (a debate, a policy, a "
+                    "story), or none of the others matches."} | {k: t["pick"] for k, t in TEMPLATES.items()}
+    questions = {"lab": {"type": "choice", "criteria": labs,
+                         "instructions": "Which hands-on picture would let a curious engineer DISCOVER this segment's "
+                                         "main idea by playing with it? Pick the one whose mechanism really matches. "
+                                         "When two fit about equally, prefer one not recently used."}}
+    for key, r in ROUNDS.items():
+        questions[f"fmt_{key}"] = {"type": "noul", "instructions": f'Would a "{r["name"]}" card work well for this segment?',
+                                   "criteria": {"true": r["pick"], "false": "The segment has nothing of that kind."}}
+    recent_labs = [r.get("template") for r in recent if r.get("template")]
+    plan, today = {}, []
     for s, turns in segs:
-        state_obj = {"segment": s["title"], "angle": s.get("angle", ""),
-                     "excerpt": " ".join(t for _, t in turns)[:2500],
-                     "recently_used": list(recent)[-6:], "already_used_today": list(today)}
-        ans = decide(state_obj, {"template": {
-            "type": "choice", "criteria": criteria,
-            "instructions": "Which hands-on puzzle template would let a curious engineer DISCOVER this segment's "
-                            "main idea by playing with it? Pick the one whose mechanism really matches. When two fit "
-                            "about equally, prefer one not recently used or already used today."}},
-            subject="podcast segment, to choose an interactive puzzle for it")
-        key = ((ans or {}).get("template") or {}).get("choice")
-        if key in TEMPLATES or key == "none":
-            picks[s["title"]] = key
-            if key != "none":
-                today.append(key)
-    if picks:
-        log(f"  puzzle templates chosen by the decision model: {', '.join(f'{k[:40]} -> {v}' for k, v in picks.items())}")
-    return picks
+        state_obj = {"segment": s["title"], "angle": s.get("angle", ""), "excerpt": " ".join(t for _, t in turns)[:2500],
+                     "pictures_used_recently": recent_labs[-6:], "used_already_today": list(today)}
+        ans = decide(state_obj, questions, subject="podcast segment, to choose the game cards for it") or {}
+        lab = (ans.get("lab") or {}).get("choice")
+        lab = lab if lab in TEMPLATES or lab == "none" else None
+        probs = {k: (ans.get(f"fmt_{k}") or {}).get("noul") for k in ROUNDS}
+        decided = any(v is not None for v in probs.values())
+        seed = sum(ord(c) for c in s["title"] + dt.datetime.now(TZ).strftime("%Y%m%d"))
+        order = list(ROUNDS)
+        order = order[seed % len(order):] + order[:seed % len(order)]   # no decision: a different rotation each day
+        rank = sorted(order, key=lambda k: -((probs[k] if probs[k] is not None else 0.5)
+                                             - 0.12 * _used(recent, k) - 0.3 * today.count(k)))
+        n = per_segment - (1 if lab and lab != "none" else 0)
+        chosen = rank[:max(1, n)]
+        today += chosen + ([lab] if lab and lab != "none" else [])
+        plan[s["title"]] = {"lab": lab, "formats": chosen, "decided": decided or lab is not None}
+        log(f"  game for \"{s['title'][:44]}\": picture={lab or 'writer chooses'}, cards={', '.join(chosen)}"
+            + ("" if decided else " (no decision model answered: daily rotation)"))
+    return plan
 
 
-def check_step(step):
-    kind = step.get("type")
-    if kind == "template":
-        return check_template(step)
-    if kind == "concept":
-        text = _txt(step.get("text"), 600)
-        if not text:
-            raise ValueError("empty concept")
-        return {"type": "concept", "text": text, "example": _txt(step.get("example"), 400)}
-    if kind == "explore":
-        return check_explore(step)
-    if kind == "choice":
-        opts = [_txt(o, 180) for o in (step.get("options") or [])][:5]
-        ans = int(_num(step.get("answer"), -1))
-        if len(opts) < 2 or len(set(opts)) != len(opts) or not 0 <= ans < len(opts) or not step.get("text"):
-            raise ValueError("bad choice")
-        return {"type": "choice", "text": _txt(step["text"], 420), "options": opts, "answer": ans,
-                "explain": _txt(step.get("explain"), 420), "hint": _txt(step.get("hint"), 260)}
-    if kind == "number":
-        answer = expr_eval(expr_parse(step.get("answer_expr", "")), {})   # computed here, not by the model
-        tol = min(0.25, max(0.005, _num(step.get("tolerance"), 0.03)))
-        if not step.get("text"):
-            raise ValueError("bad number question")
-        return {"type": "number", "text": _txt(step["text"], 420), "answer": round(answer, 6), "tolerance": tol,
-                "unit": _txt(step.get("unit"), 14), "explain": _txt(step.get("explain"), 420),
-                "hint": _txt(step.get("hint"), 260)}
-    if kind == "order":
-        items = [_txt(x, 140) for x in (step.get("items") or [])][:6]
-        if len(items) < 3 or len(set(items)) != len(items) or not step.get("text"):
-            raise ValueError("bad ordering")
-        return {"type": "order", "text": _txt(step["text"], 420), "items": items,
-                "explain": _txt(step.get("explain"), 420)}
-    raise ValueError(f"unknown step type {kind!r}")
+def pick_theme(written, theme, recent):
+    """The session's look and framing, chosen by the decision model (or rotated when none answers)."""
+    last = [r.get("theme") for r in recent if r.get("theme")][-3:]
+    ans = decide({"theme": theme, "segments": [s["title"] for s, _ in written], "themes_used_recently": last},
+                 {"session": {"type": "choice", "criteria": {k: t["pick"] for k, t in THEMES.items()},
+                              "instructions": "Which framing suits this episode's game best? When two fit about "
+                                              "equally, prefer one not used recently."}},
+                 subject="podcast episode, to choose the framing of its companion game") or {}
+    key = (ans.get("session") or {}).get("choice")
+    if key not in THEMES:
+        fresh = [k for k in THEMES if k not in last] or list(THEMES)
+        key = fresh[dt.datetime.now(TZ).toordinal() % len(fresh)]
+    return key
 
 
-def check_lessons(data, titles):
-    """Keep only lessons and steps that work; returns (lessons, number of steps dropped)."""
-    lessons, dropped = [], 0
-    for raw in (as_obj(data, "lessons").get("lessons") or [])[:3]:
-        if not isinstance(raw, dict):
-            continue
-        steps = []
-        for s in (raw.get("steps") or [])[:9]:
-            try:
-                steps.append(check_step(s if isinstance(s, dict) else {}))
-            except (ValueError, TypeError, KeyError, ZeroDivisionError, OverflowError) as e:
-                dropped += 1
-                log(f"    puzzle step dropped ({str(e)[:100]})")
-        if len(steps) < 3 or all(s["type"] == "concept" for s in steps):
-            dropped += len(steps)
-            continue
-        words = [{"term": _txt(w.get("term"), 50), "means": _txt(w.get("means"), 240)}
-                 for w in (raw.get("words") or [])[:8] if isinstance(w, dict) and w.get("term") and w.get("means")]
-        seg = _txt(raw.get("segment"), 120)
-        lessons.append({"title": _txt(raw.get("title") or seg or "Today's puzzle", 90),
-                        "segment": seg if seg in titles else "", "steps": steps, "words": words})
-    return lessons, dropped
+PLAY_GUIDE = """Write the cards of a three-minute phone game about ONE segment of today's podcast episode. The
+listener plays it after the drive. He stopped using the old page because it read like an exam: long questions,
+long options, specialist words. So:
+- You are a sharp pub-quiz host, not an examiner. Every card is read in five seconds: keep to the word limits
+  in each format - they are hard limits.
+- Plain words. No term he would need a glossary for; if the segment's own key term is needed, the card must
+  still make sense to someone who has forgotten it.
+- Go for the surprise: the fact, number or mechanism where a smart person's gut feeling is wrong. No trivia
+  (names, dates, who said what) and nothing that depends on remembering the exact wording.
+- Each card stands on its own and gives every value it needs. Use only facts and numbers the segment states,
+  or a clearly simple example - never invent technical data.
+- At most one card may be set in his own world (a factory, an audit, a lab); do not explain his field to him
+  ({expert}).
+- Light humour is welcome. Vary the angle from the recent games listed below.
+
+THE BET (always): one statement about this segment that is either true or false, where most people would
+hesitate. He bets on it before the cards and it is settled at the end of the segment:
+{bet}
+
+THE CARDS for this segment, in this order - one of each format listed, exactly as specified:
+{formats}
+{lab}
+Also return: "takeaway" - the one line worth remembering (max 20 words) - and "words": 2-4 terms from the
+segment worth keeping, each with a plain one-line meaning (max 14 words).{session}
+
+Return JSON only:
+{"bet": {...}, "rounds": [<one object per card, in order>], "takeaway": "...",
+ "words": [{"term": "...", "means": "..."}]{session_json}}"""
+
+LAB_GUIDE = """- "lab" - a hands-on picture with sliders and a mission. The picture and its maths are built in; you
+  only fill in the story:
+  {"type": "lab", "template": "<name>", "text": "<what to try, max 30 words>", "params": {<the template's params>},
+   "goal": {"text": "<the mission: Find... / Make... / Get...>", "output": "<one of its goal outputs>",
+            "min": <n>, "max": <n>, "success": "<what he just discovered, max 30 words>"}}
+  Realistic values from the segment. The sliders must START where the mission is NOT yet achieved, and the
+  mission must be reachable by moving them. Talk only about the sliders the template has.
+"""
 
 
-LESSON_GUIDE = """Write short interactive lessons in the style of Brilliant.org for the page that goes with today's
-episode. The listener does them on his phone after the drive. He learns by doing, not by reading: minimal text,
-logic and intuition, real-life examples. He is happy to meet concepts he does not fully know yet (that is how
-new words stick), so pick the ideas worth understanding - especially ones the episode rushed through.
-
-EVERY LESSON MUST BE INTERESTING. First find each lesson's one "aha": the surprising thing he will discover with
-his own hands (a 99%-accurate test that is wrong most of the time; a learning rate a little too big makes
-training explode; thirty 99% steps fail one run in four). Then build the lesson around it:
-1. HOOK - a concrete situation and a question he cannot answer yet: a puzzle, a paradox, a bet or a "what would
-   you do?", with real numbers from the episode. Never a definition, never "today we'll learn".
-2. PREDICT - a "choice" step where he commits to a guess before touching anything. Wrong guesses are fine;
-   the hint makes him think, it does not give the answer away.
-3. PLAY - the hands-on template (below). Its goal is the aha, phrased as a mission ("Find...", "Make...", "Get
-   the error under..."), reachable but only after some exploring. The success text names what he discovered.
-4. EXPLAIN - a short concept: why it works, the mechanism in plain words, one analogy from his world.
-5. TRANSFER - a number, order or choice step that uses the same idea somewhere new (his factory and QA work, a
-   hospital, the car, the sky), with different numbers, so he has to think rather than copy.
-Add a sixth or seventh step only if it brings a second surprise. Every step 15-45 words. No trivia (names,
-dates, who said what): every question needs reasoning. Light humour is welcome.
-VARIETY: do not repeat the angles of recent lessons (listed below) and vary the hook from lesson to lesson
-(a bet, a mystery, a mistake to spot, a design decision, a race against time).
-
-THE HANDS-ON TEMPLATE. A decision model has chosen a template for each segment (TEMPLATE PLAN below). Use it
-exactly once per lesson:
-{"type": "template", "template": "<name>", "text": "<what to try, one or two sentences>",
- "params": {<the template's params>},
- "goal": {"text": "<the mission>", "output": "<one of its goal outputs>", "min": <n>, "max": <n>,
-          "success": "<the aha, one or two sentences>"}}
-You only fill it in: realistic values from the episode (or a clearly labelled simple example) and plain labels.
-The maths is built in - never write formulas for a template. Its text must talk about exactly the sliders the
-template has (listed under it) - never promise controls it does not have. Set the params so the sliders start
-at a realistic "before" state where the mission is NOT yet achieved; the mission must need the sliders moved.
-If the chosen template cannot make an honest, meaningful puzzle about the segment's main idea, do not force
-it: write the lesson without a template. If a segment's plan says "none", use no template:
-build that lesson from predict / number / order / concept steps (or, only for a real quantity that no template
-covers, one "explore" step with your own formulas, as shown below).
-
-OTHER STEP TYPES (JSON):
-{"type": "concept", "text": "...", "example": "<optional real-life example>"}
-{"type": "choice", "text": "<question or prediction>", "options": ["...", "...", "..."], "answer": <index>,
- "hint": "<nudge shown after a wrong try>", "explain": "<why, shown when right>"}
-{"type": "number", "text": "<question>", "answer_expr": "<formula of numbers only, e.g. 0.21*101.3>",
- "unit": "kPa", "tolerance": 0.05, "hint": "...", "explain": "..."}
-{"type": "order", "text": "<put these in order>", "items": ["<first>", "<second>", "<third>", "<fourth>"],
- "explain": "..."}   (items in the CORRECT order; the page shuffles them. Only a real sequence in time or cause
- and effect with one right order - never a ranking or a matter of opinion)
-A "number" question must state every value needed to work it out, and answer_expr must compute exactly what it
-asks. Use real figures from the episode or clearly labelled simple examples - never invent technical data.
-{"type": "explore", "text": "...", "inputs": [{"id": "depth", "label": "Depth", "unit": "m", "min": 0,
- "max": 40, "step": 1, "value": 0}], "outputs": [{"id": "p", "label": "Total pressure", "unit": "kPa",
- "expr": "101.3*(1+depth/10)"}], "goal": {"text": "...", "output": "p", "min": 300, "max": 310, "success": "..."}}
- (formulas: numbers, ids, + - * / ^ ( ), min max abs sqrt exp ln log10 pow round floor ceil sin cos tan ncdf,
- pi, e; textbook relationships only)
-
-WORDS: for each lesson, 3-6 terms from the episode worth keeping, with a plain one-line meaning.
-Never explain {expert} (his own field) - use them freely as analogies.
-Return JSON only, with exactly one lesson: {"lessons": [{"title": "<short, intriguing, plain>",
- "segment": "<exact segment title>", "words": [{"term": "...", "means": "..."}], "steps": [...]}]}"""
+def write_cards(seg, turns, spec, theme_key, theme, recent, first):
+    """The writing model fills in one segment's cards. Returns the raw reply as a dict."""
+    formats = "\n".join(f'- "{k}" ({ROUNDS[k]["name"]}): {ROUNDS[k]["rules"]}\n  {ROUNDS[k]["schema"]}' for k in spec["formats"])
+    lab = ""
+    if spec["lab"] and spec["lab"] != "none":
+        lab = (LAB_GUIDE + f'  THE TEMPLATE (chosen by the decision model): "{spec["lab"]}"\n'
+               + template_catalog([spec["lab"]]) + "\n  Put the lab second among the cards.\n")
+    elif spec["lab"] is None:
+        lab = (LAB_GUIDE + "  Optional: add ONE lab only if one of these templates truly fits the segment's main idea "
+               "(otherwise no lab):\n" + "\n".join(f"  - {k}: {t['pick']}" for k, t in TEMPLATES.items()) + "\n")
+    session = session_json = ""
+    if first:
+        session = (f'\nAnd for the whole game: "session" - a title (max 6 words, intriguing, plain), a "brief" that '
+                   f"sets the scene in one line (max 18 words) in this framing: {THEMES[theme_key]['frame']} - and "
+                   '"chips": 4 short comments he might want to send back about THIS episode with one tap (max 5 '
+                   'words each, e.g. "More like the first story", "Too many numbers", "Go deeper on this").')
+        session_json = ',\n "session": {"title": "...", "brief": "...", "chips": ["...", "...", "...", "..."]}'
+    seen = "\n".join(f"- {r.get('date', '')}: {r.get('title', '')} ({', '.join(r.get('formats') or []) or r.get('template') or '-'})"
+                     for r in list(recent)[-8:]) or "(none yet)"
+    script = "\n".join(f"{spk}: {t}" for spk, t in turns)[:12000]
+    prompt = (PLAY_GUIDE.replace("{expert}", EXPERT_AREAS).replace("{bet}", BET_SCHEMA).replace("{formats}", formats)
+              .replace("{lab}", lab).replace("{session}", session).replace("{session_json}", session_json)
+              + f"\n\nRECENT GAMES (vary the angle):\n{seen}\n\nListener: {LISTENER_PROFILE}\nToday's theme: {theme}"
+                f"\n\nSEGMENT: {seg['title']}\n{script}")
+    text, _ = llm(prompt, json_mode=True, min_words=60, label=f"cards for \"{seg['title'][:30]}\"", role="writer")
+    data = parse_json(text)
+    return data if isinstance(data, dict) else {}
 
 
-def make_lessons(written, theme, recent=()):
-    """Interactive lessons for the day's segments: the decision model picks a template for each, the writer fills
-    in one lesson per segment (one request each, so none is skipped), everything is run here, then a second,
-    stronger model checks the science."""
-    segs = [(s, turns) for s, turns in written if s.get("format") != "followup"][:3]
-    if not segs:
-        return []
-    recent = list(recent)
-    picks = pick_templates(segs, [r.get("template") for r in recent if r.get("template")])
-    seen = "\n".join(f"- {r.get('date', '')}: {r.get('title', '')} ({r.get('template') or 'no template'})"
-                     for r in recent[-10:]) or "(none yet)"
-    lessons, dropped = [], 0
-    for n, (seg, turns) in enumerate(segs, 1):
-        pick = picks.get(seg["title"])
-        if pick and pick != "none":
-            plan = f'"{pick}" (chosen by the decision model):\n{template_catalog([pick])}'
-        elif pick == "none":
-            plan = '"none" (the decision model found no template that fits): use no template.'
-        else:
-            plan = f"(no decision) choose the best-fitting template below, or none:\n{template_catalog()}"
-        today = "\n".join(f"- {x['title']} ({lesson_template(x) or 'no template'})" for x in lessons) or "(none yet)"
-        script = "\n".join(f"{spk}: {t}" for spk, t in turns)[:12000]
-        prompt = (LESSON_GUIDE.replace("{expert}", EXPERT_AREAS) +
-                  f"\n\nTEMPLATE FOR THIS SEGMENT: {plan}"
-                  f"\n\nRECENT LESSONS (do not repeat these angles):\n{seen}\nEARLIER TODAY (vary the hook):\n{today}"
-                  f"\n\nListener: {LISTENER_PROFILE}\nToday's theme: {theme}"
-                  f"\n\nSEGMENT: {seg['title']}\n{script}")
-        try:
-            text, _ = llm(prompt, json_mode=True, min_words=80, label=f"puzzle {n}", role="writer")
-            got, lost = check_lessons(parse_json(text), [seg["title"]])
-        except Exception as e:
-            log(f"  puzzle {n} skipped: {str(e)[:160]}")
-            continue
-        dropped += lost
-        if got:
-            lessons.append(dict(got[0], segment=seg["title"]))
-    if lessons:
-        lessons, more = review_lessons(lessons, [s["title"] for s, _ in segs])
-        dropped += more
-    steps = sum(len(x["steps"]) for x in lessons)
-    used = [lesson_template(x) for x in lessons if lesson_template(x)]
-    log(f"  puzzles: {len(lessons)} of {len(segs)} segment(s), {steps} steps, templates: {', '.join(used) or 'none'}; "
-        f"{dropped} step(s) dropped")
-    return lessons
+def repair_cards(broken):
+    """The coding model fixes cards that failed their checks. broken = [{"id", "kind", "card", "error"}]; returns
+    {id: repaired card}. One request for the whole episode."""
+    if not broken:
+        return {}
+    jobs = []
+    for b in broken:
+        kind = b["kind"]
+        spec = BET_SCHEMA if kind == "bet" else LAB_GUIDE + template_catalog([b["card"].get("template")]) \
+            if kind == "lab" and b["card"].get("template") in TEMPLATES else LAB_GUIDE if kind == "lab" \
+            else ROUNDS.get(kind, {}).get("schema", "")
+        jobs.append({"id": b["id"], "format": kind, "schema": spec, "error": b["error"], "card": b["card"]})
+    prompt = f"""These JSON cards for a quiz page failed validation. Repair each one so that it matches its schema
+and no longer has the error. Change as little as possible: keep the facts, the numbers and the right answer; shorten
+text by rewording, never by cutting a sentence off; for a "lab", adjust params or the goal's min/max so the mission
+is reachable but not already met at the start. If a card cannot be repaired honestly, leave it out.
+
+{json.dumps(jobs, ensure_ascii=False)[:24000]}
+
+Return JSON only: {{"cards": [{{"id": "<id>", "card": {{...}}}}]}}"""
+    try:
+        text, _ = llm(prompt, json_mode=True, label="card repair", role="coder")
+        fixed = as_obj(parse_json(text), "cards").get("cards") or []
+    except Exception as e:
+        log(f"    card repair skipped: {str(e)[:120]}")
+        return {}
+    return {str(c.get("id")): c.get("card") for c in fixed if isinstance(c, dict) and isinstance(c.get("card"), dict)}
 
 
-def lesson_template(lesson):
-    return next((s["template"] for s in lesson["steps"] if s.get("template")), "")
+def _check_card(kind, card):
+    return check_bet(card) if kind == "bet" else check_round(card)
 
 
-def review_lessons(lessons, titles):
-    """A second model checks the science and the answers; steps it finds wrong are removed."""
+def review_cards(segments):
+    """A stricter model checks the facts and the answers; cards it finds wrong are removed."""
     shown = []
-    for li, les in enumerate(lessons):
-        for si, s in enumerate(les["steps"]):
-            row = {k: v for k, v in s.items() if k not in ("lo", "hi")}
-            if s["type"] == "explore":
+    for si, sg in enumerate(segments):
+        if sg.get("bet"):
+            shown.append({"segment": si, "card": "bet", **sg["bet"]})
+        for ri, r in enumerate(sg["rounds"]):
+            row = {k: v for k, v in r.items() if k not in ("lo", "hi", "view")} if r["type"] == "lab" else dict(r)
+            if r["type"] == "lab":
                 row["outputs"] = [{k: o[k] for k in ("label", "unit", "expr")} | {"range": [round(o["lo"], 3), round(o["hi"], 3)]}
-                                  for o in s["outputs"]]
-            shown.append({"lesson": li, "step": si, **row})
-    prompt = f"""You check interactive science lessons before a learner sees them. For each step, look for:
-wrong science or maths, formulas that are not the standard relationship (or have wrong units or magnitudes),
-a marked answer that is wrong or ambiguous, an explanation that contradicts the answer, an "order" whose
-items are not in the correct order or that is a ranking or opinion rather than one real sequence, a "number"
-question that cannot be worked out from the values its own text gives, invented technical data presented as
-fact, a template step whose text promises controls its sliders (inputs) do not have, template values that are
-unrealistic for the story, and trivia questions (a name, date or who-said-what that needs no reasoning).
-Ignore style. Be strict about facts, not wording.
+                                  for o in r["outputs"]]
+            shown.append({"segment": si, "card": ri, **row})
+    prompt = f"""You check the cards of a science quiz before a learner sees them. For each card, look for: wrong
+science or maths; a marked answer that is wrong or ambiguous (bet "truth", "flaw" index, "answer" index, a
+quickfire statement's "truth", a "duel" whose bigger value is wrong); an explanation that contradicts the answer;
+a "sequence" whose items are not in the correct order or that is a ranking or opinion rather than one real
+order; an "estimate" whose answer is not a single well-defined number; a "match" where a meaning fits more than
+one term; invented technical data presented as fact; a "lab" whose text promises controls its sliders (inputs) do
+not have or whose values are unrealistic for the story; and trivia (a name, date or who-said-what that needs no
+reasoning). Ignore style. Be strict about facts, not wording.
 
-STEPS:
+CARDS:
 {json.dumps(shown, ensure_ascii=False)[:30000]}
 
-Return JSON only: {{"problems": [{{"lesson": <n>, "step": <n>, "issue": "<what is wrong>"}}]}} (empty if all correct)"""
+Return JSON only: {{"problems": [{{"segment": <n>, "card": <n or "bet">, "issue": "<what is wrong>"}}]}} (empty if all correct)"""
     try:
-        text, _ = llm(prompt, json_mode=True, label="puzzle check", role="checker")
-        problems = [p for p in as_obj(parse_json(text), "problems").get("problems", []) if isinstance(p, dict)]
+        text, _ = llm(prompt, json_mode=True, label="card check", role="checker")
+        problems = [x for x in as_obj(parse_json(text), "problems").get("problems", []) if isinstance(x, dict)]
     except Exception as e:
-        log(f"  puzzle check skipped: {str(e)[:120]}")
-        return lessons, 0
+        log(f"  card check skipped: {str(e)[:120]}")
+        return segments, 0
     bad = set()
-    for p in problems:
-        li, si = _num(p.get("lesson")), _num(p.get("step"))
-        if li is not None and si is not None:
-            bad.add((int(li), int(si)))
-            log(f"    puzzle check: lesson {int(li)} step {int(si)}: {str(p.get('issue', ''))[:140]}")
-    out, dropped = [], 0
-    for li, les in enumerate(lessons):
-        steps = [s for si, s in enumerate(les["steps"]) if (li, si) not in bad]
-        dropped += len(les["steps"]) - len(steps)
-        if len(steps) >= 3 and any(s["type"] != "concept" for s in steps):
-            out.append(dict(les, steps=steps))
-        else:
-            dropped += len(steps)
-    return out, dropped
+    for x in problems:
+        si = _num(x.get("segment"))
+        ci = "bet" if str(x.get("card")) == "bet" else _num(x.get("card"))
+        if si is not None and ci is not None:
+            bad.add((int(si), ci if ci == "bet" else int(ci)))
+            log(f"    card check: segment {int(si)} card {ci if ci == 'bet' else int(ci)}: {str(x.get('issue', ''))[:140]}")
+    out = []
+    for si, sg in enumerate(segments):
+        rounds = [r for ri, r in enumerate(sg["rounds"]) if (si, ri) not in bad]
+        sg = dict(sg, rounds=rounds, bet=None if (si, "bet") in bad else sg.get("bet"))
+        if rounds or sg["bet"]:
+            out.append(sg)
+    return out, len(bad)
+
+
+def make_play(written, theme, recent=()):
+    """The game for the episode's page. Returns (play, log entry) or (None, None) when nothing usable was made."""
+    segs = [(s, turns) for s, turns in written if s.get("format") != "followup"][:3]
+    if not segs:
+        return None, None
+    recent = list(recent)
+    theme_key = pick_theme(written, theme, recent)
+    plan = pick_formats(segs, recent, per_segment=3 if len(segs) == 1 else 2)
+    segments, broken, session, words, dropped = [], [], {}, [], 0
+    for n, (seg, turns) in enumerate(segs):
+        spec = plan[seg["title"]]
+        try:
+            raw = write_cards(seg, turns, spec, theme_key, theme, recent, first=n == 0)
+        except Exception as e:
+            log(f"  cards for segment {n + 1} skipped: {str(e)[:160]}")
+            continue
+        sg = {"title": seg["title"], "bet": None, "rounds": [], "takeaway": _txt(raw.get("takeaway"), 200)}
+        most = len(spec["formats"]) + 1   # the chosen formats plus one hands-on picture: a short game gets played
+        cards = [("bet", raw.get("bet"))] + [(str(r.get("type", "")), r) for r in (raw.get("rounds") or [])
+                                             if isinstance(r, dict)][:most]
+        for i, (kind, card) in enumerate(cards):
+            if not isinstance(card, dict):
+                continue
+            try:
+                good = _check_card(kind, card)
+            except (ValueError, TypeError, KeyError, ZeroDivisionError, OverflowError) as e:
+                broken.append({"id": f"{len(segments)}.{i}", "kind": kind, "card": card, "error": str(e)[:200]})
+                if kind != "bet":
+                    sg["rounds"].append(None)   # keeps its place for the repaired card
+                continue
+            if kind == "bet":
+                sg["bet"] = good
+            else:
+                sg["rounds"].append(good)
+        if isinstance(raw.get("session"), dict) and not session:
+            session = raw["session"]
+        words += [{"term": _txt(w.get("term"), 50), "means": _txt(w.get("means"), 160)}
+                  for w in (raw.get("words") or [])[:4] if isinstance(w, dict) and w.get("term") and w.get("means")]
+        segments.append(sg)
+    if broken:
+        log(f"  {len(broken)} card(s) failed their checks -> coding model: "
+            + "; ".join(f"{b['kind']}: {b['error'][:70]}" for b in broken[:4]))
+        fixed = repair_cards(broken)
+        for b in broken:
+            si, i = (int(x) for x in b["id"].split("."))
+            card = fixed.get(b["id"])
+            try:
+                good = _check_card(b["kind"], dict(card, type=b["kind"]) if b["kind"] != "bet" else card) if card else None
+            except (ValueError, TypeError, KeyError, ZeroDivisionError, OverflowError) as e:
+                log(f"    repaired {b['kind']} still fails ({str(e)[:90]}) -> dropped")
+                good = None
+            if good is None:
+                dropped += 1
+            elif b["kind"] == "bet":
+                segments[si]["bet"] = good
+            else:
+                slot = [k for k, r in enumerate(segments[si]["rounds"]) if r is None]
+                segments[si]["rounds"][slot[0]] = good
+    for sg in segments:
+        sg["rounds"] = [r for r in sg["rounds"] if r is not None]
+    segments = [sg for sg in segments if sg["rounds"] or sg["bet"]]
+    if segments:
+        segments, more = review_cards(segments)
+        dropped += more
+    if not segments or not any(sg["rounds"] for sg in segments):
+        log("  no usable game cards for this episode")
+        return None, None
+    seen, uniq = set(), []
+    for w in words:
+        if w["term"].lower() not in seen:
+            seen.add(w["term"].lower())
+            uniq.append(w)
+    title = _txt(session.get("title"), 60) or segments[0]["title"][:60]
+    chips = [c for c in (_txt(x, 40) for x in (session.get("chips") or [])[:5] if isinstance(x, str)) if c]
+    play = {"v": 2, "theme": theme_key, "title": title, "brief": _txt(session.get("brief"), 160),
+            "segments": segments, "words": uniq[:8], "chips": chips}
+    formats = [r["type"] for sg in segments for r in sg["rounds"]]
+    labs = [r.get("template") for sg in segments for r in sg["rounds"] if r.get("template")]
+    log(f"  game \"{title}\" ({THEMES[theme_key]['name']}): {len(segments)} segment(s), {len(formats)} cards "
+        f"({', '.join(formats)}), {sum(1 for sg in segments if sg['bet'])} bet(s); {dropped} card(s) dropped")
+    return play, {"title": title, "template": labs[0] if labs else "", "formats": formats, "theme": theme_key}
+
+
+def heard_lines(state, fresh, pace_change):
+    """'You said -> we did': what the listener's feedback changed, shown at the top of the page. People stop giving
+    feedback when nothing visibly comes of it. Every line states something this script really does."""
+    out = []
+    if pace_change:
+        out.append({"said": "The pace was too " + ("fast" if pace_change < 0 else "slow"),
+                    "did": f"From this episode the voices are {abs(round(pace_change * 100))}% "
+                           f"{'slower' if pace_change < 0 else 'faster'}."})
+    votes = [f.get("ratings", {}).get("depth") for f in state["feedback"][-6:]]
+    lean = votes.count("too technical") - votes.count("too basic")
+    if abs(lean) >= 2:
+        out.append({"said": f"\"{'Too technical' if lean > 0 else 'Too basic'}\" in {max(votes.count('too technical'), votes.count('too basic'))} of your last {len(votes)} ratings",
+                    "did": "Stories that need specialist background are ranked lower when topics are picked."
+                           if lean > 0 else "More technical stories are ranked higher when topics are picked."})
+    for f in reversed(fresh):
+        more = [s for s, v in (f.get("segments") or {}).items() if v == "more"]
+        less = [s for s, v in (f.get("segments") or {}).items() if v == "less"]
+        if more or less:
+            out.append({"said": (f"More like \"{more[0][:60]}\"" if more else f"Less like \"{less[0][:60]}\""),
+                        "did": "The editor sees this when it chooses the next episodes' stories."})
+        if f.get("comment"):
+            out.append({"said": f"\"{f['comment'][:110]}\"", "did": "Passed to the editor and the writers of every episode from now on."})
+    last = max((f.get("received", "") for f in state["feedback"]), default="")
+    return {"lines": out[:4], "last": last[:10]}
 
 
 # =============================== 8. QUIZ + PUBLISH ===============================
@@ -3465,14 +4024,16 @@ Return JSON only: {{"items": [{{"id": <n>, "line": "...", "verdict": "..."}}]}}
              "also_in": [t["source"] for t in s.get("also_in", [])], "in_episode": s["id"] in used} for s in top]
 
 
-def write_quiz_files(keep, entry, transcript_text):
+def write_quiz_files(keep, entry, transcript_text, heard=None):
     TRANSCRIPT_DIR.mkdir(exist_ok=True)
     (TRANSCRIPT_DIR / (Path(entry["file"]).stem + ".txt")).write_text(transcript_text, encoding="utf-8")
     old = json.loads(QUIZ_FILE.read_text(encoding="utf-8")).get("episodes", []) if QUIZ_FILE.exists() else []
     files = {e["file"] for e in keep}
     eps = [e for e in old if e["file"] in files and e["file"] != entry["file"]] + [entry]
     eps.sort(key=lambda e: e["published"], reverse=True)
-    QUIZ_FILE.write_text(json.dumps({"show": SHOW_TITLE, "listener": LISTENER, "repo": REPO_FULL, "episodes": eps},
+    ready = {name: due.hhmm(w[2]) for name, w in due.WINDOWS.items()}
+    QUIZ_FILE.write_text(json.dumps({"show": SHOW_TITLE, "listener": LISTENER, "repo": REPO_FULL, "ready": ready,
+                                     "heard": heard or {}, "episodes": eps},
                                     indent=1, ensure_ascii=False), encoding="utf-8")
     for t in TRANSCRIPT_DIR.glob("*.txt"):
         if t.stem + ".mp3" not in files:
@@ -3539,11 +4100,16 @@ def build_rss(episodes):
 def main():
     now = dt.datetime.now(TZ)
     edition = os.getenv("EDITION", "auto").strip().lower()
+    force, dry = env_true("FORCE"), env_true("DRY_RUN")
     if edition not in ("morning", "evening"):
-        edition = "morning" if now.hour < 12 else "evening"
+        # Not the clock alone: GitHub started the "morning" runs after noon for a week (6-12 Nov 2026) and each
+        # became a second evening edition. The edition is the one that is due and not yet made (see due.py).
+        edition, _, why = due.decide("auto", force or dry, now)
+        if edition == "none":
+            log(f"{SHOW_TITLE} | {why} - nothing to do.")
+            return
     date_key = now.strftime("%Y-%m-%d")
     is_sunday = now.weekday() == 6
-    force, dry = env_true("FORCE"), env_true("DRY_RUN")
     log(f"{SHOW_TITLE} | {edition} {date_key} | force={force} dry_run={dry} | TTS={TTS_ENGINE}")
 
     state = load_state()
@@ -3555,9 +4121,8 @@ def main():
         log("This edition already exists - nothing to do (backup run).")
         return
 
-    n_feedback = len(state["feedback"])
-    close_issues = [] if dry else ingest_feedback(state)
-    fresh = state["feedback"][n_feedback:]
+    load_health(state)
+    close_issues, fresh = ([], []) if dry else ingest_feedback(state)
     pace_change = update_pace(state, fresh)
     apply_pace(state["pace_adjust"])
     if pace_change or state["pace_adjust"]:
@@ -3660,15 +4225,14 @@ def main():
     if total_words < min_words * 0.6:
         raise RuntimeError(f"Script too short ({total_words} words) - not publishing.")
 
-    log("  writing the puzzles")
-    lessons = make_lessons(written, theme, state.get("lesson_log", []))
-    state["lesson_log"] = (state.get("lesson_log", []) +
-                           [{"date": date_key, "title": x["title"], "template": lesson_template(x)} for x in lessons])[-30:]
+    log("  building the game for the episode's page")
+    play, play_log = make_play(written, theme, state.get("lesson_log", []))
+    if play_log:
+        state["lesson_log"] = (state.get("lesson_log", []) + [dict(play_log, date=date_key)])[-30:]
 
     log("7/8 Greeting and voices")
     greeting, closing, summary, threads = write_bookends(state, written, theme, edition, now, bool(deep), source_note,
-                                                         new_feedback_text(fresh, pace_change),
-                                                         [x["title"] for x in lessons])
+                                                         new_feedback_text(fresh, pace_change), play)
     sections = [("Welcome", greeting)] + [(s["title"], t) for s, t in written] + [("Close", closing)]
     pcm, marks, engine = voice_episode(sections, state, edition)
     BUILD_DIR.mkdir(exist_ok=True)
@@ -3688,8 +4252,8 @@ def main():
              theme, ""]
     for (label, start), (seg, _) in zip(marks[1:], written):   # chapters only: Reddit links are of no use to him
         notes.append(f"{fmt_ts(start)}  {label}")
-    notes += ["", (f"Puzzles: {', '.join(x['title'] for x in lessons)} - " if lessons else "")
-              + f"puzzles, quiz and feedback: {PAGES_URL}/quiz.html",
+    notes += ["", (f"Play \"{play['title']}\", a three-minute game on this episode" if play else "Quiz and feedback")
+              + f": {PAGES_URL}/quiz.html",
               f"Written by: {writer} · Voices: {ENGINE_NAMES[engine]} · Discussions: {source_note}"]
     episode = {"file": filename, "date": date_key, "edition": edition, "title": ep_title,
                "published": now.isoformat(), "pubDate": email.utils.format_datetime(now),
@@ -3742,7 +4306,7 @@ def main():
                 "tts_log": state.get("tts_log", []), "or_spend": [s for s in SPEND if s[0] >= day_ago],
                 "free_log": [t for t in FREE_LOG if t >= utc_yesterday], "free_day_out": FREE_DAY_OUT[0],
                 "pace_adjust": state.get("pace_adjust", 0.0), "lesson_log": state.get("lesson_log", []),
-                "topics": state["topics"]})
+                "model_health": save_health(), "topics": state["topics"]})
 
     transcript = "\n\n".join(f"## {lbl}\n" + "\n".join(f"{spk}: {t}" for spk, t in turns) for lbl, turns in sections)
     write_quiz_files(keep, {
@@ -3750,7 +4314,8 @@ def main():
         "published": now.isoformat(), "duration": duration, "theme": theme, "writer": writer,
         "voices": ENGINE_NAMES[engine], "deep_dive": bool(deep),
         "segments": [{"title": s["title"], "category": s.get("format", "")} for s, _ in written],
-        "lessons": lessons, "quiz": quiz, "transcript": f"transcripts/{Path(filename).stem}.txt"}, transcript)
+        **({"play": play} if play else {}), "quiz": quiz,
+        "transcript": f"transcripts/{Path(filename).stem}.txt"}, transcript, heard_lines(state, fresh, pace_change))
     build_rss(keep)
     for n in close_issues:
         gh("issue", "close", str(n), check=False)  # no comment: it only triggered an empty notification email
