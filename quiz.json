@@ -4,6 +4,251 @@
  "repo": "npannu7/daily-briefing",
  "episodes": [
   {
+   "file": "ai_2026-11-13_evening_1226.mp3",
+   "title": "Evening - 13 Nov: Drug ads change what AI chatbots recommend",
+   "label": "Friday 13 Nov evening",
+   "date": "2026-11-13",
+   "edition": "evening",
+   "published": "2026-11-13T12:26:23.122959+05:30",
+   "duration": 992,
+   "theme": "AI influence on prescribing and a blood test for pre-cancerous ovarian disease",
+   "writer": "nemotron-3-ultra-550b-a55b (free)",
+   "voices": "Fish Audio (free)",
+   "deep_dive": false,
+   "segments": [
+    {
+     "title": "Drug ads change what AI chatbots recommend",
+     "category": "thread"
+    },
+    {
+     "title": "A blood test that flags ovarian cancer before a tumour forms",
+     "category": "thread"
+    }
+   ],
+   "lessons": [
+    {
+     "title": "Today's puzzle",
+     "segment": "Drug ads change what AI chatbots recommend",
+     "steps": [
+      {
+       "type": "choice",
+       "text": "The Reddit post claims 'a huge number of responses across twelve models' and a 12-point shift in recommendations. But it never says how many responses per model. You're reviewing this for your FMEA. If each model only saw 50 vignettes, could you trust that 12-point shift?",
+       "options": [
+        "Yes, 50 is plenty — the effect would be clear",
+        "No, the margin of error would swallow the effect",
+        "Only if temperature was set to zero",
+        "Depends on whether the models were open or closed source"
+       ],
+       "answer": 1,
+       "explain": "At n=50, the 95% margin of error for a proportion near 33% is about ±13% — wider than the claimed 12-point shift. The effect drowns in noise.",
+       "hint": "Think about a political poll with 50 respondents. What's its margin of error?"
+      },
+      {
+       "type": "explore",
+       "text": "You're checking the baseline recommendation rate for one model without any ad. Move the sample-size slider to see how the margin of error shrinks.",
+       "inputs": [
+        {
+         "id": "n",
+         "label": "Sample size",
+         "unit": "",
+         "min": 10.0,
+         "max": 5000.0,
+         "step": 50.0,
+         "value": 60.0
+        }
+       ],
+       "outputs": [
+        {
+         "id": "margin",
+         "label": "Margin of error (95%)",
+         "unit": "%",
+         "expr": "1.96*47/sqrt(n)",
+         "lo": 1.3027735336580952,
+         "hi": 29.13090180547111
+        },
+        {
+         "id": "lo",
+         "label": "Could be as low as",
+         "unit": "%",
+         "expr": "33-margin",
+         "lo": 3.8690981945288883,
+         "hi": 31.697226466341906
+        },
+        {
+         "id": "hi",
+         "label": "Or as high as",
+         "unit": "%",
+         "expr": "33+margin",
+         "lo": 34.3027735336581,
+         "hi": 62.13090180547111
+        }
+       ],
+       "chart": {
+        "x": "n",
+        "y": [
+         "margin"
+        ]
+       },
+       "goal": {
+        "target": "margin",
+        "min": 0.0,
+        "max": 6.0,
+        "text": "Find the sample size where the margin of error drops below 6% — half the claimed 12-point shift — so you could actually detect it.",
+        "success": "You need about 270 responses per model to shrink the margin under 6%. The Reddit post's 'huge number' spread across 12 models likely gave far fewer per model — the study couldn't reliably detect its own headline effect."
+       },
+       "template": "sampling",
+       "view": {
+        "kind": "spread",
+        "n": "n",
+        "true": 33.0,
+        "sd": 47.0,
+        "lo": "lo",
+        "hi": "hi",
+        "measure": "Recommendation rate",
+        "unit": "%"
+       }
+      },
+      {
+       "type": "concept",
+       "text": "Margin of error shrinks by the square root of sample size. Double the precision? Quadruple the data. The 'huge number' in the post was an aggregate — the per-model denominator was the missing number that determines whether the 12-point shift is signal or noise.",
+       "example": "Your incoming inspection samples 20 vials from a lot of 5000. The margin of error on the mean particulate count is ±3.6 particles/mL. A shift to 22 would be caught. But if you only sampled 5 vials? Margin ±7.2 — the same shift disappears into noise."
+      },
+      {
+       "type": "number",
+       "text": "Your team tests a local 7B model (like the Reddit commenter) and sees a shift from 20% to 35% recommendation rate with an ad — a 15-point shift. If you run 100 vignettes per arm, what's the approximate margin of error on each rate? (Use 2 × √(p(1−p)/n) × 100 with p=0.275, the midpoint.)",
+       "answer": 8.930286,
+       "tolerance": 0.25,
+       "unit": "%",
+       "explain": "Margin ≈ 8.9%. The 15-point shift is larger than the margin — this effect would be detectable. That's why the commenter's single-model test was more informative than the aggregated 'study'.",
+       "hint": "Plug p=0.275, n=100 into the formula. The midpoint averages the two rates."
+      },
+      {
+       "type": "order",
+       "text": "Put these steps in order for validating an AI prescribing aid against prompt injection — from first design input to post-market surveillance.",
+       "items": [
+        "Define acceptance criteria for output distribution shift when promotional language appears in the prompt",
+        "Treat the prompt template as a controlled component with version control and incoming inspection",
+        "Monitor prescribing patterns in real-world use for drift correlated with prompt-template changes",
+        "Verify the model meets spec across the full range of approved prompt versions"
+       ],
+       "explain": "First you set the spec (acceptance criteria), then you control the input (prompt as component), then you verify across that input range, then you surveil for drift in the field. Skip any step and the prompt supply chain becomes an unvalidated raw-material stream."
+      }
+     ],
+     "words": []
+    },
+    {
+     "title": "The Test That Cries Wolf",
+     "segment": "A blood test that flags ovarian cancer before a tumour forms",
+     "steps": [
+      {
+       "type": "choice",
+       "text": "A 45-year-old woman with no family history gets the Tu-Stroma blood test. It comes back positive. The test has 92% sensitivity, 98% specificity. STIC prevalence in women like her is about 0.05%. What do you think is the chance she actually has STIC lesions?",
+       "options": [
+        "Over 90% — the test is very accurate",
+        "Around 50% — a coin flip",
+        "Under 5% — most positives are false alarms",
+        "Almost 0% — the test is useless"
+       ],
+       "answer": 2,
+       "explain": "With 0.05% prevalence, only 5 in 10,000 have STIC. The test catches ~4.6 of them. But 2% of 9,995 healthy women — about 200 — also test positive. So only ~4.6 out of ~205 positives are real. That's ~2% PPV.",
+       "hint": "Imagine 10,000 women. How many truly have STIC? How many of those test positive? How many healthy women test positive anyway?"
+      },
+      {
+       "type": "concept",
+       "text": "Specificity sounds like 'accuracy' but it's not the number you need when the condition is rare. PPV = (sensitivity × prevalence) / (sensitivity × prevalence + (1−specificity) × (1−prevalence)). When prevalence shrinks, the (1−specificity) term dominates — even 2% false-positive rate on millions of healthy women buries the few true cases.",
+       "example": "In your factory: a vision system with 99% specificity inspecting 10,000 good parts flags 100 false defects. If only 2 parts are truly bad, operators learn to ignore the alarm."
+      },
+      {
+       "type": "choice",
+       "text": "You're reviewing a new in-line sensor for vial particulate detection. Vendor claims 95% sensitivity, 97% specificity. Your line produces 1 defect per 5,000 vials. The quality manager wants to auto-reject every flagged vial. What do you tell her?",
+       "options": [
+        "Approve it — 97% specificity is excellent",
+        "Run a pilot: at this prevalence, PPV will be under 1%",
+        "Demand 99.9% specificity before any trial",
+        "Reject — no sensor can detect particulates reliably"
+       ],
+       "answer": 1,
+       "explain": "Same math. At 0.02% prevalence, 95% sens / 97% spec gives ~0.6% PPV. Auto-reject would scrap ~150 good vials per real defect. You'd need a confirmatory step — just like the Tu-Stroma test needs diagnostic laparoscopy before surgery.",
+       "hint": "Calculate expected false rejects per real defect caught. 1 defect in 5,000 = 0.02% prevalence. 3% false-positive rate on 4,999 good vials ≈ 150 false rejects per real catch."
+      }
+     ],
+     "words": [
+      {
+       "term": "STIC",
+       "means": "Serous tubal intraepithelial carcinoma — microscopic precancerous growths in fallopian tubes where most deadly ovarian cancers start"
+      },
+      {
+       "term": "Sensitivity",
+       "means": "Of women who truly have STIC, the fraction the test correctly flags positive (92% here)"
+      },
+      {
+       "term": "Specificity",
+       "means": "Of women without STIC, the fraction the test correctly calls negative (98% here)"
+      },
+      {
+       "term": "Positive predictive value (PPV)",
+       "means": "Of women who test positive, the fraction who actually have STIC — the number that matters for decisions"
+      },
+      {
+       "term": "Base-rate fallacy",
+       "means": "Ignoring how rare a condition is; even a 'great' test drowns in false alarms when prevalence is tiny"
+      }
+     ]
+    }
+   ],
+   "quiz": [
+    {
+     "q": "In the discussion about AI chatbots recommending drugs based on prompts containing advertisements, what mechanism was cited as the direct cause of this influence?",
+     "options": [
+      "Malicious prompt injection designed by hacker groups",
+      "Attention heads in the transformer architecture weighting ad tokens in the context window",
+      "Automated background retraining on sponsored pharmaceutical databases",
+      "Hidden system instructions hardcoded by the EHR vendor"
+     ],
+     "answer": 1,
+     "explain": "The attention mechanism in transformers weights tokens based on what came before, meaning ad tokens in the working memory context window alter the downstream probability distribution.",
+     "segment": "Drug ads change what AI chatbots recommend"
+    },
+    {
+     "q": "From a QA and regulatory perspective, how did the hosts suggest treating an AI's context window containing unverified prompts?",
+     "options": [
+      "As an immutable system constant that requires no version control",
+      "As an unvalidated input stream equivalent to a raw material lot",
+      "As a self-correcting memory layer managed entirely by RLHF",
+      "As a post-market surveillance log requiring no design changes"
+     ],
+     "answer": 1,
+     "explain": "The context window acts as an unvalidated input stream, meaning prompts from external suppliers need to be treated like raw material lots under quality systems.",
+     "segment": "Drug ads change what AI chatbots recommend"
+    },
+    {
+     "q": "What biological entity is the Tu-Stroma biomarker that detects microscopic precancerous serous tubal intraepithelial carcinoma (STIC)?",
+     "options": [
+      "A circulating tumor DNA fragment",
+      "An RNA molecule elevated in women with microscopic growths",
+      "A mutated surface protein on the ovary itself",
+      "A specialized antibody produced by pelvic lymph nodes"
+     ],
+     "answer": 1,
+     "explain": "Tu-Stroma is an RNA molecule found to be elevated in women who have microscopic precancerous growths in the fallopian tubes.",
+     "segment": "A blood test that flags ovarian cancer before a tumour forms"
+    },
+    {
+     "q": "Why does a high specificity of 98% for the new ovarian cancer blood test still result in low positive predictive value when applied to the general population?",
+     "options": [
+      "The test has very poor analytical precision and high hemolysis interference.",
+      "Ovarian cancer incidence is extremely low, leading to thousands of false positives due to the prevalence trap.",
+      "Most women in the general population carry BRCA mutations that skew the baseline.",
+      "Diagnostic laparoscopy fails to confirm true positive cases."
+     ],
+     "answer": 1,
+     "explain": "Because ovarian cancer incidence is well under one percent per year in the general population, a 98% specificity still yields thousands of false alarms.",
+     "segment": "A blood test that flags ovarian cancer before a tumour forms"
+    }
+   ],
+   "transcript": "transcripts/ai_2026-11-13_evening_1226.txt"
+  },
+  {
    "file": "ai_2026-11-12_evening_1254.mp3",
    "title": "Evening - 12 Nov: An AI that predicts what a DNA change does to a cell",
    "label": "Thursday 12 Nov evening",
@@ -2968,272 +3213,6 @@
     }
    ],
    "transcript": "transcripts/ai_2026-11-06_evening_1229.txt"
-  },
-  {
-   "file": "ai_2026-11-05_evening_1449.mp3",
-   "title": "Evening - 5 Nov: When an AI writes a neural network's weights by hand",
-   "label": "Thursday 05 Nov evening",
-   "date": "2026-11-05",
-   "edition": "evening",
-   "published": "2026-11-05T14:49:15.577506+05:30",
-   "duration": 1531,
-   "theme": "Hand-crafted neural weights and the physics of accidental location signals",
-   "writer": "nemotron-3-ultra-550b-a55b (free)",
-   "voices": "Fish Audio (free)",
-   "deep_dive": false,
-   "segments": [
-    {
-     "title": "When an AI writes a neural network's weights by hand",
-     "category": "concept"
-    },
-    {
-     "title": "How aircraft noise in your video gives away your location",
-     "category": "thread"
-    }
-   ],
-   "lessons": [
-    {
-     "title": "The 99% Trap: When Verification Masquerades as Validation",
-     "segment": "When an AI writes a neural network's weights by hand",
-     "steps": [
-      {
-       "type": "choice",
-       "text": "A Reddit post claims a hand-written citation classifier hits 99% accuracy. The weights were authored by an LLM from citation-format rules — no training data. You're the QA lead reviewing this for a legal-tech client. What's your first question?",
-       "options": [
-        "What's the false-positive rate on real citations?",
-        "What exactly was in the test set?",
-        "How many parameters does the network have?",
-        "Which LLM authored the weights?"
-       ],
-       "answer": 1,
-       "explain": "In regulated environments, the test set composition *is* the validation evidence. If the test set was generated from the same rules used to write the weights, you're verifying the implementation, not validating the detector.",
-       "hint": "The episode mentions the commenters asked for test set composition — and OP never replied. The claim is unconfirmed."
-      },
-      {
-       "type": "explore",
-       "text": "The hand-written weights implement a perfect rule-checker. Valid citations score low on 'rule violations'; synthetic fabricated citations (wrong volumes, impossible pages) score high. Move the reject threshold to catch 99% of synthetic fakes — then see what happens to valid citations.",
-       "inputs": [
-        {
-         "id": "th",
-         "label": "Reject above (Rule violation score)",
-         "unit": "points",
-         "min": -3.25,
-         "max": 13.25,
-         "step": 0.2,
-         "value": 4.950000000000001
-        }
-       ],
-       "outputs": [
-        {
-         "id": "miss",
-         "label": "Synthetic fabricated citations let through",
-         "unit": "%",
-         "expr": "100*ncdf((th-8)/1.5)",
-         "digits": 1,
-         "lo": 3.219646771412954e-12,
-         "hi": 99.97018465190477
-        },
-        {
-         "id": "fa",
-         "label": "Valid citations rejected by mistake",
-         "unit": "%",
-         "expr": "100*(1-ncdf((th-2)/1.5))",
-         "digits": 1,
-         "lo": 5.329070518200751e-12,
-         "hi": 99.97673266159303
-        }
-       ],
-       "goal": {
-        "target": "miss",
-        "min": 0.0,
-        "max": 1.0,
-        "text": "Set the threshold to catch ≥99% of synthetic fakes (miss ≤1%), then note the false-alarm rate on valid citations",
-        "success": "You caught 99% of synthetic fakes — but rejected ~16% of valid citations. A perfect rule-checker still hurts real users when the threshold is tight."
-       },
-       "template": "threshold",
-       "view": {
-        "kind": "bells",
-        "th": "th",
-        "neg": 2.0,
-        "pos": 8.0,
-        "sd": 1.5,
-        "lo": -3.25,
-        "hi": 13.25,
-        "neg_label": "Valid citations",
-        "pos_label": "Synthetic fabricated citations"
-       }
-      },
-      {
-       "type": "concept",
-       "text": "The 99% accuracy came from circular validation: the synthetic test set was generated from the *same citation rules* used to author the weights. The hand-written network is a compiled lookup table for those rules — it verifies perfectly against its own spec. But real adversarial fakes (plausible reporter, volume, page, year — case never existed) score like valid citations because they *follow* the rules. The trained model sometimes catches them because it learned the statistical texture of real case names, not just the syntax.",
-       "example": "Like validating a sterile filter only with rigid spherical test particles — real bacteria are deformable and slip through pores the test particles couldn't."
-      },
-      {
-       "type": "number",
-       "text": "Your legal-tech client processes 50,000 citations/month. At the threshold you just set, ~16% of valid citations get falsely flagged for human review. If 95% of citations are valid, how many valid citations are falsely flagged per month?",
-       "answer": 7600.0,
-       "tolerance": 0.25,
-       "unit": "citations",
-       "explain": "7,600 valid citations flagged monthly — each needs a lawyer's eyes. That's the operational cost of a threshold tuned on synthetic data.",
-       "hint": "Multiply total citations × fraction valid × false-alarm rate."
-      },
-      {
-       "type": "choice",
-       "text": "Now imagine the same hand-written weights face adversarial fakes: citations that follow every Bluebook rule but reference fabricated cases. These score like valid citations (mean ~2). If adversarial fakes are 2% of all citations, and your threshold rejects scores >3.5, what happens to them?",
-       "options": [
-        "Caught at ~99% — same as synthetic fakes",
-        "Mostly pass through — miss rate near 100%",
-        "Caught at ~50% — partial overlap",
-        "Rejected as false alarms on valid citations"
-       ],
-       "answer": 1,
-       "explain": "This is the verification/validation gap. The spec (citation rules) doesn't capture the real requirement (detect *any* fake citation). The trained model learned a fuzzy boundary from data; the hand-written model only knows the explicit spec.",
-       "hint": "Adversarial fakes follow the rules, so their rule-violation score matches valid citations. The threshold can't distinguish them."
-      },
-      {
-       "type": "order",
-       "text": "Put these validation steps in the order they *should* happen for a regulated AI/ML medical device — from spec to real-world evidence:",
-       "items": [
-        "Requirements specification (the prompt)",
-        "Weight-authoring process verification (traceability matrix)",
-        "Testing on synthetic data from the spec",
-        "Testing on independent real-world data with adversarial challenge",
-        "Post-market surveillance with statistical process control"
-       ],
-       "explain": "The Reddit thread only reached step 3 — circular validation. Steps 4 and 5 are where you discover adversarial fakes and distribution shift. In FDA-regulated SaMD, the prompt becomes your requirements spec; the weight-output is your design output; traceability maps each requirement to weight patterns. But validation requires independent evidence."
-      }
-     ],
-     "words": [
-      {
-       "term": "Weight-space synthesis",
-       "means": "Writing neural network weights directly from a specification, skipping training entirely"
-      },
-      {
-       "term": "Verification vs Validation",
-       "means": "Verification = built to spec; Validation = built the right thing for real-world use"
-      },
-      {
-       "term": "Circular validation",
-       "means": "Testing a system only on data generated from the same rules used to build it"
-      },
-      {
-       "term": "Adversarial examples",
-       "means": "Inputs that follow all explicit rules but are still wrong (e.g., plausible fake case names)"
-      }
-     ]
-    },
-    {
-     "title": "The 8-Hz Whisper That Betrays Your Position",
-     "segment": "How aircraft noise in your video gives away your location",
-     "steps": [
-      {
-       "type": "choice",
-       "text": "A security camera records 60 seconds of mono audio. Three 737s pass at 10 km altitude, 250 m/s. ADS-B gives their paths to ~10 m. The Doppler shift on a 1 kHz tone peaks at ~8 Hz. You need <1 Hz frequency resolution for 100 m accuracy. What is the single biggest reason this fails in practice?",
-       "options": [
-        "Aircraft too high — shift too small",
-        "Phone clock drifts tens of ms in 60 s",
-        "Only three planes — geometry weak",
-        "Audio codec throws away the signal"
-       ],
-       "answer": 1,
-       "explain": "10 ms × 250 m/s = 2.5 m range error per aircraft. But the solver treats clock offset as an extra unknown — it couples with position, stretching the error ellipse. Without sub-ms sync, the 100 m target evaporates.",
-       "hint": "A 10 ms clock error at 250 m/s mimics a position error of... how many meters?"
-      },
-      {
-       "type": "concept",
-       "text": "The optimization landscape is a steep, narrow canyon. Clock drift rotates the canyon walls. A learning rate too small (over-smoothing) gets stuck on noise ridges. Too large (over-fitting) follows the rotated walls into kilometers of error. The sweet spot treats each Doppler curve as a soft constraint — weighted by its SNR — and solves for position + clock offset jointly.",
-       "example": "Like tuning a PID loop on a vibrating machine: gain too low → sluggish; gain too high → oscillation. The 'integral term' here is the clock offset estimate."
-      },
-      {
-       "type": "number",
-       "text": "Your factory uses an ultrasonic sensor (40 kHz) to measure weld depth. The sensor timestamps drift 50 ppm relative to the PLC clock. Over a 2-second weld, how much does the timestamp error grow? (Answer in milliseconds)",
-       "answer": 0.1,
-       "tolerance": 0.01,
-       "unit": "ms",
-       "explain": "0.1 ms drift → at sound speed 340 m/s, that's 34 microns range error. For a 100-micron tolerance weld, that's 34% of your budget — from clock drift alone. Same math as the aircraft case.",
-       "hint": "50 ppm = 50 microseconds per second. Multiply by weld duration."
-      },
-      {
-       "type": "choice",
-       "text": "The YouTuber claims 100 m accuracy from one 60-second demo. In your QA world, what would you demand before accepting this as a validated method?",
-       "options": [
-        "A) Monte Carlo over 1000 geometries, noise levels, mic types",
-        "B) Three more demo videos from different cities",
-        "C) Peer-reviewed paper with equations",
-        "D) Open-source code release"
-       ],
-       "answer": 0,
-       "explain": "Validation means: 95% of estimates within 100 m under specified conditions (aircraft types, altitudes, receiver heights, SNR, mic quality). One demo proves possibility; a design-history file proves reliability.",
-       "hint": "IQ/OQ/PQ — you test across the *intended use envelope*, not cherry-picked demos."
-      }
-     ],
-     "words": [
-      {
-       "term": "Doppler multilateration",
-       "means": "Finding a receiver's position by measuring frequency shifts from multiple moving sources with known trajectories"
-      },
-      {
-       "term": "Cramér-Rao bound",
-       "means": "The theoretical best precision you can achieve estimating a parameter (like frequency) from noisy data"
-      },
-      {
-       "term": "Clock drift",
-       "means": "A clock running slightly fast or slow, so its timestamps gradually desynchronize from true time"
-      }
-     ]
-    }
-   ],
-   "quiz": [
-    {
-     "q": "In the context of 'weight-space synthesis,' why does the hand-written neural network approach pose a significant validation challenge compared to traditional training?",
-     "options": [
-      "It lacks a statistical training dataset, making it impossible to perform standard statistical process control on error rates.",
-      "The weights are too large to be stored in a standard design history file.",
-      "It requires backpropagation to be performed every time the network is queried.",
-      "The weights are fundamentally incompatible with existing hardware accelerators."
-     ],
-     "answer": 0,
-     "explain": "Without a training dataset, you lack the statistical foundation for process control and adversarial testing, making it difficult to generate a standard design history file and verify the absence of unintended behaviors.",
-     "segment": "When an AI writes a neural network's weights by hand"
-    },
-    {
-     "q": "Why might a hand-written 'weight-module' for legal citation checking fail to detect fabricated cases that a trained model might catch?",
-     "options": [
-      "Hand-written weights cannot perform floating-point arithmetic.",
-      "The hand-written model only encodes explicitly specified rules, whereas a trained model learns the fuzzy statistical distribution of real-world legal writing.",
-      "Trained models are inherently more efficient at storing large lookup tables than hand-written ones.",
-      "Hand-written weights are prone to catastrophic forgetting during the inference phase."
-     ],
-     "answer": 1,
-     "explain": "A hand-written model acts like a lookup table for explicit rules, failing on edge cases not in the spec, while a trained model learns the 'fuzzy' boundaries and patterns of real legal writing.",
-     "segment": "When an AI writes a neural network's weights by hand"
-    },
-    {
-     "q": "What is the primary physical principle that allows for the geolocation of a receiver using aircraft noise from a video?",
-     "options": [
-      "Measurement of the aircraft's absolute altitude via barometric pressure sensors.",
-      "Analysis of electromagnetic interference patterns between the aircraft and the microphone.",
-      "Multilateration via Doppler shifts in the aircraft's frequency signature relative to known flight paths.",
-      "Detection of the exact time-of-flight difference between the aircraft's visual light and acoustic signal."
-     ],
-     "answer": 2,
-     "explain": "The technique uses Doppler shifts in the frequency of aircraft engine noise, matched against public ADS-B trajectory data, to solve for the receiver's ground position.",
-     "segment": "How aircraft noise in your video gives away your location"
-    },
-    {
-     "q": "Why is the claim of 100-meter accuracy for the aircraft-based geolocation method considered unvalidated?",
-     "options": [
-      "It relies on proprietary military-grade hardware that is not available to the public.",
-      "The methodology lacks a formal design history file, statistical uncertainty quantification, and testing across a representative envelope of conditions.",
-      "The speed of sound varies too much over a 60-second window to allow for precise calculations.",
-      "ADS-B data is encrypted and cannot be used to verify the aircraft's position."
-     ],
-     "answer": 1,
-     "explain": "The claim is based on a single, uncontrolled demo; without rigorous testing across different noise conditions and geometries, it lacks the necessary validation to be considered a reliable tool.",
-     "segment": "How aircraft noise in your video gives away your location"
-    }
-   ],
-   "transcript": "transcripts/ai_2026-11-05_evening_1449.txt"
   }
  ]
 }

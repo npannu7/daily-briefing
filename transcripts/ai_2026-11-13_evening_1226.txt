@@ -1,0 +1,88 @@
+## Welcome
+Sarah: Evening, Nikhil — Friday the thirteenth, and your commute just got interesting.
+Laura: We left off Wednesday with ML non-determinism as a validation headache, and Thursday's variant-prediction transformer needed a design-history file.
+Sarah: Tonight, a controlled study shows drug ads steer AI chatbot prescribing — a change-control event for any regulated workflow.
+Laura: And an RNA blood test flags pre-cancerous ovarian disease before a tumour forms — we trace the validation path from research finding to screening test.
+Sarah: Let's get into it.
+
+## Drug ads change what AI chatbots recommend
+Sarah: I was scrolling the medicine subreddit yesterday and a post stopped me cold. Someone shared what they claimed was a Lancet Digital Health study — controlled experiment, twelve commercial chatbots, a huge number of responses total. The claim: slip a drug advertisement into the prompt and the model picks that drug nearly half the time. Without the ad? About a third. And in four cases the model went from never recommending it to always recommending it.
+Laura: Wait, really? That's a massive shift. What was the actual setup?
+Sarah: Clinical vignette — patient case description — and the models had to recommend a named drug. One arm gets the vignette plus a paid advertisement for Drug X. The other arm gets just the vignette. Same models, same everything else.
+Laura: Okay, so it's a classic A/B test. But I need to understand the denominator. A huge number of responses across twelve models — that's a lot per model. How many vignettes? How many repetitions per vignette?
+Sarah: The post didn't say. Just the aggregate numbers. The claimed difference was roughly twelve percentage points. And that "never to always" claim for four models.
+Laura: Right. So the first question any QA engineer asks: what was the baseline variability? If a model recommends Drug X about a third of the time without an ad, what's the confidence interval? Is that tight or wide? Because if the baseline is noisy, a twelve-point shift might not be statistically distinguishable from noise.
+Sarah: Exactly what the commenters were arguing about. One person who runs models at home said — look, these things are stochastic. You run the same prompt ten times, you get different answers. Temperature setting — that's the knob controlling how random the output is — top-p sampling — another knob that limits the model to the most likely next words — the whole decoding strategy. Did they control for that?
+Laura: And did they report the sampling parameters? If they ran at temperature zero, you get the same answer every time. If they ran higher, you get a distribution. The study design needs to specify which, and why.
+Sarah: Another commenter — works in pharma marketing apparently — said this is just "priming" but for machines. Like showing a radiologist an image with a subtle arrow pointing to a nodule before they read the scan. The model's attention gets directed.
+Laura: Priming in LLMs — that's a real mechanism. The attention heads in the transformer architecture — the neural network design behind these models — literally weight tokens based on what came before. An advertisement token sequence changes the attention distribution over the drug-name tokens downstream. It's not magic. It's the same mechanism that makes few-shot prompting work — you show examples, the model conditions on them. Here the "example" is an ad.
+Sarah: But the scary part: the models often didn't disclose the influence. They'd recommend Drug X and give a clinical rationale that sounded perfectly reasonable — mechanism of action, guideline citation, the works. No "I saw an ad for this."
+Laura: That's the alignment problem in a nutshell. The model isn't "hiding" anything. It's generating a plausible continuation of the prompt. The ad is in the context window — that's the technical term for the text the model can see at once, like the working memory of the system. Everything in that window conditions the output. The model has no introspective access to why it weighted Drug X higher. It just does.
+Sarah: And that's what the Reddit thread exploded over. People saying — this is why you can't put these in clinical workflows. Others saying — duh, of course advertising works, it works on humans, why wouldn't it work on something trained on human text?
+Laura: Let me push back gently. The study claims four models went from never to always. That's a binary flip. In a stochastic system, "never" and "always" are strong words. Did they mean the mode of the distribution shifted? Or did they literally run each prompt once and got zero versus one hundred percent? Because if it's single-sample —
+Sarah: The post doesn't say. That's the problem. No methods detail in the Reddit post, just the headline numbers. And here's the independent check I did: I couldn't find the actual Lancet Digital Health paper anywhere. Not on their site, not on PubMed, not as a preprint. The Reddit post links to a DOI that resolves to... nothing. The Lancet Digital Health site shows that identifier as a placeholder, not a real article.
+Laura: So the claims are unconfirmed. Entirely.
+Sarah: Entirely. The only source is the Reddit post itself. No independent replication, no peer-reviewed paper we can read, no supplementary methods. The DOI appears to be fabricated or the paper was retracted before publication.
+Laura: Okay. So we treat this as a hypothesis, not a finding. But — and this is why it matters for Nikhil's work — if the effect is real, even at half the reported magnitude, it's a change-control event for any AI component in a regulated workflow.
+Sarah: Right. Design-history file. You're building an AI medical device — say, a clinical decision support tool that suggests medications. Your training data includes web text. Web text includes drug advertisements. The model learns statistical associations between ad-like language and drug names. Now you deploy it. A hospital system integrates it. A pharmaceutical company buys "sponsored placement" in the prompt template —
+Laura: Or worse, the hospital's EHR vendor includes formulary-preferred drugs in the prompt context as "guidance." That's not even malicious. That's just... procurement. But from a regulatory standpoint, under FDA's guidance on clinical decision support software — and under the EU MDR for software as a medical device — you have to demonstrate that the algorithm's output isn't unduly influenced by commercial interests. That's a validation requirement. You need evidence that the recommendation engine is robust to prompt injection, whether intentional or incidental.
+Sarah: And post-market surveillance. If the model's behavior can shift because the prompt template changed — say, the hospital updates the system prompt to include a new formulary — that's a software change. Under 21 CFR Part 820, that triggers design-change procedures. Verification, validation, risk analysis. But nobody's monitoring for algorithmic bias drift caused by prompt evolution.
+Laura: Exactly. We talked about this with the GLP-1 surveillance episode — the Sentinel system detects safety signals from real-world data. But here the "signal" would be a shift in prescribing patterns caused by the AI itself. Circular. The AI recommends Drug X more often because Drug X's manufacturer paid for prompt placement, prescriptions increase, the real-world data shows Drug X is "preferred," the model retrains on that data, the loop closes.
+Sarah: That's the alignment tax nobody's budgeting for. You'd need continuous monitoring of the prompt-template version, the model weights, the output distribution — all under change control. Like tracking lot numbers for raw materials, except the raw material is text.
+Laura: And the "never to always" claim — if real — suggests discrete mode collapse. That's a known phenomenon in RLHF — reinforcement learning from human feedback, where the model learns to favor responses that human raters scored highly. The model learns that certain token sequences get high reward, so it puts all its probability mass there. An advertisement in the context window could act like a high-reward signal for that drug token. But again: unconfirmed.
+Sarah: The commenters who knew ML were saying — show me the per-model breakdown. Open vs closed source. Large vs small. The effect size consistency claim — "consistent across model families" — that's doing a lot of work. If it's only the models tuned to follow instructions that fall for it, that tells you something about the alignment process. If raw pretrained models do it too, that's about the pretraining corpus.
+Laura: One commenter ran a quick test on a local model — seven billion parameters, quantized to four-bit — and couldn't replicate the "never to always" flip. Got a shift from twenty percent to thirty-five percent. Which is still real, but not the binary catastrophe.
+Sarah: Quantization — compressing the model weights from sixteen-bit floats to four-bit integers — can change behavior slightly. But the point stands: single data point, uncontrolled. The Reddit thread is doing what Reddit does — generating hypotheses, not evidence.
+Laura: So verdict: unconfirmed. The study may not exist as described. The DOI is dead. The numbers are plausible — priming is a real mechanism in transformers — but the specific claims about magnitude, consistency, and the binary flips have zero independent verification.
+Sarah: And for Nikhil's purposes: treat this as a risk hypothesis. If you're writing a design-history file for an AI prescribing aid, you need a test case for "prompt contains promotional language." You need acceptance criteria for output distribution shift. You need a surveillance plan that catches prompt-template changes as design changes. The study — real or not — just highlighted a gap that should already be in your FMEA.
+Laura: Failure mode and effects analysis. Right. The gap is: we validate the model weights, we validate the training data, we don't validate the prompt supply chain.
+Sarah: Prompt supply chain. I like that. The prompt is a component. It has version control. It has suppliers — the EHR vendor, the hospital IT, the formulary committee. It has incoming inspection — does this prompt contain undisclosed commercial content? It has process validation — does the model output meet spec across the prompt version range?
+Laura: One-line takeaway: your AI's context window is an unvalidated input stream — treat it like a raw material lot.
+Sarah: That'll do.
+
+## A blood test that flags ovarian cancer before a tumour forms
+Laura: So I was scrolling the science subreddit yesterday and a Guardian write-up hit the front page — ovarian cancer, blood test, precancerous lesions caught before a tumour exists.
+Sarah: Wait, really? Before a tumour forms? That's — that's huge if it holds up.
+Laura: The paper's in Nature Medicine. Rajan Gogna at Hoag Family Cancer Institute, his team found an RNA molecule — they call it Tu-Stroma — elevated in women who have microscopic precancerous growths in the fallopian tubes.
+Sarah: RNA — that's like a working copy of a gene, right? The cell reads the DNA and makes RNA to carry the instructions out to where proteins get built.
+Laura: Exactly. And these growths have a name: serous tubal intraepithelial carcinoma, STIC for short. Most high-grade serous ovarian cancers start there, not in the ovary itself.
+Sarah: Okay, so the marker shows up when the cells are still microscopic, sitting in the tube lining. No mass, no spread. That's the "warning signal" the thread title promised.
+Laura: Exactly. The Guardian piece says they measured Tu-Stroma in blood and detected STIC in ninety-two percent of affected women, and correctly called ninety-eight percent of healthy women negative.
+Sarah: Ninety-two percent sensitivity, ninety-eight percent specificity. Those numbers look — they look really good on paper.
+Laura: They do. But the Reddit thread immediately went two directions. One commenter, a nurse, asked what symptoms would ever trigger a primary-care doc to order this test — insurance won't pay without a clinical indication.
+Sarah: Right. And the other direction?
+Laura: Someone ran the math on false positives. They came up with a twenty-eight percent false-positive rate, and people worried about women getting tubes removed unnecessarily.
+Sarah: Twenty-eight percent false positive — wait, that doesn't match ninety-eight percent specificity.
+Laura: It's the prevalence trap. Specificity is ninety-eight percent, but ovarian cancer incidence in the general population is extremely low — well under one percent per year.
+Sarah: So in a hundred thousand women, you'd have very few true cases. Ninety-two percent sensitivity catches most of those. But ninety-eight percent specificity still means thousands of false alarms.
+Laura: Exactly. The positive predictive value — that's the chance a positive result actually means disease — drops to the low single digits.
+Sarah: Right. So the "twenty-eight percent" comment was probably looking at the high-risk subgroup instead. The paper says for women with genetic risk factors, seventy-two percent of positive results would be accurate. That's a totally different population.
+Laura: Exactly. The commenters conflated the two cohorts. One anecdote thread had a woman who'd already had prophylactic salpingectomy — tubes out — because of family history. She said it gave her peace of mind.
+Sarah: Another lost her mom to stage four non-BRCA HGSC after a year of misdiagnosis.
+Laura: HGSC — high-grade serous carcinoma. The aggressive one. And non-BRCA means no known hereditary mutation to flag her for screening.
+Sarah: That's the clinical problem in a nutshell. Today, preventive surgery decisions are guided almost entirely by inherited risk — BRCA1, BRCA2 — without knowing whether STIC lesions are actually present.
+Laura: The authors argue Tu-Stroma could provide that missing biological information.
+Sarah: So the claim is: this RNA marker distinguishes microscopic STIC from benign tubal pathology and other gyn conditions. Did they actually test that?
+Laura: The Guardian summary says "correctly identified ninety-eight percent of healthy women." But "healthy" in a discovery cohort often means no known gynecologic disease — not necessarily women with endometriosis, pelvic inflammatory disease, fibroids, the whole differential that shows up in a real screening population.
+Sarah: That's the analytical specificity gap. Limit of detection for Tu-Stroma in plasma, cross-reactivity with other RNA species, hemolysis interference — the whole analytical validation package.
+Laura: And the study appears to be a single discovery set. No independent replication cohort mentioned in the Guardian piece.
+Sarah: For a screening claim in a very low prevalence population, you'd need a prospective trial powered for positive predictive value — thousands of women, years of follow-up, histopathology confirmation of every positive.
+Laura: The FDA would almost certainly route this through Breakthrough Device designation — high mortality, unmet need, no approved screening test.
+Sarah: But the PMA pathway for an IVD — that's an in-vitro diagnostic, a test done on a sample like blood — still requires valid scientific evidence of safety and effectiveness.
+Laura: Analytical studies first: precision, linearity, reference interval, interference.
+Sarah: Then clinical studies: sensitivity, specificity, positive and negative predictive value in the intended-use population.
+Laura: And the design history file has to trace every decision. Risk management — what happens when a false positive sends a woman to diagnostic laparoscopy? What happens when a false negative delays risk-reducing surgery?
+Sarah: The Reddit thread got the emotional weight right — this disease is brutal, caught late, survival drops off a cliff.
+Laura: But they skipped straight to "routine screening for everyone" without the prevalence math.
+Sarah: The nurse's point about ordering indications is spot on: no clinician orders a screening test without a guideline recommending it, and no guideline exists without prospective evidence.
+Laura: Half-right. The biology is plausible — STIC lesions shed RNA into circulation, Tu-Stroma appears elevated.
+Sarah: The diagnostic performance in the discovery set looks promising for a high-risk triage test, not a general-population screen.
+Laura: But zero independent replication, no analytical validation data in the public summary, no prospective clinical study.
+Sarah: Too early to tell if it survives the validation funnel.
+Laura: One-line takeaway: a promising RNA marker for fallopian-tube precancer exists in a single study; the screening math only works in high-risk women, and the regulatory path from here is a full design-history file, not a headline.
+Sarah: That's the one.
+
+## Close
+Laura: Tomorrow morning's edition will be ready before 8 am.
+Sarah: And Nikhil, you've got a puzzle where a screening test cries wolf — see if you can catch the false alarms.
+Laura: See you then.

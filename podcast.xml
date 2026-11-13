@@ -8,9 +8,25 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Thu, 12 Nov 2026 07:51:01 GMT</lastBuildDate>
+<lastBuildDate>Fri, 13 Nov 2026 07:28:33 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Evening - 13 Nov: Drug ads change what AI chatbots recommend</title>
+<description>Evening edition - Friday, 13 November 2026
+AI influence on prescribing and a blood test for pre-cancerous ovarian disease
+
+00:33  Drug ads change what AI chatbots recommend
+10:05  A blood test that flags ovarian cancer before a tumour forms
+
+Puzzles: Today's puzzle, The Test That Cries Wolf - puzzles, quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
+Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (175 threads)</description>
+<pubDate>Fri, 13 Nov 2026 12:26:23 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-11-13_evening_1226.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-13_evening_1226.mp3" length="7940477" type="audio/mpeg"/>
+<itunes:duration>992</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Evening - 12 Nov: An AI that predicts what a DNA change does to a cell</title>
 <description>Evening edition - Thursday, 12 November 2026
@@ -181,22 +197,6 @@ Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Di
 <guid isPermaLink="false">ai_2026-11-06_evening_1229.mp3</guid>
 <enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-06_evening_1229.mp3" length="7999278" type="audio/mpeg"/>
 <itunes:duration>999</itunes:duration>
-<itunes:episodeType>full</itunes:episodeType>
-</item>
-<item>
-<title>Evening - 5 Nov: When an AI writes a neural network's weights by hand</title>
-<description>Evening edition - Thursday, 5 November 2026
-Hand-crafted neural weights and the physics of accidental location signals
-
-00:36  When an AI writes a neural network's weights by hand
-14:58  How aircraft noise in your video gives away your location
-
-Puzzles: The 99% Trap: When Verification Masquerades as Validation, The 8-Hz Whisper That Betrays Your Position - puzzles, quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
-Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (142 threads)</description>
-<pubDate>Thu, 05 Nov 2026 14:49:15 +0530</pubDate>
-<guid isPermaLink="false">ai_2026-11-05_evening_1449.mp3</guid>
-<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-05_evening_1449.mp3" length="12249549" type="audio/mpeg"/>
-<itunes:duration>1531</itunes:duration>
 <itunes:episodeType>full</itunes:episodeType>
 </item>
 </channel>
