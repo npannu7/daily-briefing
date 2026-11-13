@@ -8,10 +8,10 @@ Pipeline
                 the Collect Reddit workflow (about one request a minute; comments re-read once a thread
                 has matured). Also: reddit/latest.json from the office-PC collector if present.
                 Fallbacks: direct Reddit RSS, then Hacker News discussions.
-  2. SCORE    - one batched call to a free model rates every thread (relevant? substantial? level?
-                needs fact-checking? hype?). Duplicates across subreddits are merged.
+  2. SCORE    - free decision models rate every thread (relevant? substantial? level? needs fact-checking?
+                hype?); the rest in one batched call. Duplicates across subreddits are merged.
                 CHECK: each thread is matched against feeds.txt, Hugging Face Daily Papers, the
-                primary source it links to, and Hacker News.
+                primary source it links to, and Hacker News; a claim found only on Reddit is web-checked.
   3. TRACK    - threads are grouped into topics that build up over days. When a topic has
                 come up on several days in several communities, the evening becomes a deep dive.
   4. PLAN     - morning: "the thread vs the evidence"; evening: follow-ups + a concept from
@@ -20,7 +20,11 @@ Pipeline
   6. WRITE    - two hosts (Sarah, Laura) in dialogue, pitched at an engineer outside CS.
   7. GREET    - personal greeting linked to past episodes; summary saved as memory.
   8. VOICE    - Fish Audio free (OpenRouter) -> Gemini TTS (free key) -> Edge voices.
-  9. PUBLISH  - MP3 to the GitHub release, podcast.xml, quiz.json (interactive puzzles + quiz) and transcript.
+  9. PUBLISH  - MP3 to the GitHub release, podcast.xml, quiz.json (the episode's game for quiz.html: bets and
+                cards chosen by a decision model, written by the writer, repaired by a coding model) and
+                transcript.
+
+Which edition a run makes (morning or evening) is decided by due.py: the one that is due and not yet made.
 
 Zero cost by default: Gemini free key, then OpenRouter free models, then GitHub Models. One writer
 per episode where possible. OpenRouter's free daily request limit is counted, with a reserve for writing.
@@ -288,13 +292,14 @@ def load_health(state):
 
 
 def save_health():
-    """Models dropped in this run rest for 6 hours, doubling each time in a row (at most 48); a model that
-    worked is cleared. A resting model is still used when everything ahead of it fails."""
+    """Models that failed in this run and never worked rest for 6 hours, doubling each time in a row (at most
+    48); a model that worked is cleared. A resting model is still used when everything ahead of it fails."""
     now = dt.datetime.now(dt.timezone.utc)
     for m in list(HEALTH):
         if m in WORKED:
             del HEALTH[m]
-    for m in DEAD - WORKED:
+    failed = DEAD | {m for m, n in FAIL_STREAK.items() if n > 0}   # one timeout already costs 100 seconds
+    for m in failed - WORKED:
         if m in COOLING:
             continue   # failed again while resting: keep its date
         n = int(HEALTH.get(m, {}).get("n", 0)) + 1
@@ -756,7 +761,7 @@ def decide_api(model, state_obj, questions):
                 log(f"    decision model {model} charges money -> dropped (OPENROUTER_DAILY_USD is 0)")
                 DEAD.add(model)
         answers = norm_answers(data.get("answers"), questions)
-        if answers:
+        if len(answers) * 2 >= len(questions):   # a reply with most answers unreadable is a failed reply
             model_ok(model)
             cites = _urls(data.get("citations") or data.get("sources") or [])
             if cites:
@@ -797,7 +802,7 @@ def decide(state_obj, questions, subject="AI discussion thread"):
     """Answers for one item: free chat models via JSON, paid decision models via the Decisions API."""
     if not OPENROUTER_API_KEY:
         return None
-    for model in DECISION_MODELS:
+    for model in sorted(DECISION_MODELS, key=lambda m: m in COOLING):   # models resting after earlier failures last
         if model in DEAD:
             continue
         free = model.endswith(":free")
@@ -1308,6 +1313,9 @@ def check_block(s):
     elif web.get("verdict") == "disputed":
         lines.append("- A web search suggests reputable sources contradict this claim, but no page could be read: "
                      "say the claim is disputed and unverified.")
+    elif web.get("verdict") == "confirmed":
+        lines.append("- A web search suggests it is reported elsewhere, but no such page could be read here: say it "
+                     "is not yet verified by the show.")
     for t in s.get("also_in", []):
         lines.append(f"- {t['source']} has a matching item (use only if it is clearly the same story): "
                      f"\"{t['title']}\" - {t['summary'][:500]}")
@@ -4253,7 +4261,7 @@ def main():
     for (label, start), (seg, _) in zip(marks[1:], written):   # chapters only: Reddit links are of no use to him
         notes.append(f"{fmt_ts(start)}  {label}")
     notes += ["", (f"Play \"{play['title']}\", a three-minute game on this episode" if play else "Quiz and feedback")
-              + f": {PAGES_URL}/quiz.html",
+              + f": {PAGES_URL}/quiz.html#play={filename}",   # opens this episode's game directly
               f"Written by: {writer} · Voices: {ENGINE_NAMES[engine]} · Discussions: {source_note}"]
     episode = {"file": filename, "date": date_key, "edition": edition, "title": ep_title,
                "published": now.isoformat(), "pubDate": email.utils.format_datetime(now),

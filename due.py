@@ -136,17 +136,18 @@ def pool_age_hours(pool_file):
         return 1e9
 
 
-def wait_and_top_up(seconds, pool_file=None):
+def wait_and_top_up(seconds, pool_file=None, slack_min=0):
     """Wait for the edition's start time. The Reddit collector normally runs every hour, but GitHub has been
     starting it only three or four times a day, so the wait is used to read Reddit (one request a minute).
-    When there is no wait and the pool is stale, a short top-up (at most 8 minutes) still runs."""
+    When there is no wait, the pool is stale and the episode is not yet running late (slack_min = minutes
+    left until it should be ready), a short top-up of at most 8 minutes still runs."""
     end = time.time() + max(0, seconds)
     requests = 0
     if pool_file:
         age = pool_age_hours(pool_file)
         if seconds >= 120:
             requests = min(60, int(seconds // 62))
-        elif age > 2:
+        elif age > 2 and slack_min >= 75:
             requests = 8
         print(f"Reddit pool last updated {age:.1f} h ago; top-up: {requests} request(s)", flush=True)
     if requests:
@@ -179,7 +180,9 @@ def main():
     name, wait, why = decide(edition, force)
     if "--wait" in sys.argv:   # inside the build job: wait for the start time, then say what to make
         if name != "none":
-            wait_and_top_up(wait, arg("--pool") or None)
+            now = dt.datetime.now(TZ)
+            slack = WINDOWS[name][2] - (now.hour * 60 + now.minute) - wait / 60
+            wait_and_top_up(wait, arg("--pool") or None, slack)
             name, wait, why = decide(edition, force)
             if wait > 90:   # should not happen; never loop
                 name, why = "none", "still not due after waiting"
