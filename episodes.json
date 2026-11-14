@@ -1,17 +1,6 @@
 {
   "episodes": [
     {
-      "file": "ai_2026-11-06_evening_1229.mp3",
-      "date": "2026-11-06",
-      "edition": "evening",
-      "title": "Evening - 6 Nov: OpenAI's Linux Kernel Hardening: Cutting Attack Paths at the Source",
-      "published": "2026-11-06T12:29:04.795540+05:30",
-      "pubDate": "Fri, 06 Nov 2026 12:29:04 +0530",
-      "size": 7999278,
-      "duration": 999,
-      "description": "Evening edition - Friday, 6 November 2026\nSoftware supply-chain hardening at the kernel level; a gene-therapy safety signal that tests pharmacovigilance and manufacturing oversight.\n\n00:26  OpenAI's Linux Kernel Hardening: Cutting Attack Paths at the Source\n07:55  Gene Therapy Safety Signal: Tumors After Zolgensma Treatment\n\nPuzzles: The Thousand-Airlock Cleanroom, The Bet: Universal Integration Screening - puzzles, quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nWritten by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (175 threads)"
-    },
-    {
       "file": "ai_2026-11-07_morning_1142.mp3",
       "date": "2026-11-07",
       "edition": "morning",
@@ -120,6 +109,17 @@
       "size": 7940477,
       "duration": 992,
       "description": "Evening edition - Friday, 13 November 2026\nAI influence on prescribing and a blood test for pre-cancerous ovarian disease\n\n00:33  Drug ads change what AI chatbots recommend\n10:05  A blood test that flags ovarian cancer before a tumour forms\n\nPuzzles: Today's puzzle, The Test That Cries Wolf - puzzles, quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nWritten by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (175 threads)"
+    },
+    {
+      "file": "ai_2026-11-14_morning_0600.mp3",
+      "date": "2026-11-14",
+      "edition": "morning",
+      "title": "Morning - 14 Nov: The Small Codebase That Changed How We Run Artificial Intelligence",
+      "published": "2026-11-14T06:00:09.534442+05:30",
+      "pubDate": "Sat, 14 Nov 2026 06:00:09 +0530",
+      "size": 8259249,
+      "duration": 1032,
+      "description": "Morning edition - Saturday, 14 November 2026\nMoving from experimental prototypes to validated production systems, across deterministic local AI runtimes and nationwide public health rollouts.\n\n00:28  The Small Codebase That Changed How We Run Artificial Intelligence\n08:03  How a Mothers Vaccine Shielded Danish Babies From Severe Illness\n\nPlay \"The Lathe That Runs AI\", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-14_morning_0600.mp3\nWritten by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (174 threads)"
     }
   ],
   "memory": [
@@ -1785,33 +1785,32 @@
         "ai-company-updates",
         "cancer-vaccines-and-immunotherapy"
       ]
+    },
+    {
+      "label": "Saturday 14 Nov morning",
+      "date": "2026-11-14",
+      "edition": "morning",
+      "published": "2026-11-14T06:00:09.534442+05:30",
+      "file": "ai_2026-11-14_morning_0600.mp3",
+      "writer": "nemotron-3-ultra-550b-a55b (free)",
+      "voices": "Fish Audio (free)",
+      "summary": "The episode explains how llama.cpp’s version 1.0 turns local AI inference into a deterministic, auditable runtime suitable for regulated environments. It then details Denmark’s nationwide maternal RSV vaccination program, showing how a 72 % uptake produced a 75 % drop in infant hospitalizations. Both stories are framed as engineering validation problems, linking software change control and vaccine pharmacokinetics to formal design‑history requirements.",
+      "threads": [
+        "Enterprise adoption and change‑control of llama.cpp 1.0",
+        "Long‑term durability of maternal RSV antibody protection",
+        "Cost‑effectiveness of maternal vaccination versus infant monoclonal antibodies"
+      ],
+      "segments": [
+        "The Small Codebase That Changed How We Run Artificial Intelligence",
+        "How a Mothers Vaccine Shielded Danish Babies From Severe Illness"
+      ],
+      "deep_topic": "",
+      "topics": [
+        "local-llms"
+      ]
     }
   ],
   "seen": [
-    {
-      "date": "2026-10-23",
-      "link": "https://www.reddit.com/r/biotech/comments/1xcwbk6/modernamercks_melanoma_vaccine_shows_42_reduction/"
-    },
-    {
-      "date": "2026-10-23",
-      "link": "https://www.reuters.com/legal/litigation/merckmoderna-cancer-vaccine-cuts-risk-death-or-recurrence-melanoma-by-over-40-2026-10-22/"
-    },
-    {
-      "date": "2026-10-23",
-      "link": "https://www.reddit.com/r/medicine/comments/1xcvgxi/microsofts_sequential_diagnosis_with_language/"
-    },
-    {
-      "date": "2026-10-23",
-      "link": "https://www.reddit.com/r/LocalLLM/comments/1xclfjf/i_made_my_local_llm_start_thinking_while_im_still/"
-    },
-    {
-      "date": "2026-10-23",
-      "link": "https://www.reddit.com/r/science/comments/1xcnye8/in_retrospective_clinic_notes_large_language/"
-    },
-    {
-      "date": "2026-10-23",
-      "link": "https://ai.nejm.org/doi/full/10.1056/AIoa2600537"
-    },
     {
       "date": "2026-10-24",
       "link": "https://www.reddit.com/r/science/comments/1xdgoe9/about_1_in_7_us_adults_starting_semaglutide_were/"
@@ -2603,6 +2602,18 @@
     {
       "date": "2026-11-13",
       "link": "https://www.theguardian.com/society/2026/nov/11/ovarian-cancer-study-early-detection-blood"
+    },
+    {
+      "date": "2026-11-14",
+      "link": "https://www.reddit.com/r/science/comments/1xv5kf0/denmark_began_offering_pregnant_women_an_rsv/"
+    },
+    {
+      "date": "2026-11-14",
+      "link": "https://www.nature.com/articles/d41586-026-03573-3"
+    },
+    {
+      "date": "2026-11-14",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1xv8t2e/llamacpp_v10_is_here/"
     }
   ],
   "feedback": [
@@ -2975,171 +2986,6 @@
   ],
   "or_spend": [],
   "free_log": [
-    "2026-11-12T07:25:03.963498+00:00",
-    "2026-11-12T07:25:10.389263+00:00",
-    "2026-11-12T07:25:13.852715+00:00",
-    "2026-11-12T07:25:21.530229+00:00",
-    "2026-11-12T07:25:22.449375+00:00",
-    "2026-11-12T07:25:24.253903+00:00",
-    "2026-11-12T07:25:30.792176+00:00",
-    "2026-11-12T07:25:35.251699+00:00",
-    "2026-11-12T07:25:51.270811+00:00",
-    "2026-11-12T07:25:54.546214+00:00",
-    "2026-11-12T07:25:56.672415+00:00",
-    "2026-11-12T07:25:59.771180+00:00",
-    "2026-11-12T07:26:11.645803+00:00",
-    "2026-11-12T07:26:14.174026+00:00",
-    "2026-11-12T07:26:17.103801+00:00",
-    "2026-11-12T07:26:28.715504+00:00",
-    "2026-11-12T07:26:40.410388+00:00",
-    "2026-11-12T07:26:42.661200+00:00",
-    "2026-11-12T07:26:51.160140+00:00",
-    "2026-11-12T07:26:55.399491+00:00",
-    "2026-11-12T07:26:59.722130+00:00",
-    "2026-11-12T07:27:11.759417+00:00",
-    "2026-11-12T07:27:18.660839+00:00",
-    "2026-11-12T07:27:19.887851+00:00",
-    "2026-11-12T07:27:20.745511+00:00",
-    "2026-11-12T07:27:25.393086+00:00",
-    "2026-11-12T07:27:29.654077+00:00",
-    "2026-11-12T07:27:31.732681+00:00",
-    "2026-11-12T07:27:47.557714+00:00",
-    "2026-11-12T07:27:53.795637+00:00",
-    "2026-11-12T07:27:56.548121+00:00",
-    "2026-11-12T07:27:59.409077+00:00",
-    "2026-11-12T07:28:01.422124+00:00",
-    "2026-11-12T07:28:03.129255+00:00",
-    "2026-11-12T07:28:10.144335+00:00",
-    "2026-11-12T07:28:21.898498+00:00",
-    "2026-11-12T07:28:22.403907+00:00",
-    "2026-11-12T07:28:32.351900+00:00",
-    "2026-11-12T07:28:36.112408+00:00",
-    "2026-11-12T07:28:43.726900+00:00",
-    "2026-11-12T07:28:45.085419+00:00",
-    "2026-11-12T07:28:52.589253+00:00",
-    "2026-11-12T07:28:56.556932+00:00",
-    "2026-11-12T07:29:01.228454+00:00",
-    "2026-11-12T07:29:01.415900+00:00",
-    "2026-11-12T07:29:05.902155+00:00",
-    "2026-11-12T07:29:12.853204+00:00",
-    "2026-11-12T07:29:23.622285+00:00",
-    "2026-11-12T07:29:24.971049+00:00",
-    "2026-11-12T07:29:28.035016+00:00",
-    "2026-11-12T07:29:30.334512+00:00",
-    "2026-11-12T07:29:37.276036+00:00",
-    "2026-11-12T07:29:42.691892+00:00",
-    "2026-11-12T07:29:45.539170+00:00",
-    "2026-11-12T07:29:51.196935+00:00",
-    "2026-11-12T07:29:57.950779+00:00",
-    "2026-11-12T07:30:15.340497+00:00",
-    "2026-11-12T07:30:52.396014+00:00",
-    "2026-11-12T07:35:11.021193+00:00",
-    "2026-11-12T07:36:08.680616+00:00",
-    "2026-11-12T07:36:47.628621+00:00",
-    "2026-11-12T07:37:40.167305+00:00",
-    "2026-11-12T07:38:15.031913+00:00",
-    "2026-11-12T07:39:01.062189+00:00",
-    "2026-11-12T07:39:17.675447+00:00",
-    "2026-11-12T07:40:24.771579+00:00",
-    "2026-11-12T07:41:06.544218+00:00",
-    "2026-11-12T07:41:45.720852+00:00",
-    "2026-11-12T07:44:27.452839+00:00",
-    "2026-11-12T07:44:44.088456+00:00",
-    "2026-11-12T07:44:46.520890+00:00",
-    "2026-11-12T07:44:51.912483+00:00",
-    "2026-11-12T07:44:56.221226+00:00",
-    "2026-11-12T07:44:59.400483+00:00",
-    "2026-11-12T07:45:03.660306+00:00",
-    "2026-11-12T07:45:03.682041+00:00",
-    "2026-11-12T07:45:09.660288+00:00",
-    "2026-11-12T07:45:10.545343+00:00",
-    "2026-11-12T07:45:17.884286+00:00",
-    "2026-11-12T07:45:20.603327+00:00",
-    "2026-11-12T07:45:23.939776+00:00",
-    "2026-11-12T07:45:25.332015+00:00",
-    "2026-11-12T07:45:27.856792+00:00",
-    "2026-11-12T07:45:28.770569+00:00",
-    "2026-11-12T07:45:37.649570+00:00",
-    "2026-11-12T07:45:38.512878+00:00",
-    "2026-11-12T07:45:39.698573+00:00",
-    "2026-11-12T07:45:40.012988+00:00",
-    "2026-11-12T07:45:43.516204+00:00",
-    "2026-11-12T07:45:47.692168+00:00",
-    "2026-11-12T07:45:50.544303+00:00",
-    "2026-11-12T07:45:55.339108+00:00",
-    "2026-11-12T07:45:58.934957+00:00",
-    "2026-11-12T07:46:00.548477+00:00",
-    "2026-11-12T07:46:11.772290+00:00",
-    "2026-11-12T07:46:12.132518+00:00",
-    "2026-11-12T07:46:14.811588+00:00",
-    "2026-11-12T07:46:18.587120+00:00",
-    "2026-11-12T07:46:23.006196+00:00",
-    "2026-11-12T07:46:26.149209+00:00",
-    "2026-11-12T07:46:27.215232+00:00",
-    "2026-11-12T07:46:35.492195+00:00",
-    "2026-11-12T07:46:35.836568+00:00",
-    "2026-11-12T07:46:41.694415+00:00",
-    "2026-11-12T07:46:42.552061+00:00",
-    "2026-11-12T07:46:47.289465+00:00",
-    "2026-11-12T07:46:50.409754+00:00",
-    "2026-11-12T07:46:53.419077+00:00",
-    "2026-11-12T07:46:57.571757+00:00",
-    "2026-11-12T07:47:05.810246+00:00",
-    "2026-11-12T07:47:06.062176+00:00",
-    "2026-11-12T07:47:07.169448+00:00",
-    "2026-11-12T07:47:20.239644+00:00",
-    "2026-11-12T07:47:20.483630+00:00",
-    "2026-11-12T07:47:26.257397+00:00",
-    "2026-11-12T07:47:30.436973+00:00",
-    "2026-11-12T07:47:33.108037+00:00",
-    "2026-11-12T07:47:33.982989+00:00",
-    "2026-11-12T07:47:40.011115+00:00",
-    "2026-11-12T07:47:40.141576+00:00",
-    "2026-11-12T07:47:43.691658+00:00",
-    "2026-11-12T07:47:45.712698+00:00",
-    "2026-11-12T07:47:46.520435+00:00",
-    "2026-11-12T07:47:51.735664+00:00",
-    "2026-11-12T07:47:54.538055+00:00",
-    "2026-11-12T07:47:58.739224+00:00",
-    "2026-11-12T07:47:59.180008+00:00",
-    "2026-11-12T07:48:08.646968+00:00",
-    "2026-11-12T07:48:13.752783+00:00",
-    "2026-11-12T07:48:15.130393+00:00",
-    "2026-11-12T07:48:18.025817+00:00",
-    "2026-11-12T07:48:19.464903+00:00",
-    "2026-11-12T07:48:20.897959+00:00",
-    "2026-11-12T07:48:25.407691+00:00",
-    "2026-11-12T07:48:29.564983+00:00",
-    "2026-11-12T07:48:32.345058+00:00",
-    "2026-11-12T07:48:39.455520+00:00",
-    "2026-11-12T07:48:41.386527+00:00",
-    "2026-11-12T07:48:43.322655+00:00",
-    "2026-11-12T07:48:46.202893+00:00",
-    "2026-11-12T07:48:46.576939+00:00",
-    "2026-11-12T07:48:54.614945+00:00",
-    "2026-11-12T07:48:57.520889+00:00",
-    "2026-11-12T07:49:00.756038+00:00",
-    "2026-11-12T07:49:05.623957+00:00",
-    "2026-11-12T07:49:08.289085+00:00",
-    "2026-11-12T07:49:09.810720+00:00",
-    "2026-11-12T07:49:18.467432+00:00",
-    "2026-11-12T07:49:21.712525+00:00",
-    "2026-11-12T07:49:25.688232+00:00",
-    "2026-11-12T07:49:26.100109+00:00",
-    "2026-11-12T07:49:27.967605+00:00",
-    "2026-11-12T07:49:31.821196+00:00",
-    "2026-11-12T07:49:39.834961+00:00",
-    "2026-11-12T07:49:40.409858+00:00",
-    "2026-11-12T07:49:42.826081+00:00",
-    "2026-11-12T07:49:46.418310+00:00",
-    "2026-11-12T07:49:51.184501+00:00",
-    "2026-11-12T07:49:53.767912+00:00",
-    "2026-11-12T07:49:58.252657+00:00",
-    "2026-11-12T07:49:58.679584+00:00",
-    "2026-11-12T07:50:00.562497+00:00",
-    "2026-11-12T07:50:05.832487+00:00",
-    "2026-11-12T07:50:06.561809+00:00",
-    "2026-11-12T07:50:08.845701+00:00",
     "2026-11-13T06:56:43.070365+00:00",
     "2026-11-13T06:56:47.544745+00:00",
     "2026-11-13T06:56:52.713994+00:00",
@@ -3306,16 +3152,191 @@
     "2026-11-13T07:27:33.138846+00:00",
     "2026-11-13T07:27:34.518804+00:00",
     "2026-11-13T07:27:39.431398+00:00",
-    "2026-11-13T07:27:39.814567+00:00"
+    "2026-11-13T07:27:39.814567+00:00",
+    "2026-11-14T00:30:10.487262+00:00",
+    "2026-11-14T00:30:13.302305+00:00",
+    "2026-11-14T00:30:16.523679+00:00",
+    "2026-11-14T00:30:19.742081+00:00",
+    "2026-11-14T00:30:22.910388+00:00",
+    "2026-11-14T00:30:26.071611+00:00",
+    "2026-11-14T00:30:29.258571+00:00",
+    "2026-11-14T00:30:32.509466+00:00",
+    "2026-11-14T00:30:35.700881+00:00",
+    "2026-11-14T00:30:38.873183+00:00",
+    "2026-11-14T00:30:43.312467+00:00",
+    "2026-11-14T00:30:45.267098+00:00",
+    "2026-11-14T00:30:48.463885+00:00",
+    "2026-11-14T00:30:51.657043+00:00",
+    "2026-11-14T00:30:54.886210+00:00",
+    "2026-11-14T00:30:58.826626+00:00",
+    "2026-11-14T00:31:01.283503+00:00",
+    "2026-11-14T00:31:04.525993+00:00",
+    "2026-11-14T00:31:07.650344+00:00",
+    "2026-11-14T00:31:10.882056+00:00",
+    "2026-11-14T00:31:14.063085+00:00",
+    "2026-11-14T00:31:17.329050+00:00",
+    "2026-11-14T00:31:20.487180+00:00",
+    "2026-11-14T00:31:23.685051+00:00",
+    "2026-11-14T00:31:26.863208+00:00",
+    "2026-11-14T00:31:30.065344+00:00",
+    "2026-11-14T00:31:33.266791+00:00",
+    "2026-11-14T00:31:36.454098+00:00",
+    "2026-11-14T00:31:39.702701+00:00",
+    "2026-11-14T00:31:42.855835+00:00",
+    "2026-11-14T00:31:46.215534+00:00",
+    "2026-11-14T00:31:49.268328+00:00",
+    "2026-11-14T00:31:52.470349+00:00",
+    "2026-11-14T00:31:55.700621+00:00",
+    "2026-11-14T00:31:58.898520+00:00",
+    "2026-11-14T00:32:02.100125+00:00",
+    "2026-11-14T00:32:05.261084+00:00",
+    "2026-11-14T00:32:08.461602+00:00",
+    "2026-11-14T00:32:11.758949+00:00",
+    "2026-11-14T00:32:18.088828+00:00",
+    "2026-11-14T00:32:21.331318+00:00",
+    "2026-11-14T00:32:22.482594+00:00",
+    "2026-11-14T00:32:24.490537+00:00",
+    "2026-11-14T00:32:27.671113+00:00",
+    "2026-11-14T00:32:30.877632+00:00",
+    "2026-11-14T00:32:34.089288+00:00",
+    "2026-11-14T00:32:37.260245+00:00",
+    "2026-11-14T00:32:40.465594+00:00",
+    "2026-11-14T00:32:43.667102+00:00",
+    "2026-11-14T00:32:46.896669+00:00",
+    "2026-11-14T00:32:50.053863+00:00",
+    "2026-11-14T00:32:53.289466+00:00",
+    "2026-11-14T00:32:56.463965+00:00",
+    "2026-11-14T00:32:59.728878+00:00",
+    "2026-11-14T00:33:02.866686+00:00",
+    "2026-11-14T00:33:06.088417+00:00",
+    "2026-11-14T00:33:09.277842+00:00",
+    "2026-11-14T00:33:12.498827+00:00",
+    "2026-11-14T00:33:15.693178+00:00",
+    "2026-11-14T00:33:18.873188+00:00",
+    "2026-11-14T00:33:22.075512+00:00",
+    "2026-11-14T00:33:25.267714+00:00",
+    "2026-11-14T00:33:28.522179+00:00",
+    "2026-11-14T00:33:31.707317+00:00",
+    "2026-11-14T00:33:34.868680+00:00",
+    "2026-11-14T00:33:38.088508+00:00",
+    "2026-11-14T00:33:41.282468+00:00",
+    "2026-11-14T00:33:44.493039+00:00",
+    "2026-11-14T00:33:47.680843+00:00",
+    "2026-11-14T00:33:50.873810+00:00",
+    "2026-11-14T00:49:25.383534+00:00",
+    "2026-11-14T00:54:58.101682+00:00",
+    "2026-11-14T00:55:47.326896+00:00",
+    "2026-11-14T00:57:29.381894+00:00",
+    "2026-11-14T00:57:29.625473+00:00",
+    "2026-11-14T00:57:32.796333+00:00",
+    "2026-11-14T00:57:36.023237+00:00",
+    "2026-11-14T00:58:25.954199+00:00",
+    "2026-11-14T01:01:29.140941+00:00",
+    "2026-11-14T01:01:37.405839+00:00",
+    "2026-11-14T01:04:57.826599+00:00",
+    "2026-11-14T01:06:15.027015+00:00",
+    "2026-11-14T01:08:07.123761+00:00",
+    "2026-11-14T01:08:09.356976+00:00",
+    "2026-11-14T01:08:15.215165+00:00",
+    "2026-11-14T01:08:17.898723+00:00",
+    "2026-11-14T01:08:20.427685+00:00",
+    "2026-11-14T01:08:25.292740+00:00",
+    "2026-11-14T01:08:27.811008+00:00",
+    "2026-11-14T01:08:38.456628+00:00",
+    "2026-11-14T01:08:40.500269+00:00",
+    "2026-11-14T01:08:44.462340+00:00",
+    "2026-11-14T01:08:44.972523+00:00",
+    "2026-11-14T01:08:51.731020+00:00",
+    "2026-11-14T01:08:51.738068+00:00",
+    "2026-11-14T01:08:53.572828+00:00",
+    "2026-11-14T01:08:58.962953+00:00",
+    "2026-11-14T01:09:00.958285+00:00",
+    "2026-11-14T01:09:04.540198+00:00",
+    "2026-11-14T01:09:09.302594+00:00",
+    "2026-11-14T01:09:11.947395+00:00",
+    "2026-11-14T01:09:14.655700+00:00",
+    "2026-11-14T01:09:17.573143+00:00",
+    "2026-11-14T01:09:18.381288+00:00",
+    "2026-11-14T01:09:27.105640+00:00",
+    "2026-11-14T01:09:28.253101+00:00",
+    "2026-11-14T01:09:39.128103+00:00",
+    "2026-11-14T01:09:39.471308+00:00",
+    "2026-11-14T01:09:44.635052+00:00",
+    "2026-11-14T01:09:44.651809+00:00",
+    "2026-11-14T01:09:49.830831+00:00",
+    "2026-11-14T01:09:51.213671+00:00",
+    "2026-11-14T01:09:55.637426+00:00",
+    "2026-11-14T01:09:56.375570+00:00",
+    "2026-11-14T01:10:01.856263+00:00",
+    "2026-11-14T01:10:03.846132+00:00",
+    "2026-11-14T01:10:08.842334+00:00",
+    "2026-11-14T01:10:08.916903+00:00",
+    "2026-11-14T01:10:12.455778+00:00",
+    "2026-11-14T01:10:20.192325+00:00",
+    "2026-11-14T01:10:20.630280+00:00",
+    "2026-11-14T01:10:26.788485+00:00",
+    "2026-11-14T01:10:30.451479+00:00",
+    "2026-11-14T01:10:30.943748+00:00",
+    "2026-11-14T01:10:35.098972+00:00",
+    "2026-11-14T01:10:35.692340+00:00",
+    "2026-11-14T01:10:35.990878+00:00",
+    "2026-11-14T01:10:41.519324+00:00",
+    "2026-11-14T01:10:41.573911+00:00",
+    "2026-11-14T01:10:46.716598+00:00",
+    "2026-11-14T01:10:51.308383+00:00",
+    "2026-11-14T01:10:54.811932+00:00",
+    "2026-11-14T01:10:59.987059+00:00",
+    "2026-11-14T01:11:06.653962+00:00",
+    "2026-11-14T01:11:08.349489+00:00",
+    "2026-11-14T01:11:14.115944+00:00",
+    "2026-11-14T01:11:15.307970+00:00",
+    "2026-11-14T01:11:19.429099+00:00",
+    "2026-11-14T01:11:21.475949+00:00",
+    "2026-11-14T01:11:24.485139+00:00",
+    "2026-11-14T01:11:27.073130+00:00",
+    "2026-11-14T01:11:33.182456+00:00",
+    "2026-11-14T01:11:35.174350+00:00",
+    "2026-11-14T01:11:36.746386+00:00",
+    "2026-11-14T01:11:43.348349+00:00",
+    "2026-11-14T01:11:43.608569+00:00",
+    "2026-11-14T01:11:46.400276+00:00",
+    "2026-11-14T01:11:51.239028+00:00",
+    "2026-11-14T01:11:54.037811+00:00",
+    "2026-11-14T01:11:58.566705+00:00",
+    "2026-11-14T01:12:00.789237+00:00",
+    "2026-11-14T01:12:05.374384+00:00",
+    "2026-11-14T01:12:12.905294+00:00",
+    "2026-11-14T01:12:14.340497+00:00",
+    "2026-11-14T01:12:15.242680+00:00",
+    "2026-11-14T01:12:17.982627+00:00",
+    "2026-11-14T01:12:24.782324+00:00",
+    "2026-11-14T01:12:25.829570+00:00",
+    "2026-11-14T01:12:29.177554+00:00",
+    "2026-11-14T01:12:37.555444+00:00",
+    "2026-11-14T01:12:40.324366+00:00",
+    "2026-11-14T01:12:42.605421+00:00",
+    "2026-11-14T01:12:46.741465+00:00",
+    "2026-11-14T01:12:48.628631+00:00",
+    "2026-11-14T01:12:52.095714+00:00",
+    "2026-11-14T01:12:56.658199+00:00",
+    "2026-11-14T01:12:57.879038+00:00",
+    "2026-11-14T01:13:01.563901+00:00",
+    "2026-11-14T01:13:02.465492+00:00",
+    "2026-11-14T01:13:06.116464+00:00",
+    "2026-11-14T01:13:10.357593+00:00",
+    "2026-11-14T01:13:14.331785+00:00",
+    "2026-11-14T01:13:17.602486+00:00",
+    "2026-11-14T01:13:20.915946+00:00",
+    "2026-11-14T01:13:23.977870+00:00",
+    "2026-11-14T01:13:24.949570+00:00",
+    "2026-11-14T01:13:29.218578+00:00",
+    "2026-11-14T01:13:31.102645+00:00",
+    "2026-11-14T01:13:33.406179+00:00",
+    "2026-11-14T01:13:36.912402+00:00"
   ],
   "free_day_out": "",
   "pace_adjust": 0.0,
   "lesson_log": [
-    {
-      "date": "2026-11-04",
-      "title": "Why Your Three-GPU Wall Hits a Wall",
-      "template": "bottleneck"
-    },
     {
       "date": "2026-11-04",
       "title": "The 60-Second Heartbeat Nobody Designed",
@@ -3460,8 +3481,28 @@
       "date": "2026-11-13",
       "title": "The Test That Cries Wolf",
       "template": ""
+    },
+    {
+      "title": "The Lathe That Runs AI",
+      "template": "",
+      "formats": [
+        "clues",
+        "sequence"
+      ],
+      "theme": "audit",
+      "date": "2026-11-14"
     }
   ],
+  "model_health": {
+    "apodex/apodex-1.1-mini:free": {
+      "n": 1,
+      "until": "2026-11-14T07:14:05.078591+00:00"
+    },
+    "gemini-3.7-flash": {
+      "n": 1,
+      "until": "2026-11-14T07:14:05.078591+00:00"
+    }
+  },
   "topics": {
     "anthropic-claude-models": {
       "name": "Anthropic Claude Models",
@@ -4336,7 +4377,8 @@
         "2026-11-10",
         "2026-11-11",
         "2026-11-12",
-        "2026-11-13"
+        "2026-11-13",
+        "2026-11-14"
       ],
       "subs": [
         "AgentsOfAI",
@@ -4355,22 +4397,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 175,
+      "mentions": 177,
       "refs": [
-        {
-          "date": "2026-11-10",
-          "title": "I built an MCP with Claude Code that lets Claude play PC games in the background. Here it is driving, flying a heli and walking in GTA on its own",
-          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xr3gbs/i_built_an_mcp_with_claude_code_that_lets_claude/",
-          "link": "",
-          "comment": ""
-        },
-        {
-          "date": "2026-11-10",
-          "title": "I used Claude Code to rebuild IDM as a free, open-source download manager, the ArtCraft way. Mister Download Manager, in Rust, 0.5 just shipped",
-          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xqy0s6/i_used_claude_code_to_rebuild_idm_as_a_free/",
-          "link": "",
-          "comment": ""
-        },
         {
           "date": "2026-11-10",
           "title": "DeepSeek V4.1 Flash used REA to reverse-engineer a 1984 DOS game and rebuild it for Chrome, for $0.68",
@@ -4454,10 +4482,24 @@
           "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xul18m/my_game_got_removed_from_gamedev_subs_for_using/",
           "link": "",
           "comment": ""
+        },
+        {
+          "date": "2026-11-14",
+          "title": "10 years of Postgres expertise and the agent knows it better now",
+          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xv6v7h/10_years_of_postgres_expertise_and_the_agent/",
+          "link": "",
+          "comment": "https://preview.redd.it/1y8sfrbwmd1i1.png?width=584&format=png&auto=webp&s=b18f21485201ad2cbec827ed70ecc6547774ca2f"
+        },
+        {
+          "date": "2026-11-14",
+          "title": "My game got removed from gamedev subs for using AI, so here’s exactly how I made it with Claude",
+          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xul18m/my_game_got_removed_from_gamedev_subs_for_using/",
+          "link": "",
+          "comment": "TL;DR of the discussion generated automatically after 200 comments. The overwhelming consensus is that the gamedev subs that booted OP are clueless and gatekeeping. The community is firmly on OP's side, arguing that AI is a tool and the final product is what matters. If the game isn't \"slop,\" who ca"
         }
       ],
       "deep_dive": "2026-10-18",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-14",
       "subject": "ai"
     },
     "ai-benchmarks": {
@@ -4614,7 +4656,8 @@
         "2026-11-06",
         "2026-11-07",
         "2026-11-10",
-        "2026-11-12"
+        "2026-11-12",
+        "2026-11-14"
       ],
       "subs": [
         "AI_Agents",
@@ -4629,15 +4672,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 78,
+      "mentions": 79,
       "refs": [
-        {
-          "date": "2026-11-02",
-          "title": "Experimental AMO PhD is spending 3-4 years building the setup worth it?",
-          "thread": "https://www.reddit.com/r/Physics/comments/1xkxia2/experimental_amo_phd_is_spending_34_years/",
-          "link": "",
-          "comment": "3-4 could easily be 6-8. Also, there really isn't enough information to accurately answer this. Is the professor tenured? If not, how close? That matters because there could be a chance you'd be out of an advisor and nothing to show for it. How many papers can you reasonably expect along the way? Ta"
-        },
         {
           "date": "2026-11-02",
           "title": "4 Strix Halo boxes! Finally joined local AI",
@@ -4728,10 +4764,17 @@
           "thread": "https://www.reddit.com/r/artificial/comments/1xtbbsx/gpu_companies_built_everything_on_the_back_of/",
           "link": "",
           "comment": ""
+        },
+        {
+          "date": "2026-11-14",
+          "title": "llama.cpp v1.0 is here 🦙",
+          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xv8t2e/llamacpp_v10_is_here/",
+          "link": "",
+          "comment": "Please add more maintainers to the project, there is literally a ton of open issues and PRs"
         }
       ],
       "deep_dive": "2026-11-01",
-      "last_seen": "2026-11-12",
+      "last_seen": "2026-11-14",
       "subject": "ai"
     },
     "openai-company-updates": {
@@ -5999,6 +6042,96 @@
       "deep_dive": "",
       "subject": "ai",
       "last_seen": "2026-11-13"
+    },
+    "microsoft-cloud-outages": {
+      "name": "Microsoft Cloud Outages",
+      "first_seen": "2026-11-14",
+      "days": [
+        "2026-11-14"
+      ],
+      "subs": [
+        "antiai",
+        "technology"
+      ],
+      "mentions": 5,
+      "refs": [
+        {
+          "date": "2026-11-14",
+          "title": "Microsoft says attempts to fix global outage not going 'as expected'",
+          "thread": "https://www.reddit.com/r/antiai/comments/1xuz879/microsoft_says_attempts_to_fix_global_outage_not/",
+          "link": "https://www.bbc.com/news/live/cq5y10ge3dp3t",
+          "comment": "They def had AI write so much important stuff no one knows how to fix it, since no one knows how it works to begin with."
+        },
+        {
+          "date": "2026-11-14",
+          "title": "Microsoft's massive M365 outage stretches past 15 hours as its fixes keep failing",
+          "thread": "https://www.reddit.com/r/technology/comments/1xv6c5l/microsofts_massive_m365_outage_stretches_past_15/",
+          "link": "https://www.theregister.com/saas/2026/11/13/microsofts-massive-m365-outage-stretches-past-15-hours-as-its-fixes-keep-failing/5309609",
+          "comment": "Weekend is almost here. Just another 8-hours of downtime."
+        },
+        {
+          "date": "2026-11-14",
+          "title": "Massive Microsoft 365 outage disrupts Outlook, Teams, Copilot worldwide",
+          "thread": "https://www.reddit.com/r/technology/comments/1xusd3p/massive_microsoft_365_outage_disrupts_outlook/",
+          "link": "https://www.bleepingcomputer.com/news/microsoft/massive-microsoft-365-outage-disrupts-outlook-teams-copilot-worldwide/",
+          "comment": "The report I read (below) said it is affecting ~130k users. That cannot be accurate. I work for an international company and all regions are currently without Outlook. ( https://www.theguardian.com/technology/2026/nov/13/microsoft-outage-outlook-teams-word-excel-reports )"
+        },
+        {
+          "date": "2026-11-14",
+          "title": "Microsoft struggling to restore service as global outage affects Outlook and Teams",
+          "thread": "https://www.reddit.com/r/technology/comments/1xuwsip/microsoft_struggling_to_restore_service_as_global/",
+          "link": "https://www.bbc.com/news/articles/c5gm3g9ldz8xo",
+          "comment": "But surely AI can solve this? After trillions of dollars in AI this has gotta be easy right?"
+        },
+        {
+          "date": "2026-11-14",
+          "title": "Microsoft Outage",
+          "thread": "https://www.reddit.com/r/antiai/comments/1xuyeam/microsoft_outage/",
+          "link": "",
+          "comment": "Everyone who championed vibe coding and celebrity tech CEOs deserve everything they're getting right now. This is the future you wanted; where no one knows how to fix anything and entire companies nose dive because the person at the top couldn't keep their dick in their pants."
+        }
+      ],
+      "deep_dive": "",
+      "subject": "ai",
+      "last_seen": "2026-11-14"
+    },
+    "nvidia-leadership-dispute": {
+      "name": "Nvidia Leadership and Governance",
+      "first_seen": "2026-11-14",
+      "days": [
+        "2026-11-14"
+      ],
+      "subs": [
+        "LocalLLaMA",
+        "technology"
+      ],
+      "mentions": 3,
+      "refs": [
+        {
+          "date": "2026-11-14",
+          "title": "‘Bring Back THE Boss’: Nvidia Employees Petition for Jensen Huang’s Return",
+          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xuxxmb/bring_back_the_boss_nvidia_employees_petition_for/",
+          "link": "https://www.wired.com/story/nvidia-employees-petition-for-jensen-huangs-return/?utm_brand=wired&utm_social-type=owned&utm_source=twitter&utm_medium=social&utm_campaign=aud-dev",
+          "comment": "Love him or hate him he's proven himself a capable leader by founding Nvidia, saving it from the brink of disaster and making in the leader of gaming graphics, then turning it into the company that makes the technology underpinning a new world revolution. It will be pretty hard to find that pedigree"
+        },
+        {
+          "date": "2026-11-14",
+          "title": "‘Broken and shattered’ Nvidia CEO Jensen Huang surrendered during resignation meeting, report claims — thousands of employees rally, calling for reinstatement on internal forum",
+          "thread": "https://www.reddit.com/r/technology/comments/1xv8ixq/broken_and_shattered_nvidia_ceo_jensen_huang/",
+          "link": "https://www.tomshardware.com/tech-industry/broken-and-shattered-nvidia-ceo-jensen-huang-surrendered-during-resignation-meeting-report-claims-thousands-of-employees-rally-calling-for-reinstatement-on-internal-forum",
+          "comment": "A lot of NVIDIA bag holders in this thread trying to make this thing about affairs, which is at best an ignorant and wilfully duplicitous reading of why he had to go."
+        },
+        {
+          "date": "2026-11-14",
+          "title": "‘I’m a Piece of Sh--’: Jensen Huang’s Last Hours as Nvidia CEO",
+          "thread": "https://www.reddit.com/r/technology/comments/1xux28w/im_a_piece_of_sh_jensen_huangs_last_hours_as/",
+          "link": "https://www.bloomberg.com/news/articles/2026-11-13/inside-jensen-huang-s-final-hours-as-the-ceo-of-nvidia",
+          "comment": "Your wife has been with you since day 1. Struggled with you. Help you. And be prosper with you. But the PP has to come out to others."
+        }
+      ],
+      "deep_dive": "",
+      "subject": "ai",
+      "last_seen": "2026-11-14"
     }
   }
 }

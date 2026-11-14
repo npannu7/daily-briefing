@@ -8,9 +8,25 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Fri, 13 Nov 2026 07:28:33 GMT</lastBuildDate>
+<lastBuildDate>Sat, 14 Nov 2026 01:14:05 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Morning - 14 Nov: The Small Codebase That Changed How We Run Artificial Intelligence</title>
+<description>Morning edition - Saturday, 14 November 2026
+Moving from experimental prototypes to validated production systems, across deterministic local AI runtimes and nationwide public health rollouts.
+
+00:28  The Small Codebase That Changed How We Run Artificial Intelligence
+08:03  How a Mothers Vaccine Shielded Danish Babies From Severe Illness
+
+Play "The Lathe That Runs AI", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-14_morning_0600.mp3
+Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (174 threads)</description>
+<pubDate>Sat, 14 Nov 2026 06:00:09 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-11-14_morning_0600.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-14_morning_0600.mp3" length="8259249" type="audio/mpeg"/>
+<itunes:duration>1032</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Evening - 13 Nov: Drug ads change what AI chatbots recommend</title>
 <description>Evening edition - Friday, 13 November 2026
@@ -181,22 +197,6 @@ Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Di
 <guid isPermaLink="false">ai_2026-11-07_morning_1142.mp3</guid>
 <enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-07_morning_1142.mp3" length="11073743" type="audio/mpeg"/>
 <itunes:duration>1384</itunes:duration>
-<itunes:episodeType>full</itunes:episodeType>
-</item>
-<item>
-<title>Evening - 6 Nov: OpenAI's Linux Kernel Hardening: Cutting Attack Paths at the Source</title>
-<description>Evening edition - Friday, 6 November 2026
-Software supply-chain hardening at the kernel level; a gene-therapy safety signal that tests pharmacovigilance and manufacturing oversight.
-
-00:26  OpenAI's Linux Kernel Hardening: Cutting Attack Paths at the Source
-07:55  Gene Therapy Safety Signal: Tumors After Zolgensma Treatment
-
-Puzzles: The Thousand-Airlock Cleanroom, The Bet: Universal Integration Screening - puzzles, quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
-Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (175 threads)</description>
-<pubDate>Fri, 06 Nov 2026 12:29:04 +0530</pubDate>
-<guid isPermaLink="false">ai_2026-11-06_evening_1229.mp3</guid>
-<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-06_evening_1229.mp3" length="7999278" type="audio/mpeg"/>
-<itunes:duration>999</itunes:duration>
 <itunes:episodeType>full</itunes:episodeType>
 </item>
 </channel>

@@ -2,7 +2,164 @@
  "show": "Weights & Measures",
  "listener": "Nikhil",
  "repo": "npannu7/daily-briefing",
+ "ready": {
+  "morning": "09:00",
+  "evening": "18:00"
+ },
+ "heard": {
+  "lines": [
+   {
+    "said": "\"Too technical\" in 3 of your last 6 ratings",
+    "did": "Stories that need specialist background are ranked lower when topics are picked."
+   }
+  ],
+  "last": "2026-11-05"
+ },
  "episodes": [
+  {
+   "file": "ai_2026-11-14_morning_0600.mp3",
+   "title": "Morning - 14 Nov: The Small Codebase That Changed How We Run Artificial Intelligence",
+   "label": "Saturday 14 Nov morning",
+   "date": "2026-11-14",
+   "edition": "morning",
+   "published": "2026-11-14T06:00:09.534442+05:30",
+   "duration": 1032,
+   "theme": "Moving from experimental prototypes to validated production systems, across deterministic local AI runtimes and nationwide public health rollouts.",
+   "writer": "nemotron-3-ultra-550b-a55b (free)",
+   "voices": "Fish Audio (free)",
+   "deep_dive": false,
+   "segments": [
+    {
+     "title": "The Small Codebase That Changed How We Run Artificial Intelligence",
+     "category": "concept"
+    },
+    {
+     "title": "How a Mothers Vaccine Shielded Danish Babies From Severe Illness",
+     "category": "thread"
+    }
+   ],
+   "play": {
+    "v": 2,
+    "theme": "audit",
+    "title": "The Lathe That Runs AI",
+    "brief": "You audit a claim: a C++ runtime makes AI deterministic enough for regulated use.",
+    "segments": [
+     {
+      "title": "The Small Codebase That Changed How We Run Artificial Intelligence",
+      "bet": null,
+      "rounds": [
+       {
+        "type": "clues",
+        "q": "What reserves one buffer at startup for all intermediate tensors?",
+        "clues": [
+         "No malloc calls after init; like a fixture plate",
+         "Holds attention scores, hidden states, KV cache together",
+         "Called 'scratchpad' in the blog; single contiguous block"
+        ],
+        "options": [
+         "Memory-mapped weights",
+         "Fixed scratchpad pool",
+         "Quantization lookup table",
+         "Semantic versioning contract"
+        ],
+        "answer": 1,
+        "why": "The blog describes a single contiguous buffer allocated once at initialization for all intermediate tensors — attention scores, hidden states, KV cache — eliminating dynamic allocation during inference."
+       }
+      ],
+      "takeaway": "Deterministic inference comes from fixed memory, integer math, and version promises — not from model size or speed."
+     },
+     {
+      "title": "How a Mothers Vaccine Shielded Danish Babies From Severe Illness",
+      "bet": {
+       "claim": "Antibodies cross the placenta by simple diffusion.",
+       "truth": false,
+       "why": "FcRn receptors actively pump IgG from mother to fetus; transfer accelerates exponentially in third trimester."
+      },
+      "rounds": [
+       {
+        "type": "sequence",
+        "q": "Order the steps from maternal vaccination to infant protection",
+        "items": [
+         "Mother receives Abrysvo at 32–36 weeks pregnant",
+         "Mother's immune system makes prefusion-F IgG antibodies",
+         "FcRn receptors actively pump IgG across placenta",
+         "Baby born with high antibody titer, protection wanes"
+        ],
+        "why": "Vaccine triggers maternal antibodies; placental pumps deliver them; infant protection follows first-order decay."
+       }
+      ],
+      "takeaway": "Vaccinate mother at 32 weeks; baby arrives with factory-sealed RSV warranty that expires in six months."
+     }
+    ],
+    "words": [
+     {
+      "term": "mmap",
+      "means": "OS loads only the model chunks your CPU actually touches"
+     },
+     {
+      "term": "scratchpad",
+      "means": "One pre-allocated buffer holding all temporary data during inference"
+     },
+     {
+      "term": "quantization",
+      "means": "Compressing 32-bit floats to 4-bit integers for speed and determinism"
+     },
+     {
+      "term": "semantic versioning",
+      "means": "Major version bump only when the programming interface breaks"
+     },
+     {
+      "term": "prefusion F",
+      "means": "viral fusion protein locked in its pre-attack shape"
+     },
+     {
+      "term": "FcRn",
+      "means": "receptor that actively shuttles maternal IgG across placenta"
+     },
+     {
+      "term": "nirsevimab",
+      "means": "infant monoclonal antibody with engineered 70-day half-life"
+     },
+     {
+      "term": "MATISSE",
+      "means": "trial testing maternal RSV vaccine in pregnancy"
+     }
+    ],
+    "chips": [
+     "More on deterministic runtimes",
+     "Go deeper on validation",
+     "Less maintainer drama",
+     "Show me the math"
+    ]
+   },
+   "quiz": [
+    {
+     "q": "Why does the pure C++ architecture of llama.cpp v1.0 make it attractive for regulated environments like medical device software compared to PyTorch?",
+     "options": [
+      "It relies on dynamic memory allocation and Python interpreters for faster iteration.",
+      "It eliminates non-deterministic behavior by avoiding garbage collection and heap allocations after initialization, using memory-mapped weights and integer arithmetic.",
+      "It relies heavily on floating-point reduction-order matching across diverse GPU architectures.",
+      "It requires a runtime GPU farm to guarantee bit-exact reduction results."
+     ],
+     "answer": 1,
+     "explain": "The episode explains that llama.cpp avoids dynamic memory allocation after startup, uses memory-mapped files, and uses associative integer arithmetic, making computations repeatable and auditable for a design-history file.",
+     "segment": "The Small Codebase That Changed How We Run Artificial Intelligence"
+    },
+    {
+     "q": "What engineering mechanism allows maternal IgG antibodies to effectively protect the fetus against pathogens like RSV?",
+     "options": [
+      "Passive leakage across the placental barrier driven purely by high maternal blood pressure.",
+      "Active transport by specialized neonatal Fc receptors (FcRn) that pump maternal IgG into fetal circulation during the third trimester.",
+      "Direct production of antibodies by the infant's own immature bone marrow stimulated by placental hormones.",
+      "Enzymatic cleavage of viral fusion proteins directly inside the maternal bloodstream."
+     ],
+     "answer": 1,
+     "explain": "Specialized neonatal Fc receptors (FcRn) act like cellular pumps that actively move IgG from maternal circulation into fetal circulation, especially ramping up in the third trimester.",
+     "segment": "How a Mothers Vaccine Shielded Danish Babies From Severe Illness"
+    }
+   ],
+   "transcript": "transcripts/ai_2026-11-14_morning_0600.txt"
+  },
   {
    "file": "ai_2026-11-13_evening_1226.mp3",
    "title": "Evening - 13 Nov: Drug ads change what AI chatbots recommend",
@@ -2943,276 +3100,6 @@
     }
    ],
    "transcript": "transcripts/ai_2026-11-07_morning_1142.txt"
-  },
-  {
-   "file": "ai_2026-11-06_evening_1229.mp3",
-   "title": "Evening - 6 Nov: OpenAI's Linux Kernel Hardening: Cutting Attack Paths at the Source",
-   "label": "Friday 06 Nov evening",
-   "date": "2026-11-06",
-   "edition": "evening",
-   "published": "2026-11-06T12:29:04.795540+05:30",
-   "duration": 999,
-   "theme": "Software supply-chain hardening at the kernel level; a gene-therapy safety signal that tests pharmacovigilance and manufacturing oversight.",
-   "writer": "nemotron-3-ultra-550b-a55b (free)",
-   "voices": "Fish Audio (free)",
-   "deep_dive": false,
-   "segments": [
-    {
-     "title": "OpenAI's Linux Kernel Hardening: Cutting Attack Paths at the Source",
-     "category": "thread"
-    },
-    {
-     "title": "Gene Therapy Safety Signal: Tumors After Zolgensma Treatment",
-     "category": "thread"
-    }
-   ],
-   "lessons": [
-    {
-     "title": "The Thousand-Airlock Cleanroom",
-     "segment": "OpenAI's Linux Kernel Hardening: Cutting Attack Paths at the Source",
-     "steps": [
-      {
-       "type": "concept",
-       "text": "This is rolled throughput yield — the same math that governs your multi-step sterilization or assembly lines. If each step has a 1% defect rate, a 100-step process yields 36% good units; a 1,000-step process yields 0.004%. In security, every syscall is a step that must *not* fail. The only fix: fewer steps. That's why OpenAI's 'thousand fewer paths' matters — but only if those syscalls are truly gone from the kernel you run.",
-       "example": "Your vial-filling line: 50 critical steps, each 99.9% reliable. Overall sterility assurance = 0.999^50 ≈ 95.1%. Drop to 30 steps? 97%. Every eliminated step compounds."
-      },
-      {
-       "type": "number",
-       "text": "Your medical device firmware has 200 syscalls in its seccomp allow-list. You audit and cut it to 50. If each syscall historically had a 0.5% chance of harboring a zero-day, what's the approximate factor by which you reduced the *expected* number of zero-days in the allow-list?",
-       "answer": 4.0,
-       "tolerance": 0.1,
-       "unit": "×",
-       "explain": "200 → 50 is a 4× reduction in expected zero-days. Linear in count, but remember: the *probability of zero zero-days* goes from 0.995^200 ≈ 37% to 0.995^50 ≈ 78%. That's the nonlinear win.",
-       "hint": "Expected zero-days = count × probability per syscall. The probability cancels out — it's just the ratio of counts."
-      },
-      {
-       "type": "choice",
-       "text": "The OpenAI blog post returns 403 (forbidden). No kernel mailing list links in the Reddit thread. Greg Kroah-Hartman (stable kernel maintainer) demands per-syscall breakage analysis before accepting removals. What's the *most* reliable way to verify if those 1,000 syscalls actually landed in the kernel your hospital's infusion pumps run?",
-       "options": [
-        "Trust the headline — OpenAI engineers are smart",
-        "Check the kernel changelog / git log for the specific removal commits",
-        "Ask the vendor for their SBOM and search for 'seccomp' entries",
-        "Run `seccomp` syscall logging on the device for a week and tally unused calls"
-       ],
-       "answer": 1,
-       "explain": "The kernel mailing list archives (lore.kernel.org) are the immutable change control system. If OpenAI upstreamed properly, the commits exist there with full review history. Your vendor's SBOM should reference the kernel version; you then verify that version contains the removals. Runtime logging (option 4) only shows what *your* workload uses — not what the kernel *exposes*.",
-       "hint": "In regulated manufacturing, you don't trust claims — you trace the change control record. The kernel's email-based workflow *is* the audit trail: every patch, review, and 'acked-by' is archived."
-      }
-     ],
-     "words": [
-      {
-       "term": "syscall",
-       "means": "A controlled gateway where a program asks the kernel to do something privileged (open file, allocate memory, spawn process)."
-      },
-      {
-       "term": "attack surface",
-       "means": "The total set of entry points an attacker could exploit — like every door and window in a building."
-      },
-      {
-       "term": "seccomp-BPF",
-       "means": "A programmable kernel firewall that filters which syscalls a process may use — your allow-list for the cleanroom."
-      },
-      {
-       "term": "upstream",
-       "means": "Getting patches accepted into the official Linux kernel mainline so every distro inherits them."
-      },
-      {
-       "term": "trusted code base",
-       "means": "The minimal set of code that must be correct for the system to be secure — like critical-to-quality dimensions on a drawing."
-      }
-     ]
-    },
-    {
-     "title": "The Bet: Universal Integration Screening",
-     "segment": "Gene Therapy Safety Signal: Tumors After Zolgensma Treatment",
-     "steps": [
-      {
-       "type": "concept",
-       "text": "You bet a colleague that screening all 6,000 Zolgensma kids for vector integration would drown in false alarms. The PCR assay: 95% sensitive, 95% specific. True integration rate: 2 in 6,000 (0.03%). Who wins?",
-       "example": ""
-      },
-      {
-       "type": "choice",
-       "text": "False alarms per true integration caught?",
-       "options": [
-        "<10",
-        "10-50",
-        "50-200",
-        ">200"
-       ],
-       "answer": 2,
-       "explain": "175 false alarms per true catch. The '50-200' bucket wins the bet.",
-       "hint": "At 0.03% prevalence, the 99.97% without integration dominate the math."
-      },
-      {
-       "type": "explore",
-       "text": "Move sliders to the real Zolgensma scenario: prevalence 0.03%, sensitivity 95%, specificity 95%. Watch positive predictive value collapse.",
-       "inputs": [
-        {
-         "id": "prev",
-         "label": "Share who have clinically relevant vector integrat",
-         "unit": "%",
-         "min": 0.01,
-         "max": 0.1,
-         "step": 0.001,
-         "value": 0.09999999999999999
-        },
-        {
-         "id": "sens",
-         "label": "Catches real cases (sensitivity)",
-         "unit": "%",
-         "min": 50.0,
-         "max": 99.9,
-         "step": 0.1,
-         "value": 95.0
-        },
-        {
-         "id": "spec",
-         "label": "Clears the rest (specificity)",
-         "unit": "%",
-         "min": 50.0,
-         "max": 99.9,
-         "step": 0.1,
-         "value": 99.0
-        }
-       ],
-       "outputs": [
-        {
-         "id": "tp",
-         "label": "Real cases test positive, of 1000",
-         "unit": "",
-         "expr": "1000*prev/100*sens/100",
-         "digits": 1,
-         "lo": 0.05,
-         "hi": 0.9989999999999999
-        },
-        {
-         "id": "fp",
-         "label": "Test positive by mistake, of 1000",
-         "unit": "",
-         "expr": "1000*(1-prev/100)*(1-spec/100)",
-         "digits": 1,
-         "lo": 0.99899999999989,
-         "hi": 499.95
-        },
-        {
-         "id": "ppv",
-         "label": "Of those test positive, really have clinically relevant ",
-         "unit": "%",
-         "expr": "100*tp/(tp+fp)",
-         "digits": 1,
-         "lo": 0.01,
-         "hi": 50.00000000000275
-        }
-       ],
-       "goal": {
-        "target": "ppv",
-        "min": 0.5,
-        "max": 0.7,
-        "text": "Get PPV below 1% using real-world values",
-        "success": "At 0.03% prevalence and 95% specificity, PPV crashes to 0.57% — 175 false alarms per true case. That's why we investigate tumors (enriched population), not screen everyone."
-       },
-       "template": "base_rate",
-       "view": {
-        "kind": "dots",
-        "prev": "prev",
-        "tp": "tp",
-        "fp": "fp",
-        "who": "treated children",
-        "condition": "have clinically relevant vector integrat",
-        "flagged": "test positive"
-       }
-      },
-      {
-       "type": "concept",
-       "text": "Base-rate fallacy: when a condition is ultra-rare, even a 'good' test drowns in false positives. PPV = (prev × sens) / (prev × sens + (1-prev) × (1-spec)). At 0.03% prevalence, 95% spec gives 0.57% PPV. Pharmacovigilance uses spontaneous reporting — it enriches prevalence before testing.",
-       "example": "Like your factory: you don't 100% inspect every widget; you audit the failure pile."
-      },
-      {
-       "type": "number",
-       "text": "Your factory screens 10,000 raw-material batches/year. A critical contaminant hides in 0.05% of batches. Your rapid test: 90% sensitive, 97% specific. How many false rejections per true catch?",
-       "answer": 66.633333,
-       "tolerance": 0.1,
-       "unit": "ratio",
-       "explain": "66.6 false rejections per true catch. Same math: ultra-low prevalence makes specific tests scream wolf. That's why you confirm rapid-test positives with a definitive assay before rejecting.",
-       "hint": "False rejections come from the 99.95% clean batches."
-      }
-     ],
-     "words": [
-      {
-       "term": "insertional oncogenesis",
-       "means": "vector DNA integrates near a cancer-driving gene, knocking the brakes off cell growth"
-      },
-      {
-       "term": "episomal",
-       "means": "DNA floats in the nucleus as a separate circle, doesn't integrate with chromosomes"
-      },
-      {
-       "term": "ascertainment bias",
-       "means": "intense monitoring finds more cases (including harmless ones) than normal care would"
-      },
-      {
-       "term": "clonal expansion",
-       "means": "one mutated cell multiplies into a detectable tumor over months or years"
-      },
-      {
-       "term": "pharmacovigilance",
-       "means": "system for detecting, assessing, and preventing adverse drug effects post-approval"
-      }
-     ]
-    }
-   ],
-   "quiz": [
-    {
-     "q": "What empirical method did OpenAI likely use to identify the thousand system call entry points targeted for removal?",
-     "options": [
-      "Mathematical proof via formal verification to match the C code against a formal specification",
-      "Tracing production inference workloads with seccomp-BPF filters to find syscalls that never fired",
-      "Automated refactoring tools run by kernel maintainers during the email-based patch review process",
-      "Randomized fuzzing of 32-bit compatibility layers to induce crashes"
-     ],
-     "answer": 1,
-     "explain": "The script notes they likely used seccomp-BPF to build allow-lists and empirically observed which syscall counters never fired in production before targeting them for removal.",
-     "segment": "OpenAI's Linux Kernel Hardening: Cutting Attack Paths at the Source"
-    },
-    {
-     "q": "Why does reducing the number of system call entry points decrease software supply-chain risk for downstream users?",
-     "options": [
-      "It eliminates the need for any kernel compilation or patch management",
-      "It reduces the trusted code base, meaning fewer components need to be validated and maintained",
-      "It guarantees that all future kernel updates will pass automated static analysis without errors",
-      "It replaces the archaic email-based patch workflow with modern Git tooling"
-     ],
-     "answer": 1,
-     "explain": "Every removed syscall shrinks the trusted code base, serving as one less component to inspect or validate in the traceability matrix—provided the patches land in the baseline being run.",
-     "segment": "OpenAI's Linux Kernel Hardening: Cutting Attack Paths at the Source"
-    },
-    {
-     "q": "What is the primary biological difference between how AAV9 vectors like Zolgensma are engineered to behave versus retroviruses?",
-     "options": [
-      "AAV9 vectors replicate independently alongside host cell division",
-      "AAV9 vectors are designed to stay mostly episomal rather than integrating into the host genome",
-      "AAV9 vectors exclusively integrate near transcription start sites to prevent oncogene activation",
-      "AAV9 vectors entirely eliminate the need for vector genome titer testing"
-     ],
-     "answer": 1,
-     "explain": "AAV vectors are engineered to be non-integrating and remain episomal—floating as a separate circle in the nucleus—though low-frequency integration can still occur.",
-     "segment": "Gene Therapy Safety Signal: Tumors After Zolgensma Treatment"
-    },
-    {
-     "q": "From a pharmacovigilance and epidemiology perspective, why is evaluating the incidence rate of the pediatric tumor signal particularly complex?",
-     "options": [
-      "All nine reported cases have already been definitively linked to vector integration events",
-      "The treated population is tiny, heterogeneous, and surviving longer than untreated patients, creating ascertainment bias from intense surveillance",
-      "Novartis has recalled all affected product lots, making it impossible to calculate a denominator",
-      "Background rates of pediatric solid tumors are identical to the incidence rates in SMA Type 1 patients"
-     ],
-     "answer": 1,
-     "explain": "Untreated SMA Type 1 patients have a short life expectancy, so treated children surviving longer changes the denominator, while intensive surveillance creates ascertainment bias.",
-     "segment": "Gene Therapy Safety Signal: Tumors After Zolgensma Treatment"
-    }
-   ],
-   "transcript": "transcripts/ai_2026-11-06_evening_1229.txt"
   }
  ]
 }
