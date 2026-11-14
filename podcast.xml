@@ -8,9 +8,25 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Sat, 14 Nov 2026 01:14:05 GMT</lastBuildDate>
+<lastBuildDate>Sat, 14 Nov 2026 09:56:44 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Evening - 14 Nov: Can Model Weights Prove Which Chip Trained Them?</title>
+<description>Evening edition - Saturday, 14 November 2026
+Metrology, hardware signatures, and the physical limits of orbital and computing systems
+
+00:25  Can Model Weights Prove Which Chip Trained Them?
+11:23  The Physics of Saving Hubble
+
+Play "Weights Don't Keep Secrets", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-14_evening_1500.mp3
+Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (260 threads)</description>
+<pubDate>Sat, 14 Nov 2026 15:00:11 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-11-14_evening_1500.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-14_evening_1500.mp3" length="10465449" type="audio/mpeg"/>
+<itunes:duration>1308</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Morning - 14 Nov: The Small Codebase That Changed How We Run Artificial Intelligence</title>
 <description>Morning edition - Saturday, 14 November 2026
@@ -165,38 +181,6 @@ Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Di
 <guid isPermaLink="false">ai_2026-11-08_morning_1147.mp3</guid>
 <enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-08_morning_1147.mp3" length="21566124" type="audio/mpeg"/>
 <itunes:duration>2695</itunes:duration>
-<itunes:episodeType>full</itunes:episodeType>
-</item>
-<item>
-<title>Evening - 7 Nov: Open AI models quietly dropping security skills</title>
-<description>Evening edition - Saturday, 7 November 2026
-When safety controls disappear — from AI capabilities to workplace air
-
-00:34  Open AI models quietly dropping security skills
-10:15  What nail salon air tells us about chemical exposure limits
-
-Puzzles: The Safety Threshold That Blocks Your Own Work, The Grab-Sample Gamble - puzzles, quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
-Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (142 threads)</description>
-<pubDate>Sat, 07 Nov 2026 12:25:11 +0530</pubDate>
-<guid isPermaLink="false">ai_2026-11-07_evening_1225.mp3</guid>
-<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-07_evening_1225.mp3" length="7769989" type="audio/mpeg"/>
-<itunes:duration>971</itunes:duration>
-<itunes:episodeType>full</itunes:episodeType>
-</item>
-<item>
-<title>Morning - 7 Nov: Anthropic's merge velocity versus its open issue backlog</title>
-<description>Morning edition - Saturday, 7 November 2026
-Software quality at AI speed versus regulated assurance; and the statistical proof that entropy must increase.
-
-00:31  Anthropic's merge velocity versus its open issue backlog
-09:33  Why entropy always increases: the statistical proof
-
-Puzzles: The 30,000/day Mirage, The Anomalous Vial: When Fluctuations Escape the Noise - puzzles, quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
-Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (148 threads)</description>
-<pubDate>Sat, 07 Nov 2026 11:42:38 +0530</pubDate>
-<guid isPermaLink="false">ai_2026-11-07_morning_1142.mp3</guid>
-<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-07_morning_1142.mp3" length="11073743" type="audio/mpeg"/>
-<itunes:duration>1384</itunes:duration>
 <itunes:episodeType>full</itunes:episodeType>
 </item>
 </channel>

@@ -11,11 +11,218 @@
    {
     "said": "\"Too technical\" in 3 of your last 6 ratings",
     "did": "Stories that need specialist background are ranked lower when topics are picked."
+   },
+   {
+    "said": "\"Less maintainer drama. Fewer numbers\"",
+    "did": "Passed to the editor and the writers of every episode from now on."
    }
   ],
-  "last": "2026-11-05"
+  "last": "2026-11-14"
  },
  "episodes": [
+  {
+   "file": "ai_2026-11-14_evening_1500.mp3",
+   "title": "Evening - 14 Nov: Can Model Weights Prove Which Chip Trained Them?",
+   "label": "Saturday 14 Nov evening",
+   "date": "2026-11-14",
+   "edition": "evening",
+   "published": "2026-11-14T15:00:11.775648+05:30",
+   "duration": 1308,
+   "theme": "Metrology, hardware signatures, and the physical limits of orbital and computing systems",
+   "writer": "nemotron-3-ultra-550b-a55b (free)",
+   "voices": "Fish Audio (free)",
+   "deep_dive": false,
+   "segments": [
+    {
+     "title": "Can Model Weights Prove Which Chip Trained Them?",
+     "category": "thread"
+    },
+    {
+     "title": "The Physics of Saving Hubble",
+     "category": "concept"
+    }
+   ],
+   "play": {
+    "v": 2,
+    "theme": "bench",
+    "title": "Weights Don't Keep Secrets",
+    "brief": "He tests if checkpoints reveal their training hardware.",
+    "segments": [
+     {
+      "title": "Can Model Weights Prove Which Chip Trained Them?",
+      "bet": {
+       "claim": "Model weights retain a readable fingerprint of the exact GPU architecture used to train them.",
+       "truth": false,
+       "why": "Distributed training noise — reduction order, dropout, unknown seeds — drowns out microarchitectural rounding differences completely."
+      },
+      "rounds": [
+       {
+        "type": "clues",
+        "q": "What claim did the Reddit thread make about model weights?",
+        "clues": [
+         "A website said it caught four labs using banned chips by reading their public weight files.",
+         "The method: simulate early training with known seeds and match the bit patterns exactly.",
+         "They called it forensic proof — but the gallery link was broken and no paper exists."
+        ],
+        "options": [
+         "Weights reveal training chips",
+         "Seeds are always public",
+         "Blackwell chips are faster",
+         "Chinese labs cheat tests"
+        ],
+        "answer": 0,
+        "why": "The thread claimed weight checkpoints contain architectural fingerprints — but distributed training noise and secret seeds make this impossible to verify."
+       },
+       {
+        "type": "flaw",
+        "q": "Three statements match the episode — one does not.",
+        "items": [
+         "MXFP4 format and SM100 kernels need Blackwell hardware to run.",
+         "Chinese firms can rent Blackwell compute in Malaysia or Singapore legally.",
+         "Gradient reduction order varies per run even on identical GPU clusters.",
+         "The forensic site published its statistical method and null hypothesis for review."
+        ],
+        "flaw": 3,
+        "why": "The site shared no method, no test, no data — just a broken gallery link and a Reddit post."
+       }
+      ],
+      "takeaway": "A model checkpoint is not a flight recorder — it doesn't log the hardware that built it."
+     },
+     {
+      "title": "The Physics of Saving Hubble",
+      "bet": {
+       "claim": "The maximum force allowed to grab Hubble during capture is about the weight of a house cat.",
+       "truth": true,
+       "why": "Fifty newtons at the grapple pin — roughly five kilograms force — to avoid shocking gyros, brinelling wheels, or tearing blankets."
+      },
+      "rounds": [
+       {
+        "type": "match",
+        "q": "Pair each term with its job in the Hubble capture",
+        "pairs": [
+         [
+          "Thermosphere",
+          "The thin layer at 500 km dragging Hubble down"
+         ],
+         [
+          "Impedance controller",
+          "Control law capping capture force at five kilograms"
+         ],
+         [
+          "Bearing brinelling",
+          "Permanent raceway dents from capture shock"
+         ],
+         [
+          "Mean free path",
+          "Long molecular gap letting plumes spread wide"
+         ]
+        ]
+       },
+       {
+        "type": "sequence",
+        "q": "Order the steps from approach to stable reboost orbit",
+        "items": [
+         "Chaser approaches Hubble in safe mode",
+         "Soft capture at fifty newtons with impedance control",
+         "Rigidize the capture interface",
+         "Thrust through center of mass for reboost",
+         "Raise orbit to stable six hundred kilometers"
+        ],
+        "why": "Any harder capture shocks gyros and wheels; off-center thrust twists the bus; the whole sequence must protect 35-year-old hardware."
+       }
+      ],
+      "takeaway": "Soft capture, precise thrust, and solar weather dictate whether Hubble gets a second life or burns up."
+     }
+    ],
+    "words": [
+     {
+      "term": "MXFP4",
+      "means": "A four-bit number format introduced with Blackwell GPUs for quantized model inference."
+     },
+     {
+      "term": "All-reduce",
+      "means": "The step where every GPU sums its gradients across the whole cluster."
+     },
+     {
+      "term": "Seed",
+      "means": "The secret starting number that sets all random choices in training."
+     },
+     {
+      "term": "Impedance control",
+      "means": "A control law acting like a virtual spring limiting contact forces"
+     },
+     {
+      "term": "Bearing brinelling",
+      "means": "Permanent bearing raceway dents from sudden impact loads"
+     },
+     {
+      "term": "Mean free path",
+      "means": "Average molecular collision distance; long in thin air, plumes spread"
+     },
+     {
+      "term": "Observability",
+      "means": "How well internal state is inferred from sensor outputs"
+     }
+    ],
+    "chips": [
+     "More on MXFP4 evidence",
+     "Seed problem was sharp",
+     "CNC analogy landed well",
+     "Geopolitics stayed grounded"
+    ]
+   },
+   "quiz": [
+    {
+     "q": "Why does the podcast conclude that model weights cannot definitively serve as a 'forensic fingerprint' for specific GPU hardware?",
+     "options": [
+      "Because the random seed used for initialization is always publicly disclosed by developers.",
+      "Because the non-deterministic nature of distributed training noise far outweighs the microscopic differences in floating-point rounding.",
+      "Because all modern GPU architectures use identical accumulator bit-widths and tensor core layouts.",
+      "Because model weights are overwritten during the final quantization-aware training step."
+     ],
+     "answer": 1,
+     "explain": "Distributed training across thousands of nodes introduces non-deterministic variables like thread scheduling and reduction order that obscure hardware-specific rounding signatures.",
+     "segment": "Can Model Weights Prove Which Chip Trained Them?"
+    },
+    {
+     "q": "What is the primary reason the podcast argues that software evidence, such as MXFP4 kernels, does not prove Chinese labs pre-trained their models on Blackwell hardware?",
+     "options": [
+      "Because MXFP4 is only compatible with older Hopper-based architectures.",
+      "Because software kernels can be developed and tested on rented hardware abroad without the pre-training cluster being physically present in China.",
+      "Because the kernels are actually designed for CPUs rather than GPUs.",
+      "Because Blackwell hardware is incapable of performing quantization-aware training."
+     ],
+     "answer": 1,
+     "explain": "The podcast distinguishes between development/inference access and pre-training, noting that software artifacts only prove access to the hardware generation somewhere in the pipeline.",
+     "segment": "Can Model Weights Prove Which Chip Trained Them?"
+    },
+    {
+     "q": "In the context of the Hubble reboost, why is an 'impedance controller' required for the capture mechanism?",
+     "options": [
+      "To maximize the impact force for a secure, rigid latching.",
+      "To allow the chaser to maneuver at high speeds without needing to align with the center of mass.",
+      "To limit interaction forces to roughly fifty newtons, preventing damage to sensitive gyros and thermal blankets.",
+      "To automatically replace the telescope's aging reaction wheels during the docking process."
+     ],
+     "answer": 2,
+     "explain": "An impedance controller is necessary to manage the delicate contact dynamics, ensuring forces remain low enough to avoid damaging the telescope's aged, sensitive internal components.",
+     "segment": "The Physics of Saving Hubble"
+    },
+    {
+     "q": "Why does the podcast highlight the failure of the Katalyst-Swift mission as a cautionary tale for the Hubble reboost?",
+     "options": [
+      "It demonstrated that commercial vehicles lack the necessary fuel capacity for orbital maneuvers.",
+      "It proved that the thermosphere's density is too unpredictable for any robotic docking.",
+      "It showed that a failure in attitude control makes it impossible to perform the necessary reboost burn for a mated stack.",
+      "It confirmed that NASA's current RFI process is legally prohibited from accepting private proposals."
+     ],
+     "answer": 2,
+     "explain": "The mission failed because the chaser lost attitude control, demonstrating that maintaining precise orientation of the combined mass is a critical, high-risk technical challenge.",
+     "segment": "The Physics of Saving Hubble"
+    }
+   ],
+   "transcript": "transcripts/ai_2026-11-14_evening_1500.txt"
+  },
   {
    "file": "ai_2026-11-14_morning_0600.mp3",
    "title": "Morning - 14 Nov: The Small Codebase That Changed How We Run Artificial Intelligence",
@@ -2556,550 +2763,6 @@
     }
    ],
    "transcript": "transcripts/ai_2026-11-08_morning_1147.txt"
-  },
-  {
-   "file": "ai_2026-11-07_evening_1225.mp3",
-   "title": "Evening - 7 Nov: Open AI models quietly dropping security skills",
-   "label": "Saturday 07 Nov evening",
-   "date": "2026-11-07",
-   "edition": "evening",
-   "published": "2026-11-07T12:25:11.246196+05:30",
-   "duration": 971,
-   "theme": "When safety controls disappear — from AI capabilities to workplace air",
-   "writer": "nemotron-3-ultra-550b-a55b (free)",
-   "voices": "Fish Audio (free)",
-   "deep_dive": false,
-   "segments": [
-    {
-     "title": "Open AI models quietly dropping security skills",
-     "category": "thread"
-    },
-    {
-     "title": "What nail salon air tells us about chemical exposure limits",
-     "category": "thread"
-    }
-   ],
-   "lessons": [
-    {
-     "title": "The Safety Threshold That Blocks Your Own Work",
-     "segment": "Open AI models quietly dropping security skills",
-     "steps": [
-      {
-       "type": "concept",
-       "text": "Refusal training doesn't delete knowledge — it learns a decision boundary. Like a metal detector at your factory: crank sensitivity to catch every contaminant (miss ↓) and you start rejecting good product (false alarms ↑). Attackers bypass the boundary with prompt engineering (adversarial examples); defenders just get blocked.",
-       "example": "Anthropic's Opus blocked 'game cloning' but allowed 'educational analysis of game mechanics' — same capability, different framing. The boundary lives in the prompt layer, not the weights."
-      },
-      {
-       "type": "number",
-       "text": "In your incoming inspection, seal-strength measurements for good pouches average 18 N with SD 2 N; defective pouches average 10 N with SD 3 N. You set the accept threshold at 14 N to catch 99% of defects. What % of good pouches get wrongly rejected? (Use normal CDF: good pouch rejected if strength < 14.)",
-       "answer": 2.275006,
-       "tolerance": 0.25,
-       "unit": "%",
-       "explain": "~2.3% of good pouches rejected — the cost of 99% defect detection. Same math as the AI safety threshold: overlapping distributions force a trade-off. In regulated QA, you document this threshold, validate it, and change-control it. The AI vendor gave you a Reddit post instead.",
-       "hint": "Good pouches ~ N(18, 2). P(X < 14) = P(Z < (14-18)/2) = P(Z < -2). Look up or approximate."
-      },
-      {
-       "type": "choice",
-       "text": "The vendor pushes a new model version. Your acceptance test: \"Model identifies CWE-787 (out-of-bounds write) in C snippets.\" Previous version scored 78% on CyberSecEval; new version scores 12%. No changelog, no PCN. What is your first regulatory move?",
-       "options": [
-        "Accept the model — 12% is still some capability",
-        "Open a deviation, freeze use, demand Design History File diff",
-        "Fine-tune a LoRA immediately and skip vendor",
-        "Switch to cloud API — they never drop capabilities"
-       ],
-       "answer": 1,
-       "explain": "Capability removal is a design change. You treat it like a raw-material alloy swap without notification: open deviation, assess impact on validated workflows, demand DHF diff (training data, benchmarks, guardrail spec), then decide re-qualify or roll back. The security researcher in the episode did exactly this — built their own LoRA under their own change control.",
-       "hint": "Think 21 CFR 820.30/13485: design change affecting critical-to-quality characteristic → change control, risk analysis, validation. Silence ≠ no change."
-      }
-     ],
-     "words": [
-      {
-       "term": "Refusal training",
-       "means": "Fine-tuning a model to say \"I can't help\" on certain topics — a guardrail, not knowledge deletion."
-      },
-      {
-       "term": "Decision boundary",
-       "means": "The invisible line a classifier draws between allowed and refused prompts; moving it trades false refusals for misses."
-      },
-      {
-       "term": "Silent specification drift",
-       "means": "A model's behavior changes (e.g., stops detecting CVEs) without version notice, changelog, or PCN."
-      }
-     ]
-    },
-    {
-     "title": "The Grab-Sample Gamble",
-     "segment": "What nail salon air tells us about chemical exposure limits",
-     "steps": [
-      {
-       "type": "choice",
-       "text": "You're validating ventilation for a new nail salon. OSHA compliance uses 8-hr TWA badges (3 per week). The study shows 15-min peaks hit 31 ppm median, 113 ppm max. Benzene risk lives in the peaks. You can run either: A) 3 grab samples (15-min each) per shift, 5 days B) Continuous PID monitor for 1 day (96 × 15-min readings) Which strategy gives you confidence the *true average peak* exceeds 25 ppm?",
-       "options": [
-        "A) 3 grabs/shift — compliance standard, good enough",
-        "B) Continuous — more data always wins",
-        "C) They're equivalent — same total samples"
-       ],
-       "answer": 1,
-       "explain": "With SD=25 ppm, 3 grabs give margin ≈28 ppm → lower bound ≈3 ppm. You need ~67 readings (margin <6 ppm) to confidently say true mean peak >25 ppm. Continuous monitoring delivers that in one day; compliance badges take weeks.",
-       "hint": "The median peak is 31 ppm but one salon hit 113 ppm. That spread (SD ~25 ppm) means few grabs give a huge margin of error. How many 15-min readings to shrink the 95% CI lower bound above 25 ppm?"
-      },
-      {
-       "type": "explore",
-       "text": "Adjust the number of 15-min grab samples. The true median peak is 31 ppm with high variability (SD 25 ppm). Watch how the 95% confidence interval tightens — or doesn't.",
-       "inputs": [
-        {
-         "id": "n",
-         "label": "Sample size",
-         "unit": "",
-         "min": 3.0,
-         "max": 200.0,
-         "step": 1.0,
-         "value": 3.0
-        }
-       ],
-       "outputs": [
-        {
-         "id": "margin",
-         "label": "Margin of error (95%)",
-         "unit": "ppm",
-         "expr": "1.96*25/sqrt(n)",
-         "lo": 3.4648232278140827,
-         "hi": 28.290163190291665
-        },
-        {
-         "id": "lo",
-         "label": "Could be as low as",
-         "unit": "ppm",
-         "expr": "31-margin",
-         "lo": 2.709836809708335,
-         "hi": 27.535176772185917
-        },
-        {
-         "id": "hi",
-         "label": "Or as high as",
-         "unit": "ppm",
-         "expr": "31+margin",
-         "lo": 34.46482322781408,
-         "hi": 59.290163190291665
-        }
-       ],
-       "chart": {
-        "x": "n",
-        "y": [
-         "margin"
-        ]
-       },
-       "goal": {
-        "target": "lo",
-        "min": 25.0,
-        "max": 31.0,
-        "text": "Find the sample size where the lower confidence bound (lo) first exceeds 25 ppm — the level where benzene cancer risk becomes quantifiable.",
-        "success": "You needed ~67 grab samples (17 hours of 15-min readings) just to prove the *average* peak is concerning. Continuous monitoring caught the 113 ppm spike on day one — the excursion that drives lifetime risk."
-       },
-       "template": "sampling",
-       "view": {
-        "kind": "spread",
-        "n": "n",
-        "true": 31.0,
-        "sd": 25.0,
-        "lo": "lo",
-        "hi": "hi",
-        "measure": "15-min peak VOC",
-        "unit": "ppm"
-       }
-      },
-      {
-       "type": "concept",
-       "text": "Margin of error shrinks with √n, but peaks are rare, high-leverage events. Grab sampling estimates the *mean*; continuous monitoring captures the *distribution*. In sterilization, you validate the routine cycle — but the venting excursion is where bioburden escapes. Same math: averaging hides the tail that kills.",
-       "example": "Your CNC coolant mist: 8-hr TWA looks fine. But the 15-min peak during tool change? That's where operators inhale the dose that matters."
-      },
-      {
-       "type": "number",
-       "text": "Your factory runs 3 shifts. You currently take 2 grab samples per shift for welding fume (hexavalent chromium). True mean peak = 4.8 µg/m³, SD = 3.2 µg/m³. Action level = 2.5 µg/m³. How many total grab samples per week (6 days) to get the lower 95% CI bound above 2.5 µg/m³? (Use 1.96 for z-score)",
-       "answer": 8.0,
-       "tolerance": 0.25,
-       "unit": "samples",
-       "explain": "You need 8 samples/week. At 2/shift × 3 shifts × 6 days = 36 samples, you're oversampling the mean but still missing the 15-min peak during electrode change — just like the nail salon's 113 ppm spike.",
-       "hint": "Solve for n: 1.96 * SD / sqrt(n) < (mean - action_level). Plug in mean=4.8, SD=3.2, action=2.5."
-      }
-     ],
-     "words": [
-      {
-       "term": "TWA",
-       "means": "Time-Weighted Average — 8-hour exposure metric that smooths out peaks"
-      },
-      {
-       "term": "VOC",
-       "means": "Volatile Organic Compound — carbon chemicals that evaporate at room temperature"
-      },
-      {
-       "term": "Hierarchy of controls",
-       "means": "Ranking safeguards: elimination > substitution > engineering > admin > PPE"
-      },
-      {
-       "term": "Breakthrough curve",
-       "means": "How a filter's capture efficiency drops as it saturates over time"
-      },
-      {
-       "term": "Photoionization detector",
-       "means": "Real-time VOC sensor using UV light to ionize molecules"
-      }
-     ]
-    }
-   ],
-   "quiz": [
-    {
-     "q": "How can open-weight models like Kimi K3.1 or Tencent's Hy4 effectively restrict security capabilities if their parameters are fully downloadable?",
-     "options": [
-      "By surgically excising the specific neurons responsible for security knowledge",
-      "By using refusal training or preference alignment, meaning the latent capability remains and can be fine-tuned away",
-      "By deleting the pretraining data sources from the upstream servers",
-      "By permanently encrypting the model weights so certain tokens cannot be processed"
-     ],
-     "answer": 1,
-     "explain": "You cannot surgically remove distributed knowledge from a trained model; rather, labs use refusal training or preference alignment, meaning the underlying capability remains latent and easily recovered via fine-tuning.",
-     "segment": "Open AI models quietly dropping security skills"
-    },
-    {
-     "q": "What regulatory parallel does the podcast draw when an open-weight model drops a capability like vulnerability detection without a changelog?",
-     "options": [
-      "A component supplier quietly changing raw-material alloy composition without a Product Change Notification (PCN)",
-      "A cleanroom failing its annual environmental certification audit",
-      "A calibration laboratory drifting past its maximum permissible error limit",
-      "A manufacturing facility exceeding its permitted hazardous waste discharge limits"
-     ],
-     "answer": 0,
-     "explain": "Silently dropping a capability without notification is likened to a raw-material supplier quietly changing the alloy composition without a PCN, breaking downstream validation.",
-     "segment": "Open AI models quietly dropping security skills"
-    },
-    {
-     "q": "Why did the nail salon air-monitoring study argue that traditional risk assessments underestimate exposure?",
-     "options": [
-      "They rely on grab samples that completely miss the working hours",
-      "They only measure particulate matter rather than total volatile organic compounds",
-      "They smooth out spikes by focusing on daily averages, missing intermittent peak concentrations",
-      "They assume all technicians are wearing proper organic vapor respirators"
-     ],
-     "answer": 2,
-     "explain": "Traditional risk assessments often smooth out data into eight-hour time-weighted averages, missing the intermittent peaks and excursions where the actual dose accumulates.",
-     "segment": "What nail salon air tells us about chemical exposure limits"
-    },
-    {
-     "q": "According to the discussion on chemical exposures in nail salons, why are surgical and cloth masks ineffective against the detected solvent vapors?",
-     "options": [
-      "They lack activated carbon adsorption beds to capture volatile organic compounds",
-      "They are only designed to filter particulates, allowing vapor-phase organic molecules to pass straight through",
-      "They do not form an airtight seal around the breathing zone",
-      "They quickly degrade and break down when exposed to high concentrations of ethyl acetate"
-     ],
-     "answer": 1,
-     "explain": "Surgical and cloth masks are particulate filters; vapor-phase organic molecules pass right through them because it is a PPE-to-hazard mismatch.",
-     "segment": "What nail salon air tells us about chemical exposure limits"
-    }
-   ],
-   "transcript": "transcripts/ai_2026-11-07_evening_1225.txt"
-  },
-  {
-   "file": "ai_2026-11-07_morning_1142.mp3",
-   "title": "Morning - 7 Nov: Anthropic's merge velocity versus its open issue backlog",
-   "label": "Saturday 07 Nov morning",
-   "date": "2026-11-07",
-   "edition": "morning",
-   "published": "2026-11-07T11:42:38.866082+05:30",
-   "duration": 1384,
-   "theme": "Software quality at AI speed versus regulated assurance; and the statistical proof that entropy must increase.",
-   "writer": "nemotron-3-ultra-550b-a55b (free)",
-   "voices": "Fish Audio (free)",
-   "deep_dive": false,
-   "segments": [
-    {
-     "title": "Anthropic's merge velocity versus its open issue backlog",
-     "category": "thread"
-    },
-    {
-     "title": "Why entropy always increases: the statistical proof",
-     "category": "concept"
-    }
-   ],
-   "lessons": [
-    {
-     "title": "The 30,000/day Mirage",
-     "segment": "Anthropic's merge velocity versus its open issue backlog",
-     "steps": [
-      {
-       "type": "choice",
-       "text": "Anthropic's internal merge pipeline allegedly runs at 30,000 merges/day. Their public GitHub tracker has 16,000+ open issues, 98% unassigned. You're the QA lead with budget for ONE upgrade. Which investment actually shrinks the backlog?",
-       "options": [
-        "10x the merge pipeline speed (300k merges/day)",
-        "10x the triage capacity (assign issues 10x faster)",
-        "Add more developers to write fixes",
-        "Automate the release process"
-       ],
-       "answer": 1,
-       "explain": "The merge pipeline isn't the bottleneck — triage is. Speeding up a non-bottleneck changes nothing.",
-       "hint": "The merge pipeline is already 15,000x faster than issues get assigned. Where's the actual choke point?"
-      },
-      {
-       "type": "explore",
-       "text": "Model the issue-resolution pipeline. Move each stage's capacity slider. Watch the line throughput and stage utilizations.",
-       "inputs": [
-        {
-         "id": "c1",
-         "label": "Issue intake",
-         "unit": "issues/day",
-         "min": 10.0,
-         "max": 200.0,
-         "step": 2.0,
-         "value": 100.0
-        },
-        {
-         "id": "c2",
-         "label": "Triage & assign",
-         "unit": "issues/day",
-         "min": 5.0,
-         "max": 100.0,
-         "step": 1.0,
-         "value": 5.0
-        },
-        {
-         "id": "c3",
-         "label": "Fix development",
-         "unit": "issues/day",
-         "min": 10.0,
-         "max": 200.0,
-         "step": 2.0,
-         "value": 50.0
-        }
-       ],
-       "outputs": [
-        {
-         "id": "thr",
-         "label": "Line output",
-         "unit": "issues/day",
-         "expr": "min(c1,c2,c3)",
-         "lo": 5.0,
-         "hi": 100.0
-        },
-        {
-         "id": "u1",
-         "label": "Issue intake busy",
-         "unit": "%",
-         "expr": "100*thr/c1",
-         "digits": 0,
-         "lo": 2.5,
-         "hi": 100.0
-        },
-        {
-         "id": "u2",
-         "label": "Triage & assign busy",
-         "unit": "%",
-         "expr": "100*thr/c2",
-         "digits": 0,
-         "lo": 10.0,
-         "hi": 100.0
-        },
-        {
-         "id": "u3",
-         "label": "Fix development busy",
-         "unit": "%",
-         "expr": "100*thr/c3",
-         "digits": 0,
-         "lo": 2.5,
-         "hi": 100.0
-        }
-       ],
-       "template": "bottleneck",
-       "view": {
-        "kind": "pipes",
-        "caps": [
-         "c1",
-         "c2",
-         "c3"
-        ],
-        "thr": "thr",
-        "labels": [
-         "Issue intake",
-         "Triage & assign",
-         "Fix development"
-        ],
-        "unit": "issues/day"
-       }
-      },
-      {
-       "type": "concept",
-       "text": "In any pipeline, throughput equals the slowest stage's capacity. Everything upstream piles up; everything downstream starves. Making fast stages faster is wasted motion — like polishing a CNC cell that already outruns inspection.",
-       "example": "Your sterilizer runs 500 cycles/day but your bioburden testing handles 10. Buying a 1000-cycle sterilizer reduces the backlog by zero."
-      },
-      {
-       "type": "number",
-       "text": "If triage capacity doubles from 2 to 4 issues/day (merge pipeline unchanged), what's the new issue-resolution throughput?",
-       "answer": 4.0,
-       "tolerance": 0.005,
-       "unit": "issues/day",
-       "explain": "Doubling the bottleneck doubles system throughput. The merge pipeline at 30,000/day still doesn't matter.",
-       "hint": "Throughput = min(stage capacities). Which stage is now the minimum?"
-      },
-      {
-       "type": "choice",
-       "text": "Your factory: CNC cell produces 1,000 parts/day. First-article inspection handles 20/day. Shipping handles 500/day. Customer complaints arrive at 5/day but your complaint investigation handles 1/day. Which stage is the true bottleneck for *closing the loop* on quality?",
-       "options": [
-        "CNC cell (1,000/day)",
-        "First-article inspection (20/day)",
-        "Shipping (500/day)",
-        "Complaint investigation (1/day)"
-       ],
-       "answer": 3,
-       "explain": "Complaint investigation at 1/day is the bottleneck for the quality system. Fast production and shipping don't help you fix root causes faster.",
-       "hint": "Follow the quality feedback loop — not the production flow. What limits *learning* from failures?"
-      }
-     ],
-     "words": [
-      {
-       "term": "orthogonal",
-       "means": "Independent — changing one doesn't automatically change the other"
-      },
-      {
-       "term": "triage",
-       "means": "Sorting incoming issues by severity, assigning owners, deciding what gets fixed when"
-      },
-      {
-       "term": "disposition",
-       "means": "The formal decision on a non-conformance: accept, rework, scrap, or investigate"
-      },
-      {
-       "term": "post-market surveillance",
-       "means": "Monitoring a released product for safety signals from real-world use"
-      },
-      {
-       "term": "merge queue",
-       "means": "Automated system that lines up changes, runs tests, merges when they pass"
-      },
-      {
-       "term": "flaky-test detection",
-       "means": "Identifying tests that randomly pass/fail without code changes"
-      }
-     ]
-    },
-    {
-     "title": "The Anomalous Vial: When Fluctuations Escape the Noise",
-     "segment": "Why entropy always increases: the statistical proof",
-     "steps": [
-      {
-       "type": "choice",
-       "text": "Sarah mentions lyophilization: 'In a batch of thousands of vials, you might see one anomalous vial. That's not a process failure. That's statistical mechanics.' You're reviewing a batch record: 3,000 vials, 0 anomalies. The operator asks: 'Is this batch cleaner, or just lucky?' What's the maximum per-vial anomaly rate that would still make a clean batch likely (>50% chance)?",
-       "options": [
-        "0.1% (1 in 1,000)",
-        "0.01% (1 in 10,000)",
-        "0.001% (1 in 100,000)",
-        "0.0001% (1 in 1,000,000)"
-       ],
-       "answer": 1,
-       "explain": "At 0.01% anomaly rate, (0.9999)^3000 ≈ 0.74. So a clean batch is likely. At 0.1%, (0.999)^3000 ≈ 0.05 — you'd almost always see anomalies.",
-       "hint": "A clean batch means zero anomalies. Probability = (1 - anomaly_rate)^3000. Find rate where this exceeds 0.5."
-      },
-      {
-       "type": "choice",
-       "text": "If each vial has a 0.01% chance of an anomaly (1 in 10,000), what's the chance a 3,000-vial batch has zero anomalies?",
-       "options": [
-        ">90%",
-        "~75%",
-        "~50%",
-        "<25%"
-       ],
-       "answer": 1,
-       "explain": "0.9999^3000 ≈ 0.74. Even tiny per-vial risks compound across thousands — the exponential suppression that makes the second law statistical.",
-       "hint": "Multiply the survival probability 3,000 times: (1 - 0.0001)^3000."
-      },
-      {
-       "type": "concept",
-       "text": "The Crooks theorem: reverse trajectory probability is exponentially suppressed by entropy produced. For a molecule, entropy production ~k_B, so reverse paths are measurable. For a batch, it's ~N_A k_B, making full reversal impossible. But a vial is a 'small system' — its anomaly rate is the single-molecule rate scaled up. The chain multiplies per-vial survival: (1-ε)^N ≈ e^{-εN}. When εN ~ 1, anomalies appear.",
-       "example": "Optical tweezers unfolding a protein: sigma ~ 10 k_B, so reverse paths are ~e^{-10} rare but seen. In your 3,000-vial batch, sigma per vial is small enough that anomalies occur."
-      },
-      {
-       "type": "number",
-       "text": "Your sterilization load has 15,000 instruments. Per-instrument failure probability is 0.001% (1 in 100,000). What's the probability the entire load passes? (Use exponential logic.)",
-       "answer": 86.070733,
-       "tolerance": 0.25,
-       "unit": "%",
-       "explain": "Same math: batch=run, instruments=steps. Exponential suppression scales with size. This is why validation uses statistical sampling — you can't test 100% at macroscopic scale.",
-       "hint": "Approximate (1 - 1e-5)^15000 ≈ e^{-0.15}."
-      }
-     ],
-     "words": [
-      {
-       "term": "Fluctuation theorem",
-       "means": "Quantifies probability of entropy decrease in small systems"
-      },
-      {
-       "term": "Poincaré recurrence",
-       "means": "Finite systems eventually return near initial state, but timescale is astronomical"
-      },
-      {
-       "term": "Molecular chaos (Stosszahlansatz)",
-       "means": "Assumption that pre-collision velocities are uncorrelated"
-      },
-      {
-       "term": "Crooks fluctuation theorem",
-       "means": "Ratio of forward to reverse path probabilities is exponential in entropy produced"
-      },
-      {
-       "term": "Entropy production (sigma)",
-       "means": "Total entropy generated in a process; forward/reverse probability ratio is e^{sigma/k_B}"
-      }
-     ]
-    }
-   ],
-   "quiz": [
-    {
-     "q": "What core operational challenge did the analysis reveal regarding Anthropic's reported thirty thousand daily merges and its open GitHub issue backlog?",
-     "options": [
-      "High merge velocity directly resolves external security bugs and triage backlogs.",
-      "Internal merge velocity and external issue triage capacity are orthogonal systems.",
-      "Automated AI pair programming eliminates the need for any bug tracker disposition.",
-      "Public GitHub issues are automatically assigned to engineers via the continuous integration pipeline."
-     ],
-     "answer": 1,
-     "explain": "The episode explains that a high internal merge velocity (resembling a high-throughput manufacturing line) and an external feedback/triage loop are orthogonal systems that operate independently.",
-     "segment": "Anthropic's merge velocity versus its open issue backlog"
-    },
-    {
-     "q": "Why does a regulated manufacturing environment (such as medical devices) reject an unassigned bug or complaint backlog?",
-     "options": [
-      "Every issue requires a formal disposition, traceability link, and risk-based closure timeline rather than sitting unowned.",
-      "Regulated environments mandate that all software code must be merged manually without automated pipelines.",
-      "Unassigned items automatically trigger a mandatory software recall by regulatory bodies.",
-      "Quality systems require public GitHub repositories to handle all customer safety complaints."
-     ],
-     "answer": 0,
-     "explain": "In a regulated shop, every issue must receive a disposition with owners, target dates, and traceability links, making 'unassigned' an invalid operational state.",
-     "segment": "Anthropic's merge velocity versus its open issue backlog"
-    },
-    {
-     "q": "What was the core source of confusion for the physicist in the Reddit thread regarding the Clausius inequality derivation?",
-     "options": [
-      "Confusing the microscopic multiplicity Omega with Boltzmann's constant.",
-      "Failing to account for Poincaré recurrence time over astronomical scales.",
-      "Using the reservoir temperature for subsystem entropy change calculations instead of the proper system temperature along a reversible path.",
-      "Assuming that entropy must decrease in an isolated composite system during heat transfer."
-     ],
-     "answer": 2,
-     "explain": "The user mistakenly treated the reservoir temperature from Clausius's cyclic inequality as the temperature needed to compute the state function change (entropy) for individual subsystems.",
-     "segment": "Why entropy always increases: the statistical proof"
-    },
-    {
-     "q": "In thermal processes like sterilization or heat treatment, how do engineers account for local entropy decreases (such as protein denaturation or ordering)?",
-     "options": [
-      "Local entropy decreases violate the second law of thermodynamics and must be prevented.",
-      "They are paid for by a larger entropy increase in the surroundings, keeping the total entropy change positive.",
-      "They are offset entirely by fluctuation theorems at macroscopic scales.",
-      "They eliminate the need for F-value lethality validation."
-     ],
-     "answer": 1,
-     "explain": "A local decrease in entropy within the load is always paid for by a larger entropy increase in the surroundings, ensuring the total entropy change remains positive.",
-     "segment": "Why entropy always increases: the statistical proof"
-    }
-   ],
-   "transcript": "transcripts/ai_2026-11-07_morning_1142.txt"
   }
  ]
 }
