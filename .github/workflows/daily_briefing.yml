@@ -94,7 +94,6 @@ on:
 permissions:
   contents: write      # commit feed, quiz and cover; upload audio
   issues: write        # read and close feedback sent from quiz.html
-  models: read         # GitHub Models, the last free fallback for writing
   actions: read        # see whether an earlier run is already making the edition
 
 env:
@@ -195,7 +194,6 @@ jobs:
           OPENROUTER_DAILY_USD: ${{ vars.OPENROUTER_DAILY_USD }}
           OPENROUTER_FREE_DAILY: ${{ vars.OPENROUTER_FREE_DAILY }}
           OPENROUTER_FREE_MODELS: ${{ vars.OPENROUTER_FREE_MODELS }}
-          GITHUB_MODELS: ${{ vars.GITHUB_MODELS }}
           EPISODE_MINUTES: ${{ inputs.minutes || vars.EPISODE_MINUTES }}
           SUNDAY_MINUTES: ${{ vars.SUNDAY_MINUTES }}
           FACT_CHECK: ${{ vars.FACT_CHECK }}

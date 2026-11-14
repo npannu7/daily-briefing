@@ -26,7 +26,7 @@ Pipeline
 
 Which edition a run makes (morning or evening) is decided by due.py: the one that is due and not yet made.
 
-Zero cost by default: Gemini free key, then OpenRouter free models, then GitHub Models. One writer
+Zero cost by default: Gemini free key, then OpenRouter free models. One writer
 per episode where possible. OpenRouter's free daily request limit is counted, with a reserve for writing.
 """
 
@@ -123,16 +123,17 @@ AUDIO_BASE_URL = f"https://github.com/{REPO_FULL}/releases/download/{RELEASE_TAG
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "")
-# Free only by default: the Gemini API key's free quota, then OpenRouter's free models, then GitHub Models.
+# Free only by default: the Gemini API key's free quota, then OpenRouter's free models. GitHub Models used to be
+# the last fallback ("github:auto"); GitHub retired that service on 30 July 2026, so it is no longer in a chain.
 # A paid model is used only if you add it to WRITER_MODELS / HELPER_MODELS and set OPENROUTER_DAILY_USD above 0.
 WRITER_CHAIN = os.getenv("WRITER_MODELS") or (
-    "gemini:gemini-3.8-flash,gemini:gemini-3.7-flash,openrouter:free,gemini:gemini-3.5-flash-lite,github:auto")
+    "gemini:gemini-3.8-flash,gemini:gemini-3.7-flash,openrouter:free,gemini:gemini-3.5-flash-lite")
 HELPER_CHAIN = os.getenv("HELPER_MODELS") or (
-    "gemini:gemini-3.5-flash-lite,gemini:gemini-3.1-flash-lite,openrouter:free,github:auto")
+    "gemini:gemini-3.5-flash-lite,gemini:gemini-3.1-flash-lite,openrouter:free")
 # Checks the puzzles. Flash-Lite passed an unsolvable question and an ambiguous ranking on 4 Nov 2026, so the
 # check uses stronger models first (OpenRouter's free helpers here are different models from the main writer).
 CHECK_CHAIN = os.getenv("CHECK_MODELS") or (
-    "gemini:gemini-3.8-flash,gemini:gemini-3.7-flash,openrouter:free,gemini:gemini-3.5-flash-lite,github:auto")
+    "gemini:gemini-3.8-flash,gemini:gemini-3.7-flash,openrouter:free,gemini:gemini-3.5-flash-lite")
 # Builds the play page's data: repairs cards that failed the checks and writes formulas. Free coding models
 # first (they follow a schema strictly), then the usual helpers.
 CODER_CHAIN = os.getenv("CODER_MODELS") or "openrouter:free,gemini:gemini-3.5-flash-lite,gemini:gemini-3.1-flash-lite"
@@ -180,7 +181,6 @@ OPENROUTER_DAILY_USD = float(os.getenv("OPENROUTER_DAILY_USD") or 0)   # spend c
 # 1000 a day on accounts that have bought at least $10 of credits, 50 otherwise. Writing keeps a reserve.
 OPENROUTER_FREE_DAILY = int(os.getenv("OPENROUTER_FREE_DAILY") or 1000)
 FREE_WRITER_RESERVE = int(os.getenv("FREE_WRITER_RESERVE") or 40)
-GITHUB_TOKEN = os.getenv("GH_TOKEN") or os.getenv("GITHUB_TOKEN", "")
 
 GEMINI_TTS_MODEL = os.getenv("GEMINI_TTS_MODEL") or "gemini-3.8-flash-tts"
 TTS_ENGINE = (os.getenv("TTS_ENGINE") or "auto").lower()   # auto | gemini | fish | edge
@@ -471,58 +471,8 @@ def _openrouter(model, prompt, json_mode, role="writer"):
     return 200, text, ""
 
 
-_GHM = None
-
-
-def github_models():
-    """GitHub Models: free with the workflow's own token (permission models: read), small daily limits and
-    small prompts on the free tier, so it is the last fallback."""
-    global _GHM
-    if _GHM is not None:
-        return _GHM
-    override = os.getenv("GITHUB_MODELS", "").strip()
-    if override:
-        _GHM = [m.strip() for m in override.split(",") if m.strip()]
-        return _GHM
-    _GHM = []
-    try:
-        r = requests.get("https://models.github.ai/catalog/models", timeout=30,
-                         headers={**UA, "Authorization": f"Bearer {GITHUB_TOKEN}",
-                                  "Accept": "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28"})
-        if r.status_code != 200 or "json" not in r.headers.get("content-type", ""):
-            raise ValueError(f"HTTP {r.status_code}, {r.headers.get('content-type', '?')}: {r.text[:100]!r}")
-        data = r.json()
-        items = data if isinstance(data, list) else (data.get("models") or data.get("data") or [])
-        text = [m for m in items if isinstance(m, dict) and m.get("id")
-                and "text" in (m.get("supported_output_modalities") or ["text"])
-                and "embed" not in m["id"].lower()]
-        pref = ["deepseek", "gpt", "llama", "mistral", "phi"]
-
-        def rank(m):
-            mid = m["id"].lower()
-            return (next((i for i, p in enumerate(pref) if p in mid), len(pref)),
-                    -((m.get("limits") or {}).get("max_input_tokens") or 0))
-        _GHM = [m["id"] for m in sorted(text, key=rank)][:2]
-    except Exception as e:
-        log(f"  could not list GitHub Models: {str(e)[:120]}")
-    log(f"  GitHub Models: {', '.join(_GHM) or 'none'}")
-    return _GHM
-
-
-def _github(model, prompt, json_mode, role="writer"):
-    body = {"model": model, "messages": [{"role": "user", "content": prompt}], "temperature": 0.6, "max_tokens": 4000}
-    if json_mode:
-        body["response_format"] = {"type": "json_object"}
-    r = requests.post("https://models.github.ai/inference/chat/completions", json=body, timeout=(20, 300),
-                      headers={"Authorization": f"Bearer {GITHUB_TOKEN}", "Content-Type": "application/json",
-                               "Accept": "application/vnd.github+json"})
-    if r.status_code != 200:
-        return r.status_code, "", r.text[:300].replace("\n", " ")
-    msg = ((r.json().get("choices") or [{}])[0].get("message") or {})
-    return 200, re.sub(r"<think>.*?</think>", "", msg.get("content") or "", flags=re.S).strip(), ""
-
-
-PROVIDERS = {"gemini": _gemini_stream, "openrouter": _openrouter, "github": _github}
+PROVIDERS = {"gemini": _gemini_stream, "openrouter": _openrouter}
+_RETIRED_NOTED = set()
 
 
 def expand_chain(chain, role="writer"):
@@ -533,8 +483,11 @@ def expand_chain(chain, role="writer"):
             out.append(("gemini", model))
         elif prov == "openrouter" and OPENROUTER_API_KEY:
             out += [("openrouter", m) for m in free_models(role)] if model == "free" else [("openrouter", model)]
-        elif prov == "github" and GITHUB_TOKEN:
-            out += [("github", m) for m in github_models()] if model == "auto" else [("github", model)]
+        elif prov == "github" and prov not in _RETIRED_NOTED:
+            # Still named in a WRITER_MODELS / HELPER_MODELS / CHECK_MODELS variable. Its endpoints now answer
+            # HTTP 200 with the plain text "OK" instead of JSON, so the entry is skipped rather than called.
+            _RETIRED_NOTED.add(prov)
+            log(f"  {item}: GitHub Models was retired on 30 July 2026 - entry ignored; remove it from the variable")
     return out
 
 

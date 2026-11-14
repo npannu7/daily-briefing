@@ -176,7 +176,7 @@ the coding model for repair.
 
 | Job | Used, in order |
 |---|---|
-| Writing | Gemini API free key, then OpenRouter free models (Nemotron 3 Ultra, Nemotron 3.5 Super VL, ERNIE 5.5 Flash Preview, Gemma 4 31B), then GitHub Models. Once a model works, it keeps writing the rest of the episode. |
+| Writing | Gemini API free key, then OpenRouter free models (Nemotron 3 Ultra, Nemotron 3.5 Super VL, ERNIE 5.5 Flash Preview, Gemma 4 31B), then Gemini 3.5 Flash-Lite. Once a model works, it keeps writing the rest of the episode. |
 | Scoring threads, choosing game templates | Perplexity Decider Flash V1.3 and Decider V1.3 (free, through OpenRouter's Decisions API), then Nemotron 3.5 Lightning and Super VL answering the same questions as JSON. Eight at a time for up to 4 minutes (`SCORING_BUDGET_S`); threads not scored by then are scored in one batched call. |
 | Checking a claim found only on Reddit | Parallel Decisions Fast (free, searches the web). The pages it cites are fetched and read; only a page that could be read counts as a source. |
 | Game cards | Written by the writing chain, repaired by free coding models (Particle-1, North Mini Code, Flint), fact-checked by `CHECK_MODELS` (Gemini Flash, then Apodex 1.1 Mini). |
@@ -191,6 +191,12 @@ The free model list was read from each model's OpenRouter page on 13 November 20
 Inkling 2 Small (its free endpoint is for agent harnesses only), LiquidAI LFM (may train on prompts; LFM2.5 left
 on 13 Nov), Dots3-Note Preview (leaves 31 Dec), HeyGen Voice Turbo (leaves 30 Nov). The Decisions API is in
 alpha: if its replies change shape, the answers are ignored and the Nemotron models take over.
+
+GitHub Models is no longer a fallback. GitHub retired the service on 30 July 2026 (playground, catalogue and
+inference API, for every customer), and its addresses now answer `OK` as plain text instead of a model list. The
+`github:auto` entry, the `GITHUB_MODELS` variable and the workflow's `models: read` permission are removed. A
+`github:` entry still present in `WRITER_MODELS`, `HELPER_MODELS` or `CHECK_MODELS` is ignored with one line in
+the log; delete it from the variable, and delete the `GITHUB_MODELS` variable if you set one.
 
 NVIDIA's free endpoints log prompts. Public Reddit threads are fine, but never send company or confidential
 documents to a free model.
@@ -217,7 +223,7 @@ Optional variables:
 | `SEGMENT_CHIME` | `true` | A soft chime between segments. `false` leaves a short pause instead |
 | `OPENROUTER_FREE_DAILY` | `1000` | Your OpenRouter free-model daily limit (1000 after buying $10 of credits; 50 otherwise) |
 | `OPENROUTER_DAILY_USD` | `0` | Spend cap for paid models. Leave at 0 to stay free |
-| `WRITER_MODELS`, `HELPER_MODELS` | free chains | e.g. `gemini:gemini-3.8-flash,openrouter:free,github:auto` |
+| `WRITER_MODELS`, `HELPER_MODELS` | free chains | e.g. `gemini:gemini-3.8-flash,openrouter:free` |
 | `OPENROUTER_FREE_MODELS` | Nemotron / Gemma | Replace the free model lists, comma-separated |
 | `DECISION_MODELS` | Perplexity Decider Flash V1.3, Decider V1.3, Nemotron 3.5 Lightning, Nemotron 3.5 Super VL (all free) | Models that score each thread and choose the game's templates. A paid one that charges money is dropped while the cap is 0 |
 | `CODER_MODELS` | `openrouter:free,…` | Models that repair game cards (the free coding models first) |
