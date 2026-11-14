@@ -194,8 +194,8 @@ input[type=password],input[type=text].tok{width:100%;font:inherit;padding:10px 1
 .worth{font-size:13px;color:var(--muted);margin:2px 0 10px}
 .mcols{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:8px}
 .mcols button{border:2px solid var(--line);background:var(--card);border-radius:12px;padding:10px;cursor:pointer;font-size:14px;line-height:1.3;
-  min-height:56px;text-align:left;width:100%;margin:0 0 8px}
-.mcols .l button{font-weight:700}
+  min-height:56px;text-align:left;width:100%;margin:0}
+.mcols button.l{font-weight:700}
 .mcols button.sel{border-color:var(--accent);background:var(--soft)}
 .mcols button.right{border-color:var(--good);background:var(--good-soft);cursor:default}
 .olist{list-style:none;margin:0 0 10px;padding:0}
@@ -206,6 +206,8 @@ input[type=password],input[type=text].tok{width:100%;font:inherit;padding:10px 1
   text-align:left;background:transparent;cursor:pointer}
 .olist .slot.filled{border-style:solid;border-color:var(--muted);background:var(--card)}
 .olist .slot.right{border-color:var(--good);background:var(--good-soft)}
+.olist li.thin{margin:0 0 6px} .olist li.thin .n{width:18px;height:18px;font-size:11px;margin:0 4px}
+.olist .slot.thin{min-height:14px;padding:0;border-width:1.5px;cursor:default}
 .pool{display:flex;flex-direction:column;gap:8px;margin:0 0 12px}
 .pool button{border:2px solid var(--line);background:var(--chip);border-radius:12px;padding:10px 12px;font-size:15px;text-align:left;cursor:pointer}
 .timer{height:6px;border-radius:3px;background:var(--chip);overflow:hidden;margin:0 0 14px}
@@ -887,7 +889,7 @@ input[type=range]{width:100%;accent-color:var(--accent);height:32px;margin:2px 0
   function st(file){
     if (!state[file]) state[file] = store.get('wm:' + file, {});
     var s = state[file];
-    s.ratings = s.ratings || {}; s.segments = s.segments || {}; s.comment = s.comment || '';
+    s.ratings = s.ratings || {}; s.segments = s.segments || {}; s.depth = s.depth || {}; s.comment = s.comment || '';
     s.play = s.play || {at: 0, cards: {}, bets: {}};
     s.play.cards = s.play.cards || {}; s.play.bets = s.play.bets || {};
     s.bonus = s.bonus || {at: 0, cards: {}};
@@ -930,8 +932,11 @@ input[type=range]{width:100%;accent-color:var(--accent);height:32px;margin:2px 0
   function kindName(theme, type){ return (KIND_BY_THEME[theme] || {})[type] || KIND[type] || 'Card'; }
   // Bets: how sure are you? Points follow a proper scoring rule (quadratic), so the best strategy is to say what
   // you really believe: being 95% sure and wrong costs far more than it could have won.
-  var CONF = [{c: 55, t: 'Hunch', win: 5, lose: -5}, {c: 70, t: 'Probably', win: 16, lose: -24},
-              {c: 85, t: 'Confident', win: 23, lose: -47}, {c: 95, t: 'Certain', win: 25, lose: -65}];
+  // The stakes were halved on 14 Nov 2026: a "Certain" bet that missed cost 65 points, more than both cards of a
+  // short game can earn, so a perfect card run ended at -30. Same rule, half the size (it still pays best to say
+  // what you really believe), and a game's total never goes below zero (deckStats). Calibration is kept apart.
+  var CONF = [{c: 55, t: 'Hunch', win: 3, lose: -3}, {c: 70, t: 'Probably', win: 8, lose: -12},
+              {c: 85, t: 'Confident', win: 12, lose: -24}, {c: 95, t: 'Certain', win: 13, lose: -33}];
   function confOf(c){ return CONF.filter(function(x){ return x.c === c; })[0] || CONF[1]; }
 
   /* ================================ decks ================================ */
@@ -995,7 +1000,7 @@ input[type=range]{width:100%;accent-color:var(--accent);height:32px;margin:2px 0
       if (scoring(c)) { n++; if (p && p.done) { done++; pts += p.pts || 0; max += p.max || 0; if (p.ok) right++; } }
       if (c.k === 'settle' && p && p.done && p.pts) pts += p.pts;
     });
-    return {pts: pts, max: max, done: done, n: n, right: right, finished: !!deck.prog.finished};
+    return {pts: Math.max(0, pts), max: max, done: done, n: n, right: right, finished: !!deck.prog.finished};
   }
 
   /* ================================ card renderers ================================ */
@@ -1103,10 +1108,12 @@ input[type=range]{width:100%;accent-color:var(--accent);height:32px;margin:2px 0
       list.innerHTML = ''; pool.innerHTML = '';
       var firstEmpty = placed.indexOf(null);
       placed.forEach(function(idx, pos){
-        var slot = el('button', {class: 'slot' + (idx !== null ? ' filled' : '') + (locked[pos] ? ' right' : ''), type: 'button',
+        var thin = idx === null && pos !== firstEmpty;   // only the next empty slot is full height
+        var slot = el('button', {class: 'slot' + (idx !== null ? ' filled' : '') + (locked[pos] ? ' right' : '') + (thin ? ' thin' : ''), type: 'button',
+          'aria-label': 'Place ' + (pos + 1) + (idx !== null ? ': ' + r.items[idx] : ', empty'),
           text: idx !== null ? r.items[idx] : (pos === firstEmpty && !p.done ? 'Tap what comes ' + (pos ? 'next' : 'first') : '')});
         slot.addEventListener('click', function(){ if (p.done || idx === null || locked[pos]) return; placed[pos] = null; keep(); draw(); });
-        list.appendChild(el('li', {}, [el('span', {class: 'n', text: String(pos + 1)}), slot]));
+        list.appendChild(el('li', {class: thin ? 'thin' : ''}, [el('span', {class: 'n', text: String(pos + 1)}), slot]));
       });
       order.forEach(function(idx){
         if (placed.indexOf(idx) >= 0 || p.done) return;
@@ -1137,36 +1144,39 @@ input[type=range]{width:100%;accent-color:var(--accent);height:32px;margin:2px 0
   }
 
   function rMatch(r, p, done){
+    // One row per term. A matched meaning moves into its term's row, so the board reads as pairs while you play
+    // and when you look back at it. (Before, the two columns kept their own order: a finished board showed every
+    // box green with unrelated items side by side.) Meanings not matched yet fill the other rows, shuffled.
     var n = el('div', {}, [el('p', {class: 'q', text: r.q || 'Match each one to what it does.'}), el('p', {class: 'sub', text: 'Tap a name, then its match.'})]);
     var N = r.pairs.length, rightOrder = shuffled(r.pairs, r.pairs.map(function(x){ return x[1]; }).join('|'));
     p.got = p.got || []; p.miss = p.miss || 0;
-    var cols = el('div', {class: 'mcols'}), L = el('div', {class: 'l'}), R = el('div'), msg = el('div', {class: 'say', 'aria-live': 'polite'});
-    var sel = null, lb = [], rb = [];
+    var grid = el('div', {class: 'mcols'}), msg = el('div', {class: 'say', 'aria-live': 'polite'});
+    var sel = null;
+    function has(i){ return p.got.indexOf(i) >= 0; }
     function finish(silent){
       say(msg, p.miss === 0 ? 'good' : '', p.miss === 0 ? 'All matched, no misses.' : 'All matched.', r.why || '');
       if (!silent) { buzz(15); done({pts: Math.max(3, 15 - 4 * p.miss), max: 15, ok: p.miss === 0}); }
     }
-    function paint(){
-      lb.forEach(function(b, i){ b.className = p.got.indexOf(i) >= 0 ? 'right' : sel === i ? 'sel' : ''; b.disabled = p.got.indexOf(i) >= 0; });
-      rb.forEach(function(b){ b.el.className = p.got.indexOf(b.i) >= 0 ? 'right' : ''; b.el.disabled = p.got.indexOf(b.i) >= 0; });
-    }
-    r.pairs.forEach(function(pair, i){
-      var b = el('button', {type: 'button', text: pair[0]});
-      b.addEventListener('click', function(){ sel = sel === i ? null : i; paint(); });
-      lb.push(b); L.appendChild(b);
-    });
-    rightOrder.forEach(function(i){
-      var b = el('button', {type: 'button', text: r.pairs[i][1]});
-      b.addEventListener('click', function(){
-        if (sel === null) { say(msg, '', 'Tap a name on the left first.', ''); return; }
-        if (sel === i) { p.got.push(i); sel = null; p.persist(); buzz(10); paint(); say(msg, '', '', ''); if (p.got.length === N) finish(false); }
-        else { p.miss++; p.persist(); buzz([20, 40, 20]); b.classList.add('shake'); setTimeout(function(){ b.classList.remove('shake'); }, 320); say(msg, 'bad', 'Not a match.', ''); }
+    function draw(){
+      var loose = rightOrder.filter(function(i){ return !has(i); });
+      grid.innerHTML = '';
+      r.pairs.forEach(function(pair, i){
+        var j = has(i) ? i : loose.shift();
+        var a = el('button', {type: 'button', class: 'l' + (has(i) ? ' right' : sel === i ? ' sel' : ''), text: pair[0]});
+        a.disabled = has(i);
+        a.addEventListener('click', function(){ sel = sel === i ? null : i; draw(); });
+        var b = el('button', {type: 'button', class: has(j) ? 'right' : '', text: r.pairs[j][1]});
+        b.disabled = has(j);
+        b.addEventListener('click', function(){
+          if (sel === null) { say(msg, '', 'Tap a name on the left first.', ''); return; }
+          if (sel === j) { p.got.push(j); sel = null; p.persist(); buzz(10); say(msg, '', '', ''); draw(); if (p.got.length === N) finish(false); }
+          else { p.miss++; p.persist(); buzz([20, 40, 20]); b.classList.add('shake'); setTimeout(function(){ b.classList.remove('shake'); }, 320); say(msg, 'bad', 'Not a match.', ''); }
+        });
+        grid.appendChild(a); grid.appendChild(b);
       });
-      rb.push({el: b, i: i}); R.appendChild(b);
-    });
-    cols.appendChild(L); cols.appendChild(R); n.appendChild(cols); n.appendChild(msg);
-    paint();
-    if (p.done) { p.got = r.pairs.map(function(_, i){ return i; }); paint(); finish(true); }
+    }
+    n.appendChild(grid); n.appendChild(msg);
+    if (p.done) { p.got = r.pairs.map(function(_, i){ return i; }); draw(); finish(true); } else draw();
     return n;
   }
 
@@ -1353,10 +1363,12 @@ input[type=range]{width:100%;accent-color:var(--accent);height:32px;margin:2px 0
     back.style.display = card.k === 'finish' ? 'none' : '';
     next.textContent = 'Continue';
     function done(res){
+      var before = deckStats(deck).pts;
       p.done = true; p.pts = res.pts || 0; p.max = res.max || 0; p.ok = res.ok;
-      if (res.pts) award(res.pts);
+      var gain = deckStats(deck).pts - before;   // what the total really moved by: it stops at zero
+      if (gain) award(gain);
       if (card.k === 'round' && res.ok !== null && res.ok !== undefined) schedule(card, !!res.ok);
-      persist(); popPoints(res.pts || 0);
+      persist(); popPoints(gain);
       next.disabled = false;
     }
     var box = el('div', {class: 'cardc'});
@@ -1435,8 +1447,10 @@ input[type=range]{width:100%;accent-color:var(--accent);height:32px;margin:2px 0
       n.appendChild(el('div', {class: 'stamp ' + (seg.bet.truth ? 't' : 'f'), text: seg.bet.truth ? 'TRUE' : 'FALSE'}));
       if (b && b.pick !== undefined) {
         var c = confOf(b.conf), right = b.pick === seg.bet.truth, pts = right ? c.win : c.lose;
+        if (!p.done) p.floor = deckStats(deck).pts + pts < 0;
         n.appendChild(el('div', {class: 'result ' + (right ? 'win' : 'lose')}, [el('b', {text: (pts > 0 ? '+' : '') + pts + ' points. '}),
-          'You said ' + (b.pick ? 'true' : 'false') + ' at ' + c.c + '%.' + (right ? '' : c.c >= 85 ? ' Being that sure and wrong is expensive - that is the idea.' : '')]));
+          'You said ' + (b.pick ? 'true' : 'false') + ' at ' + c.c + '%.' + (right ? '' : c.c >= 85 ? ' Being that sure and wrong is expensive - that is the idea.' : '') +
+          (p.floor ? ' Your total stops at zero.' : '')]));
         if (!p.done) {
           var cal = PROFILE.calib[c.c] = PROFILE.calib[c.c] || [0, 0]; cal[1]++; if (right) cal[0]++; saveProfile();
           buzz(right ? [15, 30, 15] : [30, 50, 30]);
@@ -1458,6 +1472,11 @@ input[type=range]{width:100%;accent-color:var(--accent);height:32px;margin:2px 0
       row.appendChild(x);
     });
     n.appendChild(row);
+    // Depth is asked per story: one "too technical" for a whole episode could not say which of its two stories
+    // was the hard one, so the next episode's choice of stories could not learn from it.
+    var level = chipRow('Level', [{v: 'too technical', t: 'Too technical'}, {v: 'right', t: 'Right'}, {v: 'too basic', t: 'Too basic'}],
+      function(){ return s.depth[seg.title]; }, function(v){ s.depth[seg.title] = v; save(deck.ep.file); buzz(10); });
+    level.style.marginTop = '14px'; n.appendChild(level);
     if (!seg.bet || !b || b.pick === undefined) p.done = true;
     return n;
   }
@@ -1591,10 +1610,11 @@ input[type=range]{width:100%;accent-color:var(--accent);height:32px;margin:2px 0
       }
     }
     var segs = {}; Object.keys(s.segments).forEach(function(k){ if (s.segments[k]) segs[k] = s.segments[k]; });
+    var depth = {}; Object.keys(s.depth).forEach(function(k){ if (s.depth[k]) depth[k] = s.depth[k]; });
     var r = {}; Object.keys(s.ratings).forEach(function(k){ if (s.ratings[k] !== undefined) r[k] = s.ratings[k]; });
     var comment = (s.comment || '').trim().slice(0, 1500);
-    if (!quiz && !puzzles && !Object.keys(segs).length && !Object.keys(r).length && !comment) return null;
-    out.quiz = quiz; out.puzzles = puzzles; out.play = play; out.ratings = r; out.segments = segs; out.comment = comment;
+    if (!quiz && !puzzles && !Object.keys(segs).length && !Object.keys(depth).length && !Object.keys(r).length && !comment) return null;
+    out.quiz = quiz; out.puzzles = puzzles; out.play = play; out.ratings = r; out.segments = segs; out.depth = depth; out.comment = comment;
     return out;
   }
   function pending(explicit){
@@ -1603,7 +1623,7 @@ input[type=range]{width:100%;accent-color:var(--accent);height:32px;margin:2px 0
     var out = [];
     (DATA ? DATA.episodes : []).forEach(function(ep){
       var f = feedbackOf(ep); if (!f) return;
-      var said = Object.keys(f.ratings).length || Object.keys(f.segments).length || f.comment;
+      var said = Object.keys(f.ratings).length || Object.keys(f.segments).length || Object.keys(f.depth).length || f.comment;
       if (!explicit && !said) return;
       var sig = JSON.stringify(f);
       if (PROFILE.sent[ep.file] !== hashStr(sig)) out.push({f: f, file: ep.file, sig: hashStr(sig)});

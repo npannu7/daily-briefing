@@ -204,6 +204,10 @@ jobs:
           FISH_WORKERS: ${{ vars.FISH_WORKERS }}
           SCORING_BUDGET_S: ${{ vars.SCORING_BUDGET_S }}
           CHECK_MODELS: ${{ vars.CHECK_MODELS }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
+          GEMINI_DAILY: ${{ vars.GEMINI_DAILY }}
+          GEMINI_THINKING: ${{ vars.GEMINI_THINKING }}
+          TERM_CAP: ${{ vars.TERM_CAP }}
           TARGET_LUFS: ${{ vars.TARGET_LUFS }}
           SEGMENT_CHIME: ${{ vars.SEGMENT_CHIME }}
           GEMINI_TTS_MODEL: ${{ vars.GEMINI_TTS_MODEL }}

@@ -16,11 +16,20 @@ At zero cost by default:
   release) with the best comments, sources and Hacker News discussion for every tracked topic, plus its best
   unused threads. Reddit threads only stay in the pool for 36 hours, so without it Sunday would have only headlines.
 
-Each topic is drafted, fact-checked against its sources by a second model, then rewritten:
-at most one number per sentence, and each specialist term (computer science, biology, medicine, physics) explained
-once (never the listener's own field: quality, regulation, manufacturing, engineering). A story that nothing
-outside Reddit confirms is web-checked, and if it stays unconfirmed the hosts say so in the first three turns,
-not at the end.
+Each topic is drafted, fact-checked against its sources by a second model, rewritten, and then **checked again**:
+whatever the rewrite left open is corrected turn by turn. The rules: at most one number per sentence; each
+specialist term (computer science, biology, medicine, physics) explained once (never the listener's own field:
+quality, regulation, manufacturing, engineering); and a **limit on specialist terms per story** - 6, or 4 after
+"too technical" votes, 9 after "too basic" (`TERM_CAP`). The terms are counted, not just asked for: abbreviations
+and code names are found by pattern, the rest by the checking model, and a script over the limit is rewritten.
+
+Each story is told on its own terms. At most one remark per story may connect it to quality or regulated work,
+as a host's opinion, and nothing is called validated, deterministic or fit for regulated use unless the source
+says so.
+
+A story that nothing outside Reddit confirms is web-checked, and if it stays unconfirmed the hosts say so in
+the first three turns, not at the end. If the web search could not be run that day, they say that instead
+("we could not check beyond our usual sources") and do not claim to have looked.
 
 - **Feed:** `https://npannu7.github.io/daily-briefing/podcast.xml`
 - **The game for each episode, and feedback:** `https://npannu7.github.io/daily-briefing/quiz.html`
@@ -83,9 +92,10 @@ stories.
 **three-minute game** for each episode, built from templates:
 
 1. **Bets.** One true-or-false statement per story, with how sure you are (55 / 70 / 85 / 95%). The points
-   follow a proper scoring rule: being 95% sure and wrong costs far more than it can win, so the best strategy
-   is to say what you really believe. The page keeps your **calibration** (when you say 85%, how often are you
-   right?). Bets can be placed before listening; they are kept and settled afterwards. The hosts put the first
+   follow a proper scoring rule: being 95% sure and wrong costs far more than it can win (+13 / -33), so the
+   best strategy is to say what you really believe. The stakes are half what they were until 14 Nov 2026, and a
+   game's total never goes below zero: one confident miss used to turn a perfect card run into -30. The page
+   keeps your **calibration** (when you say 85%, how often are you right?). Bets can be placed before listening; they are kept and settled afterwards. The hosts put the first
    bet to you at the start of the episode.
 2. **Cards**, two or three per story, from ten formats:
 
@@ -102,8 +112,9 @@ stories.
    | `lab` Hands on | one of the 17 pictures with sliders below, with a mission |
    | bonus round | the four-question recap quiz, optional |
 
-3. **Settling each story:** the bet's answer, the one line worth keeping, and one tap for the show
-   (more like it / fine / less of this).
+3. **Settling each story:** the bet's answer, the one line worth keeping, one tap for the show
+   (more like it / fine / less of this) and one for the level (too technical / right / too basic). The level is
+   asked per story because a vote for the whole episode cannot say which story was the hard one.
 4. **The end:** points, streak, words collected, and feedback in ten seconds: stars, depth, pace, voices,
    one-tap comments written for that episode, and a text box.
 
@@ -119,7 +130,7 @@ are out, and **"You said → we did"**: what your last feedback changed.
 | Writing the bet and the cards for each story | the **writing model**, to hard word limits ("a pub-quiz host, not an examiner") |
 | Checking every card: limits, answers, slider ranges, reachable missions | `check_round` in `generate_briefing.py` |
 | Repairing cards that fail the checks | a **coding model** (Particle-1, North Mini Code, Flint: free), given the format's schema and the exact error |
-| Checking the facts | a stricter model (Apodex 1.1 Mini, free; Gemini Flash when it answers) |
+| Checking the facts | the strongest model available (Gemini 4 Hydrogen; Nemotron 3.5 Super VL once Gemini's share of the day is used) |
 
 No model writes HTML or JavaScript, so a bad reply can lose a card but cannot break the page. When no decision
 model answers, the formats rotate by day.
@@ -162,8 +173,11 @@ quantity to play with (policy, lawsuits, a firmware hack) and get the other card
 
 For a `lab`, the model fills in only the story: realistic values, plain labels and a mission ("Find the
 learning rate that settles in 8 steps"). It never writes code or formulas for a template. Every value is held to
-the template's limits; a mission the sliders cannot reach, or one already solved at the start, sends the card to
-the coding model for repair.
+the template's limits. A mission the sliders cannot reach, or one already solved at the start, is replaced by a
+built-in one ("Move the sliders until ... reads about ..."), so the card is kept.
+
+Every story also gets one **spare card** in a further format. It is written and checked with the others and
+shown only when a card was dropped, so a story does not end up with a single card.
 
 ## Files you edit
 
@@ -176,18 +190,30 @@ the coding model for repair.
 
 | Job | Used, in order |
 |---|---|
-| Writing | Gemini API free key, then OpenRouter free models (Nemotron 3 Ultra, Nemotron 3.5 Super VL, ERNIE 5.5 Flash Preview, Gemma 4 31B), then Gemini 3.5 Flash-Lite. Once a model works, it keeps writing the rest of the episode. |
+| Writing | **Gemini 4 Hydrogen** (free key), then OpenRouter free models (Nemotron 3 Ultra, Nemotron 3.5 Super VL, ERNIE 5.5 Flash Preview, Gemma 4 31B). Once a model works, it keeps writing the rest of the episode. |
 | Scoring threads, choosing game templates | Perplexity Decider Flash V1.3 and Decider V1.3 (free, through OpenRouter's Decisions API), then Nemotron 3.5 Lightning and Super VL answering the same questions as JSON. Eight at a time for up to 4 minutes (`SCORING_BUDGET_S`); threads not scored by then are scored in one batched call. |
-| Checking a claim found only on Reddit | Parallel Decisions Fast (free, searches the web). The pages it cites are fetched and read; only a page that could be read counts as a source. |
-| Game cards | Written by the writing chain, repaired by free coding models (Particle-1, North Mini Code, Flint), fact-checked by `CHECK_MODELS` (Gemini Flash, then Apodex 1.1 Mini). |
-| Topics, quiz, dossier notes | Gemini Flash-Lite free key, then OpenRouter free models (Nemotron 3.5 Super VL, ERNIE 5.5 Flash Preview, Gemma 4). |
+| Checking a claim found only on Reddit | Gemini 4 Hydrogen with Google Search, at most twice a run. The pages it cites are fetched and read; only a page that could be read counts as a source. |
+| Game cards | Written by the writing chain, repaired by free coding models (Particle-1, North Mini Code, Flint), fact-checked by `CHECK_MODELS` (Gemini 4 Hydrogen, then Nemotron 3.5 Super VL). |
+| Fact check and re-check of each script, topics, quiz, dossier notes | OpenRouter free models (Nemotron 3.5 Super VL, ERNIE 5.5 Flash Preview, Gemma 4): a different model from the writer. Gemini only as a last resort. |
 | Voices | Fish Audio S2.1 Pro Free (OpenRouter, three requests in flight), then Gemini TTS (free key), then Edge. |
 
-A model that times out or fails twice is skipped for the rest of the run, and then **rests for 6 hours** (doubling
-each time, at most 48): it goes to the back of every chain until then. Before this, Gemini 3.8 Flash and 3.7
-Flash timed out in every run from 6 to 12 November and each run spent about four minutes finding that out again.
+**Gemini 4 Hydrogen's free allowance is 5 requests a minute and 20 a day** (AI Studio → Rate Limit, November
+2026). The day resets at midnight Pacific time, so one day covers an evening edition and the next morning's.
+The script counts its requests, spaces them 12.5 seconds apart and gives each run half the day (10). An episode
+uses about nine: choosing the stories, two scripts, two rewrites, two sets of cards, the card check and the
+greeting, plus up to two web searches. When a run's share is used, OpenRouter's free models take over; the last
+line of the log shows the count. A paid Gemini tier only needs `GEMINI_DAILY` raised. The older Gemini text
+models are no longer used: 3.8 Flash and 3.7 Flash timed out on every script from 6 to 14 November, and 3.5
+Flash-Lite returned broken JSON. (Gemini TTS is still the second choice for the voices.)
 
-The free model list was read from each model's OpenRouter page on 13 November 2026. Not used, on purpose:
+A model that times out is skipped for the rest of the run, and a model whose last call of a run failed then
+**rests for 16 hours** (doubling each time, at most 48): it goes to the back of every chain until then. A limit
+that was reached (HTTP 429) is not a failure and causes no rest. The first version of this rule rested a model
+for 6 hours, less than the gap between editions, and only if it had never answered - so it did not catch a
+model that answers short requests and times out on long ones.
+
+The free model list was read from each model's OpenRouter page on 13 November 2026. Two of its models were gone
+a day later and are removed: Apodex 1.1 Mini (no provider) and Parallel Decisions Fast (now paid only). Not used, on purpose:
 Inkling 2 Small (its free endpoint is for agent harnesses only), LiquidAI LFM (may train on prompts; LFM2.5 left
 on 13 Nov), Dots3-Note Preview (leaves 31 Dec), HeyGen Voice Turbo (leaves 30 Nov). The Decisions API is in
 alpha: if its replies change shape, the answers are ignored and the Nemotron models take over.
@@ -216,17 +242,21 @@ Optional variables:
 | `WAIT_AHEAD_MIN` | `150` | A check that arrives this many minutes before a start time waits for it. `0` = never wait |
 | `EPISODE_MINUTES` | `20` | Weekday episode length (15 = 1 topic, 20 = 2, 30 = 3). The Run workflow button also has a minutes box |
 | `SUNDAY_MINUTES` | `45` | Longest Sunday deep dive. Shorter if the free budget is low |
-| `FACT_CHECK` | `true` | Draft, fact-check, rewrite for each topic |
+| `FACT_CHECK` | `true` | Draft, fact-check, rewrite and re-check for each topic |
+| `TERM_CAP` | `6` | Specialist terms allowed in one story. Depth votes move it (4 after "too technical", 9 after "too basic") |
+| `GEMINI_MODEL` | `gemini-4-hydrogen` | The one Gemini text model used |
+| `GEMINI_DAILY` | `20` | Its free requests a day (each run uses at most half). Raise it on a paid tier |
+| `GEMINI_THINKING` | `medium` | How long it reasons before writing: `low`, `medium`, `high` or `xhigh`. Higher is slower |
 | `FISH_TEMPO_A`, `FISH_TEMPO_B` | `1.08`, `1.0` | Speaking speed for Sarah and Laura. Each "too fast" / "too slow" vote on the quiz page moves both 4% (at most 12%) |
 | `FISH_WORKERS` | `3` | Fish requests in flight at once (starts stay 3.2 s apart). `1` = one at a time |
 | `TARGET_LUFS` | `-16` | Loudness of the finished episode (the podcast standard). `off` keeps the raw voices, which were about 10 dB quieter |
 | `SEGMENT_CHIME` | `true` | A soft chime between segments. `false` leaves a short pause instead |
 | `OPENROUTER_FREE_DAILY` | `1000` | Your OpenRouter free-model daily limit (1000 after buying $10 of credits; 50 otherwise) |
 | `OPENROUTER_DAILY_USD` | `0` | Spend cap for paid models. Leave at 0 to stay free |
-| `WRITER_MODELS`, `HELPER_MODELS` | free chains | e.g. `gemini:gemini-3.8-flash,openrouter:free` |
+| `WRITER_MODELS`, `HELPER_MODELS`, `CHECK_MODELS` | free chains | e.g. `gemini:gemini-4-hydrogen,openrouter:free` |
 | `OPENROUTER_FREE_MODELS` | Nemotron / Gemma | Replace the free model lists, comma-separated |
 | `DECISION_MODELS` | Perplexity Decider Flash V1.3, Decider V1.3, Nemotron 3.5 Lightning, Nemotron 3.5 Super VL (all free) | Models that score each thread and choose the game's templates. A paid one that charges money is dropped while the cap is 0 |
 | `CODER_MODELS` | `openrouter:free,…` | Models that repair game cards (the free coding models first) |
-| `WEB_CHECK_MODEL` | `parallel/decisions-fast:free` | Web check for claims found only on Reddit. `off` disables it |
+| `WEB_CHECK_MODEL` | `gemini:gemini-4-hydrogen` | Web check for claims found only on Reddit (Gemini with Google Search). An OpenRouter decision model can be named instead. `off` disables it |
 | `SCORING` | `auto` | `batch` or `decisions` |
 | `FISH_VOICE_A`, `FISH_VOICE_B` | set | Fish Audio voice ids for Sarah and Laura |
