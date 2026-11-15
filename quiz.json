@@ -9,17 +9,384 @@
  "heard": {
   "lines": [
    {
-    "said": "\"Too technical\" in 3 of your last 6 ratings",
-    "did": "Stories that need specialist background are ranked lower when topics are picked."
-   },
-   {
-    "said": "\"Less maintainer drama. Fewer numbers\"",
-    "did": "Passed to the editor and the writers of every episode from now on."
+    "said": "\"Too technical\" in 3 of your last 6 depth ratings",
+    "did": "2 specialist threads were left out when this episode's stories were chosen. Each story may use at most 4 specialist terms: this episode's scripts were rewritten from 8 to 5 and 50 to 3 and 6 to 4."
    }
   ],
   "last": "2026-11-14"
  },
  "episodes": [
+  {
+   "file": "ai_2026-11-15_morning_0600.mp3",
+   "title": "Sunday - 15 Nov: AI Coding Agents",
+   "label": "Sunday 15 Nov morning deep dive",
+   "date": "2026-11-15",
+   "edition": "morning",
+   "published": "2026-11-15T06:00:16.563007+05:30",
+   "duration": 2618,
+   "theme": "Sunday edition: AI Coding Agents - plus the week's best threads that got away",
+   "writer": "Gemini 4 Hydrogen",
+   "voices": "Fish Audio (free)",
+   "deep_dive": true,
+   "segments": [
+    {
+     "title": "What happened next",
+     "category": "followup"
+    },
+    {
+     "title": "AI Coding Agents: The week's story",
+     "category": "deepdive"
+    },
+    {
+     "title": "AI Coding Agents: How it actually works",
+     "category": "deepdive"
+    },
+    {
+     "title": "AI Coding Agents: Reality check",
+     "category": "deepdive"
+    },
+    {
+     "title": "Workers want their old boss back",
+     "category": "thread"
+    },
+    {
+     "title": "The computer is getting smarter",
+     "category": "thread"
+    },
+    {
+     "title": "A computer program led a big team",
+     "category": "thread"
+    }
+   ],
+   "play": {
+    "v": 2,
+    "theme": "exchange",
+    "title": "The Week Coding Agents Went Wild",
+    "brief": "One week of Reddit stories reveals coding agents' real costs, risks, and hard limits.",
+    "segments": [
+     {
+      "title": "AI Coding Agents: The week's story",
+      "bet": {
+       "claim": "An AI agent booked four rides out of three hundred million in one week",
+       "truth": true,
+       "why": "Ride-hailing CFO reported just four agent-booked rides during a week of over three hundred million trips and orders."
+      },
+      "rounds": [
+       {
+        "type": "estimate",
+        "q": "How many rides did AI agents book in a week of three hundred million trips?",
+        "answer": 4.0,
+        "unit": "rides",
+        "lo": 0.0,
+        "hi": 5.5,
+        "log": false,
+        "why": "The ride-hailing CFO stated just four rides were booked by agents out of over three hundred million total trips and orders."
+       },
+       {
+        "type": "call",
+        "q": "Your team mandates AI agents for all code to ship faster. Months later the codebase has tripled. Why?",
+        "options": [
+         "Agents deleted the wrong folders",
+         "Agents kept rewriting existing code",
+         "Agents booked fake customer visits"
+        ],
+        "answer": 1,
+        "hint": "The segment noted agents reinventing pieces instead of reusing them",
+        "why": "The mandated-AI team's codebase tripled because agents constantly rewrote existing functions instead of calling them, creating duplicate logic nobody understood."
+       }
+      ],
+      "takeaway": "Speed from AI agents trades understanding for volume—code triples, nobody knows why."
+     },
+     {
+      "title": "AI Coding Agents: How it actually works",
+      "bet": null,
+      "rounds": [
+       {
+        "type": "match",
+        "q": "Match each agent mechanism to its plain job.",
+        "pairs": [
+         [
+          "Tool calling",
+          "Model writes work order, wrapper runs it"
+         ],
+         [
+          "Context window",
+          "Fixed workbench re-read every loop"
+         ],
+         [
+          "Wrapper program",
+          "Intercepts orders, runs commands on computer"
+         ],
+         [
+          "Isolated worker",
+          "Fresh workbench for one narrow task"
+         ]
+        ]
+       },
+       {
+        "type": "lab",
+        "text": "Each coding task takes ~20 tool calls. Slide step reliability and count to see how many tasks fully succeed.",
+        "inputs": [
+         {
+          "id": "p",
+          "label": "Each tool call works",
+          "unit": "%",
+          "min": 90.0,
+          "max": 99.9,
+          "step": 0.1,
+          "value": 95.0
+         },
+         {
+          "id": "n",
+          "label": "Tool calls in a coding task",
+          "unit": "",
+          "min": 1.0,
+          "max": 50.0,
+          "step": 1.0,
+          "value": 20.0
+         }
+        ],
+        "outputs": [
+         {
+          "id": "ok",
+          "label": "Whole coding task works",
+          "unit": "%",
+          "expr": "100*(p/100)^n",
+          "digits": 1,
+          "lo": 0.5153775207320119,
+          "hi": 99.9
+         },
+         {
+          "id": "fails",
+          "label": "Coding tasks that fail, of 100",
+          "unit": "",
+          "expr": "100-ok",
+          "digits": 0,
+          "lo": 0.09999999999999432,
+          "hi": 99.48462247926798
+         }
+        ],
+        "chart": {
+         "x": "n",
+         "y": [
+          "ok"
+         ]
+        },
+        "goal": {
+         "target": "ok",
+         "min": 50.0,
+         "max": 100.0,
+         "text": "Get at least 50 tasks out of 100 to fully succeed.",
+         "success": "Even 95% reliable steps fail most 20-step tasks; you need near-perfect steps or fewer steps."
+        },
+        "template": "chain",
+        "view": {
+         "kind": "runs",
+         "p": "p",
+         "n": "n",
+         "step": "tool call",
+         "run": "coding task"
+        }
+       }
+      ],
+      "takeaway": "Agents are text models in feedback loops, bounded by a workbench they re-read every cycle."
+     },
+     {
+      "title": "AI Coding Agents: Reality check",
+      "bet": {
+       "claim": "During Halloween week, only four Uber rides were booked by AI agents out of 320 million total.",
+       "truth": true,
+       "why": "Uber's CFO stated 320 million rides and orders that week; four came from AI agents. Tapping a button beats prompting."
+      },
+      "rounds": [
+       {
+        "type": "quickfire",
+        "q": "True or false?",
+        "items": [
+         {
+          "text": "AI agents now book most Uber rides for busy professionals.",
+          "truth": false
+         },
+         {
+          "text": "A mandated-AI codebase tripled in size while becoming unreadable.",
+          "truth": true
+         },
+         {
+          "text": "Anthropic's OS-building agent was independently audited before release.",
+          "truth": false
+         },
+         {
+          "text": "An agent wiped a Mac user's entire library by misreading a path.",
+          "truth": true
+         },
+         {
+          "text": "Goldman Sachs banned AI coding tools for all employees.",
+          "truth": false
+         }
+        ]
+       },
+       {
+        "type": "lab",
+        "text": "An AI agent books a ride in six steps. Each step can fail. Raise per-step reliability or cut steps to hit 90% overall success.",
+        "inputs": [
+         {
+          "id": "p",
+          "label": "Each booking step works",
+          "unit": "%",
+          "min": 50.0,
+          "max": 99.9,
+          "step": 0.1,
+          "value": 85.0
+         },
+         {
+          "id": "n",
+          "label": "Booking steps in a ride request",
+          "unit": "",
+          "min": 1.0,
+          "max": 15.0,
+          "step": 1.0,
+          "value": 6.0
+         }
+        ],
+        "outputs": [
+         {
+          "id": "ok",
+          "label": "Whole ride request works",
+          "unit": "%",
+          "expr": "100*(p/100)^n",
+          "digits": 1,
+          "lo": 0.0030517578125,
+          "hi": 99.9
+         },
+         {
+          "id": "fails",
+          "label": "Ride requests that fail, of 100",
+          "unit": "",
+          "expr": "100-ok",
+          "digits": 0,
+          "lo": 0.09999999999999432,
+          "hi": 99.9969482421875
+         }
+        ],
+        "chart": {
+         "x": "n",
+         "y": [
+          "ok"
+         ]
+        },
+        "goal": {
+         "target": "ok",
+         "min": 90.0,
+         "max": 100.0,
+         "text": "Find the per-step reliability needed for 90% overall booking success.",
+         "success": "Even at 95% per step, six steps yield only 74% success—reliability compounds brutally. You need 98% per step or fewer steps."
+        },
+        "template": "chain",
+        "view": {
+         "kind": "runs",
+         "p": "p",
+         "n": "n",
+         "step": "booking step",
+         "run": "ride request"
+        }
+       }
+      ],
+      "takeaway": "Raw AI capability outpaces comprehension, cost control, and trust—speed without traceability means failing faster."
+     }
+    ],
+    "words": [
+     {
+      "term": "Coding agent",
+      "means": "Software that runs commands and edits files on its own, not just answering questions"
+     },
+     {
+      "term": "Context billing",
+      "means": "Each text chunk read or written adds to the bill, making simple tasks expensive"
+     },
+     {
+      "term": "Vendor claim",
+      "means": "A lab's own unchecked demo, not verified by independent engineers"
+     },
+     {
+      "term": "Reinvention loop",
+      "means": "Agents rewriting existing code instead of reusing it, bloating the codebase"
+     },
+     {
+      "term": "Tool calling",
+      "means": "Model writes structured work orders for a wrapper program to execute"
+     },
+     {
+      "term": "Context window",
+      "means": "Fixed workbench re-read entirely on every loop cycle"
+     },
+     {
+      "term": "Isolated worker",
+      "means": "Fresh workbench spun up for one narrow task"
+     },
+     {
+      "term": "Token billing",
+      "means": "Pay per text chunk the model reads or writes."
+     }
+    ],
+    "chips": [
+     "More on the OS claim",
+     "The fifty-dollar slide deck",
+     "Four rides from three hundred million",
+     "Veteran beaten by junior's tool"
+    ]
+   },
+   "quiz": [
+    {
+     "q": "In the follow-up on GLP-1 drugs, why can’t the Reddit-cited study showing about seven kilograms of average weight loss be treated as solid evidence yet?",
+     "options": [
+      "The hosts could not access the full paper, so sample size, controls, dropouts, and longer-term outcomes were unknown",
+      "The study was conducted only on animals, not humans",
+      "The FDA had already banned the drugs before the study was published",
+      "The average weight loss was actually less than one kilogram"
+     ],
+     "answer": 0,
+     "explain": "The hosts could only see the Reddit headline because the journal page wouldn't load, leaving study size, control group, dropout rates, and longer-term safety data unverified—exactly the gaps QA would flag before accepting post-market evidence.",
+     "segment": "What happened next"
+    },
+    {
+     "q": "The script compares a coding agent to a design engineer sending work orders down a pneumatic tube to a machinist. What does the “machinist” represent in this analogy?",
+     "options": [
+      "The language model’s internal weights updating in real time",
+      "A wrapper program on the user’s computer that executes tool-calling requests",
+      "The cloud server hosting the model’s training data",
+      "A human code reviewer approving every file change"
+     ],
+     "answer": 1,
+     "explain": "The model emits only a structured text request; a local wrapper program intercepts it, executes the command on the computer, and returns the output as text—just like a machinist following a work order without understanding the full design.",
+     "segment": "AI Coding Agents: How it actually works"
+    },
+    {
+     "q": "Why did the hosts treat Anthropic’s claim that its model built a bootable operating system as a vendor demo rather than validated evidence?",
+     "options": [
+      "The operating system only booted in a simulator, not on physical hardware",
+      "The model used pre-existing open-source code instead of writing from scratch",
+      "The source code was released under a restrictive license",
+      "The results came from Anthropic’s own internal report with no independent audit or outside reproduction"
+     ],
+     "answer": 3,
+     "explain": "Anthropic’s operating-system and circuit-board results come from its own internal report, with no independent audit, outside reproduction, or disclosed human oversight, so they remain unverified vendor claims rather than validated evidence.",
+     "segment": "AI Coding Agents: Reality check"
+    },
+    {
+     "q": "When the coding model quotes “two to three days” for a feature and finishes in ten minutes, what is the most accurate explanation for that estimate?",
+     "options": [
+      "The model ran a discrete-event simulation of the codebase and calculated effort",
+      "It is intentionally padding the schedule to look like a miracle worker (the Scotty Factor)",
+      "It is pattern-completing the most likely project-status text from its training data, with no internal clock or real measurement",
+      "It queried an external project-management API for historical cycle times"
+     ],
+     "answer": 2,
+     "explain": "The LLM has no internal clock or real effort measurement; it simply predicts the next likely project-management token based on training data, so its “estimate” is pattern completion, not a calculated schedule.",
+     "segment": "The computer is getting smarter"
+    }
+   ],
+   "transcript": "transcripts/ai_2026-11-15_morning_0600.txt"
+  },
   {
    "file": "ai_2026-11-14_evening_1500.mp3",
    "title": "Evening - 14 Nov: Can Model Weights Prove Which Chip Trained Them?",

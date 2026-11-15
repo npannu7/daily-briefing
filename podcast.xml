@@ -8,9 +8,30 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Sat, 14 Nov 2026 09:56:44 GMT</lastBuildDate>
+<lastBuildDate>Sun, 15 Nov 2026 01:54:19 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Sunday - 15 Nov: AI Coding Agents</title>
+<description>Sunday edition - Sunday, 15 November 2026
+Sunday edition: AI Coding Agents - plus the week's best threads that got away
+
+00:35  What happened next
+06:52  AI Coding Agents: The week's story
+13:24  AI Coding Agents: How it actually works
+22:57  AI Coding Agents: Reality check
+31:25  Workers want their old boss back
+35:31  The computer is getting smarter
+39:08  A computer program led a big team
+
+Play "The Week Coding Agents Went Wild", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-15_morning_0600.mp3
+Written by: Gemini 4 Hydrogen · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (172 threads)</description>
+<pubDate>Sun, 15 Nov 2026 06:00:16 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-11-15_morning_0600.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-15_morning_0600.mp3" length="20949180" type="audio/mpeg"/>
+<itunes:duration>2618</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Evening - 14 Nov: Can Model Weights Prove Which Chip Trained Them?</title>
 <description>Evening edition - Saturday, 14 November 2026
