@@ -8,9 +8,30 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Sun, 15 Nov 2026 01:54:19 GMT</lastBuildDate>
+<lastBuildDate>Sun, 15 Nov 2026 11:26:01 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Sunday - 15 Nov: GLP-1 Drugs Beyond Weight Loss</title>
+<description>Sunday edition - Sunday, 15 November 2026
+Sunday edition: GLP-1 Drugs Beyond Weight Loss - plus the week's best threads that got away
+
+00:38  What happened next
+06:54  GLP-1 Drugs Beyond Weight Loss: The week's story
+13:40  GLP-1 Drugs Beyond Weight Loss: How it actually works
+22:38  GLP-1 Drugs Beyond Weight Loss: Reality check
+33:05  Trans youth rarely regret hormone therapy
+37:03  America loses measles free status after decades
+40:15  Study links looks obsession to mental distress
+
+Play "The Week The Warning Vanished", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-15_evening_1500.mp3
+Written by: Gemini 4 Hydrogen · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (169 threads)</description>
+<pubDate>Sun, 15 Nov 2026 15:00:10 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-11-15_evening_1500.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-15_evening_1500.mp3" length="21061018" type="audio/mpeg"/>
+<itunes:duration>2632</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Sunday - 15 Nov: AI Coding Agents</title>
 <description>Sunday edition - Sunday, 15 November 2026
@@ -160,48 +181,6 @@ Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Di
 <guid isPermaLink="false">ai_2026-11-09_evening_1220.mp3</guid>
 <enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-09_evening_1220.mp3" length="8939098" type="audio/mpeg"/>
 <itunes:duration>1117</itunes:duration>
-<itunes:episodeType>full</itunes:episodeType>
-</item>
-<item>
-<title>Sunday - 8 Nov: AI Safety and Alignment</title>
-<description>Sunday edition - Sunday, 8 November 2026
-Sunday edition: AI Safety and Alignment - plus the week's best threads that got away
-
-00:44  What happened next
-09:14  AI Safety and Alignment: The week's story
-17:19  AI Safety and Alignment: How it actually works
-30:42  AI Safety and Alignment: Reality check
-44:00  Clearing Brain Waste While We Are Awake
-47:18  Growing Up with Self-Absorbed Parents
-51:43  Can Useless Body Parts Evolve Again
-
-Puzzles: The Verification Chain That Breaks at 48%, The Confidence Gauge That Reads the Furnace Wall, The Pipeline That Uses a Model With a Broken Interlock - puzzles, quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
-Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (156 threads)</description>
-<pubDate>Sun, 08 Nov 2026 12:39:37 +0530</pubDate>
-<guid isPermaLink="false">ai_2026-11-08_evening_1239.mp3</guid>
-<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-08_evening_1239.mp3" length="25856550" type="audio/mpeg"/>
-<itunes:duration>3231</itunes:duration>
-<itunes:episodeType>full</itunes:episodeType>
-</item>
-<item>
-<title>Sunday - 8 Nov: Anthropic Claude Models</title>
-<description>Sunday edition - Sunday, 8 November 2026
-Sunday edition: Anthropic Claude Models - plus the week's best threads that got away
-
-00:36  What happened next
-07:57  Anthropic Claude Models: The week's story
-15:27  Anthropic Claude Models: How it actually works
-24:13  Anthropic Claude Models: Reality check
-31:38  Did a new AI model just leak?
-36:06  Removing AI safety rules for better results
-39:44  Finding exact locations using airplane sounds
-
-Puzzles: The Component That Eats Your Error Budget, The Weight Squeeze, The Memory Choke Point - puzzles, quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
-Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (160 threads)</description>
-<pubDate>Sun, 08 Nov 2026 11:47:38 +0530</pubDate>
-<guid isPermaLink="false">ai_2026-11-08_morning_1147.mp3</guid>
-<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-08_morning_1147.mp3" length="21566124" type="audio/mpeg"/>
-<itunes:duration>2695</itunes:duration>
 <itunes:episodeType>full</itunes:episodeType>
 </item>
 </channel>
