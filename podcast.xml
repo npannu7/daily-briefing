@@ -8,9 +8,25 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Sun, 15 Nov 2026 11:26:01 GMT</lastBuildDate>
+<lastBuildDate>Mon, 16 Nov 2026 01:01:37 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Morning - 16 Nov: Are Language Models Really Getting Smarter?</title>
+<description>Morning edition - Monday, 16 November 2026
+Separating raw capability from system packaging in both artificial intelligence and electrical infrastructure
+
+00:38  Are Language Models Really Getting Smarter?
+09:24  Why the Power Grid Cannot Keep Up With Rising Demand
+
+Play "Is The Brain Actually Smarter?", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-16_morning_0600.mp3
+Written by: Gemini 4 Hydrogen · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (186 threads)</description>
+<pubDate>Mon, 16 Nov 2026 06:00:10 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-11-16_morning_0600.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-16_morning_0600.mp3" length="8973815" type="audio/mpeg"/>
+<itunes:duration>1121</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Sunday - 15 Nov: GLP-1 Drugs Beyond Weight Loss</title>
 <description>Sunday edition - Sunday, 15 November 2026
