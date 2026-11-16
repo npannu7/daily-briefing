@@ -10,12 +10,263 @@
   "lines": [
    {
     "said": "\"Too technical\" in 3 of your last 6 depth ratings",
-    "did": "3 specialist threads were left out when this episode's stories were chosen. Each story may use at most 4 specialist terms: this episode's scripts were rewritten from 19 to 13 and 15 to 5."
+    "did": "2 specialist threads were left out when this episode's stories were chosen. Each story may use at most 4 specialist terms: this episode's scripts were rewritten from 15 to 2."
+   },
+   {
+    "said": "\"Less maintainer drama. Fewer numbers\"",
+    "did": "Passed to the editor and the writers of every episode from now on."
+   },
+   {
+    "said": "More like \"Are Language Models Really Getting Smarter?\"",
+    "did": "The editor sees this when it chooses the next episodes' stories."
+   },
+   {
+    "said": "\"Skip the machine shop. i am not from usa so less about usa laws\"",
+    "did": "Passed to the editor and the writers of every episode from now on."
    }
   ],
-  "last": "2026-11-14"
+  "last": "2026-11-16"
  },
  "episodes": [
+  {
+   "file": "ai_2026-11-16_evening_1500.mp3",
+   "title": "Evening - 16 Nov: A Language Model That Fits on a Floppy Disk",
+   "label": "Monday 16 Nov evening",
+   "date": "2026-11-16",
+   "edition": "evening",
+   "published": "2026-11-16T15:00:11.815653+05:30",
+   "duration": 1064,
+   "theme": "Stripping complex technologies down to what actually makes them work—from a language model shrunk onto a floppy disk to a single gene edit still holding steady after four years.",
+   "writer": "Gemini 4 Hydrogen",
+   "voices": "Fish Audio (free)",
+   "deep_dive": false,
+   "segments": [
+    {
+     "title": "A Language Model That Fits on a Floppy Disk",
+     "category": "concept"
+    },
+    {
+     "title": "A Gene Edit That Still Works Four Years Later",
+     "category": "thread"
+    }
+   ],
+   "play": {
+    "v": 2,
+    "theme": "bench",
+    "title": "The Floppy-Disk Brain Test",
+    "brief": "You're at the test bench today—turn the dials and measure what survives when AI shrinks.",
+    "segments": [
+     {
+      "title": "A Language Model That Fits on a Floppy Disk",
+      "bet": {
+       "claim": "Reading letter by letter makes a tiny language model better at spelling.",
+       "truth": false,
+       "why": "It shrinks the dictionary to just letters and punctuation, saving huge memory—but makes it much harder to spell and hold long ideas."
+      },
+      "rounds": [
+       {
+        "type": "estimate",
+        "q": "How much total space—program and stored knowledge combined—does the claimed floppy-disk model take up?",
+        "answer": 400.0,
+        "unit": "KB",
+        "lo": 50,
+        "hi": 1400,
+        "log": false,
+        "why": "Just over 400 KB—less than a third of a classic floppy disk—achieved by cutting parameters, rounding numbers, and reading letter by letter."
+       },
+       {
+        "type": "lab",
+        "text": "A 7B model at 16-bit precision overflows an 8 GB laptop. Cut parameters or round each weight to fewer bits—just like shrinking a model for a floppy.",
+        "inputs": [
+         {
+          "id": "P",
+          "label": "Parameters",
+          "unit": "billion",
+          "min": 1.0,
+          "max": 14.0,
+          "step": 0.2,
+          "value": 7.0
+         },
+         {
+          "id": "bits",
+          "label": "Bits per weight (quantization)",
+          "unit": "bits",
+          "min": 2.0,
+          "max": 16.0,
+          "step": 0.5,
+          "value": 16.0
+         }
+        ],
+        "outputs": [
+         {
+          "id": "size",
+          "label": "Memory needed (incl. ~10% extra)",
+          "unit": "GB",
+          "expr": "P*bits/8*1.1",
+          "digits": 1,
+          "lo": 0.275,
+          "hi": 30.800000000000004
+         },
+         {
+          "id": "free",
+          "label": "Left over on an 8 GB laptop",
+          "unit": "GB",
+          "expr": "8-size",
+          "digits": 1,
+          "lo": -22.800000000000004,
+          "hi": 7.725
+         },
+         {
+          "id": "speed",
+          "label": "Tokens per second, at best",
+          "unit": "",
+          "expr": "100/(P*1*bits/8)",
+          "digits": 0,
+          "lo": 3.5714285714285716,
+          "hi": 400.0
+         }
+        ],
+        "goal": {
+         "target": "free",
+         "min": 1.0,
+         "max": 5.0,
+         "text": "Get it to fit with 1 to 5 GB of memory to spare.",
+         "success": "Dropping precision or parameter count shrinks memory fast—though rounding weights trades fine micrometer precision for a rough wooden ruler."
+        },
+        "template": "model_memory",
+        "view": {
+         "kind": "memory",
+         "size": "size",
+         "speed": "speed",
+         "vram": 8.0,
+         "device": "an 8 GB laptop",
+         "model": "a 7B open model"
+        }
+       }
+      ],
+      "takeaway": "Shrinking a language model onto a floppy disk strips away reasoning, leaving a compressed lookup table for memorized facts."
+     },
+     {
+      "title": "A Gene Edit That Still Works Four Years Later",
+      "bet": {
+       "claim": "The one-day infusion injects tiny DNA-cutting scissors straight into the bloodstream to edit the liver.",
+       "truth": false,
+       "why": "It ships temporary genetic instructions inside tiny fat droplets. The liver absorbs them and builds the cutting tool itself, which then disables the target gene."
+      },
+      "rounds": [
+       {
+        "type": "estimate",
+        "q": "How much can existing ongoing drugs cost per month for one patient with this rare swelling disorder?",
+        "answer": 75000.0,
+        "unit": "USD/month",
+        "lo": 5000,
+        "hi": 250000,
+        "log": true,
+        "why": "Existing treatments for hereditary angioedema can run around $75,000 a month per person, which is why a permanent one-day fix is so tempting."
+       },
+       {
+        "type": "duel",
+        "q": "Which number is bigger?",
+        "unit": "months",
+        "a": {
+         "label": "Months the one-day edit has kept working",
+         "value": 48.0
+        },
+        "b": {
+         "label": "Months of old drugs to cost $900,000",
+         "value": 12.0
+        },
+        "why": "At $75,000 a month, ongoing drugs burn through $900,000 in just 12 months, while the one-day edit is still working 48 months in."
+       }
+      ],
+      "takeaway": "A one-day liver infusion avoids harsh chemo, but editing inside the body means you cannot inspect cells beforehand."
+     }
+    ],
+    "words": [
+     {
+      "term": "Parameters",
+      "means": "Adjustable numbers inside a model, like tuning dials, that store learned patterns."
+     },
+     {
+      "term": "Attention",
+      "means": "A trick letting models scan all words at once to weigh what matters."
+     },
+     {
+      "term": "Transformer",
+      "means": "The modern AI blueprint built to spot patterns across whole stretches of text."
+     },
+     {
+      "term": "CRISPR",
+      "means": "A gene-editing tool that acts like tiny scissors to cut and disable DNA."
+     },
+     {
+      "term": "Hereditary angioedema",
+      "means": "A rare inherited disorder where blood vessels leak fluid, causing dangerous swelling."
+     },
+     {
+      "term": "In-body editing",
+      "means": "Modifying DNA directly inside the patient, rather than removing cells to a lab."
+     }
+    ],
+    "chips": [
+     "More bare-metal breakdowns",
+     "Too skeptical of the demo",
+     "Loved the QA angle",
+     "Show me the code"
+    ]
+   },
+   "quiz": [
+    {
+     "q": "In the episode, Laura compares the transformer's attention mechanism to troubleshooting a defect on a manufacturing line. What does this analogy illustrate about how a transformer processes text?",
+     "options": [
+      "It examines every part of the input simultaneously to score which earlier pieces are most relevant.",
+      "It reads text strictly in order, passing a summary forward like a game of telephone.",
+      "It stores the entire input as a compressed lookup table before predicting.",
+      "It relies on high-precision decimal parameters to hold tight tolerances."
+     ],
+     "answer": 0,
+     "explain": "Earlier models read sequentially like a game of telephone, losing early details. Attention lets the model weigh all input pieces at once, similar to checking the whole upstream process for a fault.",
+     "segment": "A Language Model That Fits on a Floppy Disk"
+    },
+    {
+     "q": "The poster admitted the floppy-disk model works on seen facts but fails on complex or new material. Laura says this behavior is more like memorization than general reasoning. What is the best way to test whether it is truly generalizing?",
+     "options": [
+      "Measure how many kilobytes the program occupies on the disk.",
+      "Feed it rephrased facts, combined ideas, or new math numbers it has never seen.",
+      "Ask it to repeat the exact practice facts it was trained on.",
+      "Compare its parameter count to modern frontier models with billions of parameters."
+     ],
+     "answer": 1,
+     "explain": "If it collapses on fresh, rephrased, or combined inputs, it is likely just parroting memorized patterns rather than reasoning. Generalization means performing well on examples outside the training set.",
+     "segment": "A Language Model That Fits on a Floppy Disk"
+    },
+    {
+     "q": "Laura compares approved ex vivo CRISPR therapy to pulling an assembly out for a cleanroom rebuild, while Intellia's in-body approach is like sending a repair agent through the fluid line. What critical quality step is lost when editing happens directly inside the body?",
+     "options": [
+      "The need for chemotherapy to clear space for edited cells.",
+      "The ability to infuse fatty droplets into the bloodstream.",
+      "The ability to inspect edited cells and discard batches with unwanted edits before returning them to the patient.",
+      "The requirement to disable a specific liver gene permanently."
+     ],
+     "answer": 2,
+     "explain": "Ex vivo editing lets teams quality-check cells before reinfusion, but in-body editing offers no pre-implementation screening for off-target cuts or abnormal cells. That missing inspection step is a key regulatory and safety concern.",
+     "segment": "A Gene Edit That Still Works Four Years Later"
+    },
+    {
+     "q": "The Reddit post claimed Intellia's therapy is poised to become the first in-body CRISPR medicine to win regulatory approval. Based on the Nature report discussed, what is the accurate status of this claim?",
+     "options": [
+      "It has already received full FDA approval based on four-year independent data.",
+      "The FDA permanently halted the program after a participant death last year.",
+      "The four-year data comes from a brand-new independent peer-reviewed study, not the company.",
+      "Intellia has filed for FDA approval, with a decision due by March 10, but it is not yet approved."
+     ],
+     "answer": 3,
+     "explain": "Intellia has submitted an application and the FDA decision is pending; the therapy is not yet approved. The four-year results are company-released data reported by Nature, not an independent publication or final regulatory green light.",
+     "segment": "A Gene Edit That Still Works Four Years Later"
+    }
+   ],
+   "transcript": "transcripts/ai_2026-11-16_evening_1500.txt"
+  },
   {
    "file": "ai_2026-11-16_morning_0600.mp3",
    "title": "Morning - 16 Nov: Are Language Models Really Getting Smarter?",
@@ -2594,229 +2845,6 @@
     }
    ],
    "transcript": "transcripts/ai_2026-11-10_morning_0024.txt"
-  },
-  {
-   "file": "ai_2026-11-09_evening_1220.mp3",
-   "title": "Evening - 9 Nov: Apple researchers run a humanoid robot on a Mac mini",
-   "label": "Monday 09 Nov evening",
-   "date": "2026-11-09",
-   "edition": "evening",
-   "published": "2026-11-09T12:20:53.158100+05:30",
-   "duration": 1117,
-   "theme": "Robotics validation on local compute; grid-scale energy transition claims under scrutiny",
-   "writer": "nemotron-3-ultra-550b-a55b (free)",
-   "voices": "Fish Audio (free)",
-   "deep_dive": false,
-   "segments": [
-    {
-     "title": "Apple researchers run a humanoid robot on a Mac mini",
-     "category": "thread"
-    },
-    {
-     "title": "What it would actually take to run the world on wind, water, and solar",
-     "category": "thread"
-    }
-   ],
-   "lessons": [
-    {
-     "title": "The Mac mini Brain Squeeze",
-     "segment": "Apple researchers run a humanoid robot on a Mac mini",
-     "steps": [
-      {
-       "type": "explore",
-       "text": "Configure the model parameters and quantization bits so the model fits within the 16 GB memory limit while keeping speed above 10 tokens per second.",
-       "inputs": [
-        {
-         "id": "P",
-         "label": "Parameters",
-         "unit": "billion",
-         "min": 7.0,
-         "max": 70.0,
-         "step": 1.0,
-         "value": 32.0
-        },
-        {
-         "id": "bits",
-         "label": "Bits per weight (quantization)",
-         "unit": "bits",
-         "min": 2.0,
-         "max": 16.0,
-         "step": 0.5,
-         "value": 16.0
-        }
-       ],
-       "outputs": [
-        {
-         "id": "size",
-         "label": "Memory needed (incl. ~10% extra)",
-         "unit": "GB",
-         "expr": "P*bits/8*1.1",
-         "digits": 1,
-         "lo": 1.9250000000000003,
-         "hi": 154.0
-        },
-        {
-         "id": "free",
-         "label": "Left over on Mac mini 16GB",
-         "unit": "GB",
-         "expr": "16-size",
-         "digits": 1,
-         "lo": -138.0,
-         "hi": 14.075
-        },
-        {
-         "id": "speed",
-         "label": "Tokens per second, at best",
-         "unit": "",
-         "expr": "800/(P*1*bits/8)",
-         "digits": 0,
-         "lo": 5.714285714285714,
-         "hi": 457.14285714285717
-        }
-       ],
-       "goal": {
-        "target": "size",
-        "min": 1.0,
-        "max": 14.0,
-        "text": "Get the required model size under 14 GB so it fits safely in memory.",
-        "success": "You found that quantization trades precision for memory capacity, letting massive models run on local silicon without hitting swap memory."
-       },
-       "template": "model_memory",
-       "view": {
-        "kind": "memory",
-        "size": "size",
-        "speed": "speed",
-        "vram": 16.0,
-        "device": "Mac mini 16GB",
-        "model": "Qwen local policy"
-       }
-      },
-      {
-       "type": "concept",
-       "text": "Quantization is like rounding your high-precision sensor readings to the nearest coarse tick: you lose a fraction of resolution, but your data pipeline speeds up and memory footprint plummets.",
-       "example": "Compressing 32-bit floating-point calibration curves down to 4-bit integers for an edge controller."
-      },
-      {
-       "type": "number",
-       "text": "If a 14 billion parameter model is quantized from 16-bit (2 bytes) down to 4-bit (0.5 bytes), what is the new model weight size in gigabytes?",
-       "answer": 7.0,
-       "tolerance": 0.05,
-       "unit": "GB",
-       "explain": "Fourteen billion parameters at 0.5 bytes per parameter equals 7 GB.",
-       "hint": "Multiply the number of billion parameters by the number of bytes per parameter (0.5 GB per billion)."
-      }
-     ],
-     "words": [
-      {
-       "term": "Quantization",
-       "means": "Compressing model weights from 16-bit or 32-bit floats to smaller integers (like 4-bit) to save memory."
-      },
-      {
-       "term": "Unified Memory",
-       "means": "A single memory pool shared directly between CPU, GPU, and NPU without copying over a bus."
-      },
-      {
-       "term": "Sim-to-Real",
-       "means": "Transferring a control policy trained purely in a physics simulator to a physical machine."
-      }
-     ]
-    },
-    {
-     "title": "The Perfect-Foresight Trap",
-     "segment": "What it would actually take to run the world on wind, water, and solar",
-     "steps": [
-      {
-       "type": "choice",
-       "text": "A wind and solar grid simulation claims perfect stability using existing storage. But the model uses an optimization routine with exact weather forecasts for the entire year. What happens when you replace those exact forecasts with real-world forecasting error?",
-       "options": [
-        "The system adapts instantly with zero penalty",
-        "Unpredicted drops in generation trigger rapid frequency collapse unless cushioned by physical or synthetic inertia",
-        "The storage capacity automatically expands to absorb the variance"
-       ],
-       "answer": 1,
-       "explain": "Real grids lack crystal balls. Without real-time buffering or inertia, unexpected weather dips cause immediate frequency excursions.",
-       "hint": "Think about what happens in a factory when a supplier's shipment fails to arrive on Monday morning as promised."
-      },
-      {
-       "type": "concept",
-       "text": "Theoretical models assume you can schedule power flows with infinite precision. Real equipment deals with control-loop delays, ramping limits, and unexpected component faults.",
-       "example": "Running a chemical reactor based on a theoretical reaction rate without accounting for thermocouple lag and valve stiction."
-      },
-      {
-       "type": "order",
-       "text": "Put these stages of energy model validation in the correct chronological sequence from paper to reality.",
-       "items": [
-        "Theoretical energy-balance spreadsheet",
-        "Dynamic control-system simulation with noise",
-        "Hardware-in-the-loop inverter testbench",
-        "Continental-scale grid deployment"
-       ],
-       "explain": "You must verify basic energy conservation first, test control dynamics under noise, validate physical firmware on a bench, and only then risk real grids."
-      }
-     ],
-     "words": [
-      {
-       "term": "Perfect foresight",
-       "means": "An optimization assumption that knows future weather and load state without error."
-      },
-      {
-       "term": "Synthetic inertia",
-       "means": "Control-loop firmware that mimics the stabilizing physical mass of rotating generators."
-      }
-     ]
-    }
-   ],
-   "quiz": [
-    {
-     "q": "What architectural feature of the Mac mini allowed the Qwen LLM weights and inference tensors to be processed without crossing a PCIe bus?",
-     "options": [
-      "A dedicated high-speed NPU interconnect bridge",
-      "Unified memory where CPU, GPU, and neural engine share one pool",
-      "Direct memory access channels linked to an external accelerator rack",
-      "A proprietary caching layer between the neural engine and system memory"
-     ],
-     "answer": 1,
-     "explain": "The Mac mini's unified memory lets the CPU, GPU, and neural engine share a single memory pool, meaning inference tensors never cross a PCIe bus.",
-     "segment": "Apple researchers run a humanoid robot on a Mac mini"
-    },
-    {
-     "q": "What critical risk was highlighted regarding the use of four-bit quantization in the robot's control loop?",
-     "options": [
-      "Quantization noise can cause a policy output LSB flip that unexpectedly reverses commands",
-      "It entirely eliminates the neural engine's native matrix multiplication capability",
-      "It causes permanent thermal damage to the Mac mini during sustained operation",
-      "It increases the model size beyond the sixteen-gigabyte memory threshold"
-     ],
-     "answer": 0,
-     "explain": "Four-bit weights introduce quantization noise, and if the policy head is overly sensitive, a single LSB flip could change a command like 'step left' to 'step right'.",
-     "segment": "Apple researchers run a humanoid robot on a Mac mini"
-    },
-    {
-     "q": "According to the discussion on Mark Jacobson's energy transition model, what major limitation applies to its use of perfect foresight optimization?",
-     "options": [
-      "It assumes real-time markets operate with identical pricing structures globally",
-      "It relies on infinite material reserves for rare earth mining",
-      "Real grids do not possess perfect foresight and must handle day-ahead markets and real-time balancing",
-      "It requires every wind turbine to use synchronous rotating mass generators"
-     ],
-     "answer": 2,
-     "explain": "Real grids operate with day-ahead markets and real-time balancing rather than the perfect foresight optimization used in his model.",
-     "segment": "What it would actually take to run the world on wind, water, and solar"
-    },
-    {
-     "q": "Why is the integration of inverter-based resources compared to a control-system stability problem?",
-     "options": [
-      "Inverters automatically generate their own synthetic inertia without any firmware programming",
-      "Thousands of inverters attempt to regulate frequency simultaneously, risking oscillation if tuning is uncoordinated",
-      "Inverters rely entirely on mechanical flywheels to absorb excess electrical energy",
-      "Grid-following inverters completely eliminate the need for voltage references during faults"
-     ],
-     "answer": 1,
-     "explain": "When thousands of inverters try to regulate frequency simultaneously without coordination, it creates control-system instability and oscillation.",
-     "segment": "What it would actually take to run the world on wind, water, and solar"
-    }
-   ],
-   "transcript": "transcripts/ai_2026-11-09_evening_1220.txt"
   }
  ]
 }

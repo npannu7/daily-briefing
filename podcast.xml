@@ -8,9 +8,25 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Mon, 16 Nov 2026 01:01:37 GMT</lastBuildDate>
+<lastBuildDate>Mon, 16 Nov 2026 10:04:59 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Evening - 16 Nov: A Language Model That Fits on a Floppy Disk</title>
+<description>Evening edition - Monday, 16 November 2026
+Stripping complex technologies down to what actually makes them work—from a language model shrunk onto a floppy disk to a single gene edit still holding steady after four years.
+
+00:37  A Language Model That Fits on a Floppy Disk
+08:35  A Gene Edit That Still Works Four Years Later
+
+Play "The Floppy-Disk Brain Test", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-16_evening_1500.mp3
+Written by: Gemini 4 Hydrogen · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (175 threads)</description>
+<pubDate>Mon, 16 Nov 2026 15:00:11 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-11-16_evening_1500.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-16_evening_1500.mp3" length="8518000" type="audio/mpeg"/>
+<itunes:duration>1064</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Morning - 16 Nov: Are Language Models Really Getting Smarter?</title>
 <description>Morning edition - Monday, 16 November 2026
@@ -181,22 +197,6 @@ Written by: Gemini 3.5 Flash-Lite · Voices: Fish Audio (free) · Discussions: R
 <guid isPermaLink="false">ai_2026-11-10_morning_0024.mp3</guid>
 <enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-10_morning_0024.mp3" length="7636589" type="audio/mpeg"/>
 <itunes:duration>954</itunes:duration>
-<itunes:episodeType>full</itunes:episodeType>
-</item>
-<item>
-<title>Evening - 9 Nov: Apple researchers run a humanoid robot on a Mac mini</title>
-<description>Evening edition - Monday, 9 November 2026
-Robotics validation on local compute; grid-scale energy transition claims under scrutiny
-
-00:40  Apple researchers run a humanoid robot on a Mac mini
-11:10  What it would actually take to run the world on wind, water, and solar
-
-Puzzles: The Mac mini Brain Squeeze, The Perfect-Foresight Trap - puzzles, quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html
-Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (155 threads)</description>
-<pubDate>Mon, 09 Nov 2026 12:20:53 +0530</pubDate>
-<guid isPermaLink="false">ai_2026-11-09_evening_1220.mp3</guid>
-<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-09_evening_1220.mp3" length="8939098" type="audio/mpeg"/>
-<itunes:duration>1117</itunes:duration>
 <itunes:episodeType>full</itunes:episodeType>
 </item>
 </channel>

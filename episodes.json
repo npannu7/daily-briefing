@@ -1,17 +1,6 @@
 {
   "episodes": [
     {
-      "file": "ai_2026-11-09_evening_1220.mp3",
-      "date": "2026-11-09",
-      "edition": "evening",
-      "title": "Evening - 9 Nov: Apple researchers run a humanoid robot on a Mac mini",
-      "published": "2026-11-09T12:20:53.158100+05:30",
-      "pubDate": "Mon, 09 Nov 2026 12:20:53 +0530",
-      "size": 8939098,
-      "duration": 1117,
-      "description": "Evening edition - Monday, 9 November 2026\nRobotics validation on local compute; grid-scale energy transition claims under scrutiny\n\n00:40  Apple researchers run a humanoid robot on a Mac mini\n11:10  What it would actually take to run the world on wind, water, and solar\n\nPuzzles: The Mac mini Brain Squeeze, The Perfect-Foresight Trap - puzzles, quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nWritten by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (155 threads)"
-    },
-    {
       "file": "ai_2026-11-10_morning_0024.mp3",
       "date": "2026-11-10",
       "edition": "morning",
@@ -120,6 +109,17 @@
       "size": 8973815,
       "duration": 1121,
       "description": "Morning edition - Monday, 16 November 2026\nSeparating raw capability from system packaging in both artificial intelligence and electrical infrastructure\n\n00:38  Are Language Models Really Getting Smarter?\n09:24  Why the Power Grid Cannot Keep Up With Rising Demand\n\nPlay \"Is The Brain Actually Smarter?\", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-16_morning_0600.mp3\nWritten by: Gemini 4 Hydrogen · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (186 threads)"
+    },
+    {
+      "file": "ai_2026-11-16_evening_1500.mp3",
+      "date": "2026-11-16",
+      "edition": "evening",
+      "title": "Evening - 16 Nov: A Language Model That Fits on a Floppy Disk",
+      "published": "2026-11-16T15:00:11.815653+05:30",
+      "pubDate": "Mon, 16 Nov 2026 15:00:11 +0530",
+      "size": 8518000,
+      "duration": 1064,
+      "description": "Evening edition - Monday, 16 November 2026\nStripping complex technologies down to what actually makes them work—from a language model shrunk onto a floppy disk to a single gene edit still holding steady after four years.\n\n00:37  A Language Model That Fits on a Floppy Disk\n08:35  A Gene Edit That Still Works Four Years Later\n\nPlay \"The Floppy-Disk Brain Test\", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-16_evening_1500.mp3\nWritten by: Gemini 4 Hydrogen · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (175 threads)"
     }
   ],
   "memory": [
@@ -1905,6 +1905,29 @@
       ],
       "deep_topic": "",
       "topics": []
+    },
+    {
+      "label": "Monday 16 Nov evening",
+      "date": "2026-11-16",
+      "edition": "evening",
+      "published": "2026-11-16T15:00:11.815653+05:30",
+      "file": "ai_2026-11-16_evening_1500.mp3",
+      "writer": "Gemini 4 Hydrogen",
+      "voices": "Fish Audio (free)",
+      "summary": "Today's episode examined two technologies stripped down to their core mechanisms, starting with a Reddit claim of an AI-written, 367,000-parameter language model running on a 1990s Pentium with 540 kilobytes of memory. Using first principles—weights, training examples, and memory limits—it explained what a transformer language model actually is while separating an unverified social-media demo from established scaling reality. The second segment evaluated the clinical claim that a one-time gene-editing treatment delivered directly to the liver is still preventing painful swelling attacks four years later. It contrasted in-body gene editing with removing and modifying cells outside the body and checked what the clinical trial evidence actually shows.",
+      "threads": [
+        "Independent verification of ultra-compact language models and scaling limits",
+        "Long-term clinical durability and safety follow-up for in-body liver gene-editing treatments"
+      ],
+      "segments": [
+        "A Language Model That Fits on a Floppy Disk",
+        "A Gene Edit That Still Works Four Years Later"
+      ],
+      "deep_topic": "",
+      "topics": [
+        "in-vivo-crispr-therapy",
+        "local-llms"
+      ]
     }
   ],
   "seen": [
@@ -2735,6 +2758,26 @@
     {
       "date": "2026-11-16",
       "link": "https://www.reddit.com/r/LocalLLaMA/comments/1xwegdi/hot_take_frontier_models_havent_actually_become/"
+    },
+    {
+      "date": "2026-11-16",
+      "link": "https://www.reddit.com/r/singularity/comments/1xx8w9q/claude_fable_52_wrote_a_working_transformer_ai/"
+    },
+    {
+      "date": "2026-11-16",
+      "link": "https://www.reddit.com/r/science/comments/1xwt6d5/a_crispr_therapy_that_edits_genes_inside_the_body/"
+    },
+    {
+      "date": "2026-11-16",
+      "link": "https://www.nature.com/articles/d41586-026-03705-9"
+    },
+    {
+      "date": "2026-11-16",
+      "link": "https://www.reddit.com/r/ClaudeAI/comments/1xwpenj/claude_wrote_and_trained_a_language_model_for_dos/"
+    },
+    {
+      "date": "2026-11-16",
+      "link": "https://www.reddit.com/r/singularity/comments/1xwvaq9/claude_wrote_and_trained_a_language_model_for_dos/"
     }
   ],
   "feedback": [
@@ -3093,10 +3136,61 @@
       "received": "2026-11-05T14:49:16.055216+05:30"
     },
     {
+      "episode": "ai_2026-11-16_morning_0600.mp3",
+      "date": "2026-11-16",
+      "edition": "morning",
+      "quiz": null,
+      "puzzles": {
+        "done": 2,
+        "total": 2,
+        "struggled": []
+      },
+      "play": {
+        "cards": 4,
+        "done": 4,
+        "right": 4,
+        "points": 101,
+        "bets": [
+          {
+            "conf": 95,
+            "right": true
+          },
+          {
+            "conf": 95,
+            "right": true
+          }
+        ],
+        "formats": [
+          "match",
+          "lab",
+          "estimate",
+          "lab"
+        ]
+      },
+      "ratings": {
+        "depth": "right",
+        "pace": "right",
+        "voices": "good"
+      },
+      "segments": {
+        "Are Language Models Really Getting Smarter?": "more",
+        "Why the Power Grid Cannot Keep Up With Rising Demand": "less"
+      },
+      "depth": {
+        "Are Language Models Really Getting Smarter?": "right"
+      },
+      "comment": "Skip the machine shop. i am not from usa so less about usa laws",
+      "received": "2026-11-16T15:00:12.250016+05:30"
+    },
+    {
       "episode": "ai_2026-11-14_morning_0600.mp3",
       "date": "2026-11-14",
       "edition": "morning",
-      "quiz": null,
+      "quiz": {
+        "score": 2,
+        "total": 2,
+        "missed": []
+      },
       "puzzles": {
         "done": 2,
         "total": 2,
@@ -3106,7 +3200,7 @@
         "cards": 2,
         "done": 2,
         "right": 2,
-        "points": -30,
+        "points": 0,
         "bets": [
           {
             "conf": 95,
@@ -3128,8 +3222,10 @@
         "The Small Codebase That Changed How We Run Artificial Intelligence": "ok",
         "How a Mothers Vaccine Shielded Danish Babies From Severe Illness": "ok"
       },
+      "depth": {},
       "comment": "Less maintainer drama. Fewer numbers",
-      "received": "2026-11-14T15:00:12.192552+05:30"
+      "pace_counted": true,
+      "received": "2026-11-16T15:00:12.250046+05:30"
     }
   ],
   "tts_log": [
@@ -4076,20 +4172,232 @@
     "2026-11-16T00:59:18.136036+00:00",
     "2026-11-16T00:59:20.790067+00:00",
     "2026-11-16T01:00:32.369389+00:00",
-    "2026-11-16T01:01:35.579904+00:00"
+    "2026-11-16T01:01:35.579904+00:00",
+    "2026-11-16T09:30:13.261049+00:00",
+    "2026-11-16T09:30:15.597854+00:00",
+    "2026-11-16T09:30:18.804842+00:00",
+    "2026-11-16T09:30:21.998008+00:00",
+    "2026-11-16T09:30:25.193948+00:00",
+    "2026-11-16T09:30:28.412810+00:00",
+    "2026-11-16T09:30:31.619461+00:00",
+    "2026-11-16T09:30:34.788334+00:00",
+    "2026-11-16T09:30:38.143443+00:00",
+    "2026-11-16T09:30:41.227389+00:00",
+    "2026-11-16T09:30:44.388912+00:00",
+    "2026-11-16T09:30:47.605318+00:00",
+    "2026-11-16T09:30:50.887285+00:00",
+    "2026-11-16T09:30:54.016559+00:00",
+    "2026-11-16T09:30:57.327372+00:00",
+    "2026-11-16T09:31:00.394375+00:00",
+    "2026-11-16T09:31:03.630016+00:00",
+    "2026-11-16T09:31:06.850503+00:00",
+    "2026-11-16T09:31:10.009528+00:00",
+    "2026-11-16T09:31:13.215271+00:00",
+    "2026-11-16T09:31:16.410579+00:00",
+    "2026-11-16T09:31:19.599894+00:00",
+    "2026-11-16T09:31:22.818625+00:00",
+    "2026-11-16T09:31:26.099398+00:00",
+    "2026-11-16T09:31:29.287967+00:00",
+    "2026-11-16T09:31:32.453526+00:00",
+    "2026-11-16T09:31:35.617517+00:00",
+    "2026-11-16T09:31:38.888248+00:00",
+    "2026-11-16T09:31:42.042927+00:00",
+    "2026-11-16T09:31:45.185426+00:00",
+    "2026-11-16T09:31:48.457491+00:00",
+    "2026-11-16T09:31:51.733541+00:00",
+    "2026-11-16T09:31:54.938305+00:00",
+    "2026-11-16T09:31:57.996664+00:00",
+    "2026-11-16T09:32:01.208823+00:00",
+    "2026-11-16T09:32:04.554711+00:00",
+    "2026-11-16T09:32:07.600491+00:00",
+    "2026-11-16T09:32:10.803911+00:00",
+    "2026-11-16T09:32:14.016200+00:00",
+    "2026-11-16T09:32:18.431867+00:00",
+    "2026-11-16T09:32:20.396380+00:00",
+    "2026-11-16T09:32:23.619350+00:00",
+    "2026-11-16T09:32:26.806229+00:00",
+    "2026-11-16T09:32:30.000538+00:00",
+    "2026-11-16T09:32:33.207926+00:00",
+    "2026-11-16T09:32:36.520343+00:00",
+    "2026-11-16T09:32:39.621397+00:00",
+    "2026-11-16T09:32:42.826969+00:00",
+    "2026-11-16T09:32:46.085103+00:00",
+    "2026-11-16T09:32:49.322929+00:00",
+    "2026-11-16T09:32:52.406371+00:00",
+    "2026-11-16T09:32:55.621032+00:00",
+    "2026-11-16T09:32:58.894088+00:00",
+    "2026-11-16T09:33:01.995295+00:00",
+    "2026-11-16T09:33:05.208656+00:00",
+    "2026-11-16T09:33:08.395163+00:00",
+    "2026-11-16T09:33:11.620370+00:00",
+    "2026-11-16T09:33:14.855052+00:00",
+    "2026-11-16T09:33:17.994841+00:00",
+    "2026-11-16T09:33:21.227216+00:00",
+    "2026-11-16T09:33:24.407530+00:00",
+    "2026-11-16T09:33:27.602352+00:00",
+    "2026-11-16T09:33:30.896173+00:00",
+    "2026-11-16T09:33:34.000061+00:00",
+    "2026-11-16T09:33:37.266203+00:00",
+    "2026-11-16T09:33:40.400202+00:00",
+    "2026-11-16T09:33:43.610266+00:00",
+    "2026-11-16T09:33:46.823800+00:00",
+    "2026-11-16T09:33:50.018251+00:00",
+    "2026-11-16T09:33:53.199401+00:00",
+    "2026-11-16T09:35:24.975544+00:00",
+    "2026-11-16T09:38:34.085885+00:00",
+    "2026-11-16T09:41:14.492784+00:00",
+    "2026-11-16T09:42:12.273256+00:00",
+    "2026-11-16T09:42:12.363769+00:00",
+    "2026-11-16T09:42:12.518721+00:00",
+    "2026-11-16T09:43:37.633215+00:00",
+    "2026-11-16T09:45:48.501521+00:00",
+    "2026-11-16T09:48:35.303736+00:00",
+    "2026-11-16T09:49:28.474140+00:00",
+    "2026-11-16T09:50:35.243318+00:00",
+    "2026-11-16T09:52:06.413561+00:00",
+    "2026-11-16T09:53:55.859132+00:00",
+    "2026-11-16T09:53:56.015344+00:00",
+    "2026-11-16T09:53:59.196736+00:00",
+    "2026-11-16T09:54:02.370322+00:00",
+    "2026-11-16T09:55:38.806241+00:00",
+    "2026-11-16T09:55:42.409394+00:00",
+    "2026-11-16T09:55:45.068512+00:00",
+    "2026-11-16T09:55:47.998018+00:00",
+    "2026-11-16T09:55:52.020317+00:00",
+    "2026-11-16T09:55:52.853521+00:00",
+    "2026-11-16T09:55:57.913824+00:00",
+    "2026-11-16T09:56:00.088250+00:00",
+    "2026-11-16T09:56:05.417223+00:00",
+    "2026-11-16T09:56:09.841109+00:00",
+    "2026-11-16T09:56:11.657903+00:00",
+    "2026-11-16T09:56:12.786597+00:00",
+    "2026-11-16T09:56:19.319770+00:00",
+    "2026-11-16T09:56:20.587110+00:00",
+    "2026-11-16T09:56:25.642362+00:00",
+    "2026-11-16T09:56:28.305325+00:00",
+    "2026-11-16T09:56:31.222498+00:00",
+    "2026-11-16T09:56:36.060069+00:00",
+    "2026-11-16T09:56:37.687350+00:00",
+    "2026-11-16T09:56:37.851646+00:00",
+    "2026-11-16T09:56:41.157569+00:00",
+    "2026-11-16T09:56:46.883476+00:00",
+    "2026-11-16T09:56:51.636000+00:00",
+    "2026-11-16T09:56:56.437989+00:00",
+    "2026-11-16T09:56:57.079119+00:00",
+    "2026-11-16T09:57:02.941314+00:00",
+    "2026-11-16T09:57:06.442491+00:00",
+    "2026-11-16T09:57:08.842026+00:00",
+    "2026-11-16T09:57:10.973973+00:00",
+    "2026-11-16T09:57:15.033494+00:00",
+    "2026-11-16T09:57:15.201849+00:00",
+    "2026-11-16T09:57:22.202547+00:00",
+    "2026-11-16T09:57:23.948418+00:00",
+    "2026-11-16T09:57:28.992665+00:00",
+    "2026-11-16T09:57:29.664198+00:00",
+    "2026-11-16T09:57:34.408650+00:00",
+    "2026-11-16T09:57:36.339048+00:00",
+    "2026-11-16T09:57:37.846724+00:00",
+    "2026-11-16T09:57:41.085294+00:00",
+    "2026-11-16T09:57:47.084447+00:00",
+    "2026-11-16T09:57:47.284329+00:00",
+    "2026-11-16T09:57:54.679058+00:00",
+    "2026-11-16T09:57:54.694425+00:00",
+    "2026-11-16T09:58:01.761284+00:00",
+    "2026-11-16T09:58:02.934473+00:00",
+    "2026-11-16T09:58:07.960997+00:00",
+    "2026-11-16T09:58:08.168004+00:00",
+    "2026-11-16T09:58:12.282797+00:00",
+    "2026-11-16T09:58:14.649441+00:00",
+    "2026-11-16T09:58:20.636521+00:00",
+    "2026-11-16T09:58:24.622750+00:00",
+    "2026-11-16T09:58:30.571699+00:00",
+    "2026-11-16T09:58:31.820680+00:00",
+    "2026-11-16T09:58:32.421425+00:00",
+    "2026-11-16T09:58:41.674221+00:00",
+    "2026-11-16T09:58:43.259568+00:00",
+    "2026-11-16T09:58:43.891122+00:00",
+    "2026-11-16T09:58:48.569810+00:00",
+    "2026-11-16T09:58:49.756880+00:00",
+    "2026-11-16T09:58:55.579900+00:00",
+    "2026-11-16T09:58:58.059218+00:00",
+    "2026-11-16T09:59:00.791604+00:00",
+    "2026-11-16T09:59:03.769662+00:00",
+    "2026-11-16T09:59:07.079425+00:00",
+    "2026-11-16T09:59:08.812084+00:00",
+    "2026-11-16T09:59:14.828079+00:00",
+    "2026-11-16T09:59:16.699502+00:00",
+    "2026-11-16T09:59:20.733469+00:00",
+    "2026-11-16T09:59:20.934241+00:00",
+    "2026-11-16T09:59:27.659609+00:00",
+    "2026-11-16T09:59:30.770755+00:00",
+    "2026-11-16T09:59:34.057316+00:00",
+    "2026-11-16T09:59:35.592510+00:00",
+    "2026-11-16T09:59:40.380905+00:00",
+    "2026-11-16T09:59:41.097009+00:00",
+    "2026-11-16T09:59:45.400404+00:00",
+    "2026-11-16T09:59:49.750541+00:00",
+    "2026-11-16T09:59:53.118809+00:00",
+    "2026-11-16T09:59:53.618795+00:00",
+    "2026-11-16T09:59:58.771585+00:00",
+    "2026-11-16T10:00:01.524895+00:00",
+    "2026-11-16T10:00:04.528785+00:00",
+    "2026-11-16T10:00:07.155045+00:00",
+    "2026-11-16T10:00:12.673815+00:00",
+    "2026-11-16T10:00:16.500386+00:00",
+    "2026-11-16T10:00:19.647508+00:00",
+    "2026-11-16T10:00:20.254618+00:00",
+    "2026-11-16T10:00:26.583280+00:00",
+    "2026-11-16T10:00:29.405463+00:00",
+    "2026-11-16T10:00:32.090233+00:00",
+    "2026-11-16T10:00:34.409675+00:00",
+    "2026-11-16T10:00:36.172666+00:00",
+    "2026-11-16T10:00:38.170374+00:00",
+    "2026-11-16T10:00:44.509847+00:00",
+    "2026-11-16T10:00:47.322059+00:00",
+    "2026-11-16T10:00:50.202216+00:00",
+    "2026-11-16T10:00:52.584354+00:00",
+    "2026-11-16T10:00:57.017480+00:00",
+    "2026-11-16T10:00:57.845478+00:00",
+    "2026-11-16T10:01:01.921388+00:00",
+    "2026-11-16T10:01:07.973704+00:00",
+    "2026-11-16T10:01:08.260524+00:00",
+    "2026-11-16T10:01:11.174663+00:00",
+    "2026-11-16T10:01:16.369211+00:00",
+    "2026-11-16T10:01:19.794919+00:00",
+    "2026-11-16T10:01:23.869263+00:00",
+    "2026-11-16T10:01:26.169341+00:00",
+    "2026-11-16T10:01:31.753762+00:00",
+    "2026-11-16T10:01:31.761280+00:00",
+    "2026-11-16T10:01:36.420025+00:00",
+    "2026-11-16T10:01:36.849936+00:00",
+    "2026-11-16T10:01:42.517118+00:00",
+    "2026-11-16T10:01:43.333118+00:00",
+    "2026-11-16T10:01:49.860722+00:00",
+    "2026-11-16T10:01:50.171500+00:00",
+    "2026-11-16T10:01:54.325909+00:00",
+    "2026-11-16T10:01:57.566683+00:00",
+    "2026-11-16T10:02:01.124057+00:00",
+    "2026-11-16T10:02:04.418684+00:00",
+    "2026-11-16T10:02:10.054969+00:00",
+    "2026-11-16T10:02:12.382601+00:00",
+    "2026-11-16T10:02:16.110110+00:00",
+    "2026-11-16T10:02:19.090451+00:00",
+    "2026-11-16T10:02:22.396725+00:00",
+    "2026-11-16T10:02:23.051609+00:00",
+    "2026-11-16T10:02:26.464323+00:00",
+    "2026-11-16T10:02:31.813090+00:00",
+    "2026-11-16T10:02:35.777747+00:00",
+    "2026-11-16T10:02:35.976491+00:00",
+    "2026-11-16T10:02:42.095487+00:00",
+    "2026-11-16T10:02:45.962911+00:00",
+    "2026-11-16T10:02:50.447664+00:00",
+    "2026-11-16T10:02:52.277811+00:00",
+    "2026-11-16T10:02:53.699333+00:00",
+    "2026-11-16T10:04:05.528036+00:00",
+    "2026-11-16T10:04:57.988748+00:00"
   ],
   "free_day_out": "",
   "gemini_log": [
-    "2026-11-14T16:33:28.384044-08:00",
-    "2026-11-14T16:38:35.604694-08:00",
-    "2026-11-14T16:40:25.930187-08:00",
-    "2026-11-14T16:42:28.616847-08:00",
-    "2026-11-14T16:46:12.737957-08:00",
-    "2026-11-14T16:53:00.424693-08:00",
-    "2026-11-14T16:59:23.119920-08:00",
-    "2026-11-14T17:04:34.117106-08:00",
-    "2026-11-14T17:10:44.968445-08:00",
-    "2026-11-14T17:12:52.869905-08:00",
     "2026-11-15T01:34:26.244439-08:00",
     "2026-11-15T01:41:19.847503-08:00",
     "2026-11-15T01:49:54.745938-08:00",
@@ -4109,16 +4417,20 @@
     "2026-11-15T16:50:50.842377-08:00",
     "2026-11-15T16:51:13.034499-08:00",
     "2026-11-15T16:51:40.298262-08:00",
-    "2026-11-15T16:51:54.648471-08:00"
+    "2026-11-15T16:51:54.648471-08:00",
+    "2026-11-16T01:35:28.122017-08:00",
+    "2026-11-16T01:36:14.427042-08:00",
+    "2026-11-16T01:38:34.088003-08:00",
+    "2026-11-16T01:45:49.993278-08:00",
+    "2026-11-16T01:52:06.415744-08:00",
+    "2026-11-16T01:54:02.372003-08:00",
+    "2026-11-16T01:54:34.496417-08:00",
+    "2026-11-16T01:55:03.581342-08:00",
+    "2026-11-16T01:55:17.020462-08:00"
   ],
   "gemini_day_out": "",
   "pace_adjust": 0.0,
   "lesson_log": [
-    {
-      "date": "2026-11-05",
-      "title": "The 8-Hz Whisper That Betrays Your Position",
-      "template": ""
-    },
     {
       "date": "2026-11-06",
       "title": "The Thousand-Airlock Cleanroom",
@@ -4296,6 +4608,18 @@
         "lab"
       ],
       "theme": "audit",
+      "date": "2026-11-16"
+    },
+    {
+      "title": "The Floppy-Disk Brain Test",
+      "template": "model_memory",
+      "formats": [
+        "estimate",
+        "lab",
+        "estimate",
+        "duel"
+      ],
+      "theme": "bench",
       "date": "2026-11-16"
     }
   ],
@@ -5194,7 +5518,8 @@
         "2026-11-12",
         "2026-11-13",
         "2026-11-14",
-        "2026-11-15"
+        "2026-11-15",
+        "2026-11-16"
       ],
       "subs": [
         "AgentsOfAI",
@@ -5213,15 +5538,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 181,
+      "mentions": 182,
       "refs": [
-        {
-          "date": "2026-11-10",
-          "title": "Claude Fable 5.2 built a playable Gears of War clone in Unreal Engine from a 3-line prompt, complete with enemy AI, cover mechanics and active reloading. After testing it with over 100 billion tokens, Matthew Berman calls it “by far the best model” he’s ever used.",
-          "thread": "https://www.reddit.com/r/singularity/comments/1xs1y29/claude_fable_52_built_a_playable_gears_of_war/",
-          "link": "",
-          "comment": ""
-        },
         {
           "date": "2026-11-11",
           "title": "My 15 MB Netflix-style media app got way more love here than I expected, so I shipped it. Built with Claude 🤯",
@@ -5312,10 +5630,17 @@
           "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xvw576/claude_code_21323_experimental_code_mode_claude/",
           "link": "",
           "comment": "we ran code mode on the same repo for a week and the win was real on read heavy tasks. write tasks were worse because one bad js line killed the whole batch of tool calls"
+        },
+        {
+          "date": "2026-11-16",
+          "title": "PSA: Superpowers skill with opus ruined my codebase",
+          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xwmeln/psa_superpowers_skill_with_opus_ruined_my_codebase/",
+          "link": "",
+          "comment": "i removed superpowers months ago - fully obsolete imo, as modern models already incorporate its features for the most part. to compound this, opus 5.5 has been really bad about overzealous testing in my experience."
         }
       ],
       "deep_dive": "2026-11-15",
-      "last_seen": "2026-11-15",
+      "last_seen": "2026-11-16",
       "subject": "ai"
     },
     "ai-benchmarks": {
@@ -5489,29 +5814,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 80,
+      "mentions": 83,
       "refs": [
-        {
-          "date": "2026-11-04",
-          "title": "I used Qwen3.8 Flash-Next to reverse-engineer an Android car stereo",
-          "thread": "https://www.reddit.com/r/LocalLLM/comments/1xn2q8a/i_used_qwen38_flashnext_to_reverseengineer_an/",
-          "link": "https://www.reddit.com/gallery/1xn2q8a",
-          "comment": "Impressive use of a local model; fixing the slop manufacturers push out."
-        },
-        {
-          "date": "2026-11-06",
-          "title": "QWEN 3.8 FN - 8bit FP quant - 96.32 tokens/s - Context of 95k - $1500 hardware",
-          "thread": "https://www.reddit.com/r/LocalLLM/comments/1xoeqod/qwen_38_fn_8bit_fp_quant_9632_tokenss_context_of/",
-          "link": "https://www.reddit.com/gallery/1xoeqod",
-          "comment": ""
-        },
-        {
-          "date": "2026-11-06",
-          "title": "2x RTX PRO 6000 running DeepSeek-V4-Flash (284B) fully offline: 1,170 tok/s peak",
-          "thread": "https://www.reddit.com/r/LocalLLM/comments/1xoi8wi/2x_rtx_pro_6000_running_deepseekv4flash_284b/",
-          "link": "",
-          "comment": ""
-        },
         {
           "date": "2026-11-07",
           "title": "Qwen3.8 27B FP8 on 4× Radeon AI PRO R9700: 7K tok/s prefill, 814 tok/s C8 decode",
@@ -5588,6 +5892,27 @@
           "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xwcmj3/ppl_keep_asking_for_local_opus_55_this_is_local/",
           "link": "",
           "comment": "TL;DR of the discussion generated automatically after 200 comments. Alright, let's pump the brakes. The thread gets the joke: running Opus 5.5 locally right now would require a small fortune and its own power substation. The top comments agree that you'd need to drop serious stacks for a rig that wo"
+        },
+        {
+          "date": "2026-11-16",
+          "title": "Claude wrote and trained a language model for DOS that fits on a floppy disk",
+          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xwpenj/claude_wrote_and_trained_a_language_model_for_dos/",
+          "link": "",
+          "comment": "This is the computer courage the cowardly dog used"
+        },
+        {
+          "date": "2026-11-16",
+          "title": "Claude Fable 5.2 wrote a working Transformer AI, while Opus 5.5 generated its training data. The result: a 367,000-parameter language model that fits on a floppy disk and runs on a 1990s Pentium PC with just 540 KB of RAM.",
+          "thread": "https://www.reddit.com/r/singularity/comments/1xx8w9q/claude_fable_52_wrote_a_working_transformer_ai/",
+          "link": "",
+          "comment": "Low key this is insane its possible in any way to do that"
+        },
+        {
+          "date": "2026-11-16",
+          "title": "I finally succeed the CMP 170HX voltage glitch and get 80GB VRAM + 126sm! !",
+          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xwxzgj/i_finally_succeed_the_cmp_170hx_voltage_glitch/",
+          "link": "https://www.reddit.com/gallery/1xwxzgj",
+          "comment": "An AI wrote the script that unlocked more VRAM to run more AI. The loop is complete."
         }
       ],
       "deep_dive": "2026-11-01",
@@ -5628,15 +5953,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 24,
+      "mentions": 25,
       "refs": [
-        {
-          "date": "2026-10-14",
-          "title": "Reuters: Character.AI files for bankruptcy.",
-          "thread": "https://www.reddit.com/r/antiai/comments/1x4pciw/reuters_characterai_files_for_bankruptcy/",
-          "link": "https://www.reuters.com/legal/litigation/characterai-files-bankruptcy-agrees-sell-some-assets-disney-20-million-2026-10-13/",
-          "comment": "Hopefully the first of many."
-        },
         {
           "date": "2026-10-14",
           "title": "Character.Ai has filed for bankruptcy guys",
@@ -5727,6 +6045,13 @@
           "thread": "https://www.reddit.com/r/codex/comments/1xwcokc/this_pretty_much_sums_up_current_state_of_codex/",
           "link": "",
           "comment": "How did Sam build OpenAI without using Claude? Nonsense."
+        },
+        {
+          "date": "2026-11-16",
+          "title": "Whistleblower Jacob Coxon pledged to donate 100% of his OpenAI equity to charity after the IPO. It's estimated to be worth $30 million. He calls the shares \"blood money\"",
+          "thread": "https://www.reddit.com/r/ArtificialInteligence/comments/1xwuvwz/whistleblower_jacob_coxon_pledged_to_donate_100/",
+          "link": "",
+          "comment": "lol this an amber heard type “pledge”. Ain’t no fuckin way that kid gives up 30 mil. That’s generational wealth if managed properly."
         }
       ],
       "deep_dive": "",
@@ -6003,11 +6328,13 @@
         "2026-11-05",
         "2026-11-07",
         "2026-11-10",
-        "2026-11-12"
+        "2026-11-12",
+        "2026-11-16"
       ],
       "subs": [
         "ArtificialInteligence",
         "ChatGPT",
+        "ClaudeAI",
         "ClaudeCode",
         "ControlProblem",
         "EverythingScience",
@@ -6017,22 +6344,8 @@
         "science",
         "technology"
       ],
-      "mentions": 18,
+      "mentions": 20,
       "refs": [
-        {
-          "date": "2026-10-25",
-          "title": "Qwen3.8: \"We will not be swayed\". During sabotage safety trials, Qwen recognized the manipulation, said it wouldn't comply, and complied. 1,801 sabotage trials later, this is what I found.",
-          "thread": "https://www.reddit.com/r/LocalLLM/comments/1xdwcr0/qwen38_we_will_not_be_swayed_during_sabotage/",
-          "link": "",
-          "comment": "So you're telling me that your adversarial agent, only exposed to the work product produced by the first (not their rationale) caught 100% of the planted bugs! That informs my design. The implementation agent must not be able to communicate with the review agent, just implement the fixes required. G"
-        },
-        {
-          "date": "2026-10-25",
-          "title": "For the first time, scientists say they have used viruses designed by AI to treat a human patient.",
-          "thread": "https://www.reddit.com/r/EverythingScience/comments/1xedrwt/for_the_first_time_scientists_say_they_have_used/",
-          "link": "https://www.nytimes.com/2026/10/20/science/ai-virus-bacteria-radical-numerics.html",
-          "comment": "⛱️"
-        },
         {
           "date": "2026-10-30",
           "title": "Man granted first-of-its-kind religious exemption against mandatory AI use at work — Humanist argues that offloading his thinking to LLMs violates his beliefs, Title VII accommodation protects employee",
@@ -6116,11 +6429,25 @@
           "thread": "https://www.reddit.com/r/ArtificialInteligence/comments/1xtouad/journalists_have_discovered_a_massive/",
           "link": "",
           "comment": ""
+        },
+        {
+          "date": "2026-11-16",
+          "title": "In a study of 48 medical students and physicians, researchers deliberately degraded an AI diagnostic system’s accuracy, only 12.5% noticed. When participants diagnosed first and then compared with the AI’s recommendations, their confidence in their diagnoses fell faster than their trust in the AI",
+          "thread": "https://www.reddit.com/r/science/comments/1xwnkg5/in_a_study_of_48_medical_students_and_physicians/",
+          "link": "https://www.nature.com/articles/s41746-026-03410-x",
+          "comment": "This is why I find it so disconcerting that we people want to call it super intelligence. The more credibility we put into AI's \"hands\" and the more we outsource decision-making, the more quickly our own capacity devolves and disintegrates."
+        },
+        {
+          "date": "2026-11-16",
+          "title": "Claude refused to cancel his work even tho he (probably) knew it was illegal",
+          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xx70to/claude_refused_to_cancel_his_work_even_tho_he/",
+          "link": "",
+          "comment": "TL;DR of the discussion generated automatically after 50 comments. The overwhelming consensus is that Claude wasn't breaking the law; it was just being smart. Your request to add personal subtitles isn't illegal, and Claude correctly reasoned that the generic copyright warning it found didn't apply "
         }
       ],
       "deep_dive": "2026-11-08",
       "subject": "science",
-      "last_seen": "2026-11-12"
+      "last_seen": "2026-11-16"
     },
     "open-weight-models": {
       "name": "Open-Weight Models",
@@ -6156,15 +6483,8 @@
         "artificial",
         "singularity"
       ],
-      "mentions": 57,
+      "mentions": 58,
       "refs": [
-        {
-          "date": "2026-11-05",
-          "title": "I removed 85% of gemma's weights (and it is mostly fine)",
-          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xnoqyy/i_removed_85_of_gemmas_weights_and_it_is_mostly/",
-          "link": "",
-          "comment": ""
-        },
         {
           "date": "2026-11-05",
           "title": "Kimi-K3.1-Pro is now open-weights",
@@ -6255,6 +6575,13 @@
           "thread": "https://www.reddit.com/r/LocalLLM/comments/1xwkqae/which_uncensored_version_of_qwen38_fn_should_i/",
           "link": "",
           "comment": "Commenting so I can follow this thread to also figure out which to use"
+        },
+        {
+          "date": "2026-11-16",
+          "title": "Highly anticipated Qwen4 Max scores a disappointing 43 on Artificial Analysis.",
+          "thread": "https://www.reddit.com/r/singularity/comments/1xxe7en/highly_anticipated_qwen4_max_scores_a/",
+          "link": "",
+          "comment": "anti-distillation efforts paying off lmao"
         }
       ],
       "deep_dive": "2026-10-25",
@@ -6950,31 +7277,11 @@
         "OpenAI",
         "agi",
         "antiai",
+        "singularity",
         "technology"
       ],
-      "mentions": 14,
+      "mentions": 17,
       "refs": [
-        {
-          "date": "2026-11-14",
-          "title": "‘Bring Back THE Boss’: Nvidia Employees Petition for Jensen Huang’s Return",
-          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xuxxmb/bring_back_the_boss_nvidia_employees_petition_for/",
-          "link": "https://www.wired.com/story/nvidia-employees-petition-for-jensen-huangs-return/?utm_brand=wired&utm_social-type=owned&utm_source=twitter&utm_medium=social&utm_campaign=aud-dev",
-          "comment": "Love him or hate him he's proven himself a capable leader by founding Nvidia, saving it from the brink of disaster and making in the leader of gaming graphics, then turning it into the company that makes the technology underpinning a new world revolution. It will be pretty hard to find that pedigree"
-        },
-        {
-          "date": "2026-11-14",
-          "title": "‘Broken and shattered’ Nvidia CEO Jensen Huang surrendered during resignation meeting, report claims — thousands of employees rally, calling for reinstatement on internal forum",
-          "thread": "https://www.reddit.com/r/technology/comments/1xv8ixq/broken_and_shattered_nvidia_ceo_jensen_huang/",
-          "link": "https://www.tomshardware.com/tech-industry/broken-and-shattered-nvidia-ceo-jensen-huang-surrendered-during-resignation-meeting-report-claims-thousands-of-employees-rally-calling-for-reinstatement-on-internal-forum",
-          "comment": "A lot of NVIDIA bag holders in this thread trying to make this thing about affairs, which is at best an ignorant and wilfully duplicitous reading of why he had to go."
-        },
-        {
-          "date": "2026-11-14",
-          "title": "‘I’m a Piece of Sh--’: Jensen Huang’s Last Hours as Nvidia CEO",
-          "thread": "https://www.reddit.com/r/technology/comments/1xux28w/im_a_piece_of_sh_jensen_huangs_last_hours_as/",
-          "link": "https://www.bloomberg.com/news/articles/2026-11-13/inside-jensen-huang-s-final-hours-as-the-ceo-of-nvidia",
-          "comment": "Your wife has been with you since day 1. Struggled with you. Help you. And be prosper with you. But the PP has to come out to others."
-        },
         {
           "date": "2026-11-14",
           "title": "Investigators have discovered that the top 4 Chinese AI labs all built their newest models on NVIDIA’s most advanced Blackwell chips, which are barred from export to China.",
@@ -7051,6 +7358,27 @@
           "thread": "https://www.reddit.com/r/technology/comments/1xww9xh/nvidia_board_director_cashed_out_1_billion_in/",
           "link": "https://www.tomshardware.com/tech-industry/nvidia-board-director-cashed-out-usd1-billion-in-stock-before-jensen-huang-scandal-mark-stevens-sold-4-2-million-shares-without-a-trading-plan",
           "comment": "Don't executives of this level with inside information have to file a notice to trade large positions well before they actually execute it? To dispel the notion of any insider trading, upcoming knowledge, etc. I'm sure the SEC will get right on this."
+        },
+        {
+          "date": "2026-11-16",
+          "title": "Nvidia board director cashed out $1 billion in stock before Jensen Huang scandal — Mark Stevens sold 4.2 million shares without a trading plan",
+          "thread": "https://www.reddit.com/r/technology/comments/1xww9xh/nvidia_board_director_cashed_out_1_billion_in/",
+          "link": "https://www.tomshardware.com/tech-industry/nvidia-board-director-cashed-out-usd1-billion-in-stock-before-jensen-huang-scandal-mark-stevens-sold-4-2-million-shares-without-a-trading-plan",
+          "comment": "Don't executives of this level with inside information have to file a notice to trade large positions well before they actually execute it? To dispel the notion of any insider trading, upcoming knowledge, etc. I'm sure the SEC will get right on this."
+        },
+        {
+          "date": "2026-11-16",
+          "title": "Jensen Huang discusses comeback as Nvidia CEO with allies / Tech supporters lobby chipmaker’s board to reinstate former CEO after he resigned following affair with alleged Chinese spy",
+          "thread": "https://www.reddit.com/r/technology/comments/1xx4ou6/jensen_huang_discusses_comeback_as_nvidia_ceo/",
+          "link": "https://www.ft.com/content/45383d86-33c4-4d99-86e5-5e058d3567c1?syn-25a6b1a6=1",
+          "comment": "In other good news, Enron is trying to bring back Ken Lay and Jeffrey Skilling"
+        },
+        {
+          "date": "2026-11-16",
+          "title": "Scam inside scam - The Jensen saga !",
+          "thread": "https://www.reddit.com/r/antiai/comments/1xx4wus/scam_inside_scam_the_jensen_saga/",
+          "link": "",
+          "comment": "1998 all over again. This shit is unreal. (same players too)"
         }
       ],
       "deep_dive": "",
@@ -7069,15 +7397,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 15,
+      "mentions": 16,
       "refs": [
-        {
-          "date": "2026-11-15",
-          "title": "The FAA rolled out its $875 million AI Air Traffic tool today with reassurances it would not affect safety",
-          "thread": "https://www.reddit.com/r/singularity/comments/1xvl00y/the_faa_rolled_out_its_875_million_ai_air_traffic/",
-          "link": "https://gizmodo.com/the-faa-is-rolling-out-its-ai-air-traffic-tool-nationwide-2000839347",
-          "comment": "If the cause turns out to be AI the public response is going to be insane to witness"
-        },
         {
           "date": "2026-11-15",
           "title": "AI overwhelmed air traffick control systems (company linked to U.S. Transportation Secretary Sean Duffy's family)",
@@ -7168,6 +7489,82 @@
           "thread": "https://www.reddit.com/r/technology/comments/1xwijlj/duffy_lied_air_traffic_controllers_refute/",
           "link": "https://www.commondreams.org/news/duffy-ground-stop-explanation",
           "comment": "“I’ve spoken with 60 air traffic controllers tonight about what Sean Duffy said at the White House today,” said one journalist. “None of them are buying what he said.”"
+        },
+        {
+          "date": "2026-11-16",
+          "title": "Donald Trump breaks silence on nationwide grounding of all flights, blames Biden",
+          "thread": "https://www.reddit.com/r/technology/comments/1xwyipo/donald_trump_breaks_silence_on_nationwide/",
+          "link": "https://www.jpost.com/international/article-914962",
+          "comment": "Read pages 632-633 in Project 2025, the plan is to take Air Traffic Control from the FAA and privatize communications."
+        }
+      ],
+      "deep_dive": "",
+      "subject": "science",
+      "last_seen": "2026-11-16"
+    },
+    "measles-elimination-status": {
+      "name": "US Measles Elimination Status",
+      "first_seen": "2026-11-16",
+      "days": [
+        "2026-11-16"
+      ],
+      "subs": [
+        "EverythingScience"
+      ],
+      "mentions": 1,
+      "refs": [
+        {
+          "date": "2026-11-16",
+          "title": "What It Took for America to Wipe Out Measles. The U.S. could soon lose its measles elimination status. Winning it was a massive, decades-long undertaking.",
+          "thread": "https://www.reddit.com/r/EverythingScience/comments/1xwuzn7/what_it_took_for_america_to_wipe_out_measles_the/",
+          "link": "https://www.nytimes.com/2026/11/15/well/us-measles-elimination.html?unlocked_article_code=1.QlE.sdbc.3eohEg2Wd64P&smid=url-share",
+          "comment": "I thought the US officially lost it yesterday: https://www.cbsnews.com/news/measles-elimination-status-united-states/"
+        }
+      ],
+      "deep_dive": "",
+      "subject": "science",
+      "last_seen": "2026-11-16"
+    },
+    "in-vivo-crispr-therapy": {
+      "name": "In Vivo CRISPR Gene Therapy",
+      "first_seen": "2026-11-16",
+      "days": [
+        "2026-11-16"
+      ],
+      "subs": [
+        "science"
+      ],
+      "mentions": 1,
+      "refs": [
+        {
+          "date": "2026-11-16",
+          "title": "A CRISPR therapy that edits genes inside the body, with no need to remove a patient's cells, is still working four years after treatment. It switches off a liver gene behind a rare disease that causes painful, dangerous swelling, and is poised to be the first of its kind to win FDA approval.",
+          "thread": "https://www.reddit.com/r/science/comments/1xwt6d5/a_crispr_therapy_that_edits_genes_inside_the_body/",
+          "link": "https://www.nature.com/articles/d41586-026-03705-9",
+          "comment": "I love all these announcments, though I can't help but remind myself that I've - a mid-aged guy who knows relatively few people - been to 5 (yes, 5) funerals due to pancreatic cancer."
+        }
+      ],
+      "deep_dive": "",
+      "subject": "science",
+      "last_seen": "2026-11-16"
+    },
+    "testosterone-receptor-prostate-cancer": {
+      "name": "Testosterone Receptor-Destroying Prostate Cancer Drug",
+      "first_seen": "2026-11-16",
+      "days": [
+        "2026-11-16"
+      ],
+      "subs": [
+        "science"
+      ],
+      "mentions": 1,
+      "refs": [
+        {
+          "date": "2026-11-16",
+          "title": "First drug that destroys testosterone receptors shrinks prostate tumours and eases pain in early trial",
+          "thread": "https://www.reddit.com/r/science/comments/1xx2hox/first_drug_that_destroys_testosterone_receptors/",
+          "link": "https://doi.org/10.1200/JCO-25-02995",
+          "comment": "Shrinking tumors is never a bad thing but I can say that tumor size in prostate cancer does not correlate well with disease severity and metastatic risk. In fact most of the prostate tumors I’ve seen that end up progressing to late stage or metastatic disease are usually on the smaller side."
         }
       ],
       "deep_dive": "",
