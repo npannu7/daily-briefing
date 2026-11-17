@@ -10,12 +10,327 @@
   "lines": [
    {
     "said": "\"Too technical\" in 3 of your last 6 depth ratings",
-    "did": "1 specialist thread was left out when this episode's stories were chosen. Each story may use at most 4 specialist terms: this episode's scripts were rewritten from 5 to 4 and 11 to 4."
+    "did": "3 specialist threads were left out when this episode's stories were chosen. Each story may use at most 4 specialist terms: this episode's scripts were rewritten from 27 to 16 and 8 to 2."
    }
   ],
   "last": "2026-11-16"
  },
  "episodes": [
+  {
+   "file": "ai_2026-11-17_evening_1501.mp3",
+   "title": "Evening - 17 Nov: Benchmarking Whether Cheaper AI Models Actually Save Money on Real Codebases",
+   "label": "Tuesday 17 Nov evening",
+   "date": "2026-11-17",
+   "edition": "evening",
+   "published": "2026-11-17T15:01:12.063068+05:30",
+   "duration": 1033,
+   "theme": "Benchmarking AI coding agents on real codebases; FDA rejects a Chinese lung-cancer drug",
+   "writer": "nemotron-3-ultra-550b-a55b (free)",
+   "voices": "Fish Audio (free)",
+   "deep_dive": false,
+   "segments": [
+    {
+     "title": "Benchmarking Whether Cheaper AI Models Actually Save Money on Real Codebases",
+     "category": "thread"
+    },
+    {
+     "title": "FDA Rejects a Closely Watched Lung Cancer Drug from China",
+     "category": "thread"
+    },
+    {
+     "title": "If elephants had gone extinct millions of years ago and we only had their fossil",
+     "category": "thread"
+    }
+   ],
+   "play": {
+    "v": 2,
+    "theme": "audit",
+    "title": "The Delegation Paradox",
+    "brief": "You audit a Reddit benchmark: 300 runs, four routing setups, and a claim that cheaper models sometimes cost more",
+    "segments": [
+     {
+      "title": "Benchmarking Whether Cheaper AI Models Actually Save Money on Real Codebases",
+      "bet": {
+       "claim": "Custom routing logic cost 14-30% more than Opus working alone",
+       "truth": true,
+       "why": "The poster's own delegation heuristic added overhead that exceeded savings across all tested codebases"
+      },
+      "rounds": [
+       {
+        "type": "quickfire",
+        "q": "True or false?",
+        "items": [
+         {
+          "text": "On 10k-line codebases, delegation saves money",
+          "truth": false
+         },
+         {
+          "text": "Haiku alone hits 5% of Opus cost on tested coding tasks",
+          "truth": true
+         },
+         {
+          "text": "Opus+Haiku read 3x more pages on the big doc check",
+          "truth": true
+         },
+         {
+          "text": "Spontaneous Opus delegated often on small repos",
+          "truth": false
+         },
+         {
+          "text": "Custom routing was the cheapest setup overall",
+          "truth": false
+         }
+        ]
+       },
+       {
+        "type": "lab",
+        "text": "Each subtask must succeed. Drag the success rate and subtask count to see how often the whole job completes.",
+        "inputs": [
+         {
+          "id": "p",
+          "label": "Each subtask works",
+          "unit": "%",
+          "min": 80.0,
+          "max": 99.0,
+          "step": 0.1,
+          "value": 92.0
+         },
+         {
+          "id": "n",
+          "label": "Subtasks in a job",
+          "unit": "",
+          "min": 1.0,
+          "max": 20.0,
+          "step": 1.0,
+          "value": 8.0
+         }
+        ],
+        "outputs": [
+         {
+          "id": "ok",
+          "label": "Whole job works",
+          "unit": "%",
+          "expr": "100*(p/100)^n",
+          "digits": 1,
+          "lo": 1.1529215046068484,
+          "hi": 99.0
+         },
+         {
+          "id": "fails",
+          "label": "Jobs that fail, of 100",
+          "unit": "",
+          "expr": "100-ok",
+          "digits": 0,
+          "lo": 1.0,
+          "hi": 98.84707849539315
+         }
+        ],
+        "chart": {
+         "x": "n",
+         "y": [
+          "ok"
+         ]
+        },
+        "goal": {
+         "target": "ok",
+         "min": 26.874389899547147,
+         "max": 36.65909774908646,
+         "auto": true,
+         "text": "Move the sliders until \"Whole job works\" reads about 31.8 %.",
+         "success": "Found it. Notice which slider moved it most - that is the mechanism in this story."
+        },
+        "template": "chain",
+        "view": {
+         "kind": "runs",
+         "p": "p",
+         "n": "n",
+         "step": "subtask",
+         "run": "job"
+        }
+       }
+      ],
+      "takeaway": "Delegation pays only when context overflows and tasks parallelize — routing logic and test quality decide if you actually save"
+     },
+     {
+      "title": "FDA Rejects a Closely Watched Lung Cancer Drug from China",
+      "bet": {
+       "claim": "Two Chinese-origin cancer drugs already earn over $1 billion yearly in the US.",
+       "truth": true,
+       "why": "The Times article notes two blood-cancer drugs invented in China are already doing over a billion dollars a year in US sales."
+      },
+      "rounds": [
+       {
+        "type": "sequence",
+        "q": "Order the steps from Chinese lab to FDA rejection",
+        "items": [
+         "Chinese lab invents bispecific antibody",
+         "Summit licenses US rights",
+         "Post-treatment trial shows tumor control",
+         "Survival benefit misses statistical significance",
+         "FDA issues Complete Response Letter"
+        ],
+        "why": "The drug hit its surrogate endpoint but failed the real one — overall survival — so the FDA said come back with more data."
+       },
+       {
+        "type": "quickfire",
+        "q": "True or false?",
+        "items": [
+         {
+          "text": "The drug blocks two cancer pathways with one antibody.",
+          "truth": true
+         },
+         {
+          "text": "FDA rejected it because the developer was Chinese.",
+          "truth": false
+         },
+         {
+          "text": "Tumor control alone does not prove longer life.",
+          "truth": true
+         },
+         {
+          "text": "After-the-fact analyses convinced the FDA to approve.",
+          "truth": false
+         },
+         {
+          "text": "Two Chinese-origin cancer drugs are already US blockbusters.",
+          "truth": true
+         }
+        ]
+       }
+      ],
+      "takeaway": "A two-in-one antibody missed the survival endpoint; FDA wants proof of longer life."
+     },
+     {
+      "title": "If elephants had gone extinct millions of years ago and we only had their fossil",
+      "bet": {
+       "claim": "Without living elephants, scientists would reconstruct a short tapir-like trunk, not a long grasping one.",
+       "truth": true,
+       "why": "The segment verdict: half right. We'd know something muscular lived there, know it's a mammal, but pick the nearest analog (tapir) and guess a short trunk — the long trunk is a stretch."
+      },
+      "rounds": [
+       {
+        "type": "duel",
+        "q": "Which is longer: a tapir's trunk, or the elephant trunk that made scientists laugh?",
+        "unit": "feet",
+        "a": {
+         "label": "Tapir trunk",
+         "value": 1.0
+        },
+        "b": {
+         "label": "Laughable trunk",
+         "value": 4.0
+        },
+        "why": "Bones suggest tapir-like (1 ft), but the real trunk (4 ft) is 4x longer — the length that got the first proposer laughed at."
+       },
+       {
+        "type": "call",
+        "q": "A fossil shows a 15-ton body with a neck reaching only 3 feet. Its modern relatives are hippos (short neck) and giraffes (long neck). What did it use to eat?",
+        "options": [
+         "Grazed on ground like a hippo",
+         "Used a long trunk to reach food",
+         "Had a giraffe-like long neck"
+        ],
+        "answer": 1,
+        "hint": "Short neck + huge body = need extra reach.",
+        "why": "Elephant necks are short and stiff; without a trunk the calorie math fails. The segment says you'd infer a long reach from the body-neck mismatch."
+       }
+      ],
+      "takeaway": "bone writes the contract, but soft tissue signs it — and without a living witness, we'll still pick the wrong template."
+     }
+    ],
+    "words": [
+     {
+      "term": "Context window",
+      "means": "How much code or text the model can hold at once"
+     },
+     {
+      "term": "Rolled throughput yield",
+      "means": "Chance a multi-step job fully succeeds — each step's risk multiplies"
+     },
+     {
+      "term": "Bispecific antibody",
+      "means": "A single antibody with two different binding arms hitting two targets"
+     },
+     {
+      "term": "Surrogate endpoint",
+      "means": "A stand-in measure like tumor control that may not predict real benefit"
+     },
+     {
+      "term": "Transportability",
+      "means": "Whether trial results in one population apply to another with different traits"
+     },
+     {
+      "term": "Sharpey's fibers",
+      "means": "Tiny collagen strands that anchor muscle to bone like microscopic bolts."
+     },
+     {
+      "term": "Wolff's law",
+      "means": "Bone rebuilds itself stronger where mechanical stress is highest."
+     },
+     {
+      "term": "Inverse problem",
+      "means": "Same bones can fit many soft-tissue shapes; no unique answer."
+     }
+    ],
+    "chips": [
+     "Surprising routing result",
+     "More on test quality",
+     "Wall time missing",
+     "Good pub-quiz pace"
+    ]
+   },
+   "quiz": [
+    {
+     "q": "Why did delegating work to cheaper Haiku helpers fail to pay off on small codebases of about ten thousand lines?",
+     "options": [
+      "Haiku lacks the context window to read code",
+      "The expensive Opus model could fit the whole codebase in its context window, so there was no need to farm out pieces",
+      "Haiku cannot write text pieces, only code",
+      "Custom routing logic was banned on small repositories"
+     ],
+     "answer": 1,
+     "explain": "On small codebases, the lead model holds the entire repository in its context window, so delegation adds coordination overhead without reducing what the lead must read.",
+     "segment": "Benchmarking Whether Cheaper AI Models Actually Save Money on Real Codebases"
+    },
+    {
+     "q": "The custom routing logic cost 14 to 30 percent more than simpler setups. What does this indicate about delegation heuristics?",
+     "options": [
+      "Cheaper models always increase routing cost",
+      "Custom routing is required by FDA validation rules",
+      "The heuristic for when to delegate is non-trivial and can add overhead exceeding savings",
+      "Opus cannot execute code without Haiku"
+     ],
+     "answer": 2,
+     "explain": "The script notes that custom routing cost more, suggesting that deciding when and to which model to delegate is difficult and poor heuristics can erase savings from cheaper helpers.",
+     "segment": "Benchmarking Whether Cheaper AI Models Actually Save Money on Real Codebases"
+    },
+    {
+     "q": "Why did the FDA reject ivonescimab in the post-treatment lung-cancer setting despite it meeting one endpoint?",
+     "options": [
+      "The trial met progression-free survival but not statistically significant overall survival, the required primary goal",
+      "Manufacturing facilities failed GMP inspection",
+      "The drug was not actually bispecific",
+      "Summit refused to test in Western patients"
+     ],
+     "answer": 0,
+     "explain": "The drug showed a benefit on progression-free survival but failed to demonstrate statistically significant overall survival, which was the primary efficacy bar for approval in this setting.",
+     "segment": "FDA Rejects a Closely Watched Lung Cancer Drug from China"
+    },
+    {
+     "q": "If elephants went extinct and only fossils remained, what could paleontologists most reliably infer about the trunk?",
+     "options": [
+      "Exact trunk length from nasal bone measurements",
+      "That elephants had no trunk because soft tissue doesn't fossilize",
+      "The precise muscle fiber type from Sharpey's fibers",
+      "That a muscular, mammal-like trunk existed, but its full length is underdetermined without soft tissue"
+     ],
+     "answer": 3,
+     "explain": "Fossil bone shows muscle attachment sites and reinforcement consistent with a muscular trunk, but without soft tissue the exact length and grasping ability remain underdetermined.",
+     "segment": "If elephants had gone extinct millions of years ago and we only had their fossil"
+    }
+   ],
+   "transcript": "transcripts/ai_2026-11-17_evening_1501.txt"
+  },
   {
    "file": "ai_2026-11-17_morning_0600.mp3",
    "title": "Morning - 17 Nov: Can AI Agents Safely Run Hospital Paperwork",
@@ -2540,226 +2855,6 @@
     }
    ],
    "transcript": "transcripts/ai_2026-11-11_evening_1214.txt"
-  },
-  {
-   "file": "ai_2026-11-10_evening_1259.mp3",
-   "title": "Evening - 10 Nov: One neuron that flips a model from confident errors to poetry",
-   "label": "Tuesday 10 Nov evening",
-   "date": "2026-11-10",
-   "edition": "evening",
-   "published": "2026-11-10T12:59:08.099942+05:30",
-   "duration": 1185,
-   "theme": "Finding the control knobs inside a neural network, and a plant-based coating that passes the boiling-water test for paper cups.",
-   "writer": "nemotron-3-ultra-550b-a55b (free)",
-   "voices": "Fish Audio (free)",
-   "deep_dive": false,
-   "segments": [
-    {
-     "title": "One neuron that flips a model from confident errors to poetry",
-     "category": "concept"
-    },
-    {
-     "title": "A plant-based coating that survives boiling water and cuts microplastics",
-     "category": "thread"
-    }
-   ],
-   "lessons": [
-    {
-     "title": "The Neuron That Isn't a Knob",
-     "segment": "One neuron that flips a model from confident errors to poetry",
-     "steps": [
-      {
-       "type": "choice",
-       "text": "Reddit claims neuron L11 N8147 in Qwen-3.5-4B is a 'contrarian dial' — crank it, get confident errors plus poetry. Only one user, few examples, no replication. As QA lead, would you qualify this neuron as a validated control knob?",
-       "options": [
-        "Yes — consistent behavioral shift in demos",
-        "No — uncontrolled test, no replication, no root cause",
-        "Maybe — needs SAE feature mapping first",
-        "Only if activation patching confirms causality"
-       ],
-       "answer": 1,
-       "explain": "Single-user Reddit post = anecdote. No replication, no intervention proof, no causal mapping. In GMP you'd reject this evidence for a critical control point.",
-       "hint": "Think sterilization validation: spore strips alone don't prove the cycle. You need the temperature-pressure-time record."
-      },
-      {
-       "type": "concept",
-       "text": "Superposition means each neuron is a multiplexed channel — like one data logger carrying temperature, pressure, and vibration mixed together. Cranking one 'clean' neuron actually forces an impossible combination: high 'contrarian' signal WITHOUT the correlated context that normally accompanies it. Downstream layers improvise. The poetry is the language prior — the path of least resistance in token space — filling the void when the reasoning circuit gets jammed by impossible inputs.",
-       "example": "Like a sterilizer controller seeing 300°C from a thermocouple that maxes at 140°C. The PID loop doesn't 'understand' — it integrates error and drives the valve wide open. Fluent nonsense."
-      },
-      {
-       "type": "order",
-       "text": "Put these in causal order: what actually happens when you artificially crank a raw neuron high",
-       "items": [
-        "Neuron driven to activation values never seen in training (distribution shift)",
-        "Downstream layers receive impossible activation combinations",
-        "Language prior generates fluent text — poetry — as path of least resistance",
-        "Output shows confident errors wrapped in grammatical coherence"
-       ],
-       "explain": "The crank creates the shift (1), which breaks downstream expectations (2), triggering the language model's default fluent generation (3), producing coherent but ungrounded output (4). The neuron isn't a dial — it's a distribution-shift bomb."
-      },
-      {
-       "type": "choice",
-       "text": "Your factory uses a vision system to inspect vial seals. You find one neuron in its net that, when cranked, makes it reject good vials but write poetic defect descriptions. The vendor says 'it's a sensitivity dial.' Your move:",
-       "options": [
-        "Qualify it — consistent behavioral shift",
-        "Reject — distribution shift, no causal proof, poetry = hallucinated style",
-        "Ask for SAE feature map and activation patching evidence",
-        "Run 10k vials and track neuron activation vs. ground truth"
-       ],
-       "answer": 2,
-       "explain": "Without mechanistic evidence (SAE features + causal patching), you have a black box that fails fluently. In regulated manufacturing, fluent failure is still failure — and harder to catch.",
-       "hint": "What would FDA say about a sensor that 'works' but you don't know why, and fails poetically?"
-      }
-     ],
-     "words": [
-      {
-       "term": "superposition",
-       "means": "One neuron carries multiple mixed concepts because the network has more concepts than neurons"
-      },
-      {
-       "term": "sparse autoencoder",
-       "means": "A side network that separates mixed neuron signals into cleaner, single-concept features"
-      },
-      {
-       "term": "activation patching",
-       "means": "Swapping a component's activations between two prompts to see how output changes — like injecting test voltage on a PCB"
-      },
-      {
-       "term": "distribution shift",
-       "means": "Feeding downstream layers activation patterns they never saw during training — they improvise"
-      },
-      {
-       "term": "mechanistic interpretability",
-       "means": "Mapping internal cause-effect logic, not just input-output behavior — the design-history file for neural nets"
-      }
-     ]
-    },
-    {
-     "title": "The Boiling Water Test That Misses the Vinegar Syndrome",
-     "segment": "A plant-based coating that survives boiling water and cuts microplastics",
-     "steps": [
-      {
-       "type": "choice",
-       "text": "Your cup supplier sends the Waterloo release: 'Plant-based coating survives boiling water, cuts microplastics, recycles easier.' Change-control board meets in 48h. Which claim hides a failure mode that boiling water tests WON'T catch?",
-       "options": [
-        "Boiling water stability (2 hr, 100°C)",
-        "Microplastic reduction vs. PE liner",
-        "Fiber reduction via composite action",
-        "Recyclability — cellulose on cellulose"
-       ],
-       "answer": 3,
-       "explain": "Cellulose acetate hydrolyzes to acetic acid — 'vinegar syndrome' — crashing repulper pH, creating stickies, corroding equipment. The release's 'potential to simplify' is lab-scale language, not a qualified recycling stream.",
-       "hint": "Boiling water is a single-use test. Recycling means repeated hot, wet, alkaline passes through a closed-loop repulper."
-      },
-      {
-       "type": "concept",
-       "text": "Boiling water tests one hot fill. Recycling repeats that stress 10–20 times in alkaline water with shear. Each pass cleaves acetyl groups, releasing acetic acid. pH falls, stickies precipitate, sizing fails, equipment corrodes. The coating passes the sprint but fails the marathon.",
-       "example": "Like a medical device passing sterilization validation but failing accelerated aging — the shelf-life test that simulates years in the warehouse."
-      },
-      {
-       "type": "order",
-       "text": "Put the change-control validation sequence in the right order for this coating substitution:",
-       "items": [
-        "Food-contact notification / GRAS determination for the new cellulose acetate + nanocrystal formulation",
-        "Migration testing on final coated board under worst-case simulants (boiling water, 10% ethanol, 2 hr)",
-        "Process validation for coating line: slot-die weight uniformity, drying kinetics, adhesion after conversion",
-        "Design history file update: new material specs, drawings, process parameters, validation protocol & report"
-       ],
-       "explain": "Regulatory clearance first (you can't test food contact on an unapproved material). Then migration on the real article. Then prove the line makes it consistently. Finally close the DHF — the auditor's roadmap."
-      },
-      {
-       "type": "choice",
-       "text": "Dr. Ganguly says the coating lets them use 'much thinner paper' — the coating carries hoop stress like a composite skin. If baseline cup board is 200 gsm, what basis-weight drop is structurally plausible for a 250 ml cup?",
-       "options": [
-        "200 → 190 gsm (5% drop)",
-        "200 → 170 gsm (15% drop)",
-        "200 → 150 gsm (25% drop)",
-        "200 → 110 gsm (45% drop)"
-       ],
-       "answer": 2,
-       "explain": "25% fiber reduction is realistic for a reinforced skin — but converting trials (die-cut force, stack height, sleeve fit) are the real gate. A materials win that still needs a full V&V package.",
-       "hint": "Cellulose nanocrystals ~150 GPa modulus. At 15 µm coating thickness, they're a high-modulus skin. But the core still needs enough fiber to prevent buckling and survive converting."
-      }
-     ],
-     "words": [
-      {
-       "term": "Cellulose acetate",
-       "means": "Plant-derived polymer, hydrophobic when acetylated, but hydrolyzes to acetic acid over time"
-      },
-      {
-       "term": "Degree of substitution",
-       "means": "Average acetyl groups per sugar unit (2.5 typical); controls hydrophobicity and hydrolysis rate"
-      },
-      {
-       "term": "Repulpability",
-       "means": "Ability to disperse in water under shear; measured by fiber yield, stickies, drainage time (PTS-RH 021)"
-      },
-      {
-       "term": "Overall migration limit",
-       "means": "Regulatory cap (10 mg/dm² EU) on total substances migrating into food simulant"
-      },
-      {
-       "term": "Accelerated aging",
-       "means": "ASTM F1980 protocol (e.g., 40°C/75% RH, 1000 hr) to simulate years of shelf life"
-      },
-      {
-       "term": "Vinegar syndrome",
-       "means": "Autocatalytic hydrolysis of cellulose acetate releasing acetic acid; lowers pH, corrodes equipment"
-      }
-     ]
-    }
-   ],
-   "quiz": [
-    {
-     "q": "What is the core technical challenge that makes 'neuron-hunting' in a neural network like the Qwen-3.5-4B model difficult?",
-     "options": [
-      "The neurons are too small to be identified by current code",
-      "The model uses superposition, where a single neuron represents multiple, mixed concepts",
-      "The model's weights are encrypted, preventing direct access to individual neurons",
-      "The activation functions are too complex to be interpreted by human observers"
-     ],
-     "answer": 1,
-     "explain": "Superposition causes neurons to be polysemantic, meaning they fire for unrelated concepts, making it difficult to map a single neuron to a specific, isolated behavior.",
-     "segment": "One neuron that flips a model from confident errors to poetry"
-    },
-    {
-     "q": "Why does the episode suggest that the 'snarky poetry' produced by the Qwen neuron is likely not a sign of 'creativity'?",
-     "options": [
-      "The poetry follows a pre-programmed template stored in the model's memory",
-      "The model is simply outputting random noise that humans interpret as poetry",
-      "The poetry is the model's language prior filling the gap when the reasoning circuit is jammed",
-      "The model is incapable of generating text that is both snarky and poetic"
-     ],
-     "answer": 2,
-     "explain": "The poetry is interpreted as the model's language prior taking over when the logic circuit is overridden, rather than the neuron itself possessing creative intent.",
-     "segment": "One neuron that flips a model from confident errors to poetry"
-    },
-    {
-     "q": "From a regulatory and quality perspective, what is the primary deficiency in the evidence provided for the new plant-based cup coating?",
-     "options": [
-      "The coating is known to be toxic when exposed to high temperatures",
-      "The paper lacks a peer-reviewed publication in a reputable journal",
-      "The claims are based on qualitative observations rather than quantitative migration and durability data",
-      "The coating is incompatible with existing paperboard manufacturing equipment"
-     ],
-     "answer": 2,
-     "explain": "The claims rely on qualitative observations of 'degradation' rather than the quantitative migration studies and accelerated aging data required for regulatory validation.",
-     "segment": "A plant-based coating that survives boiling water and cuts microplastics"
-    },
-    {
-     "q": "What is a potential technical risk identified regarding the recycling of cellulose acetate-coated cups?",
-     "options": [
-      "The coating may hydrolyze and release acetic acid, potentially lowering pH and causing corrosion in repulping systems",
-      "The cellulose nanocrystals are too heavy and will sink to the bottom of the recycling vats",
-      "The coating is impossible to remove from the paper fiber under any circumstances",
-      "The coating requires a higher temperature to recycle than standard polyethylene"
-     ],
-     "answer": 0,
-     "explain": "Cellulose acetate can hydrolyze over time, releasing acetic acid, which could negatively impact the chemistry of a closed-loop recycling water system.",
-     "segment": "A plant-based coating that survives boiling water and cuts microplastics"
-    }
-   ],
-   "transcript": "transcripts/ai_2026-11-10_evening_1259.txt"
   }
  ]
 }
