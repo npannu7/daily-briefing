@@ -10,24 +10,251 @@
   "lines": [
    {
     "said": "\"Too technical\" in 3 of your last 6 depth ratings",
-    "did": "2 specialist threads were left out when this episode's stories were chosen. Each story may use at most 4 specialist terms: this episode's scripts were rewritten from 15 to 2."
-   },
-   {
-    "said": "\"Less maintainer drama. Fewer numbers\"",
-    "did": "Passed to the editor and the writers of every episode from now on."
-   },
-   {
-    "said": "More like \"Are Language Models Really Getting Smarter?\"",
-    "did": "The editor sees this when it chooses the next episodes' stories."
-   },
-   {
-    "said": "\"Skip the machine shop. i am not from usa so less about usa laws\"",
-    "did": "Passed to the editor and the writers of every episode from now on."
+    "did": "1 specialist thread was left out when this episode's stories were chosen. Each story may use at most 4 specialist terms: this episode's scripts were rewritten from 5 to 4 and 11 to 4."
    }
   ],
   "last": "2026-11-16"
  },
  "episodes": [
+  {
+   "file": "ai_2026-11-17_morning_0600.mp3",
+   "title": "Morning - 17 Nov: Can AI Agents Safely Run Hospital Paperwork",
+   "label": "Tuesday 17 Nov morning",
+   "date": "2026-11-17",
+   "edition": "morning",
+   "published": "2026-11-17T06:00:09.848623+05:30",
+   "duration": 1306,
+   "theme": "Checking bold safety claims in hospital AI against how complex systems actually fail, and how starving gut microbes of fiber flips their chemistry from protective to destructive.",
+   "writer": "Gemini 4 Hydrogen",
+   "voices": "Fish Audio (free)",
+   "deep_dive": false,
+   "segments": [
+    {
+     "title": "Can AI Agents Safely Run Hospital Paperwork",
+     "category": "thread"
+    },
+    {
+     "title": "When Gut Bacteria Eat Their Own Home",
+     "category": "thread"
+    }
+   ],
+   "play": {
+    "v": 2,
+    "theme": "audit",
+    "title": "The 99% Hospital AI Trap",
+    "brief": "You're the auditor today: probe each hospital AI claim and log the shaky numbers as findings.",
+    "segments": [
+     {
+      "title": "Can AI Agents Safely Run Hospital Paperwork",
+      "bet": {
+       "claim": "At a 99% safety rate, US hospitals would still amputate nearly 2,000 wrong limbs every year.",
+       "truth": true,
+       "why": "In a Reddit breakdown of US hospital volumes, a 1% error rate scaled to nearly 2,000 wrong-limb amputations and 36,000 misrouted babies yearly."
+      },
+      "rounds": [
+       {
+        "type": "estimate",
+        "q": "OpenAI claimed 99% safety for its hospital AI agent. How many reviewed tasks was that score based on?",
+        "answer": 325.0,
+        "unit": "tasks",
+        "lo": 128.20420600491184,
+        "hi": 6410.210300245592,
+        "log": true,
+        "why": "Just 325 reviewed tasks in a company showcase—a drop in the bucket compared to one busy hospital on a Monday morning."
+       },
+       {
+        "type": "lab",
+        "text": "An AI agent clicks across fragmented hospital screens. Start at 99% per click over 20 clicks and watch errors stack up.",
+        "inputs": [
+         {
+          "id": "p",
+          "label": "Each screen click works",
+          "unit": "%",
+          "min": 90.0,
+          "max": 99.9,
+          "step": 0.1,
+          "value": 99.0
+         },
+         {
+          "id": "n",
+          "label": "Screen clicks in a referral",
+          "unit": "",
+          "min": 1.0,
+          "max": 30.0,
+          "step": 1.0,
+          "value": 20.0
+         }
+        ],
+        "outputs": [
+         {
+          "id": "ok",
+          "label": "Whole referral works",
+          "unit": "%",
+          "expr": "100*(p/100)^n",
+          "digits": 1,
+          "lo": 4.239115827521624,
+          "hi": 99.9
+         },
+         {
+          "id": "fails",
+          "label": "Referrals that fail, of 100",
+          "unit": "",
+          "expr": "100-ok",
+          "digits": 0,
+          "lo": 0.09999999999999432,
+          "hi": 95.76088417247837
+         }
+        ],
+        "chart": {
+         "x": "n",
+         "y": [
+          "ok"
+         ]
+        },
+        "goal": {
+         "target": "fails",
+         "min": 0.0,
+         "max": 2.0,
+         "text": "Get failed referrals down to 2 or fewer per 100.",
+         "success": "At 99% per click, 20 clicks fail 18% of the time. You need 99.9% reliability or far fewer steps."
+        },
+        "template": "chain",
+        "view": {
+         "kind": "runs",
+         "p": "p",
+         "n": "n",
+         "step": "screen click",
+         "run": "referral"
+        }
+       }
+      ],
+      "takeaway": "A 99% demo score on 325 clicks is marketing, not safety, when real hospitals run on messy edge cases."
+     },
+     {
+      "title": "When Gut Bacteria Eat Their Own Home",
+      "bet": {
+       "claim": "In the study, the helpful gut chemicals came mostly from fiber itself, not from plant protein.",
+       "truth": false,
+       "why": "They came almost entirely from tough plant proteins that survive digestion and reach the lower gut, working alongside fiber to keep bacteria on the helpful chemical track."
+      },
+      "rounds": [
+       {
+        "type": "sequence",
+        "q": "Put this low-fiber gut chain reaction in order, from first to last.",
+        "items": [
+         "Easy-to-digest protein gets absorbed high up in the gut.",
+         "Lower-gut microbes run out of fiber and tough plant protein.",
+         "Hungry bacteria feed on the gut's protective mucus layer.",
+         "Bacterial chemistry flips from helpful compounds to harmful ones."
+        ],
+        "why": "Without fiber or tough plant proteins reaching the lower gut, microbes eat the protective mucus and switch to making potentially harmful chemical byproducts."
+       },
+       {
+        "type": "clues",
+        "q": "What is this newly named nutrient?",
+        "clues": [
+         "Food labels might one day list this nutrient right next to fiber.",
+         "Unlike typical protein, it survives upper digestion and reaches lower-gut bacteria intact.",
+         "Scientists nicknamed it 'Prif'—short for proteins imitating fiber."
+        ],
+        "options": [
+         "Omega-3 fatty acids",
+         "Tough plant proteins",
+         "Gummy fiber extracts",
+         "Live probiotic bacteria"
+        ],
+        "answer": 1,
+        "why": "Unlike protein shakes absorbed early, tough plant proteins reach the lower gut intact, working with fiber to steer bacteria toward helpful chemicals."
+       }
+      ],
+      "takeaway": "Feed your gut microbes fiber and tough whole plants consistently, or they eat your mucus and flip their chemistry."
+     }
+    ],
+    "words": [
+     {
+      "term": "Computer-use agent",
+      "means": "AI that reads screen pixels and drives the mouse and keyboard like a human."
+     },
+     {
+      "term": "GUI automation",
+      "means": "Controlling software by clicking visible buttons instead of using a direct data link."
+     },
+     {
+      "term": "Fragmented software",
+      "means": "Separate, clunky computer systems that do not share data cleanly with each other."
+     },
+     {
+      "term": "Prif",
+      "means": "Tough plant proteins that survive upper digestion and act like fiber for gut microbes."
+     },
+     {
+      "term": "Phenol metabolites",
+      "means": "Chemical byproducts gut bacteria make when digesting protein, either helpful or harmful."
+     },
+     {
+      "term": "Indole-3-lactate",
+      "means": "A chemical once thought purely bacterial, now known human cells make it too."
+     }
+    ],
+    "chips": [
+     "More on AI failures",
+     "Loved the lab slider",
+     "Too many hospital stats",
+     "Go deeper on agents"
+    ]
+   },
+   "quiz": [
+    {
+     "q": "In the discussion of OpenAI's claimed 99% safety rating across 325 tasks, why did the hosts treat this figure as inadequate evidence for real-world hospital deployment?",
+     "options": [
+      "Because 325 tasks is too many for a meaningful demo and indicates overtesting",
+      "Because it was a self-reported score on curated tasks without independent verification, and real hospitals introduce far more noise and edge cases",
+      "Because the tasks only involved insurance approvals and excluded patient notes and referrals",
+      "Because the rating was calculated by Reddit clinicians rather than OpenAI engineers"
+     ],
+     "answer": 1,
+     "explain": "The script notes they could not access the original post or verify how tasks were chosen and reviewed, and emphasizes that a few hundred curated examples do not reflect real-world chaos in a busy hospital.",
+     "segment": "Can AI Agents Safely Run Hospital Paperwork"
+    },
+    {
+     "q": "Laura explains that a computer-use agent navigates hospital software by reading pixels and driving the mouse and keyboard. How does this differ from the normal way two hospital systems exchange data?",
+     "options": [
+      "The agent relies on GUI automation and screen-scraping rather than clean, standardized data pipes between systems",
+      "The agent uses encrypted APIs to transfer structured fields directly between databases",
+      "The agent requires hospitals to install custom middleware before it can read any screen",
+      "The agent only works with modern web-based portals and cannot interface with legacy billing terminals"
+     ],
+     "answer": 0,
+     "explain": "Normal integration uses structured data pipes and APIs, whereas the agent literally looks at screen images and taps buttons like a human, making it fragile to UI changes and pop-ups.",
+     "segment": "Can AI Agents Safely Run Hospital Paperwork"
+    },
+    {
+     "q": "According to the Princeton studies discussed, what role do \"Prif\" proteins play in gut bacteria chemistry when fiber is present?",
+     "options": [
+      "They are synthetic supplements designed to replace fiber entirely in gummy form",
+      "They are easily digested in the upper gut and provide a quick energy source for gut bacteria",
+      "They are tough, hard-to-digest plant proteins that reach the lower gut and work with fiber to steer bacteria toward helpful phenol metabolites",
+      "They are produced by human cells to block bacteria from eating the mucus lining"
+     ],
+     "answer": 2,
+     "explain": "Prif proteins survive digestion, reach the lower gut intact, and act alongside fiber to keep bacteria producing health-promoting chemicals instead of shifting to harmful outputs.",
+     "segment": "When Gut Bacteria Eat Their Own Home"
+    },
+    {
+     "q": "The second Princeton paper found that human cells can produce indole-3-lactate and indole-3-acetate without any microbes present. What does this complicate?",
+     "options": [
+      "The validation of Prif content on food packaging under current GMP rules",
+      "The ability to diagnose smallpox using AI scribes during pediatric exams",
+      "The accuracy of 99% safety ratings for computer-use agents in hospitals",
+      "Using blood levels of these chemicals as a clean readout of gut bacterial activity alone"
+     ],
+     "answer": 3,
+     "explain": "Because human cells can make the same chemicals, total blood levels cannot be attributed solely to gut bacteria, just as factory air vents can shed dust indistinguishable from machine output.",
+     "segment": "When Gut Bacteria Eat Their Own Home"
+    }
+   ],
+   "transcript": "transcripts/ai_2026-11-17_morning_0600.txt"
+  },
   {
    "file": "ai_2026-11-16_evening_1500.mp3",
    "title": "Evening - 16 Nov: A Language Model That Fits on a Floppy Disk",
@@ -2533,318 +2760,6 @@
     }
    ],
    "transcript": "transcripts/ai_2026-11-10_evening_1259.txt"
-  },
-  {
-   "file": "ai_2026-11-10_morning_0024.mp3",
-   "title": "Morning - 10 Nov: Is Your AI Assistant Being Secretly Tested?",
-   "label": "Tuesday 10 Nov morning",
-   "date": "2026-11-10",
-   "edition": "morning",
-   "published": "2026-11-10T00:24:01.119094+05:30",
-   "duration": 954,
-   "theme": "Hidden AI tests on users and whether pandemic stress accelerated teenage biological aging",
-   "writer": "Gemini 3.5 Flash-Lite",
-   "voices": "Fish Audio (free)",
-   "deep_dive": false,
-   "segments": [
-    {
-     "title": "Is Your AI Assistant Being Secretly Tested?",
-     "category": "thread"
-    },
-    {
-     "title": "Did Pandemic Stress Age Teenagers' DNA Faster?",
-     "category": "thread"
-    },
-    {
-     "title": "Teens with authoritarian parents tend to hold more antisocial beliefs, study fin",
-     "category": "thread"
-    },
-    {
-     "title": "I used Claude Code to rebuild IDM as a free, open-source download manager, the A",
-     "category": "thread"
-    }
-   ],
-   "lessons": [
-    {
-     "title": "The Ghost in the Log File",
-     "segment": "Is Your AI Assistant Being Secretly Tested?",
-     "steps": [
-      {
-       "type": "choice",
-       "text": "You find an unfamiliar 16-character hex string stamped into your local software configuration logs. Without server-side source code, what is the most scientifically sound first assumption?",
-       "options": [
-        "Definitive proof of a secret, unconsenting behavioral experiment targeting your user account",
-        "An internal routing, load-balancing, or routine debugging flag left by rapid deployment",
-        "A malicious hardware exploit embedded in your local storage drive"
-       ],
-       "answer": 1,
-       "explain": "Without server-side validation or documentation, jumping straight to a shadowy testing program is an unverified leap. Messy logs often contain routine debugging, load-balancing, or internal flags.",
-       "hint": "Think about how messy high-velocity code deployments are before jumping to a grand conspiracy."
-      },
-      {
-       "type": "explore",
-       "text": "Simulate how multi-step community log analysis breaks down when each independent inference step has a high error rate.",
-       "inputs": [
-        {
-         "id": "p",
-         "label": "Each log check step works",
-         "unit": "%",
-         "min": 50.0,
-         "max": 99.0,
-         "step": 0.1,
-         "value": 70.0
-        },
-        {
-         "id": "n",
-         "label": "Log check steps in a investigation",
-         "unit": "",
-         "min": 1.0,
-         "max": 15.0,
-         "step": 1.0,
-         "value": 5.0
-        }
-       ],
-       "outputs": [
-        {
-         "id": "ok",
-         "label": "Whole investigation works",
-         "unit": "%",
-         "expr": "100*(p/100)^n",
-         "digits": 1,
-         "lo": 0.0030517578125,
-         "hi": 99.0
-        },
-        {
-         "id": "fails",
-         "label": "Investigations that fail, of 100",
-         "unit": "",
-         "expr": "100-ok",
-         "digits": 0,
-         "lo": 1.0,
-         "hi": 99.9969482421875
-        }
-       ],
-       "chart": {
-        "x": "n",
-        "y": [
-         "ok"
-        ]
-       },
-       "goal": {
-        "target": "ok",
-        "min": 80.0,
-        "max": 100.0,
-        "text": "Get the successful chain of valid conclusions over 80% by raising the reliability of each individual interpretation step.",
-        "success": "You discovered how quickly compounding uncertainties destroy unverified theories. Without high-confidence steps, a multi-stage rumor collapses into noise."
-       },
-       "template": "chain",
-       "view": {
-        "kind": "runs",
-        "p": "p",
-        "n": "n",
-        "step": "log check step",
-        "run": "investigation"
-       }
-      },
-      {
-       "type": "concept",
-       "text": "When software teams push thousands of daily code changes, configuration flags and telemetry tags inevitably spill into local files. Mistaking routine infrastructure metadata for a targeted experiment is a classic trap of unverified telemetry interpretation.",
-       "example": "Finding an unexpected diagnostic code on a CNC machine controller and assuming the manufacturer is secretly altering your tolerances, rather than tracing it to a standard firmware handshake."
-      },
-      {
-       "type": "choice",
-       "text": "Why does high software merge velocity make undocumented feature flags or strange log tags almost guaranteed?",
-       "options": [
-        "Rapid deployment leaves leftover debugging traces and configuration states that lack formal release notes",
-        "Software engineers intentionally embed secret IDs to track human test subjects without exception",
-        "Compilers automatically insert random hex codes to encrypt local project directories"
-       ],
-       "answer": 0,
-       "explain": "When code moves fast, documentation often lags behind implementation. Configuration flags, routing tags, and debug outputs routinely appear in local files long before any public changelog catches up.",
-       "hint": "Consider the difference between strict medical-device traceability and fast-paced software development."
-      }
-     ],
-     "words": [
-      {
-       "term": "Telemetry",
-       "means": "Automated transmission of data from remote systems for monitoring and diagnostics."
-      },
-      {
-       "term": "A/B Test",
-       "means": "Comparing two versions of a system against a single variable to measure performance impact."
-      },
-      {
-       "term": "Traceability",
-       "means": "The ability to chronologically track all changes and data states through a system lifecycle."
-      }
-     ]
-    },
-    {
-     "title": "The Baseline Drift That Reads Phantom Wear",
-     "segment": "Did Pandemic Stress Age Teenagers' DNA Faster?",
-     "steps": [
-      {
-       "type": "choice",
-       "text": "When an instrument's readings spike during an unrepeatable environmental anomaly, what is the safest initial engineering assumption?",
-       "options": [
-        "The physical system has permanently degraded and requires immediate overhaul.",
-        "The sensor baseline is drifting and needs decoupling from environmental noise before judging component wear.",
-        "The anomaly permanently altered the material constants of the test subject."
-       ],
-       "answer": 1,
-       "explain": "Extreme anomalies stress both the test subject and the sensor. Without separating baseline drift from real degradation, you chase phantom failures.",
-       "hint": "Think about how temperature or ambient voltage affects your measurement tools before assuming the physical part changed."
-      },
-      {
-       "type": "explore",
-       "text": "Adjust the diagnostic accuracy of each measurement step in an epigenetic biomarker pipeline and the number of marker sites tested to see how noise accumulates.",
-       "inputs": [
-        {
-         "id": "p",
-         "label": "Each marker site works",
-         "unit": "%",
-         "min": 80.0,
-         "max": 99.9,
-         "step": 0.1,
-         "value": 92.0
-        },
-        {
-         "id": "n",
-         "label": "Marker sites in a biomarker panel",
-         "unit": "",
-         "min": 1.0,
-         "max": 30.0,
-         "step": 1.0,
-         "value": 10.0
-        }
-       ],
-       "outputs": [
-        {
-         "id": "ok",
-         "label": "Whole biomarker panel works",
-         "unit": "%",
-         "expr": "100*(p/100)^n",
-         "digits": 1,
-         "lo": 0.12379400392853823,
-         "hi": 99.9
-        },
-        {
-         "id": "fails",
-         "label": "Biomarker panels that fail, of 100",
-         "unit": "",
-         "expr": "100-ok",
-         "digits": 0,
-         "lo": 0.09999999999999432,
-         "hi": 99.87620599607146
-        }
-       ],
-       "chart": {
-        "x": "n",
-        "y": [
-         "ok"
-        ]
-       },
-       "goal": {
-        "target": "ok",
-        "min": 85.0,
-        "max": 100.0,
-        "text": "Get the successful panel output over 85% by tuning marker reliability and reducing redundant noisy sites.",
-        "success": "You discovered that when evaluating millions of biological sites, small individual error rates compound rapidly across a multi-step regression model."
-       },
-       "template": "chain",
-       "view": {
-        "kind": "runs",
-        "p": "p",
-        "n": "n",
-        "step": "marker site",
-        "run": "biomarker panel"
-       }
-      },
-      {
-       "type": "concept",
-       "text": "Epigenetic clocks map millions of methylation sites to chronological age using regression models. When an extreme stressor like a lockdown occurs, general systemic noise enters the data, making it tricky to isolate a single variable like teen social isolation from general baseline drift.",
-       "example": "Calibrating a pressure transducer when ambient room pressure shifts during seasonal weather changes."
-      },
-      {
-       "type": "choice",
-       "text": "If a study finds a strong statistical link between self-reported stress and accelerated cellular aging in 14-to-16-year-olds during lockdowns, what must be verified first?",
-       "options": [
-        "Whether baseline socioeconomic disparities already existed before the pandemic began.",
-        "Whether teenagers have more DNA strands than adults.",
-        "Whether the laboratory freezer temperatures fluctuated by 0.5 degrees."
-       ],
-       "answer": 0,
-       "explain": "Confounders like pre-existing health or socioeconomic background can easily entangle with transient stress signals in observational studies.",
-       "hint": "Think about unmeasured confounders that might have been present before the experimental stressor started."
-      }
-     ],
-     "words": [
-      {
-       "term": "DNA methylation",
-       "means": "Chemical tags attaching to DNA that regulate gene expression and accumulate over time."
-      },
-      {
-       "term": "Epigenetic clock",
-       "means": "A statistical regression model that predicts biological age using methylation markers."
-      },
-      {
-       "term": "Longitudinal design",
-       "means": "A study tracking the same subjects over multiple points in time."
-      }
-     ]
-    }
-   ],
-   "quiz": [
-    {
-     "q": "What mechanism did Reddit users point to as 'proof' that Anthropic was running unannounced behavioral experiments on them?",
-     "options": [
-      "Official release notes listing experimental beta features",
-      "Hex-id experiment tags found stamped into local session log files",
-      "An official blog post detailing live A/B testing user groups",
-      "Server-side telemetry data leaked by internal developers"
-     ],
-     "answer": 1,
-     "explain": "Users dug through their local jsonl session transcripts and found strings resembling hex IDs, assuming they were unannounced test tags.",
-     "segment": "Is Your AI Assistant Being Secretly Tested?"
-    },
-    {
-     "q": "What did the primary Max Planck Institute study reveal about pandemic stress and epigenetic aging compared to the internet summaries?",
-     "options": [
-      "The aging effect only occurred in adults over fifty.",
-      "Social isolation caused permanent genetic mutation in children.",
-      "The pandemic accelerated epigenetic aging across all participants, with stress showing a significant statistical link specifically in the adolescent group.",
-      "Lockdowns completely reversed epigenetic aging in teenagers."
-     ],
-     "answer": 2,
-     "explain": "The study found general acceleration across all groups, but subjective stress and isolation were specifically linked in the 14-16 bracket.",
-     "segment": "Did Pandemic Stress Age Teenagers' DNA Faster?"
-    },
-    {
-     "q": "According to the Syracuse University study discussed on Reddit, how does strict, punitive parenting impact adolescent cognitive development?",
-     "options": [
-      "It fosters strict adherence to moral guidelines later in life.",
-      "It develops robust internal emotional regulation and trust.",
-      "It leads to antisocial thinking patterns, such as attitudes that justify breaking rules and using aggression.",
-      "It completely prevents teenagers from experiencing anxiety or depression."
-     ],
-     "answer": 2,
-     "explain": "The paper found that harsh discipline builds antisocial thinking, which involves attitudes justifying rule-breaking and aggression.",
-     "segment": "Teens with authoritarian parents tend to hold more antisocial beliefs, study fin"
-    },
-    {
-     "q": "How did the developer who rebuilt the Windows download manager in Rust ensure they avoided intellectual property contamination?",
-     "options": [
-      "They used clean-room implementation boundaries, relying only on public documentation, UI references, and standard HTTP specs without using original source code.",
-      "They purchased the proprietary source code legally from the original vendor.",
-      "They decompiled the original binary directly using an automated disassembler.",
-      "They relied entirely on the AI model to hallucinate the proprietary algorithms."
-     ],
-     "answer": 0,
-     "explain": "The author strictly used public help pages and UI layout references, functioning like a black-box functional tester to avoid IP issues.",
-     "segment": "I used Claude Code to rebuild IDM as a free, open-source download manager, the A"
-    }
-   ],
-   "transcript": "transcripts/ai_2026-11-10_morning_0024.txt"
   }
  ]
 }
