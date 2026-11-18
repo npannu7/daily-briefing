@@ -8,9 +8,25 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Tue, 17 Nov 2026 10:26:53 GMT</lastBuildDate>
+<lastBuildDate>Wed, 18 Nov 2026 01:01:19 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Morning - 18 Nov: When Software Starts Hacking on Its Own</title>
+<description>Morning edition - Wednesday, 18 November 2026
+Separating real capability from hype in autonomous cyberattacks, and understanding how the aging brain clears waste during deep sleep.
+
+00:32  When Software Starts Hacking on Its Own
+09:07  How Your Brain Washes Itself While You Sleep
+
+Play "Who Pulled the Digital Trigger?", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-18_morning_0600.mp3
+Written by: Gemini 4 Hydrogen · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (121 threads)</description>
+<pubDate>Wed, 18 Nov 2026 06:00:10 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-11-18_morning_0600.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-18_morning_0600.mp3" length="9154663" type="audio/mpeg"/>
+<itunes:duration>1144</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Evening - 17 Nov: Benchmarking Whether Cheaper AI Models Actually Save Money on Real Codebases</title>
 <description>Evening edition - Tuesday, 17 November 2026

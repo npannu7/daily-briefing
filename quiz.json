@@ -10,12 +10,249 @@
   "lines": [
    {
     "said": "\"Too technical\" in 3 of your last 6 depth ratings",
-    "did": "3 specialist threads were left out when this episode's stories were chosen. Each story may use at most 4 specialist terms: this episode's scripts were rewritten from 27 to 16 and 8 to 2."
+    "did": "3 specialist threads were left out when this episode's stories were chosen. Each story may use at most 4 specialist terms: this episode's scripts were rewritten from 12 to 4 and 12 to 4."
    }
   ],
   "last": "2026-11-16"
  },
  "episodes": [
+  {
+   "file": "ai_2026-11-18_morning_0600.mp3",
+   "title": "Morning - 18 Nov: When Software Starts Hacking on Its Own",
+   "label": "Wednesday 18 Nov morning",
+   "date": "2026-11-18",
+   "edition": "morning",
+   "published": "2026-11-18T06:00:10.707067+05:30",
+   "duration": 1144,
+   "theme": "Separating real capability from hype in autonomous cyberattacks, and understanding how the aging brain clears waste during deep sleep.",
+   "writer": "Gemini 4 Hydrogen",
+   "voices": "Fish Audio (free)",
+   "deep_dive": false,
+   "segments": [
+    {
+     "title": "When Software Starts Hacking on Its Own",
+     "category": "thread"
+    },
+    {
+     "title": "How Your Brain Washes Itself While You Sleep",
+     "category": "concept"
+    }
+   ],
+   "play": {
+    "v": 2,
+    "theme": "bench",
+    "title": "Who Pulled the Digital Trigger?",
+    "brief": "At the test bench today: turn past the AI hype and measure how autonomous hacking actually runs.",
+    "segments": [
+     {
+      "title": "When Software Starts Hacking on Its Own",
+      "bet": {
+       "claim": "Fast, non-stop, adaptive probing in break-in records proves no human was involved in the attack.",
+       "truth": false,
+       "why": "A human can launch an automated tool, step in for the tricky part, and let it run again. Incoming activity alone cannot separate an unattended program from a human driving it."
+      },
+      "rounds": [
+       {
+        "type": "flaw",
+        "q": "Three of these describe how autonomous hacking software works. Which one is the myth?",
+        "items": [
+         "It wraps an AI program in a loop that picks tools and reads results.",
+         "It wakes up and invents brand-new digital weapons without using standard hacking tools.",
+         "It reads an error message, adjusts its approach, and fires another attempt quickly.",
+         "It feeds the output of one scan directly into the next software tool."
+        ],
+        "flaw": 1,
+        "why": "It does not invent magic weapons from scratch. It connects an AI program to standard tools in a fast loop, tweaking its approach whenever an attempt fails."
+       },
+       {
+        "type": "clues",
+        "q": "What kind of breach is this?",
+        "clues": [
+         "It lets an attacker slip past locked front doors by using a trusted connection.",
+         "Instead of targeting banks directly, the breach starts inside a shared software vendor.",
+         "Compromise one common component, and every company relying on it is exposed."
+        ],
+        "options": [
+         "Phishing email",
+         "Supply-chain attack",
+         "Stolen admin password",
+         "Autonomous AI agent"
+        ],
+        "answer": 1,
+        "why": "In a supply-chain attack, hackers break into one shared vendor or software component and ride that trusted link into all the companies using it."
+       }
+      ],
+      "takeaway": "Autonomous hacking is just AI in a fast loop—headlines love confusing the tool with the human aiming it."
+     },
+     {
+      "title": "How Your Brain Washes Itself While You Sleep",
+      "bet": {
+       "claim": "Older adults get weaker brain-washing fluid waves mainly because they sleep fewer hours each night.",
+       "truth": false,
+       "why": "Even inside deep sleep, older adults have quieter brain waves and stiffer blood vessels—so the pump itself weakens, not just sleep duration."
+      },
+      "rounds": [
+       {
+        "type": "sequence",
+        "q": "Put one deep-sleep brain-washing cycle in order, from electrical wave to fluid flush.",
+        "items": [
+         "Brain cells quiet down together in a slow electrical wave.",
+         "Needing less oxygen, blood vessels narrow and blood volume drops.",
+         "Clear fluid rushes into the rigid skull to fill the space.",
+         "Blood vessels widen again, squeezing the fluid back out."
+        ],
+        "why": "Your skull is a rigid box with fixed volume. When blood volume swings up and down, clear fluid is displaced in and out like a piston."
+       },
+       {
+        "type": "lab",
+        "text": "A rigid skull acts like a displacement pump. Shift the pressure between skull and spine to drive a strong outward fluid wave.",
+        "inputs": [
+         {
+          "id": "a",
+          "label": "Skull",
+          "unit": "kPa",
+          "min": 0.0,
+          "max": 10.0,
+          "step": 0.1,
+          "value": 2.0
+         },
+         {
+          "id": "b",
+          "label": "Spine",
+          "unit": "kPa",
+          "min": 0.0,
+          "max": 10.0,
+          "step": 0.1,
+          "value": 2.0
+         }
+        ],
+        "outputs": [
+         {
+          "id": "diff",
+          "label": "Difference (the push)",
+          "unit": "kPa",
+          "expr": "a-b",
+          "lo": -10.0,
+          "hi": 10.0
+         },
+         {
+          "id": "flow",
+          "label": "Net flow, skull to spine",
+          "unit": "units/s",
+          "expr": "1*diff",
+          "lo": -10.0,
+          "hi": 10.0
+         }
+        ],
+        "goal": {
+         "target": "flow",
+         "min": 4.0,
+         "max": 6.0,
+         "text": "Make fluid surge out of the skull at 4 to 6 units/s.",
+         "success": "A bigger pressure gap drives stronger flow. When aging stiffens blood vessels, that pressure swing shrinks—and the wash wave weakens."
+        },
+        "template": "flow",
+        "view": {
+         "kind": "membrane",
+         "a": "a",
+         "b": "b",
+         "flow": "flow",
+         "lo": 0.0,
+         "hi": 10.0,
+         "thing": "brain fluid",
+         "side_a": "skull",
+         "side_b": "spine"
+        }
+       }
+      ],
+      "takeaway": "Aging weakens your brain's nightly fluid-wash waves through quieter deep-sleep signals and stiffer blood vessels."
+     }
+    ],
+    "words": [
+     {
+      "term": "Autonomous agent",
+      "means": "AI wired into a continuous loop to pick tools, read results, and retry."
+     },
+     {
+      "term": "Supply-chain attack",
+      "means": "Breaching one shared vendor to slip into every company that relies on it."
+     },
+     {
+      "term": "Exploit",
+      "means": "Code that abuses a software flaw to make a system do something unintended."
+     },
+     {
+      "term": "Cerebrospinal fluid",
+      "means": "The clear liquid around your brain and spine that cushions and washes tissue."
+     },
+     {
+      "term": "Slow waves",
+      "means": "Rhythmic electrical pulses when brain cells quiet down together in deep sleep."
+     },
+     {
+      "term": "Displacement pump",
+      "means": "A closed space where one fluid expanding pushes another fluid out."
+     }
+    ],
+    "chips": [
+     "Less Reddit drama, more tech",
+     "Good test-bench breakdown",
+     "Compare with real breaches",
+     "Keep the hype checks coming"
+    ]
+   },
+   "quiz": [
+    {
+     "q": "In the episode, what is the key functional difference between a truly autonomous hacking agent and a human who uses AI tools to assist?",
+     "options": [
+      "The agent can invent brand-new exploit code that no human has ever written.",
+      "The agent loops through observe → act → observe without a human typing each next command.",
+      "The agent requires a compromised supply-chain vendor to reach any target.",
+      "The agent only works against systems running outdated software."
+     ],
+     "answer": 1,
+     "explain": "The script defines an autonomous agent as an AI program in a continuous cycle that reads results and selects the next tool itself, removing the human from the inner loop.",
+     "segment": "When Software Starts Hacking on Its Own"
+    },
+    {
+     "q": "Why does the episode treat the Reddit claim that nearly 180 companies were hit by autonomous AI attacks as unverified?",
+     "options": [
+      "The figure appears to come from a separate supply-chain attack, and the linked article could not be loaded or confirmed.",
+      "Google publicly denied that any banks or airlines were affected.",
+      "Autonomous agents are physically incapable of attacking more than 100 targets at once.",
+      "The number 180 only applies to medical-device manufacturers under GMP."
+     ],
+     "answer": 0,
+     "explain": "The script says the claim sits in an unreadable Reddit-linked article and the thread’s own fact-check note ties the 180-company figure to a separate supply-chain attack with no proven link to autonomous tools.",
+     "segment": "When Software Starts Hacking on Its Own"
+    },
+    {
+     "q": "According to the MIT study described in the episode, what two parallel age-related changes weaken cerebrospinal fluid waves during deep sleep?",
+     "options": [
+      "Reduced cerebrospinal fluid production and increased skull thickness with age.",
+      "More frequent yawning and reduced abdominal muscle tone.",
+      "Weaker deep-sleep slow waves and stiffer, less responsive brain blood vessels.",
+      "Loss of brain tissue volume and fewer drainage tubes inside the brain."
+     ],
+     "answer": 2,
+     "explain": "The episode explains that aging quiets the electrical slow-wave signal and stiffens blood vessels, so both the pump signal and the mechanical response are weaker.",
+     "segment": "How Your Brain Washes Itself While You Sleep"
+    },
+    {
+     "q": "In the MIT Nature study, which measurement was made directly during sleep, and which was not directly measured?",
+     "options": [
+      "Electrical slow waves only; fluid flow was inferred from behavior.",
+      "Waste-molecule clearance using implanted sensors, but not blood volume.",
+      "Cerebrospinal fluid flow during yawning and breath-holding while awake.",
+      "Cerebrospinal fluid inflow waves and blood-volume changes, but not the actual waste molecules leaving the brain."
+     ],
+     "answer": 3,
+     "explain": "The script states the study tracked fluid inflow and blood-volume changes overnight but did not tag or track waste molecules exiting the brain.",
+     "segment": "How Your Brain Washes Itself While You Sleep"
+    }
+   ],
+   "transcript": "transcripts/ai_2026-11-18_morning_0600.txt"
+  },
   {
    "file": "ai_2026-11-17_evening_1501.mp3",
    "title": "Evening - 17 Nov: Benchmarking Whether Cheaper AI Models Actually Save Money on Real Codebases",
