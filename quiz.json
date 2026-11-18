@@ -9,13 +9,320 @@
  "heard": {
   "lines": [
    {
-    "said": "\"Too technical\" in 3 of your last 6 depth ratings",
-    "did": "3 specialist threads were left out when this episode's stories were chosen. Each story may use at most 4 specialist terms: this episode's scripts were rewritten from 12 to 4 and 12 to 4."
+    "said": "\"Too technical\" in 3 of your last 7 depth ratings",
+    "did": "Each story may use at most 4 specialist terms: this episode's scripts were rewritten from 31 to 5 and 28 to 0."
    }
   ],
-  "last": "2026-11-16"
+  "last": "2026-11-18"
  },
  "episodes": [
+  {
+   "file": "ai_2026-11-18_evening_1500.mp3",
+   "title": "Evening - 18 Nov: The AI Sports League That Runs Itself",
+   "label": "Wednesday 18 Nov evening",
+   "date": "2026-11-18",
+   "edition": "evening",
+   "published": "2026-11-18T15:00:08.693776+05:30",
+   "duration": 1001,
+   "theme": "Systems in motion: an AI-run sports league that writes its own history, and what the mechanics of your walk reveal about your health",
+   "writer": "Gemini 4 Hydrogen",
+   "voices": "Fish Audio (free)",
+   "deep_dive": false,
+   "segments": [
+    {
+     "title": "The AI Sports League That Runs Itself",
+     "category": "concept"
+    },
+    {
+     "title": "What the Way You Walk Reveals About Your Health",
+     "category": "thread"
+    }
+   ],
+   "play": {
+    "v": 2,
+    "theme": "bench",
+    "title": "The 38-Year Fake Sports League",
+    "brief": "Step up to the test bench, turn the knobs, and measure how an AI league stays coherent.",
+    "segments": [
+     {
+      "title": "The AI Sports League That Runs Itself",
+      "bet": {
+       "claim": "In the 38-year AI sports league, the language model is never allowed to decide who wins.",
+       "truth": true,
+       "why": "A physics simulation plays out every match and sets the score. The language model only reads the database to write the news and commentary."
+      },
+      "rounds": [
+       {
+        "type": "clues",
+        "q": "What software pattern keeps this 38-year league coherent?",
+        "clues": [
+         "It runs in repeating cycles instead of answering once and forgetting.",
+         "It grabs a small slice of saved history before letting AI write.",
+         "This loop pairs a language model with a permanent database."
+        ],
+        "options": [
+         "An agentic loop",
+         "A neural network",
+         "A physics engine",
+         "A training run"
+        ],
+        "answer": 0,
+        "why": "An agentic loop reads saved state from a database, hands a small slice to the language model, and saves the new update back."
+       },
+       {
+        "type": "lab",
+        "text": "If a language model guesses each game report with 95% accuracy, how many 30-game seasons stay completely error-free? Slide the knobs to hit 90%.",
+        "inputs": [
+         {
+          "id": "p",
+          "label": "Each game report works",
+          "unit": "%",
+          "min": 90.0,
+          "max": 99.9,
+          "step": 0.1,
+          "value": 95.0
+         },
+         {
+          "id": "n",
+          "label": "Game reports in a season",
+          "unit": "",
+          "min": 1.0,
+          "max": 50.0,
+          "step": 1.0,
+          "value": 30.0
+         }
+        ],
+        "outputs": [
+         {
+          "id": "ok",
+          "label": "Whole season works",
+          "unit": "%",
+          "expr": "100*(p/100)^n",
+          "digits": 1,
+          "lo": 0.5153775207320119,
+          "hi": 99.9
+         },
+         {
+          "id": "fails",
+          "label": "Seasons that fail, of 100",
+          "unit": "",
+          "expr": "100-ok",
+          "digits": 0,
+          "lo": 0.09999999999999432,
+          "hi": 99.48462247926798
+         }
+        ],
+        "chart": {
+         "x": "n",
+         "y": [
+          "ok"
+         ]
+        },
+        "goal": {
+         "target": "ok",
+         "min": 90.0,
+         "max": 100.0,
+         "text": "Get at least 90% of seasons to finish without a single error.",
+         "success": "Even 95% accuracy per game ruins nearly 80% of 30-game seasons. You need near-perfect reliability—or a database—to keep a long league coherent."
+        },
+        "template": "chain",
+        "view": {
+         "kind": "runs",
+         "p": "p",
+         "n": "n",
+         "step": "game report",
+         "run": "season"
+        }
+       }
+      ],
+      "takeaway": "Pair a physics simulation and database with a language model, and your fake league stays coherent for 38 years."
+     },
+     {
+      "title": "What the Way You Walk Reveals About Your Health",
+      "bet": {
+       "claim": "The AI predicted liver scarring from walking patterns as accurately as standard blood tests.",
+       "truth": true,
+       "why": "Study found movement patterns matched liver stiffness scores about as well as routine blood markers do."
+      },
+      "rounds": [
+       {
+        "type": "estimate",
+        "q": "How many health traits did the study link to walking patterns?",
+        "answer": 1900.0,
+        "unit": "traits",
+        "lo": 100,
+        "hi": 5000,
+        "log": true,
+        "why": "Researchers compared movement signatures against nearly nineteen hundred blood tests, body stats, conditions, and habits."
+       },
+       {
+        "type": "lab",
+        "text": "Try screening for liver scarring using walk-analysis AI in a general population.",
+        "inputs": [
+         {
+          "id": "prev",
+          "label": "Share who have significant liver scarring",
+          "unit": "%",
+          "min": 1.0,
+          "max": 30.0,
+          "step": 0.5,
+          "value": 5.0
+         },
+         {
+          "id": "sens",
+          "label": "Catches real cases (sensitivity)",
+          "unit": "%",
+          "min": 50.0,
+          "max": 99.9,
+          "step": 0.1,
+          "value": 80.0
+         },
+         {
+          "id": "spec",
+          "label": "Clears the rest (specificity)",
+          "unit": "%",
+          "min": 50.0,
+          "max": 99.9,
+          "step": 0.1,
+          "value": 80.0
+         }
+        ],
+        "outputs": [
+         {
+          "id": "tp",
+          "label": "Real cases flagged, of 1000",
+          "unit": "",
+          "expr": "1000*prev/100*sens/100",
+          "digits": 1,
+          "lo": 5.0,
+          "hi": 299.7
+         },
+         {
+          "id": "fp",
+          "label": "Flagged by mistake, of 1000",
+          "unit": "",
+          "expr": "1000*(1-prev/100)*(1-spec/100)",
+          "digits": 1,
+          "lo": 0.6999999999999229,
+          "hi": 495.0
+         },
+         {
+          "id": "ppv",
+          "label": "Of those flagged, really have significant liver scarring",
+          "unit": "%",
+          "expr": "100*tp/(tp+fp)",
+          "digits": 1,
+          "lo": 1.0,
+          "hi": 99.76697736351534
+         }
+        ],
+        "goal": {
+         "target": "ppv",
+         "min": 50.0,
+         "max": 100.0,
+         "text": "Find why most flagged people are false alarms.",
+         "success": "Even with decent accuracy, rare conditions drown true signals in false positives."
+        },
+        "template": "base_rate",
+        "view": {
+         "kind": "dots",
+         "prev": "prev",
+         "tp": "tp",
+         "fp": "fp",
+         "who": "adults",
+         "condition": "have significant liver scarring",
+         "flagged": "flagged"
+        }
+       }
+      ],
+      "takeaway": "Your walk holds real health clues, but a camera isn't a diagnosis yet."
+     }
+    ],
+    "words": [
+     {
+      "term": "Context window",
+      "means": "The short-term memory limit on how much text an AI reads at once."
+     },
+     {
+      "term": "Agentic loop",
+      "means": "Software that cycles an AI through reading saved facts, acting, and saving updates."
+     },
+     {
+      "term": "Language model",
+      "means": "Software that generates text by predicting the most likely next word."
+     },
+     {
+      "term": "Visceral fat",
+      "means": "Fat wrapped around your organs, not just under the skin."
+     },
+     {
+      "term": "Masking",
+      "means": "Hiding joint data so AI learns whole-body coordination."
+     },
+     {
+      "term": "Snapshot study",
+      "means": "One-time measurement that can't prove cause and effect."
+     }
+    ],
+    "chips": [
+     "More on agentic loops",
+     "Love the Fock Ball story",
+     "Too much sports talk",
+     "Keep the engineering analogies"
+    ]
+   },
+   "quiz": [
+    {
+     "q": "In the Fock Ball setup, why can't the language model alone maintain thirty-eight years of coherent league history?",
+     "options": [
+      "It lacks a physics simulation to calculate scores.",
+      "It is not allowed to access the betting odds database.",
+      "Its context window limits how much text it can hold in short-term memory at once.",
+      "It cannot generate text longer than fifteen minutes."
+     ],
+     "answer": 2,
+     "explain": "The script describes the context window as the model's short-term memory with a hard limit; once older facts fall out, the model invents plausible-sounding replacements and loses coherence.",
+     "segment": "The AI Sports League That Runs Itself"
+    },
+    {
+     "q": "According to Laura's proposed verification approach, what should be checked first to confirm the league's history stays coherent?",
+     "options": [
+      "Whether the physics simulation is independent of the language model and the raw game log matches the broadcast.",
+      "Whether the language model also coaches the teams during gameplay.",
+      "Whether the players are actually arrested by local police.",
+      "Whether the broadcast is streamed in fifteen-minute periods."
+     ],
+     "answer": 0,
+     "explain": "Laura says she would first confirm the physics simulation is truly independent of the language model, ensuring the raw game log matches what appears on the broadcast.",
+     "segment": "The AI Sports League That Runs Itself"
+    },
+    {
+     "q": "Why did the researchers hide parts of the movement recordings when training their AI model?",
+     "options": [
+      "To protect the participants' privacy from the camera manufacturer.",
+      "To simulate how a smartwatch loses signal during a walk.",
+      "To reduce the amount of data stored in the database.",
+      "To force the software to infer hidden joint positions from the rest of the body, learning whole-body coordination."
+     ],
+     "answer": 3,
+     "explain": "Masking a joint forces the program to guess its position from other body parts, teaching it how the entire body coordinates as a coupled mechanical system.",
+     "segment": "What the Way You Walk Reveals About Your Health"
+    },
+    {
+     "q": "Why does the script say a depth-camera walking test is not yet a replacement for a doctor's blood test?",
+     "options": [
+      "Because the camera cannot detect torso movement, only leg movement.",
+      "Because the study found only statistical correlations in a single snapshot and needs independent clinical validation with low false-alarm rates.",
+      "Because the participants were all professional athletes with no health conditions.",
+      "Because the AI model was trained only on data from smartwatches, not depth cameras."
+     ],
+     "answer": 1,
+     "explain": "The script stresses that statistical links do not equal diagnosis, the study was a single snapshot in generally healthy adults, and independent multi-site validation with proven false-positive rates is still required.",
+     "segment": "What the Way You Walk Reveals About Your Health"
+    }
+   ],
+   "transcript": "transcripts/ai_2026-11-18_evening_1500.txt"
+  },
   {
    "file": "ai_2026-11-18_morning_0600.mp3",
    "title": "Morning - 18 Nov: When Software Starts Hacking on Its Own",
@@ -2804,294 +3111,6 @@
     }
    ],
    "transcript": "transcripts/ai_2026-11-12_evening_1254.txt"
-  },
-  {
-   "file": "ai_2026-11-11_evening_1214.mp3",
-   "title": "Evening - 11 Nov: Why machine learning models give different answers every time",
-   "label": "Wednesday 11 Nov evening",
-   "date": "2026-11-11",
-   "edition": "evening",
-   "published": "2026-11-11T12:14:08.200120+05:30",
-   "duration": 1426,
-   "theme": "Non-determinism in machine learning as a validation challenge, and the quantum Mpemba effect as a window into non-equilibrium thermodynamics.",
-   "writer": "nemotron-3-ultra-550b-a55b (free)",
-   "voices": "Fish Audio (free)",
-   "deep_dive": false,
-   "segments": [
-    {
-     "title": "Why machine learning models give different answers every time",
-     "category": "concept"
-    },
-    {
-     "title": "The quantum Mpemba effect: when a hotter qubit reaches equilibrium faster",
-     "category": "concept"
-    }
-   ],
-   "lessons": [
-    {
-     "title": "Why the Same Model Gives Two Answers",
-     "segment": "Why machine learning models give different answers every time",
-     "steps": [
-      {
-       "type": "concept",
-       "text": "A syringe-barrel vision model runs on two identical GPUs. Same image, same weights, seed 42. One flags a crack, the other misses it. Inside, 100 parallel sums each round differently 1% of the time. What percent of runs stay bitwise identical?",
-       "example": ""
-      },
-      {
-       "type": "choice",
-       "text": "Pick the chance the whole forward pass stays bitwise identical across both identical GPUs, given 100 sums:",
-       "options": [
-        "About 99%",
-        "About 90%",
-        "About 37%",
-        "About 1%"
-       ],
-       "answer": 2,
-       "explain": "0.99^100 ≈ 37%. A 1% wobble per step leaves only a one-in-three chance of perfect agreement.",
-       "hint": "Every one of the 100 sums must round the same way. Multiply the odds, don't average them."
-      },
-      {
-       "type": "explore",
-       "text": "Adjust how often each reduction rounds identically, and how many reductions a forward pass contains.",
-       "inputs": [
-        {
-         "id": "p",
-         "label": "Each reduction works",
-         "unit": "%",
-         "min": 90.0,
-         "max": 99.9,
-         "step": 0.1,
-         "value": 99.0
-        },
-        {
-         "id": "n",
-         "label": "Reductions in a forward pass",
-         "unit": "",
-         "min": 1.0,
-         "max": 100.0,
-         "step": 1.0,
-         "value": 100.0
-        }
-       ],
-       "outputs": [
-        {
-         "id": "ok",
-         "label": "Whole forward pass works",
-         "unit": "%",
-         "expr": "100*(p/100)^n",
-         "digits": 1,
-         "lo": 0.002656139888758754,
-         "hi": 99.9
-        },
-        {
-         "id": "fails",
-         "label": "Forward passs that fail, of 100",
-         "unit": "",
-         "expr": "100-ok",
-         "digits": 0,
-         "lo": 0.09999999999999432,
-         "hi": 99.99734386011124
-        }
-       ],
-       "chart": {
-        "x": "n",
-        "y": [
-         "ok"
-        ]
-       },
-       "goal": {
-        "target": "fails",
-        "min": 0.0,
-        "max": 30.0,
-        "text": "Get failed runs below 30 out of 100 by moving the sliders before you continue.",
-        "success": "Even 99% reliable steps fail most runs when enough of them are chained together. Small wobbles multiply."
-       },
-       "template": "chain",
-       "view": {
-        "kind": "runs",
-        "p": "p",
-        "n": "n",
-        "step": "reduction",
-        "run": "forward pass"
-       }
-      },
-      {
-       "type": "concept",
-       "text": "Failure probabilities multiply across serial steps. One percent per step sounds safe, but 100 steps make failure likely.",
-       "example": "Like ten CNC operations each holding 99% of tolerance: the stack-up lands out of spec more often than expected."
-      },
-      {
-       "type": "number",
-       "text": "Your inspection line runs 12 independent checks. Each passes 99.3% of good units. What percent of good units pass all 12?",
-       "answer": 91.915972,
-       "tolerance": 0.05,
-       "unit": "%",
-       "explain": "0.993^12 ≈ 91.9%. Even a 99.3% check repeated 12 times rejects nearly one good unit in twelve.",
-       "hint": "Multiply the per-check pass probability by itself once for each of the 12 checks. Do not add or average failure rates."
-      }
-     ],
-     "words": [
-      {
-       "term": "non-associativity",
-       "means": "Floating-point addition changes result depending on grouping order."
-      },
-      {
-       "term": "dropout",
-       "means": "Randomly zeroing neurons during training to prevent over-reliance."
-      },
-      {
-       "term": "temperature",
-       "means": "Inference knob that flattens or sharpens token probabilities."
-      },
-      {
-       "term": "bitwise reproducibility",
-       "means": "Every run produces identical bits, not just similar answers."
-      },
-      {
-       "term": "parallel reduction",
-       "means": "Combining many partial sums across threads; order depends on scheduling."
-      }
-     ]
-    },
-    {
-     "title": "The Hotter-Qubit Paradox",
-     "segment": "The quantum Mpemba effect: when a hotter qubit reaches equilibrium faster",
-     "steps": [
-      {
-       "type": "concept",
-       "text": "You prepare two qubits: one with low population imbalance (cool), one with high imbalance (hot). Both couple to the same engineered bath. Intuition says the cool one, closer to equilibrium, should settle first. But the data shows the hot one wins. How can starting farther away make you arrive sooner?",
-       "example": ""
-      },
-      {
-       "type": "choice",
-       "text": "Before you simulate, commit: which qubit reaches equilibrium first—the cooler one near equilibrium or the hotter one with more energy to dump?",
-       "options": [
-        "Cool qubit wins: less distance to equilibrium.",
-        "Hot qubit wins: it skips a slow decay channel.",
-        "They tie: relaxation time depends only on bath temperature.",
-        "It's random: quantum fluctuations decide."
-       ],
-       "answer": 1,
-       "explain": "The hot state's initial composition has zero overlap with the slowest eigenmode of the Lindbladian, so the long-time tail vanishes. The cool state gets stuck in that metastable basin.",
-       "hint": "Think of steel quenching: 800°C hits the bainite nose and stalls; 900°C misses it and transforms faster."
-      },
-      {
-       "type": "explore",
-       "text": "Slide the initial energy and watch the relaxation time. Find a hotter setting that relaxes faster than the peak at energy 3.",
-       "inputs": [
-        {
-         "id": "E",
-         "label": "Initial energy",
-         "unit": "arb.",
-         "min": 0.0,
-         "max": 10.0,
-         "step": 0.5,
-         "value": 2.0
-        }
-       ],
-       "outputs": [
-        {
-         "id": "tau",
-         "label": "Relaxation time",
-         "unit": "µs",
-         "expr": "5 + 15 * exp(-(E-3)^2/2)",
-         "lo": 5.00000000034346,
-         "hi": 20.0
-        }
-       ],
-       "goal": {
-        "target": "tau",
-        "min": 5.0,
-        "max": 10.0,
-        "text": "Get the relaxation time under 10 µs at an energy higher than 3.",
-        "success": "You found the Mpemba effect: a hotter qubit (energy 5) relaxes faster than a cooler one (energy 3) because it avoids the slowest decay mode."
-       }
-      },
-      {
-       "type": "concept",
-       "text": "Relaxation is a sum of exponentials. The slowest eigenmode (smallest decay rate) dominates the final approach. If your initial state has no component along that mode, the tail disappears and you equilibrate faster. The bath's asymmetry creates a 'metastable basin' at intermediate energy—like the bainite nose in a TTT diagram. A hotter quench jumps over it.",
-       "example": "In your QA work: a process with a hidden slow failure mode. Starting from a 'cleaner' state might actually take longer to reveal defects because you miss the fast-failure channel."
-      }
-     ],
-     "words": [
-      {
-       "term": "Lindblad equation",
-       "means": "Quantum master equation governing open-system evolution, like a rate equation for density matrices."
-      },
-      {
-       "term": "Relaxation eigenmode",
-       "means": "A decay channel with a fixed rate; the slowest one dominates long-time approach to equilibrium."
-      },
-      {
-       "term": "Strong Mpemba effect",
-       "means": "A hotter initial state relaxes faster than a cooler one because it has zero overlap with the slowest eigenmode."
-      },
-      {
-       "term": "Phase-covariant bath",
-       "means": "A reservoir that treats all quantum phases equally, so populations and coherences decouple."
-      },
-      {
-       "term": "Non-monotonic relaxation",
-       "means": "Relaxation time vs. initial energy goes up then down, creating a region where hotter is faster."
-      },
-      {
-       "term": "Spectral gap",
-       "means": "The difference between the two slowest decay rates; sets the asymptotic relaxation timescale."
-      }
-     ]
-    }
-   ],
-   "quiz": [
-    {
-     "q": "Why does floating-point non-associativity cause non-determinism in parallel GPU reductions?",
-     "options": [
-      "Hardware memory limits force the GPU to randomly drop bits during execution.",
-      "Different thread scheduling changes the order of summations, and floating-point addition rounding depends on addition order.",
-      "Random seeds in the hardware clock overwrite the lower decimal places of every tensor.",
-      "Thermal expansion inside the GPU physically alters the transistor gates during training."
-     ],
-     "answer": 1,
-     "explain": "Floating-point addition is non-associative, so when parallel GPU threads sum chunks in varying arrival orders, rounding differences accumulate into diverging final digits.",
-     "segment": "Why machine learning models give different answers every time"
-    },
-    {
-     "q": "What is the primary reason seed control alone fails to guarantee reproducibility across different library versions or hardware?",
-     "options": [
-      "Random number generator implementations or their vectorization can change, causing the sequence to diverge over billions of calls.",
-      "Modern GPUs automatically clear all random seeds when switching between training and inference modes.",
-      "Compilers strip out random number generation instructions to optimize matrix multiplication speeds.",
-      "Different operating systems overwrite the global seed value at the driver level."
-     ],
-     "answer": 0,
-     "explain": "Updates to libraries like PyTorch or CUDA can alter RNG algorithms or parallel vectorization, causing billions of training calls to produce completely divergent sequences.",
-     "segment": "Why machine learning models give different answers every time"
-    },
-    {
-     "q": "According to the discussion on the quantum Mpemba effect, what causes a 'hotter' initial state to relax to equilibrium faster than a cooler one?",
-     "options": [
-      "Hotter states have higher kinetic energy that physically forces the surrounding reservoir to cool down instantly.",
-      "The cooler initial state happens to align with a slow-decaying eigenmode of the system, getting stuck in a metastable trap.",
-      "Quantum tunneling allows hot states to bypass the relaxation phase entirely and achieve instant thermal equilibrium.",
-      "Higher energy levels eliminate all system coherences, stopping the conservation of energy during dissipation."
-     ],
-     "answer": 1,
-     "explain": "The strong Mpemba effect occurs when a cooler state projects onto the slowest-decaying eigenmode of the relaxation process, causing it to take longer while the hotter state misses that slow mode.",
-     "segment": "The quantum Mpemba effect: when a hotter qubit reaches equilibrium faster"
-    },
-    {
-     "q": "How was the quantum Mpemba effect experimentally tested in the single-qubit study by Zhan and colleagues?",
-     "options": [
-      "By heating a superconducting circuit with microwaves until the Josephson junctions melted.",
-      "By measuring thermal expansion rates in a physical workpiece dropped into an oil bath.",
-      "By encoding the qubit in photon polarization and coupling it to an engineered reservoir using waveplates and liquid-crystal modulators.",
-      "By tracking entropy changes inside a chaotic machine learning model running on a Mac Mini."
-     ],
-     "answer": 2,
-     "explain": "The researchers encoded the qubit in a photon's polarization and used waveplates and liquid-crystal modulators to couple it to an engineered open quantum system reservoir.",
-     "segment": "The quantum Mpemba effect: when a hotter qubit reaches equilibrium faster"
-    }
-   ],
-   "transcript": "transcripts/ai_2026-11-11_evening_1214.txt"
   }
  ]
 }

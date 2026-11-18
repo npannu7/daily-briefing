@@ -1,17 +1,6 @@
 {
   "episodes": [
     {
-      "file": "ai_2026-11-11_evening_1214.mp3",
-      "date": "2026-11-11",
-      "edition": "evening",
-      "title": "Evening - 11 Nov: Why machine learning models give different answers every time",
-      "published": "2026-11-11T12:14:08.200120+05:30",
-      "pubDate": "Wed, 11 Nov 2026 12:14:08 +0530",
-      "size": 11414192,
-      "duration": 1426,
-      "description": "Evening edition - Wednesday, 11 November 2026\nNon-determinism in machine learning as a validation challenge, and the quantum Mpemba effect as a window into non-equilibrium thermodynamics.\n\n00:39  Why machine learning models give different answers every time\n13:08  The quantum Mpemba effect: when a hotter qubit reaches equilibrium faster\n\nPuzzles: Why the Same Model Gives Two Answers, The Hotter-Qubit Paradox - puzzles, quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nWritten by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (155 threads)"
-    },
-    {
       "file": "ai_2026-11-12_evening_1254.mp3",
       "date": "2026-11-12",
       "edition": "evening",
@@ -131,6 +120,17 @@
       "size": 9154663,
       "duration": 1144,
       "description": "Morning edition - Wednesday, 18 November 2026\nSeparating real capability from hype in autonomous cyberattacks, and understanding how the aging brain clears waste during deep sleep.\n\n00:32  When Software Starts Hacking on Its Own\n09:07  How Your Brain Washes Itself While You Sleep\n\nPlay \"Who Pulled the Digital Trigger?\", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-18_morning_0600.mp3\nWritten by: Gemini 4 Hydrogen · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (121 threads)"
+    },
+    {
+      "file": "ai_2026-11-18_evening_1500.mp3",
+      "date": "2026-11-18",
+      "edition": "evening",
+      "title": "Evening - 18 Nov: The AI Sports League That Runs Itself",
+      "published": "2026-11-18T15:00:08.693776+05:30",
+      "pubDate": "Wed, 18 Nov 2026 15:00:08 +0530",
+      "size": 8016870,
+      "duration": 1001,
+      "description": "Evening edition - Wednesday, 18 November 2026\nSystems in motion: an AI-run sports league that writes its own history, and what the mechanics of your walk reveal about your health\n\n00:27  The AI Sports League That Runs Itself\n08:07  What the Way You Walk Reveals About Your Health\n\nPlay \"The 38-Year Fake Sports League\", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-18_evening_1500.mp3\nWritten by: Gemini 4 Hydrogen · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (48 threads)"
     }
   ],
   "memory": [
@@ -2008,6 +2008,26 @@
       "topics": [
         "ai-cybersecurity"
       ]
+    },
+    {
+      "label": "Wednesday 18 Nov evening",
+      "date": "2026-11-18",
+      "edition": "evening",
+      "published": "2026-11-18T15:00:08.693776+05:30",
+      "file": "ai_2026-11-18_evening_1500.mp3",
+      "writer": "Gemini 4 Hydrogen",
+      "voices": "Fish Audio (free)",
+      "summary": "The episode examines a solo developer’s fully autonomous 30‑team sports league that combines a deterministic physics engine with language models to generate live broadcasts, news articles, and social media posts, illustrating how an agentic loop maintains state and memory over thousands of events. It then reviews a large study that used camera‑based motion tracking to link walking, standing, and chair‑rise patterns to 1,887 health traits, highlighting the gap between statistical associations and reliable screening for conditions such as liver fibrosis or sleep apnea. Both segments illustrate how automated systems can produce rich narratives or health signals while still requiring rigorous validation.",
+      "threads": [
+        "Independent verification of the AI sports league’s agentic loop and long‑term memory consistency",
+        "Clinical validation of gait‑based screening for liver fibrosis and sleep apnea"
+      ],
+      "segments": [
+        "The AI Sports League That Runs Itself",
+        "What the Way You Walk Reveals About Your Health"
+      ],
+      "deep_topic": "",
+      "topics": []
     }
   ],
   "seen": [
@@ -2830,6 +2850,18 @@
     {
       "date": "2026-11-18",
       "link": "https://www.nature.com/articles/s43587-026-01270-4"
+    },
+    {
+      "date": "2026-11-18",
+      "link": "https://www.reddit.com/r/science/comments/1xyhvpp/the_way_you_walk_could_one_day_be_a_health_check/"
+    },
+    {
+      "date": "2026-11-18",
+      "link": "https://www.sciencealert.com/the-way-you-walk-could-reveal-clues-to-your-liver-and-sleep-health-study-finds"
+    },
+    {
+      "date": "2026-11-18",
+      "link": "https://www.reddit.com/r/ClaudeAI/comments/1xyklpy/i_invented_a_sports_league_that_runs_itself_fock/"
     }
   ],
   "feedback": [
@@ -3278,6 +3310,57 @@
       "comment": "Less maintainer drama. Fewer numbers",
       "pace_counted": true,
       "received": "2026-11-16T15:00:12.250046+05:30"
+    },
+    {
+      "episode": "ai_2026-11-18_morning_0600.mp3",
+      "date": "2026-11-18",
+      "edition": "morning",
+      "quiz": null,
+      "puzzles": {
+        "done": 2,
+        "total": 2,
+        "struggled": [
+          "How Your Brain Washes Itself While You Sleep: Put one deep-sleep brain-washing cycle in order, from electrical wave to fluid flush."
+        ]
+      },
+      "play": {
+        "cards": 4,
+        "done": 4,
+        "right": 3,
+        "points": 43,
+        "bets": [
+          {
+            "conf": 95,
+            "right": false
+          },
+          {
+            "conf": 95,
+            "right": true
+          }
+        ],
+        "formats": [
+          "flaw",
+          "clues",
+          "sequence",
+          "lab"
+        ]
+      },
+      "ratings": {
+        "depth": "right",
+        "pace": "right",
+        "voices": "good",
+        "overall": 5
+      },
+      "segments": {
+        "When Software Starts Hacking on Its Own": "ok",
+        "How Your Brain Washes Itself While You Sleep": "ok"
+      },
+      "depth": {
+        "When Software Starts Hacking on Its Own": "right",
+        "How Your Brain Washes Itself While You Sleep": "right"
+      },
+      "comment": "",
+      "received": "2026-11-18T15:00:09.063752+05:30"
     }
   ],
   "tts_log": [
@@ -3936,26 +4019,190 @@
     "2026-11-18T00:59:42.025888+00:00",
     "2026-11-18T00:59:42.556403+00:00",
     "2026-11-18T01:00:38.524388+00:00",
-    "2026-11-18T01:01:17.849566+00:00"
+    "2026-11-18T01:01:17.849566+00:00",
+    "2026-11-18T09:30:09.327138+00:00",
+    "2026-11-18T09:30:12.459431+00:00",
+    "2026-11-18T09:30:15.642530+00:00",
+    "2026-11-18T09:30:18.854002+00:00",
+    "2026-11-18T09:30:22.056709+00:00",
+    "2026-11-18T09:30:25.252497+00:00",
+    "2026-11-18T09:30:28.453388+00:00",
+    "2026-11-18T09:30:31.637331+00:00",
+    "2026-11-18T09:30:34.841118+00:00",
+    "2026-11-18T09:30:38.065617+00:00",
+    "2026-11-18T09:30:41.251611+00:00",
+    "2026-11-18T09:30:44.442710+00:00",
+    "2026-11-18T09:30:47.641599+00:00",
+    "2026-11-18T09:30:50.871925+00:00",
+    "2026-11-18T09:30:54.110748+00:00",
+    "2026-11-18T09:30:57.249432+00:00",
+    "2026-11-18T09:31:00.448088+00:00",
+    "2026-11-18T09:31:03.670860+00:00",
+    "2026-11-18T09:31:06.857559+00:00",
+    "2026-11-18T09:31:10.053605+00:00",
+    "2026-11-18T09:31:13.307662+00:00",
+    "2026-11-18T09:31:16.446103+00:00",
+    "2026-11-18T09:31:19.643811+00:00",
+    "2026-11-18T09:31:22.896452+00:00",
+    "2026-11-18T09:31:26.050260+00:00",
+    "2026-11-18T09:31:29.263677+00:00",
+    "2026-11-18T09:31:32.510446+00:00",
+    "2026-11-18T09:31:35.658455+00:00",
+    "2026-11-18T09:31:38.847349+00:00",
+    "2026-11-18T09:31:42.098310+00:00",
+    "2026-11-18T09:31:45.264519+00:00",
+    "2026-11-18T09:31:48.454678+00:00",
+    "2026-11-18T09:31:51.708731+00:00",
+    "2026-11-18T09:31:54.843472+00:00",
+    "2026-11-18T09:31:58.112289+00:00",
+    "2026-11-18T09:32:01.252314+00:00",
+    "2026-11-18T09:32:04.526623+00:00",
+    "2026-11-18T09:32:07.697678+00:00",
+    "2026-11-18T09:32:10.897543+00:00",
+    "2026-11-18T09:32:14.071556+00:00",
+    "2026-11-18T09:32:17.245723+00:00",
+    "2026-11-18T09:32:20.465757+00:00",
+    "2026-11-18T09:32:23.658327+00:00",
+    "2026-11-18T09:32:26.909757+00:00",
+    "2026-11-18T09:32:30.091872+00:00",
+    "2026-11-18T09:32:33.243753+00:00",
+    "2026-11-18T09:33:24.349064+00:00",
+    "2026-11-18T09:37:41.070040+00:00",
+    "2026-11-18T09:38:27.349307+00:00",
+    "2026-11-18T09:38:27.476428+00:00",
+    "2026-11-18T09:38:27.590921+00:00",
+    "2026-11-18T09:39:54.074629+00:00",
+    "2026-11-18T09:44:25.141986+00:00",
+    "2026-11-18T09:47:18.208675+00:00",
+    "2026-11-18T09:47:49.429888+00:00",
+    "2026-11-18T09:50:07.379251+00:00",
+    "2026-11-18T09:50:56.643877+00:00",
+    "2026-11-18T09:53:04.273442+00:00",
+    "2026-11-18T09:55:49.991064+00:00",
+    "2026-11-18T09:59:18.134280+00:00",
+    "2026-11-18T10:00:14.429026+00:00",
+    "2026-11-18T10:02:18.271981+00:00",
+    "2026-11-18T10:05:16.376649+00:00",
+    "2026-11-18T10:05:16.673684+00:00",
+    "2026-11-18T10:05:19.830383+00:00",
+    "2026-11-18T10:05:22.966149+00:00",
+    "2026-11-18T10:09:15.863182+00:00",
+    "2026-11-18T10:11:14.827027+00:00",
+    "2026-11-18T10:11:17.376318+00:00",
+    "2026-11-18T10:11:19.484935+00:00",
+    "2026-11-18T10:11:23.699361+00:00",
+    "2026-11-18T10:11:29.084296+00:00",
+    "2026-11-18T10:11:31.117675+00:00",
+    "2026-11-18T10:11:34.581955+00:00",
+    "2026-11-18T10:11:36.031313+00:00",
+    "2026-11-18T10:11:44.232619+00:00",
+    "2026-11-18T10:11:44.689156+00:00",
+    "2026-11-18T10:11:47.419300+00:00",
+    "2026-11-18T10:11:49.808368+00:00",
+    "2026-11-18T10:11:56.951474+00:00",
+    "2026-11-18T10:11:58.157872+00:00",
+    "2026-11-18T10:12:03.032005+00:00",
+    "2026-11-18T10:12:04.670158+00:00",
+    "2026-11-18T10:12:09.182644+00:00",
+    "2026-11-18T10:12:10.897516+00:00",
+    "2026-11-18T10:12:15.493721+00:00",
+    "2026-11-18T10:12:17.870182+00:00",
+    "2026-11-18T10:12:22.037103+00:00",
+    "2026-11-18T10:12:23.063538+00:00",
+    "2026-11-18T10:12:27.769251+00:00",
+    "2026-11-18T10:12:29.242309+00:00",
+    "2026-11-18T10:12:33.077508+00:00",
+    "2026-11-18T10:12:35.413531+00:00",
+    "2026-11-18T10:12:43.088722+00:00",
+    "2026-11-18T10:12:43.771786+00:00",
+    "2026-11-18T10:12:52.344692+00:00",
+    "2026-11-18T10:12:52.577035+00:00",
+    "2026-11-18T10:12:54.044734+00:00",
+    "2026-11-18T10:12:56.562025+00:00",
+    "2026-11-18T10:13:01.483583+00:00",
+    "2026-11-18T10:13:04.645695+00:00",
+    "2026-11-18T10:13:09.572722+00:00",
+    "2026-11-18T10:13:10.131612+00:00",
+    "2026-11-18T10:13:15.576120+00:00",
+    "2026-11-18T10:13:18.223658+00:00",
+    "2026-11-18T10:13:21.393287+00:00",
+    "2026-11-18T10:13:21.647981+00:00",
+    "2026-11-18T10:13:27.668439+00:00",
+    "2026-11-18T10:13:29.218825+00:00",
+    "2026-11-18T10:13:33.021874+00:00",
+    "2026-11-18T10:13:35.478101+00:00",
+    "2026-11-18T10:13:35.917959+00:00",
+    "2026-11-18T10:13:42.801532+00:00",
+    "2026-11-18T10:13:48.563225+00:00",
+    "2026-11-18T10:13:51.521705+00:00",
+    "2026-11-18T10:13:55.529683+00:00",
+    "2026-11-18T10:13:55.776926+00:00",
+    "2026-11-18T10:13:57.523112+00:00",
+    "2026-11-18T10:14:00.644442+00:00",
+    "2026-11-18T10:14:05.230503+00:00",
+    "2026-11-18T10:14:07.160152+00:00",
+    "2026-11-18T10:14:10.907354+00:00",
+    "2026-11-18T10:14:11.650938+00:00",
+    "2026-11-18T10:14:18.333040+00:00",
+    "2026-11-18T10:14:19.555593+00:00",
+    "2026-11-18T10:14:25.074384+00:00",
+    "2026-11-18T10:14:25.780822+00:00",
+    "2026-11-18T10:14:30.817291+00:00",
+    "2026-11-18T10:14:35.257346+00:00",
+    "2026-11-18T10:14:36.447280+00:00",
+    "2026-11-18T10:14:39.247014+00:00",
+    "2026-11-18T10:14:42.993915+00:00",
+    "2026-11-18T10:14:43.161529+00:00",
+    "2026-11-18T10:14:49.788399+00:00",
+    "2026-11-18T10:14:54.027225+00:00",
+    "2026-11-18T10:14:55.312320+00:00",
+    "2026-11-18T10:14:56.118718+00:00",
+    "2026-11-18T10:15:03.596338+00:00",
+    "2026-11-18T10:15:08.391046+00:00",
+    "2026-11-18T10:15:14.093581+00:00",
+    "2026-11-18T10:15:16.684002+00:00",
+    "2026-11-18T10:15:21.699188+00:00",
+    "2026-11-18T10:15:23.605570+00:00",
+    "2026-11-18T10:15:25.774052+00:00",
+    "2026-11-18T10:15:28.246843+00:00",
+    "2026-11-18T10:15:33.899669+00:00",
+    "2026-11-18T10:15:35.311059+00:00",
+    "2026-11-18T10:15:39.050884+00:00",
+    "2026-11-18T10:15:40.357325+00:00",
+    "2026-11-18T10:15:47.168268+00:00",
+    "2026-11-18T10:15:47.253151+00:00",
+    "2026-11-18T10:15:48.172163+00:00",
+    "2026-11-18T10:15:51.452367+00:00",
+    "2026-11-18T10:15:57.706042+00:00",
+    "2026-11-18T10:15:59.221179+00:00",
+    "2026-11-18T10:16:03.872234+00:00",
+    "2026-11-18T10:16:05.163998+00:00",
+    "2026-11-18T10:16:10.157431+00:00",
+    "2026-11-18T10:16:12.283123+00:00",
+    "2026-11-18T10:16:19.690582+00:00",
+    "2026-11-18T10:16:21.622206+00:00",
+    "2026-11-18T10:16:22.997278+00:00",
+    "2026-11-18T10:16:25.592230+00:00",
+    "2026-11-18T10:16:29.241873+00:00",
+    "2026-11-18T10:16:29.826347+00:00",
+    "2026-11-18T10:16:34.887333+00:00",
+    "2026-11-18T10:16:36.273740+00:00",
+    "2026-11-18T10:16:43.653653+00:00",
+    "2026-11-18T10:16:45.510161+00:00",
+    "2026-11-18T10:16:47.678917+00:00",
+    "2026-11-18T10:16:53.542530+00:00",
+    "2026-11-18T10:16:55.928482+00:00",
+    "2026-11-18T10:16:59.585444+00:00",
+    "2026-11-18T10:17:01.965533+00:00",
+    "2026-11-18T10:17:03.359980+00:00",
+    "2026-11-18T10:17:06.200984+00:00",
+    "2026-11-18T10:17:08.139071+00:00",
+    "2026-11-18T10:17:51.012754+00:00",
+    "2026-11-18T10:19:18.915935+00:00",
+    "2026-11-18T10:20:17.161726+00:00"
   ],
   "free_day_out": "",
   "gemini_log": [
-    "2026-11-16T01:35:28.122017-08:00",
-    "2026-11-16T01:36:14.427042-08:00",
-    "2026-11-16T01:38:34.088003-08:00",
-    "2026-11-16T01:45:49.993278-08:00",
-    "2026-11-16T01:52:06.415744-08:00",
-    "2026-11-16T01:54:02.372003-08:00",
-    "2026-11-16T01:54:34.496417-08:00",
-    "2026-11-16T01:55:03.581342-08:00",
-    "2026-11-16T01:55:17.020462-08:00",
-    "2026-11-16T16:34:52.766327-08:00",
-    "2026-11-16T16:37:16.621952-08:00",
-    "2026-11-16T16:54:53.867188-08:00",
-    "2026-11-16T16:56:44.755398-08:00",
-    "2026-11-16T16:57:04.625902-08:00",
-    "2026-11-16T16:57:27.872665-08:00",
-    "2026-11-16T16:57:50.877946-08:00",
     "2026-11-17T01:51:49.913866-08:00",
     "2026-11-17T02:16:59.013686-08:00",
     "2026-11-17T16:34:47.408956-08:00",
@@ -3966,16 +4213,18 @@
     "2026-11-17T16:52:11.870271-08:00",
     "2026-11-17T16:52:30.948350-08:00",
     "2026-11-17T16:52:51.312904-08:00",
-    "2026-11-17T16:53:03.813001-08:00"
+    "2026-11-17T16:53:03.813001-08:00",
+    "2026-11-18T01:33:26.180458-08:00",
+    "2026-11-18T01:35:19.790173-08:00",
+    "2026-11-18T01:44:25.144031-08:00",
+    "2026-11-18T01:47:49.848458-08:00",
+    "2026-11-18T01:55:49.993170-08:00",
+    "2026-11-18T02:05:22.967618-08:00",
+    "2026-11-18T02:09:15.907598-08:00"
   ],
   "gemini_day_out": "",
   "pace_adjust": 0.0,
   "lesson_log": [
-    {
-      "date": "2026-11-07",
-      "title": "The Anomalous Vial: When Fluctuations Escape the Noise",
-      "template": ""
-    },
     {
       "date": "2026-11-07",
       "title": "The Safety Threshold That Blocks Your Own Work",
@@ -4180,6 +4429,18 @@
         "flaw",
         "clues",
         "sequence",
+        "lab"
+      ],
+      "theme": "bench",
+      "date": "2026-11-18"
+    },
+    {
+      "title": "The 38-Year Fake Sports League",
+      "template": "chain",
+      "formats": [
+        "clues",
+        "lab",
+        "estimate",
         "lab"
       ],
       "theme": "bench",
@@ -5109,15 +5370,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 187,
+      "mentions": 188,
       "refs": [
-        {
-          "date": "2026-11-13",
-          "title": "I asked Claude Code to order my dinner. It phoned the restaurant.",
-          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xu3ie4/i_asked_claude_code_to_order_my_dinner_it_phoned/",
-          "link": "",
-          "comment": ""
-        },
         {
           "date": "2026-11-13",
           "title": "My game got removed from gamedev subs for using AI, so here’s exactly how I made it with Claude",
@@ -5208,6 +5462,13 @@
           "thread": "https://www.reddit.com/r/DeepSeek/comments/1xyeh4u/deepseek_helped_us_root_an_android_device_after/",
           "link": "",
           "comment": "https://preview.redd.it/7ouof5wy052i1.png?width=960&format=png&auto=webp&s=531be26bb97b421965a934b3fc753c191d86184e"
+        },
+        {
+          "date": "2026-11-18",
+          "title": "I was tired of approving 5k-line PRs, so I made Reflektor.",
+          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xyg44l/i_was_tired_of_approving_5kline_prs_so_i_made/",
+          "link": "https://github.com/bashovski/reflektor",
+          "comment": ""
         }
       ],
       "deep_dive": "2026-11-15",
@@ -5388,22 +5649,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 89,
+      "mentions": 91,
       "refs": [
-        {
-          "date": "2026-11-12",
-          "title": "New Qwen3.8-27B Unsloth Dynamic V3.1 GGUFs",
-          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xtlyhe/new_qwen3827b_unsloth_dynamic_v31_ggufs/",
-          "link": "",
-          "comment": ""
-        },
-        {
-          "date": "2026-11-12",
-          "title": "NVIDIA reportedly cancels GeForce RTX 5080 24GB launch, brings back 16GB model over GDDR7 costs",
-          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xtdwps/nvidia_reportedly_cancels_geforce_rtx_5080_24gb/",
-          "link": "https://videocardz.com/newz/nvidia-reportedly-cancels-geforce-rtx-5080-24gb-launch-brings-back-16gb-model-over-gddr7-costs",
-          "comment": ""
-        },
         {
           "date": "2026-11-12",
           "title": "GPU Companies built everything on the back of gamers, and now gamers cannot afford them.",
@@ -5487,6 +5734,20 @@
           "thread": "https://www.reddit.com/r/LocalLLM/comments/1xy3dgz/we_built_a_chip_prototype_that_runs_qwen_27b_you/",
           "link": "",
           "comment": "Sounds great. Hope we get more physical AI Chips"
+        },
+        {
+          "date": "2026-11-18",
+          "title": "Gemma on a printer",
+          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xyjkts/gemma_on_a_printer/",
+          "link": "",
+          "comment": ""
+        },
+        {
+          "date": "2026-11-18",
+          "title": "Ported Tiny2.1 to the Amiga 500 (Tiny68k): a 1979 CPU running a language model!",
+          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xyi1th/ported_tiny21_to_the_amiga_500_tiny68k_a_1979_cpu/",
+          "link": "",
+          "comment": ""
         }
       ],
       "deep_dive": "2026-11-01",
@@ -5658,7 +5919,8 @@
         "2026-11-09",
         "2026-11-10",
         "2026-11-12",
-        "2026-11-17"
+        "2026-11-17",
+        "2026-11-18"
       ],
       "subs": [
         "AI_Agents",
@@ -5676,15 +5938,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 35,
+      "mentions": 36,
       "refs": [
-        {
-          "date": "2026-10-25",
-          "title": "AI bubble update: 79% of companies say their GPUs sit idle at least half the time, yet most plan new AI platforms",
-          "thread": "https://www.reddit.com/r/technology/comments/1xecuyj/ai_bubble_update_79_of_companies_say_their_gpus/",
-          "link": "https://venturebeat.com/infrastructure/ai-bubble-update-79-of-companies-say-their-gpus-sit-idle-at-least-half-the-time-yet-most-plan-new-ai-platforms",
-          "comment": "I can haz GPU sir? Honestly. Once my 3070 kicks the bucket. I don't think I'll be able to afford gaming anymore on a PC. At least not triple a"
-        },
         {
           "date": "2026-10-25",
           "title": "2.1B tokens in a single day for $16. V4.1 Flash 1017 is no joke.",
@@ -5775,10 +6030,17 @@
           "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xxyc5a/does_delegating_to_cheaper_models_actually_save/",
           "link": "",
           "comment": "https://preview.redd.it/hx4gdte0032i1.jpeg?width=1041&format=pjpg&auto=webp&s=0e37ecd950c997bb684272347990be981caa78a3"
+        },
+        {
+          "date": "2026-11-18",
+          "title": "Why Claude Code can cost you 2x to 10x of usage limits",
+          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xyi3xo/why_claude_code_can_cost_you_2x_to_10x_of_usage/",
+          "link": "https://github.com/inevolin/claude-code-usage-analysis",
+          "comment": ""
         }
       ],
       "deep_dive": "",
-      "last_seen": "2026-11-17",
+      "last_seen": "2026-11-18",
       "subject": "ai"
     },
     "glp1-drugs-beyond-weight-loss": {
@@ -5919,19 +6181,13 @@
         "LocalLLaMA",
         "OpenAI",
         "agi",
+        "antiai",
         "science",
         "singularity",
         "technology"
       ],
-      "mentions": 24,
+      "mentions": 25,
       "refs": [
-        {
-          "date": "2026-11-05",
-          "title": "I have an ominous feeling that they will take this technology away from us",
-          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xnpluu/i_have_an_ominous_feeling_that_they_will_take/",
-          "link": "",
-          "comment": ""
-        },
         {
           "date": "2026-11-05",
           "title": "Leading AI models from Google/ OpenAI are biased against certain accents when scoring job interviews, presentations and tests. The AI models ranked Chinese and Nigerian accents lowest, Indian in the middle, and American and British highest, even when the content was exactly the same.",
@@ -6022,6 +6278,13 @@
           "thread": "https://www.reddit.com/r/singularity/comments/1xy1q6z/altman_if_the_sales_pitch_is_we_are_going_to/",
           "link": "",
           "comment": "Agree with him on this. Humans don't want to become someone's pet. Retaining agency and self-determination is fundamental to being human."
+        },
+        {
+          "date": "2026-11-18",
+          "title": "California sues OpenAI, alleges it endangered the public by building AI without safeguards",
+          "thread": "https://www.reddit.com/r/antiai/comments/1xyc39d/california_sues_openai_alleges_it_endangered_the/",
+          "link": "https://www.latimes.com/california/story/2026-11-16/california-sues-openai-alleging-it-endangered-public-by-developing-ai-without-safeguards",
+          "comment": ""
         }
       ],
       "deep_dive": "2026-11-08",
@@ -6064,22 +6327,8 @@
         "artificial",
         "singularity"
       ],
-      "mentions": 60,
+      "mentions": 62,
       "refs": [
-        {
-          "date": "2026-11-05",
-          "title": "I removed 85% of gemma's weights (and it is mostly fine)",
-          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xnoqyy/i_removed_85_of_gemmas_weights_and_it_is_mostly/",
-          "link": "",
-          "comment": ""
-        },
-        {
-          "date": "2026-11-05",
-          "title": "Deepseek alone accounted for 53% of all (27 trillion) tokens on Openrouter yesterday. Open-weights labs totaling over 75% now",
-          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xnz8ct/deepseek_alone_accounted_for_53_of_all_27/",
-          "link": "",
-          "comment": ""
-        },
         {
           "date": "2026-11-07",
           "title": "I removed guardrails from Qwen and it is performing EPICALLY",
@@ -6163,6 +6412,20 @@
           "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xxxbt9/open_weight_models_account_for_30_usage_at/",
           "link": "",
           "comment": "I expect it to increase. A lot of work simply does not need the expensive models from openAI or Anthropic. There is also data sensitive work, I expect major leaks coming in next 2-3 years."
+        },
+        {
+          "date": "2026-11-18",
+          "title": "nvidia/Qwen3.8-Flash-Next-NVFP4-QAD",
+          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xyi3aa/nvidiaqwen38flashnextnvfp4qad/",
+          "link": "https://huggingface.co/nvidia/Qwen3.8-Flash-Next-NVFP4-QAD",
+          "comment": ""
+        },
+        {
+          "date": "2026-11-18",
+          "title": "The upcoming open weight small Qwen models are likely going to lack training data related to offensive cyber capabilities.",
+          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xykjuy/the_upcoming_open_weight_small_qwen_models_are/",
+          "link": "",
+          "comment": ""
         }
       ],
       "deep_dive": "2026-10-25",
@@ -6878,15 +7141,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 20,
+      "mentions": 21,
       "refs": [
-        {
-          "date": "2026-11-15",
-          "title": "Instead Of Lowering GPU Prices, Former NVIDIA CEO Jensen Huang Reportedly Financed AI Startups To Absorb Excess Silicon, Shattering The Shortage Perception",
-          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xvsb5f/instead_of_lowering_gpu_prices_former_nvidia_ceo/",
-          "link": "https://wccftech.com/jensen-huang-financed-ai-startups-absorb-excess-silicon/",
-          "comment": "Circular financing"
-        },
         {
           "date": "2026-11-15",
           "title": "NVIDIA Allegedly Engineered Scarcity By Funding AI Startups To Buy Its GPUs",
@@ -6977,6 +7233,13 @@
           "thread": "https://www.reddit.com/r/technology/comments/1xy0zz2/jensen_huang_passed_billions_in_nvidia_stock_to/",
           "link": "https://www.barrons.com/articles/jensen-huang-nvidia-stock-trust-grat-estate-tax-357c1fd3",
           "comment": "This is literally the most standard thing rich people do, ever. Not News"
+        },
+        {
+          "date": "2026-11-18",
+          "title": "I'm sure it's a coincidence that Howard Lutnick's sons have $362 million in Nvidia",
+          "thread": "https://www.reddit.com/r/technology/comments/1xyddcx/im_sure_its_a_coincidence_that_howard_lutnicks/",
+          "link": "https://www.washingtonexaminer.com/opinion/columnists/4801986/coincidence-howard-lutnick-sons-nvidia-stake",
+          "comment": ""
         }
       ],
       "deep_dive": "",
@@ -7111,7 +7374,7 @@
       "subs": [
         "EverythingScience"
       ],
-      "mentions": 2,
+      "mentions": 3,
       "refs": [
         {
           "date": "2026-11-16",
@@ -7119,6 +7382,13 @@
           "thread": "https://www.reddit.com/r/EverythingScience/comments/1xwuzn7/what_it_took_for_america_to_wipe_out_measles_the/",
           "link": "https://www.nytimes.com/2026/11/15/well/us-measles-elimination.html?unlocked_article_code=1.QlE.sdbc.3eohEg2Wd64P&smid=url-share",
           "comment": "I thought the US officially lost it yesterday: https://www.cbsnews.com/news/measles-elimination-status-united-states/"
+        },
+        {
+          "date": "2026-11-18",
+          "title": "Doctors are raising concerns about US babies born with measles",
+          "thread": "https://www.reddit.com/r/EverythingScience/comments/1xyicpj/doctors_are_raising_concerns_about_us_babies_born/",
+          "link": "https://apnews.com/article/measles-newborns-congenital-cdc-mmr-vaccine-a58272bce83828699dbb4d2eba4e27a1",
+          "comment": "Parents in the third world walk miles to get their children vaxxed. They have lived historical memory of how terrible these diseases are and know vaccines are good. I think the same would be the case in advanced countries if it were not for complete upside-down lies allowed on Social Media. Public h"
         },
         {
           "date": "2026-11-18",
