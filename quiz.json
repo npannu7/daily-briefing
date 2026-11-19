@@ -10,12 +10,178 @@
   "lines": [
    {
     "said": "\"Too technical\" in 3 of your last 7 depth ratings",
-    "did": "Each story may use at most 4 specialist terms: this episode's scripts were rewritten from 31 to 5 and 28 to 0."
+    "did": "Each story may use at most 4 specialist terms: this episode's scripts were rewritten from 9 to 5."
    }
   ],
   "last": "2026-11-18"
  },
  "episodes": [
+  {
+   "file": "ai_2026-11-19_morning_0600.mp3",
+   "title": "Morning - 19 Nov: Can AI Agents Ask Better Questions Than Accountants?",
+   "label": "Thursday 19 Nov morning",
+   "date": "2026-11-19",
+   "edition": "morning",
+   "published": "2026-11-19T06:00:10.552655+05:30",
+   "duration": 1182,
+   "theme": "What happens when AI systems step into roles built on human judgment—first in financial auditing, and then as the front door to the open web.",
+   "writer": "Gemini 4 Hydrogen",
+   "voices": "Fish Audio (free)",
+   "deep_dive": false,
+   "segments": [
+    {
+     "title": "Can AI Agents Ask Better Questions Than Accountants?",
+     "category": "thread"
+    },
+    {
+     "title": "How AI Search Answers Are Starving Independent Websites",
+     "category": "thread"
+    }
+   ],
+   "play": {
+    "v": 2,
+    "theme": "exchange",
+    "title": "When Auditors Meet Their Match",
+    "brief": "He stakes points on what holds up: AI agents vs human auditors in a real trial.",
+    "segments": [
+     {
+      "title": "Can AI Agents Ask Better Questions Than Accountants?",
+      "bet": {
+       "claim": "AI agents beat human auditors on every task in KPMG's trial.",
+       "truth": false,
+       "why": "A human auditor overrode an agent that failed to match regulatory rules to company docs; the trial wasn't a full statutory audit."
+      },
+      "rounds": [
+       {
+        "type": "match",
+        "q": "Match each audit term to its role",
+        "pairs": [
+         [
+          "AI agents",
+          "Automated team that plans and runs audit steps"
+         ],
+         [
+          "Statutory audit",
+          "Legally required sign-off on company accounts"
+         ],
+         [
+          "Sampling",
+          "Checking a subset instead of every transaction"
+         ],
+         [
+          "Professional scepticism",
+          "Duty to question and verify, not assume"
+         ]
+        ]
+       },
+       {
+        "type": "clues",
+        "q": "What let the agents ask sharper questions than tired juniors?",
+        "clues": [
+         "It's a library built from thousands of past audits.",
+         "Research labs paid senior auditors to write the training tasks.",
+         "The agents learned from collective habits of experienced auditors."
+        ],
+        "options": [
+         "A shared audit checklist",
+         "The firm's training manual",
+         "Distilled knowledge from past audits",
+         "A new regulation database"
+        ],
+        "answer": 2,
+        "why": "Commenters noted labs paid big-firm consultants to write rigorous sample tasks using real workflows, so agents learned from thousands of auditors, not one junior."
+       }
+      ],
+      "takeaway": "AI agents catch what tired humans miss, but still need human judgment to separate signal from noise."
+     },
+     {
+      "title": "How AI Search Answers Are Starving Independent Websites",
+      "bet": {
+       "claim": "Being cited in Google's AI Overview sends a website meaningful traffic.",
+       "truth": false,
+       "why": "RevScope found AI assistants sent sites under one percent of traffic in March; citations yield near-zero clicks."
+      },
+      "rounds": [
+       {
+        "type": "estimate",
+        "q": "When an AI Overview appears, what share of searches end with zero outbound clicks?",
+        "answer": 75.0,
+        "unit": "%",
+        "lo": 20,
+        "hi": 95,
+        "log": false,
+        "why": "In the controlled test, nearly three quarters of searches with an AI box produced no click to any outside site."
+       },
+       {
+        "type": "quickfire",
+        "q": "True or false?",
+        "items": [
+         {
+          "text": "AI Overviews now appear on over sixty percent of tracked US searches.",
+          "truth": true
+         },
+         {
+          "text": "The forty percent click drop happens for shopping searches too.",
+          "truth": false
+         },
+         {
+          "text": "Google ad clicks fell at the same rate as organic clicks.",
+          "truth": false
+         },
+         {
+          "text": "A controlled test hid AI Overviews from half the users to measure the effect.",
+          "truth": true
+         },
+         {
+          "text": "Being cited in an AI answer sends a site almost no traffic.",
+          "truth": true
+         }
+        ]
+       }
+      ],
+      "takeaway": "AI summaries break the economic loop that pays humans to keep guides accurate."
+     }
+    ],
+    "words": [
+     {
+      "term": "AI agents",
+      "means": "Software that plans and runs multi-step tasks on its own"
+     },
+     {
+      "term": "Statutory audit",
+      "means": "The legally required sign-off that lets a company publish accounts"
+     },
+     {
+      "term": "Professional scepticism",
+      "means": "The auditor's duty to question and verify, not just assume"
+     },
+     {
+      "term": "Sampling",
+      "means": "Checking a representative subset instead of every single transaction"
+     },
+     {
+      "term": "AI Overviews",
+      "means": "Google's AI-written summary at the top of search results, above normal links."
+     },
+     {
+      "term": "Informational searches",
+      "means": "Queries seeking answers, not products or specific websites—like how-to guides."
+     },
+     {
+      "term": "Zero-click searches",
+      "means": "Searches where the user finds the answer without clicking any outside link."
+     }
+    ],
+    "chips": [
+     "More on the incentive clash",
+     "Go deeper on sampling math",
+     "Less jargon, more story",
+     "Surprising take on regulation fit"
+    ]
+   },
+   "quiz": [],
+   "transcript": "transcripts/ai_2026-11-19_morning_0600.txt"
+  },
   {
    "file": "ai_2026-11-18_evening_1500.mp3",
    "title": "Evening - 18 Nov: The AI Sports League That Runs Itself",

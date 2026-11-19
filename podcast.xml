@@ -8,9 +8,25 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Wed, 18 Nov 2026 10:20:18 GMT</lastBuildDate>
+<lastBuildDate>Thu, 19 Nov 2026 01:20:21 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Morning - 19 Nov: Can AI Agents Ask Better Questions Than Accountants?</title>
+<description>Morning edition - Thursday, 19 November 2026
+What happens when AI systems step into roles built on human judgment—first in financial auditing, and then as the front door to the open web.
+
+00:35  Can AI Agents Ask Better Questions Than Accountants?
+11:07  How AI Search Answers Are Starving Independent Websites
+
+Play "When Auditors Meet Their Match", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-19_morning_0600.mp3
+Written by: Gemini 4 Hydrogen · Voices: Fish Audio (free) · Discussions: Hacker News (no Reddit data: Reddit, collected hourly (0 threads); no snapshot from the office PC yet)</description>
+<pubDate>Thu, 19 Nov 2026 06:00:10 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-11-19_morning_0600.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-19_morning_0600.mp3" length="9457292" type="audio/mpeg"/>
+<itunes:duration>1182</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Evening - 18 Nov: The AI Sports League That Runs Itself</title>
 <description>Evening edition - Wednesday, 18 November 2026
