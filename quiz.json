@@ -9,13 +9,293 @@
  "heard": {
   "lines": [
    {
-    "said": "\"Too technical\" in 3 of your last 7 depth ratings",
-    "did": "Each story may use at most 4 specialist terms: this episode's scripts were rewritten from 9 to 5."
+    "said": "\"Too technical\" in 2 of your last 7 depth ratings",
+    "did": "Each story may use at most 4 specialist terms: this episode's scripts were rewritten from 31 to 24."
+   },
+   {
+    "said": "\"agentic loop is explained several times. i now know what it is so don't explain basics again\"",
+    "did": "Passed to the editor and the writers of every episode from now on."
    }
   ],
-  "last": "2026-11-18"
+  "last": "2026-11-19"
  },
  "episodes": [
+  {
+   "file": "ai_2026-11-19_evening_1500.mp3",
+   "title": "Evening - 19 Nov: The Doritos bag that looked like a gun",
+   "label": "Thursday 19 Nov evening",
+   "date": "2026-11-19",
+   "edition": "evening",
+   "published": "2026-11-19T15:00:12.579250+05:30",
+   "duration": 1081,
+   "theme": "When automated judgment fails: a school security camera that sees a gun in a snack bag, and AI-written code patches that crash bank systems",
+   "writer": "nemotron-3-ultra-550b-a55b (free)",
+   "voices": "Fish Audio (free)",
+   "deep_dive": false,
+   "segments": [
+    {
+     "title": "The Doritos bag that looked like a gun",
+     "category": "thread"
+    },
+    {
+     "title": "AI-written patches blamed for bank outages",
+     "category": "thread"
+    },
+    {
+     "title": "Gemini 4 Neon",
+     "category": "thread"
+    }
+   ],
+   "play": {
+    "v": 2,
+    "theme": "case",
+    "title": "The Snack Bag That Called Police",
+    "brief": "A Doritos bag triggers armed response; the failure chain reveals a missing safety interlock.",
+    "segments": [
+     {
+      "title": "The Doritos bag that looked like a gun",
+      "bet": {
+       "claim": "A 90% confidence score means a 90% chance the object is a gun.",
+       "truth": false,
+       "why": "Confidence scores reflect internal certainty, not real-world odds; with rare guns, even 90% scores can be wrong most of the time."
+      },
+      "rounds": [
+       {
+        "type": "sequence",
+        "q": "Order the failure chain from first event to last",
+        "items": [
+         "Model flags snack bag as gun",
+         "Staff review image, cancel alert",
+         "Alert system lacks cancellation interlock",
+         "Armed police dispatched anyway"
+        ],
+        "why": "Human catch failed because downstream action had no link to the cancellation."
+       },
+       {
+        "type": "call",
+        "q": "You run security for a school district. The gun-detection system gives 40 false alarms per year and misses 1 real gun. A vendor offers a software update: 10 false alarms but 3 missed guns. Do you take it?",
+        "options": [
+         "Take update, fewer false alarms",
+         "Keep current, fewer missed guns",
+         "Demand human-review interlock first"
+        ],
+        "answer": 2,
+        "hint": "The real failure was no link between cancellation and dispatch.",
+        "why": "The segment documents that cancelled alerts still triggered armed response because no interlock existed."
+       }
+      ],
+      "takeaway": "An alert without a verified interlock is just a louder alarm."
+     },
+     {
+      "title": "AI-written patches blamed for bank outages",
+      "bet": {
+       "claim": "Bank CEOs testified that AI-written patches caused the recent outages",
+       "truth": false,
+       "why": "Article cites three anonymous sources; no public testimony or named CEOs on record. NSA called it routine maintenance."
+      },
+      "rounds": [
+       {
+        "type": "flaw",
+        "q": "Which claim about the outage cause is wrong?",
+        "items": [
+         "AI models scanned codebases and found massive numbers of vulnerabilities",
+         "Human teams rushed patches faster than verification could handle",
+         "Legacy CI/CD pipelines weren't sized for the new patch throughput",
+         "AI agents autonomously wrote and deployed the faulty patches"
+        ],
+        "flaw": 3,
+        "why": "The article and HackerNews thread clarify: AI found vulnerabilities; humans wrote and rushed patches. No autonomous AI deployment."
+       },
+       {
+        "type": "lab",
+        "text": "Adjust patch-step reliability and count; see how often a full deployment succeeds.",
+        "inputs": [
+         {
+          "id": "p",
+          "label": "Each patch step works",
+          "unit": "%",
+          "min": 80.0,
+          "max": 99.0,
+          "step": 0.1,
+          "value": 92.0
+         },
+         {
+          "id": "n",
+          "label": "Patch steps in a deployment",
+          "unit": "",
+          "min": 1.0,
+          "max": 10.0,
+          "step": 1.0,
+          "value": 6.0
+         }
+        ],
+        "outputs": [
+         {
+          "id": "ok",
+          "label": "Whole deployment works",
+          "unit": "%",
+          "expr": "100*(p/100)^n",
+          "digits": 1,
+          "lo": 10.737418240000006,
+          "hi": 99.0
+         },
+         {
+          "id": "fails",
+          "label": "Deployments that fail, of 100",
+          "unit": "",
+          "expr": "100-ok",
+          "digits": 0,
+          "lo": 1.0,
+          "hi": 89.26258175999999
+         }
+        ],
+        "chart": {
+         "x": "n",
+         "y": [
+          "ok"
+         ]
+        },
+        "goal": {
+         "target": "ok",
+         "min": 90.0,
+         "max": 100.0,
+         "text": "Get ok above 90%",
+         "success": "Six steps at 92% each yields only 61% success; small error rates multiply fast."
+        },
+        "template": "chain",
+        "view": {
+         "kind": "runs",
+         "p": "p",
+         "n": "n",
+         "step": "patch step",
+         "run": "deployment"
+        }
+       }
+      ],
+      "takeaway": "AI didn't write bad patches; it found too many holes, overwhelming legacy verification pipelines."
+     },
+     {
+      "title": "Gemini 4 Neon",
+      "bet": {
+       "claim": "An independent analysis ranks Neon as Google's best-value model.",
+       "truth": false,
+       "why": "Independent analysis places Neon between Astra and Fable on the Pareto frontier — middle of Google's own pack."
+      },
+      "rounds": [
+       {
+        "type": "clues",
+        "q": "What do Google's model names resemble?",
+        "clues": [
+         "They sound like a science class and poetry slam had a baby.",
+         "Carbon, Argon, Neon, Hydrogen — that's chemistry. Sonnet, Haiku, Fable — that's literature.",
+         "The thread called it a periodic table mixed with a poetry reading."
+        ],
+        "options": [
+         "A periodic table",
+         "A poetry reading",
+         "Both mixed together",
+         "Random dictionary words"
+        ],
+        "answer": 2,
+        "why": "The names blend chemical elements (Carbon, Neon, Argon) with poetic forms (Sonnet, Haiku, Fable), leaving users unable to guess capability from name alone."
+       }
+      ],
+      "takeaway": "Neon wins on cyber benchmarks at half cost, but naming chaos and mid-tier value make picking a model a gamble."
+     }
+    ],
+    "words": [
+     {
+      "term": "Confidence score",
+      "means": "The model's self-reported certainty, not real-world probability"
+     },
+     {
+      "term": "Interlock",
+      "means": "A safety link that stops action when a check fails"
+     },
+     {
+      "term": "False positive",
+      "means": "Harmless thing wrongly flagged as a threat"
+     },
+     {
+      "term": "Velocity mismatch",
+      "means": "When discovery speed outpaces verification capacity, creating backlogs or rushed deployments"
+     },
+     {
+      "term": "Semantic error",
+      "means": "Code that compiles and passes tests but does the wrong thing under real load"
+     },
+     {
+      "term": "CI/CD pipeline",
+      "means": "Automated conveyor belt that builds, tests, and deploys code changes continuously"
+     },
+     {
+      "term": "Context compaction",
+      "means": "Summarizing conversation history so it fits in the model's memory"
+     },
+     {
+      "term": "Pareto frontier",
+      "means": "The sweet spot where you can't get more capability without paying more"
+     }
+    ],
+    "chips": [
+     "More like the first story",
+     "Go deeper on interlocks",
+     "Less vendor bashing please",
+     "Surprising confidence score insight"
+    ]
+   },
+   "quiz": [
+    {
+     "q": "In the Omnilert incident, school staff and police reviewed the camera image, identified it as a Doritos bag, and cancelled the alert—yet armed police were still dispatched. Based on the discussion, this is best characterized as:",
+     "options": [
+      "A model accuracy problem caused by an excessively high confidence threshold",
+      "A training-data problem because the model had never seen a snack bag before",
+      "A system integration failure: the human-review cancellation did not feed back into the alerting logic to block downstream dispatch",
+      "A constitutional violation that occurred only because the students were Black"
+     ],
+     "answer": 2,
+     "explain": "The hosts compare it to a PLC tripping an E-stop while the conveyor keeps running because the latch circuit was not wired to the review station; the documented failure is the missing interlock between cancellation and dispatch.",
+     "segment": "The Doritos bag that looked like a gun"
+    },
+    {
+     "q": "The lawsuit and press release confirm that Omnilert flagged a Doritos bag at 90 percent confidence and that officials knew about regular false alerts. However, claims that the confidence threshold was “too low” or that training data was biased are described by the hosts as:",
+     "options": [
+      "Proven facts admitted by the vendor in the HackerNews comments",
+      "Plausible hypotheses that cannot be verified because the threshold, ROC curve, and training-data demographics are not public",
+      "Irrelevant because the model used facial recognition, not gun detection",
+      "Automatically true given the 90 percent confidence score"
+     ],
+     "answer": 1,
+     "explain": "The hosts note that in a regulated environment you would want the ROC curve, chosen operating point, and validation demographics, but none of that is in the public record, so those specific claims remain unverified.",
+     "segment": "The Doritos bag that looked like a gun"
+    },
+    {
+     "q": "Regarding the recent bank and infrastructure outages, the article and discussion distinguish between AI writing patches and AI finding vulnerabilities. The actual mechanism described is:",
+     "options": [
+      "AI models scanned codebases and identified many vulnerabilities, creating urgency that led human teams to rush patches through CI/CD pipelines not sized for that throughput",
+      "Large language models autonomously generated and deployed code patches that crashed production systems",
+      "The NSA publicly testified that AI-written patches were responsible for grounding flights and taking down Outlook",
+      "Bank CEOs named in the Washington Sun article confirmed under oath that LLMs authored the faulty code"
+     ],
+     "answer": 0,
+     "explain": "The sources describe AI as a vulnerability scanner that increased the volume of required patches; the outages resulted from a velocity mismatch where verification, staging, and rollback did not scale with the increased patch rate.",
+     "segment": "AI-written patches blamed for bank outages"
+    },
+    {
+     "q": "In the Gemini 4 Neon discussion, the hosts suggest treating the model’s cost-per-task and capability claims with skepticism unless verified on your own workload. They single out the cybersecurity benchmarks because:",
+     "options": [
+      "They are the only benchmarks that measure conversational fluency and legal reasoning simultaneously",
+      "Google’s internal numbers were independently confirmed to be accurate across all competitor models",
+      "They use a naming convention (Carbon, Neon, etc.) that clearly indicates model size",
+      "They map to a defined engineering loop (finding, validating, exploiting, and patching vulnerabilities) with measurable outcomes, unlike proxy tasks such as tax-agent or vending benchmarks"
+     ],
+     "answer": 3,
+     "explain": "The hosts say the cyber benchmarks measure a concrete remediation loop, while other scores are still proxy tasks; cost claims should be treated like a vendor reliability spec and verified independently.",
+     "segment": "Gemini 4 Neon"
+    }
+   ],
+   "transcript": "transcripts/ai_2026-11-19_evening_1500.txt"
+  },
   {
    "file": "ai_2026-11-19_morning_0600.mp3",
    "title": "Morning - 19 Nov: Can AI Agents Ask Better Questions Than Accountants?",
@@ -3008,275 +3288,6 @@
     }
    ],
    "transcript": "transcripts/ai_2026-11-13_evening_1226.txt"
-  },
-  {
-   "file": "ai_2026-11-12_evening_1254.mp3",
-   "title": "Evening - 12 Nov: An AI that predicts what a DNA change does to a cell",
-   "label": "Thursday 12 Nov evening",
-   "date": "2026-11-12",
-   "edition": "evening",
-   "published": "2026-11-12T12:54:28.977929+05:30",
-   "duration": 1291,
-   "theme": "How AI predicts biology and how regulators update drug labels — both validation problems at heart.",
-   "writer": "nemotron-3-ultra-550b-a55b (free)",
-   "voices": "Fish Audio (free)",
-   "deep_dive": false,
-   "segments": [
-    {
-     "title": "An AI that predicts what a DNA change does to a cell",
-     "category": "concept"
-    },
-    {
-     "title": "FDA adds vision-loss warning to every GLP-1 drug",
-     "category": "thread"
-    }
-   ],
-   "lessons": [
-    {
-     "title": "The Variant That Only Hurts Macrophages",
-     "segment": "An AI that predicts what a DNA change does to a cell",
-     "steps": [
-      {
-       "type": "choice",
-       "text": "Same DNA variant. In gut macrophages it overactivates ETS2 (causes IBD). In cardiomyocytes: nothing. If the variant is a vector and each cell type is a direction in latent space, what does 'cell-type-specific effect' look like geometrically?",
-       "options": [
-        "The variant vector points exactly toward macrophages and away from cardiomyocytes",
-        "The variant vector has a large projection onto the macrophage direction but near-zero onto the cardiomyocyte direction",
-        "The variant vector changes length depending on which cell type you measure it in",
-        "The macrophage and cardiomyocyte directions are the same; only the variant vector flips"
-       ],
-       "answer": 1,
-       "explain": "The variant vector is fixed. The macrophage direction and cardiomyocyte direction are different axes in latent space. A large projection (along) onto macrophage direction = strong effect there. Near-zero projection onto cardiomyocyte direction = no effect there.",
-       "hint": "Projections (dot products) measure alignment. Two directions can both be valid — the variant just aligns with one."
-      },
-      {
-       "type": "explore",
-       "text": "The variant effect is vector **a**. The gut macrophage state is direction **b**. Rotate **a** to align with **b** — watch the projection (along) and the leftover (left).",
-       "inputs": [
-        {
-         "id": "angle",
-         "label": "Angle between variant effect vector and gut macrophage d",
-         "unit": "°",
-         "min": 0.0,
-         "max": 180.0,
-         "step": 1.0,
-         "value": 70.0
-        },
-        {
-         "id": "len",
-         "label": "Length of variant effect vector",
-         "unit": "",
-         "min": 0.2,
-         "max": 2.0,
-         "step": 0.05,
-         "value": 1.0
-        }
-       ],
-       "outputs": [
-        {
-         "id": "sim",
-         "label": "Cosine similarity",
-         "unit": "",
-         "expr": "cos(angle*pi/180)",
-         "digits": 2,
-         "lo": -1.0,
-         "hi": 1.0
-        },
-        {
-         "id": "along",
-         "label": "Part pointing along gut macrophage direction",
-         "unit": "",
-         "expr": "len*cos(angle*pi/180)",
-         "digits": 2,
-         "lo": -2.0,
-         "hi": 2.0
-        },
-        {
-         "id": "left",
-         "label": "Left after removing that direction",
-         "unit": "",
-         "expr": "len*abs(sin(angle*pi/180))",
-         "digits": 2,
-         "lo": 0.0,
-         "hi": 2.0
-        }
-       ],
-       "goal": {
-        "target": "along",
-        "min": 0.95,
-        "max": 1.0,
-        "text": "Align the variant vector with the macrophage direction until the projection (along) reaches 0.95. What happens to the leftover (left)?",
-        "success": "When the variant aligns with the macrophage direction, its projection (along) → 1 and the leftover (left) → 0. The same variant would have near-zero projection onto a cardiomyocyte direction — that's cell-type specificity."
-       },
-       "template": "vectors",
-       "view": {
-        "kind": "arrows",
-        "angle": "angle",
-        "len": "len",
-        "a_label": "variant effect vector",
-        "b_label": "gut macrophage direction"
-       }
-      },
-      {
-       "type": "concept",
-       "text": "The conditional transformer injects the cell-type direction at every layer. It doesn't just tag the output — it measures the DNA sequence's projection onto that cell type's 'regulatory grammar' direction throughout the network. The IBD variant has a large component along the macrophage axis, near-zero along the cardiomyocyte axis.",
-       "example": "Like a vibration sensor that only indicates bearing wear when the machine runs at high speed (macrophage regime). At low speed (cardiomyocyte regime), the same vibration means nothing."
-      },
-      {
-       "type": "choice",
-       "text": "A scientist uploads a 50-cell scRNA-seq snapshot from a rare disease state. The conditioning encoder maps it to a latent direction. The model predicts chromatin accessibility. What validation step is missing if they treat this as a 'virtual sensor'?",
-       "options": [
-        "Check that the 50-cell profile falls inside the training latent manifold (Mahalanobis distance)",
-        "Re-train the transformer backbone on the new disease state",
-        "Verify the model's GPU floating-point determinism across CUDA versions",
-        "Confirm the input DNA window contains the variant of interest"
-       ],
-       "answer": 0,
-       "explain": "If the disease state jumps off the training manifold, the encoder maps it to a plausible but wrong latent direction. Predictions look confident but are hallucinated. You need SPC on the conditioning embeddings — track distance from the training manifold.",
-       "hint": "Virtual sensors need the surrogate to stay in the calibrated range. Here the 'surrogate' is the latent direction."
-      },
-      {
-       "type": "order",
-       "text": "Put these validation steps in causal order for deploying AlphaGenome 2 as a CLIA lab test:",
-       "items": [
-        "Characterize training-set provenance: donors, protocols, QC filters",
-        "Run interference studies: does padding the 1 Mb window with random sequence change predictions?",
-        "Validate per cell type × variant class: confusion matrices, limit-of-detection for effect size",
-        "Implement drift monitoring: Mahalanobis distance on conditioning embeddings at inference"
-       ],
-       "explain": "First you need the design-history file (provenance). Then you test the assay's robustness (interference). Then you validate for each intended use (cell type × variant class). Finally you monitor drift in production (embedding distance)."
-      }
-     ],
-     "words": [
-      {
-       "term": "Conditional transformer",
-       "means": "Model where a cell-type signal steers every layer, not just the output head"
-      },
-      {
-       "term": "Cross-modality imputation",
-       "means": "Predicting unmeasured assays (chromatin accessibility) from measured ones (gene expression) via latent space"
-      },
-      {
-       "term": "Conditioning encoder",
-       "means": "Maps a new scRNA-seq snapshot into the model's latent direction space at inference time"
-      },
-      {
-       "term": "Virtual sensor",
-       "means": "Inferring a critical quality attribute from a surrogate measurement — validated per operating regime"
-      },
-      {
-       "term": "Latent manifold",
-       "means": "The structured map of cell states the model learned; new states must fall inside it to be trusted"
-      }
-     ]
-    },
-    {
-     "title": "The Signal That Cries Wolf",
-     "segment": "FDA adds vision-loss warning to every GLP-1 drug",
-     "steps": [
-      {
-       "type": "concept",
-       "text": "Positive predictive value = (sensitivity × prevalence) / (sensitivity × prevalence + (1−specificity) × (1−prevalence)). When prevalence is microscopic, the (1−specificity) term dominates — even 5% false alarms on 99.996% healthy people drown the few true hits. Sentinel is a smoke alarm in a city where fires happen once a century.",
-       "example": "Your incoming inspection: 0.01% defect rate, test catches 90% of defects but falsely rejects 2% of good parts. Of 10,000 parts, 1 is truly defective (caught), but 200 good parts are rejected. PPV = 1/201 ≈ 0.5%."
-      },
-      {
-       "type": "number",
-       "text": "The episode cites 1,160 excess NAION cases per year across 28 million GLP-1 users. What is the annual excess risk per 100,000 person-years?",
-       "answer": 4.142857,
-       "tolerance": 0.25,
-       "unit": "per 100,000 pe",
-       "explain": "1,160 / 28,000,000 = 0.0000414. × 100,000 = 4.14. Matches the 'four to eight excess cases per 100,000 person-years' in the diabetic subgroup.",
-       "hint": "Divide excess cases by total person-years, then scale to 100,000."
-      },
-      {
-       "type": "choice",
-       "text": "Your factory makes sterile vials. A new rapid sterility test has 99% sensitivity, 99% specificity. True contamination rate is 0.01%. A batch tests positive. What do you do?",
-       "options": [
-        "Reject the batch — test is 99% accurate",
-        "Investigate further — PPV is only ~1%",
-        "Retest the same sample — confirmation will clarify",
-        "Ship it — false positives are rare at 99% specificity"
-       ],
-       "answer": 1,
-       "explain": "PPV = (0.99 × 0.0001) / (0.99×0.0001 + 0.01×0.9999) ≈ 0.98%. A positive test is almost certainly wrong. You need orthogonal confirmation — just like FDA needs mechanistic plausibility + class effect + irreversibility before label change.",
-       "hint": "Plug 0.01% prevalence, 99% sens, 99% spec into the base-rate formula. The maths is identical to the NAION signal."
-      }
-     ],
-     "words": [
-      {
-       "term": "NAION",
-       "means": "Non-arteritic anterior ischemic optic neuropathy — sudden, painless, usually permanent vision loss in one eye from poor optic-nerve blood flow"
-      },
-      {
-       "term": "Person-years",
-       "means": "One person observed for one year; 100,000 person-years = 100,000 people for one year or 10,000 people for ten years"
-      },
-      {
-       "term": "Confounding by indication",
-       "means": "The disease itself (diabetes) causes the outcome (NAION), making the drug look guilty when it's just prescribed to sicker people"
-      },
-      {
-       "term": "Disproportionality signal",
-       "means": "Statistical flag: an adverse event appears more often with a drug than expected by chance in spontaneous reports or claims data"
-      },
-      {
-       "term": "Number needed to harm (NNH)",
-       "means": "How many patients must take the drug for one extra person to suffer the adverse event vs. not taking it"
-      }
-     ]
-    }
-   ],
-   "quiz": [
-    {
-     "q": "How does AlphaGenome 2 process the cell-type conditioning signal compared to typical models?",
-     "options": [
-      "It injects the condition only as a prefix token at the start of the sequence.",
-      "It applies the condition at the final output layer to scale the final logits.",
-      "It propagates the condition through every layer of the architecture to modulate the regulatory grammar.",
-      "It uses a separate fine-tuned model for every individual cell type without a shared backbone."
-     ],
-     "answer": 2,
-     "explain": "The model conditions on the target cell state by feeding the signal into every layer, modulating every gain stage rather than just acting as a prefix or final head.",
-     "segment": "An AI that predicts what a DNA change does to a cell"
-    },
-    {
-     "q": "What validation challenge does Laura highlight regarding the cross-modality imputation feature of AlphaGenome 2?",
-     "options": [
-      "It requires retraining the entire model weights every time a new scRNA-seq profile is uploaded.",
-      "If an input state falls outside the training distribution, the conditioning encoder can hallucinate confident but wrong predictions.",
-      "It cannot handle DNA windows larger than a few thousand base pairs without crashing.",
-      "It relies exclusively on bulk sequencing and cannot process single-cell data."
-     ],
-     "answer": 1,
-     "explain": "Laura notes that if the model encounters a disease state far from the training manifold, the latent conditioning might map to a plausible yet hallucinated region of latent space.",
-     "segment": "An AI that predicts what a DNA change does to a cell"
-    },
-    {
-     "q": "Why did the FDA potentially consider a class-wide warning for GLP-1 drugs despite the absolute risk increase of NAION being very small?",
-     "options": [
-      "Prospective clinical trials proved that GLP-1s directly bind to optic nerve receptors and destroy tissue.",
-      "The condition results in permanent, irreversible vision loss, which lowers the regulatory action threshold.",
-      "A federal mandate required all metabolic drugs to carry ocular warnings regardless of data.",
-      "The absolute risk in the type 2 diabetes population was greater than fifty percent."
-     ],
-     "answer": 1,
-     "explain": "Irreversible organ damage like permanent vision loss has a low threshold for regulatory action under the precautionary principle, even when the absolute risk increase is tiny.",
-     "segment": "FDA adds vision-loss warning to every GLP-1 drug"
-    },
-    {
-     "q": "What major methodological confounding factor was identified in the JAMA Ophthalmology study linking GLP-1s to NAION?",
-     "options": [
-      "Patients were randomized incorrectly between placebo and treatment arms.",
-      "The data was pulled from a specialized tertiary care neuro-ophthalmology clinic, introducing Berkson's bias.",
-      "The study failed to measure blood glucose levels across all participants.",
-      "The cohort consisted entirely of pediatric patients rather than adults."
-     ],
-     "answer": 1,
-     "explain": "The study pulled patients from a neuro-ophthalmology clinic at a tertiary center where comorbidity profiles were already heavily filtered, introducing selection bias.",
-     "segment": "FDA adds vision-loss warning to every GLP-1 drug"
-    }
-   ],
-   "transcript": "transcripts/ai_2026-11-12_evening_1254.txt"
   }
  ]
 }
