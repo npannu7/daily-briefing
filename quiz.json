@@ -10,16 +10,221 @@
   "lines": [
    {
     "said": "\"Too technical\" in 2 of your last 7 depth ratings",
-    "did": "Each story may use at most 4 specialist terms: this episode's scripts were rewritten from 31 to 24."
-   },
-   {
-    "said": "\"agentic loop is explained several times. i now know what it is so don't explain basics again\"",
-    "did": "Passed to the editor and the writers of every episode from now on."
+    "did": "Each story may use at most 4 specialist terms: this episode's scripts were rewritten from 17 to 8 and 7 to 3."
    }
   ],
   "last": "2026-11-19"
  },
  "episodes": [
+  {
+   "file": "ai_2026-11-20_morning_0600.mp3",
+   "title": "Morning - 20 Nov: Anthropic Joins the Public Stock Market",
+   "label": "Friday 20 Nov morning",
+   "date": "2026-11-20",
+   "edition": "morning",
+   "published": "2026-11-20T06:00:13.429420+05:30",
+   "duration": 1132,
+   "theme": "What happens when artificial intelligence enters institutions built on trust—from public stock markets to scientific peer review.",
+   "writer": "Gemini 4 Hydrogen",
+   "voices": "Fish Audio (free)",
+   "deep_dive": false,
+   "segments": [
+    {
+     "title": "Anthropic Joins the Public Stock Market",
+     "category": "thread"
+    },
+    {
+     "title": "Can Scientific Peer Review Survive Machine-Written Papers",
+     "category": "concept"
+    }
+   ],
+   "play": {
+    "v": 2,
+    "theme": "exchange",
+    "title": "The Safety Lab Goes Public",
+    "brief": "He stakes points on what holds up when mission meets Wall Street.",
+    "segments": [
+     {
+      "title": "Anthropic Joins the Public Stock Market",
+      "bet": {
+       "claim": "The $1.5 trillion valuation counts only shares trading today.",
+       "truth": false,
+       "why": "That figure includes every employee option and convertible note waiting at the gate; the float valuation was $1.3 trillion."
+      },
+      "rounds": [
+       {
+        "type": "flaw",
+        "q": "Three of these are true; one is a forum myth.",
+        "items": [
+         "IPO priced at eighty-three dollars a share.",
+         "Amazon and Google together hold nearly thirty percent.",
+         "Big tech shares carry zero votes unless sold on.",
+         "Regular buyers got shares with no voting rights."
+        ],
+        "flaw": 3,
+        "why": "The filing shows Class A common stock — standard voting shares. The non-vote shares belong to Amazon and Google."
+       },
+       {
+        "type": "match",
+        "q": "Match each term to its plain job.",
+        "pairs": [
+         [
+          "Fully diluted valuation",
+          "Value counting every possible future share"
+         ],
+         [
+          "Convertible note",
+          "Loan that turns into stock later at a fixed price"
+         ],
+         [
+          "Public benefit corporation",
+          "For-profit company legally bound to a public mission"
+         ],
+         [
+          "Greenshoe option",
+          "Banks' right to sell extra shares if demand stays hot"
+         ]
+        ]
+       }
+      ],
+      "takeaway": "A safety mission and non-voting shares don't shield an AI lab from its cloud landlord's gravity."
+     },
+     {
+      "title": "Can Scientific Peer Review Survive Machine-Written Papers",
+      "bet": null,
+      "rounds": [
+       {
+        "type": "match",
+        "q": "Match each term to its role in the segment",
+        "pairs": [
+         [
+          "Peer review",
+          "Volunteer quality filter"
+         ],
+         [
+          "Referee report",
+          "Review recommending accept reject revise"
+         ],
+         [
+          "Large language model",
+          "Software predicting next word fluently"
+         ],
+         [
+          "Text detector",
+          "Tool claiming to flag bot reports"
+         ]
+        ]
+       },
+       {
+        "type": "clues",
+        "q": "What tool do authors propose for screening submissions?",
+        "clues": [
+         "Authors claim it spots bot reviews but passes human text polished by software",
+         "Commenters doubt it works and warn of false accusations against non-native writers",
+         "It tries to catch counterfeit by checking the font not the engineering underneath"
+        ],
+        "options": [
+         "AI text detector",
+         "Plagiarism checker",
+         "Grammar correction tool",
+         "Peer review platform"
+        ],
+        "answer": 0,
+        "why": "Segment says authors propose detectors as standard screening but commenters question reliability and edge cases like non-native speakers."
+       }
+      ],
+      "takeaway": "Cheap machine text breaks peer review's time balance; fix incentives not just prose."
+     }
+    ],
+    "words": [
+     {
+      "term": "Fully diluted",
+      "means": "Counting every share that could exist, not just those trading now."
+     },
+     {
+      "term": "Convertible note",
+      "means": "Debt that converts to equity at a preset price later."
+     },
+     {
+      "term": "Public benefit corporation",
+      "means": "A for-profit legally required to balance profit and a public mission."
+     },
+     {
+      "term": "Greenshoe",
+      "means": "Underwriters' option to sell more shares if the IPO is oversubscribed."
+     },
+     {
+      "term": "Referee report",
+      "means": "Expert's written review recommending accept reject or revise"
+     },
+     {
+      "term": "Large language model",
+      "means": "Software trained to predict next word producing fluent prose"
+     },
+     {
+      "term": "Deposit system",
+      "means": "Refundable fee on submission to deter low-effort spam"
+     }
+    ],
+    "chips": [
+     "More on the cloud leverage",
+     "Skip the valuation chaos",
+     "Deeper on governance traps",
+     "Love the bridge analogy"
+    ]
+   },
+   "quiz": [
+    {
+     "q": "In the discussion of Anthropic's valuation, Laura uses a bridge analogy: trucks currently crossing versus trucks waiting at the gate with a permit. What do the 'trucks on the bridge' represent?",
+     "options": [
+      "All employee stock options and special agreements waiting to convert",
+      "Only the shares actively trading on the public market",
+      "The total number of shares authorized in the corporate charter",
+      "The shares held by Amazon and Google that carry no voting rights"
+     ],
+     "answer": 1,
+     "explain": "Laura says the standard stock value comes from multiplying actively trading shares by the share price—like counting trucks already on the bridge—while permitted trucks at the gate represent all other shares and options.",
+     "segment": "Anthropic Joins the Public Stock Market"
+    },
+    {
+     "q": "According to TechCrunch as discussed, why can Amazon and Google together own nearly 30% of Anthropic without gaining formal control over shareholder votes?",
+     "options": [
+      "Their shares are non-voting until they sell them to another party",
+      "Anthropic's board is legally required to ignore votes from cloud providers",
+      "They only own preferred stock that converts to common after ten years",
+      "Their ownership is capped at 15% each under Nasdaq listing rules"
+     ],
+     "answer": 0,
+     "explain": "The script notes that shares from Amazon and Google's conversions and side deals carry no voting rights; they only become regular voting stock if sold to someone else.",
+     "segment": "Anthropic Joins the Public Stock Market"
+    },
+    {
+     "q": "Why do large language models create a bottleneck in scientific peer review, according to the discussion?",
+     "options": [
+      "Journals are required by law to use AI detectors before human review",
+      "They automatically reject papers that contain statistical errors",
+      "They can generate polished papers in seconds, while expert verification of underlying science still takes hours",
+      "They charge reviewers a fee to access submitted manuscripts"
+     ],
+     "answer": 2,
+     "explain": "Commenters point out the asymmetry: generating fluent academic text is nearly instant, but an expert must spend hours reading methods and data to verify whether the logic is real or merely plausible.",
+     "segment": "Can Scientific Peer Review Survive Machine-Written Papers"
+    },
+    {
+     "q": "The discussion suggests that relying on AI text detectors to police peer review is flawed primarily because:",
+     "options": [
+      "Detectors cannot reliably distinguish human text polished by AI from fully machine-generated reasoning, and false accusations could harm authors",
+      "Journals refuse to pay for detector licenses",
+      "Detectors only work on papers written before 2020",
+      "Large language models refuse to output text that detectors can flag"
+     ],
+     "answer": 0,
+     "explain": "The script raises skepticism about detector reliability, the risk of falsely accusing humans, and the gray area of non-native speakers using AI only to polish prose rather than invent reasoning.",
+     "segment": "Can Scientific Peer Review Survive Machine-Written Papers"
+    }
+   ],
+   "transcript": "transcripts/ai_2026-11-20_morning_0600.txt"
+  },
   {
    "file": "ai_2026-11-19_evening_1500.mp3",
    "title": "Evening - 19 Nov: The Doritos bag that looked like a gun",

@@ -8,9 +8,25 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Thu, 19 Nov 2026 10:25:31 GMT</lastBuildDate>
+<lastBuildDate>Fri, 20 Nov 2026 01:23:27 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Morning - 20 Nov: Anthropic Joins the Public Stock Market</title>
+<description>Morning edition - Friday, 20 November 2026
+What happens when artificial intelligence enters institutions built on trust—from public stock markets to scientific peer review.
+
+00:33  Anthropic Joins the Public Stock Market
+09:22  Can Scientific Peer Review Survive Machine-Written Papers
+
+Play "The Safety Lab Goes Public", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-20_morning_0600.mp3
+Written by: Gemini 4 Hydrogen · Voices: Fish Audio (free) · Discussions: Hacker News (no Reddit data: Reddit, collected hourly (0 threads); no snapshot from the office PC yet)</description>
+<pubDate>Fri, 20 Nov 2026 06:00:13 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-11-20_morning_0600.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-20_morning_0600.mp3" length="9057332" type="audio/mpeg"/>
+<itunes:duration>1132</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Evening - 19 Nov: The Doritos bag that looked like a gun</title>
 <description>Evening edition - Thursday, 19 November 2026
