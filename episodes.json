@@ -1,17 +1,6 @@
 {
   "episodes": [
     {
-      "file": "ai_2026-11-13_evening_1226.mp3",
-      "date": "2026-11-13",
-      "edition": "evening",
-      "title": "Evening - 13 Nov: Drug ads change what AI chatbots recommend",
-      "published": "2026-11-13T12:26:23.122959+05:30",
-      "pubDate": "Fri, 13 Nov 2026 12:26:23 +0530",
-      "size": 7940477,
-      "duration": 992,
-      "description": "Evening edition - Friday, 13 November 2026\nAI influence on prescribing and a blood test for pre-cancerous ovarian disease\n\n00:33  Drug ads change what AI chatbots recommend\n10:05  A blood test that flags ovarian cancer before a tumour forms\n\nPuzzles: Today's puzzle, The Test That Cries Wolf - puzzles, quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html\nWritten by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (175 threads)"
-    },
-    {
       "file": "ai_2026-11-14_morning_0600.mp3",
       "date": "2026-11-14",
       "edition": "morning",
@@ -153,6 +142,17 @@
       "size": 9057332,
       "duration": 1132,
       "description": "Morning edition - Friday, 20 November 2026\nWhat happens when artificial intelligence enters institutions built on trust—from public stock markets to scientific peer review.\n\n00:33  Anthropic Joins the Public Stock Market\n09:22  Can Scientific Peer Review Survive Machine-Written Papers\n\nPlay \"The Safety Lab Goes Public\", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-20_morning_0600.mp3\nWritten by: Gemini 4 Hydrogen · Voices: Fish Audio (free) · Discussions: Hacker News (no Reddit data: Reddit, collected hourly (0 threads); no snapshot from the office PC yet)"
+    },
+    {
+      "file": "ai_2026-11-20_evening_1500.mp3",
+      "date": "2026-11-20",
+      "edition": "evening",
+      "title": "Evening - 20 Nov: A federal court says AI-generated output cannot establish probable cause",
+      "published": "2026-11-20T15:00:11.448310+05:30",
+      "pubDate": "Fri, 20 Nov 2026 15:00:11 +0530",
+      "size": 7629437,
+      "duration": 953,
+      "description": "Evening edition - Friday, 20 November 2026\nWhen AI meets law and labor: a court ruling on AI-generated evidence, and the debate over whether AI turns jobs into gig work\n\n00:29  A federal court says AI-generated output cannot establish probable cause\n07:33  The argument that AI is turning skilled jobs into low-paid piecework\n12:35  Pete Warden on local AI, open models, voice interfaces, the future of hardware\n\nPlay \"The AI Warrant That Wasn't\", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-20_evening_1500.mp3\nWritten by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Hacker News (no Reddit data: Reddit, collected hourly (0 threads); no snapshot from the office PC yet)"
     }
   ],
   "memory": [
@@ -2122,6 +2122,32 @@
         "ai-peer-review",
         "anthropic-company-strategy"
       ]
+    },
+    {
+      "label": "Friday 20 Nov evening",
+      "date": "2026-11-20",
+      "edition": "evening",
+      "published": "2026-11-20T15:00:11.448310+05:30",
+      "file": "ai_2026-11-20_evening_1500.mp3",
+      "writer": "nemotron-3-ultra-550b-a55b (free)",
+      "voices": "Fish Audio (free)",
+      "summary": "A federal appeals court ruled that an AI system’s alert alone cannot establish probable cause for a search, distinguishing machine output from human expert testimony. An essay and Hacker News discussion argue that AI is fragmenting skilled jobs into low‑paid micro‑tasks, while commentators and labor research offer competing views on the trend. Pete Warden shares his perspective on running open models locally, voice interfaces, and the future of AI hardware.",
+      "threads": [
+        "Court ruling on AI-generated probable cause",
+        "AI-driven job fragmentation debate",
+        "Pete Warden’s local AI and hardware outlook"
+      ],
+      "segments": [
+        "A federal court says AI-generated output cannot establish probable cause",
+        "The argument that AI is turning skilled jobs into low-paid piecework",
+        "Pete Warden on local AI, open models, voice interfaces, the future of hardware"
+      ],
+      "deep_topic": "",
+      "topics": [
+        "ai-and-jobs",
+        "ai-privacy-and-surveillance",
+        "local-llms"
+      ]
     }
   ],
   "seen": [
@@ -2984,6 +3010,30 @@
     {
       "date": "2026-11-20",
       "link": "https://www.sas.upenn.edu/~jesusfv/Peer_Review.pdf"
+    },
+    {
+      "date": "2026-11-20",
+      "link": "https://news.ycombinator.com/item?id=50561508"
+    },
+    {
+      "date": "2026-11-20",
+      "link": "https://thedataexchange.media/pete-warden-moonshine/"
+    },
+    {
+      "date": "2026-11-20",
+      "link": "https://news.ycombinator.com/item?id=50567735"
+    },
+    {
+      "date": "2026-11-20",
+      "link": "https://www.techdirt.com/2026/11/19/court-tells-cops-that-the-4th-amendment-doesnt-cover-ai-generated-probable-cause/"
+    },
+    {
+      "date": "2026-11-20",
+      "link": "https://news.ycombinator.com/item?id=50562500"
+    },
+    {
+      "date": "2026-11-20",
+      "link": "https://restofworld.org/2026/ai-jobs-skills-gig-work/"
     }
   ],
   "feedback": [
@@ -4048,23 +4098,144 @@
     "2026-11-20T01:21:41.523247+00:00",
     "2026-11-20T01:21:45.641541+00:00",
     "2026-11-20T01:22:53.753815+00:00",
-    "2026-11-20T01:23:26.298318+00:00"
+    "2026-11-20T01:23:26.298318+00:00",
+    "2026-11-20T09:34:18.004981+00:00",
+    "2026-11-20T09:34:21.004174+00:00",
+    "2026-11-20T09:34:24.203578+00:00",
+    "2026-11-20T09:34:27.416764+00:00",
+    "2026-11-20T09:34:30.607582+00:00",
+    "2026-11-20T09:34:33.818439+00:00",
+    "2026-11-20T09:34:37.028413+00:00",
+    "2026-11-20T09:34:40.212151+00:00",
+    "2026-11-20T09:34:43.411294+00:00",
+    "2026-11-20T09:34:46.607268+00:00",
+    "2026-11-20T09:34:49.795987+00:00",
+    "2026-11-20T09:34:53.043219+00:00",
+    "2026-11-20T09:34:56.202434+00:00",
+    "2026-11-20T09:34:59.412395+00:00",
+    "2026-11-20T09:35:02.609433+00:00",
+    "2026-11-20T09:36:03.755041+00:00",
+    "2026-11-20T09:36:33.744128+00:00",
+    "2026-11-20T09:37:22.875982+00:00",
+    "2026-11-20T09:38:55.876308+00:00",
+    "2026-11-20T09:38:56.322304+00:00",
+    "2026-11-20T09:38:56.471997+00:00",
+    "2026-11-20T09:38:56.615516+00:00",
+    "2026-11-20T09:40:14.612099+00:00",
+    "2026-11-20T09:42:34.025494+00:00",
+    "2026-11-20T09:43:24.614933+00:00",
+    "2026-11-20T09:45:08.046226+00:00",
+    "2026-11-20T09:47:01.374682+00:00",
+    "2026-11-20T09:48:19.196725+00:00",
+    "2026-11-20T09:49:13.416598+00:00",
+    "2026-11-20T09:50:38.298640+00:00",
+    "2026-11-20T09:52:01.106897+00:00",
+    "2026-11-20T09:54:34.049136+00:00",
+    "2026-11-20T09:57:15.241293+00:00",
+    "2026-11-20T09:58:45.851820+00:00",
+    "2026-11-20T10:00:06.310144+00:00",
+    "2026-11-20T10:02:12.704018+00:00",
+    "2026-11-20T10:03:37.033203+00:00",
+    "2026-11-20T10:04:29.005903+00:00",
+    "2026-11-20T10:06:09.768651+00:00",
+    "2026-11-20T10:08:21.243202+00:00",
+    "2026-11-20T10:09:45.007583+00:00",
+    "2026-11-20T10:09:45.332467+00:00",
+    "2026-11-20T10:09:48.481358+00:00",
+    "2026-11-20T10:09:51.768847+00:00",
+    "2026-11-20T10:09:54.794166+00:00",
+    "2026-11-20T10:11:01.016427+00:00",
+    "2026-11-20T10:12:50.918628+00:00",
+    "2026-11-20T10:14:20.855107+00:00",
+    "2026-11-20T10:15:39.252564+00:00",
+    "2026-11-20T10:16:30.363638+00:00",
+    "2026-11-20T10:16:32.949184+00:00",
+    "2026-11-20T10:16:37.158989+00:00",
+    "2026-11-20T10:16:40.718586+00:00",
+    "2026-11-20T10:16:44.829719+00:00",
+    "2026-11-20T10:16:49.606943+00:00",
+    "2026-11-20T10:16:54.370814+00:00",
+    "2026-11-20T10:16:57.755748+00:00",
+    "2026-11-20T10:17:03.524360+00:00",
+    "2026-11-20T10:17:04.838955+00:00",
+    "2026-11-20T10:17:09.039656+00:00",
+    "2026-11-20T10:17:10.913324+00:00",
+    "2026-11-20T10:17:11.765833+00:00",
+    "2026-11-20T10:17:19.634630+00:00",
+    "2026-11-20T10:17:22.384452+00:00",
+    "2026-11-20T10:17:24.284491+00:00",
+    "2026-11-20T10:17:25.069681+00:00",
+    "2026-11-20T10:17:29.048499+00:00",
+    "2026-11-20T10:17:35.750057+00:00",
+    "2026-11-20T10:17:44.110733+00:00",
+    "2026-11-20T10:17:47.259747+00:00",
+    "2026-11-20T10:17:50.460853+00:00",
+    "2026-11-20T10:17:52.536487+00:00",
+    "2026-11-20T10:17:54.785131+00:00",
+    "2026-11-20T10:17:57.145033+00:00",
+    "2026-11-20T10:18:02.047762+00:00",
+    "2026-11-20T10:18:05.422980+00:00",
+    "2026-11-20T10:18:08.029430+00:00",
+    "2026-11-20T10:18:09.047091+00:00",
+    "2026-11-20T10:18:14.229221+00:00",
+    "2026-11-20T10:18:18.524190+00:00",
+    "2026-11-20T10:18:19.340831+00:00",
+    "2026-11-20T10:18:20.967740+00:00",
+    "2026-11-20T10:18:28.214652+00:00",
+    "2026-11-20T10:18:29.288494+00:00",
+    "2026-11-20T10:18:29.382621+00:00",
+    "2026-11-20T10:18:35.659461+00:00",
+    "2026-11-20T10:18:38.015435+00:00",
+    "2026-11-20T10:18:41.309030+00:00",
+    "2026-11-20T10:18:45.507271+00:00",
+    "2026-11-20T10:18:47.275147+00:00",
+    "2026-11-20T10:18:53.398509+00:00",
+    "2026-11-20T10:18:57.206434+00:00",
+    "2026-11-20T10:19:08.859691+00:00",
+    "2026-11-20T10:19:09.629842+00:00",
+    "2026-11-20T10:19:14.931694+00:00",
+    "2026-11-20T10:19:16.978598+00:00",
+    "2026-11-20T10:19:20.572554+00:00",
+    "2026-11-20T10:19:24.558491+00:00",
+    "2026-11-20T10:19:26.634778+00:00",
+    "2026-11-20T10:19:30.864881+00:00",
+    "2026-11-20T10:19:32.998228+00:00",
+    "2026-11-20T10:19:38.624860+00:00",
+    "2026-11-20T10:19:40.114460+00:00",
+    "2026-11-20T10:19:43.099749+00:00",
+    "2026-11-20T10:19:46.832714+00:00",
+    "2026-11-20T10:19:49.562602+00:00",
+    "2026-11-20T10:19:50.429088+00:00",
+    "2026-11-20T10:19:55.312604+00:00",
+    "2026-11-20T10:20:00.437536+00:00",
+    "2026-11-20T10:20:06.007058+00:00",
+    "2026-11-20T10:20:06.432511+00:00",
+    "2026-11-20T10:20:12.269801+00:00",
+    "2026-11-20T10:20:12.526452+00:00",
+    "2026-11-20T10:20:15.796344+00:00",
+    "2026-11-20T10:20:19.834634+00:00",
+    "2026-11-20T10:20:23.439597+00:00",
+    "2026-11-20T10:20:27.703781+00:00",
+    "2026-11-20T10:20:30.237448+00:00",
+    "2026-11-20T10:20:34.451120+00:00",
+    "2026-11-20T10:20:37.747949+00:00",
+    "2026-11-20T10:20:39.239702+00:00",
+    "2026-11-20T10:20:40.073201+00:00",
+    "2026-11-20T10:20:46.692022+00:00",
+    "2026-11-20T10:20:49.088689+00:00",
+    "2026-11-20T10:20:51.785252+00:00",
+    "2026-11-20T10:20:56.831027+00:00",
+    "2026-11-20T10:20:58.173622+00:00",
+    "2026-11-20T10:21:02.592239+00:00",
+    "2026-11-20T10:21:04.088107+00:00",
+    "2026-11-20T10:21:05.375074+00:00",
+    "2026-11-20T10:21:08.826013+00:00",
+    "2026-11-20T10:21:10.906886+00:00",
+    "2026-11-20T10:22:16.173851+00:00",
+    "2026-11-20T10:23:14.720845+00:00"
   ],
   "free_day_out": "",
   "gemini_log": [
-    "2026-11-18T01:33:26.180458-08:00",
-    "2026-11-18T01:35:19.790173-08:00",
-    "2026-11-18T01:44:25.144031-08:00",
-    "2026-11-18T01:47:49.848458-08:00",
-    "2026-11-18T01:55:49.993170-08:00",
-    "2026-11-18T02:05:22.967618-08:00",
-    "2026-11-18T02:09:15.907598-08:00",
-    "2026-11-18T16:37:16.063044-08:00",
-    "2026-11-18T16:39:07.545338-08:00",
-    "2026-11-18T16:45:43.450209-08:00",
-    "2026-11-18T16:49:52.575519-08:00",
-    "2026-11-18T16:57:54.420106-08:00",
-    "2026-11-18T17:05:09.105541-08:00",
     "2026-11-19T01:51:33.900295-08:00",
     "2026-11-19T16:36:38.132971-08:00",
     "2026-11-19T16:39:43.735621-08:00",
@@ -4075,11 +4246,6 @@
   "gemini_day_out": "",
   "pace_adjust": 0.0,
   "lesson_log": [
-    {
-      "date": "2026-11-08",
-      "title": "The Weight Squeeze",
-      "template": ""
-    },
     {
       "date": "2026-11-08",
       "title": "The Memory Choke Point",
@@ -4317,6 +4483,20 @@
       ],
       "theme": "exchange",
       "date": "2026-11-20"
+    },
+    {
+      "title": "The AI Warrant That Wasn't",
+      "template": "",
+      "formats": [
+        "match",
+        "sequence",
+        "estimate",
+        "duel",
+        "flaw",
+        "quickfire"
+      ],
+      "theme": "exchange",
+      "date": "2026-11-20"
     }
   ],
   "model_health": {
@@ -4390,15 +4570,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 104,
+      "mentions": 105,
       "refs": [
-        {
-          "date": "2026-11-10",
-          "title": "Claude released Fable 5.2. Destroys Gemini 4 Carbon in almost every benchmark",
-          "thread": "https://www.reddit.com/r/GeminiAI/comments/1xs0sce/claude_released_fable_52_destroys_gemini_4_carbon/",
-          "link": "https://www.reddit.com/gallery/1xs0sce",
-          "comment": ""
-        },
         {
           "date": "2026-11-10",
           "title": "Has Anthropic Nerfed Opus 5.5? LiveNerf Day 47 Update",
@@ -4482,6 +4655,13 @@
           "thread": "https://news.ycombinator.com/item?id=50541619",
           "link": "http://xinmingtu.cn/blog/2026/claude-opus-5-5-protein-sequences/",
           "comment": "Claude just blocks from anything in this field. Can't even work with my own DNA without triggering opus 5.5 50% of the time"
+        },
+        {
+          "date": "2026-11-20",
+          "title": "Claude solves two open problems in the physics of black holes",
+          "thread": "https://news.ycombinator.com/item?id=50563148",
+          "link": "https://www.anthropic.com/research/claude-black-hole-physics",
+          "comment": "It tickled me that this was a bullet point in the Fable 5.2 announcement. I like that we're now at a point where \"solved two open problems in the physics of black holes\" is the kind of thing that shows up in a frontier model launch."
         },
         {
           "date": "2026-11-20",
@@ -4662,22 +4842,8 @@
         "codex",
         "singularity"
       ],
-      "mentions": 73,
+      "mentions": 75,
       "refs": [
-        {
-          "date": "2026-11-13",
-          "title": "Gemini 4 Hydrogen just released!",
-          "thread": "https://www.reddit.com/r/GeminiAI/comments/1xuii88/gemini_4_hydrogen_just_released/",
-          "link": "",
-          "comment": ""
-        },
-        {
-          "date": "2026-11-13",
-          "title": "Introducing Gemini 4 Hydrogen",
-          "thread": "https://www.reddit.com/r/singularity/comments/1xujw0u/introducing_gemini_4_hydrogen/",
-          "link": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/",
-          "comment": ""
-        },
         {
           "date": "2026-11-15",
           "title": "Gemini 4 Krypton is being tested in Arena arena",
@@ -4761,6 +4927,20 @@
           "thread": "https://news.ycombinator.com/item?id=50554374",
           "link": "https://micjm.com/blog/gemini-4-neon-looks-like-a-top-model/",
           "comment": "Looks like a good bunch of speculation in there but no bad news to be found. Just as good but cheaper? Sign me up. For this model, I mean. And not the Anthropic IPO."
+        },
+        {
+          "date": "2026-11-20",
+          "title": "Gemini 4 Neon is the new #1 on the Models Engineering Index",
+          "thread": "https://news.ycombinator.com/item?id=50568130",
+          "link": "https://git-aarvin.github.io/mei/",
+          "comment": "When and why should I trust this index over others?"
+        },
+        {
+          "date": "2026-11-20",
+          "title": "Gemini 4 Neon looks like an Opus 5.5 competitor",
+          "thread": "https://news.ycombinator.com/item?id=50554374",
+          "link": "https://micjm.com/blog/gemini-4-neon-looks-like-a-top-model/",
+          "comment": "Looks like a good bunch of speculation in there but no bad news to be found. Just as good but cheaper? Sign me up. For this model, I mean. And not the Anthropic IPO."
         }
       ],
       "deep_dive": "",
@@ -4806,15 +4986,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 38,
+      "mentions": 39,
       "refs": [
-        {
-          "date": "2026-10-27",
-          "title": "Abliterated DeepSeek V4.1 Flash is a game changer for cybersecurity work",
-          "thread": "https://www.reddit.com/r/DeepSeek/comments/1xff0vr/abliterated_deepseek_v41_flash_is_a_game_changer/",
-          "link": "",
-          "comment": "The deepseek provider one..doesnt really refuse."
-        },
         {
           "date": "2026-10-27",
           "title": "Hot take - With modern AI vulnerabilities I think we're going to see most hospital systems go intranet only for any PC with EMR access",
@@ -4905,6 +5078,13 @@
           "thread": "https://news.ycombinator.com/item?id=50553225",
           "link": "https://www.slowchronicle.com/posts/llm-assisted-reverse-engineering",
           "comment": "I have zero experience reverse engineering and very little with software development. Most of my work has been in DevOps/SRE space with an emphasis on infrastructure. I am surrounded by code, but other than terraform, and the occasional python script, I don't really write much of it. Not too long ag"
+        },
+        {
+          "date": "2026-11-20",
+          "title": "LLM assisted reverse engineering",
+          "thread": "https://news.ycombinator.com/item?id=50553225",
+          "link": "https://www.slowchronicle.com/posts/llm-assisted-reverse-engineering",
+          "comment": "I have zero experience reverse engineering and very little with software development. Most of my work has been in DevOps/SRE space with an emphasis on infrastructure. I am surrounded by code, but other than terraform, and the occasional python script, I don't really write much of it. Not too long ag"
         }
       ],
       "deep_dive": "",
@@ -4944,29 +5124,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 37,
+      "mentions": 40,
       "refs": [
-        {
-          "date": "2026-11-04",
-          "title": "The AI Layoff Experiment Is Backfiring – And Companies Are Quietly Rehiring Humans",
-          "thread": "https://www.reddit.com/r/technology/comments/1xmnf96/the_ai_layoff_experiment_is_backfiring_and/",
-          "link": "https://www.gadgetreview.com/the-ai-layoff-experiment-is-backfiring-and-companies-are-quietly-rehiring-humans",
-          "comment": "\"Quietly\". LOL. Such an AI word."
-        },
-        {
-          "date": "2026-11-04",
-          "title": "Terrible Job Market",
-          "thread": "https://www.reddit.com/r/biotech/comments/1xn88s1/terrible_job_market/",
-          "link": "",
-          "comment": "Brother, its not just new graduates who are desperate for roles."
-        },
-        {
-          "date": "2026-11-04",
-          "title": "Claude was laid off",
-          "thread": "https://www.reddit.com/r/LocalLLM/comments/1xmzwfo/claude_was_laid_off/",
-          "link": "",
-          "comment": "So, AI take people's jobs, and now local AI take AI's jobs. That's some beautiful irony."
-        },
         {
           "date": "2026-11-08",
           "title": "China making it illegal to fire employees for Al cost cuts.",
@@ -5036,6 +5195,27 @@
           "thread": "https://news.ycombinator.com/item?id=50562500",
           "link": "https://restofworld.org/2026/ai-jobs-skills-gig-work/",
           "comment": "\"Evolving\" labor from skilled individuals into fungible operators of AI is a huge win for management that doesn't take the form of unemployment."
+        },
+        {
+          "date": "2026-11-20",
+          "title": "AI will not make you rich (2025)",
+          "thread": "https://news.ycombinator.com/item?id=50555093",
+          "link": "https://colossus.com/article/ai-will-not-make-you-rich/",
+          "comment": "Ironic if Anthropic, which is a public benefit corp, ends up being the firm that cashes in the most on AI."
+        },
+        {
+          "date": "2026-11-20",
+          "title": "AI isn't replacing your job. It's turning it into low-paid gig work",
+          "thread": "https://news.ycombinator.com/item?id=50562500",
+          "link": "https://restofworld.org/2026/ai-jobs-skills-gig-work/",
+          "comment": "\"Evolving\" labor from skilled individuals into fungible operators of AI is a huge win for management that doesn't take the form of unemployment."
+        },
+        {
+          "date": "2026-11-20",
+          "title": "DeepMind Employees Are Unionising",
+          "thread": "https://news.ycombinator.com/item?id=50557885",
+          "link": "https://www.gdmunion.co.uk",
+          "comment": "This world is so bizarre. I couldn't think of a group of workers more privileged in terms of pay and perks than DeepMind employees yet this is where i'm reading about worker unions as the term shifts to be about ethical use of company products."
         },
         {
           "date": "2026-11-20",
@@ -5536,15 +5716,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 94,
+      "mentions": 95,
       "refs": [
-        {
-          "date": "2026-11-16",
-          "title": "Claude wrote and trained a language model for DOS that fits on a floppy disk",
-          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xwpenj/claude_wrote_and_trained_a_language_model_for_dos/",
-          "link": "",
-          "comment": "This is the computer courage the cowardly dog used"
-        },
         {
           "date": "2026-11-16",
           "title": "Claude Fable 5.2 wrote a working Transformer AI, while Opus 5.5 generated its training data. The result: a 367,000-parameter language model that fits on a floppy disk and runs on a 1990s Pentium PC with just 540 KB of RAM.",
@@ -5635,6 +5808,13 @@
           "thread": "https://news.ycombinator.com/item?id=50561508",
           "link": "https://thedataexchange.media/pete-warden-moonshine/",
           "comment": "If Nvidia didnt abandon consumer GPUs we all could be running better models locally by now. The moat is companies like Nvidia not releasing better consumer hardware so they can partner with bigger companies so they can sell us overpriced hardware. They release a new RTX series every two years, last "
+        },
+        {
+          "date": "2026-11-20",
+          "title": "Pete Warden on local AI, open models, voice interfaces, the future of hardware",
+          "thread": "https://news.ycombinator.com/item?id=50561508",
+          "link": "https://thedataexchange.media/pete-warden-moonshine/",
+          "comment": "If Nvidia didnt abandon consumer GPUs we all could be running better models locally by now. The moat is companies like Nvidia not releasing better consumer hardware so they can partner with bigger companies so they can sell us overpriced hardware. They release a new RTX series every two years, last "
         }
       ],
       "deep_dive": "2026-11-01",
@@ -5656,7 +5836,8 @@
         "2026-11-02",
         "2026-11-03",
         "2026-11-05",
-        "2026-11-16"
+        "2026-11-16",
+        "2026-11-20"
       ],
       "subs": [
         "ArtificialInteligence",
@@ -5665,6 +5846,7 @@
         "DeepSeek",
         "EverythingScience",
         "GeminiAI",
+        "HackerNews",
         "LocalLLaMA",
         "OpenAI",
         "Physics",
@@ -5675,15 +5857,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 25,
+      "mentions": 26,
       "refs": [
-        {
-          "date": "2026-10-14",
-          "title": "Character.Ai has filed for bankruptcy guys",
-          "thread": "https://www.reddit.com/r/antiai/comments/1x4ugju/characterai_has_filed_for_bankruptcy_guys/",
-          "link": "",
-          "comment": "What even is Character.ai ? One of those haven for degenerate gooner chatbots ? How are pro-ai gonna hold without their waifus ? Psychiatrists are going to be overworked !"
-        },
         {
           "date": "2026-10-14",
           "title": "Logan 4 will be released today",
@@ -5774,10 +5949,17 @@
           "thread": "https://www.reddit.com/r/ArtificialInteligence/comments/1xwuvwz/whistleblower_jacob_coxon_pledged_to_donate_100/",
           "link": "",
           "comment": "lol this an amber heard type “pledge”. Ain’t no fuckin way that kid gives up 30 mil. That’s generational wealth if managed properly."
+        },
+        {
+          "date": "2026-11-20",
+          "title": "OpenAI still has a WebRTC Problem",
+          "thread": "https://news.ycombinator.com/item?id=50560461",
+          "link": "https://moq.dev/blog/webrtc-is-still-the-problem/",
+          "comment": "If I were \"Sean-Der,\" I would not reply. The \"being wrong on the Internet causes smart people to write smarter stuff that's interesting to read\" discourse is over. You have to own how much of a waste of time it is."
         }
       ],
       "deep_dive": "",
-      "last_seen": "2026-11-16",
+      "last_seen": "2026-11-20",
       "subject": "ai"
     },
     "ai-pricing-and-costs": {
@@ -6078,22 +6260,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 30,
+      "mentions": 32,
       "refs": [
-        {
-          "date": "2026-11-10",
-          "title": "AI will soon master biology, unleashing new safety risks, Tencent AI chief warns | Frontier AI systems could soon be capable of accelerating drug discovery – but also creating new bioweapons and starting the next pandemic",
-          "thread": "https://www.reddit.com/r/EverythingScience/comments/1xrnm1s/ai_will_soon_master_biology_unleashing_new_safety/",
-          "link": "https://www.scmp.com/tech/big-tech/article/3373697/ai-will-soon-master-biology-unleashing-new-safety-risks-tencent-ai-chief-warns",
-          "comment": ""
-        },
-        {
-          "date": "2026-11-12",
-          "title": "Journalists have discovered a massive astroturfing operation. An army of 400 sockpuppet accounts defending Jensen Huang, attacking AI safety, and fighting against calls to slow down AI. An Israeli influence operation appears to be behind it.",
-          "thread": "https://www.reddit.com/r/ArtificialInteligence/comments/1xtouad/journalists_have_discovered_a_massive/",
-          "link": "",
-          "comment": ""
-        },
         {
           "date": "2026-11-16",
           "title": "In a study of 48 medical students and physicians, researchers deliberately degraded an AI diagnostic system’s accuracy, only 12.5% noticed. When participants diagnosed first and then compared with the AI’s recommendations, their confidence in their diagnoses fell faster than their trust in the AI",
@@ -6177,6 +6345,20 @@
           "thread": "https://news.ycombinator.com/item?id=50564366",
           "link": "https://www.youtube.com/watch?v=lwfewYL7X0o",
           "comment": "Could they if they wanted to?"
+        },
+        {
+          "date": "2026-11-20",
+          "title": "Should governments slow frontier AI? Jacob Coxon and Robin Hanson debate [video]",
+          "thread": "https://news.ycombinator.com/item?id=50564366",
+          "link": "https://www.youtube.com/watch?v=lwfewYL7X0o",
+          "comment": "Could they if they wanted to?"
+        },
+        {
+          "date": "2026-11-20",
+          "title": "The AI Superintelligence Debate Has Serious Flaws",
+          "thread": "https://news.ycombinator.com/item?id=50559140",
+          "link": "https://spectrum.ieee.org/ai-superintelligence-debate",
+          "comment": "I don’t necessarily agree with the labs’ policies and predictions on RSI but it’s worth noting that the points raised here are something they do have responses to. On the idea that training better models requires more data, I think the current thought here is that we are not getting all the “meat of"
         }
       ],
       "deep_dive": "2026-11-08",
@@ -6681,12 +6863,14 @@
         "2026-11-05",
         "2026-11-07",
         "2026-11-13",
-        "2026-11-16"
+        "2026-11-16",
+        "2026-11-20"
       ],
       "subs": [
         "ArtificialInteligence",
         "ChatGPT",
         "ClaudeCode",
+        "HackerNews",
         "LocalLLM",
         "LocalLLaMA",
         "OpenAI",
@@ -6695,15 +6879,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 26,
+      "mentions": 27,
       "refs": [
-        {
-          "date": "2026-10-26",
-          "title": "ChatGPT Is Building Detailed Psychological Profiles of Its Users",
-          "thread": "https://www.reddit.com/r/OpenAI/comments/1xfapw3/chatgpt_is_building_detailed_psychological/",
-          "link": "https://futurism.com/artificial-intelligence/chatgpt-building-profiles-users",
-          "comment": "So what’s the news here? It’s obvious that these chatbots collect every last detail about the user 😐"
-        },
         {
           "date": "2026-10-26",
           "title": "LG Smart TVs Caught Mapping Your Network, Logging Audio With Screen Off",
@@ -6794,11 +6971,18 @@
           "thread": "https://www.reddit.com/r/technology/comments/1xwm1mm/a_remote_employee_refused_160_webcam_photos_a_day/",
           "link": "https://www.fastcompany.com/91635146/a-remote-employee-refused-160-webcam-photos-a-day-her-employer-fired-her",
           "comment": "We need to find ways to refuse to do business with these companies"
+        },
+        {
+          "date": "2026-11-20",
+          "title": "Court: 4th Amendment Disallows Use Of AI-Generated 'Probable Cause'",
+          "thread": "https://news.ycombinator.com/item?id=50567735",
+          "link": "https://www.techdirt.com/2026/11/19/court-tells-cops-that-the-4th-amendment-doesnt-cover-ai-generated-probable-cause/",
+          "comment": "Good! Note that this isn't just a case of a suspect trying to deny a warrant. This is the suspect, after the case was dismissed, coming after the cop financially for the completely bogus arrest warrant. And the court ruling said that \"no reasonable officer\" could rely on AI as the sole determinant t"
         }
       ],
       "deep_dive": "",
       "subject": "ai",
-      "last_seen": "2026-11-16"
+      "last_seen": "2026-11-20"
     },
     "ai-company-updates": {
       "name": "AI Company Updates",
@@ -7536,7 +7720,7 @@
         "HackerNews",
         "antiai"
       ],
-      "mentions": 3,
+      "mentions": 4,
       "refs": [
         {
           "date": "2026-11-17",
@@ -7551,6 +7735,13 @@
           "thread": "https://news.ycombinator.com/item?id=50554641",
           "link": "https://www.lawyerscommittee.org/lawyers-committee-files-lawsuit-on-behalf-of-black-students-detained-and-searched-due-to-ai-alert-falsely-identifying-a-bag-of-chips-as-a-firearm/",
           "comment": "Not sure what the race of the Students has to do with the story, or is the implication that AI would not have identified the bag of Doritos as a weapon on white Students?"
+        },
+        {
+          "date": "2026-11-20",
+          "title": "Fuck Your AI Safeguards",
+          "thread": "https://news.ycombinator.com/item?id=50562262",
+          "link": "https://ounapuu.ee/posts/2026/11/19/unsafeguards/",
+          "comment": "i totally feel you, I get annoyed by this as well - even with daybreak (blue) you can do shit. I want to fix my environment but can't because of \"safeguards\" thanks for letting the world hack everything around me but not letting me work on fixes or understanding the core issues."
         },
         {
           "date": "2026-11-20",
