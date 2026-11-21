@@ -8,9 +8,25 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Fri, 20 Nov 2026 10:23:16 GMT</lastBuildDate>
+<lastBuildDate>Sat, 21 Nov 2026 01:11:36 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Morning - 21 Nov: Google workers push back on AI in classrooms</title>
+<description>Morning edition - Saturday, 21 November 2026
+Workplace resistance to AI in schools, and a regulatory spotlight on the leading AI chipmaker
+
+00:30  Google workers push back on AI in classrooms
+09:45  SEC investigates Nvidia's accounting
+
+Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-21_morning_0600.mp3
+Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Hacker News (no Reddit data: Reddit, collected hourly (0 threads); no snapshot from the office PC yet)</description>
+<pubDate>Sat, 21 Nov 2026 06:00:10 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-11-21_morning_0600.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-21_morning_0600.mp3" length="7953129" type="audio/mpeg"/>
+<itunes:duration>994</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Evening - 20 Nov: A federal court says AI-generated output cannot establish probable cause</title>
 <description>Evening edition - Friday, 20 November 2026
@@ -230,22 +246,6 @@ Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Di
 <guid isPermaLink="false">ai_2026-11-14_evening_1500.mp3</guid>
 <enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-14_evening_1500.mp3" length="10465449" type="audio/mpeg"/>
 <itunes:duration>1308</itunes:duration>
-<itunes:episodeType>full</itunes:episodeType>
-</item>
-<item>
-<title>Morning - 14 Nov: The Small Codebase That Changed How We Run Artificial Intelligence</title>
-<description>Morning edition - Saturday, 14 November 2026
-Moving from experimental prototypes to validated production systems, across deterministic local AI runtimes and nationwide public health rollouts.
-
-00:28  The Small Codebase That Changed How We Run Artificial Intelligence
-08:03  How a Mothers Vaccine Shielded Danish Babies From Severe Illness
-
-Play "The Lathe That Runs AI", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-14_morning_0600.mp3
-Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (174 threads)</description>
-<pubDate>Sat, 14 Nov 2026 06:00:09 +0530</pubDate>
-<guid isPermaLink="false">ai_2026-11-14_morning_0600.mp3</guid>
-<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-14_morning_0600.mp3" length="8259249" type="audio/mpeg"/>
-<itunes:duration>1032</itunes:duration>
 <itunes:episodeType>full</itunes:episodeType>
 </item>
 </channel>

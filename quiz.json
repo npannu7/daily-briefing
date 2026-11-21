@@ -10,12 +10,86 @@
   "lines": [
    {
     "said": "\"Too technical\" in 2 of your last 7 depth ratings",
-    "did": "Each story may use at most 4 specialist terms: this episode's scripts were rewritten from 11 to 7."
+    "did": "Each story may use at most 4 specialist terms: this episode's scripts were rewritten from 23 to 11 and 16 to 15."
    }
   ],
   "last": "2026-11-19"
  },
  "episodes": [
+  {
+   "file": "ai_2026-11-21_morning_0600.mp3",
+   "title": "Morning - 21 Nov: Google workers push back on AI in classrooms",
+   "label": "Saturday 21 Nov morning",
+   "date": "2026-11-21",
+   "edition": "morning",
+   "published": "2026-11-21T06:00:10.468172+05:30",
+   "duration": 994,
+   "theme": "Workplace resistance to AI in schools, and a regulatory spotlight on the leading AI chipmaker",
+   "writer": "nemotron-3-ultra-550b-a55b (free)",
+   "voices": "Fish Audio (free)",
+   "deep_dive": false,
+   "segments": [
+    {
+     "title": "Google workers push back on AI in classrooms",
+     "category": "thread"
+    },
+    {
+     "title": "SEC investigates Nvidia's accounting",
+     "category": "thread"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Google told schools that if they turn off Gemini AI tools, they lose access to Google Search entirely next year. In manufacturing terms, Sarah compared this to telling a machine shop it can keep its mill only if it also runs a new automated inspection system. What is the actual mechanism Google is using to pressure districts?",
+     "options": [
+      "Imposing per-student fines for disabling AI features",
+      "Removing Chromebooks from classrooms that reject Gemini",
+      "Conditionally withdrawing access to Google Search unless AI tools remain enabled",
+      "Suing school districts for breach of contract"
+     ],
+     "answer": 2,
+     "explain": "The policy is not a fine or penalty; it is a conditional withdrawal of a separate service—keep Search only if you accept the Gemini AI layer. This creates bundling and lock-in through the Chromebook management console and admin pipeline.",
+     "segment": "Google workers push back on AI in classrooms"
+    },
+    {
+     "q": "The Alphabet Workers Union petitioned Google leadership over the AI-in-schools policy. Why is the union’s ability to force a change limited, according to the hosts?",
+     "options": [
+      "It is a minority union with no collective bargaining rights and cannot strike",
+      "The union lacks technical expertise in large language models",
+      "Google is exempt from labor law because it is a tech platform",
+      "The petition was signed only by contractors, not employees"
+     ],
+     "answer": 0,
+     "explain": "The hosts note the AWU is a minority union without collective bargaining rights, so it can only petition, protest, and generate bad press—it cannot strike over this policy.",
+     "segment": "Google workers push back on AI in classrooms"
+    },
+    {
+     "q": "Sarah explained revenue recognition using a mechanical analogy: shipping a CNC mill to a distributor. Under that analogy, when would a company recognize revenue too early?",
+     "options": [
+      "When the customer signs the purchase order",
+      "When the customer pays the invoice in full",
+      "When installation and operator training are completed",
+      "When the mill leaves the dock but the distributor can still return it next month"
+     ],
+     "answer": 3,
+     "explain": "Revenue should be recognized only when control has transferred, the price is fixed, and collection is probable. Booking it on shipment while a return option remains means control has not truly transferred.",
+     "segment": "SEC investiges Nvidia's accounting"
+    },
+    {
+     "q": "Some Hacker News commenters called the SEC probe into Nvidia 'Enron 2.0.' Why did the hosts say that comparison is premature?",
+     "options": [
+      "Nvidia has already issued corrected financial statements",
+      "Enron involved off-book vehicles hiding debt, whereas Nvidia’s revenue is on the books and the SEC has not alleged fraud",
+      "The SEC has already cleared Nvidia of any wrongdoing",
+      "Nvidia is a private company and not subject to SEC oversight"
+     ],
+     "answer": 1,
+     "explain": "The hosts point out that Enron concealed debt off the books; here the revenue is recorded, and the open questions are timing, disclosure, and possible restatement—not proven fraud at the top.",
+     "segment": "SEC investiges Nvidia's accounting"
+    }
+   ],
+   "transcript": "transcripts/ai_2026-11-21_morning_0600.txt"
+  },
   {
    "file": "ai_2026-11-20_evening_1500.mp3",
    "title": "Evening - 20 Nov: A federal court says AI-generated output cannot establish probable cause",
@@ -3354,150 +3428,6 @@
     }
    ],
    "transcript": "transcripts/ai_2026-11-14_evening_1500.txt"
-  },
-  {
-   "file": "ai_2026-11-14_morning_0600.mp3",
-   "title": "Morning - 14 Nov: The Small Codebase That Changed How We Run Artificial Intelligence",
-   "label": "Saturday 14 Nov morning",
-   "date": "2026-11-14",
-   "edition": "morning",
-   "published": "2026-11-14T06:00:09.534442+05:30",
-   "duration": 1032,
-   "theme": "Moving from experimental prototypes to validated production systems, across deterministic local AI runtimes and nationwide public health rollouts.",
-   "writer": "nemotron-3-ultra-550b-a55b (free)",
-   "voices": "Fish Audio (free)",
-   "deep_dive": false,
-   "segments": [
-    {
-     "title": "The Small Codebase That Changed How We Run Artificial Intelligence",
-     "category": "concept"
-    },
-    {
-     "title": "How a Mothers Vaccine Shielded Danish Babies From Severe Illness",
-     "category": "thread"
-    }
-   ],
-   "play": {
-    "v": 2,
-    "theme": "audit",
-    "title": "The Lathe That Runs AI",
-    "brief": "You audit a claim: a C++ runtime makes AI deterministic enough for regulated use.",
-    "segments": [
-     {
-      "title": "The Small Codebase That Changed How We Run Artificial Intelligence",
-      "bet": null,
-      "rounds": [
-       {
-        "type": "clues",
-        "q": "What reserves one buffer at startup for all intermediate tensors?",
-        "clues": [
-         "No malloc calls after init; like a fixture plate",
-         "Holds attention scores, hidden states, KV cache together",
-         "Called 'scratchpad' in the blog; single contiguous block"
-        ],
-        "options": [
-         "Memory-mapped weights",
-         "Fixed scratchpad pool",
-         "Quantization lookup table",
-         "Semantic versioning contract"
-        ],
-        "answer": 1,
-        "why": "The blog describes a single contiguous buffer allocated once at initialization for all intermediate tensors — attention scores, hidden states, KV cache — eliminating dynamic allocation during inference."
-       }
-      ],
-      "takeaway": "Deterministic inference comes from fixed memory, integer math, and version promises — not from model size or speed."
-     },
-     {
-      "title": "How a Mothers Vaccine Shielded Danish Babies From Severe Illness",
-      "bet": {
-       "claim": "Antibodies cross the placenta by simple diffusion.",
-       "truth": false,
-       "why": "FcRn receptors actively pump IgG from mother to fetus; transfer accelerates exponentially in third trimester."
-      },
-      "rounds": [
-       {
-        "type": "sequence",
-        "q": "Order the steps from maternal vaccination to infant protection",
-        "items": [
-         "Mother receives Abrysvo at 32–36 weeks pregnant",
-         "Mother's immune system makes prefusion-F IgG antibodies",
-         "FcRn receptors actively pump IgG across placenta",
-         "Baby born with high antibody titer, protection wanes"
-        ],
-        "why": "Vaccine triggers maternal antibodies; placental pumps deliver them; infant protection follows first-order decay."
-       }
-      ],
-      "takeaway": "Vaccinate mother at 32 weeks; baby arrives with factory-sealed RSV warranty that expires in six months."
-     }
-    ],
-    "words": [
-     {
-      "term": "mmap",
-      "means": "OS loads only the model chunks your CPU actually touches"
-     },
-     {
-      "term": "scratchpad",
-      "means": "One pre-allocated buffer holding all temporary data during inference"
-     },
-     {
-      "term": "quantization",
-      "means": "Compressing 32-bit floats to 4-bit integers for speed and determinism"
-     },
-     {
-      "term": "semantic versioning",
-      "means": "Major version bump only when the programming interface breaks"
-     },
-     {
-      "term": "prefusion F",
-      "means": "viral fusion protein locked in its pre-attack shape"
-     },
-     {
-      "term": "FcRn",
-      "means": "receptor that actively shuttles maternal IgG across placenta"
-     },
-     {
-      "term": "nirsevimab",
-      "means": "infant monoclonal antibody with engineered 70-day half-life"
-     },
-     {
-      "term": "MATISSE",
-      "means": "trial testing maternal RSV vaccine in pregnancy"
-     }
-    ],
-    "chips": [
-     "More on deterministic runtimes",
-     "Go deeper on validation",
-     "Less maintainer drama",
-     "Show me the math"
-    ]
-   },
-   "quiz": [
-    {
-     "q": "Why does the pure C++ architecture of llama.cpp v1.0 make it attractive for regulated environments like medical device software compared to PyTorch?",
-     "options": [
-      "It relies on dynamic memory allocation and Python interpreters for faster iteration.",
-      "It eliminates non-deterministic behavior by avoiding garbage collection and heap allocations after initialization, using memory-mapped weights and integer arithmetic.",
-      "It relies heavily on floating-point reduction-order matching across diverse GPU architectures.",
-      "It requires a runtime GPU farm to guarantee bit-exact reduction results."
-     ],
-     "answer": 1,
-     "explain": "The episode explains that llama.cpp avoids dynamic memory allocation after startup, uses memory-mapped files, and uses associative integer arithmetic, making computations repeatable and auditable for a design-history file.",
-     "segment": "The Small Codebase That Changed How We Run Artificial Intelligence"
-    },
-    {
-     "q": "What engineering mechanism allows maternal IgG antibodies to effectively protect the fetus against pathogens like RSV?",
-     "options": [
-      "Passive leakage across the placental barrier driven purely by high maternal blood pressure.",
-      "Active transport by specialized neonatal Fc receptors (FcRn) that pump maternal IgG into fetal circulation during the third trimester.",
-      "Direct production of antibodies by the infant's own immature bone marrow stimulated by placental hormones.",
-      "Enzymatic cleavage of viral fusion proteins directly inside the maternal bloodstream."
-     ],
-     "answer": 1,
-     "explain": "Specialized neonatal Fc receptors (FcRn) act like cellular pumps that actively move IgG from maternal circulation into fetal circulation, especially ramping up in the third trimester.",
-     "segment": "How a Mothers Vaccine Shielded Danish Babies From Severe Illness"
-    }
-   ],
-   "transcript": "transcripts/ai_2026-11-14_morning_0600.txt"
   }
  ]
 }

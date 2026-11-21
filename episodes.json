@@ -1,17 +1,6 @@
 {
   "episodes": [
     {
-      "file": "ai_2026-11-14_morning_0600.mp3",
-      "date": "2026-11-14",
-      "edition": "morning",
-      "title": "Morning - 14 Nov: The Small Codebase That Changed How We Run Artificial Intelligence",
-      "published": "2026-11-14T06:00:09.534442+05:30",
-      "pubDate": "Sat, 14 Nov 2026 06:00:09 +0530",
-      "size": 8259249,
-      "duration": 1032,
-      "description": "Morning edition - Saturday, 14 November 2026\nMoving from experimental prototypes to validated production systems, across deterministic local AI runtimes and nationwide public health rollouts.\n\n00:28  The Small Codebase That Changed How We Run Artificial Intelligence\n08:03  How a Mothers Vaccine Shielded Danish Babies From Severe Illness\n\nPlay \"The Lathe That Runs AI\", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-14_morning_0600.mp3\nWritten by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (174 threads)"
-    },
-    {
       "file": "ai_2026-11-14_evening_1500.mp3",
       "date": "2026-11-14",
       "edition": "evening",
@@ -153,6 +142,17 @@
       "size": 7629437,
       "duration": 953,
       "description": "Evening edition - Friday, 20 November 2026\nWhen AI meets law and labor: a court ruling on AI-generated evidence, and the debate over whether AI turns jobs into gig work\n\n00:29  A federal court says AI-generated output cannot establish probable cause\n07:33  The argument that AI is turning skilled jobs into low-paid piecework\n12:35  Pete Warden on local AI, open models, voice interfaces, the future of hardware\n\nPlay \"The AI Warrant That Wasn't\", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-20_evening_1500.mp3\nWritten by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Hacker News (no Reddit data: Reddit, collected hourly (0 threads); no snapshot from the office PC yet)"
+    },
+    {
+      "file": "ai_2026-11-21_morning_0600.mp3",
+      "date": "2026-11-21",
+      "edition": "morning",
+      "title": "Morning - 21 Nov: Google workers push back on AI in classrooms",
+      "published": "2026-11-21T06:00:10.468172+05:30",
+      "pubDate": "Sat, 21 Nov 2026 06:00:10 +0530",
+      "size": 7953129,
+      "duration": 994,
+      "description": "Morning edition - Saturday, 21 November 2026\nWorkplace resistance to AI in schools, and a regulatory spotlight on the leading AI chipmaker\n\n00:30  Google workers push back on AI in classrooms\n09:45  SEC investigates Nvidia's accounting\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-21_morning_0600.mp3\nWritten by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Hacker News (no Reddit data: Reddit, collected hourly (0 threads); no snapshot from the office PC yet)"
     }
   ],
   "memory": [
@@ -2148,25 +2148,31 @@
         "ai-privacy-and-surveillance",
         "local-llms"
       ]
+    },
+    {
+      "label": "Saturday 21 Nov morning",
+      "date": "2026-11-21",
+      "edition": "morning",
+      "published": "2026-11-21T06:00:10.468172+05:30",
+      "file": "ai_2026-11-21_morning_0600.mp3",
+      "writer": "nemotron-3-ultra-550b-a55b (free)",
+      "voices": "Fish Audio (free)",
+      "summary": "Today's episode examines a worker-led petition at Google challenging mandatory AI tools in schools, exploring the company's policy and whether internal pressure can shape deployment where regulation has not. It also covers the SEC's accounting investigation into Nvidia, detailing the rules in question and how the process compares to regulatory actions in medical manufacturing.",
+      "threads": [
+        "Whether the Google worker petition leads to policy changes or broader industry standards for AI in education",
+        "How the SEC investigation into Nvidia's accounting progresses and potential implications for AI chipmakers"
+      ],
+      "segments": [
+        "Google workers push back on AI in classrooms",
+        "SEC investigates Nvidia's accounting"
+      ],
+      "deep_topic": "",
+      "topics": [
+        "nvidia-leadership-dispute"
+      ]
     }
   ],
   "seen": [
-    {
-      "date": "2026-10-30",
-      "link": "https://www.reddit.com/r/codex/comments/1xic8ut/dont_review_agent_code_interrogate_it/"
-    },
-    {
-      "date": "2026-10-30",
-      "link": "https://www.reddit.com/r/askscience/comments/1xiu3v9/in_deep_waters_how_do_animals_resist_huge/"
-    },
-    {
-      "date": "2026-10-30",
-      "link": "https://www.reddit.com/r/robotics/comments/1xikqpw/reachy_mini_level_up_update/"
-    },
-    {
-      "date": "2026-10-30",
-      "link": "https://www.reddit.com/r/ClaudeCode/comments/1xih084/korean_solo_dev_5_months_making_ww2_rts_with/"
-    },
     {
       "date": "2026-10-31",
       "link": "https://www.reddit.com/r/science/comments/1xjbkzd/six_future_trump_officials_vance_rubio_gabbard/"
@@ -3034,6 +3040,22 @@
     {
       "date": "2026-11-20",
       "link": "https://restofworld.org/2026/ai-jobs-skills-gig-work/"
+    },
+    {
+      "date": "2026-11-21",
+      "link": "https://news.ycombinator.com/item?id=50577901"
+    },
+    {
+      "date": "2026-11-21",
+      "link": "https://www.motherjones.com/politics/2026/11/google-alphabet-union-school-ai-protest-gemini-workers-petition/"
+    },
+    {
+      "date": "2026-11-21",
+      "link": "https://news.ycombinator.com/item?id=50581438"
+    },
+    {
+      "date": "2026-11-21",
+      "link": "https://finance.yahoo.com/markets/article/nvidia-stock-extends-25-trillion-rout-as-sec-probe-reportedly-investigates-its-accounting-194945274.html"
     }
   ],
   "feedback": [
@@ -3602,349 +3624,6 @@
   ],
   "or_spend": [],
   "free_log": [
-    "2026-11-19T00:34:15.136192+00:00",
-    "2026-11-19T00:34:18.237174+00:00",
-    "2026-11-19T00:34:21.385961+00:00",
-    "2026-11-19T00:34:24.690681+00:00",
-    "2026-11-19T00:34:27.864313+00:00",
-    "2026-11-19T00:34:31.065827+00:00",
-    "2026-11-19T00:34:34.231022+00:00",
-    "2026-11-19T00:34:37.483061+00:00",
-    "2026-11-19T00:34:40.651769+00:00",
-    "2026-11-19T00:34:43.853771+00:00",
-    "2026-11-19T00:34:47.153221+00:00",
-    "2026-11-19T00:34:50.251113+00:00",
-    "2026-11-19T00:34:53.449867+00:00",
-    "2026-11-19T00:34:56.662750+00:00",
-    "2026-11-19T00:34:59.894040+00:00",
-    "2026-11-19T00:35:03.056098+00:00",
-    "2026-11-19T00:35:06.243810+00:00",
-    "2026-11-19T00:35:09.470470+00:00",
-    "2026-11-19T00:35:12.563470+00:00",
-    "2026-11-19T00:35:15.854334+00:00",
-    "2026-11-19T00:35:19.043455+00:00",
-    "2026-11-19T00:35:22.256831+00:00",
-    "2026-11-19T00:35:25.457204+00:00",
-    "2026-11-19T00:35:28.652035+00:00",
-    "2026-11-19T00:35:31.806899+00:00",
-    "2026-11-19T00:36:06.663411+00:00",
-    "2026-11-19T00:37:14.377805+00:00",
-    "2026-11-19T00:42:24.994319+00:00",
-    "2026-11-19T00:43:09.879425+00:00",
-    "2026-11-19T00:43:10.019531+00:00",
-    "2026-11-19T00:43:10.223344+00:00",
-    "2026-11-19T00:44:46.681719+00:00",
-    "2026-11-19T00:45:26.343464+00:00",
-    "2026-11-19T00:49:11.226719+00:00",
-    "2026-11-19T00:49:52.242679+00:00",
-    "2026-11-19T00:55:03.099295+00:00",
-    "2026-11-19T00:55:46.426437+00:00",
-    "2026-11-19T00:56:52.475621+00:00",
-    "2026-11-19T00:57:54.418579+00:00",
-    "2026-11-19T01:01:08.392164+00:00",
-    "2026-11-19T01:01:52.665747+00:00",
-    "2026-11-19T01:03:16.225430+00:00",
-    "2026-11-19T01:05:02.503701+00:00",
-    "2026-11-19T01:05:02.773791+00:00",
-    "2026-11-19T01:05:05.940404+00:00",
-    "2026-11-19T01:05:09.104096+00:00",
-    "2026-11-19T01:09:03.091826+00:00",
-    "2026-11-19T01:10:06.611322+00:00",
-    "2026-11-19T01:11:07.391194+00:00",
-    "2026-11-19T01:11:31.650665+00:00",
-    "2026-11-19T01:11:34.713730+00:00",
-    "2026-11-19T01:11:38.441085+00:00",
-    "2026-11-19T01:11:42.754094+00:00",
-    "2026-11-19T01:11:45.795670+00:00",
-    "2026-11-19T01:11:48.093245+00:00",
-    "2026-11-19T01:11:56.564225+00:00",
-    "2026-11-19T01:11:56.843968+00:00",
-    "2026-11-19T01:11:59.250903+00:00",
-    "2026-11-19T01:12:00.744397+00:00",
-    "2026-11-19T01:12:06.231005+00:00",
-    "2026-11-19T01:12:08.958762+00:00",
-    "2026-11-19T01:12:11.502151+00:00",
-    "2026-11-19T01:12:14.459089+00:00",
-    "2026-11-19T01:12:20.648307+00:00",
-    "2026-11-19T01:12:22.737070+00:00",
-    "2026-11-19T01:12:27.998430+00:00",
-    "2026-11-19T01:12:30.021508+00:00",
-    "2026-11-19T01:12:34.344372+00:00",
-    "2026-11-19T01:12:34.821224+00:00",
-    "2026-11-19T01:12:36.613997+00:00",
-    "2026-11-19T01:12:37.189634+00:00",
-    "2026-11-19T01:12:50.057010+00:00",
-    "2026-11-19T01:12:56.622921+00:00",
-    "2026-11-19T01:13:00.942694+00:00",
-    "2026-11-19T01:13:02.394629+00:00",
-    "2026-11-19T01:13:09.254701+00:00",
-    "2026-11-19T01:13:12.830414+00:00",
-    "2026-11-19T01:13:16.871179+00:00",
-    "2026-11-19T01:13:16.883822+00:00",
-    "2026-11-19T01:13:17.928697+00:00",
-    "2026-11-19T01:13:24.768073+00:00",
-    "2026-11-19T01:13:30.122281+00:00",
-    "2026-11-19T01:13:32.276017+00:00",
-    "2026-11-19T01:13:35.790689+00:00",
-    "2026-11-19T01:13:36.325635+00:00",
-    "2026-11-19T01:13:38.333001+00:00",
-    "2026-11-19T01:13:39.895636+00:00",
-    "2026-11-19T01:13:44.855659+00:00",
-    "2026-11-19T01:13:45.535425+00:00",
-    "2026-11-19T01:13:51.770809+00:00",
-    "2026-11-19T01:13:53.202108+00:00",
-    "2026-11-19T01:13:59.207213+00:00",
-    "2026-11-19T01:14:00.551175+00:00",
-    "2026-11-19T01:14:05.249083+00:00",
-    "2026-11-19T01:14:09.563946+00:00",
-    "2026-11-19T01:14:15.010150+00:00",
-    "2026-11-19T01:14:20.109602+00:00",
-    "2026-11-19T01:14:20.864243+00:00",
-    "2026-11-19T01:14:21.934857+00:00",
-    "2026-11-19T01:14:25.334509+00:00",
-    "2026-11-19T01:14:28.263980+00:00",
-    "2026-11-19T01:14:28.656886+00:00",
-    "2026-11-19T01:14:31.543410+00:00",
-    "2026-11-19T01:14:36.909433+00:00",
-    "2026-11-19T01:14:41.121273+00:00",
-    "2026-11-19T01:14:47.215046+00:00",
-    "2026-11-19T01:14:47.558739+00:00",
-    "2026-11-19T01:14:50.503452+00:00",
-    "2026-11-19T01:14:53.503503+00:00",
-    "2026-11-19T01:14:54.364468+00:00",
-    "2026-11-19T01:15:00.086110+00:00",
-    "2026-11-19T01:15:00.971298+00:00",
-    "2026-11-19T01:15:06.981469+00:00",
-    "2026-11-19T01:15:07.983055+00:00",
-    "2026-11-19T01:15:10.287364+00:00",
-    "2026-11-19T01:15:12.330608+00:00",
-    "2026-11-19T01:15:18.452720+00:00",
-    "2026-11-19T01:15:22.739083+00:00",
-    "2026-11-19T01:15:25.755457+00:00",
-    "2026-11-19T01:15:27.713914+00:00",
-    "2026-11-19T01:15:33.107842+00:00",
-    "2026-11-19T01:15:35.679431+00:00",
-    "2026-11-19T01:15:40.216072+00:00",
-    "2026-11-19T01:15:40.423719+00:00",
-    "2026-11-19T01:15:46.718647+00:00",
-    "2026-11-19T01:15:48.253849+00:00",
-    "2026-11-19T01:15:54.404599+00:00",
-    "2026-11-19T01:15:55.837955+00:00",
-    "2026-11-19T01:16:00.306954+00:00",
-    "2026-11-19T01:16:00.354198+00:00",
-    "2026-11-19T01:16:05.539174+00:00",
-    "2026-11-19T01:16:05.693240+00:00",
-    "2026-11-19T01:16:13.199808+00:00",
-    "2026-11-19T01:16:13.616299+00:00",
-    "2026-11-19T01:16:17.098531+00:00",
-    "2026-11-19T01:16:18.900409+00:00",
-    "2026-11-19T01:16:26.408124+00:00",
-    "2026-11-19T01:16:26.665968+00:00",
-    "2026-11-19T01:16:31.101721+00:00",
-    "2026-11-19T01:16:31.698498+00:00",
-    "2026-11-19T01:16:35.232261+00:00",
-    "2026-11-19T01:16:38.572125+00:00",
-    "2026-11-19T01:16:40.880045+00:00",
-    "2026-11-19T01:16:44.735397+00:00",
-    "2026-11-19T01:16:49.278493+00:00",
-    "2026-11-19T01:16:51.071061+00:00",
-    "2026-11-19T01:16:54.314739+00:00",
-    "2026-11-19T01:16:57.330848+00:00",
-    "2026-11-19T01:17:04.405497+00:00",
-    "2026-11-19T01:17:05.252475+00:00",
-    "2026-11-19T01:17:09.273698+00:00",
-    "2026-11-19T01:17:10.809533+00:00",
-    "2026-11-19T01:17:16.107491+00:00",
-    "2026-11-19T01:17:18.383374+00:00",
-    "2026-11-19T01:17:22.329005+00:00",
-    "2026-11-19T01:17:24.235873+00:00",
-    "2026-11-19T01:17:31.023996+00:00",
-    "2026-11-19T01:17:31.110694+00:00",
-    "2026-11-19T01:17:38.036938+00:00",
-    "2026-11-19T01:17:38.202818+00:00",
-    "2026-11-19T01:17:45.162783+00:00",
-    "2026-11-19T01:17:47.481872+00:00",
-    "2026-11-19T01:17:51.284475+00:00",
-    "2026-11-19T01:17:52.757221+00:00",
-    "2026-11-19T01:17:55.436685+00:00",
-    "2026-11-19T01:17:58.245616+00:00",
-    "2026-11-19T01:18:02.799578+00:00",
-    "2026-11-19T01:18:03.373158+00:00",
-    "2026-11-19T01:18:08.503315+00:00",
-    "2026-11-19T01:18:10.458967+00:00",
-    "2026-11-19T01:18:17.143902+00:00",
-    "2026-11-19T01:18:19.242736+00:00",
-    "2026-11-19T01:18:22.097325+00:00",
-    "2026-11-19T01:18:23.692785+00:00",
-    "2026-11-19T01:18:27.150927+00:00",
-    "2026-11-19T01:18:28.335069+00:00",
-    "2026-11-19T01:18:32.838093+00:00",
-    "2026-11-19T01:19:30.707905+00:00",
-    "2026-11-19T01:20:19.753361+00:00",
-    "2026-11-19T09:34:16.375663+00:00",
-    "2026-11-19T09:34:19.518677+00:00",
-    "2026-11-19T09:34:22.738558+00:00",
-    "2026-11-19T09:34:25.947302+00:00",
-    "2026-11-19T09:34:29.107577+00:00",
-    "2026-11-19T09:34:32.307259+00:00",
-    "2026-11-19T09:34:35.506326+00:00",
-    "2026-11-19T09:34:38.702492+00:00",
-    "2026-11-19T09:34:41.894584+00:00",
-    "2026-11-19T09:34:45.110685+00:00",
-    "2026-11-19T09:34:48.314521+00:00",
-    "2026-11-19T09:34:51.528603+00:00",
-    "2026-11-19T09:34:54.702813+00:00",
-    "2026-11-19T09:34:57.910538+00:00",
-    "2026-11-19T09:35:01.151241+00:00",
-    "2026-11-19T09:35:04.337618+00:00",
-    "2026-11-19T09:35:07.519344+00:00",
-    "2026-11-19T09:35:10.703300+00:00",
-    "2026-11-19T09:36:08.026841+00:00",
-    "2026-11-19T09:37:39.317759+00:00",
-    "2026-11-19T09:38:19.299923+00:00",
-    "2026-11-19T09:40:14.844985+00:00",
-    "2026-11-19T09:41:11.202390+00:00",
-    "2026-11-19T09:41:11.414255+00:00",
-    "2026-11-19T09:41:11.841151+00:00",
-    "2026-11-19T09:42:38.030846+00:00",
-    "2026-11-19T09:43:56.769872+00:00",
-    "2026-11-19T09:47:10.294705+00:00",
-    "2026-11-19T09:48:43.576547+00:00",
-    "2026-11-19T09:49:36.980757+00:00",
-    "2026-11-19T09:51:13.104136+00:00",
-    "2026-11-19T09:55:20.828769+00:00",
-    "2026-11-19T09:56:28.737569+00:00",
-    "2026-11-19T09:59:16.899599+00:00",
-    "2026-11-19T10:00:30.925651+00:00",
-    "2026-11-19T10:01:30.378995+00:00",
-    "2026-11-19T10:02:55.530453+00:00",
-    "2026-11-19T10:03:49.668301+00:00",
-    "2026-11-19T10:05:10.605633+00:00",
-    "2026-11-19T10:06:03.370562+00:00",
-    "2026-11-19T10:07:08.457067+00:00",
-    "2026-11-19T10:08:47.266360+00:00",
-    "2026-11-19T10:09:52.115412+00:00",
-    "2026-11-19T10:11:00.487704+00:00",
-    "2026-11-19T10:11:00.809099+00:00",
-    "2026-11-19T10:11:03.888550+00:00",
-    "2026-11-19T10:11:07.086831+00:00",
-    "2026-11-19T10:11:10.321434+00:00",
-    "2026-11-19T10:12:08.263120+00:00",
-    "2026-11-19T10:13:33.833645+00:00",
-    "2026-11-19T10:14:44.651370+00:00",
-    "2026-11-19T10:16:17.051509+00:00",
-    "2026-11-19T10:16:54.576310+00:00",
-    "2026-11-19T10:16:56.962762+00:00",
-    "2026-11-19T10:16:59.781468+00:00",
-    "2026-11-19T10:17:03.900314+00:00",
-    "2026-11-19T10:17:07.065982+00:00",
-    "2026-11-19T10:17:13.324035+00:00",
-    "2026-11-19T10:17:16.280594+00:00",
-    "2026-11-19T10:17:16.842897+00:00",
-    "2026-11-19T10:17:26.638687+00:00",
-    "2026-11-19T10:17:28.654259+00:00",
-    "2026-11-19T10:17:31.370807+00:00",
-    "2026-11-19T10:17:33.577511+00:00",
-    "2026-11-19T10:17:38.731156+00:00",
-    "2026-11-19T10:17:40.383120+00:00",
-    "2026-11-19T10:17:45.313047+00:00",
-    "2026-11-19T10:17:49.645291+00:00",
-    "2026-11-19T10:17:50.295472+00:00",
-    "2026-11-19T10:17:54.245313+00:00",
-    "2026-11-19T10:17:57.468956+00:00",
-    "2026-11-19T10:18:00.803147+00:00",
-    "2026-11-19T10:18:01.040315+00:00",
-    "2026-11-19T10:18:01.330374+00:00",
-    "2026-11-19T10:18:07.373647+00:00",
-    "2026-11-19T10:18:16.596985+00:00",
-    "2026-11-19T10:18:17.135534+00:00",
-    "2026-11-19T10:18:19.592882+00:00",
-    "2026-11-19T10:18:28.273459+00:00",
-    "2026-11-19T10:18:30.143231+00:00",
-    "2026-11-19T10:18:32.931421+00:00",
-    "2026-11-19T10:18:40.249378+00:00",
-    "2026-11-19T10:18:42.123687+00:00",
-    "2026-11-19T10:18:45.862563+00:00",
-    "2026-11-19T10:18:54.655594+00:00",
-    "2026-11-19T10:18:55.427464+00:00",
-    "2026-11-19T10:18:56.408999+00:00",
-    "2026-11-19T10:19:00.378683+00:00",
-    "2026-11-19T10:19:02.162179+00:00",
-    "2026-11-19T10:19:07.940265+00:00",
-    "2026-11-19T10:19:11.466375+00:00",
-    "2026-11-19T10:19:14.207174+00:00",
-    "2026-11-19T10:19:15.418177+00:00",
-    "2026-11-19T10:19:21.931191+00:00",
-    "2026-11-19T10:19:22.171550+00:00",
-    "2026-11-19T10:19:27.001758+00:00",
-    "2026-11-19T10:19:31.797387+00:00",
-    "2026-11-19T10:19:38.302181+00:00",
-    "2026-11-19T10:19:39.933230+00:00",
-    "2026-11-19T10:19:42.680793+00:00",
-    "2026-11-19T10:19:44.878758+00:00",
-    "2026-11-19T10:19:48.335344+00:00",
-    "2026-11-19T10:19:53.001811+00:00",
-    "2026-11-19T10:19:59.475046+00:00",
-    "2026-11-19T10:19:59.927199+00:00",
-    "2026-11-19T10:20:04.757404+00:00",
-    "2026-11-19T10:20:05.011159+00:00",
-    "2026-11-19T10:20:12.384656+00:00",
-    "2026-11-19T10:20:13.035823+00:00",
-    "2026-11-19T10:20:14.461394+00:00",
-    "2026-11-19T10:20:22.778887+00:00",
-    "2026-11-19T10:20:23.055224+00:00",
-    "2026-11-19T10:20:27.012354+00:00",
-    "2026-11-19T10:20:28.542009+00:00",
-    "2026-11-19T10:20:32.179540+00:00",
-    "2026-11-19T10:20:35.998768+00:00",
-    "2026-11-19T10:20:38.632263+00:00",
-    "2026-11-19T10:20:47.377095+00:00",
-    "2026-11-19T10:20:47.865048+00:00",
-    "2026-11-19T10:20:52.788089+00:00",
-    "2026-11-19T10:20:53.503932+00:00",
-    "2026-11-19T10:20:56.584331+00:00",
-    "2026-11-19T10:21:00.569284+00:00",
-    "2026-11-19T10:21:01.162066+00:00",
-    "2026-11-19T10:21:09.326891+00:00",
-    "2026-11-19T10:21:12.280251+00:00",
-    "2026-11-19T10:21:12.793705+00:00",
-    "2026-11-19T10:21:13.576662+00:00",
-    "2026-11-19T10:21:20.243242+00:00",
-    "2026-11-19T10:21:20.966280+00:00",
-    "2026-11-19T10:21:25.409878+00:00",
-    "2026-11-19T10:21:25.595803+00:00",
-    "2026-11-19T10:21:30.591855+00:00",
-    "2026-11-19T10:21:33.216248+00:00",
-    "2026-11-19T10:21:37.738100+00:00",
-    "2026-11-19T10:21:38.438200+00:00",
-    "2026-11-19T10:21:42.964852+00:00",
-    "2026-11-19T10:21:45.124643+00:00",
-    "2026-11-19T10:21:48.843350+00:00",
-    "2026-11-19T10:21:51.014840+00:00",
-    "2026-11-19T10:21:58.106990+00:00",
-    "2026-11-19T10:22:00.019566+00:00",
-    "2026-11-19T10:22:04.126045+00:00",
-    "2026-11-19T10:22:05.361620+00:00",
-    "2026-11-19T10:22:11.124526+00:00",
-    "2026-11-19T10:22:11.887573+00:00",
-    "2026-11-19T10:22:19.588936+00:00",
-    "2026-11-19T10:22:21.578754+00:00",
-    "2026-11-19T10:22:23.369030+00:00",
-    "2026-11-19T10:22:23.554623+00:00",
-    "2026-11-19T10:22:28.705838+00:00",
-    "2026-11-19T10:22:29.802254+00:00",
-    "2026-11-19T10:22:35.120883+00:00",
-    "2026-11-19T10:22:36.039656+00:00",
-    "2026-11-19T10:22:41.655945+00:00",
-    "2026-11-19T10:22:51.248715+00:00",
-    "2026-11-19T10:23:01.111835+00:00",
-    "2026-11-19T10:23:04.208930+00:00",
-    "2026-11-19T10:23:04.427070+00:00",
-    "2026-11-19T10:23:05.847965+00:00",
-    "2026-11-19T10:23:08.325621+00:00",
-    "2026-11-19T10:23:11.745433+00:00",
-    "2026-11-19T10:24:51.981547+00:00",
-    "2026-11-19T10:25:29.367959+00:00",
     "2026-11-20T00:34:17.759365+00:00",
     "2026-11-20T00:34:20.864930+00:00",
     "2026-11-20T00:34:24.094015+00:00",
@@ -4232,7 +3911,152 @@
     "2026-11-20T10:21:08.826013+00:00",
     "2026-11-20T10:21:10.906886+00:00",
     "2026-11-20T10:22:16.173851+00:00",
-    "2026-11-20T10:23:14.720845+00:00"
+    "2026-11-20T10:23:14.720845+00:00",
+    "2026-11-21T00:34:21.367237+00:00",
+    "2026-11-21T00:34:24.472756+00:00",
+    "2026-11-21T00:34:27.631152+00:00",
+    "2026-11-21T00:34:30.847662+00:00",
+    "2026-11-21T00:34:34.026451+00:00",
+    "2026-11-21T00:34:37.255979+00:00",
+    "2026-11-21T00:34:40.442896+00:00",
+    "2026-11-21T00:34:43.732680+00:00",
+    "2026-11-21T00:34:46.940422+00:00",
+    "2026-11-21T00:34:50.051954+00:00",
+    "2026-11-21T00:34:53.258070+00:00",
+    "2026-11-21T00:34:56.497607+00:00",
+    "2026-11-21T00:34:59.664750+00:00",
+    "2026-11-21T00:35:02.844902+00:00",
+    "2026-11-21T00:35:06.157119+00:00",
+    "2026-11-21T00:35:45.387226+00:00",
+    "2026-11-21T00:36:59.182918+00:00",
+    "2026-11-21T00:37:52.955592+00:00",
+    "2026-11-21T00:39:13.218165+00:00",
+    "2026-11-21T00:40:08.298632+00:00",
+    "2026-11-21T00:40:08.497574+00:00",
+    "2026-11-21T00:40:08.708817+00:00",
+    "2026-11-21T00:41:05.930839+00:00",
+    "2026-11-21T00:42:24.845242+00:00",
+    "2026-11-21T00:45:13.130633+00:00",
+    "2026-11-21T00:46:34.304037+00:00",
+    "2026-11-21T00:47:26.965857+00:00",
+    "2026-11-21T00:48:17.245188+00:00",
+    "2026-11-21T00:49:31.464569+00:00",
+    "2026-11-21T00:50:22.038862+00:00",
+    "2026-11-21T00:51:39.722426+00:00",
+    "2026-11-21T00:53:22.443106+00:00",
+    "2026-11-21T00:53:48.863897+00:00",
+    "2026-11-21T00:55:07.789821+00:00",
+    "2026-11-21T00:56:02.434770+00:00",
+    "2026-11-21T00:57:14.545231+00:00",
+    "2026-11-21T00:59:27.248033+00:00",
+    "2026-11-21T01:00:16.264713+00:00",
+    "2026-11-21T01:00:19.395819+00:00",
+    "2026-11-21T01:00:22.591822+00:00",
+    "2026-11-21T01:01:31.627275+00:00",
+    "2026-11-21T01:02:45.780440+00:00",
+    "2026-11-21T01:03:49.384127+00:00",
+    "2026-11-21T01:04:12.688953+00:00",
+    "2026-11-21T01:04:16.325040+00:00",
+    "2026-11-21T01:04:20.958384+00:00",
+    "2026-11-21T01:04:23.053903+00:00",
+    "2026-11-21T01:04:24.054741+00:00",
+    "2026-11-21T01:04:30.887023+00:00",
+    "2026-11-21T01:04:33.251800+00:00",
+    "2026-11-21T01:04:37.274422+00:00",
+    "2026-11-21T01:04:43.451915+00:00",
+    "2026-11-21T01:04:43.869250+00:00",
+    "2026-11-21T01:04:45.204698+00:00",
+    "2026-11-21T01:04:50.175276+00:00",
+    "2026-11-21T01:04:53.894164+00:00",
+    "2026-11-21T01:04:55.930918+00:00",
+    "2026-11-21T01:05:01.941475+00:00",
+    "2026-11-21T01:05:02.751858+00:00",
+    "2026-11-21T01:05:04.933638+00:00",
+    "2026-11-21T01:05:08.309493+00:00",
+    "2026-11-21T01:05:11.200734+00:00",
+    "2026-11-21T01:05:18.455095+00:00",
+    "2026-11-21T01:05:20.262505+00:00",
+    "2026-11-21T01:05:20.366885+00:00",
+    "2026-11-21T01:05:21.842043+00:00",
+    "2026-11-21T01:05:33.887967+00:00",
+    "2026-11-21T01:05:42.889124+00:00",
+    "2026-11-21T01:05:44.391314+00:00",
+    "2026-11-21T01:05:50.712064+00:00",
+    "2026-11-21T01:05:52.029458+00:00",
+    "2026-11-21T01:05:54.852802+00:00",
+    "2026-11-21T01:05:58.270269+00:00",
+    "2026-11-21T01:06:01.116833+00:00",
+    "2026-11-21T01:06:04.755175+00:00",
+    "2026-11-21T01:06:07.229685+00:00",
+    "2026-11-21T01:06:11.294598+00:00",
+    "2026-11-21T01:06:12.220408+00:00",
+    "2026-11-21T01:06:15.702898+00:00",
+    "2026-11-21T01:06:17.977806+00:00",
+    "2026-11-21T01:06:24.428558+00:00",
+    "2026-11-21T01:06:27.232417+00:00",
+    "2026-11-21T01:06:27.538081+00:00",
+    "2026-11-21T01:06:35.268446+00:00",
+    "2026-11-21T01:06:37.109135+00:00",
+    "2026-11-21T01:06:39.045787+00:00",
+    "2026-11-21T01:06:46.833467+00:00",
+    "2026-11-21T01:06:54.158618+00:00",
+    "2026-11-21T01:06:55.667934+00:00",
+    "2026-11-21T01:06:56.130738+00:00",
+    "2026-11-21T01:06:58.314799+00:00",
+    "2026-11-21T01:07:00.886931+00:00",
+    "2026-11-21T01:07:07.657784+00:00",
+    "2026-11-21T01:07:08.113634+00:00",
+    "2026-11-21T01:07:08.871794+00:00",
+    "2026-11-21T01:07:16.722090+00:00",
+    "2026-11-21T01:07:17.455290+00:00",
+    "2026-11-21T01:07:19.726297+00:00",
+    "2026-11-21T01:07:21.829019+00:00",
+    "2026-11-21T01:07:27.505621+00:00",
+    "2026-11-21T01:07:28.416105+00:00",
+    "2026-11-21T01:07:36.535445+00:00",
+    "2026-11-21T01:07:39.360712+00:00",
+    "2026-11-21T01:07:42.488008+00:00",
+    "2026-11-21T01:07:42.975909+00:00",
+    "2026-11-21T01:07:46.141971+00:00",
+    "2026-11-21T01:07:47.367719+00:00",
+    "2026-11-21T01:07:52.940887+00:00",
+    "2026-11-21T01:07:56.016024+00:00",
+    "2026-11-21T01:07:59.525183+00:00",
+    "2026-11-21T01:08:00.828246+00:00",
+    "2026-11-21T01:08:08.340424+00:00",
+    "2026-11-21T01:08:15.072327+00:00",
+    "2026-11-21T01:08:16.163939+00:00",
+    "2026-11-21T01:08:19.318375+00:00",
+    "2026-11-21T01:08:27.043129+00:00",
+    "2026-11-21T01:08:27.173572+00:00",
+    "2026-11-21T01:08:31.154164+00:00",
+    "2026-11-21T01:08:32.323832+00:00",
+    "2026-11-21T01:08:36.722720+00:00",
+    "2026-11-21T01:08:38.931928+00:00",
+    "2026-11-21T01:08:43.371740+00:00",
+    "2026-11-21T01:08:45.579282+00:00",
+    "2026-11-21T01:08:50.929806+00:00",
+    "2026-11-21T01:08:51.167274+00:00",
+    "2026-11-21T01:08:57.295790+00:00",
+    "2026-11-21T01:08:57.679803+00:00",
+    "2026-11-21T01:09:04.334909+00:00",
+    "2026-11-21T01:09:04.729990+00:00",
+    "2026-11-21T01:09:10.202534+00:00",
+    "2026-11-21T01:09:11.454760+00:00",
+    "2026-11-21T01:09:15.352675+00:00",
+    "2026-11-21T01:09:17.619921+00:00",
+    "2026-11-21T01:09:22.309546+00:00",
+    "2026-11-21T01:09:23.734174+00:00",
+    "2026-11-21T01:09:29.689272+00:00",
+    "2026-11-21T01:09:33.851653+00:00",
+    "2026-11-21T01:09:34.061975+00:00",
+    "2026-11-21T01:09:34.117978+00:00",
+    "2026-11-21T01:09:37.382147+00:00",
+    "2026-11-21T01:09:40.735708+00:00",
+    "2026-11-21T01:09:44.590704+00:00",
+    "2026-11-21T01:09:46.464470+00:00",
+    "2026-11-21T01:11:08.885128+00:00",
+    "2026-11-21T01:11:34.137469+00:00"
   ],
   "free_day_out": "",
   "gemini_log": [
@@ -4241,7 +4065,8 @@
     "2026-11-19T16:39:43.735621-08:00",
     "2026-11-19T16:45:20.613661-08:00",
     "2026-11-19T16:49:56.582972-08:00",
-    "2026-11-19T17:05:32.486821-08:00"
+    "2026-11-19T17:05:32.486821-08:00",
+    "2026-11-20T16:59:27.249544-08:00"
   ],
   "gemini_day_out": "",
   "pace_adjust": 0.0,
@@ -4500,10 +4325,6 @@
     }
   ],
   "model_health": {
-    "gemini-4-hydrogen": {
-      "n": 2,
-      "until": "2026-11-21T09:23:27.910552+00:00"
-    },
     "perplexity/pplx-decider-v1.3:free": {
       "n": 1,
       "until": "2026-11-19T17:20:21.842482+00:00"
@@ -4550,7 +4371,8 @@
         "2026-11-15",
         "2026-11-16",
         "2026-11-19",
-        "2026-11-20"
+        "2026-11-20",
+        "2026-11-21"
       ],
       "subs": [
         "AI_India",
@@ -4570,15 +4392,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 105,
+      "mentions": 106,
       "refs": [
-        {
-          "date": "2026-11-10",
-          "title": "Has Anthropic Nerfed Opus 5.5? LiveNerf Day 47 Update",
-          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xriv9l/has_anthropic_nerfed_opus_55_livenerf_day_47/",
-          "link": "",
-          "comment": ""
-        },
         {
           "date": "2026-11-11",
           "title": "Fable 51.8 is UNUSABLE on Pro. Hit my limit after ONE (1) prompt. Cancelled.",
@@ -4669,10 +4484,17 @@
           "thread": "https://news.ycombinator.com/item?id=50563148",
           "link": "https://www.anthropic.com/research/claude-black-hole-physics",
           "comment": "It tickled me that this was a bullet point in the Fable 5.2 announcement. I like that we're now at a point where \"solved two open problems in the physics of black holes\" is the kind of thing that shows up in a frontier model launch."
+        },
+        {
+          "date": "2026-11-21",
+          "title": "Claude solves two open problems in the physics of black holes",
+          "thread": "https://news.ycombinator.com/item?id=50563148",
+          "link": "https://www.anthropic.com/research/claude-black-hole-physics",
+          "comment": "It tickled me that this was a bullet point in the Fable 5.2 announcement. I like that we're now at a point where \"solved two open problems in the physics of black holes\" is the kind of thing that shows up in a frontier model launch."
         }
       ],
       "deep_dive": "2026-11-08",
-      "last_seen": "2026-11-20",
+      "last_seen": "2026-11-21",
       "subject": "ai"
     },
     "anthropic-usage-policy": {
@@ -4831,7 +4653,8 @@
         "2026-11-15",
         "2026-11-17",
         "2026-11-19",
-        "2026-11-20"
+        "2026-11-20",
+        "2026-11-21"
       ],
       "subs": [
         "ClaudeAI",
@@ -4842,15 +4665,8 @@
         "codex",
         "singularity"
       ],
-      "mentions": 75,
+      "mentions": 76,
       "refs": [
-        {
-          "date": "2026-11-15",
-          "title": "Gemini 4 Krypton is being tested in Arena arena",
-          "thread": "https://www.reddit.com/r/GeminiAI/comments/1xw01j7/gemini_4_krypton_is_being_tested_in_arena_arena/",
-          "link": "",
-          "comment": "I'm still waiting on Gemini 4 Uranium"
-        },
         {
           "date": "2026-11-15",
           "title": "We now know google was serious about gemini 4 💀",
@@ -4941,10 +4757,17 @@
           "thread": "https://news.ycombinator.com/item?id=50554374",
           "link": "https://micjm.com/blog/gemini-4-neon-looks-like-a-top-model/",
           "comment": "Looks like a good bunch of speculation in there but no bad news to be found. Just as good but cheaper? Sign me up. For this model, I mean. And not the Anthropic IPO."
+        },
+        {
+          "date": "2026-11-21",
+          "title": "Gemini 4 Neon is the new #1 on the Models Engineering Index",
+          "thread": "https://news.ycombinator.com/item?id=50568130",
+          "link": "https://git-aarvin.github.io/mei/",
+          "comment": "When and why should I trust this index over others?"
         }
       ],
       "deep_dive": "",
-      "last_seen": "2026-11-20",
+      "last_seen": "2026-11-21",
       "subject": "ai"
     },
     "ai-cybersecurity": {
@@ -5108,7 +4931,8 @@
         "2026-11-17",
         "2026-11-18",
         "2026-11-19",
-        "2026-11-20"
+        "2026-11-20",
+        "2026-11-21"
       ],
       "subs": [
         "ArtificialInteligence",
@@ -5124,15 +4948,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 40,
+      "mentions": 41,
       "refs": [
-        {
-          "date": "2026-11-08",
-          "title": "China making it illegal to fire employees for Al cost cuts.",
-          "thread": "https://www.reddit.com/r/antiai/comments/1xq14n4/china_making_it_illegal_to_fire_employees_for_al/",
-          "link": "",
-          "comment": ""
-        },
         {
           "date": "2026-11-08",
           "title": "Bank of England pours cold water on AI productivity boom",
@@ -5223,10 +5040,17 @@
           "thread": "https://news.ycombinator.com/item?id=50555093",
           "link": "https://colossus.com/article/ai-will-not-make-you-rich/",
           "comment": "Ironic if Anthropic, which is a public benefit corp, ends up being the firm that cashes in the most on AI."
+        },
+        {
+          "date": "2026-11-21",
+          "title": "AI came for the coders. Understanding why tells us who's next",
+          "thread": "https://news.ycombinator.com/item?id=50563328",
+          "link": "https://www.robertpeake.com/archives/104254-ai-came-for-the-coders-understanding-why-tells-us-whos-next.html",
+          "comment": "And yet, there are more coders than ever before."
         }
       ],
       "deep_dive": "",
-      "last_seen": "2026-11-20",
+      "last_seen": "2026-11-21",
       "subject": "ai"
     },
     "ai-in-mathematics": {
@@ -5412,7 +5236,8 @@
         "2026-11-16",
         "2026-11-17",
         "2026-11-18",
-        "2026-11-19"
+        "2026-11-19",
+        "2026-11-21"
       ],
       "subs": [
         "AgentsOfAI",
@@ -5432,15 +5257,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 190,
+      "mentions": 191,
       "refs": [
-        {
-          "date": "2026-11-14",
-          "title": "My game got removed from gamedev subs for using AI, so here’s exactly how I made it with Claude",
-          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xul18m/my_game_got_removed_from_gamedev_subs_for_using/",
-          "link": "",
-          "comment": "TL;DR of the discussion generated automatically after 200 comments. The overwhelming consensus is that the gamedev subs that booted OP are clueless and gatekeeping. The community is firmly on OP's side, arguing that AI is a tool and the final product is what matters. If the game isn't \"slop,\" who ca"
-        },
         {
           "date": "2026-11-14",
           "title": "10 years of Postgres expertise and the agent knows it better now",
@@ -5531,10 +5349,17 @@
           "thread": "https://news.ycombinator.com/item?id=50536468",
           "link": "",
           "comment": "Congrats on the launch! These benchmarks look really great, can't wait to start using this. What are some of the most interesting things the AI has caught + fixed so far?"
+        },
+        {
+          "date": "2026-11-21",
+          "title": "Epic Games Turns to AI Coding for the Unreal Engine",
+          "thread": "https://news.ycombinator.com/item?id=50573681",
+          "link": "https://spectrum.ieee.org/epic-games-unreal-engine-ai",
+          "comment": "I've stopped consuming new media...pretty much anything after 2023 unless it's verifiable anti-AI. Luckily there are a LOT of games out there that are AI-free, like ROMs of old console games and stuff. It's just no longer fun to experience something that another person (or group of people) didn't ma"
         }
       ],
       "deep_dive": "2026-11-15",
-      "last_seen": "2026-11-19",
+      "last_seen": "2026-11-21",
       "subject": "ai"
     },
     "ai-benchmarks": {
@@ -6241,7 +6066,8 @@
         "2026-11-17",
         "2026-11-18",
         "2026-11-19",
-        "2026-11-20"
+        "2026-11-20",
+        "2026-11-21"
       ],
       "subs": [
         "ArtificialInteligence",
@@ -6260,15 +6086,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 32,
+      "mentions": 33,
       "refs": [
-        {
-          "date": "2026-11-16",
-          "title": "In a study of 48 medical students and physicians, researchers deliberately degraded an AI diagnostic system’s accuracy, only 12.5% noticed. When participants diagnosed first and then compared with the AI’s recommendations, their confidence in their diagnoses fell faster than their trust in the AI",
-          "thread": "https://www.reddit.com/r/science/comments/1xwnkg5/in_a_study_of_48_medical_students_and_physicians/",
-          "link": "https://www.nature.com/articles/s41746-026-03410-x",
-          "comment": "This is why I find it so disconcerting that we people want to call it super intelligence. The more credibility we put into AI's \"hands\" and the more we outsource decision-making, the more quickly our own capacity devolves and disintegrates."
-        },
         {
           "date": "2026-11-16",
           "title": "Claude refused to cancel his work even tho he (probably) knew it was illegal",
@@ -6359,11 +6178,18 @@
           "thread": "https://news.ycombinator.com/item?id=50559140",
           "link": "https://spectrum.ieee.org/ai-superintelligence-debate",
           "comment": "I don’t necessarily agree with the labs’ policies and predictions on RSI but it’s worth noting that the points raised here are something they do have responses to. On the idea that training better models requires more data, I think the current thought here is that we are not getting all the “meat of"
+        },
+        {
+          "date": "2026-11-21",
+          "title": "Should governments slow frontier AI? Jacob Coxon and Robin Hanson debate [video]",
+          "thread": "https://news.ycombinator.com/item?id=50564366",
+          "link": "https://www.youtube.com/watch?v=lwfewYL7X0o",
+          "comment": "Could they if they wanted to?"
         }
       ],
       "deep_dive": "2026-11-08",
       "subject": "science",
-      "last_seen": "2026-11-20"
+      "last_seen": "2026-11-21"
     },
     "open-weight-models": {
       "name": "Open-Weight Models",
@@ -7210,7 +7036,8 @@
         "2026-11-16",
         "2026-11-17",
         "2026-11-18",
-        "2026-11-19"
+        "2026-11-19",
+        "2026-11-21"
       ],
       "subs": [
         "ArtificialInteligence",
@@ -7222,15 +7049,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 23,
+      "mentions": 24,
       "refs": [
-        {
-          "date": "2026-11-15",
-          "title": "Instead Of Lowering GPU Prices, Former NVIDIA CEO Jensen Huang Reportedly Financed AI Startups To Absorb Excess Silicon, Shattering The Shortage Perception",
-          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xvsb5f/instead_of_lowering_gpu_prices_former_nvidia_ceo/",
-          "link": "https://wccftech.com/jensen-huang-financed-ai-startups-absorb-excess-silicon/",
-          "comment": "Circular financing"
-        },
         {
           "date": "2026-11-15",
           "title": "NVIDIA Allegedly Engineered Scarcity By Funding AI Startups To Buy Its GPUs",
@@ -7321,11 +7141,18 @@
           "thread": "https://news.ycombinator.com/item?id=50538942",
           "link": "https://www.cnbc.com/2026/11/17/nvidia-nvda-earnings-report-q3-2027.html",
           "comment": "But they’ll change their minds later."
+        },
+        {
+          "date": "2026-11-21",
+          "title": "Nvidia accounting under SEC investigation, sources say",
+          "thread": "https://news.ycombinator.com/item?id=50581438",
+          "link": "https://finance.yahoo.com/markets/article/nvidia-stock-extends-25-trillion-rout-as-sec-probe-reportedly-investigates-its-accounting-194945274.html",
+          "comment": "Oh boy, here we go!"
         }
       ],
       "deep_dive": "",
       "subject": "ai",
-      "last_seen": "2026-11-19"
+      "last_seen": "2026-11-21"
     },
     "faa-ai-ground-stop": {
       "name": "FAA AI Air Traffic Tool and Nationwide Ground Stops",
@@ -7851,12 +7678,13 @@
       "name": "AI for Chip Design",
       "first_seen": "2026-11-20",
       "days": [
-        "2026-11-20"
+        "2026-11-20",
+        "2026-11-21"
       ],
       "subs": [
         "HackerNews"
       ],
-      "mentions": 1,
+      "mentions": 3,
       "refs": [
         {
           "date": "2026-11-20",
@@ -7864,11 +7692,25 @@
           "thread": "https://news.ycombinator.com/item?id=50549493",
           "link": "https://openai.com/index/advancing-chip-design-with-our-models/",
           "comment": "Really feels like OAI is just trying to make noise every day leading up to the ANT IPO."
+        },
+        {
+          "date": "2026-11-21",
+          "title": "Frostbite: A new CPU architecture discovered, designed and verified by AI",
+          "thread": "https://news.ycombinator.com/item?id=50572503",
+          "link": "https://architectlabs.com/blog/frostbite",
+          "comment": "My prediction: In the AI/AGI/ASI era, the 4 most valuable things will be: - Model - Compute (chips/energy) - Manufacturers - Materials You can already see it beginning at the chip design stage. If AI makes it so that it takes 2 months to design a chip instead of 2 years, then there will way more chi"
+        },
+        {
+          "date": "2026-11-21",
+          "title": "Vibecoding an inference chip",
+          "thread": "https://news.ycombinator.com/item?id=50579297",
+          "link": "https://ankitg.me/blog/vibecoding-inference-chip/",
+          "comment": "Does not say what type of model or size they were serving, but one of the traces mentions Maple, which is a 20b model. Still, getting ~70+ tok/s is quite good."
         }
       ],
       "deep_dive": "",
       "subject": "ai",
-      "last_seen": "2026-11-20"
+      "last_seen": "2026-11-21"
     },
     "ai-peer-review": {
       "name": "AI-Generated Text in Peer Review",
@@ -7892,6 +7734,43 @@
       "deep_dive": "",
       "subject": "ai",
       "last_seen": "2026-11-20"
+    },
+    "ai-ipo-market-selloff": {
+      "name": "AI IPO Market Sell-Off and Bubble Debate",
+      "first_seen": "2026-11-21",
+      "days": [
+        "2026-11-21"
+      ],
+      "subs": [
+        "HackerNews"
+      ],
+      "mentions": 3,
+      "refs": [
+        {
+          "date": "2026-11-21",
+          "title": "Global stock markets slump as Anthropic's record IPO fails to stem AI sell-off",
+          "thread": "https://news.ycombinator.com/item?id=50574383",
+          "link": "https://www.theguardian.com/business/2026/nov/20/global-stock-markets-slump-anthropic-ipo-ai-sell-off",
+          "comment": "It looks like a bad time to be an OpenAI late investor or employee... How did they miss IPOing first? SpaceX being first and Anthropic second wasn't on my bingo card for 2026."
+        },
+        {
+          "date": "2026-11-21",
+          "title": "Anthropic shares tank after IPO as the Nasdaq erases 2026 gains",
+          "thread": "https://news.ycombinator.com/item?id=50578794",
+          "link": "https://www.nbcnews.com/business/markets/anthropic-shares-markets-selloff-nasdaq-rcna610394",
+          "comment": "The funny thing is that the stock clearly IPOed at a lower price on purpose, then it was pumped and it looked like \"woah it hit 2T\" and then it came the natural selloff. This is actually good, some people were completely out of touch with reality and AI"
+        },
+        {
+          "date": "2026-11-21",
+          "title": "No Bailout for the AI Bubble, Anthropic IPO Protesters Say",
+          "thread": "https://news.ycombinator.com/item?id=50564282",
+          "link": "https://www.techpolicy.press/no-bailout-for-the-ai-bubble-anthropic-ipo-protesters-say/",
+          "comment": "> We have AI deciding medical outcomes and treatments in this country. Shame. Shame. What about cutting triage times for strokes, solving novel protein structures, or catching early-stage cancers? I'm not saying AI should be making final judgments on people's health, but this framing feels pretty on"
+        }
+      ],
+      "deep_dive": "",
+      "subject": "ai",
+      "last_seen": "2026-11-21"
     }
   }
 }
