@@ -1,17 +1,6 @@
 {
   "episodes": [
     {
-      "file": "ai_2026-11-14_evening_1500.mp3",
-      "date": "2026-11-14",
-      "edition": "evening",
-      "title": "Evening - 14 Nov: Can Model Weights Prove Which Chip Trained Them?",
-      "published": "2026-11-14T15:00:11.775648+05:30",
-      "pubDate": "Sat, 14 Nov 2026 15:00:11 +0530",
-      "size": 10465449,
-      "duration": 1308,
-      "description": "Evening edition - Saturday, 14 November 2026\nMetrology, hardware signatures, and the physical limits of orbital and computing systems\n\n00:25  Can Model Weights Prove Which Chip Trained Them?\n11:23  The Physics of Saving Hubble\n\nPlay \"Weights Don't Keep Secrets\", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-14_evening_1500.mp3\nWritten by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (260 threads)"
-    },
-    {
       "file": "ai_2026-11-15_morning_0600.mp3",
       "date": "2026-11-15",
       "edition": "morning",
@@ -153,6 +142,17 @@
       "size": 7953129,
       "duration": 994,
       "description": "Morning edition - Saturday, 21 November 2026\nWorkplace resistance to AI in schools, and a regulatory spotlight on the leading AI chipmaker\n\n00:30  Google workers push back on AI in classrooms\n09:45  SEC investigates Nvidia's accounting\n\nQuiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-21_morning_0600.mp3\nWritten by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Hacker News (no Reddit data: Reddit, collected hourly (0 threads); no snapshot from the office PC yet)"
+    },
+    {
+      "file": "ai_2026-11-21_evening_1500.mp3",
+      "date": "2026-11-21",
+      "edition": "evening",
+      "title": "Evening - 21 Nov: Anthropic's second day: the sell-off that wiped the Nasdaq's 2026 gains",
+      "published": "2026-11-21T15:00:12.692535+05:30",
+      "pubDate": "Sat, 21 Nov 2026 15:00:12 +0530",
+      "size": 8743210,
+      "duration": 1092,
+      "description": "Evening edition - Saturday, 21 November 2026\nAnthropic's rocky public debut and the strange convergence of AI advice\n\n00:36  Anthropic's second day: the sell-off that wiped the Nasdaq's 2026 gains\n06:53  Why five different models give you the same wrong answer\n13:59  Frostbite: A new CPU architecture discovered, designed and verified by AI\n\nPlay \"Four Trillion Gone in a Week\", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-21_evening_1500.mp3\nWritten by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Hacker News (no Reddit data: Reddit, collected hourly (0 threads); no snapshot from the office PC yet)"
     }
   ],
   "memory": [
@@ -2170,6 +2170,31 @@
       "topics": [
         "nvidia-leadership-dispute"
       ]
+    },
+    {
+      "label": "Saturday 21 Nov evening",
+      "date": "2026-11-21",
+      "edition": "evening",
+      "published": "2026-11-21T15:00:12.692535+05:30",
+      "file": "ai_2026-11-21_evening_1500.mp3",
+      "writer": "nemotron-3-ultra-550b-a55b (free)",
+      "voices": "Fish Audio (free)",
+      "summary": "Anthropic’s second trading day triggered a broad AI sell-off that erased the Nasdaq’s 2026 gains, prompting debate over its safety-first trust, lock-up schedule, and concentrated ownership. Users report that multiple AI models return nearly identical wrong answers, raising questions about shared training data, preference alignment, and model diversity. A claimed CPU architecture designed and verified by AI is being examined for whether the community evidence holds up.",
+      "threads": [
+        "Whether Anthropic's trust structure and share distribution explain the post-debut sell-off",
+        "If AI model convergence on identical errors comes from shared training data or alignment methods",
+        "Whether the AI-designed CPU architecture passes independent technical verification"
+      ],
+      "segments": [
+        "Anthropic's second day: the sell-off that wiped the Nasdaq's 2026 gains",
+        "Why five different models give you the same wrong answer",
+        "Frostbite: A new CPU architecture discovered, designed and verified by AI"
+      ],
+      "deep_topic": "",
+      "topics": [
+        "ai-chip-design",
+        "ai-ipo-market-selloff"
+      ]
     }
   ],
   "seen": [
@@ -3056,6 +3081,30 @@
     {
       "date": "2026-11-21",
       "link": "https://finance.yahoo.com/markets/article/nvidia-stock-extends-25-trillion-rout-as-sec-probe-reportedly-investigates-its-accounting-194945274.html"
+    },
+    {
+      "date": "2026-11-21",
+      "link": "https://news.ycombinator.com/item?id=50572503"
+    },
+    {
+      "date": "2026-11-21",
+      "link": "https://architectlabs.com/blog/frostbite"
+    },
+    {
+      "date": "2026-11-21",
+      "link": "https://news.ycombinator.com/item?id=50574383"
+    },
+    {
+      "date": "2026-11-21",
+      "link": "https://www.theguardian.com/business/2026/nov/20/global-stock-markets-slump-anthropic-ipo-ai-sell-off"
+    },
+    {
+      "date": "2026-11-21",
+      "link": "https://news.ycombinator.com/item?id=50577872"
+    },
+    {
+      "date": "2026-11-21",
+      "link": "https://a90.com/experiments/same-advice/"
     }
   ],
   "feedback": [
@@ -4056,26 +4105,172 @@
     "2026-11-21T01:09:44.590704+00:00",
     "2026-11-21T01:09:46.464470+00:00",
     "2026-11-21T01:11:08.885128+00:00",
-    "2026-11-21T01:11:34.137469+00:00"
+    "2026-11-21T01:11:34.137469+00:00",
+    "2026-11-21T09:34:17.480309+00:00",
+    "2026-11-21T09:34:20.548500+00:00",
+    "2026-11-21T09:34:23.803898+00:00",
+    "2026-11-21T09:34:26.966225+00:00",
+    "2026-11-21T09:34:30.110159+00:00",
+    "2026-11-21T09:34:33.348378+00:00",
+    "2026-11-21T09:34:36.514871+00:00",
+    "2026-11-21T09:34:39.726178+00:00",
+    "2026-11-21T09:34:43.041804+00:00",
+    "2026-11-21T09:34:55.744965+00:00",
+    "2026-11-21T09:38:34.979674+00:00",
+    "2026-11-21T09:39:26.986664+00:00",
+    "2026-11-21T09:40:42.908176+00:00",
+    "2026-11-21T09:41:38.399621+00:00",
+    "2026-11-21T09:42:00.146398+00:00",
+    "2026-11-21T09:43:14.755776+00:00",
+    "2026-11-21T09:44:01.918010+00:00",
+    "2026-11-21T09:44:02.050617+00:00",
+    "2026-11-21T09:44:02.165659+00:00",
+    "2026-11-21T09:45:06.595867+00:00",
+    "2026-11-21T09:46:16.252495+00:00",
+    "2026-11-21T09:47:50.629144+00:00",
+    "2026-11-21T09:49:10.405260+00:00",
+    "2026-11-21T09:49:56.646197+00:00",
+    "2026-11-21T09:50:51.451900+00:00",
+    "2026-11-21T09:52:32.381028+00:00",
+    "2026-11-21T09:52:52.591680+00:00",
+    "2026-11-21T09:54:47.498581+00:00",
+    "2026-11-21T09:54:48.038247+00:00",
+    "2026-11-21T09:55:49.519164+00:00",
+    "2026-11-21T09:58:11.403666+00:00",
+    "2026-11-21T09:58:35.193798+00:00",
+    "2026-11-21T09:59:52.136046+00:00",
+    "2026-11-21T10:01:03.187684+00:00",
+    "2026-11-21T10:02:14.940469+00:00",
+    "2026-11-21T10:03:42.457276+00:00",
+    "2026-11-21T10:04:57.685068+00:00",
+    "2026-11-21T10:06:55.940742+00:00",
+    "2026-11-21T10:06:56.322097+00:00",
+    "2026-11-21T10:06:59.361779+00:00",
+    "2026-11-21T10:07:02.552877+00:00",
+    "2026-11-21T10:07:05.814961+00:00",
+    "2026-11-21T10:08:36.224096+00:00",
+    "2026-11-21T10:09:19.574958+00:00",
+    "2026-11-21T10:12:48.769566+00:00",
+    "2026-11-21T10:13:43.157061+00:00",
+    "2026-11-21T10:15:03.084127+00:00",
+    "2026-11-21T10:16:18.119527+00:00",
+    "2026-11-21T10:18:52.776677+00:00",
+    "2026-11-21T10:19:38.150100+00:00",
+    "2026-11-21T10:19:40.421303+00:00",
+    "2026-11-21T10:19:47.054042+00:00",
+    "2026-11-21T10:19:50.275370+00:00",
+    "2026-11-21T10:19:52.043898+00:00",
+    "2026-11-21T10:19:52.680376+00:00",
+    "2026-11-21T10:20:05.752179+00:00",
+    "2026-11-21T10:20:06.682634+00:00",
+    "2026-11-21T10:20:10.049942+00:00",
+    "2026-11-21T10:20:14.472906+00:00",
+    "2026-11-21T10:20:16.251627+00:00",
+    "2026-11-21T10:20:19.469358+00:00",
+    "2026-11-21T10:20:19.635914+00:00",
+    "2026-11-21T10:20:21.317841+00:00",
+    "2026-11-21T10:20:27.618964+00:00",
+    "2026-11-21T10:20:27.763531+00:00",
+    "2026-11-21T10:20:37.149885+00:00",
+    "2026-11-21T10:20:44.031951+00:00",
+    "2026-11-21T10:20:45.571099+00:00",
+    "2026-11-21T10:20:49.579889+00:00",
+    "2026-11-21T10:21:00.718909+00:00",
+    "2026-11-21T10:21:02.782085+00:00",
+    "2026-11-21T10:21:03.635614+00:00",
+    "2026-11-21T10:21:12.671010+00:00",
+    "2026-11-21T10:21:14.515491+00:00",
+    "2026-11-21T10:21:15.807182+00:00",
+    "2026-11-21T10:21:24.084574+00:00",
+    "2026-11-21T10:21:24.723385+00:00",
+    "2026-11-21T10:21:26.758724+00:00",
+    "2026-11-21T10:21:29.235749+00:00",
+    "2026-11-21T10:21:30.860333+00:00",
+    "2026-11-21T10:21:35.876502+00:00",
+    "2026-11-21T10:21:37.447397+00:00",
+    "2026-11-21T10:21:41.299388+00:00",
+    "2026-11-21T10:21:41.351529+00:00",
+    "2026-11-21T10:21:46.278211+00:00",
+    "2026-11-21T10:21:48.564376+00:00",
+    "2026-11-21T10:21:52.015130+00:00",
+    "2026-11-21T10:21:55.883161+00:00",
+    "2026-11-21T10:22:01.611458+00:00",
+    "2026-11-21T10:22:02.328879+00:00",
+    "2026-11-21T10:22:09.549726+00:00",
+    "2026-11-21T10:22:10.114357+00:00",
+    "2026-11-21T10:22:17.942025+00:00",
+    "2026-11-21T10:22:22.114796+00:00",
+    "2026-11-21T10:22:29.437329+00:00",
+    "2026-11-21T10:22:29.822063+00:00",
+    "2026-11-21T10:22:34.436760+00:00",
+    "2026-11-21T10:22:39.295304+00:00",
+    "2026-11-21T10:22:39.386979+00:00",
+    "2026-11-21T10:22:42.901083+00:00",
+    "2026-11-21T10:22:46.618161+00:00",
+    "2026-11-21T10:22:50.598582+00:00",
+    "2026-11-21T10:22:54.435128+00:00",
+    "2026-11-21T10:22:54.888943+00:00",
+    "2026-11-21T10:22:59.891844+00:00",
+    "2026-11-21T10:23:00.803476+00:00",
+    "2026-11-21T10:23:08.142858+00:00",
+    "2026-11-21T10:23:10.602832+00:00",
+    "2026-11-21T10:23:12.819303+00:00",
+    "2026-11-21T10:23:15.681380+00:00",
+    "2026-11-21T10:23:18.804262+00:00",
+    "2026-11-21T10:23:21.491148+00:00",
+    "2026-11-21T10:23:25.844924+00:00",
+    "2026-11-21T10:23:28.777875+00:00",
+    "2026-11-21T10:23:31.921421+00:00",
+    "2026-11-21T10:23:35.477858+00:00",
+    "2026-11-21T10:23:39.400493+00:00",
+    "2026-11-21T10:23:40.216364+00:00",
+    "2026-11-21T10:23:43.664336+00:00",
+    "2026-11-21T10:23:50.159293+00:00",
+    "2026-11-21T10:23:51.844446+00:00",
+    "2026-11-21T10:23:56.378608+00:00",
+    "2026-11-21T10:23:58.830099+00:00",
+    "2026-11-21T10:24:02.594707+00:00",
+    "2026-11-21T10:24:04.640980+00:00",
+    "2026-11-21T10:24:09.159600+00:00",
+    "2026-11-21T10:24:10.111985+00:00",
+    "2026-11-21T10:24:16.219907+00:00",
+    "2026-11-21T10:24:19.520710+00:00",
+    "2026-11-21T10:24:21.228420+00:00",
+    "2026-11-21T10:24:24.761498+00:00",
+    "2026-11-21T10:24:26.322304+00:00",
+    "2026-11-21T10:24:27.872460+00:00",
+    "2026-11-21T10:24:34.352008+00:00",
+    "2026-11-21T10:24:35.766610+00:00",
+    "2026-11-21T10:24:37.566172+00:00",
+    "2026-11-21T10:24:40.922288+00:00",
+    "2026-11-21T10:24:47.870550+00:00",
+    "2026-11-21T10:24:50.288334+00:00",
+    "2026-11-21T10:24:57.368153+00:00",
+    "2026-11-21T10:24:59.841932+00:00",
+    "2026-11-21T10:25:05.292745+00:00",
+    "2026-11-21T10:25:07.384350+00:00",
+    "2026-11-21T10:25:08.989928+00:00",
+    "2026-11-21T10:25:10.152110+00:00",
+    "2026-11-21T10:25:15.089187+00:00",
+    "2026-11-21T10:25:18.426294+00:00",
+    "2026-11-21T10:25:21.960630+00:00",
+    "2026-11-21T10:25:22.297249+00:00",
+    "2026-11-21T10:25:28.911370+00:00",
+    "2026-11-21T10:25:31.723293+00:00",
+    "2026-11-21T10:25:33.885065+00:00",
+    "2026-11-21T10:25:36.092231+00:00",
+    "2026-11-21T10:25:37.453854+00:00",
+    "2026-11-21T10:26:34.023962+00:00",
+    "2026-11-21T10:27:13.063280+00:00"
   ],
   "free_day_out": "",
   "gemini_log": [
-    "2026-11-19T01:51:33.900295-08:00",
-    "2026-11-19T16:36:38.132971-08:00",
-    "2026-11-19T16:39:43.735621-08:00",
-    "2026-11-19T16:45:20.613661-08:00",
-    "2026-11-19T16:49:56.582972-08:00",
-    "2026-11-19T17:05:32.486821-08:00",
-    "2026-11-20T16:59:27.249544-08:00"
+    "2026-11-20T16:59:27.249544-08:00",
+    "2026-11-21T01:35:17.095226-08:00"
   ],
   "gemini_day_out": "",
   "pace_adjust": 0.0,
   "lesson_log": [
-    {
-      "date": "2026-11-08",
-      "title": "The Memory Choke Point",
-      "template": "bottleneck"
-    },
     {
       "date": "2026-11-08",
       "title": "The Verification Chain That Breaks at 48%",
@@ -4322,12 +4517,30 @@
       ],
       "theme": "exchange",
       "date": "2026-11-20"
+    },
+    {
+      "title": "Four Trillion Gone in a Week",
+      "template": "chain",
+      "formats": [
+        "estimate",
+        "sequence",
+        "estimate",
+        "flaw",
+        "match",
+        "lab"
+      ],
+      "theme": "case",
+      "date": "2026-11-21"
     }
   ],
   "model_health": {
     "perplexity/pplx-decider-v1.3:free": {
       "n": 1,
       "until": "2026-11-19T17:20:21.842482+00:00"
+    },
+    "gemini-4-hydrogen": {
+      "n": 1,
+      "until": "2026-11-22T02:27:14.931511+00:00"
     }
   },
   "topics": {
@@ -4665,15 +4878,8 @@
         "codex",
         "singularity"
       ],
-      "mentions": 76,
+      "mentions": 77,
       "refs": [
-        {
-          "date": "2026-11-15",
-          "title": "We now know google was serious about gemini 4 💀",
-          "thread": "https://www.reddit.com/r/singularity/comments/1xw32s0/we_now_know_google_was_serious_about_gemini_4/",
-          "link": "",
-          "comment": "I hope OpenAI finishes too."
-        },
         {
           "date": "2026-11-15",
           "title": "Gemini 4 hydrogen: better than Claude Sonnet and GPT?",
@@ -4757,6 +4963,13 @@
           "thread": "https://news.ycombinator.com/item?id=50554374",
           "link": "https://micjm.com/blog/gemini-4-neon-looks-like-a-top-model/",
           "comment": "Looks like a good bunch of speculation in there but no bad news to be found. Just as good but cheaper? Sign me up. For this model, I mean. And not the Anthropic IPO."
+        },
+        {
+          "date": "2026-11-21",
+          "title": "Gemini 4 Neon is the new #1 on the Models Engineering Index",
+          "thread": "https://news.ycombinator.com/item?id=50568130",
+          "link": "https://git-aarvin.github.io/mei/",
+          "comment": "When and why should I trust this index over others?"
         },
         {
           "date": "2026-11-21",
@@ -5257,22 +5470,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 191,
+      "mentions": 193,
       "refs": [
-        {
-          "date": "2026-11-14",
-          "title": "10 years of Postgres expertise and the agent knows it better now",
-          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xv6v7h/10_years_of_postgres_expertise_and_the_agent/",
-          "link": "",
-          "comment": "https://preview.redd.it/1y8sfrbwmd1i1.png?width=584&format=png&auto=webp&s=b18f21485201ad2cbec827ed70ecc6547774ca2f"
-        },
-        {
-          "date": "2026-11-15",
-          "title": "I spent 4,500+ hours coding with AI. This is the Claude Code setup I ended up with.",
-          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xw7ylh/i_spent_4500_hours_coding_with_ai_this_is_the/",
-          "link": "",
-          "comment": "What in the ai slop is this"
-        },
         {
           "date": "2026-11-15",
           "title": "Pleading with the non-engineers (or less experienced ones) using Claude Code and complaining about the models deteriorating...",
@@ -5356,6 +5555,20 @@
           "thread": "https://news.ycombinator.com/item?id=50573681",
           "link": "https://spectrum.ieee.org/epic-games-unreal-engine-ai",
           "comment": "I've stopped consuming new media...pretty much anything after 2023 unless it's verifiable anti-AI. Luckily there are a LOT of games out there that are AI-free, like ROMs of old console games and stuff. It's just no longer fun to experience something that another person (or group of people) didn't ma"
+        },
+        {
+          "date": "2026-11-21",
+          "title": "Epic Games Turns to AI Coding for the Unreal Engine",
+          "thread": "https://news.ycombinator.com/item?id=50573681",
+          "link": "https://spectrum.ieee.org/epic-games-unreal-engine-ai",
+          "comment": "I've stopped consuming new media...pretty much anything after 2023 unless it's verifiable anti-AI. Luckily there are a LOT of games out there that are AI-free, like ROMs of old console games and stuff. It's just no longer fun to experience something that another person (or group of people) didn't ma"
+        },
+        {
+          "date": "2026-11-21",
+          "title": "ClawDOS – An AI coding agent for DOS",
+          "thread": "https://news.ycombinator.com/item?id=50586292",
+          "link": "http://ricapar.net/ClawDOS/",
+          "comment": "I love what I see!"
         }
       ],
       "deep_dive": "2026-11-15",
@@ -6690,7 +6903,8 @@
         "2026-11-07",
         "2026-11-13",
         "2026-11-16",
-        "2026-11-20"
+        "2026-11-20",
+        "2026-11-21"
       ],
       "subs": [
         "ArtificialInteligence",
@@ -6705,15 +6919,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 27,
+      "mentions": 28,
       "refs": [
-        {
-          "date": "2026-10-26",
-          "title": "LG Smart TVs Caught Mapping Your Network, Logging Audio With Screen Off",
-          "thread": "https://www.reddit.com/r/technology/comments/1xf9ssl/lg_smart_tvs_caught_mapping_your_network_logging/",
-          "link": "https://thecybersecguru.com/news/lg-smart-tv-spying-investigation/",
-          "comment": "Why in the flying fuck is this not 100% illegal????"
-        },
         {
           "date": "2026-10-27",
           "title": "Police Are Increasingly Pulling People Over Because AI Deems Their Driving Patterns “Suspicious”",
@@ -6804,11 +7011,18 @@
           "thread": "https://news.ycombinator.com/item?id=50567735",
           "link": "https://www.techdirt.com/2026/11/19/court-tells-cops-that-the-4th-amendment-doesnt-cover-ai-generated-probable-cause/",
           "comment": "Good! Note that this isn't just a case of a suspect trying to deny a warrant. This is the suspect, after the case was dismissed, coming after the cop financially for the completely bogus arrest warrant. And the court ruling said that \"no reasonable officer\" could rely on AI as the sole determinant t"
+        },
+        {
+          "date": "2026-11-21",
+          "title": "Restricting AI agents in mobile operating systems platforms from capturing data",
+          "thread": "https://news.ycombinator.com/item?id=50572348",
+          "link": "https://signal.org/blog/protecting-your-privacy/",
+          "comment": "I am not sure why signal doesn't allow crypto payment (like monero) for their account creation when not using a phone number. To register you either need a phone number or payment method which can both identify you."
         }
       ],
       "deep_dive": "",
       "subject": "ai",
-      "last_seen": "2026-11-20"
+      "last_seen": "2026-11-21"
     },
     "ai-company-updates": {
       "name": "AI Company Updates",
@@ -7684,7 +7898,7 @@
       "subs": [
         "HackerNews"
       ],
-      "mentions": 3,
+      "mentions": 5,
       "refs": [
         {
           "date": "2026-11-20",
@@ -7692,6 +7906,20 @@
           "thread": "https://news.ycombinator.com/item?id=50549493",
           "link": "https://openai.com/index/advancing-chip-design-with-our-models/",
           "comment": "Really feels like OAI is just trying to make noise every day leading up to the ANT IPO."
+        },
+        {
+          "date": "2026-11-21",
+          "title": "Frostbite: A new CPU architecture discovered, designed and verified by AI",
+          "thread": "https://news.ycombinator.com/item?id=50572503",
+          "link": "https://architectlabs.com/blog/frostbite",
+          "comment": "My prediction: In the AI/AGI/ASI era, the 4 most valuable things will be: - Model - Compute (chips/energy) - Manufacturers - Materials You can already see it beginning at the chip design stage. If AI makes it so that it takes 2 months to design a chip instead of 2 years, then there will way more chi"
+        },
+        {
+          "date": "2026-11-21",
+          "title": "Vibecoding an inference chip",
+          "thread": "https://news.ycombinator.com/item?id=50579297",
+          "link": "https://ankitg.me/blog/vibecoding-inference-chip/",
+          "comment": "Does not say what type of model or size they were serving, but one of the traces mentions Maple, which is a 20b model. Still, getting ~70+ tok/s is quite good."
         },
         {
           "date": "2026-11-21",
@@ -7744,7 +7972,7 @@
       "subs": [
         "HackerNews"
       ],
-      "mentions": 3,
+      "mentions": 5,
       "refs": [
         {
           "date": "2026-11-21",
@@ -7766,6 +7994,20 @@
           "thread": "https://news.ycombinator.com/item?id=50564282",
           "link": "https://www.techpolicy.press/no-bailout-for-the-ai-bubble-anthropic-ipo-protesters-say/",
           "comment": "> We have AI deciding medical outcomes and treatments in this country. Shame. Shame. What about cutting triage times for strokes, solving novel protein structures, or catching early-stage cancers? I'm not saying AI should be making final judgments on people's health, but this framing feels pretty on"
+        },
+        {
+          "date": "2026-11-21",
+          "title": "Nasdaq erases all 2026 gains as AI sell-off dampens Anthropic’s second day",
+          "thread": "https://news.ycombinator.com/item?id=50574383",
+          "link": "https://www.theguardian.com/business/2026/nov/20/global-stock-markets-slump-anthropic-ipo-ai-sell-off",
+          "comment": "It looks like a bad time to be an OpenAI late investor or employee... How did they miss IPOing first? SpaceX being first and Anthropic second wasn't on my bingo card for 2026."
+        },
+        {
+          "date": "2026-11-21",
+          "title": "Anthropic's IPO Bust Deepens $4T AI Wipeout on Wall Street",
+          "thread": "https://news.ycombinator.com/item?id=50582280",
+          "link": "https://www.wsj.com/finance/stocks/anthropics-ipo-bust-punctuates-4-trillion-ai-wipeout-on-wall-street-f1f1ec90",
+          "comment": "Unwall link https://unwall.app/www.wsj.com/finance/stocks/anthropics-ipo..."
         }
       ],
       "deep_dive": "",

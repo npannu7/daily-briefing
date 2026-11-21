@@ -10,12 +10,302 @@
   "lines": [
    {
     "said": "\"Too technical\" in 2 of your last 7 depth ratings",
-    "did": "Each story may use at most 4 specialist terms: this episode's scripts were rewritten from 23 to 11 and 16 to 15."
+    "did": "Each story may use at most 4 specialist terms: this episode's scripts were rewritten from 34 to 16 and 17 to 2 and 20 to 6."
    }
   ],
   "last": "2026-11-19"
  },
  "episodes": [
+  {
+   "file": "ai_2026-11-21_evening_1500.mp3",
+   "title": "Evening - 21 Nov: Anthropic's second day: the sell-off that wiped the Nasdaq's 2026 gains",
+   "label": "Saturday 21 Nov evening",
+   "date": "2026-11-21",
+   "edition": "evening",
+   "published": "2026-11-21T15:00:12.692535+05:30",
+   "duration": 1092,
+   "theme": "Anthropic's rocky public debut and the strange convergence of AI advice",
+   "writer": "nemotron-3-ultra-550b-a55b (free)",
+   "voices": "Fish Audio (free)",
+   "deep_dive": false,
+   "segments": [
+    {
+     "title": "Anthropic's second day: the sell-off that wiped the Nasdaq's 2026 gains",
+     "category": "thread"
+    },
+    {
+     "title": "Why five different models give you the same wrong answer",
+     "category": "thread"
+    },
+    {
+     "title": "Frostbite: A new CPU architecture discovered, designed and verified by AI",
+     "category": "thread"
+    }
+   ],
+   "play": {
+    "v": 2,
+    "theme": "case",
+    "title": "Four Trillion Gone in a Week",
+    "brief": "Clues: record IPO, 40% surge, 9% drop, four trillion erased. You find the cause.",
+    "segments": [
+     {
+      "title": "Anthropic's second day: the sell-off that wiped the Nasdaq's 2026 gains",
+      "bet": {
+       "claim": "Retail investors received the majority of shares in Anthropic's record IPO",
+       "truth": false,
+       "why": "Biggest IPO means massive institutional allocation; retail gets crumbs per the segment."
+      },
+      "rounds": [
+       {
+        "type": "estimate",
+        "q": "How much market value vanished across the week, in trillions?",
+        "answer": 4.0,
+        "unit": "trillion USD",
+        "lo": 0.5,
+        "hi": 10,
+        "log": false,
+        "why": "Wall Street Journal estimated four trillion gone for the week — not just Friday."
+       },
+       {
+        "type": "sequence",
+        "q": "Order the events from Anthropic's pricing to the weekly wipeout",
+        "items": [
+         "Anthropic prices at $83 and goes public",
+         "Shares surge nearly 40% intraday Thursday",
+         "Friday close: $88.30, down 9% from Thursday",
+         "Nasdaq wipes out full-year 2026 gains in one session",
+         "Four trillion vanishes across the market for the week"
+        ],
+        "why": "Thursday IPO pop, Friday drop, same-session index reset, then the weekly tally."
+       }
+      ],
+      "takeaway": "A governance structure is only as strong as the independence of the people appointed to enforce it."
+     },
+     {
+      "title": "Why five different models give you the same wrong answer",
+      "bet": {
+       "claim": "Models that show reasoning steps give more varied answers.",
+       "truth": false,
+       "why": "Across eight life questions, showing reasoning never changed the top answer — it only reinforced it."
+      },
+      "rounds": [
+       {
+        "type": "estimate",
+        "q": "What percentage of users actually get the same answer for a life-advice question?",
+        "answer": 80.0,
+        "unit": "%",
+        "lo": 20,
+        "hi": 95,
+        "log": false,
+        "why": "Models guessed fifteen percent; the data showed eighty percent — a fivefold gap between perception and reality."
+       },
+       {
+        "type": "flaw",
+        "q": "Which claim about the convergence experiment is false?",
+        "items": [
+         "Thinking harder never changed the top answer across eight questions.",
+         "Personalization gave completely different answers for the first fifteen questions.",
+         "Creative tasks like baby names showed no single answer reaching a third.",
+         "Compressed local models diverged more than full API models."
+        ],
+        "flaw": 3,
+        "why": "The source never tested quantized or compressed models — only sixty-five assorted API and open-weight models."
+       }
+      ],
+      "takeaway": "Dozens of models, one mind — they all learned to please the same rater."
+     },
+     {
+      "title": "Frostbite: A new CPU architecture discovered, designed and verified by AI",
+      "bet": {
+       "claim": "Frostbite was built with zero human architectural input.",
+       "truth": false,
+       "why": "Humans still chose the programming model and defined the design space AI searched."
+      },
+      "rounds": [
+       {
+        "type": "match",
+        "q": "Match the chip term to what it does",
+        "pairs": [
+         [
+          "ISA",
+          "CPU commands it understands"
+         ],
+         [
+          "RTL",
+          "hardware design description"
+         ],
+         [
+          "GDS",
+          "final layout sent to factory"
+         ],
+         [
+          "Superscalar",
+          "issues multiple instructions per clock"
+         ]
+        ]
+       },
+       {
+        "type": "lab",
+        "text": "Six design steps must all pass. Each step works 90%. Move sliders to see how many chips survive.",
+        "inputs": [
+         {
+          "id": "p",
+          "label": "Each design step works",
+          "unit": "%",
+          "min": 50.0,
+          "max": 99.9,
+          "step": 0.1,
+          "value": 90.0
+         },
+         {
+          "id": "n",
+          "label": "Design steps in a chip",
+          "unit": "",
+          "min": 1.0,
+          "max": 20.0,
+          "step": 1.0,
+          "value": 6.0
+         }
+        ],
+        "outputs": [
+         {
+          "id": "ok",
+          "label": "Whole chip works",
+          "unit": "%",
+          "expr": "100*(p/100)^n",
+          "digits": 1,
+          "lo": 9.5367431640625e-05,
+          "hi": 99.9
+         },
+         {
+          "id": "fails",
+          "label": "Chips that fail, of 100",
+          "unit": "",
+          "expr": "100-ok",
+          "digits": 0,
+          "lo": 0.09999999999999432,
+          "hi": 99.99990463256836
+         }
+        ],
+        "chart": {
+         "x": "n",
+         "y": [
+          "ok"
+         ]
+        },
+        "goal": {
+         "target": "ok",
+         "min": 90.0,
+         "max": 100.0,
+         "text": "Get at least 90% of chips working fully",
+         "success": "Small error rates multiply: six 90% steps leave only half the chips working."
+        },
+        "template": "chain",
+        "view": {
+         "kind": "runs",
+         "p": "p",
+         "n": "n",
+         "step": "design step",
+         "run": "chip"
+        }
+       }
+      ],
+      "takeaway": "AI can search vast design spaces, but humans still define the space—and the benchmarks were tiny."
+     }
+    ],
+    "words": [
+     {
+      "term": "Lock-up period",
+      "means": "Insiders can't sell shares for a set time, usually six months"
+     },
+     {
+      "term": "Float",
+      "means": "The shares actually available for public trading"
+     },
+     {
+      "term": "Liquidity drain",
+      "means": "Portfolio managers selling other holdings to fund a large new position"
+     },
+     {
+      "term": "Mode collapse",
+      "means": "When a model picks the single most likely answer over and over."
+     },
+     {
+      "term": "RLHF",
+      "means": "Training where human ratings steer the model toward a safe corporate voice."
+     },
+     {
+      "term": "Common Crawl",
+      "means": "A massive public web archive used to train most large language models."
+     },
+     {
+      "term": "ISA",
+      "means": "the commands a CPU understands"
+     },
+     {
+      "term": "RTL",
+      "means": "the hardware design description sent to tools"
+     }
+    ],
+    "chips": [
+     "Trust structure feels like theater",
+     "Liquidity drain theory makes sense",
+     "Four trillion is staggering",
+     "First annual meeting will tell"
+    ]
+   },
+   "quiz": [
+    {
+     "q": "According to the hosts, what is the critical factor that determines whether Anthropic's long-term benefit trust will actually prioritize safety over profit after going public?",
+     "options": [
+      "The percentage of shares allocated to retail investors in the IPO",
+      "The independence of the individuals appointed to the trust's board",
+      "Whether the trust is incorporated as a separate legal entity",
+      "The total size of the IPO compared to previous tech listings"
+     ],
+     "answer": 1,
+     "explain": "Sarah states that a governance structure is only as strong as the independence of the people appointed to enforce it, with the first real test coming at the annual meeting.",
+     "segment": "Anthropic's second day: the sell-off that wiped the Nasdaq's 2026 gains"
+    },
+    {
+     "q": "The hosts discuss a 'liquidity-drain' theory to explain why other tech stocks fell around Anthropic's IPO. What mechanism do they describe as the plausible cause?",
+     "options": [
+      "Portfolio managers sold existing holdings to buy Anthropic shares without increasing total market exposure",
+      "Retail investors borrowed heavily to buy Anthropic stock, triggering margin calls in other tech stocks",
+      "The benefit trust sold its special voting shares to raise cash for safety initiatives",
+      "Nvidia and Micron automatically rebalanced their indices to exclude AI companies"
+     ],
+     "answer": 0,
+     "explain": "Laura explains that when a massive new issue arrives, managers rebalance by selling existing positions to fund the new shares, creating sector-wide selling pressure.",
+     "segment": "Anthropic's second day: the sell-off that wiped the Nasdaq's 2026 gains"
+    },
+    {
+     "q": "In the model-convergence experiment, different AI models repeatedly gave the same answers (e.g., Austin, computer science, age 34). Which explanation do the hosts present as supported by the discussion?",
+     "options": [
+      "The models were all running on the same cloud infrastructure, causing synchronized outputs",
+      "Reinforcement Learning from Human Feedback (RLHF) using similar preference datasets rewards a uniform 'corporate voice'",
+      "All models were fine-tuned on the same proprietary dataset from a single lab",
+      "Each model was secretly given the same system prompt before answering"
+     ],
+     "answer": 1,
+     "explain": "The hosts attribute convergent style to RLHF with similar preference datasets across labs, which makes 'helpful, harmless, concise' outputs the global optimum.",
+     "segment": "Why five different models give you the same wrong answer"
+    },
+    {
+     "q": "The hosts are skeptical of the Frostbite CPU claims. What is the primary quality-assurance limitation they cite regarding the reported performance gains?",
+     "options": [
+      "The design was verified in simulation on small benchmarks, but real-world validation in silicon is unclear or incomplete",
+      "The AI agents did not write a compiler for the new instruction set architecture",
+      "The architecture relies on shared mutable state, contradicting its claimed programming model",
+      "The benchmarks were sixty-four times larger than standard SPLASH-2 workloads"
+     ],
+     "answer": 0,
+     "explain": "Laura notes the work is impressive in simulation but questions whether it has been taped out or validated against real-world requirements like timing closure and yield.",
+     "segment": "Frostbite: A new CPU architecture discovered, designed and verified by AI"
+    }
+   ],
+   "transcript": "transcripts/ai_2026-11-21_evening_1500.txt"
+  },
   {
    "file": "ai_2026-11-21_morning_0600.mp3",
    "title": "Morning - 21 Nov: Google workers push back on AI in classrooms",
@@ -3225,209 +3515,6 @@
     }
    ],
    "transcript": "transcripts/ai_2026-11-15_morning_0600.txt"
-  },
-  {
-   "file": "ai_2026-11-14_evening_1500.mp3",
-   "title": "Evening - 14 Nov: Can Model Weights Prove Which Chip Trained Them?",
-   "label": "Saturday 14 Nov evening",
-   "date": "2026-11-14",
-   "edition": "evening",
-   "published": "2026-11-14T15:00:11.775648+05:30",
-   "duration": 1308,
-   "theme": "Metrology, hardware signatures, and the physical limits of orbital and computing systems",
-   "writer": "nemotron-3-ultra-550b-a55b (free)",
-   "voices": "Fish Audio (free)",
-   "deep_dive": false,
-   "segments": [
-    {
-     "title": "Can Model Weights Prove Which Chip Trained Them?",
-     "category": "thread"
-    },
-    {
-     "title": "The Physics of Saving Hubble",
-     "category": "concept"
-    }
-   ],
-   "play": {
-    "v": 2,
-    "theme": "bench",
-    "title": "Weights Don't Keep Secrets",
-    "brief": "He tests if checkpoints reveal their training hardware.",
-    "segments": [
-     {
-      "title": "Can Model Weights Prove Which Chip Trained Them?",
-      "bet": {
-       "claim": "Model weights retain a readable fingerprint of the exact GPU architecture used to train them.",
-       "truth": false,
-       "why": "Distributed training noise — reduction order, dropout, unknown seeds — drowns out microarchitectural rounding differences completely."
-      },
-      "rounds": [
-       {
-        "type": "clues",
-        "q": "What claim did the Reddit thread make about model weights?",
-        "clues": [
-         "A website said it caught four labs using banned chips by reading their public weight files.",
-         "The method: simulate early training with known seeds and match the bit patterns exactly.",
-         "They called it forensic proof — but the gallery link was broken and no paper exists."
-        ],
-        "options": [
-         "Weights reveal training chips",
-         "Seeds are always public",
-         "Blackwell chips are faster",
-         "Chinese labs cheat tests"
-        ],
-        "answer": 0,
-        "why": "The thread claimed weight checkpoints contain architectural fingerprints — but distributed training noise and secret seeds make this impossible to verify."
-       },
-       {
-        "type": "flaw",
-        "q": "Three statements match the episode — one does not.",
-        "items": [
-         "MXFP4 format and SM100 kernels need Blackwell hardware to run.",
-         "Chinese firms can rent Blackwell compute in Malaysia or Singapore legally.",
-         "Gradient reduction order varies per run even on identical GPU clusters.",
-         "The forensic site published its statistical method and null hypothesis for review."
-        ],
-        "flaw": 3,
-        "why": "The site shared no method, no test, no data — just a broken gallery link and a Reddit post."
-       }
-      ],
-      "takeaway": "A model checkpoint is not a flight recorder — it doesn't log the hardware that built it."
-     },
-     {
-      "title": "The Physics of Saving Hubble",
-      "bet": {
-       "claim": "The maximum force allowed to grab Hubble during capture is about the weight of a house cat.",
-       "truth": true,
-       "why": "Fifty newtons at the grapple pin — roughly five kilograms force — to avoid shocking gyros, brinelling wheels, or tearing blankets."
-      },
-      "rounds": [
-       {
-        "type": "match",
-        "q": "Pair each term with its job in the Hubble capture",
-        "pairs": [
-         [
-          "Thermosphere",
-          "The thin layer at 500 km dragging Hubble down"
-         ],
-         [
-          "Impedance controller",
-          "Control law capping capture force at five kilograms"
-         ],
-         [
-          "Bearing brinelling",
-          "Permanent raceway dents from capture shock"
-         ],
-         [
-          "Mean free path",
-          "Long molecular gap letting plumes spread wide"
-         ]
-        ]
-       },
-       {
-        "type": "sequence",
-        "q": "Order the steps from approach to stable reboost orbit",
-        "items": [
-         "Chaser approaches Hubble in safe mode",
-         "Soft capture at fifty newtons with impedance control",
-         "Rigidize the capture interface",
-         "Thrust through center of mass for reboost",
-         "Raise orbit to stable six hundred kilometers"
-        ],
-        "why": "Any harder capture shocks gyros and wheels; off-center thrust twists the bus; the whole sequence must protect 35-year-old hardware."
-       }
-      ],
-      "takeaway": "Soft capture, precise thrust, and solar weather dictate whether Hubble gets a second life or burns up."
-     }
-    ],
-    "words": [
-     {
-      "term": "MXFP4",
-      "means": "A four-bit number format introduced with Blackwell GPUs for quantized model inference."
-     },
-     {
-      "term": "All-reduce",
-      "means": "The step where every GPU sums its gradients across the whole cluster."
-     },
-     {
-      "term": "Seed",
-      "means": "The secret starting number that sets all random choices in training."
-     },
-     {
-      "term": "Impedance control",
-      "means": "A control law acting like a virtual spring limiting contact forces"
-     },
-     {
-      "term": "Bearing brinelling",
-      "means": "Permanent bearing raceway dents from sudden impact loads"
-     },
-     {
-      "term": "Mean free path",
-      "means": "Average molecular collision distance; long in thin air, plumes spread"
-     },
-     {
-      "term": "Observability",
-      "means": "How well internal state is inferred from sensor outputs"
-     }
-    ],
-    "chips": [
-     "More on MXFP4 evidence",
-     "Seed problem was sharp",
-     "CNC analogy landed well",
-     "Geopolitics stayed grounded"
-    ]
-   },
-   "quiz": [
-    {
-     "q": "Why does the podcast conclude that model weights cannot definitively serve as a 'forensic fingerprint' for specific GPU hardware?",
-     "options": [
-      "Because the random seed used for initialization is always publicly disclosed by developers.",
-      "Because the non-deterministic nature of distributed training noise far outweighs the microscopic differences in floating-point rounding.",
-      "Because all modern GPU architectures use identical accumulator bit-widths and tensor core layouts.",
-      "Because model weights are overwritten during the final quantization-aware training step."
-     ],
-     "answer": 1,
-     "explain": "Distributed training across thousands of nodes introduces non-deterministic variables like thread scheduling and reduction order that obscure hardware-specific rounding signatures.",
-     "segment": "Can Model Weights Prove Which Chip Trained Them?"
-    },
-    {
-     "q": "What is the primary reason the podcast argues that software evidence, such as MXFP4 kernels, does not prove Chinese labs pre-trained their models on Blackwell hardware?",
-     "options": [
-      "Because MXFP4 is only compatible with older Hopper-based architectures.",
-      "Because software kernels can be developed and tested on rented hardware abroad without the pre-training cluster being physically present in China.",
-      "Because the kernels are actually designed for CPUs rather than GPUs.",
-      "Because Blackwell hardware is incapable of performing quantization-aware training."
-     ],
-     "answer": 1,
-     "explain": "The podcast distinguishes between development/inference access and pre-training, noting that software artifacts only prove access to the hardware generation somewhere in the pipeline.",
-     "segment": "Can Model Weights Prove Which Chip Trained Them?"
-    },
-    {
-     "q": "In the context of the Hubble reboost, why is an 'impedance controller' required for the capture mechanism?",
-     "options": [
-      "To maximize the impact force for a secure, rigid latching.",
-      "To allow the chaser to maneuver at high speeds without needing to align with the center of mass.",
-      "To limit interaction forces to roughly fifty newtons, preventing damage to sensitive gyros and thermal blankets.",
-      "To automatically replace the telescope's aging reaction wheels during the docking process."
-     ],
-     "answer": 2,
-     "explain": "An impedance controller is necessary to manage the delicate contact dynamics, ensuring forces remain low enough to avoid damaging the telescope's aged, sensitive internal components.",
-     "segment": "The Physics of Saving Hubble"
-    },
-    {
-     "q": "Why does the podcast highlight the failure of the Katalyst-Swift mission as a cautionary tale for the Hubble reboost?",
-     "options": [
-      "It demonstrated that commercial vehicles lack the necessary fuel capacity for orbital maneuvers.",
-      "It proved that the thermosphere's density is too unpredictable for any robotic docking.",
-      "It showed that a failure in attitude control makes it impossible to perform the necessary reboost burn for a mated stack.",
-      "It confirmed that NASA's current RFI process is legally prohibited from accepting private proposals."
-     ],
-     "answer": 2,
-     "explain": "The mission failed because the chaser lost attitude control, demonstrating that maintaining precise orientation of the combined mass is a critical, high-risk technical challenge.",
-     "segment": "The Physics of Saving Hubble"
-    }
-   ],
-   "transcript": "transcripts/ai_2026-11-14_evening_1500.txt"
   }
  ]
 }
