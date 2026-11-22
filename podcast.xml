@@ -8,9 +8,30 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Sat, 21 Nov 2026 10:27:14 GMT</lastBuildDate>
+<lastBuildDate>Sun, 22 Nov 2026 03:06:07 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Sunday - 22 Nov: Nvidia Leadership and Governance</title>
+<description>Sunday edition - Sunday, 22 November 2026
+Sunday edition: Nvidia Leadership and Governance - plus the week's best threads that got away
+
+00:51  What happened next
+07:59  Nvidia Leadership and Governance: The week's story
+13:11  Nvidia Leadership and Governance: How it actually works
+21:05  Nvidia Leadership and Governance: Reality check
+29:56  Intel claims its new chip is faster
+35:08  Coding assistant adds a new feature
+38:53  Computer helps unlock a phone
+
+Play "The Week Nvidia's Books Shook", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-22_morning_0653.mp3
+Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Hacker News (no Reddit data: Reddit, collected hourly (0 threads); no snapshot from the office PC yet)</description>
+<pubDate>Sun, 22 Nov 2026 06:53:26 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-11-22_morning_0653.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-22_morning_0653.mp3" length="20545855" type="audio/mpeg"/>
+<itunes:duration>2568</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Evening - 21 Nov: Anthropic's second day: the sell-off that wiped the Nasdaq's 2026 gains</title>
 <description>Evening edition - Saturday, 21 November 2026
@@ -226,27 +247,6 @@ Written by: Gemini 4 Hydrogen · Voices: Fish Audio (free) · Discussions: Reddi
 <guid isPermaLink="false">ai_2026-11-15_evening_1500.mp3</guid>
 <enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-15_evening_1500.mp3" length="21061018" type="audio/mpeg"/>
 <itunes:duration>2632</itunes:duration>
-<itunes:episodeType>full</itunes:episodeType>
-</item>
-<item>
-<title>Sunday - 15 Nov: AI Coding Agents</title>
-<description>Sunday edition - Sunday, 15 November 2026
-Sunday edition: AI Coding Agents - plus the week's best threads that got away
-
-00:35  What happened next
-06:52  AI Coding Agents: The week's story
-13:24  AI Coding Agents: How it actually works
-22:57  AI Coding Agents: Reality check
-31:25  Workers want their old boss back
-35:31  The computer is getting smarter
-39:08  A computer program led a big team
-
-Play "The Week Coding Agents Went Wild", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-15_morning_0600.mp3
-Written by: Gemini 4 Hydrogen · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (172 threads)</description>
-<pubDate>Sun, 15 Nov 2026 06:00:16 +0530</pubDate>
-<guid isPermaLink="false">ai_2026-11-15_morning_0600.mp3</guid>
-<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-15_morning_0600.mp3" length="20949180" type="audio/mpeg"/>
-<itunes:duration>2618</itunes:duration>
 <itunes:episodeType>full</itunes:episodeType>
 </item>
 </channel>

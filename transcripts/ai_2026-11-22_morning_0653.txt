@@ -1,0 +1,267 @@
+## Welcome
+Sarah: Good morning, Nikhil — Sunday, twenty-second of November, and you've got a long drive ahead, so we made a long episode to match.
+Laura: The Nvidia governance story didn't land in one day; it stacked up all week across Hacker News threads, SEC filings, and insider debate, so today we lay the whole timeline out, then break down how the structure actually works from first principles.
+Sarah: We'll also revisit the hospital AI agents, the local LLM hardware crunch, and those Gemini drops from earlier shows to see what moved.
+Laura: Plus three threads that didn't fit the weekday slate: Intel's speed claim, a coding assistant's new trick, and a phone-unlock case that went farther than expected.
+Sarah: Quick bet to keep in mind while you listen: company directors must legally file a pre-written trading schedule before selling huge amounts of stock — true or false?
+
+## What happened next
+Sarah: Okay, "What happened next" — three stories from this week, new developments on each. First, the healthcare agents we talked about Monday. OpenAI put out a blog post Thursday with actual numbers.
+Laura: Let's hear them.
+Sarah: They describe an AI that clicks, types, and moves between applications the way a person would — no custom programming interfaces needed. In their demo, a patient messages about lower back pain. The agent pulls visit notes, physical therapy records, and prior imaging from the electronic health record — EHR for short. It drafts an MRI order — that's magnetic resonance imaging — an encounter note, a reply to the patient, and a prior authorization request in the insurer's portal. Prior authorization is the insurer approval step. Clinician reviews the clinical side, specialist reviews the administrative side.
+Laura: So the same context gets used twice — once for the clinical side, once for the administrative side. That's the friction point in real workflows.
+Sarah: Exactly. They evaluated the larger model, GPT-6 Astra, on 325 clinical inbox tasks shaped by physician input.
+Laura: And the safety number?
+Sarah: Ninety-nine percent of those tasks were rated safe.
+Laura: Helpfulness?
+Sarah: Physicians rated it "very helpful" or "extremely helpful" in ninety-three percent of 646 assessments.
+Laura: Okay. And the administrative benchmark?
+Sarah: There's an independent benchmark from Stanford called HealthAdminBench for prior authorizations, appeals, equipment orders. The larger model earned ninety-four point three percent of available rubric points.
+Laura: And the smaller model?
+Sarah: The smaller model, GPT-6 Luna, got ninety-one point eight percent.
+Laura: Cost?
+Sarah: Eight point five cents per task — ninety-eight percent cheaper than the larger model.
+Laura: Eight cents a task is striking. What's the independent check?
+Sarah: The blog post is the primary source — openai.com. The Stanford benchmark is cited by name, but I haven't seen the benchmark paper itself. CVS Health is named as a production partner: they cleared a months-long document backlog in a weekend, handle tens of thousands of consults daily. They use validation checks, human oversight, screenshots, action records. Data stays in CVS infrastructure, not used to train foundation models. Abridge and Cigna also named.
+Laura: CVS open-sourcing an Agent Kit built on OpenAI's Agents SDK — that's a repeatable process package. My take for someone in QA: the blog notes HIPAA-compliant workflows, configurable approvals, agent access controls, and audit logs — primitives a QA engineer would recognize. Formal validation against specific regulatory standards would be a separate step.
+Sarah: Second story — Cerebras. We covered power grid pressure Wednesday. Thursday they announced disaggregated inference in production.
+Laura: Disaggregated — meaning they split the workload.
+Sarah: Right. Two stages: prompt processing, known as prefill, processes the input and produces intermediate model state. Response generation, known as decode, generates output tokens one at a time, each token feeding the next. Decode hammers memory bandwidth. Cerebras wafer-scale chips — a single chip the size of a full silicon wafer — have tens of gigabytes of on-chip memory, called SRAM, and thousands of times the bandwidth of a conventional GPU. So they're advantaged for decode. GPUs handle prefill. They transfer the intermediate state — the prompt's context, often called the key-value cache — over RDMA between the two. RDMA is direct memory-to-memory transfer over the network, bypassing the operating system.
+Laura: Moving that context between different hardware is the hard part.
+Sarah: Their production deployment on Cerebras Inference Cloud: AMD Instinct GPUs handle prefill, CS-3 systems handle decode. Five times the throughput per megawatt versus CS-3-only, no loss in token generation speed. They plan hundreds of megawatts by end of 2027. Partners get a reference architecture — bring your own prefill engine, use their decode engine and their KV Portal software, which handles transferring the model context between the two.
+Laura: Cross-platform prefill-decode split with context transfer over RDMA — that's a genuine systems engineering feat. The Culper Research comment about ghost tokens keeping boards hot to prevent cracking — did they address that?
+Sarah: Not in this blog. The comment links a Culper report from October. Cerebras hasn't publicly responded to that specific claim in this release.
+Laura: Noted. Independent check: Cerebras blog directly, November 14th production data cited.
+Sarah: Third — Gemini 4 Neon. Thursday's episode mentioned it. Friday a benchmark called the Models Engineering Index put Neon at number one.
+Laura: Who runs the index?
+Sarah: A developer, Aarvin. Self-submitted benchmark, sixteen coding tasks, composite score adjusted for difficulty and missing results so models average fifty. Cost and token use adjusted the same way, shown relative to typical model at one x.
+Laura: Self-submitted benchmark, self-reported top score. That's... a flag.
+Sarah: Hacker News thread is skeptical. One commenter says Neon "high" is faster and cheaper than Opus 5.5 "medium" with similar results on long-running language porting in a large monorepo. Speed is the win. Another asks why trust this index over others. Another says all Google models seem benchmaxed — overfit to benchmark tests, not necessarily better in practice — and produce worse real-world coding output than Claude or OpenAI models.
+Laura: Classic benchmark overfitting.
+Sarah: Also friction: multiple ways to access, API key generation described as fifteen menus in Google Console.
+Laura: Independent check: the index site itself, git-aarvin.github.io/mei. No third-party replication yet. Community benchmarks are an open thread from Thursday's episode.
+Sarah: So three updates. Healthcare agents: real production deployments, named partners, independent benchmark cited, safety and helpfulness numbers from physician review. Cerebras: disaggregated inference live in production, five x throughput per megawatt, context transfer over RDMA demonstrated at scale. Gemini Neon: tops a self-published engineering index, community reports speed wins on real work, but benchmark provenance and access friction are open questions.
+Laura: Clean summary. The healthcare one has the most independent validation structure — named benchmark, named partners, audit primitives. Cerebras has production telemetry. Neon has... a leaderboard the submitter built.
+Sarah: And the Amiga 500 running a tiny language model — a Reddit thread claims 0.2 to 0.4 letters per second on a stock 7 MHz 68000, all integer math, bit-for-bit verified in emulation. That one's just delightful, though we haven't confirmed it beyond the thread.
+Laura: The thread says Motorola 68000, seven megahertz, no floating-point unit, all integer math, bit-for-bit verified against a Python spec. Engineering for engineering's sake — if the report holds up.
+Sarah: Exactly.
+
+## Nvidia Leadership and Governance: The week's story
+Sarah: So the Nvidia story didn't break in one day — it stacked up like tolerance errors in a bad assembly line, each new layer making the previous one look worse.
+Laura: Okay, that's a vivid way to put it. Walk me through the week.
+Sarah: November fourteenth, a Saturday. A forensic site called Unemployment Labs publishes a checkpoint analysis — they claim the latest models from four Chinese labs carry a hardware fingerprint matching Nvidia's newest chip generation. Those chips are on the entity list, the export-control roster that bars shipment to China.
+Laura: Wait, the model weights themselves carry a fingerprint? Like a machining mark on a part?
+Sarah: Exactly. The starting random number and the specific graphics processor leave a statistical signature in the learned settings. Six model snapshots line up with the new chips. Reddit argues immediately — some say the processors don't need to be in China if you rent cloud time in Singapore or Europe. Others point out sanctions explicitly forbid that kind of workaround.
+Laura: And the independent check?
+Sarah: The forensic method is described on the site, but no third-party lab has replicated it yet. So far it's a single source.
+Laura: Got it. November fifteenth, Sunday — the circular financing stories drop.
+Sarah: Multiple outlets report Nvidia allegedly funded AI startups to buy its own graphics processors, propping up demand and prices. One commenter called it "crypto scarcity part two." Colette Kress, the finance chief, reportedly clashed with Huang over the risk level of those deals.
+Laura: That's... a loop. You lend your customer money to buy your product, then book the revenue.
+Sarah: It's a round-trip transaction. If the startup fails, the receivable evaporates. Reports later that week noted customers are taking sixty-four days to pay — highest since twenty twenty-two.
+Laura: November sixteenth, Monday — Mark Stevens, board director, sells four million shares for about a billion dollars. No pre-arranged trading schedule filed months ahead to show he wasn't trading on inside knowledge.
+Sarah: Right. The sales happened in August and September. The scandal breaks late October. His remaining stake drops over one and a half billion in paper value after the fact. Tom's Hardware has the transaction dates from the insider trading disclosure forms.
+Laura: So the independent check is solid on the trades themselves. The motive — that's still inference.
+Sarah: Exactly. Same day, Financial Times reports Huang allies building a "war room" to lobby the board for his return. White House outreach mentioned. Reddit compares it to Enron bringing back Ken Lay.
+Laura: laughs That comparison showed up in three different threads. November seventeenth, Tuesday — Huang passes billions in stock to heirs months before the downfall. Barrons covers it. Commenters say it's standard estate planning.
+Sarah: Standard for that tax bracket. The timing is what draws eyes. November eighteenth, Wednesday — a thread notes Commerce Secretary Howard Lutnick's sons hold three hundred sixty-two million in Nvidia. The same source says Rubio sent a classified memo in May flagging the Huang relationship, and Lutnick blocked the entity-listing of Alice Huang's company Megaspeed three times.
+Laura: That source — is it on the record?
+Sarah: It's a Substack post citing unnamed officials. No confirmation from Commerce or the White House. Treat it as unverified.
+Laura: November nineteenth, Thursday — earnings call. Board chair Harvey Jones says they don't intend to reinstate Huang. Kress, now interim CEO, raises guidance to seventy-five percent growth. Stock pops three percent after hours but is still down about twenty-five percent for the month.
+Sarah: The financial news network and the earnings transcript back the numbers. The board also hired an executive search firm for a CEO hunt. Nearly two hundred thousand signatures on a reinstatement petition — that's employee and external combined.
+Laura: And November twenty-first, Saturday — the SEC investigation goes public. Reuters and Wall Street Journal say the probe covers accounting disclosures, possibly tied to the Singapore revenue and Megaspeed. Nvidia delays its quarterly filing. California's attorney general subpoenas the company same day.
+Sarah: Yahoo Finance reports the stock shed about four hundred ninety billion in market cap that Friday alone. Nearly nine hundred billion for the week. Worst week since oh-eight.
+Laura: whistles That's a lot of zeros. So where does the evidence actually sit?
+Sarah: The stock trades, the earnings, the insider trading forms — those are primary sources. The forensic GPU fingerprint, the circular financing details, the Lutnick connection — those are single-source or unattributed so far. The SEC and California investigations are confirmed by the agencies but no findings yet.
+Laura: My take, for someone in QA: when your traceability matrix shows gaps this wide — from component sourcing to final sign-off — you don't wait for the audit finding. You open a corrective action yesterday.
+Sarah: And the board's statement that it's 'business as usual' — that's the part that feels like saying everything's fine when the foundation is shaking.
+Laura: Yeah. It's hard to have confidence in the outcome when the whole process is being questioned.
+Sarah: Next segment we'll look at the technical side — what the Blackwell fingerprint method actually measures, and whether it holds up to measurement standards.
+Laura: Looking forward to it.
+
+## Nvidia Leadership and Governance: How it actually works
+Sarah: So the Nvidia board just said no to Jensen Huang coming back, and the Reddit threads are treating it like a season finale cliffhanger.
+Laura: Which part? The resignation, the stock sales, the SEC probe, or the petition with two hundred thousand signatures?
+Sarah: All of it. The timeline is wild. Huang resigns last week after the affair with the alleged Chinese spy surfaces. Board chair Harvey Jones goes on the earnings call and says flat out they don't intend to reinstate him.
+Laura: That independent chair role matters. Jones is not the CEO. The structure is designed so the board can evaluate the chief executive without the CEO controlling the agenda.
+Sarah: Interim CEO Colette Kress, a thirteen-year CFO veteran, says it's business as usual. Meanwhile the stock is down twenty-four percent this month.
+Laura: And it's on a six-week losing streak, the longest since 2012.
+Sarah: Reddit's comparing it to the Sam Altman situation at OpenAI. One commenter called it "another Sam Altman moment" but the dynamics differ. OpenAI's board had no independent chair at the time. Nvidia's does.
+Laura: That's a real structural difference. An independent chair creates a built-in feedback loop. The CEO reports to the board; the chair runs the board. When those roles combine, you lose a correction path.
+Sarah: Supporters argue Huang saved the company from the brink of disaster and built it into a five-trillion-dollar giant, and some say the board is acting against shareholder interests. Still, Jones's statement was careful — "doesn't intend to reinstate" isn't "never."
+Laura: Boards rarely foreclose options in public. They preserve flexibility while signaling direction. The search firm Heidrick and Struggles is already running the CEO hunt. That's a process, not a snap decision.
+Sarah: Then there's the Mark Stevens sale. Board director, not an executive. Sold four point two million shares for about a billion dollars across August and September. No pre-written trading plan filed.
+Laura: That plan is worth pausing on. A pre-written trading schedule — you set the dates and amounts months in advance, when you don't have inside information. It's a legal shield against insider trading claims.
+Sarah: Huang used one for his sales last year — six million shares, nine hundred twenty-five million dollars, announced six months ahead. Stevens didn't. He started selling August thirty-first, right after earnings. The scandal broke late October.
+Laura: The timing draws scrutiny. But board members aren't always required to have a plan. The rule applies to insiders — directors count — but the plan itself is voluntary. Not having one isn't illegal. It just removes the legal protection.
+Sarah: Reddit's split. One commenter asked if executives at that level have to file notice before large trades. Another pointed out the SEC went after Mark Cuban for a noisy exit and Cuban won. The law distinguishes between trading on inside information versus trading while in possession of it.
+Laura: Possession versus use. Hard to prove. The Stevens sale happened when the stock was between two-twenty and two-thirty-four.
+Sarah: It's now around one-sixty.
+Laura: His remaining twenty-seven point five million shares have lost over a billion and a half in paper value. If he knew the scandal was coming, he'd have sold more.
+Sarah: Unless he didn't know the specifics. Just knew — general risk, China exposure, Huang's behavior. The "writing on the wall" theory.
+Laura: Which is legal. Trading on your own assessment of public and non-material private observations isn't insider trading. The line is material non-public information. An affair investigation might not meet that threshold until it's formalized.
+Sarah: Then the SEC probe lands Friday. Reuters says they're examining potential accounting issues. The Wall Street Journal says it includes whether disclosures misled investors.
+Laura: Nvidia's quarterly filing was delayed to "coming weeks" instead of same-day. The release mentioned an ongoing investigation by an independent board committee.
+Sarah: An independent board committee brings in outside counsel — a fresh team with no stake in the current numbers, reporting to directors who aren't running day-to-day operations.
+Laura: The specific threads: about a hundred four billion in revenue through the Singapore unit in twenty twenty-five, roughly half of sales. The Financial Times reported that.
+Sarah: Megaspeed, a Singapore customer, suspected of rerouting chips to China. Also, days sales outstanding at sixty-four days, highest since twenty twenty-two. Customers taking longer to pay.
+Laura: Revenue recognition and collectibility — two classic audit risk areas. If Megaspeed is a related party or a conduit, the revenue might not be realizable. And if they're booking revenue on shipments that are effectively consignment or conditional — that's a revenue recognition issue. The sixty-four day figure suggests either extended terms or collection risk.
+Sarah: California Attorney General Rob Bonta subpoenaed Nvidia Thursday too. Investigating whether chips reached China and whether the company misled investors. Treasury Secretary Bessent said he wants answers in ten days from the board and outside counsel.
+Laura: Parallel tracks. The SEC for securities law, the state AG for consumer protection and state securities statutes. The ten-day demand is political pressure — not a legal deadline, but boards ignore it at their peril.
+Sarah: And the China revenue guidance. Kress said they're assuming zero data center compute revenue from China in the outlook. The Commerce Department changed the rules Monday — no renting chips to Chinese companies either, not just selling.
+Laura: That's an export restriction expansion. Under Commerce Department rules, U.S. persons need a license to export, re-export, or transfer items to restricted entities. Adding rental and cloud access closes a major loophole.
+Sarah: The circular financing allegations keep resurfacing. Reddit threads from mid-November claim Huang funded AI startups to buy GPUs, creating artificial demand. One commenter said Kress and her staff clashed with Huang and sales over the risk. Another said she pushed to lower deal sizes.
+Laura: Vendor financing to customers inflates revenue and receivables at the same time. If the customer can't pay without your loan, the quality of that revenue is questionable until the money actually comes in.
+Sarah: Kress pointed to rising demand and raised guidance to seventy-five percent for fiscal twenty twenty-eight. The stock rose three percent after hours.
+Laura: Guidance raises during a crisis are their own signal. Either the fundamentals genuinely support it, or it's a stability play. The market will test it next quarter.
+Sarah: Independent check time. The Stevens sales — reported by Tom's Hardware citing Moneywise. The board chair statement — on the earnings call, reported by CNBC. The SEC probe — Reuters and the Wall Street Journal citing sources, no SEC confirmation. The Singapore revenue — Financial Times reporting, with the Journal flagging Megaspeed. The chip-rental ban — Commerce Department announcement. The circular financing — Reddit claims and one commenter saying Kress opposed it, no primary source.
+Laura: So the governance facts are documented. The accounting questions are under investigation. The financing allegations are unproven claims.
+Sarah: My take: the independent chair and board committee are doing what they're designed to do — initiate a review, hire outside counsel, disclose the investigation. The delayed filing is the right conservative move when revenue recognition is in question. But the Stevens sale without a pre-written plan, legal or not, creates a serious appearance gap.
+Laura: Appearance gaps become credibility gaps. When you're sitting on a board, you want the trading plan in place well before any risk window opens, rather than explaining the timing after the fact.
+Sarah: The online petition for Huang's return has nearly two hundred thousand signatures, and thousands of employees rallied on an internal forum. But the board's mandate isn't popularity. It's fiduciary duty.
+Laura: Exactly. Governance isn't democratic. It's a set of checks and balances with clear triggers, and those triggers just fired.
+
+## Nvidia Leadership and Governance: Reality check
+Sarah: So we went from chips that can't be sold in China to the company that makes them being investigated by the Securities and Exchange Commission.
+Laura: That escalated fast. Friday Reuters broke that the SEC is looking at Nvidia's accounting. The Wall Street Journal says it includes whether disclosures misled investors. Nvidia hasn't commented, SEC declined comment.
+Sarah: And the stock dropped fourteen percent in one day. Seven straight losses. Nearly nine hundred billion in market value gone this week alone.
+Laura: Biggest weekly drop since October 2008. Since the October peak they've shed about two point seven trillion. That's more than the entire economic output of Italy.
+Sarah: Okay, that's wild. But the Reddit threads have been building this for days. First Huang resigns over the affair with the alleged Chinese spy. Then the board chair says no reinstatement. Then we find out a board director sold a billion dollars in stock before the scandal broke.
+Laura: Mark Stevens. Over four million shares sold across August and September, with no pre-arranged trading schedule — that's a plan executives file to show they aren't trading on inside information. Jensen Huang's own sales last year had a plan filed well in advance.
+Sarah: Stevens still holds about twenty-seven million shares. He's the second largest shareholder after the Huangs.
+Laura: On paper, that stake has lost over one point five billion.
+Sarah: The Tom's Hardware piece notes selling as a director isn't a crime. Hard to prove he knew the specific scandal was coming. But the timing... August thirty-first to September eighteenth. The classified memo about Alice Huang went to the White House in May. Commerce Department investigated Megaspeed for months last year.
+Laura: Megaspeed. That's the Singapore customer the Wall Street Journal flagged. About one hundred four billion was booked through Nvidia's Singapore unit last year — roughly half of revenue.
+Sarah: The Journal says the SEC is looking at whether Megaspeed rerouted chips to China.
+Laura: Which connects to the Howard Lutnick thread. Commerce Secretary. His sons hold three hundred sixty-two million in Nvidia stock.
+Sarah: One report says Rubio sent a classified memo in May, and the White House directed Commerce to put Megaspeed on the export control blacklist. Lutnick allegedly refused three times.
+Laura: His own department had investigated Megaspeed for smuggling chips to China, then his deputy invited Nvidia to reach out about the case, effectively ending the inquiry.
+Sarah: So the Commerce Secretary's family has a massive position in the company his department was investigating for sanctions evasion. And he blocked the enforcement action.
+Laura: That's the allegation in the reporting. Whether Nvidia commented on that specific report isn't clear from what we have.
+Sarah: The Reddit reaction is intense. "Enron 2.0" gets thrown around a lot. "Memory cartel doing memory cartel things." One commenter said they didn't have Nvidia as Enron on their bingo card.
+Laura: The Enron comparison is lazy. Enron was accounting fraud at the core. Here we have a personal scandal triggering a governance review, then an SEC probe into disclosures, plus a separate export control mess. They're distinct even if they overlap.
+Sarah: But the circular financing claim — that's the one that feels like accounting. The allegation that Nvidia funded AI startups to buy GPUs, creating fake demand and propping up revenue.
+Laura: That's been circulating since twenty twenty-five. The LocalLLaMA thread says Colette Kress, the finance chief now interim CEO, clashed with Huang and sales over the risk. She reportedly pushed to shrink the deals. If true, that's a control failure. Revenue recognition on financed sales where collectibility isn't assured — that's exactly the kind of thing an SEC probe would target.
+Sarah: And the quarterly filing delay. They said it's coming "in the coming weeks" instead of same-day with earnings. That's unusual.
+Laura: Very. The detailed quarterly filing — the 10-Q — delaying it while an independent board committee investigates... that's a signal. The earnings call itself was strong — revenue doubled year over year, guidance raised to seventy-five percent growth. Kress said "business as usual." The stock even rose over three percent after hours, before sliding later in the week.
+Sarah: The petition for Huang's return has nearly two hundred thousand signatures. Employees rallied internally. One commenter compared it to the Sam Altman moment at OpenAI.
+Laura: Different. Altman was fired by the board, then reinstated after employee pressure. Huang resigned. The board chair explicitly said they're not bringing him back. They've hired an executive search firm for a search. That's a process, not a revolt.
+Sarah: But the "single point of failure" comment on Hacker News — someone wrote that Huang created a structural single point of failure in management, then behaved in a way that exploited it.
+Laura: That's the governance lesson. Founder-led companies often concentrate power. When the founder is also the face of the technology, the strategy, the culture... the board's job is to ensure the company survives the person. Nvidia's board acted fast once the national security angle landed. Whether they knew earlier is the question.
+Sarah: The California Attorney General subpoena landed Thursday. Investigating whether chips reached China and whether investors were misled. Treasury Secretary Bessent wants answers in ten days. Trump said he'd love to see Jensen get a second chance.
+Laura: Political pressure both ways. The midterm shift in Washington adds uncertainty. China revenue is already zeroed out in guidance — they're not assuming any data center compute revenue from China. That's baked in.
+Sarah: So what's actually verified versus Reddit speculation?
+Laura: Verified: Huang resigned. Board says no return. Kress is interim. Earnings beat, guidance raised. Stock down twenty-four percent this month. SEC probe confirmed by Reuters. California AG subpoena confirmed.
+Sarah: Stevens' sales and Lutnick's sons' holdings are reported in the press, though our sources don't cite the underlying SEC filings directly.
+Laura: The classified memo details are reported but not independently confirmed by other outlets. The circular financing allegations are reports and Reddit claims — no court filing, no SEC complaint yet. The Megaspeed-entity-list story comes from a single report.
+Sarah: And the latest chips in Chinese labs? That was last week's forensics.
+Laura: Right. Unemployment Labs checkpoint analysis. The learned parameters of an AI model carry a hardware fingerprint tied to the exact processor and starting random number used to begin training, and that signature survives into the saved training snapshot. Four Chinese labs' latest models match those signatures. That's technical evidence, not a leak. But it doesn't prove how they got the chips — could be rental, could be smuggling, could be pre-ban delivery.
+Sarah: My take, for someone in QA: the quarterly filing delay while an independent committee investigates... that's a CAPA trigger. You don't delay a regulatory filing unless the quality system flagged something that needs root cause analysis before you sign off. The fact that Kress — the finance chief — is now interim CEO while her own numbers are under review... that's an unusual conflict structure.
+Laura: Agreed. That concentration is a supply-chain risk — if Megaspeed is a pass-through, the true end users are hidden.
+Sarah: The circular financing allegation is essentially shipping product to distributors to inflate revenue — with extra steps. Fund the customer, book the revenue, hope they pay. If they don't, you've got bad debt and inflated historical revenue.
+Laura: Customers now take sixty-four days on average to pay — the longest stretch in years. A Hacker News commenter claimed they plan to renegotiate usage deals with cloud providers, though that's not in the CNBC earnings transcript.
+Sarah: So the SEC has multiple threads: revenue recognition on financed deals, disclosure of China exposure via Singapore, related-party aspects of the Lutnick connection, insider trading on Stevens' sales. And the board's independent committee is running parallel.
+Laura: Exactly. The independent committee suggests the board is treating this as a potential governance failure, not just a personal scandal. That's the right structure. Whether they had the right information before October is what the SEC will test.
+Sarah: And the market? Nvidia is now fourth behind Apple, Microsoft, and Alphabet. Six weeks ago it was number one.
+Laura: The fundamentals haven't changed. Data center demand is real. The roadmap is real. But the governance cloud... that's a discount the market applies when trust fractures. It takes quarters to rebuild.
+Sarah: Next week we'll see if the quarterly filing lands, what the independent committee says, whether the California AG moves faster than the SEC. And whether Kress can credibly lead the search for a permanent CEO while her own tenure's numbers are under a microscope.
+Laura: One day at a time. The board has an executive search firm. The SEC has subpoena power. The export control blacklist decision sits with Commerce. And Jensen Huang holds a significant stake and a petition with two hundred thousand names.
+
+## Intel claims its new chip is faster
+Sarah: Okay, so I was scrolling LocalLLaMA and someone posted Intel's first benchmarks for its upcoming Crescent Island graphics card.
+Laura: That's the one they're pitching for both scientific computing and AI, right? What's the headline number?
+Sarah: Up to five point nine times the throughput of Nvidia's flagship workstation card.
+Laura: Wait, nearly six times faster? That's a massive gap. What kind of workload are we talking about here?
+Sarah: Financial services simulations running FP64 — native double-precision math. Intel averaged four point five times faster across the tests.
+Laura: Ah, that explains it. Intel built full-rate double-precision hardware into every core of its new architecture, while Nvidia's workstation card doesn't have dedicated hardware for it.
+Sarah: The Reddit thread called it out immediately. The top comment calls it marketing shenanigans, and a second commenter says nobody runs AI with double-precision math.
+Laura: They're not wrong. Weather forecasting, fluid dynamics, and financial models need that accuracy so rounding errors don't compound over millions of steps.
+Sarah: Whereas AI inference usually runs on much smaller number formats. Another commenter asked when Intel will compete on eight-bit formats.
+Laura: Or four-bit, for that matter. Still, the linked WCCFtech report from the Supercomputing conference does include actual AI benchmarks on pre-production silicon.
+Sarah: Right, and the AI numbers there are way more grounded. They tested Drex 2.0, which is a decision-making model that takes actions rather than just generating text.
+Laura: And how did it do?
+Sarah: Intel claims up to twenty-nine percent lower latency compared to the Nvidia card.
+Laura: Okay, what about standard language model throughput?
+Sarah: They tested Qwen 3 30B-A3B, which is a sparse language model that only activates a small slice of its parameters for each token.
+Laura: And the throughput gain?
+Sarah: Twelve percent higher than Nvidia's card. Though the source doesn't specify what precision or number format they used for that test.
+Laura: That's an important caveat. Still, what's the power draw look like for those runs?
+Sarah: Intel's air-cooled card runs at three hundred fifty watts.
+Laura: And the Nvidia workstation card?
+Sarah: Six hundred watts.
+Laura: Now that's the number that actually matters for a data center. Getting slightly higher throughput at a much lower power envelope is a real engineering win, if it holds up in independent testing.
+Sarah: The memory setup is interesting too. WCCFtech says the broader lineup can scale up to four hundred eighty gigabytes across air-cooled, liquid-cooled, and dual-chip options.
+Laura: That's a lot of capacity. What about the single card they benchmarked?
+Sarah: A commenter on Reddit posted the specs for that one: one hundred sixty gigabytes of LPDDR5X, the low-power mobile memory standard.
+Laura: Wait — mobile memory? How are they getting data-center speeds out of that?
+Sarah: According to that same Reddit comment, they're running it on a twelve-hundred-eighty-bit memory bus.
+Laura: That is a ridiculously wide bus. What's the total bandwidth?
+Sarah: One point five terabytes per second.
+Laura: Pulling that kind of bandwidth from mobile memory instead of traditional stacked high-bandwidth memory is impressive. WCCFtech notes it could give Intel a real edge on cost and scalability. It reminds me of how we'd integrate a sensor die directly onto a controller to cut down interconnect overhead.
+Sarah: There's a catch on the physical side, though. Someone shared a photo in the thread, and commenters pointed out it looks like a wall-mount card, not something that fits in a standard expansion slot.
+Laura: Ah, so "just drop it into your existing server" is probably off the table. If it requires rack-level integration, that changes the total cost of ownership math fast.
+Sarah: Plus, WCCFtech points out Intel still hasn't announced a launch date or a price.
+Laura: Always the missing piece. Did they show anything else at the conference?
+Sarah: Yeah, an oil and gas simulation — underground acoustic wave propagation across huge three-dimensional datasets, running single-precision math.
+Laura: Those grid-based wave calculations are a classic memory-bound problem. If their cache optimizations can keep the active wave data right on the chip, you avoid choking on memory speed. That's where high capacity and bandwidth actually pay off.
+Sarah: So how do you read the big headline?
+Laura: Real, but narrow. The massive lead only applies to double-precision scientific workloads where Nvidia's workstation card isn't even built to compete.
+Sarah: And the AI results?
+Laura: Modest. Twelve percent higher throughput on that sparse language model.
+Sarah: Plus twenty-nine percent lower latency on the decision-making model, all on pre-production silicon.
+Laura: Exactly. At a much lower power draw, that's a solid engineering showing, not an AI miracle.
+Sarah: Especially if the form factor means it's not a drop-in replacement for anything.
+Laura: Right. Intel's betting on labs and data centers that build their own racks and live in double-precision math. For everyone else, it's a wait-and-see until we get pricing and independent tests.
+Sarah: So the takeaway: native double-precision at three hundred fifty watts is a genuine scientific computing play — just don't confuse it with an AI inference crown.
+
+## Coding assistant adds a new feature
+Laura: Shifting gears from governance to a Reddit post about an experimental feature in Claude Code, the AI coding assistant, called Code Mode.
+Sarah: Wait. Claude Code has a "Code Mode"? Please tell me the comments were ruthless about that name.
+Laura: Oh, immediately. Someone asked when they are adding a Claude Mode, and another joked about hitting their weekly usage limit. Worth saying up front: so far there is only the Reddit thread, and we could not check beyond our usual sources today.
+Sarah: Fair enough, so we treat it as an unconfirmed sighting. What is the poster actually claiming it does?
+Laura: They spotted it in a recent update and got it running. Normally, when an assistant checks a big project, it runs requests one at a time, gets the raw output back, and decides what to do next.
+Sarah: Right, the standard loop. And on a massive project, those raw results pile up fast.
+Laura: Exactly. According to the post, Code Mode has the assistant write a single script behind the scenes to handle multi-step tasks. Instead of running checks sequentially and dumping every raw line into its context window—its working memory—the script batches tasks in parallel, filters out noise locally, and returns only the distilled result.
+Sarah: Clever, even if the name is ridiculous. So instead of reading a massive log file, it writes a quick script to scan it and return just the results that matter?
+Laura: That is the idea. The poster claims it saves a lot of tokens—the chunks of text the assistant reads and counts against your usage limit—especially on big project reviews or bug tracing.
+Sarah: If you have ever hit your usage limit mid-debug, you can see why people get excited. Wait—is this actually new, or just automating what a developer would do with a regular script?
+Laura: It is a classic engineering pattern, moved inside the assistant. Think of telemetry on a test rig: you do not stream every raw data point from a vibration sensor over a slow link just to check a bearing. You filter at the sensor and send only the summary.
+Sarah: Right, save the bandwidth. And here the bandwidth is the assistant's working memory.
+Laura: Exactly, and it is not just about cost. Whether noisy logs actually make the assistant miss the signal is not something the post addresses. Plus, batching checks into one script cuts out the back-and-forth waiting.
+Sarah: Okay, I will push back here. If the assistant writes the filter before seeing the log, how does it know what is noise and what is the clue? What if it filters out the one weird error it did not expect?
+Laura: That is the trade-off, and the Reddit thread gives no evidence on it. With a raw search, the assistant sees the messy output and might spot something unexpected. With a script, you trust its upfront guess—and if the filter is too strict, the clue vanishes.
+Sarah: Also, there is a big difference between running a simple search and writing arbitrary code on your machine. You would want to know how locked down that environment is.
+Laura: Definitely. Since we only have the Reddit post and jokes—nothing we could verify today—we cannot say how much usage it saves, or how often filters drop something important.
+Sarah: So where do we land? Half-right? Too early to tell?
+Laura: Too early to tell—we need independent testing on usage savings and error rates. On the mechanism, local filtering keeps working memory clean, if you accept the risk of over-filtering.
+Sarah: Makes sense. Still makes you nervous about what gets swept under the rug.
+Laura: That is the catch with any automated summary: whenever a system filters raw data before anyone—human or assistant—inspects it, you have to ask what got thrown away.
+Sarah: Good rule for debugging, too. The takeaway: batching tasks and filtering noise in a local script is a smart way to protect working memory, but an unconfirmed Reddit thread is no proof—and any filter can hide the clue you needed.
+
+## Computer helps unlock a phone
+Sarah: For our last thread this week, we are jumping from big corporate governance down to someone just trying to fix their own phone.
+Laura: Sounds refreshing, honestly. What happened?
+Sarah: I was reading a post on the DeepSeek subreddit—DeepSeek is a Chinese AI assistant—where someone tried to unlock an Android phone for full control after two other coding assistants refused to help. Worth saying up front: so far there is only the Reddit thread, and we could not check beyond our usual sources today.
+Laura: Good to keep in mind. Why did the other assistants say no?
+Sarah: Security flags. They wanted to unlock the phone's bootloader, the tiny startup software that checks the device and loads its main software.
+Laura: Right, the gatekeeper at startup.
+Sarah: Exactly. Once that was open, they wanted to root the phone—getting full administrator access to every file and setting, instead of being locked into what the maker allows. The other tools treated that like breaking into someone else's device and shut it down.
+Laura: Classic safety-filter problem. They spot keywords that look like hacking and cannot always tell attacking someone else's hardware from tinkering with your own.
+Sarah: The comments were all over that. Someone got flagged just for asking about a simple keycard tag. Another argued that blocking harmless troubleshooting is its own kind of censorship, especially when people accuse Chinese models like DeepSeek of censoring politics.
+Laura: Sharp debate, though worth separating the politics from the engineering. What did DeepSeek actually do? Was it some magic one-click fix?
+Sarah: Not at all, which is why I liked it. They claimed it took several failed attempts, with DeepSeek helping them read the phone's built-in software and startup logs line by line. Even after unlocking the bootloader, the phone got stuck in a boot loop—trying to start, crashing, and restarting over and over.
+Laura: Oh, those are maddening. How did they break out of it?
+Sarah: They fed those crash logs back to DeepSeek, traced it to the phone failing to read its own user data, and wiped the device clean back to its original settings. After that, it booted up and they finished rooting it.
+Laura: That part rings true. Wiping the user data cleared the old state, and then it booted cleanly.
+Sarah: Yes! Another commenter said the same thing—DeepSeek does not solve things in one shot, it is just patient about going back and forth through the logs.
+Laura: Which is just old-fashioned troubleshooting with an assistant reading alongside you. Nothing mysterious; it is pattern-matching error messages in a log file, which AI text tools are decent at when you give them the actual output.
+Sarah: Wait, so if it is just reading logs, why did the other tools refuse? Is DeepSeek just less strict?
+Laura: Possibly, or the filters are tuned differently. Different companies draw that line in different places. Without seeing the exact prompts, though, we cannot verify what triggered the refusals. It’s hard to predict exactly what will trip one.
+Sarah: True, we only have the poster's summary, no full chat logs or independent tests. Still, what did you make of the commenter who said they will start testing DeepSeek on the back end of their most important app?
+Laura: That made me wince. Reading a crash log on a spare phone with you right there is very low-stakes. Trusting it on critical live software is a huge leap. Being helpful during manual troubleshooting tells you nothing about whether its outputs are reliable enough to ship without strict verification.
+Sarah: Fair point. So where do we land on this one?
+Laura: Plausible, and a good reminder of how useful a log-reading loop can be, even if the story is unconfirmed beyond Reddit.
+Sarah: And maybe the real takeaway is that when an AI helps you fix something tricky, it is usually not because it is a genius—it is because it did not refuse the boring work of reading the logs.
+
+## Close
+Laura: That's the morning deep dive done; the Sunday science edition drops by six tonight.
+Sarah: If you want to stress-test the Nvidia timeline, tap "The Week Nvidia's Books Shook" on the episode page — pair the events, quickfire, your call.

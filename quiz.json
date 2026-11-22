@@ -10,12 +10,228 @@
   "lines": [
    {
     "said": "\"Too technical\" in 2 of your last 7 depth ratings",
-    "did": "Each story may use at most 4 specialist terms: this episode's scripts were rewritten from 34 to 16 and 17 to 2 and 20 to 6."
+    "did": "Each story may use at most 4 specialist terms: this episode's scripts were rewritten from 46 to 10 and 15 to 13 and 20 to 15."
    }
   ],
   "last": "2026-11-19"
  },
  "episodes": [
+  {
+   "file": "ai_2026-11-22_morning_0653.mp3",
+   "title": "Sunday - 22 Nov: Nvidia Leadership and Governance",
+   "label": "Sunday 22 Nov morning deep dive",
+   "date": "2026-11-22",
+   "edition": "morning",
+   "published": "2026-11-22T06:53:26.059595+05:30",
+   "duration": 2568,
+   "theme": "Sunday edition: Nvidia Leadership and Governance - plus the week's best threads that got away",
+   "writer": "nemotron-3-ultra-550b-a55b (free)",
+   "voices": "Fish Audio (free)",
+   "deep_dive": true,
+   "segments": [
+    {
+     "title": "What happened next",
+     "category": "followup"
+    },
+    {
+     "title": "Nvidia Leadership and Governance: The week's story",
+     "category": "deepdive"
+    },
+    {
+     "title": "Nvidia Leadership and Governance: How it actually works",
+     "category": "deepdive"
+    },
+    {
+     "title": "Nvidia Leadership and Governance: Reality check",
+     "category": "deepdive"
+    },
+    {
+     "title": "Intel claims its new chip is faster",
+     "category": "thread"
+    },
+    {
+     "title": "Coding assistant adds a new feature",
+     "category": "thread"
+    },
+    {
+     "title": "Computer helps unlock a phone",
+     "category": "thread"
+    }
+   ],
+   "play": {
+    "v": 2,
+    "theme": "audit",
+    "title": "The Week Nvidia's Books Shook",
+    "brief": "You're the auditor today: probe each Nvidia claim and record—every wrong statement is a finding.",
+    "segments": [
+     {
+      "title": "Nvidia Leadership and Governance: The week's story",
+      "bet": null,
+      "rounds": [
+       {
+        "type": "call",
+        "q": "You are reviewing a supplier's crisis file: official filings show $250M in sudden director stock sales, one unverified blog alleges bribery, and one unreplicated lab claims a part defect. Which item is a confirmed fact?",
+        "options": [
+         "The $250M stock sales in the filings",
+         "The bribery claim from unnamed officials",
+         "The unreplicated lab defect finding"
+        ],
+        "answer": 0,
+        "hint": "Separate primary records from single-source or anonymous claims before you write up a finding.",
+        "why": "Official disclosure forms confirm the trades happened, even if motive is still inference. Unreplicated lab claims and anonymous blog posts remain unverified until independent checks back them up."
+       }
+      ],
+      "takeaway": "When traceability breaks from chip sourcing to revenue books, strong sales guidance cannot calm an audit."
+     },
+     {
+      "title": "Nvidia Leadership and Governance: How it actually works",
+      "bet": {
+       "claim": "Company directors must legally file a pre-written trading schedule before selling huge amounts of stock.",
+       "truth": false,
+       "why": "Pre-written trading plans are voluntary. Selling without one isn't illegal—it just strips away a director's automatic legal shield against insider-trading accusations."
+      },
+      "rounds": [
+       {
+        "type": "match",
+        "q": "Match each corporate safeguard to what it actually does.",
+        "pairs": [
+         [
+          "Independent board chair",
+          "Runs the board so the CEO cannot control it"
+         ],
+         [
+          "Pre-written trading plan",
+          "Locks in stock sales early as a legal shield"
+         ],
+         [
+          "Outside counsel",
+          "Fresh lawyers investigating numbers without a stake in them"
+         ],
+         [
+          "Vendor financing",
+          "Lending customers money so they can buy your products"
+         ]
+        ]
+       },
+       {
+        "type": "quickfire",
+        "q": "True or false?",
+        "items": [
+         {
+          "text": "A 200,000-signature petition can force a board to bring back a CEO.",
+          "truth": false
+         },
+         {
+          "text": "Banning chip rentals to Chinese firms closes a loophole in export rules.",
+          "truth": true
+         },
+         {
+          "text": "A Treasury Secretary's 10-day deadline for answers is a strict legal requirement.",
+          "truth": false
+         },
+         {
+          "text": "Delaying a quarterly filing is the cautious move during an accounting probe.",
+          "truth": true
+         },
+         {
+          "text": "Selling stock just because you sense general trouble ahead is illegal insider trading.",
+          "truth": false
+         }
+        ]
+       }
+      ],
+      "takeaway": "Corporate boards aren't democracies; independent chairs and outside probes exist to check the CEO, not please the crowd."
+     }
+    ],
+    "words": [
+     {
+      "term": "Circular financing",
+      "means": "Lending a customer money to buy your product, then booking it as revenue."
+     },
+     {
+      "term": "Hardware fingerprint",
+      "means": "A statistical signature left in an AI model's weights by the chip used."
+     },
+     {
+      "term": "Entity list",
+      "means": "A government export-control roster barring specific companies or chips from being shipped."
+     },
+     {
+      "term": "Independent chair",
+      "means": "A board leader who isn't the CEO, keeping executive power in check."
+     },
+     {
+      "term": "Fiduciary duty",
+      "means": "A board's legal obligation to protect shareholder value, not chase popularity."
+     },
+     {
+      "term": "Vendor financing",
+      "means": "Lending money to your own customers so they can buy your products."
+     },
+     {
+      "term": "Pre-arranged trading plan",
+      "means": "A preset stock-sale schedule executives file early to avoid insider-trading suspicions."
+     }
+    ],
+    "chips": [
+     "Follow the accounting probe",
+     "More on chip fingerprinting",
+     "Too many governance threads",
+     "Sharp audit framing today"
+    ]
+   },
+   "quiz": [
+    {
+     "q": "In the healthcare agent update, Laura notes that the blog mentions HIPAA-compliant workflows, configurable approvals, agent access controls, and audit logs, but says formal validation against specific regulatory standards would be a separate step. Why is that distinction important from a QA perspective?",
+     "options": [
+      "Because HIPAA compliance is only a marketing claim and not technically enforced",
+      "Because audit primitives like access controls and logs are necessary but not sufficient evidence that a process meets a specific regulatory validation standard",
+      "Because OpenAI's models are not validated for any clinical use whatsoever",
+      "Because CVS Health has already completed full FDA validation of the agent"
+     ],
+     "answer": 1,
+     "explain": "The script describes these as \"primitives a QA engineer would recognize\" but clarifies that formal validation against specific regulatory standards would be a separate step, meaning recognized controls do not equal completed regulatory validation.",
+     "segment": "What happened next"
+    },
+    {
+     "q": "Laura explains that a pre-written trading schedule is a legal shield because it sets trade dates and amounts before the insider possesses material non-public information. What is the key legal distinction she draws regarding insider trading liability?",
+     "options": [
+      "The law distinguishes between trading on inside information versus merely trading while in possession of it",
+      "Trading while in possession of inside information is always illegal, regardless of when the plan was filed",
+      "Board directors are exempt from insider trading rules if they do not hold executive titles",
+      "Selling shares after a scandal breaks automatically constitutes insider trading"
+     ],
+     "answer": 0,
+     "explain": "The script states the law distinguishes between \"trading on inside information versus trading while in possession of it,\" and that possession alone is hard to prove unless the information is material and non-public.",
+     "segment": "Nvidia Leadership and Governance: How it actually works"
+    },
+    {
+     "q": "Sarah compares the delayed Nvidia quarterly filing during an independent board investigation to a quality-system action. What does she identify it as, and why?",
+     "options": [
+      "A routine earnings postponement that requires no root-cause analysis",
+      "An automatic admission of accounting fraud under SEC rules",
+      "A CAPA trigger, because you do not delay a regulatory filing unless the quality system flags something needing root-cause analysis before sign-off",
+      "A standard practice whenever a CEO resigns, regardless of financial issues"
+     ],
+     "answer": 2,
+     "explain": "Sarah says the quarterly filing delay while an independent committee investigates \"is a CAPA trigger. You don't delay a regulatory filing unless the quality system flagged something that needs root cause analysis before you sign off.\"",
+     "segment": "Nvidia Leadership and Governance: Reality check"
+    },
+    {
+     "q": "Intel claimed its Crescent Island card is up to 5.9 times faster than Nvidia's flagship workstation card. Why do Sarah and Laura say this headline is misleading for AI workloads?",
+     "options": [
+      "Intel's card only runs at 350 watts, which is too slow for AI training",
+      "The benchmark was run on emulated silicon, not physical hardware",
+      "Nvidia's card does not support any form of parallel processing",
+      "The 5.9x figure applies to FP64 double-precision financial simulations, where Nvidia's card lacks dedicated hardware, not to typical AI inference"
+     ],
+     "answer": 3,
+     "explain": "The script explains the large throughput gap was measured on financial services simulations using native double-precision math, while AI inference usually runs on smaller number formats, making the headline narrow and not representative of AI performance.",
+     "segment": "Intel claims its new chip is faster"
+    }
+   ],
+   "transcript": "transcripts/ai_2026-11-22_morning_0653.txt"
+  },
   {
    "file": "ai_2026-11-21_evening_1500.mp3",
    "title": "Evening - 21 Nov: Anthropic's second day: the sell-off that wiped the Nasdaq's 2026 gains",
@@ -3144,377 +3360,6 @@
     }
    ],
    "transcript": "transcripts/ai_2026-11-15_evening_1500.txt"
-  },
-  {
-   "file": "ai_2026-11-15_morning_0600.mp3",
-   "title": "Sunday - 15 Nov: AI Coding Agents",
-   "label": "Sunday 15 Nov morning deep dive",
-   "date": "2026-11-15",
-   "edition": "morning",
-   "published": "2026-11-15T06:00:16.563007+05:30",
-   "duration": 2618,
-   "theme": "Sunday edition: AI Coding Agents - plus the week's best threads that got away",
-   "writer": "Gemini 4 Hydrogen",
-   "voices": "Fish Audio (free)",
-   "deep_dive": true,
-   "segments": [
-    {
-     "title": "What happened next",
-     "category": "followup"
-    },
-    {
-     "title": "AI Coding Agents: The week's story",
-     "category": "deepdive"
-    },
-    {
-     "title": "AI Coding Agents: How it actually works",
-     "category": "deepdive"
-    },
-    {
-     "title": "AI Coding Agents: Reality check",
-     "category": "deepdive"
-    },
-    {
-     "title": "Workers want their old boss back",
-     "category": "thread"
-    },
-    {
-     "title": "The computer is getting smarter",
-     "category": "thread"
-    },
-    {
-     "title": "A computer program led a big team",
-     "category": "thread"
-    }
-   ],
-   "play": {
-    "v": 2,
-    "theme": "exchange",
-    "title": "The Week Coding Agents Went Wild",
-    "brief": "One week of Reddit stories reveals coding agents' real costs, risks, and hard limits.",
-    "segments": [
-     {
-      "title": "AI Coding Agents: The week's story",
-      "bet": {
-       "claim": "An AI agent booked four rides out of three hundred million in one week",
-       "truth": true,
-       "why": "Ride-hailing CFO reported just four agent-booked rides during a week of over three hundred million trips and orders."
-      },
-      "rounds": [
-       {
-        "type": "estimate",
-        "q": "How many rides did AI agents book in a week of three hundred million trips?",
-        "answer": 4.0,
-        "unit": "rides",
-        "lo": 0.0,
-        "hi": 5.5,
-        "log": false,
-        "why": "The ride-hailing CFO stated just four rides were booked by agents out of over three hundred million total trips and orders."
-       },
-       {
-        "type": "call",
-        "q": "Your team mandates AI agents for all code to ship faster. Months later the codebase has tripled. Why?",
-        "options": [
-         "Agents deleted the wrong folders",
-         "Agents kept rewriting existing code",
-         "Agents booked fake customer visits"
-        ],
-        "answer": 1,
-        "hint": "The segment noted agents reinventing pieces instead of reusing them",
-        "why": "The mandated-AI team's codebase tripled because agents constantly rewrote existing functions instead of calling them, creating duplicate logic nobody understood."
-       }
-      ],
-      "takeaway": "Speed from AI agents trades understanding for volume—code triples, nobody knows why."
-     },
-     {
-      "title": "AI Coding Agents: How it actually works",
-      "bet": null,
-      "rounds": [
-       {
-        "type": "match",
-        "q": "Match each agent mechanism to its plain job.",
-        "pairs": [
-         [
-          "Tool calling",
-          "Model writes work order, wrapper runs it"
-         ],
-         [
-          "Context window",
-          "Fixed workbench re-read every loop"
-         ],
-         [
-          "Wrapper program",
-          "Intercepts orders, runs commands on computer"
-         ],
-         [
-          "Isolated worker",
-          "Fresh workbench for one narrow task"
-         ]
-        ]
-       },
-       {
-        "type": "lab",
-        "text": "Each coding task takes ~20 tool calls. Slide step reliability and count to see how many tasks fully succeed.",
-        "inputs": [
-         {
-          "id": "p",
-          "label": "Each tool call works",
-          "unit": "%",
-          "min": 90.0,
-          "max": 99.9,
-          "step": 0.1,
-          "value": 95.0
-         },
-         {
-          "id": "n",
-          "label": "Tool calls in a coding task",
-          "unit": "",
-          "min": 1.0,
-          "max": 50.0,
-          "step": 1.0,
-          "value": 20.0
-         }
-        ],
-        "outputs": [
-         {
-          "id": "ok",
-          "label": "Whole coding task works",
-          "unit": "%",
-          "expr": "100*(p/100)^n",
-          "digits": 1,
-          "lo": 0.5153775207320119,
-          "hi": 99.9
-         },
-         {
-          "id": "fails",
-          "label": "Coding tasks that fail, of 100",
-          "unit": "",
-          "expr": "100-ok",
-          "digits": 0,
-          "lo": 0.09999999999999432,
-          "hi": 99.48462247926798
-         }
-        ],
-        "chart": {
-         "x": "n",
-         "y": [
-          "ok"
-         ]
-        },
-        "goal": {
-         "target": "ok",
-         "min": 50.0,
-         "max": 100.0,
-         "text": "Get at least 50 tasks out of 100 to fully succeed.",
-         "success": "Even 95% reliable steps fail most 20-step tasks; you need near-perfect steps or fewer steps."
-        },
-        "template": "chain",
-        "view": {
-         "kind": "runs",
-         "p": "p",
-         "n": "n",
-         "step": "tool call",
-         "run": "coding task"
-        }
-       }
-      ],
-      "takeaway": "Agents are text models in feedback loops, bounded by a workbench they re-read every cycle."
-     },
-     {
-      "title": "AI Coding Agents: Reality check",
-      "bet": {
-       "claim": "During Halloween week, only four Uber rides were booked by AI agents out of 320 million total.",
-       "truth": true,
-       "why": "Uber's CFO stated 320 million rides and orders that week; four came from AI agents. Tapping a button beats prompting."
-      },
-      "rounds": [
-       {
-        "type": "quickfire",
-        "q": "True or false?",
-        "items": [
-         {
-          "text": "AI agents now book most Uber rides for busy professionals.",
-          "truth": false
-         },
-         {
-          "text": "A mandated-AI codebase tripled in size while becoming unreadable.",
-          "truth": true
-         },
-         {
-          "text": "Anthropic's OS-building agent was independently audited before release.",
-          "truth": false
-         },
-         {
-          "text": "An agent wiped a Mac user's entire library by misreading a path.",
-          "truth": true
-         },
-         {
-          "text": "Goldman Sachs banned AI coding tools for all employees.",
-          "truth": false
-         }
-        ]
-       },
-       {
-        "type": "lab",
-        "text": "An AI agent books a ride in six steps. Each step can fail. Raise per-step reliability or cut steps to hit 90% overall success.",
-        "inputs": [
-         {
-          "id": "p",
-          "label": "Each booking step works",
-          "unit": "%",
-          "min": 50.0,
-          "max": 99.9,
-          "step": 0.1,
-          "value": 85.0
-         },
-         {
-          "id": "n",
-          "label": "Booking steps in a ride request",
-          "unit": "",
-          "min": 1.0,
-          "max": 15.0,
-          "step": 1.0,
-          "value": 6.0
-         }
-        ],
-        "outputs": [
-         {
-          "id": "ok",
-          "label": "Whole ride request works",
-          "unit": "%",
-          "expr": "100*(p/100)^n",
-          "digits": 1,
-          "lo": 0.0030517578125,
-          "hi": 99.9
-         },
-         {
-          "id": "fails",
-          "label": "Ride requests that fail, of 100",
-          "unit": "",
-          "expr": "100-ok",
-          "digits": 0,
-          "lo": 0.09999999999999432,
-          "hi": 99.9969482421875
-         }
-        ],
-        "chart": {
-         "x": "n",
-         "y": [
-          "ok"
-         ]
-        },
-        "goal": {
-         "target": "ok",
-         "min": 90.0,
-         "max": 100.0,
-         "text": "Find the per-step reliability needed for 90% overall booking success.",
-         "success": "Even at 95% per step, six steps yield only 74% success—reliability compounds brutally. You need 98% per step or fewer steps."
-        },
-        "template": "chain",
-        "view": {
-         "kind": "runs",
-         "p": "p",
-         "n": "n",
-         "step": "booking step",
-         "run": "ride request"
-        }
-       }
-      ],
-      "takeaway": "Raw AI capability outpaces comprehension, cost control, and trust—speed without traceability means failing faster."
-     }
-    ],
-    "words": [
-     {
-      "term": "Coding agent",
-      "means": "Software that runs commands and edits files on its own, not just answering questions"
-     },
-     {
-      "term": "Context billing",
-      "means": "Each text chunk read or written adds to the bill, making simple tasks expensive"
-     },
-     {
-      "term": "Vendor claim",
-      "means": "A lab's own unchecked demo, not verified by independent engineers"
-     },
-     {
-      "term": "Reinvention loop",
-      "means": "Agents rewriting existing code instead of reusing it, bloating the codebase"
-     },
-     {
-      "term": "Tool calling",
-      "means": "Model writes structured work orders for a wrapper program to execute"
-     },
-     {
-      "term": "Context window",
-      "means": "Fixed workbench re-read entirely on every loop cycle"
-     },
-     {
-      "term": "Isolated worker",
-      "means": "Fresh workbench spun up for one narrow task"
-     },
-     {
-      "term": "Token billing",
-      "means": "Pay per text chunk the model reads or writes."
-     }
-    ],
-    "chips": [
-     "More on the OS claim",
-     "The fifty-dollar slide deck",
-     "Four rides from three hundred million",
-     "Veteran beaten by junior's tool"
-    ]
-   },
-   "quiz": [
-    {
-     "q": "In the follow-up on GLP-1 drugs, why can’t the Reddit-cited study showing about seven kilograms of average weight loss be treated as solid evidence yet?",
-     "options": [
-      "The hosts could not access the full paper, so sample size, controls, dropouts, and longer-term outcomes were unknown",
-      "The study was conducted only on animals, not humans",
-      "The FDA had already banned the drugs before the study was published",
-      "The average weight loss was actually less than one kilogram"
-     ],
-     "answer": 0,
-     "explain": "The hosts could only see the Reddit headline because the journal page wouldn't load, leaving study size, control group, dropout rates, and longer-term safety data unverified—exactly the gaps QA would flag before accepting post-market evidence.",
-     "segment": "What happened next"
-    },
-    {
-     "q": "The script compares a coding agent to a design engineer sending work orders down a pneumatic tube to a machinist. What does the “machinist” represent in this analogy?",
-     "options": [
-      "The language model’s internal weights updating in real time",
-      "A wrapper program on the user’s computer that executes tool-calling requests",
-      "The cloud server hosting the model’s training data",
-      "A human code reviewer approving every file change"
-     ],
-     "answer": 1,
-     "explain": "The model emits only a structured text request; a local wrapper program intercepts it, executes the command on the computer, and returns the output as text—just like a machinist following a work order without understanding the full design.",
-     "segment": "AI Coding Agents: How it actually works"
-    },
-    {
-     "q": "Why did the hosts treat Anthropic’s claim that its model built a bootable operating system as a vendor demo rather than validated evidence?",
-     "options": [
-      "The operating system only booted in a simulator, not on physical hardware",
-      "The model used pre-existing open-source code instead of writing from scratch",
-      "The source code was released under a restrictive license",
-      "The results came from Anthropic’s own internal report with no independent audit or outside reproduction"
-     ],
-     "answer": 3,
-     "explain": "Anthropic’s operating-system and circuit-board results come from its own internal report, with no independent audit, outside reproduction, or disclosed human oversight, so they remain unverified vendor claims rather than validated evidence.",
-     "segment": "AI Coding Agents: Reality check"
-    },
-    {
-     "q": "When the coding model quotes “two to three days” for a feature and finishes in ten minutes, what is the most accurate explanation for that estimate?",
-     "options": [
-      "The model ran a discrete-event simulation of the codebase and calculated effort",
-      "It is intentionally padding the schedule to look like a miracle worker (the Scotty Factor)",
-      "It is pattern-completing the most likely project-status text from its training data, with no internal clock or real measurement",
-      "It queried an external project-management API for historical cycle times"
-     ],
-     "answer": 2,
-     "explain": "The LLM has no internal clock or real effort measurement; it simply predicts the next likely project-management token based on training data, so its “estimate” is pattern completion, not a calculated schedule.",
-     "segment": "The computer is getting smarter"
-    }
-   ],
-   "transcript": "transcripts/ai_2026-11-15_morning_0600.txt"
   }
  ]
 }
