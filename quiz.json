@@ -10,12 +10,216 @@
   "lines": [
    {
     "said": "\"Too technical\" in 2 of your last 7 depth ratings",
-    "did": "Each story may use at most 4 specialist terms: this episode's scripts were rewritten from 46 to 10 and 15 to 13 and 20 to 15."
+    "did": "Each story may use at most 4 specialist terms: this episode's scripts were rewritten from 53 to 27 and 19 to 12 and 28 to 18."
    }
   ],
   "last": "2026-11-19"
  },
  "episodes": [
+  {
+   "file": "ai_2026-11-22_evening_1500.mp3",
+   "title": "Sunday - 22 Nov: FAA AI Air Traffic Tool and Nationwide Ground Stops",
+   "label": "Sunday 22 Nov evening deep dive",
+   "date": "2026-11-22",
+   "edition": "evening",
+   "published": "2026-11-22T15:00:12.840257+05:30",
+   "duration": 2423,
+   "theme": "Sunday edition: FAA AI Air Traffic Tool and Nationwide Ground Stops - plus the week's best threads that got away",
+   "writer": "nemotron-3-ultra-550b-a55b (free)",
+   "voices": "Fish Audio (free)",
+   "deep_dive": true,
+   "segments": [
+    {
+     "title": "What happened next",
+     "category": "followup"
+    },
+    {
+     "title": "FAA AI Air Traffic Tool and Nationwide Ground Stops: The week's story",
+     "category": "deepdive"
+    },
+    {
+     "title": "FAA AI Air Traffic Tool and Nationwide Ground Stops: How it actually works",
+     "category": "deepdive"
+    },
+    {
+     "title": "FAA AI Air Traffic Tool and Nationwide Ground Stops: Reality check",
+     "category": "deepdive"
+    },
+    {
+     "title": "How plant eaters stay strong",
+     "category": "thread"
+    },
+    {
+     "title": "Electric comb regrew hair in mice",
+     "category": "thread"
+    },
+    {
+     "title": "Neighborhood politics affect mental health",
+     "category": "thread"
+    }
+   ],
+   "play": {
+    "v": 2,
+    "theme": "exchange",
+    "title": "When Optimizers Meet Vintage Switches",
+    "brief": "Nationwide ground stop, flashy AI launch, and the handshake that broke between old gear and new code.",
+    "segments": [
+     {
+      "title": "FAA AI Air Traffic Tool and Nationwide Ground Stops: The week's story",
+      "bet": null,
+      "rounds": [
+       {
+        "type": "quickfire",
+        "q": "True or false?",
+        "items": [
+         {
+          "text": "SMART is a large language model like ChatGPT",
+          "truth": false
+         },
+         {
+          "text": "Juniper Networks said their router worked as designed",
+          "truth": true
+         },
+         {
+          "text": "FAA does equipment swaps on busy Friday afternoons",
+          "truth": false
+         },
+         {
+          "text": "Microsoft 365 outage lasted roughly one day",
+          "truth": true
+         },
+         {
+          "text": "Root cause of ground stop is already public",
+          "truth": false
+         }
+        ]
+       },
+       {
+        "type": "estimate",
+        "q": "How many controllers told a journalist the FAA timeline was wrong?",
+        "answer": 60.0,
+        "unit": "controllers",
+        "lo": 10,
+        "hi": 200,
+        "log": false,
+        "why": "Sixty controllers disputed Duffy's Friday-swap claim; none went on record; root cause still pending."
+       }
+      ],
+      "takeaway": "The ground stop wasn't AI gone rogue — it was a new optimizer shaking hands with vintage gear."
+     },
+     {
+      "title": "FAA AI Air Traffic Tool and Nationwide Ground Stops: Reality check",
+      "bet": null,
+      "rounds": [
+       {
+        "type": "call",
+        "q": "You run a 24/7 factory. A critical router needs upgrading. The new one handles 10x the data. Your shift leads say: never swap during peak. When do you schedule it?",
+        "options": [
+         "Friday 2 PM, peak shift",
+         "Tuesday 3 AM, zero traffic",
+         "Saturday noon, medium traffic"
+        ],
+        "answer": 1,
+        "hint": "Controllers said changes happen midweek, middle of night.",
+        "why": "The segment notes controllers explicitly said equipment changes don't happen Friday afternoon—they happen midweek, middle of night, when traffic is zero."
+       }
+      ],
+      "takeaway": "New AI live at 22 centers; ground stop follows; 60 controllers reject the official story."
+     }
+    ],
+    "words": [
+     {
+      "term": "SMART",
+      "means": "FAA's routing optimizer, a 2015-era neural net, not a chatbot"
+     },
+     {
+      "term": "Tolerance stack-up",
+      "means": "Small gaps in old parts adding up until new parts don't fit"
+     },
+     {
+      "term": "Integration risk",
+      "means": "New and old systems failing to talk cleanly at the handshake"
+     },
+     {
+      "term": "Shadow mode",
+      "means": "System runs live but its outputs are ignored by operators"
+     },
+     {
+      "term": "Requirements gap",
+      "means": "Spec met but system still fails; missing 'don't flood bus' rule"
+     },
+     {
+      "term": "En route traffic",
+      "means": "High-altitude highways between airports, not near terminals"
+     },
+     {
+      "term": "Multicast storm",
+      "means": "One bad component floods shared network with garbage data"
+     },
+     {
+      "term": "Ground stop",
+      "means": "An order halting all takeoffs nationwide"
+     }
+    ],
+    "chips": [
+     "More on integration failures",
+     "Skip the Reddit noise",
+     "Go deeper on SMART",
+     "Love the flange analogy"
+    ]
+   },
+   "quiz": [
+    {
+     "q": "In the OpenAI GPT-6 Astra clinical inbox evaluation, why did the hosts say the validation layer must sit at the deployer level rather than the model level?",
+     "options": [
+      "Because the model drafts lacked source citations and action records, so the deploying organization must supply verification and audit trails",
+      "Because OpenAI's model itself generates cryptographic audit logs for every agent action",
+      "Because the model's mid-nineties percent score exceeds regulatory accuracy thresholds for medical software",
+      "Because the smaller Luna model was too expensive to deploy at hospital scale"
+     ],
+     "answer": 0,
+     "explain": "The script notes the drafts don't cite sources (e.g., 'this came from the PT note on Tuesday'), and CVS governs data and audit logs through its own AI governance team rather than relying on OpenAI.",
+     "segment": "What happened next"
+    },
+    {
+     "q": "Laura warns that validating a decision-support tool like the FAA's SMART requires testing what happens if the tool misbehaves on the network, even in shadow mode. What specific failure did she describe?",
+     "options": [
+      "The neural network could autonomously reroute flights without controller approval",
+      "A faulty component on the shared message bus could flood the network, exhaust buffers, or send garbled packets to legacy switches",
+      "SMART requires continuous retraining on live radar data to remain accurate",
+      "The FAA lacks the legal authority to operate AI systems without pilot consent"
+     ],
+     "answer": 1,
+     "explain": "The script states that even in shadow mode, a bad component on the shared message bus can cause multicast storms, garbled packets, or buffer exhaustion on old switches.",
+     "segment": "FAA AI Air Traffic Tool and Nationwide Ground Stops: How it actually works"
+    },
+    {
+     "q": "In the mouse study involving an 'electric comb' for hair regrowth, what did the hosts and Reddit commenters identify as the actual therapeutic component?",
+     "options": [
+      "The mechanical detangling action of the comb teeth stimulating follicles",
+      "Two experimental gene therapies—a plasmid and siRNA—delivered via electroporation",
+      "The electric field alone, which outperformed minoxidil and finasteride",
+      "A topical minoxidil formulation embedded in the comb's shorter teeth"
+     ],
+     "answer": 1,
+     "explain": "The script explains the comb is just an electrode array; the plasmid (promoting blood vessel growth) and siRNA (silencing follicle-shrinkage genes) are the active cargo, while electricity alone achieved only about 40% regrowth.",
+     "segment": "Electric comb regrew hair in mice"
+    },
+    {
+     "q": "The study on neighborhood politics found worse mental health for Republicans in Democratic areas, but not the reverse. Why did commenters say the causal mechanism remains unproven?",
+     "options": [
+      "The survey only included strong partisans, excluding weak partisans entirely",
+      "Mental health scores were self-reported rather than clinically diagnosed",
+      "Time-varying confounders like differential pandemic experiences could not be ruled out by the fixed-effects design",
+      "The researchers did not match respondents to voter registration records"
+     ],
+     "answer": 2,
+     "explain": "While Zip Code fixed effects controlled for static neighborhood factors, the design could not account for time-varying confounders such as differing COVID-19 experiences during the 2020–2022 survey window.",
+     "segment": "Neighborhood politics affect mental health"
+    }
+   ],
+   "transcript": "transcripts/ai_2026-11-22_evening_1500.txt"
+  },
   {
    "file": "ai_2026-11-22_morning_0653.mp3",
    "title": "Sunday - 22 Nov: Nvidia Leadership and Governance",
@@ -3139,227 +3343,6 @@
     }
    ],
    "transcript": "transcripts/ai_2026-11-16_morning_0600.txt"
-  },
-  {
-   "file": "ai_2026-11-15_evening_1500.mp3",
-   "title": "Sunday - 15 Nov: GLP-1 Drugs Beyond Weight Loss",
-   "label": "Sunday 15 Nov evening deep dive",
-   "date": "2026-11-15",
-   "edition": "evening",
-   "published": "2026-11-15T15:00:10.781429+05:30",
-   "duration": 2632,
-   "theme": "Sunday edition: GLP-1 Drugs Beyond Weight Loss - plus the week's best threads that got away",
-   "writer": "Gemini 4 Hydrogen",
-   "voices": "Fish Audio (free)",
-   "deep_dive": true,
-   "segments": [
-    {
-     "title": "What happened next",
-     "category": "followup"
-    },
-    {
-     "title": "GLP-1 Drugs Beyond Weight Loss: The week's story",
-     "category": "deepdive"
-    },
-    {
-     "title": "GLP-1 Drugs Beyond Weight Loss: How it actually works",
-     "category": "deepdive"
-    },
-    {
-     "title": "GLP-1 Drugs Beyond Weight Loss: Reality check",
-     "category": "deepdive"
-    },
-    {
-     "title": "Trans youth rarely regret hormone therapy",
-     "category": "thread"
-    },
-    {
-     "title": "America loses measles free status after decades",
-     "category": "thread"
-    },
-    {
-     "title": "Study links looks obsession to mental distress",
-     "category": "thread"
-    }
-   ],
-   "play": {
-    "v": 2,
-    "theme": "exchange",
-    "title": "The Week The Warning Vanished",
-    "brief": "He stakes points on what holds up when hype, fear, and data collide.",
-    "segments": [
-     {
-      "title": "GLP-1 Drugs Beyond Weight Loss: The week's story",
-      "bet": {
-       "claim": "The FDA warning for vision loss came because the drug doubled the baseline risk.",
-       "truth": false,
-       "why": "FDA pooled 80k patients, found 15 cases total; rate matches background risk of two to ten per 100k."
-      },
-      "rounds": [
-       {
-        "type": "flaw",
-        "q": "Which claim about the week's evidence does not hold?",
-        "items": [
-         "GLP-1 users report more food noise, not less",
-         "NAION rate on drug sits inside normal baseline range",
-         "FDA found a clear biological mechanism in animals",
-         "Warning label appeared despite tiny absolute numbers"
-        ],
-        "flaw": 2,
-        "why": "Animal studies showed no mechanism; FDA warned because irreversible harm has low threshold at scale."
-       }
-      ],
-      "takeaway": "Rare signals trigger labels even when rates match background noise."
-     },
-     {
-      "title": "GLP-1 Drugs Beyond Weight Loss: How it actually works",
-      "bet": {
-       "claim": "Natural GLP-1 survives in blood for roughly two minutes",
-       "truth": true,
-       "why": "Body's own hormone pulses for a single meal; chemists modified it to resist breakdown so drug signal lasts a week."
-      },
-      "rounds": [
-       {
-        "type": "clues",
-        "q": "What breaks down in two minutes?",
-        "clues": [
-         "Your gut makes it every meal to warn the pancreas",
-         "It signals sugar is coming before blood levels rise",
-         "Drugs copy it but chemists stretched its life to a week"
-        ],
-        "options": [
-         "Natural GLP-1",
-         "Insulin",
-         "Dopamine",
-         "Alcohol"
-        ],
-        "answer": 0,
-        "why": "Natural GLP-1 degrades in ~2 minutes; drugs like Ozempic are modified versions that resist breakdown for weekly dosing."
-       },
-       {
-        "type": "match",
-        "q": "Match each term to its plain job",
-        "pairs": [
-         [
-          "Agonist",
-          "Drug mimicking body's own signal"
-         ],
-         [
-          "Feedforward signal",
-          "Gut warns pancreas before sugar arrives"
-         ],
-         [
-          "Food noise",
-          "Intrusive food thoughts when not hungry"
-         ],
-         [
-          "Proportional controller",
-          "Pancreas releases insulin only when sugar high"
-         ]
-        ]
-       }
-      ],
-      "takeaway": "One sensor reused in gut, pancreas, brain links sugar control, fullness, and cravings."
-     },
-     {
-      "title": "GLP-1 Drugs Beyond Weight Loss: Reality check",
-      "bet": {
-       "claim": "People taking GLP-1 drugs report more food noise than people not taking them",
-       "truth": true,
-       "why": "Survey found current and former GLP-1 users reported 50% more frequent food noise, likely due to selection bias and awareness."
-      },
-      "rounds": [],
-      "takeaway": "Proven for weight and sugar; craving and alcohol signals promising but thin; blindness risk real but tiny."
-     }
-    ],
-    "words": [
-     {
-      "term": "Food noise",
-      "means": "Intrusive food thoughts when not physically hungry"
-     },
-     {
-      "term": "NAION",
-      "means": "Sudden optic nerve blood flow loss causing blindness"
-     },
-     {
-      "term": "Post-market surveillance",
-      "means": "Safety monitoring after a drug is approved"
-     },
-     {
-      "term": "Agonist",
-      "means": "Drug shaped to fit a cell sensor and trigger the natural response"
-     },
-     {
-      "term": "Feedforward",
-      "means": "Control reacting to input before output error appears"
-     },
-     {
-      "term": "Patient-years",
-      "means": "One patient tracked for one year; sums across all patients"
-     },
-     {
-      "term": "Selection bias",
-      "means": "People with the problem are more likely to seek the treatment"
-     }
-    ],
-    "chips": [
-     "More like the first story",
-     "Go deeper on the mechanism",
-     "Too many numbers",
-     "Love the awareness-effect twist"
-    ]
-   },
-   "quiz": [
-    {
-     "q": "In the episode's control-systems analogy for GLP-1 drugs, why does the pancreas not release insulin nonstop and crash blood sugar after the drug docks there?",
-     "options": [
-      "Because the drug molecule is cleared from the bloodstream within two minutes",
-      "Because the pancreatic sensor only responds to the drug signal when blood glucose is already elevated",
-      "Because the drug binds only to stomach receptors and never reaches the pancreas",
-      "Because patients inject the drug once weekly rather than continuously"
-     ],
-     "answer": 1,
-     "explain": "The script says the pancreas idles when blood sugar is normal and only releases insulin when glucose is elevated, acting like a proportional controller rather than a stuck-open valve.",
-     "segment": "GLP-1 Drugs Beyond Weight Loss: How it actually works"
-    },
-    {
-     "q": "Why did the FDA add a class-wide warning label for the rare eye condition NAION even though it found only about six cases per hundred thousand patient-years on the drug versus four in the control group, and no animal mechanism?",
-     "options": [
-      "Because real-world records showed a tenfold increase in optic nerve strokes among all GLP-1 users",
-      "Because the drug was proven to physically damage the optic nerve in animal studies",
-      "Because irreversible vision loss has a very low regulatory threshold for a precautionary warning, even with thin data",
-      "Because the rate was statistically identical to the general population, so no warning was actually needed"
-     ],
-     "answer": 2,
-     "explain": "The FDA treated irreversible organ damage as a low-threshold safety signal and added the warning as a precaution, not because it proved the drug causes the condition.",
-     "segment": "GLP-1 Drugs Beyond Weight Loss: Reality check"
-    },
-    {
-     "q": "In the cohort study on transgender youth hormone therapy, why should the finding that regret is rare be interpreted with caution despite most participants saying starting hormones was the right decision?",
-     "options": [
-      "Because just over half of the invited former patients responded, leaving the views of non-responders unmeasured",
-      "Because the study only enrolled patients who already regretted their treatment and excluded satisfied patients",
-      "Because the average regret score was 100 out of 100, indicating universal regret",
-      "Because the study followed patients for only six months, too short to assess long-term regret"
-     ],
-     "answer": 0,
-     "explain": "The response rate was just over half, so the unmeasured non-responders could differ from those who answered, which matters for interpreting the headline.",
-     "segment": "Trans youth rarely regret hormone therapy"
-    },
-    {
-     "q": "The episode compares measles elimination status to a control loop staying closed. What condition must hold for that loop to remain closed, according to the discussion?",
-     "options": [
-      "The measles virus must mutate to become less contagious over time",
-      "Every imported case must cause at least twelve secondary infections to maintain herd immunity",
-      "The vaccine must be one hundred percent effective in every individual",
-      "Local vaccination coverage must stay above roughly ninety-five percent to interrupt sustained transmission"
-     ],
-     "answer": 3,
-     "explain": "Measles has a high reproduction number, so elimination requires roughly ninety-five percent immunity; pockets below that threshold let transmission restart and break the twelve-month clock.",
-     "segment": "America loses measles free status after decades"
-    }
-   ],
-   "transcript": "transcripts/ai_2026-11-15_evening_1500.txt"
   }
  ]
 }

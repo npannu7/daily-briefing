@@ -8,9 +8,30 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Sun, 22 Nov 2026 03:06:07 GMT</lastBuildDate>
+<lastBuildDate>Sun, 22 Nov 2026 11:18:37 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Sunday - 22 Nov: FAA AI Air Traffic Tool and Nationwide Ground Stops</title>
+<description>Sunday edition - Sunday, 22 November 2026
+Sunday edition: FAA AI Air Traffic Tool and Nationwide Ground Stops - plus the week's best threads that got away
+
+00:43  What happened next
+08:45  FAA AI Air Traffic Tool and Nationwide Ground Stops: The week's story
+13:42  FAA AI Air Traffic Tool and Nationwide Ground Stops: How it actually works
+22:11  FAA AI Air Traffic Tool and Nationwide Ground Stops: Reality check
+29:25  How plant eaters stay strong
+32:50  Electric comb regrew hair in mice
+36:18  Neighborhood politics affect mental health
+
+Play "When Optimizers Meet Vintage Switches", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-22_evening_1500.mp3
+Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Hacker News (no Reddit data: Reddit, collected hourly (0 threads); no snapshot from the office PC yet)</description>
+<pubDate>Sun, 22 Nov 2026 15:00:12 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-11-22_evening_1500.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-22_evening_1500.mp3" length="19389327" type="audio/mpeg"/>
+<itunes:duration>2423</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Sunday - 22 Nov: Nvidia Leadership and Governance</title>
 <description>Sunday edition - Sunday, 22 November 2026
@@ -226,27 +247,6 @@ Written by: Gemini 4 Hydrogen · Voices: Fish Audio (free) · Discussions: Reddi
 <guid isPermaLink="false">ai_2026-11-16_morning_0600.mp3</guid>
 <enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-16_morning_0600.mp3" length="8973815" type="audio/mpeg"/>
 <itunes:duration>1121</itunes:duration>
-<itunes:episodeType>full</itunes:episodeType>
-</item>
-<item>
-<title>Sunday - 15 Nov: GLP-1 Drugs Beyond Weight Loss</title>
-<description>Sunday edition - Sunday, 15 November 2026
-Sunday edition: GLP-1 Drugs Beyond Weight Loss - plus the week's best threads that got away
-
-00:38  What happened next
-06:54  GLP-1 Drugs Beyond Weight Loss: The week's story
-13:40  GLP-1 Drugs Beyond Weight Loss: How it actually works
-22:38  GLP-1 Drugs Beyond Weight Loss: Reality check
-33:05  Trans youth rarely regret hormone therapy
-37:03  America loses measles free status after decades
-40:15  Study links looks obsession to mental distress
-
-Play "The Week The Warning Vanished", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-15_evening_1500.mp3
-Written by: Gemini 4 Hydrogen · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (169 threads)</description>
-<pubDate>Sun, 15 Nov 2026 15:00:10 +0530</pubDate>
-<guid isPermaLink="false">ai_2026-11-15_evening_1500.mp3</guid>
-<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-15_evening_1500.mp3" length="21061018" type="audio/mpeg"/>
-<itunes:duration>2632</itunes:duration>
 <itunes:episodeType>full</itunes:episodeType>
 </item>
 </channel>
