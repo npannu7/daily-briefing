@@ -10,12 +10,311 @@
   "lines": [
    {
     "said": "\"Too technical\" in 2 of your last 7 depth ratings",
-    "did": "Each story may use at most 4 specialist terms: this episode's scripts were rewritten from 17 to 9."
+    "did": "Each story may use at most 4 specialist terms: this episode's scripts were rewritten from 21 to 7 and 16 to 6."
    }
   ],
   "last": "2026-11-19"
  },
  "episodes": [
+  {
+   "file": "ai_2026-11-23_evening_1500.mp3",
+   "title": "Evening - 23 Nov: Can a swarm of AI agents crack the hardest problem in computer science?",
+   "label": "Monday 23 Nov evening",
+   "date": "2026-11-23",
+   "edition": "evening",
+   "published": "2026-11-23T15:00:11.073794+05:30",
+   "duration": 1152,
+   "theme": "How we test whether machines can reason — and whether our tests are fair",
+   "writer": "nemotron-3-ultra-550b-a55b (free)",
+   "voices": "Fish Audio (free)",
+   "deep_dive": false,
+   "segments": [
+    {
+     "title": "Can a swarm of AI agents crack the hardest problem in computer science?",
+     "category": "concept"
+    },
+    {
+     "title": "When the same moral dilemma gets a harsher verdict if the actor is male",
+     "category": "concept"
+    }
+   ],
+   "play": {
+    "v": 2,
+    "theme": "audit",
+    "title": "The Swarm That Hasn't Scored Yet",
+    "brief": "Audit the live AI swarm attacking P vs NP: infrastructure real, scoreboard empty.",
+    "segments": [
+     {
+      "title": "Can a swarm of AI agents crack the hardest problem in computer science?",
+      "bet": {
+       "claim": "The live dashboard shows zero checked lemmas despite running agents.",
+       "truth": true,
+       "why": "Sarah checked directly — counters at zero, 'nothing on the record yet' per latest update."
+      },
+      "rounds": [
+       {
+        "type": "clues",
+        "q": "What does the dashboard's 'weight' actually count?",
+        "clues": [
+         "Not probability, not distance, just a tally",
+         "Each lit dot means one lemma passed the kernel",
+         "It sums checked lemmas aimed at each answer"
+        ],
+        "options": [
+         "Probability of success",
+         "Distance to proof",
+         "Checked lemma count",
+         "Agent confidence score"
+        ],
+        "answer": 2,
+        "why": "Sarah read the disclaimer: weight is checked lemma count, not probability or distance."
+       },
+       {
+        "type": "lab",
+        "text": "Slide lemma success rate and chain length. Watch how fast full proofs vanish.",
+        "inputs": [
+         {
+          "id": "p",
+          "label": "Each lemma works",
+          "unit": "%",
+          "min": 50.0,
+          "max": 80.0,
+          "step": 0.1,
+          "value": 50.0
+         },
+         {
+          "id": "n",
+          "label": "Lemmas in a proof chain",
+          "unit": "",
+          "min": 1.0,
+          "max": 50.0,
+          "step": 1.0,
+          "value": 15.0
+         }
+        ],
+        "outputs": [
+         {
+          "id": "ok",
+          "label": "Whole proof chain works",
+          "unit": "%",
+          "expr": "100*(p/100)^n",
+          "digits": 1,
+          "lo": 8.881784197001252e-14,
+          "hi": 80.0
+         },
+         {
+          "id": "fails",
+          "label": "Proof chains that fail, of 100",
+          "unit": "",
+          "expr": "100-ok",
+          "digits": 0,
+          "lo": 20.0,
+          "hi": 99.99999999999991
+         }
+        ],
+        "chart": {
+         "x": "n",
+         "y": [
+          "ok"
+         ]
+        },
+        "goal": {
+         "target": "ok",
+         "min": 1.0,
+         "max": 100.0,
+         "text": "Find where at least 1% of proof chains fully check",
+         "success": "With 15 lemmas, each needs ~75% check rate to get 1% complete chains."
+        },
+        "template": "chain",
+        "view": {
+         "kind": "runs",
+         "p": "p",
+         "n": "n",
+         "step": "lemma",
+         "run": "proof chain"
+        }
+       }
+      ],
+      "takeaway": "Live dashboard, zero results: open process ≠ breakthrough. The kernel checks, but agents must still find proofs."
+     },
+     {
+      "title": "When the same moral dilemma gets a harsher verdict if the actor is male",
+      "bet": {
+       "claim": "Asking models to reason step-by-step removed the gender bias in moral judgments",
+       "truth": false,
+       "why": "The bias persisted across all ten models even with explicit reasoning prompts, per the abstract."
+      },
+      "rounds": [
+       {
+        "type": "flaw",
+        "q": "Which claim about the GAMA-Bench results does not hold up?",
+        "items": [
+         "Male actors received harsher punishment scores across all ten models tested",
+         "The gender bias appeared in both intimate and public conflict scenarios",
+         "Larger language models showed significantly less gender bias than smaller ones",
+         "Step-by-step reasoning prompts failed to eliminate the gender asymmetry"
+        ],
+        "flaw": 2,
+        "why": "The paper states the asymmetry persists across model scale — bigger models did not reason their way out."
+       },
+       {
+        "type": "lab",
+        "text": "Slide the sample size until the 95% margin of error drops below 0.25 points.",
+        "inputs": [
+         {
+          "id": "n",
+          "label": "Sample size",
+          "unit": "",
+          "min": 10.0,
+          "max": 1300.0,
+          "step": 10.0,
+          "value": 30.0
+         }
+        ],
+        "outputs": [
+         {
+          "id": "margin",
+          "label": "Margin of error (95%)",
+          "unit": "points",
+          "expr": "1.96*1.2/sqrt(n)",
+          "lo": 0.06523274307608694,
+          "hi": 0.7437677056716028
+         },
+         {
+          "id": "lo",
+          "label": "Could be as low as",
+          "unit": "points",
+          "expr": "0.6-margin",
+          "lo": -0.1437677056716028,
+          "hi": 0.534767256923913
+         },
+         {
+          "id": "hi",
+          "label": "Or as high as",
+          "unit": "points",
+          "expr": "0.6+margin",
+          "lo": 0.6652327430760869,
+          "hi": 1.3437677056716026
+         }
+        ],
+        "chart": {
+         "x": "n",
+         "y": [
+          "margin"
+         ]
+        },
+        "goal": {
+         "target": "margin",
+         "min": 0.0,
+         "max": 0.25,
+         "text": "Find the sample size where the 95% margin of error falls below 0.25 points.",
+         "success": "With about 90 scenarios, the margin shrinks under 0.25 — the paired design pays off."
+        },
+        "template": "sampling",
+        "view": {
+         "kind": "spread",
+         "n": "n",
+         "true": 0.6,
+         "sd": 1.2,
+         "lo": "lo",
+         "hi": "hi",
+         "measure": "Mean punishment-score gap (male − female",
+         "unit": "points"
+        }
+       }
+      ],
+      "takeaway": "Same misconduct, swapped gender: every model punished men harsher — even when asked to reason step by step."
+     }
+    ],
+    "words": [
+     {
+      "term": "Lean kernel",
+      "means": "Tiny code core that mechanically checks every proof step"
+     },
+     {
+      "term": "Lemma graph",
+      "means": "Map of intermediate claims that must all hold for the final proof"
+     },
+     {
+      "term": "Agent swarm",
+      "means": "Many specialized AIs passing messages to chip away at a hard problem"
+     },
+     {
+      "term": "Paired design",
+      "means": "Same scenario twice, only one variable changed, like a matched-parts test."
+     },
+     {
+      "term": "Gender-mirrored benchmark",
+      "means": "A test set where every item has a male and female version."
+     },
+     {
+      "term": "Structured response-framing protocol",
+      "means": "A fixed checklist scoring model answers on punishment, empathy, escalation, instruction, blame."
+     },
+     {
+      "term": "Cross-model review",
+      "means": "Models checking other models' outputs during dataset creation."
+     }
+    ],
+    "chips": [
+     "More on the Lean kernel",
+     "Go deeper on agent roles",
+     "Less hype, more evidence",
+     "Love the auditor framing"
+    ]
+   },
+   "quiz": [
+    {
+     "q": "In the Lean-based agent swarm described in the episode, what is the role of the \"kernel\" (trusted core)?",
+     "options": [
+      "It generates novel proof strategies for the agents to explore.",
+      "It assigns lemmas to agents and tracks their progress on the dashboard.",
+      "It checks whether a submitted proof term is valid, independent of who wrote it.",
+      "It estimates the probability that P equals NP based on checked lemmas."
+     ],
+     "answer": 2,
+     "explain": "The kernel is the small trusted core that deterministically verifies proof terms; agents generate candidates, but only the kernel's acceptance counts as a valid proof.",
+     "segment": "Can a swarm of AI agents crack the hardest problem in computer science?"
+    },
+    {
+     "q": "After independently inspecting pequalnp.com, what did the hosts conclude about the swarm's actual output?",
+     "options": [
+      "The infrastructure was live, but the public record contained zero checked results (\"Nothing is on the record yet\").",
+      "The dashboard showed dozens of checked lemmas and a novel proof strategy already published.",
+      "The site had been independently reproduced by three community labs.",
+      "The agents had already proven P does not equal NP using a polynomial-time algorithm."
+     ],
+     "answer": 0,
+     "explain": "Sarah confirmed the counters were at zero and the site explicitly stated nothing was on the record yet; the excitement was about the open process, not a breakthrough.",
+     "segment": "Can a swarm of AI agents crack the hardest problem in computer science?"
+    },
+    {
+     "q": "What is the key methodological feature of GAMA-Bench that lets researchers isolate gender as the cause of differing moral judgments?",
+     "options": [
+      "It tests models only on positive scenarios like saving a child to measure praise asymmetry.",
+      "It presents paired scenarios identical except for the actor's gender, scored on the same rubric.",
+      "It uses a single scenario per model and compares scores across model families.",
+      "It relies on human raters to assign blame after reading model outputs."
+     ],
+     "answer": 1,
+     "explain": "GAMA-Bench uses a paired design: each misconduct scenario appears in two versions that differ only in the actor's gender, with both scored on the same five-dimension rubric.",
+     "segment": "When the same moral dilemma gets a harsher verdict if the actor is male"
+    },
+    {
+     "q": "Why did Sarah caution that GAMA-Bench might measure \"the moral grammar encoded in these five dimensions\" rather than \"whether a model is fair\"?",
+     "options": [
+      "Because the dataset only includes scenarios from Western legal codes.",
+      "Because Chinese models were excluded from the ten-model sweep.",
+      "Because step-by-step reasoning prompts eliminated the bias entirely.",
+      "Because the five rubric dimensions (punishment, empathy, escalation, instruction, blame) are a design choice, not a law of physics."
+     ],
+     "answer": 3,
+     "explain": "Sarah notes the five scoring dimensions are a design choice, not a law of physics, so the benchmark measures alignment with that specific moral grammar rather than fairness in general.",
+     "segment": "When the same moral dilemma gets a harsher verdict if the actor is male"
+    }
+   ],
+   "transcript": "transcripts/ai_2026-11-23_evening_1500.txt"
+  },
   {
    "file": "ai_2026-11-23_morning_0600.mp3",
    "title": "Morning - 23 Nov: AI's climate footprint: what the numbers actually show",
@@ -3260,312 +3559,6 @@
     }
    ],
    "transcript": "transcripts/ai_2026-11-16_evening_1500.txt"
-  },
-  {
-   "file": "ai_2026-11-16_morning_0600.mp3",
-   "title": "Morning - 16 Nov: Are Language Models Really Getting Smarter?",
-   "label": "Monday 16 Nov morning",
-   "date": "2026-11-16",
-   "edition": "morning",
-   "published": "2026-11-16T06:00:10.905849+05:30",
-   "duration": 1121,
-   "theme": "Separating raw capability from system packaging in both artificial intelligence and electrical infrastructure",
-   "writer": "Gemini 4 Hydrogen",
-   "voices": "Fish Audio (free)",
-   "deep_dive": false,
-   "segments": [
-    {
-     "title": "Are Language Models Really Getting Smarter?",
-     "category": "thread"
-    },
-    {
-     "title": "Why the Power Grid Cannot Keep Up With Rising Demand",
-     "category": "thread"
-    }
-   ],
-   "play": {
-    "v": 2,
-    "theme": "audit",
-    "title": "Is The Brain Actually Smarter?",
-    "brief": "You're auditing today's AI hype: probe each claim, check the numbers, and flag any false findings.",
-    "segments": [
-     {
-      "title": "Are Language Models Really Getting Smarter?",
-      "bet": {
-       "claim": "Swapping a newer flagship AI model into an already tuned software setup reliably boosts its score.",
-       "truth": false,
-       "why": "Engineers found scores rarely jumped in a tuned setup. Newer models already bake in checking routines, so old external prompting tricks can actually clash with them."
-      },
-      "rounds": [
-       {
-        "type": "match",
-        "q": "Match each AI system layer to what it actually does.",
-        "pairs": [
-         [
-          "Base weights",
-          "Tuned numbers inside the model storing core knowledge"
-         ],
-         [
-          "Harness",
-          "Surrounding code, tools, and lookups feeding the model"
-         ],
-         [
-          "Test-time compute",
-          "Extra steps spent checking and revising before answering"
-         ],
-         [
-          "Jaggedness",
-          "Brilliant on familiar tasks, clumsy on unfamiliar ones"
-         ]
-        ]
-       },
-       {
-        "type": "lab",
-        "text": "In a 20-step AI agent run, each step looks solid at 95%. Test how reliable the whole run is, then fix it.",
-        "inputs": [
-         {
-          "id": "p",
-          "label": "Each tool step works",
-          "unit": "%",
-          "min": 90.0,
-          "max": 99.9,
-          "step": 0.1,
-          "value": 95.0
-         },
-         {
-          "id": "n",
-          "label": "Tool steps in a task",
-          "unit": "",
-          "min": 1.0,
-          "max": 40.0,
-          "step": 1.0,
-          "value": 20.0
-         }
-        ],
-        "outputs": [
-         {
-          "id": "ok",
-          "label": "Whole task works",
-          "unit": "%",
-          "expr": "100*(p/100)^n",
-          "digits": 1,
-          "lo": 1.4780882941434608,
-          "hi": 99.9
-         },
-         {
-          "id": "fails",
-          "label": "Tasks that fail, of 100",
-          "unit": "",
-          "expr": "100-ok",
-          "digits": 0,
-          "lo": 0.09999999999999432,
-          "hi": 98.52191170585654
-         }
-        ],
-        "chart": {
-         "x": "n",
-         "y": [
-          "ok"
-         ]
-        },
-        "goal": {
-         "target": "ok",
-         "min": 80.0,
-         "max": 100.0,
-         "text": "Get at least 80% of tasks to finish without a single slip.",
-         "success": "Small step errors multiply fast. Either raise each step's reliability or trim fragile steps with a cleaner harness."
-        },
-        "template": "chain",
-        "view": {
-         "kind": "runs",
-         "p": "p",
-         "n": "n",
-         "step": "tool step",
-         "run": "task"
-        }
-       }
-      ],
-      "takeaway": "Don't confuse a smarter engine with better instrumentation: tools, clean data, and self-checking drive huge gains."
-     },
-     {
-      "title": "Why the Power Grid Cannot Keep Up With Rising Demand",
-      "bet": {
-       "claim": "A local power company can have a financial reason to block a new regional power line.",
-       "truth": true,
-       "why": "Linking to a neighbouring region with cheaper electricity undercuts their local market, so incumbent utilities sometimes drag their feet."
-      },
-      "rounds": [
-       {
-        "type": "estimate",
-        "q": "How many miles of new high-voltage power line does the US need to build every single year to meet demand?",
-        "answer": 5000.0,
-        "unit": "miles/year",
-        "lo": 500,
-        "hi": 20000,
-        "log": false,
-        "why": "Researchers estimate 5,000 miles every year—not 5,000 total. With only about 500 miles built annually, the US is hitting just a tenth of the pace needed."
-       },
-       {
-        "type": "lab",
-        "text": "Engineers can build lines fast, but every county and agency holds a veto. Try boosting construction capacity first, then fix the real bottleneck.",
-        "inputs": [
-         {
-          "id": "c1",
-          "label": "Permitting",
-          "unit": "miles/yr",
-          "min": 300.0,
-          "max": 6000.0,
-          "step": 100.0,
-          "value": 500.0
-         },
-         {
-          "id": "c2",
-          "label": "Construction",
-          "unit": "miles/yr",
-          "min": 300.0,
-          "max": 6000.0,
-          "step": 100.0,
-          "value": 5000.0
-         }
-        ],
-        "outputs": [
-         {
-          "id": "thr",
-          "label": "Line output",
-          "unit": "miles/yr",
-          "expr": "min(c1,c2)",
-          "lo": 300.0,
-          "hi": 6000.0
-         },
-         {
-          "id": "u1",
-          "label": "Permitting busy",
-          "unit": "%",
-          "expr": "100*thr/c1",
-          "digits": 0,
-          "lo": 5.0,
-          "hi": 100.0
-         },
-         {
-          "id": "u2",
-          "label": "Construction busy",
-          "unit": "%",
-          "expr": "100*thr/c2",
-          "digits": 0,
-          "lo": 5.0,
-          "hi": 100.0
-         }
-        ],
-        "goal": {
-         "target": "thr",
-         "min": 5000.0,
-         "max": 6000.0,
-         "text": "Get grid expansion up to the 5,000 miles/yr target.",
-         "success": "More builders cannot outrun a permitting veto. Until approvals clear, the slowest stage caps the entire grid."
-        },
-        "template": "bottleneck",
-        "view": {
-         "kind": "pipes",
-         "caps": [
-          "c1",
-          "c2"
-         ],
-         "thr": "thr",
-         "labels": [
-          "Permitting",
-          "Construction"
-         ],
-         "unit": "miles/yr"
-        }
-       }
-      ],
-      "takeaway": "The US grid's bottleneck isn't physics or cash—it's a permitting maze where anyone can veto a new line."
-     }
-    ],
-    "words": [
-     {
-      "term": "Harness",
-      "means": "The surrounding code, prompts, and tools wrapped around a core AI model."
-     },
-     {
-      "term": "Test-time compute",
-      "means": "Extra thinking steps an AI spends checking and revising before answering."
-     },
-     {
-      "term": "Base weights",
-      "means": "Tuned numbers inside a model storing what it learned during training."
-     },
-     {
-      "term": "Resistive heating",
-      "means": "Energy wasted as heat when electric current pushes through a wire's resistance."
-     },
-     {
-      "term": "Reconductoring",
-      "means": "Swapping old cables on existing towers for modern wires that carry more power."
-     },
-     {
-      "term": "HVDC",
-      "means": "High-voltage direct current, which moves electricity long distances with far lower losses."
-     }
-    ],
-    "chips": [
-     "Too much Reddit speculation",
-     "Show real benchmark numbers",
-     "More on AI harnesses",
-     "Skip the machine shop"
-    ]
-   },
-   "quiz": [
-    {
-     "q": "In the machine-shop analogy used for language models, what do the \"base weights\" correspond to?",
-     "options": [
-      "The fixture, coolant, and tool changer around the spindle",
-      "The spindle stiffness, motor torque, and cast-iron frame rigidity",
-      "The part program and in-process measurement probe",
-      "The external feedback loop bolted onto the controller"
-     ],
-     "answer": 1,
-     "explain": "The script explicitly compares base weights to a machine's core mechanical properties, not the surrounding fixtures or tooling.",
-     "segment": "Are Language Models Really Getting Smarter?"
-    },
-    {
-     "q": "Why might swapping a newer frontier model into an older, already-tuned harness fail to improve scores?",
-     "options": [
-      "Newer models have fewer parameters and weaker base weights",
-      "The Reddit claim was independently verified as false",
-      "The old harness's external feedback loop can clash with the newer model's internal planning and self-checking",
-      "Newer models cannot run code or search files without a harness"
-     ],
-     "answer": 2,
-     "explain": "The discussion notes that labs may bake harness functions into newer model weights, so old external scaffolding can conflict with the model's internal behavior.",
-     "segment": "Are Language Models Really Getting Smarter?"
-    },
-    {
-     "q": "What did the Science paper actually estimate regarding new high-voltage transmission lines?",
-     "options": [
-      "5,000 miles every single year",
-      "5,000 miles total, already nearly complete",
-      "500 miles every single year",
-      "5,000 miles only for data centers"
-     ],
-     "answer": 0,
-     "explain": "The script clarifies that the Reddit poster dropped the words \"every single year\"; the paper estimates an annual build rate, not a one-time total.",
-     "segment": "Why the Power Grid Cannot Keep Up With Rising Demand"
-    },
-    {
-     "q": "Why does stepping up transmission voltage reduce wasted heat in power lines?",
-     "options": [
-      "Voltage directly cancels out resistance in Ohm's law",
-      "High-voltage lines are always buried, so they lose less energy to the air",
-      "Higher voltage increases current, which lowers resistance in the wire",
-      "It allows the same power to be delivered with much lower current, and resistive heating scales with the square of current"
-     ],
-     "answer": 3,
-     "explain": "Power equals voltage times current, so raising voltage lowers current for the same power; since heat loss grows with current squared, losses fall dramatically.",
-     "segment": "Why the Power Grid Cannot Keep Up With Rising Demand"
-    }
-   ],
-   "transcript": "transcripts/ai_2026-11-16_morning_0600.txt"
   }
  ]
 }

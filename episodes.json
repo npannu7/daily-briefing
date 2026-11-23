@@ -1,17 +1,6 @@
 {
   "episodes": [
     {
-      "file": "ai_2026-11-16_morning_0600.mp3",
-      "date": "2026-11-16",
-      "edition": "morning",
-      "title": "Morning - 16 Nov: Are Language Models Really Getting Smarter?",
-      "published": "2026-11-16T06:00:10.905849+05:30",
-      "pubDate": "Mon, 16 Nov 2026 06:00:10 +0530",
-      "size": 8973815,
-      "duration": 1121,
-      "description": "Morning edition - Monday, 16 November 2026\nSeparating raw capability from system packaging in both artificial intelligence and electrical infrastructure\n\n00:38  Are Language Models Really Getting Smarter?\n09:24  Why the Power Grid Cannot Keep Up With Rising Demand\n\nPlay \"Is The Brain Actually Smarter?\", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-16_morning_0600.mp3\nWritten by: Gemini 4 Hydrogen · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (186 threads)"
-    },
-    {
       "file": "ai_2026-11-16_evening_1500.mp3",
       "date": "2026-11-16",
       "edition": "evening",
@@ -164,6 +153,17 @@
       "size": 8891989,
       "duration": 1111,
       "description": "Morning edition - Monday, 23 November 2026\nInfrastructure reality checks: what AI's energy appetite and service outages tell us about the systems beneath the models\n\n00:43  AI's climate footprint: what the numbers actually show\n06:29  When inference providers have incidents: what the outage reports reveal\n11:26  87% of the Anthropic power will come from gas and 11% from coal in 2028\n\nPlay \"AI's Hidden Carbon Blind Spots\", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-23_morning_0600.mp3\nWritten by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Hacker News (no Reddit data: Reddit, collected hourly (0 threads); no snapshot from the office PC yet)"
+    },
+    {
+      "file": "ai_2026-11-23_evening_1500.mp3",
+      "date": "2026-11-23",
+      "edition": "evening",
+      "title": "Evening - 23 Nov: Can a swarm of AI agents crack the hardest problem in computer science?",
+      "published": "2026-11-23T15:00:11.073794+05:30",
+      "pubDate": "Mon, 23 Nov 2026 15:00:11 +0530",
+      "size": 9220034,
+      "duration": 1152,
+      "description": "Evening edition - Monday, 23 November 2026\nHow we test whether machines can reason — and whether our tests are fair\n\n00:33  Can a swarm of AI agents crack the hardest problem in computer science?\n11:04  When the same moral dilemma gets a harsher verdict if the actor is male\n\nPlay \"The Swarm That Hasn't Scored Yet\", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-23_evening_1500.mp3\nWritten by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Hacker News (no Reddit data: Reddit, collected hourly (0 threads); no snapshot from the office PC yet)"
     }
   ],
   "memory": [
@@ -2285,6 +2285,28 @@
         "ai-data-center-energy",
         "ai-privacy-and-surveillance"
       ]
+    },
+    {
+      "label": "Monday 23 Nov evening",
+      "date": "2026-11-23",
+      "edition": "evening",
+      "published": "2026-11-23T15:00:11.073794+05:30",
+      "file": "ai_2026-11-23_evening_1500.mp3",
+      "writer": "nemotron-3-ultra-550b-a55b (free)",
+      "voices": "Fish Audio (free)",
+      "summary": "The episode examines a Hacker News claim that a swarm of AI agents has made progress on the P versus NP problem, explaining the problem’s basics and why the claim does not constitute a proof. It then reviews a gender‑asymmetric framing study showing that identical moral dilemmas receive harsher judgments when the actor is male, illustrating how benchmark wording can embed bias. Both segments highlight how current evaluation methods for machine reasoning can miss systematic flaws.",
+      "threads": [
+        "Whether the agent‑swarm approach yields a genuine advance on P versus NP or only plausible‑looking math",
+        "Whether the gender‑bias effect in moral‑dilemma benchmarks replicates across models and prompt templates"
+      ],
+      "segments": [
+        "Can a swarm of AI agents crack the hardest problem in computer science?",
+        "When the same moral dilemma gets a harsher verdict if the actor is male"
+      ],
+      "deep_topic": "",
+      "topics": [
+        "ai-in-mathematics"
+      ]
     }
   ],
   "seen": [
@@ -3179,6 +3201,22 @@
     {
       "date": "2026-11-23",
       "link": "https://www.bloodinthemachine.com/p/ai-is-becoming-a-disaster-for-the"
+    },
+    {
+      "date": "2026-11-23",
+      "link": "https://news.ycombinator.com/item?id=50604314"
+    },
+    {
+      "date": "2026-11-23",
+      "link": "https://pequalnp.com/"
+    },
+    {
+      "date": "2026-11-23",
+      "link": "https://news.ycombinator.com/item?id=50597743"
+    },
+    {
+      "date": "2026-11-23",
+      "link": "https://arxiv.org/abs/2606.14068"
     }
   ],
   "feedback": [
@@ -4518,35 +4556,178 @@
     "2026-11-23T01:23:00.057122+00:00",
     "2026-11-23T01:23:03.784719+00:00",
     "2026-11-23T01:24:09.821231+00:00",
-    "2026-11-23T01:24:31.052653+00:00"
+    "2026-11-23T01:24:31.052653+00:00",
+    "2026-11-23T09:34:10.764240+00:00",
+    "2026-11-23T09:34:13.837430+00:00",
+    "2026-11-23T09:34:17.053505+00:00",
+    "2026-11-23T09:34:20.236967+00:00",
+    "2026-11-23T09:34:23.477008+00:00",
+    "2026-11-23T09:34:26.657849+00:00",
+    "2026-11-23T09:34:29.973763+00:00",
+    "2026-11-23T09:34:32.991618+00:00",
+    "2026-11-23T09:34:36.238791+00:00",
+    "2026-11-23T09:34:39.551835+00:00",
+    "2026-11-23T09:35:07.386211+00:00",
+    "2026-11-23T09:36:10.230184+00:00",
+    "2026-11-23T09:37:31.283957+00:00",
+    "2026-11-23T09:39:00.182454+00:00",
+    "2026-11-23T09:39:55.681726+00:00",
+    "2026-11-23T09:39:55.822938+00:00",
+    "2026-11-23T09:39:55.950263+00:00",
+    "2026-11-23T09:41:09.214791+00:00",
+    "2026-11-23T09:42:03.722186+00:00",
+    "2026-11-23T09:45:04.454899+00:00",
+    "2026-11-23T09:46:35.651652+00:00",
+    "2026-11-23T09:47:54.090055+00:00",
+    "2026-11-23T09:49:21.813148+00:00",
+    "2026-11-23T09:50:19.827036+00:00",
+    "2026-11-23T09:52:06.590414+00:00",
+    "2026-11-23T09:53:10.429499+00:00",
+    "2026-11-23T09:54:32.772212+00:00",
+    "2026-11-23T09:56:01.336166+00:00",
+    "2026-11-23T09:56:55.712720+00:00",
+    "2026-11-23T09:56:56.753726+00:00",
+    "2026-11-23T09:58:14.079283+00:00",
+    "2026-11-23T10:01:55.095778+00:00",
+    "2026-11-23T10:02:26.121350+00:00",
+    "2026-11-23T10:02:29.226024+00:00",
+    "2026-11-23T10:02:32.362028+00:00",
+    "2026-11-23T10:02:35.892358+00:00",
+    "2026-11-23T10:04:15.620864+00:00",
+    "2026-11-23T10:05:29.848755+00:00",
+    "2026-11-23T10:06:50.109676+00:00",
+    "2026-11-23T10:06:52.784395+00:00",
+    "2026-11-23T10:06:57.425011+00:00",
+    "2026-11-23T10:07:01.247138+00:00",
+    "2026-11-23T10:07:04.826680+00:00",
+    "2026-11-23T10:07:07.488052+00:00",
+    "2026-11-23T10:07:10.481755+00:00",
+    "2026-11-23T10:07:14.974302+00:00",
+    "2026-11-23T10:07:19.609312+00:00",
+    "2026-11-23T10:07:20.468391+00:00",
+    "2026-11-23T10:07:28.485555+00:00",
+    "2026-11-23T10:07:28.942791+00:00",
+    "2026-11-23T10:07:31.309110+00:00",
+    "2026-11-23T10:07:36.182311+00:00",
+    "2026-11-23T10:07:38.616108+00:00",
+    "2026-11-23T10:07:40.530051+00:00",
+    "2026-11-23T10:07:43.000787+00:00",
+    "2026-11-23T10:07:51.898033+00:00",
+    "2026-11-23T10:07:53.441384+00:00",
+    "2026-11-23T10:07:55.212266+00:00",
+    "2026-11-23T10:07:57.777795+00:00",
+    "2026-11-23T10:07:59.230110+00:00",
+    "2026-11-23T10:08:07.021653+00:00",
+    "2026-11-23T10:08:07.592672+00:00",
+    "2026-11-23T10:08:17.098420+00:00",
+    "2026-11-23T10:08:25.148378+00:00",
+    "2026-11-23T10:08:29.045376+00:00",
+    "2026-11-23T10:08:29.132615+00:00",
+    "2026-11-23T10:08:36.555642+00:00",
+    "2026-11-23T10:08:36.655820+00:00",
+    "2026-11-23T10:08:44.778704+00:00",
+    "2026-11-23T10:08:46.216109+00:00",
+    "2026-11-23T10:08:47.264363+00:00",
+    "2026-11-23T10:08:51.403629+00:00",
+    "2026-11-23T10:08:55.227330+00:00",
+    "2026-11-23T10:08:55.528068+00:00",
+    "2026-11-23T10:09:03.373269+00:00",
+    "2026-11-23T10:09:07.436864+00:00",
+    "2026-11-23T10:09:09.795632+00:00",
+    "2026-11-23T10:09:12.015898+00:00",
+    "2026-11-23T10:09:12.141289+00:00",
+    "2026-11-23T10:09:12.148518+00:00",
+    "2026-11-23T10:09:22.533308+00:00",
+    "2026-11-23T10:09:23.644909+00:00",
+    "2026-11-23T10:09:28.118814+00:00",
+    "2026-11-23T10:09:30.623422+00:00",
+    "2026-11-23T10:09:32.476430+00:00",
+    "2026-11-23T10:09:41.082929+00:00",
+    "2026-11-23T10:09:41.110663+00:00",
+    "2026-11-23T10:09:47.213585+00:00",
+    "2026-11-23T10:09:48.659165+00:00",
+    "2026-11-23T10:09:50.719143+00:00",
+    "2026-11-23T10:09:55.186888+00:00",
+    "2026-11-23T10:09:59.961905+00:00",
+    "2026-11-23T10:10:03.130428+00:00",
+    "2026-11-23T10:10:06.856007+00:00",
+    "2026-11-23T10:10:08.592136+00:00",
+    "2026-11-23T10:10:08.991228+00:00",
+    "2026-11-23T10:10:15.711889+00:00",
+    "2026-11-23T10:10:20.330309+00:00",
+    "2026-11-23T10:10:22.031874+00:00",
+    "2026-11-23T10:10:22.298627+00:00",
+    "2026-11-23T10:10:22.708685+00:00",
+    "2026-11-23T10:10:30.161005+00:00",
+    "2026-11-23T10:10:31.177856+00:00",
+    "2026-11-23T10:10:35.171867+00:00",
+    "2026-11-23T10:10:36.725586+00:00",
+    "2026-11-23T10:10:43.968747+00:00",
+    "2026-11-23T10:10:44.334568+00:00",
+    "2026-11-23T10:10:50.339730+00:00",
+    "2026-11-23T10:10:50.404090+00:00",
+    "2026-11-23T10:10:56.640823+00:00",
+    "2026-11-23T10:10:58.494368+00:00",
+    "2026-11-23T10:11:00.617854+00:00",
+    "2026-11-23T10:11:01.912469+00:00",
+    "2026-11-23T10:11:11.248494+00:00",
+    "2026-11-23T10:11:16.436229+00:00",
+    "2026-11-23T10:11:22.152746+00:00",
+    "2026-11-23T10:11:22.455074+00:00",
+    "2026-11-23T10:11:26.479989+00:00",
+    "2026-11-23T10:11:30.894777+00:00",
+    "2026-11-23T10:11:34.647339+00:00",
+    "2026-11-23T10:11:35.241700+00:00",
+    "2026-11-23T10:11:40.966818+00:00",
+    "2026-11-23T10:11:41.707758+00:00",
+    "2026-11-23T10:11:46.919601+00:00",
+    "2026-11-23T10:11:48.217901+00:00",
+    "2026-11-23T10:11:54.465480+00:00",
+    "2026-11-23T10:11:54.534784+00:00",
+    "2026-11-23T10:11:58.668193+00:00",
+    "2026-11-23T10:12:03.655992+00:00",
+    "2026-11-23T10:12:06.059245+00:00",
+    "2026-11-23T10:12:08.059257+00:00",
+    "2026-11-23T10:12:11.252169+00:00",
+    "2026-11-23T10:12:13.347868+00:00",
+    "2026-11-23T10:12:18.195050+00:00",
+    "2026-11-23T10:12:19.978022+00:00",
+    "2026-11-23T10:12:24.025096+00:00",
+    "2026-11-23T10:12:25.194576+00:00",
+    "2026-11-23T10:12:29.196388+00:00",
+    "2026-11-23T10:12:31.666731+00:00",
+    "2026-11-23T10:12:38.087276+00:00",
+    "2026-11-23T10:12:38.845324+00:00",
+    "2026-11-23T10:12:42.669096+00:00",
+    "2026-11-23T10:12:45.515265+00:00",
+    "2026-11-23T10:12:51.279740+00:00",
+    "2026-11-23T10:12:53.550444+00:00",
+    "2026-11-23T10:12:57.103439+00:00",
+    "2026-11-23T10:13:05.828750+00:00",
+    "2026-11-23T10:13:07.156760+00:00",
+    "2026-11-23T10:13:11.201252+00:00",
+    "2026-11-23T10:13:11.641750+00:00",
+    "2026-11-23T10:13:12.271253+00:00",
+    "2026-11-23T10:13:17.112358+00:00",
+    "2026-11-23T10:13:18.197540+00:00",
+    "2026-11-23T10:13:22.163948+00:00",
+    "2026-11-23T10:13:22.627129+00:00",
+    "2026-11-23T10:14:32.408422+00:00",
+    "2026-11-23T10:14:58.722240+00:00"
   ],
   "free_day_out": "",
   "gemini_log": [
-    "2026-11-21T01:35:17.095226-08:00",
-    "2026-11-21T18:05:52.149217-08:00",
-    "2026-11-21T18:19:49.180865-08:00",
-    "2026-11-21T18:31:48.052202-08:00",
-    "2026-11-21T18:35:32.402648-08:00",
-    "2026-11-21T18:37:41.714370-08:00",
-    "2026-11-21T18:39:57.376761-08:00",
-    "2026-11-21T18:45:25.263073-08:00",
-    "2026-11-21T18:47:33.432907-08:00",
-    "2026-11-21T18:47:54.634657-08:00",
-    "2026-11-21T18:48:17.276532-08:00",
     "2026-11-22T01:46:30.457185-08:00",
     "2026-11-22T02:00:37.865730-08:00",
     "2026-11-22T02:34:43.512418-08:00",
     "2026-11-22T02:55:04.322027-08:00",
-    "2026-11-22T16:50:55.949920-08:00"
+    "2026-11-22T16:50:55.949920-08:00",
+    "2026-11-23T02:01:55.096926-08:00",
+    "2026-11-23T02:05:48.188027-08:00"
   ],
   "gemini_day_out": "",
   "pace_adjust": 0.0,
   "lesson_log": [
-    {
-      "date": "2026-11-09",
-      "title": "The Mac mini Brain Squeeze",
-      "template": "model_memory"
-    },
     {
       "date": "2026-11-09",
       "title": "The Perfect-Foresight Trap",
@@ -4822,16 +5003,24 @@
       ],
       "theme": "audit",
       "date": "2026-11-23"
+    },
+    {
+      "title": "The Swarm That Hasn't Scored Yet",
+      "template": "chain",
+      "formats": [
+        "clues",
+        "lab",
+        "flaw",
+        "lab"
+      ],
+      "theme": "audit",
+      "date": "2026-11-23"
     }
   ],
   "model_health": {
-    "perplexity/pplx-decider-v1.3:free": {
+    "perplexity/pplx-decider-flash-v1.3:free": {
       "n": 1,
-      "until": "2026-11-19T17:20:21.842482+00:00"
-    },
-    "gemini-4-hydrogen": {
-      "n": 1,
-      "until": "2026-11-23T03:18:37.587763+00:00"
+      "until": "2026-11-24T02:15:00.566167+00:00"
     }
   },
   "topics": {
@@ -5315,15 +5504,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 42,
+      "mentions": 43,
       "refs": [
-        {
-          "date": "2026-10-31",
-          "title": "The $6.3 Billion Binance Hack Was Pulled Off in Just 20 Minutes",
-          "thread": "https://www.reddit.com/r/technology/comments/1xjdg5q/the_63_billion_binance_hack_was_pulled_off_in/",
-          "link": "https://www.wired.com/story/the-dollar63-billion-binance-hack-was-pulled-off-in-just-20-minutes/",
-          "comment": "Lmao future of finance amiright guys LOL"
-        },
         {
           "date": "2026-11-05",
           "title": "Hackers Hijacked French Blood Plasma Freezers, Changing Temperature Settings From −30°C to 110°C",
@@ -5407,6 +5589,13 @@
           "thread": "https://news.ycombinator.com/item?id=50582794",
           "link": "https://arstechnica.com/security/2026/11/a-leaky-ai-supply-chain-is-exposing-secret-user-data-at-an-alarming-rate/",
           "comment": "Each key was sent in exactly one request to one provider, all within a few short windows in late October, and every request we sent during those windows was stolen. Some of the stolen keys came from requests that the provider rejected before a model ever ran—this tells us that the attacker was copyi"
+        },
+        {
+          "date": "2026-11-23",
+          "title": "AI Supply Chain Security: What Canary Tokens Found",
+          "thread": "https://news.ycombinator.com/item?id=50596511",
+          "link": "https://www.dragos.com/blog/ai-supply-chain-security-canary-tokens",
+          "comment": "It seems like the \"zero data retention\" option in Openrouter is basically bullshit. As a customer who got the halfassed breach notification, I'm not a fan"
         },
         {
           "date": "2026-11-23",
@@ -5594,15 +5783,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 43,
+      "mentions": 44,
       "refs": [
-        {
-          "date": "2026-10-28",
-          "title": "Two physicists asked AI to choose a problem on its own, solve it and write a paper that could be published in a prestigious journal. In two hours, AI produced a paper with a novel, significant result.",
-          "thread": "https://www.reddit.com/r/ArtificialInteligence/comments/1xgo1i9/two_physicists_asked_ai_to_choose_a_problem_on/",
-          "link": "",
-          "comment": "Claude do science"
-        },
         {
           "date": "2026-10-28",
           "title": "OpenAI on the Yang-Mills millenium prize problem",
@@ -5693,6 +5875,13 @@
           "thread": "https://news.ycombinator.com/item?id=50604314",
           "link": "https://pequalnp.com/",
           "comment": "I feel like this is a strong step in a better direction. Allowing the community to see the entire effort as it develops is far better than \"here's a paper, good luck\". I do wish the graph reflected all of the agents working or not, and that it did not scroll to a seemingly random portion of the page"
+        },
+        {
+          "date": "2026-11-23",
+          "title": "Agent swarm trying to solve P vs. NP",
+          "thread": "https://news.ycombinator.com/item?id=50604314",
+          "link": "https://pequalnp.com/",
+          "comment": "I feel like this is a strong step in a better direction. Allowing the community to see the entire effort as it develops is far better than \"here's a paper, good luck\". I do wish the graph reflected all of the agents working or not, and that it did not scroll to a seemingly random portion of the page"
         }
       ],
       "deep_dive": "",
@@ -5746,7 +5935,8 @@
         "2026-11-18",
         "2026-11-19",
         "2026-11-21",
-        "2026-11-22"
+        "2026-11-22",
+        "2026-11-23"
       ],
       "subs": [
         "AgentsOfAI",
@@ -5766,15 +5956,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 194,
+      "mentions": 195,
       "refs": [
-        {
-          "date": "2026-11-15",
-          "title": "Claude Code 2.1.323: experimental Code Mode (Claude writes JS to call tools), plugin version pinning, permission fixes",
-          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xvw576/claude_code_21323_experimental_code_mode_claude/",
-          "link": "",
-          "comment": "we ran code mode on the same repo for a week and the win was real on read heavy tasks. write tasks were worse because one bad js line killed the whole batch of tool calls"
-        },
         {
           "date": "2026-11-16",
           "title": "PSA: Superpowers skill with opus ruined my codebase",
@@ -5865,10 +6048,17 @@
           "thread": "https://news.ycombinator.com/item?id=50586292",
           "link": "http://ricapar.net/ClawDOS/",
           "comment": "I love what I see!"
+        },
+        {
+          "date": "2026-11-23",
+          "title": "Muru – AI-assisted Rust server for Python apps by mod_WSGI's creator",
+          "thread": "https://news.ycombinator.com/item?id=50597959",
+          "link": "https://simonwillison.net/2026/Nov/21/muru/",
+          "comment": "I am noticing a trend, some software developers when they create something now they vouch themselves and designate their work by “creator of xyz before AI”, why? Is this to say you’re not slopping your work? I don’t think this matters now, did you use AI or not? If you did, great, you used a tool to"
         }
       ],
       "deep_dive": "2026-11-15",
-      "last_seen": "2026-11-22",
+      "last_seen": "2026-11-23",
       "subject": "ai"
     },
     "ai-benchmarks": {
@@ -6051,15 +6241,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 96,
+      "mentions": 97,
       "refs": [
-        {
-          "date": "2026-11-16",
-          "title": "I finally succeed the CMP 170HX voltage glitch and get 80GB VRAM + 126sm! !",
-          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xwxzgj/i_finally_succeed_the_cmp_170hx_voltage_glitch/",
-          "link": "https://www.reddit.com/gallery/1xwxzgj",
-          "comment": "An AI wrote the script that unlocked more VRAM to run more AI. The loop is complete."
-        },
         {
           "date": "2026-11-17",
           "title": "Qwen4-27B reported to run on 16 GB of RAM",
@@ -6143,6 +6326,13 @@
           "thread": "https://news.ycombinator.com/item?id=50561508",
           "link": "https://thedataexchange.media/pete-warden-moonshine/",
           "comment": "If Nvidia didnt abandon consumer GPUs we all could be running better models locally by now. The moat is companies like Nvidia not releasing better consumer hardware so they can partner with bigger companies so they can sell us overpriced hardware. They release a new RTX series every two years, last "
+        },
+        {
+          "date": "2026-11-23",
+          "title": "A Beginner's Guide to Local AI with Inkling, Qwen, and Unsloth",
+          "thread": "https://news.ycombinator.com/item?id=50603845",
+          "link": "https://www.gpupartner.com/blog/beginners-guide-local-ai-inkling-qwen-unsloth",
+          "comment": "how much vram do you need before qwen stops feeling sluggish on a normal laptop"
         },
         {
           "date": "2026-11-23",
@@ -6598,15 +6788,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 36,
+      "mentions": 37,
       "refs": [
-        {
-          "date": "2026-11-17",
-          "title": "Altman: \"If the sales pitch is ... we are going to offer you a cure to cancer and cheap stuff, and the price of that is you are going to lose all agency and control and voice in the future. You are going to live like a Labrador... I think it's a terrible sales pitch. I don't want that world.\"",
-          "thread": "https://www.reddit.com/r/singularity/comments/1xy1q6z/altman_if_the_sales_pitch_is_we_are_going_to/",
-          "link": "",
-          "comment": "Agree with him on this. Humans don't want to become someone's pet. Retaining agency and self-determination is fundamental to being human."
-        },
         {
           "date": "2026-11-18",
           "title": "Altman: \"If the sales pitch is ... we are going to offer you a cure to cancer and cheap stuff, and the price of that is you are going to lose all agency and control and voice in the future. You are going to live like a Labrador... I think it's a terrible sales pitch. I don't want that world.\"",
@@ -6697,6 +6880,13 @@
           "thread": "https://news.ycombinator.com/item?id=50597743",
           "link": "https://arxiv.org/abs/2606.14068",
           "comment": "These people know they're doing anthropology right, sociology. LLMs are a raw dump of western civilization."
+        },
+        {
+          "date": "2026-11-23",
+          "title": "Harvard CS 2881R AI Safety",
+          "thread": "https://news.ycombinator.com/item?id=50602153",
+          "link": "https://boazbk.github.io/mltheoryseminar/",
+          "comment": "Apparently this had a Sam Altman Q&A ?! https://boazbk.github.io/mltheoryseminar/#lecture-oct-22 (Some of the lecture was recorded, but not the part with Sam). And the speaker the following week was Helen Toner."
         }
       ],
       "deep_dive": "2026-11-08",

@@ -8,9 +8,25 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Mon, 23 Nov 2026 01:24:32 GMT</lastBuildDate>
+<lastBuildDate>Mon, 23 Nov 2026 10:15:00 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Evening - 23 Nov: Can a swarm of AI agents crack the hardest problem in computer science?</title>
+<description>Evening edition - Monday, 23 November 2026
+How we test whether machines can reason — and whether our tests are fair
+
+00:33  Can a swarm of AI agents crack the hardest problem in computer science?
+11:04  When the same moral dilemma gets a harsher verdict if the actor is male
+
+Play "The Swarm That Hasn't Scored Yet", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-23_evening_1500.mp3
+Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Hacker News (no Reddit data: Reddit, collected hourly (0 threads); no snapshot from the office PC yet)</description>
+<pubDate>Mon, 23 Nov 2026 15:00:11 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-11-23_evening_1500.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-23_evening_1500.mp3" length="9220034" type="audio/mpeg"/>
+<itunes:duration>1152</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Morning - 23 Nov: AI's climate footprint: what the numbers actually show</title>
 <description>Morning edition - Monday, 23 November 2026
@@ -248,22 +264,6 @@ Written by: Gemini 4 Hydrogen · Voices: Fish Audio (free) · Discussions: Reddi
 <guid isPermaLink="false">ai_2026-11-16_evening_1500.mp3</guid>
 <enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-16_evening_1500.mp3" length="8518000" type="audio/mpeg"/>
 <itunes:duration>1064</itunes:duration>
-<itunes:episodeType>full</itunes:episodeType>
-</item>
-<item>
-<title>Morning - 16 Nov: Are Language Models Really Getting Smarter?</title>
-<description>Morning edition - Monday, 16 November 2026
-Separating raw capability from system packaging in both artificial intelligence and electrical infrastructure
-
-00:38  Are Language Models Really Getting Smarter?
-09:24  Why the Power Grid Cannot Keep Up With Rising Demand
-
-Play "Is The Brain Actually Smarter?", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-16_morning_0600.mp3
-Written by: Gemini 4 Hydrogen · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (186 threads)</description>
-<pubDate>Mon, 16 Nov 2026 06:00:10 +0530</pubDate>
-<guid isPermaLink="false">ai_2026-11-16_morning_0600.mp3</guid>
-<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-16_morning_0600.mp3" length="8973815" type="audio/mpeg"/>
-<itunes:duration>1121</itunes:duration>
 <itunes:episodeType>full</itunes:episodeType>
 </item>
 </channel>
