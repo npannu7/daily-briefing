@@ -10,12 +10,235 @@
   "lines": [
    {
     "said": "\"Too technical\" in 2 of your last 7 depth ratings",
-    "did": "Each story may use at most 4 specialist terms: this episode's scripts were rewritten from 53 to 27 and 19 to 12 and 28 to 18."
+    "did": "Each story may use at most 4 specialist terms: this episode's scripts were rewritten from 17 to 9."
    }
   ],
   "last": "2026-11-19"
  },
  "episodes": [
+  {
+   "file": "ai_2026-11-23_morning_0600.mp3",
+   "title": "Morning - 23 Nov: AI's climate footprint: what the numbers actually show",
+   "label": "Monday 23 Nov morning",
+   "date": "2026-11-23",
+   "edition": "morning",
+   "published": "2026-11-23T06:00:08.498652+05:30",
+   "duration": 1111,
+   "theme": "Infrastructure reality checks: what AI's energy appetite and service outages tell us about the systems beneath the models",
+   "writer": "nemotron-3-ultra-550b-a55b (free)",
+   "voices": "Fish Audio (free)",
+   "deep_dive": false,
+   "segments": [
+    {
+     "title": "AI's climate footprint: what the numbers actually show",
+     "category": "thread"
+    },
+    {
+     "title": "When inference providers have incidents: what the outage reports reveal",
+     "category": "thread"
+    },
+    {
+     "title": "87% of the Anthropic power will come from gas and 11% from coal in 2028",
+     "category": "thread"
+    }
+   ],
+   "play": {
+    "v": 2,
+    "theme": "audit",
+    "title": "AI's Hidden Carbon Blind Spots",
+    "brief": "You're auditing AI's carbon claims: each card is a record to verify, false ones are findings.",
+    "segments": [
+     {
+      "title": "AI's climate footprint: what the numbers actually show",
+      "bet": {
+       "claim": "Harvard study's 25.7 megatons includes on-site gas turbine emissions.",
+       "truth": false,
+       "why": "Study only covers grid power (scope 2); misses scope 1 from on-site generation like xAI's Memphis plant."
+      },
+      "rounds": [
+       {
+        "type": "duel",
+        "q": "Which emits more yearly: all 403 studied US data centers or Anthropic's planned projects?",
+        "unit": "megatons CO2e",
+        "a": {
+         "label": "Measured 403 US centers",
+         "value": 25.7
+        },
+        "b": {
+         "label": "Anthropic upcoming projects",
+         "value": 20.0
+        },
+        "why": "Harvard's measured total for 403 centers already exceeds Anthropic's projection for its own future buildout."
+       },
+       {
+        "type": "estimate",
+        "q": "How many megatons of CO2e did the Harvard study measure for 403 US data centers?",
+        "answer": 25.7,
+        "unit": "megatons",
+        "lo": 5.0,
+        "hi": 100,
+        "log": false,
+        "why": "The study found 25.7 megatons — about half a percent of US emissions, and more than Kenya's total."
+       }
+      ],
+      "takeaway": "We measure the grid's past while industry builds its own fossil future on-site."
+     },
+     {
+      "title": "When inference providers have incidents: what the outage reports reveal",
+      "bet": {
+       "claim": "The Together AI prompt leak was caught by automated monitoring within 24 hours.",
+       "truth": false,
+       "why": "The leak ran for two months; throughput, latency, and error rates all looked normal, so no alert fired."
+      },
+      "rounds": [
+       {
+        "type": "sequence",
+        "q": "Order the events from researcher trap to platform fix",
+        "items": [
+         "Researchers embed decoy URLs in prompts",
+         "Providers secretly forward requests to MiniMax",
+         "MiniMax accesses the decoy URLs",
+         "OpenRouter pulls 125 endpoints off its ZDR list"
+        ],
+        "why": "Decoy URLs proved subcontracting; OpenRouter reacted by purging its zero-retention list."
+       },
+       {
+        "type": "clues",
+        "q": "What got purged?",
+        "clues": [
+         "A label promising your prompts vanish after use",
+         "OpenRouter dropped 125 endpoints from it in one day",
+         "The 'ZDR' badge that turned out to be a promise, not a control"
+        ],
+        "options": [
+         "Zero Data Retention list",
+         "GPU cluster registry",
+         "Model routing table",
+         "Audit trail log"
+        ],
+        "answer": 0,
+        "why": "ZDR means no storage promised; 125 endpoints lost the badge when covert routing was exposed."
+       }
+      ],
+      "takeaway": "A ZDR badge is a promise, not a guarantee — run your own decoys to check."
+     },
+     {
+      "title": "87% of the Anthropic power will come from gas and 11% from coal in 2028",
+      "bet": {
+       "claim": "Anthropic's 2028 contracted emissions could exceed California's entire 2024 power-sector output.",
+       "truth": true,
+       "why": "Mid-case 32M tons CO2e vs California's 31M tons power-sector emissions in 2024."
+      },
+      "rounds": [
+       {
+        "type": "call",
+        "q": "A 1 GW datacenter joins a 767 lbs/MWh grid. Marginal plants emit 1,050 lbs/MWh. You need 1 GW new power. Best choice?",
+        "options": [
+         "Buy grid power at average rate",
+         "Contract new wind+solar matching hourly load",
+         "Install on-site simple-cycle gas turbines"
+        ],
+        "answer": 1,
+        "hint": "Grid average lies; marginal plants set real emissions.",
+        "why": "Added load pulls from marginal fossil plants, not the average mix. New renewables displace them; simple-cycle gas is dirtier still."
+       }
+      ],
+      "takeaway": "Cleanest model still burns whatever grid dispatches at margin — today that's gas and coal."
+     }
+    ],
+    "words": [
+     {
+      "term": "Scope one",
+      "means": "Direct emissions from sources you own, like on-site gas turbines."
+     },
+     {
+      "term": "Scope two",
+      "means": "Indirect emissions from the electricity you buy from the grid."
+     },
+     {
+      "term": "Rebound effect",
+      "means": "Making each query cheaper makes total queries explode, raising total energy."
+     },
+     {
+      "term": "Zero Data Retention (ZDR)",
+      "means": "A promise that prompts and responses are never stored"
+     },
+     {
+      "term": "Decoy URL",
+      "means": "A hidden link in a prompt that signals if anyone reads it"
+     },
+     {
+      "term": "Silent corruption",
+      "means": "Data damage that leaves all monitoring charts green"
+     },
+     {
+      "term": "BYOP",
+      "means": "Bring Your Own Power: firms contract dedicated plants instead of using grid mix."
+     },
+     {
+      "term": "Simple-cycle turbine",
+      "means": "Jet-engine-style generator: fast to start, only 30-40% efficient, dirtier than combined-cycle."
+     }
+    ],
+    "chips": [
+     "More on scope one gaps",
+     "Rebound effect needs deeper dive",
+     "Good audit analogy at end",
+     "Kenya comparison stuck with me"
+    ]
+   },
+   "quiz": [
+    {
+     "q": "The Harvard study estimated U.S. data center emissions at 25.7 million tons for 2024-2025, but the hosts note this is a \"floor, not a ceiling.\" Which major emissions source did the study's methodology miss because it only covered grid-tied facilities?",
+     "options": [
+      "Emissions from manufacturing AI training chips (embodied carbon)",
+      "Methane emissions from nearby agriculture",
+      "Scope 1 emissions from on-site fuel combustion, such as gas turbines at xAI's Memphis plant",
+      "Emissions from data-center employee commuting"
+     ],
+     "answer": 2,
+     "explain": "The study captured scope 2 emissions from purchased grid electricity but did not include scope 1 direct combustion from on-site generation, which the lead author confirmed was missing from the 403-data-center dataset.",
+     "segment": "AI's climate footprint: what the numbers actually show"
+    },
+    {
+     "q": "Researchers proved that some OpenRouter routing partners were secretly forwarding user prompts to MiniMax instead of running inference themselves. What technique provided the proof?",
+     "options": [
+      "They embedded decoy URLs in prompts and observed MiniMax accessing them",
+      "They obtained MiniMax's internal server logs through a public records request",
+      "OpenRouter performed a packet capture between the partner and MiniMax",
+      "MiniMax published a post-mortem admitting to the routing"
+     ],
+     "answer": 0,
+     "explain": "The researchers embedded decoy URLs in the prompts; when MiniMax accessed those URLs, it demonstrated that prompts had left the intended trust boundary and were being read by an undeclared subcontractor.",
+     "segment": "When inference providers have incidents: what the outage reports reveal"
+    },
+    {
+     "q": "The Better Data Center Project found that 80% of Anthropic's contracted on-site generation uses simple-cycle turbines and engines. Why is this configuration worse for emissions and fuel use than combined-cycle generation?",
+     "options": [
+      "Simple-cycle plants require more water for cooling than combined-cycle plants",
+      "Simple-cycle units cannot burn natural gas and must use diesel or coal",
+      "Simple-cycle plants emit more CO2 because they lack carbon-capture equipment",
+      "Simple-cycle turbines burn fuel in a gas turbine without capturing exhaust heat to run a secondary steam cycle, lowering thermal efficiency"
+     ],
+     "answer": 3,
+     "explain": "Simple-cycle operation is like a jet engine driving a generator (roughly 30-40% efficient); combined-cycle plants capture exhaust heat for a steam turbine, exceeding 60% efficiency, so simple-cycle burns more fuel per megawatt-hour.",
+     "segment": "87% of the Anthropic power will come from gas and 11% from coal in 2028"
+    },
+    {
+     "q": "Anthropic's public statement required emissions controls including selective catalytic reduction (SCR), yet reporting showed it was using SpaceX's Colossus 2 facility with temporary unpermitted turbines lacking SCR. In quality-management terms, what does this mismatch between stated requirement and contracted/as-built reality represent?",
+     "options": [
+      "A validated process improvement that does not require documentation",
+      "A deviation or CAPA event where the as-built condition fails to meet the design requirement",
+      "An acceptable engineering change order under GMP",
+      "A routine supplier nonconformance that can be closed without investigation"
+     ],
+     "answer": 1,
+     "explain": "The public commitment acts like a design requirement; running unpermitted turbines without SCR is an as-built failure to meet that requirement, which in regulated manufacturing would trigger deviation handling and corrective and preventive action.",
+     "segment": "87% of the Anthropic power will come from gas and 11% from coal in 2028"
+    }
+   ],
+   "transcript": "transcripts/ai_2026-11-23_morning_0600.txt"
+  },
   {
    "file": "ai_2026-11-22_evening_1500.mp3",
    "title": "Sunday - 22 Nov: FAA AI Air Traffic Tool and Nationwide Ground Stops",

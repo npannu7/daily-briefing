@@ -8,9 +8,26 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Sun, 22 Nov 2026 11:18:37 GMT</lastBuildDate>
+<lastBuildDate>Mon, 23 Nov 2026 01:24:32 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Morning - 23 Nov: AI's climate footprint: what the numbers actually show</title>
+<description>Morning edition - Monday, 23 November 2026
+Infrastructure reality checks: what AI's energy appetite and service outages tell us about the systems beneath the models
+
+00:43  AI's climate footprint: what the numbers actually show
+06:29  When inference providers have incidents: what the outage reports reveal
+11:26  87% of the Anthropic power will come from gas and 11% from coal in 2028
+
+Play "AI's Hidden Carbon Blind Spots", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-23_morning_0600.mp3
+Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Hacker News (no Reddit data: Reddit, collected hourly (0 threads); no snapshot from the office PC yet)</description>
+<pubDate>Mon, 23 Nov 2026 06:00:08 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-11-23_morning_0600.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-23_morning_0600.mp3" length="8891989" type="audio/mpeg"/>
+<itunes:duration>1111</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Sunday - 22 Nov: FAA AI Air Traffic Tool and Nationwide Ground Stops</title>
 <description>Sunday edition - Sunday, 22 November 2026

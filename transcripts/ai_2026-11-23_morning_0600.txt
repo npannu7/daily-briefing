@@ -1,0 +1,112 @@
+## Welcome
+Sarah: Good morning, Nikhil — hope your commute’s smooth.
+Laura: We’ve got a fresh look at the hidden energy costs behind the models you use every day.
+Sarah: First, we’ll untangle the claims that AI’s carbon footprint is ballooning, separating hype from the numbers analysts have actually measured.
+Laura: Next, we’ll peek at what happens when the services that run those models go down, and what the outage reports reveal about reliability.
+Sarah: And we’ll test the specific claim that Anthropic could be powered mostly by gas and coal in 2028, checking the evidence behind the percentages.
+Laura: Quick bet for the drive: true or false — a Harvard study’s 25.7 megatons includes on‑site gas turbine emissions.
+
+## AI's climate footprint: what the numbers actually show
+Sarah: I was scrolling Hacker News yesterday and saw a post titled "AI is becoming a disaster for the climate." It had been flagged dead, then someone vouched it back to life. The link goes to Brian Merchant's newsletter, Blood in the Machine.
+Laura: Okay. What's the core claim?
+Sarah: The headline number that grabbed everyone: a report estimates Anthropic's upcoming data center projects could emit nearly twenty megatons of CO2-equivalent a year, driven by fossil fuel power.
+Laura: That's a big number. Where does it come from?
+Sarah: The article cites a report by Australian climate researcher Ketan Joshi, called "State of AI Climate Impact twenty twenty-six." But the Hacker News thread immediately splits. One commenter says it's just not true, written to support the author's view. Another compares it to animal agriculture — six thousand two hundred megatons — and asks why we're focused on AI.
+Laura: Classic whataboutism. But the Harvard study Merchant references — that's peer-reviewed, in Nature Sustainability.
+Sarah: Right. The study covered four hundred three data centers.
+Laura: The period ran through April twenty twenty-five.
+Sarah: They found fifty-four percent of the power came from fossil fuels.
+Laura: The total emissions came to twenty-five point seven million tons.
+Sarah: That's about half a percent of US emissions.
+Laura: And the study ended April twenty twenty-five. Merchant points out Emily Atkin's newsletter — she says the study is a floor, not a ceiling.
+Sarah: Because it misses on-site gas turbines. Like xAI's Memphis plant burning gas right outside the building. The lead author confirmed that plant wasn't in the four hundred three.
+Laura: That's a massive gap. If you're doing a grid-intensity calculation, you assume the grid mix. But on-site generation is scope one — direct combustion — and the study's methodology wouldn't catch it.
+Sarah: The Harvard study basically covers scope two for grid-tied facilities. It misses scope one from on-site generation.
+Laura: Exactly. And Atkin lists three more gaps. Refrigerant leaks from cooling equipment — those are potent greenhouse gases. Methane leakage from wells and pipelines before gas even reaches the plant. And possibly two hundred fifty missing data centers as of twenty twenty-five.
+Sarah: So the twenty-five million tons is a minimum. Merchant says it's more than the entire country of Kenya.
+Laura: Let's go back to the Anthropic claim. Nearly twenty megatons a year for upcoming projects. That's from Joshi's report, though the article doesn't say whether it's based on utility filings or company disclosures.
+Sarah: One commenter demands full transparency. Another jokes Anthropic's ethics are exhausted by their "not eradicating humanity" pledge. But the IPO context matters — Anthropic just went public, eighty-one billion first day, trillion-dollar valuation. Merchant ties the timing together.
+Laura: Right. The independent check: we have the Harvard study, peer-reviewed. We have Atkin's critique in her newsletter. We have Joshi's report. The twenty megaton figure — that's Joshi's projection, not a utility filing. Big difference.
+Sarah: One thing the article and thread don't actually break down is building a model versus running it. Building is a periodic massive compute spike, while running it is continuous—every query, every token generated. People often debate whether the running total exceeds the build, though these sources don't give numbers for it.
+Laura: It's like tooling up a production line versus running it. The setup energy — building — is huge but once. The per-part energy — running — adds up over millions of parts. If demand grows fast enough, the running total dominates.
+Sarah: The thread has an efficiency argument too. One commenter argues AI compresses software projects and lets one worker do the work of many, meaning less resource usage—though the article itself doesn't factor that in.
+Laura: That's the rebound effect. Make each query cheaper, total queries explode. We've seen this in machining — high-speed cutting tools reduce per-part time, so shops run more parts, total energy goes up.
+Sarah: The Spain comment was interesting. Mandate eighty percent renewables for data centers, direct procurement, no offsets. Someone else brings up military emissions as the real hierarchy top.
+Laura: The military point — scope three on steroids. But back to the numbers. What's actually measured versus projected?
+Sarah: Measured: the Harvard study puts twenty twenty-four to twenty twenty-five US data center emissions at twenty-five point seven million tons.
+Laura: Projected: Joshi estimates Anthropic's upcoming data center projects alone could emit nearly twenty megatons a year.
+Sarah: The gap between measured and projected is where the fight lives.
+Laura: And the running-exceeds-building claim — that's plausible for deployed models at scale, but it depends on utilization. If a model sits idle, building dominates. If it's serving billions of queries, running wins. No universal constant.
+Sarah: The verdict in the thread? Split. "Disaster for the climate" versus "look at animal ag" versus "AI might fix climate." Merchant's take: the buildout is locking in fossil infrastructure. A permitting reform bill passed the Senate — easing energy infrastructure, including gas.
+Laura: My take: the Harvard study is solid for what it measures. The projections rest on assumptions about buildout pace and fuel mix. The twenty megaton figure — that's a scenario, not a filing. And the scope-one gap from on-site generation is real and growing.
+Sarah: One line to remember: we're measuring the grid's past while the industry builds its own fossil future on-site.
+Laura: For someone in QA — my take — this is a supply-chain visibility problem. You can't validate what you don't measure. If scope one and refrigerant leaks aren't in the data, your carbon footprint audit has a blind spot the size of a data center.
+
+## When inference providers have incidents: what the outage reports reveal
+Laura: I was going through the Hacker News front page yesterday and there's this OpenRouter blog post that blew up — about a hundred fifty comments in a few hours.
+Sarah: OpenRouter, that's the —
+Laura: Inference provider. Think of them like a cloud vendor but strictly for serving models. You send a prompt, they route it to whatever GPU cluster is running the model you asked for, and stream the answer back.
+Sarah: Right, the "we'll handle the GPUs, you just call the API" layer. Okay, so what did they post?
+Laura: Their security team got a report from researchers. Turns out several of the providers OpenRouter was routing traffic to — companies like Atlas Cloud, Novita, StreamLake — were quietly forwarding requests upstream to a Chinese lab called MiniMax instead of running inference themselves. MiniMax was then accessing decoy URLs the researchers had embedded in prompts. Proof the prompts were being read.
+Sarah: Wait, really? So you think you're calling Provider A, but Provider A just passes it to MiniMax on the sly?
+Laura: That's what the researcher's decoy URLs showed. OpenRouter off-boarded three providers, pulled about a hundred twenty-five endpoints off their Zero Data Retention list — ZDR, meaning the promise that nobody stores your prompt or the response — and notified affected customers.
+Sarah: Okay, that's wild. And the thread —
+Laura: The thread is equal parts "I told you so" and "why aren't they naming names." One commenter put it bluntly: assume every inference provider is logging everything you send, full stop. Another pointed out that OpenRouter's own blog says "not all affected providers have posted publicly" — so customers only know if the provider chooses to write it up.
+Sarah: Which is... not great. The HN comments on the Phala write-up — that's the TEE provider, trusted execution environment, hardware-enforced isolation — said their root keys got compromised through a legacy management interface that trusted loopback connections without authentication. That's a classic "forgot to lock the back door" bug.
+Laura: Exactly. And the Together AI notice — they had prompt leakage for requests in June and July. Two months before anyone noticed.
+Sarah: Two months. Silent data corruption, essentially. No alert fired.
+Laura: That claim — silent corruption without alerts — the Together post-mortem backs it. They describe a logging misconfiguration that wrote prompts to a debug store. No monitoring rule caught it because the pipeline looked healthy; throughput, latency, error rates all normal.
+Sarah: So the first claim — "major inference providers experience silent data-corruption events that do not trigger alerts" — that one's supported. At least for Together.
+Laura: Supported by their own write-up. The MiniMax routing is different — that's not corruption, that's undeclared subcontracting. The researcher's decoy URLs prove the prompts left the intended trust boundary.
+Sarah: Claim two: "mean time to recovery for GPU-cluster incidents exceeds four hours in over half of published post-mortems." The OpenRouter post doesn't give MTTR numbers. The Together notice says they detected it in July, fixed it, rotated keys — but no timeline. Phala's preliminary report says "investigation ongoing." So we can't verify that one from this thread.
+Laura: Right. Claim three: "token-throughput drops of thirty percent or more are common during partial-degradation modes." Nothing in these write-ups mentions throughput degradation. The incidents are about data policy violations, not performance. Different failure mode.
+Sarah: Claim four: "customers rarely receive root-cause analyses that meet regulated-industry standards." OpenRouter explicitly says not all providers have posted publicly. Together and Phala did publish, but Phala's is labeled preliminary. Atlas and Novita posted notices but they're light on technical root cause — more "we're investigating" than "here's the fault tree." So half-right: some do, many don't, and none of them look like a CAPA report you'd file for a Class II device.
+Laura: My take, for someone in QA: if your supply chain includes an inference provider, you're effectively outsourcing data custody without a quality agreement. The ZDR label is a claim, not a control. You'd want the same thing you'd ask a contract sterilizer for — process validation, audit rights, and a documented deviation process.
+Sarah: And the kicker — OpenRouter is now adapting the researcher's decoy-URL technique to run continuous checks themselves. They're building the test into the platform. That's... actually a decent corrective action.
+Laura: It is. But it only catches providers who actually fetch the decoy. A sophisticated actor could filter URLs. The deeper issue is trust without verification — same as any critical supplier.
+Sarah: One-line takeaway: a ZDR badge on an inference endpoint is a promise, not a guarantee — and the only way to know if it's kept is to run your own decoys.
+Laura: Or don't send data you can't afford to lose.
+Sarah: ...Fair.
+
+## 87% of the Anthropic power will come from gas and 11% from coal in 2028
+Sarah: So I'm scrolling Hacker News Sunday morning and there's this post — just a link, no text — titled "87% of the Anthropic power will come from gas and 11% from coal in 2028."
+Laura: Okay. That's specific.
+Sarah: Right? The link goes to the Better Data Center Project. They put out a report November sixteenth breaking down how AI companies are increasingly doing "bring your own power" — BYOP — meaning they're contracting dedicated gas plants instead of just plugging into the grid.
+Laura: That's the independent check, then. The Better Data Center Project's November analysis.
+Sarah: Exactly. And the thread explodes. Top comment is pure frustration — "why are we letting the few burn down the planet." Next one: "funny how the conversation is always about which model is best and never about what's burning to run it."
+Laura: Classic. What did the optimists say?
+Sarah: One commenter argued tokens per megawatt will skyrocket with disaggregated inference — basically splitting the work across specialized chips — so this'll look like worrying about coal for WiFi routers in a few years. Another said renewables are a pipe dream, reality proves it.
+Laura: And the energy-sector folks?
+Sarah: Oh, they showed up. One wrote that the planet's been energy-starved for thirty-plus years — no new US refinery complexes in decades, gas plants mostly just replacing ancient coal, total electricity flat for twenty years. Global oil production barely meeting demand.
+Laura: That tracks with what I've seen in industrial power. Dispatchable capacity is the bottleneck, not generation potential.
+Sarah: Then there's the "require 110% renewable capacity for new datacenters" camp, the "thank you Greenpeace for preventing green energy" camp, and a European asking if US electricity prices are actually that bad or just news-cycle hyperbole.
+Laura: Good question. What does the report actually measure?
+Sarah: They mapped Anthropic's contracted datacenters and the power plants feeding them. Finding one: Anthropic has zero direct renewable commitments in the US. Their only disclosed renewable contracts are in Norway and Canada. But they bought commitments for 1.7 gigawatts of heavy-duty gas generators — three point four billion dollars worth.
+Laura: 1.7 gigawatts on-site. That's a lot of reciprocating engines or simple-cycle turbines.
+Sarah: Finding two: by 2028, they estimate 87% gas, 11% coal for Anthropic's US contracted capacity. 15 gigawatts total compute contracted; 5.9 to 9.6 gigawatts tied to specific sites. Nine point six gigawatts could power about seven million homes — eighteen percent of California's peak demand.
+Laura: And the grid renewables don't count because without new renewable contracts, marginal load gets met by dispatchable fossil plants. That's grid mechanics 101.
+Sarah: Finding three: seventeen to thirty-eight million metric tons CO2 equivalent per year in 2028. Mid-case thirty-two million. That could exceed all of California's 2024 power-sector emissions — thirty-one million tons. Could exceed Meta, Microsoft, and Google's combined 2025 Scope 2 emissions before offsets — about thirty-three million tons total.
+Laura: Scope 2 being indirect emissions from purchased electricity.
+Sarah: Right. And it'd be a sixteen to thirty-six percent jump over the entire US datacenter sector's 2024 emissions. One to two and a half percent of the whole US power sector.
+Laura: Those are sector-level numbers from one company's contracted capacity. Finding four?
+Sarah: Anthropic's sites sit in grids averaging 1,033 to 1,076 pounds CO2 per megawatt-hour — thirty-five percent dirtier than the US average of 767.
+Laura: Siting matters. Finding five?
+Sarah: Eighty percent of on-site generation uses inefficient simple-cycle turbines and engines. Two and a half gigawatts on-site, eighty percent simple-cycle. They emit more per unit than modern combined-cycle plants.
+Laura: Simple-cycle is like a jet engine driving a generator — fast to start, thirty to forty percent efficient. Combined-cycle captures exhaust heat for a steam turbine, pushes sixty percent plus. Big difference at scale.
+Sarah: Finding six: air pollution from on-site plus grid power could cause two to three billion dollars in annual health damages. Over thirteen thousand tons nitrogen oxides, two thousand tons PM2.5 per year.
+Laura: EPA benefit-per-ton estimates. That's a real externality.
+Sarah: Here's the kicker. Anthropic put out a "responsible datacenter development" statement in October — "we follow air permitting, require emissions control including selective catalytic reduction." But they've been using SpaceX's Colossus 2 facility since May, which runs mostly on temporary unpermitted turbines, majority without SCR. Up to six hundred megawatts by year end.
+Laura: SCR — selective catalytic reduction — is the aftertreatment that knocks down NOx with urea injection. Like a giant catalytic converter. Expensive, takes space, needs permitting.
+Sarah: And they've contracted four hundred sixty megawatts from Nscale's Monarch campus in West Virginia — reciprocating engines with significant formaldehyde and hazardous air pollutant emissions compared to conventional gas plants.
+Laura: Recips are even dirtier on HAPs per megawatt-hour. So the public commitment and the contracted reality don't match.
+Sarah: The thread's "87% gas, 11% coal" claim? The report backs it — with the caveat that it's based on contracted capacity and marginal grid attribution, not yet-built renewables.
+Laura: The "tokens per megawatt will save us" argument? Plausible long-term, but disaggregated inference is still early. Efficiency gains historically get eaten by demand growth — Jevons paradox at datacenter scale.
+Sarah: The "renewables are a pipe dream" take? The report shows renewables are under twenty percent of BYOP proposals through 2032. But that's a policy and contracting choice, not physics.
+Laura: And the European's question about US grid prices? The report doesn't address retail rates, but adding gigawatts of marginal gas to constrained grids pushes up wholesale prices — which eventually hits ratepayers.
+Sarah: Verdict: the eighty-seven-eleven split is solid for contracted near-term capacity. The emissions numbers are methodology-transparent and alarming. The gap between Anthropic's stated approach and their actual contracted power is real.
+Laura: My take for someone in QA: when the design history file says "selective catalytic reduction required" but the as-built installation runs unpermitted turbines without it — that's a CAPA waiting to happen.
+Sarah: One line to remember: the cleanest model in the world still burns whatever the grid dispatches at the margin — and right now, that's gas and coal.
+
+## Close
+Sarah: That’s it for this morning — the next episode is this evening, ready by 6 pm.
+Laura: Give the three‑minute game AI’s Hidden Carbon Blind Spots a try and see how your guesses stack up.
