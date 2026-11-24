@@ -9,13 +9,259 @@
  "heard": {
   "lines": [
    {
-    "said": "\"Too technical\" in 2 of your last 7 depth ratings",
-    "did": "Each story may use at most 4 specialist terms: this episode's scripts were rewritten from 17 to 1 and 23 to 18."
+    "said": "Less like \"Nvidia Brings Back Its Chief Executive\"",
+    "did": "The editor sees this when it chooses the next episodes' stories."
+   },
+   {
+    "said": "\"Less forum drama next time\"",
+    "did": "Passed to the editor and the writers of every episode from now on."
    }
   ],
-  "last": "2026-11-19"
+  "last": "2026-11-24"
  },
  "episodes": [
+  {
+   "file": "ai_2026-11-24_evening_1500.mp3",
+   "title": "Evening - 24 Nov: Shirudo: a runtime that tries to shield unpatched Linux",
+   "label": "Tuesday 24 Nov evening",
+   "date": "2026-11-24",
+   "edition": "evening",
+   "published": "2026-11-24T15:00:11.594311+05:30",
+   "duration": 1090,
+   "theme": "Security for local models and a window into what models know",
+   "writer": "nemotron-3-ultra-550b-a55b (free)",
+   "voices": "Fish Audio (free)",
+   "deep_dive": false,
+   "segments": [
+    {
+     "title": "Shirudo: a runtime that tries to shield unpatched Linux",
+     "category": "thread"
+    },
+    {
+     "title": "Latent introspection: can a model spot a concept that was slipped into its hidden state?",
+     "category": "concept"
+    }
+   ],
+   "play": {
+    "v": 2,
+    "theme": "audit",
+    "title": "Shirudo: Shield or Shifting Risk?",
+    "brief": "You audit Shirudo's claims: each card a record to probe, findings flagged where gut feels wrong.",
+    "segments": [
+     {
+      "title": "Shirudo: a runtime that tries to shield unpatched Linux",
+      "bet": {
+       "claim": "Shirudo's shields fix the underlying vulnerability they protect against",
+       "truth": false,
+       "why": "Shields block only the specific exploit pattern; another trigger for the same bug bypasses the shield."
+      },
+      "rounds": [
+       {
+        "type": "clues",
+        "q": "What blocks the exploit but not the bug?",
+        "clues": [
+         "Runs inside the kernel, checks each request before the kernel sees it",
+         "Attaches to a specific code path like Java's Base64 decoder",
+         "Needs TPM2, measured boot, and a Guardian Agent to load"
+        ],
+        "options": [
+         "eBPF verifier",
+         "Shirudo shield",
+         "SELinux policy",
+         "gVisor sandbox"
+        ],
+        "answer": 1,
+        "why": "Each shield is a custom eBPF program targeting one exploit pattern, not the root cause."
+       }
+      ],
+      "takeaway": "Shirudo buys time against known exploits but trades kernel patches for a heavy new trust stack."
+     },
+     {
+      "title": "Latent introspection: can a model spot a concept that was slipped into its hidden state?",
+      "bet": null,
+      "rounds": [
+       {
+        "type": "clues",
+        "q": "What did researchers slip into the model's hidden workspace?",
+        "clues": [
+         "It enters the rolling mill at stand three, invisible to the final inspector.",
+         "A vector representing a concept, added to the residual stream at one layer.",
+         "The paper calls it 'concept injection' — added at layer twelve, detected at layer twenty."
+        ],
+        "options": [
+         "Concept injection",
+         "Residual stream noise",
+         "Attention head interference",
+         "Gradient masking"
+        ],
+        "answer": 0,
+        "why": "The experiment adds a concept vector to the residual stream mid-generation; a linear probe on later layers detects it with high accuracy even when outputs look normal."
+       },
+       {
+        "type": "lab",
+        "text": "Slide to find where the probe catches the injection but the model's output stays clean.",
+        "inputs": [
+         {
+          "id": "angle",
+          "label": "Angle between injected concept vector and probe detectio",
+          "unit": "°",
+          "min": 0.0,
+          "max": 180.0,
+          "step": 1.0,
+          "value": 75.0
+         },
+         {
+          "id": "len",
+          "label": "Length of injected concept vector",
+          "unit": "",
+          "min": 0.2,
+          "max": 2.0,
+          "step": 0.05,
+          "value": 0.8
+         }
+        ],
+        "outputs": [
+         {
+          "id": "sim",
+          "label": "Cosine similarity",
+          "unit": "",
+          "expr": "cos(angle*pi/180)",
+          "digits": 2,
+          "lo": -1.0,
+          "hi": 1.0
+         },
+         {
+          "id": "along",
+          "label": "Part pointing along probe detection direction",
+          "unit": "",
+          "expr": "len*cos(angle*pi/180)",
+          "digits": 2,
+          "lo": -2.0,
+          "hi": 2.0
+         },
+         {
+          "id": "left",
+          "label": "Left after removing that direction",
+          "unit": "",
+          "expr": "len*abs(sin(angle*pi/180))",
+          "digits": 2,
+          "lo": 0.0,
+          "hi": 2.0
+         }
+        ],
+        "goal": {
+         "target": "sim",
+         "min": 0.7,
+         "max": 0.95,
+         "text": "Make the probe see the injection (high similarity) while the model's final output shows no change (low along).",
+         "success": "The residual stream carries a detectable signature the final layer suppresses — like a strain gauge catching a flaw the finished sheet hides."
+        },
+        "template": "vectors",
+        "view": {
+         "kind": "arrows",
+         "angle": "angle",
+         "len": "len",
+         "a_label": "injected concept vector",
+         "b_label": "probe detection direction"
+        }
+       }
+      ],
+      "takeaway": "The residual stream keeps receipts the final output throws away."
+     }
+    ],
+    "words": [
+     {
+      "term": "eBPF",
+      "means": "Lets small programs inspect kernel requests before they execute"
+     },
+     {
+      "term": "Shield",
+      "means": "A custom eBPF program blocking one specific exploit pattern"
+     },
+     {
+      "term": "TPM2",
+      "means": "Hardware chip that records boot steps and stores keys"
+     },
+     {
+      "term": "Guardian Agent",
+      "means": "The control plane deciding which shields get deployed"
+     },
+     {
+      "term": "Residual stream",
+      "means": "The running workspace passed between transformer layers — each layer reads, writes, and forwards it."
+     },
+     {
+      "term": "Concept injection",
+      "means": "Adding a meaning vector into the model's hidden state mid-process, not through the prompt."
+     },
+     {
+      "term": "Linear probe",
+      "means": "A simple classifier (logistic regression) reading internal activations to detect changes — no extra model layers."
+     },
+     {
+      "term": "Logit lens",
+      "means": "Projecting intermediate hidden states onto the vocabulary to decode what the model 'thinks' at each layer."
+     }
+    ],
+    "chips": [
+     "More on overhead reality",
+     "Deployment stack too heavy",
+     "Good vendor skepticism shown",
+     "Compare with SELinux next"
+    ]
+   },
+   "quiz": [
+    {
+     "q": "According to the script, what does Shirudo use eBPF for in its runtime shielding approach?",
+     "options": [
+      "To replace the Linux kernel entirely",
+      "To attach input checks at specific kernel request points and block suspicious patterns without rebooting",
+      "To encrypt all network traffic leaving the server",
+      "To scan files on disk for malware signatures"
+     ],
+     "answer": 1,
+     "explain": "Shirudo attaches eBPF programs at specific kernel points to inspect and reject suspicious inputs—such as a Java Base64 decoder check—before the kernel processes them, acting as a runtime shield without requiring a reboot.",
+     "segment": "Shirudo: a runtime that tries to shield unpatched Linux"
+    },
+    {
+     "q": "How do the hosts evaluate Shirudo’s claim that it can block exploit code paths without a kernel patch?",
+     "options": [
+      "Half right: it buys time for known exploits but is not blanket prevention",
+      "Fully proven by independent benchmarks",
+      "False: it requires a kernel reboot to work",
+      "Irrelevant because it only works on Windows"
+     ],
+     "answer": 0,
+     "explain": "The hosts rate this claim as “half right”: Shirudo can block specific known exploit patterns to buy patching time, but it is not blanket prevention and only covers the pattern it was written for.",
+     "segment": "Shirudo: a runtime that tries to shield unpatched Linux"
+    },
+    {
+     "q": "In the rolling-mill analogy used by the hosts, what does the transformer’s residual stream represent?",
+     "options": [
+      "The alloy composition certificate",
+      "The motor driving the rollers",
+      "The moving slab passing between rolling stands",
+      "The final sheet metal coming off the last stand"
+     ],
+     "answer": 2,
+     "explain": "The residual stream is the running workspace that flows between transformer layers, comparable to a slab moving between rolling stands where each layer reads and writes to it.",
+     "segment": "Latent introspection: can a model spot a concept that was slipped into its hidden state?"
+    },
+    {
+     "q": "What key limitation should a quality-assurance mindset note about the probe-based detection results in the latent-introspection paper?",
+     "options": [
+      "The probe only works on Windows",
+      "The probe changes the model’s final output tokens",
+      "The probe requires physical access to the GPU",
+      "The probe requires labeled injection examples and is supervised, so it does not yet function as an unlabeled anomaly detector for production"
+     ],
+     "answer": 3,
+     "explain": "The detection method is a supervised linear probe trained on labeled injections; the paper does not yet provide an unlabeled anomaly detector for production environments where injections are unknown.",
+     "segment": "Latent introspection: can a model spot a concept that was slipped into its hidden state?"
+    }
+   ],
+   "transcript": "transcripts/ai_2026-11-24_evening_1500.txt"
+  },
   {
    "file": "ai_2026-11-24_morning_0600.mp3",
    "title": "Morning - 24 Nov: Nvidia Brings Back Its Chief Executive",

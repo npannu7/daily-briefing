@@ -8,9 +8,25 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Tue, 24 Nov 2026 01:06:24 GMT</lastBuildDate>
+<lastBuildDate>Tue, 24 Nov 2026 10:15:43 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Evening - 24 Nov: Shirudo: a runtime that tries to shield unpatched Linux</title>
+<description>Evening edition - Tuesday, 24 November 2026
+Security for local models and a window into what models know
+
+00:32  Shirudo: a runtime that tries to shield unpatched Linux
+07:58  Latent introspection: can a model spot a concept that was slipped into its hidden state?
+
+Play "Shirudo: Shield or Shifting Risk?", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-24_evening_1500.mp3
+Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Hacker News (no Reddit data: Reddit, collected hourly (0 threads); no snapshot from the office PC yet)</description>
+<pubDate>Tue, 24 Nov 2026 15:00:11 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-11-24_evening_1500.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-24_evening_1500.mp3" length="8724083" type="audio/mpeg"/>
+<itunes:duration>1090</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Morning - 24 Nov: Nvidia Brings Back Its Chief Executive</title>
 <description>Morning edition - Tuesday, 24 November 2026
