@@ -10,12 +10,249 @@
   "lines": [
    {
     "said": "\"Too technical\" in 2 of your last 7 depth ratings",
-    "did": "Each story may use at most 4 specialist terms: this episode's scripts were rewritten from 21 to 7 and 16 to 6."
+    "did": "Each story may use at most 4 specialist terms: this episode's scripts were rewritten from 17 to 1 and 23 to 18."
    }
   ],
   "last": "2026-11-19"
  },
  "episodes": [
+  {
+   "file": "ai_2026-11-24_morning_0600.mp3",
+   "title": "Morning - 24 Nov: Nvidia Brings Back Its Chief Executive",
+   "label": "Tuesday 24 Nov morning",
+   "date": "2026-11-24",
+   "edition": "morning",
+   "published": "2026-11-24T06:00:10.104389+05:30",
+   "duration": 1055,
+   "theme": "Corporate accountability at the top of the chip industry, and a coding model that trades brute size for repeated passes",
+   "writer": "Gemini 4 Hydrogen",
+   "voices": "Fish Audio (free)",
+   "deep_dive": false,
+   "segments": [
+    {
+     "title": "Nvidia Brings Back Its Chief Executive",
+     "category": "thread"
+    },
+    {
+     "title": "Teaching a Coding Model to Think in Loops",
+     "category": "concept"
+    }
+   ],
+   "play": {
+    "v": 2,
+    "theme": "case",
+    "title": "When the Board Folds Fast",
+    "brief": "Clues: stock surge, White House calls, missing guardrails. You find the cause.",
+    "segments": [
+     {
+      "title": "Nvidia Brings Back Its Chief Executive",
+      "bet": {
+       "claim": "The board reinstated Huang before the independent investigation concluded.",
+       "truth": true,
+       "why": "Nvidia confirmed the outside probe by Wachtell Lipton continues; Huang cooperates but investigation not finished."
+      },
+      "rounds": [
+       {
+        "type": "sequence",
+        "q": "Put the board's U-turn in order",
+        "items": [
+         "Affair reports and China link trigger resignation",
+         "Stock sheds roughly a third in two weeks",
+         "US officials tell board no security laws broken",
+         "Trump and investors pressure board directly",
+         "Board votes unanimously to reinstate Huang"
+        ],
+        "why": "The segment traces the exact chain: scandal → stock drop → political pressure → reversal in days."
+       },
+       {
+        "type": "flaw",
+        "q": "Which statement about the reinstatement is false?",
+        "items": [
+         "The board flipped in under two weeks",
+         "Shares jumped thirty percent on the news",
+         "The security investigation closed before he returned",
+         "Both parties in Congress demand answers"
+        ],
+        "flaw": 2,
+        "why": "Nvidia said the independent probe by Wachtell Lipton stays active; it did not close before Huang's return."
+       }
+      ],
+      "takeaway": "A board can rehire a CEO in days, but governance only counts when oversight survives pressure."
+     },
+     {
+      "title": "Teaching a Coding Model to Think in Loops",
+      "bet": {
+       "claim": "The loop architecture caused GLM's quality jump",
+       "truth": false,
+       "why": "Simon's pelican test shows style shift happened between 5.2 and 5.3, before loop architecture arrived in 5.4."
+      },
+      "rounds": [
+       {
+        "type": "clues",
+        "q": "What gives loop transformers depth without more parameters?",
+        "clues": [
+         "Not unique layers stacked deeper—something gets reused",
+         "Same block, shared weights, run several times",
+         "Like reusing a machining pass, not adding stations"
+        ],
+        "options": [
+         "Shared weights run repeatedly",
+         "Wider layers, fewer total",
+         "Skip connections between blocks",
+         "Dynamic layer skipping"
+        ],
+        "answer": 0,
+        "why": "Loop transformers define one block, share its weights, and execute it multiple times per forward pass."
+       },
+       {
+        "type": "lab",
+        "text": "Adjust learning rate and steps to train a loop transformer without loss exploding or crawling.",
+        "inputs": [
+         {
+          "id": "lr",
+          "label": "Learning rate",
+          "unit": "",
+          "min": 0.01,
+          "max": 1.1,
+          "step": 0.01,
+          "value": 0.05
+         },
+         {
+          "id": "k",
+          "label": "Training steps",
+          "unit": "",
+          "min": 0.0,
+          "max": 8.0,
+          "step": 1.0,
+          "value": 8.0
+         }
+        ],
+        "outputs": [
+         {
+          "id": "w",
+          "label": "Distance from the best setting",
+          "unit": "",
+          "expr": "4*(1-2*lr)^k",
+          "digits": 2,
+          "lo": -14.332723200000014,
+          "hi": 17.19926784000002
+         },
+         {
+          "id": "loss",
+          "label": "Error (loss)",
+          "unit": "",
+          "expr": "w^2",
+          "digits": 3,
+          "lo": 0.0,
+          "hi": 295.8148142320589
+         }
+        ],
+        "goal": {
+         "target": "loss",
+         "min": 0.3,
+         "max": 0.5,
+         "text": "Find a learning rate that drives loss under 0.5 in 8 steps without overshoot.",
+         "success": "Too high blows up; too low stalls. The sweet spot mirrors the loop transformer's own balancing act."
+        },
+        "template": "gradient_descent",
+        "view": {
+         "kind": "bowl",
+         "lr": "lr",
+         "k": "k",
+         "w": "w",
+         "start": 4.0,
+         "model": "a loop transformer refining code"
+        }
+       }
+      ],
+      "takeaway": "Loop transformers trade inspectability for free depth—evidence still thin."
+     }
+    ],
+    "words": [
+     {
+      "term": "forcing function",
+      "means": "the pressure that drives a decision, here the stock price"
+     },
+     {
+      "term": "governance theater",
+      "means": "controls announced but not yet proven to have real teeth"
+     },
+     {
+      "term": "Loop transformer",
+      "means": "Shares layer weights, runs them repeatedly for depth"
+     },
+     {
+      "term": "Neuralese",
+      "means": "Internal reasoning hidden in model's hidden states"
+     },
+     {
+      "term": "Marathon thinking",
+      "means": "Model gets stuck over-reasoning easy problems"
+     },
+     {
+      "term": "Distillation",
+      "means": "Training a small model to copy a large one"
+     }
+    ],
+    "chips": [
+     "More on the pressure mechanics",
+     "Less forum drama next time",
+     "Deeper on export control gaps",
+     "Good length for the drive"
+    ]
+   },
+   "quiz": [
+    {
+     "q": "As Head of Quality Assurance, which aspect of Nvidia's post-reinstatement governance announcements should concern you most, based on the episode?",
+     "options": [
+      "Huang was placed on probation with mandatory behavioral rules and pay cuts.",
+      "The board announced an ongoing independent investigation, an export-control committee, and a chief compliance officer search, but disclosed no personal conditions or penalties for Huang.",
+      "Congress has already subpoenaed Huang and closed its inquiry into export controls.",
+      "The board chair was replaced immediately to restore independence."
+     ],
+     "answer": 1,
+     "explain": "The script notes Nvidia announced structural reforms, but neither the press release nor CNBC mentioned personal penalties, probation, or behavioral rules tied to Huang's return, leaving accountability unclear.",
+     "segment": "Nvidia Brings Back Its Chief Executive"
+    },
+    {
+     "q": "Why did forum commenters describe the stock price as a 'forcing function' and the leadership reversal as a sinusoid?",
+     "options": [
+      "The board's rapid U-turn appeared driven by market pressure and share price recovery rather than new governance findings.",
+      "Nvidia's board used a mathematical sine-wave model to schedule leadership reviews.",
+      "The stock price remained flat throughout the controversy, so the board acted on principle alone.",
+      "Huang personally designed a sinusoidal compensation plan for the board."
+     ],
+     "answer": 0,
+     "explain": "Commenters pointed to the cratering and rebounding share price, and CNBC reported shares jumped about thirty percent after reinstatement, indicating market pressure drove the reversal.",
+     "segment": "Nvidia Brings Back Its Chief Executive"
+    },
+    {
+     "q": "How does a loop transformer achieve greater effective depth without increasing parameter count?",
+     "options": [
+      "It stacks more unique layers per forward pass and freezes their weights.",
+      "It requires an external harness to call the model repeatedly for every token.",
+      "It shares weights across a block of layers and runs that block multiple times per forward pass.",
+      "It processes all tokens in parallel across every layer simultaneously."
+     ],
+     "answer": 2,
+     "explain": "The script explains that a loop transformer recycles the same weighted layers across several passes, refining the internal representation each time while keeping parameters at the single-block level.",
+     "segment": "Teaching a Coding Model to Think in Loops"
+    },
+    {
+     "q": "What is the main quality-assurance red flag raised about loop transformers for coding tasks?",
+     "options": [
+      "OpenAI's leaked internal looping proves the architecture is unsafe for regulated industries.",
+      "The model is hard-coded to exactly three reasoning passes per token.",
+      "It is fully open-source, so no independent validation is required.",
+      "The release provided no benchmarks, independent testing showed only parity not improvement, and the model can get trapped in excessively long reasoning loops on simple tasks."
+     ],
+     "answer": 3,
+     "explain": "Hacker News commenters flagged marathon thinking on easy inputs, Simon Willison's pelican tests showed no clear quality jump, and internal looping makes reasoning opaque and harder to bound.",
+     "segment": "Teaching a Coding Model to Think in Loops"
+    }
+   ],
+   "transcript": "transcripts/ai_2026-11-24_morning_0600.txt"
+  },
   {
    "file": "ai_2026-11-23_evening_1500.mp3",
    "title": "Evening - 23 Nov: Can a swarm of AI agents crack the hardest problem in computer science?",
@@ -3081,484 +3318,6 @@
     }
    ],
    "transcript": "transcripts/ai_2026-11-17_evening_1501.txt"
-  },
-  {
-   "file": "ai_2026-11-17_morning_0600.mp3",
-   "title": "Morning - 17 Nov: Can AI Agents Safely Run Hospital Paperwork",
-   "label": "Tuesday 17 Nov morning",
-   "date": "2026-11-17",
-   "edition": "morning",
-   "published": "2026-11-17T06:00:09.848623+05:30",
-   "duration": 1306,
-   "theme": "Checking bold safety claims in hospital AI against how complex systems actually fail, and how starving gut microbes of fiber flips their chemistry from protective to destructive.",
-   "writer": "Gemini 4 Hydrogen",
-   "voices": "Fish Audio (free)",
-   "deep_dive": false,
-   "segments": [
-    {
-     "title": "Can AI Agents Safely Run Hospital Paperwork",
-     "category": "thread"
-    },
-    {
-     "title": "When Gut Bacteria Eat Their Own Home",
-     "category": "thread"
-    }
-   ],
-   "play": {
-    "v": 2,
-    "theme": "audit",
-    "title": "The 99% Hospital AI Trap",
-    "brief": "You're the auditor today: probe each hospital AI claim and log the shaky numbers as findings.",
-    "segments": [
-     {
-      "title": "Can AI Agents Safely Run Hospital Paperwork",
-      "bet": {
-       "claim": "At a 99% safety rate, US hospitals would still amputate nearly 2,000 wrong limbs every year.",
-       "truth": true,
-       "why": "In a Reddit breakdown of US hospital volumes, a 1% error rate scaled to nearly 2,000 wrong-limb amputations and 36,000 misrouted babies yearly."
-      },
-      "rounds": [
-       {
-        "type": "estimate",
-        "q": "OpenAI claimed 99% safety for its hospital AI agent. How many reviewed tasks was that score based on?",
-        "answer": 325.0,
-        "unit": "tasks",
-        "lo": 128.20420600491184,
-        "hi": 6410.210300245592,
-        "log": true,
-        "why": "Just 325 reviewed tasks in a company showcase—a drop in the bucket compared to one busy hospital on a Monday morning."
-       },
-       {
-        "type": "lab",
-        "text": "An AI agent clicks across fragmented hospital screens. Start at 99% per click over 20 clicks and watch errors stack up.",
-        "inputs": [
-         {
-          "id": "p",
-          "label": "Each screen click works",
-          "unit": "%",
-          "min": 90.0,
-          "max": 99.9,
-          "step": 0.1,
-          "value": 99.0
-         },
-         {
-          "id": "n",
-          "label": "Screen clicks in a referral",
-          "unit": "",
-          "min": 1.0,
-          "max": 30.0,
-          "step": 1.0,
-          "value": 20.0
-         }
-        ],
-        "outputs": [
-         {
-          "id": "ok",
-          "label": "Whole referral works",
-          "unit": "%",
-          "expr": "100*(p/100)^n",
-          "digits": 1,
-          "lo": 4.239115827521624,
-          "hi": 99.9
-         },
-         {
-          "id": "fails",
-          "label": "Referrals that fail, of 100",
-          "unit": "",
-          "expr": "100-ok",
-          "digits": 0,
-          "lo": 0.09999999999999432,
-          "hi": 95.76088417247837
-         }
-        ],
-        "chart": {
-         "x": "n",
-         "y": [
-          "ok"
-         ]
-        },
-        "goal": {
-         "target": "fails",
-         "min": 0.0,
-         "max": 2.0,
-         "text": "Get failed referrals down to 2 or fewer per 100.",
-         "success": "At 99% per click, 20 clicks fail 18% of the time. You need 99.9% reliability or far fewer steps."
-        },
-        "template": "chain",
-        "view": {
-         "kind": "runs",
-         "p": "p",
-         "n": "n",
-         "step": "screen click",
-         "run": "referral"
-        }
-       }
-      ],
-      "takeaway": "A 99% demo score on 325 clicks is marketing, not safety, when real hospitals run on messy edge cases."
-     },
-     {
-      "title": "When Gut Bacteria Eat Their Own Home",
-      "bet": {
-       "claim": "In the study, the helpful gut chemicals came mostly from fiber itself, not from plant protein.",
-       "truth": false,
-       "why": "They came almost entirely from tough plant proteins that survive digestion and reach the lower gut, working alongside fiber to keep bacteria on the helpful chemical track."
-      },
-      "rounds": [
-       {
-        "type": "sequence",
-        "q": "Put this low-fiber gut chain reaction in order, from first to last.",
-        "items": [
-         "Easy-to-digest protein gets absorbed high up in the gut.",
-         "Lower-gut microbes run out of fiber and tough plant protein.",
-         "Hungry bacteria feed on the gut's protective mucus layer.",
-         "Bacterial chemistry flips from helpful compounds to harmful ones."
-        ],
-        "why": "Without fiber or tough plant proteins reaching the lower gut, microbes eat the protective mucus and switch to making potentially harmful chemical byproducts."
-       },
-       {
-        "type": "clues",
-        "q": "What is this newly named nutrient?",
-        "clues": [
-         "Food labels might one day list this nutrient right next to fiber.",
-         "Unlike typical protein, it survives upper digestion and reaches lower-gut bacteria intact.",
-         "Scientists nicknamed it 'Prif'—short for proteins imitating fiber."
-        ],
-        "options": [
-         "Omega-3 fatty acids",
-         "Tough plant proteins",
-         "Gummy fiber extracts",
-         "Live probiotic bacteria"
-        ],
-        "answer": 1,
-        "why": "Unlike protein shakes absorbed early, tough plant proteins reach the lower gut intact, working with fiber to steer bacteria toward helpful chemicals."
-       }
-      ],
-      "takeaway": "Feed your gut microbes fiber and tough whole plants consistently, or they eat your mucus and flip their chemistry."
-     }
-    ],
-    "words": [
-     {
-      "term": "Computer-use agent",
-      "means": "AI that reads screen pixels and drives the mouse and keyboard like a human."
-     },
-     {
-      "term": "GUI automation",
-      "means": "Controlling software by clicking visible buttons instead of using a direct data link."
-     },
-     {
-      "term": "Fragmented software",
-      "means": "Separate, clunky computer systems that do not share data cleanly with each other."
-     },
-     {
-      "term": "Prif",
-      "means": "Tough plant proteins that survive upper digestion and act like fiber for gut microbes."
-     },
-     {
-      "term": "Phenol metabolites",
-      "means": "Chemical byproducts gut bacteria make when digesting protein, either helpful or harmful."
-     },
-     {
-      "term": "Indole-3-lactate",
-      "means": "A chemical once thought purely bacterial, now known human cells make it too."
-     }
-    ],
-    "chips": [
-     "More on AI failures",
-     "Loved the lab slider",
-     "Too many hospital stats",
-     "Go deeper on agents"
-    ]
-   },
-   "quiz": [
-    {
-     "q": "In the discussion of OpenAI's claimed 99% safety rating across 325 tasks, why did the hosts treat this figure as inadequate evidence for real-world hospital deployment?",
-     "options": [
-      "Because 325 tasks is too many for a meaningful demo and indicates overtesting",
-      "Because it was a self-reported score on curated tasks without independent verification, and real hospitals introduce far more noise and edge cases",
-      "Because the tasks only involved insurance approvals and excluded patient notes and referrals",
-      "Because the rating was calculated by Reddit clinicians rather than OpenAI engineers"
-     ],
-     "answer": 1,
-     "explain": "The script notes they could not access the original post or verify how tasks were chosen and reviewed, and emphasizes that a few hundred curated examples do not reflect real-world chaos in a busy hospital.",
-     "segment": "Can AI Agents Safely Run Hospital Paperwork"
-    },
-    {
-     "q": "Laura explains that a computer-use agent navigates hospital software by reading pixels and driving the mouse and keyboard. How does this differ from the normal way two hospital systems exchange data?",
-     "options": [
-      "The agent relies on GUI automation and screen-scraping rather than clean, standardized data pipes between systems",
-      "The agent uses encrypted APIs to transfer structured fields directly between databases",
-      "The agent requires hospitals to install custom middleware before it can read any screen",
-      "The agent only works with modern web-based portals and cannot interface with legacy billing terminals"
-     ],
-     "answer": 0,
-     "explain": "Normal integration uses structured data pipes and APIs, whereas the agent literally looks at screen images and taps buttons like a human, making it fragile to UI changes and pop-ups.",
-     "segment": "Can AI Agents Safely Run Hospital Paperwork"
-    },
-    {
-     "q": "According to the Princeton studies discussed, what role do \"Prif\" proteins play in gut bacteria chemistry when fiber is present?",
-     "options": [
-      "They are synthetic supplements designed to replace fiber entirely in gummy form",
-      "They are easily digested in the upper gut and provide a quick energy source for gut bacteria",
-      "They are tough, hard-to-digest plant proteins that reach the lower gut and work with fiber to steer bacteria toward helpful phenol metabolites",
-      "They are produced by human cells to block bacteria from eating the mucus lining"
-     ],
-     "answer": 2,
-     "explain": "Prif proteins survive digestion, reach the lower gut intact, and act alongside fiber to keep bacteria producing health-promoting chemicals instead of shifting to harmful outputs.",
-     "segment": "When Gut Bacteria Eat Their Own Home"
-    },
-    {
-     "q": "The second Princeton paper found that human cells can produce indole-3-lactate and indole-3-acetate without any microbes present. What does this complicate?",
-     "options": [
-      "The validation of Prif content on food packaging under current GMP rules",
-      "The ability to diagnose smallpox using AI scribes during pediatric exams",
-      "The accuracy of 99% safety ratings for computer-use agents in hospitals",
-      "Using blood levels of these chemicals as a clean readout of gut bacterial activity alone"
-     ],
-     "answer": 3,
-     "explain": "Because human cells can make the same chemicals, total blood levels cannot be attributed solely to gut bacteria, just as factory air vents can shed dust indistinguishable from machine output.",
-     "segment": "When Gut Bacteria Eat Their Own Home"
-    }
-   ],
-   "transcript": "transcripts/ai_2026-11-17_morning_0600.txt"
-  },
-  {
-   "file": "ai_2026-11-16_evening_1500.mp3",
-   "title": "Evening - 16 Nov: A Language Model That Fits on a Floppy Disk",
-   "label": "Monday 16 Nov evening",
-   "date": "2026-11-16",
-   "edition": "evening",
-   "published": "2026-11-16T15:00:11.815653+05:30",
-   "duration": 1064,
-   "theme": "Stripping complex technologies down to what actually makes them work—from a language model shrunk onto a floppy disk to a single gene edit still holding steady after four years.",
-   "writer": "Gemini 4 Hydrogen",
-   "voices": "Fish Audio (free)",
-   "deep_dive": false,
-   "segments": [
-    {
-     "title": "A Language Model That Fits on a Floppy Disk",
-     "category": "concept"
-    },
-    {
-     "title": "A Gene Edit That Still Works Four Years Later",
-     "category": "thread"
-    }
-   ],
-   "play": {
-    "v": 2,
-    "theme": "bench",
-    "title": "The Floppy-Disk Brain Test",
-    "brief": "You're at the test bench today—turn the dials and measure what survives when AI shrinks.",
-    "segments": [
-     {
-      "title": "A Language Model That Fits on a Floppy Disk",
-      "bet": {
-       "claim": "Reading letter by letter makes a tiny language model better at spelling.",
-       "truth": false,
-       "why": "It shrinks the dictionary to just letters and punctuation, saving huge memory—but makes it much harder to spell and hold long ideas."
-      },
-      "rounds": [
-       {
-        "type": "estimate",
-        "q": "How much total space—program and stored knowledge combined—does the claimed floppy-disk model take up?",
-        "answer": 400.0,
-        "unit": "KB",
-        "lo": 50,
-        "hi": 1400,
-        "log": false,
-        "why": "Just over 400 KB—less than a third of a classic floppy disk—achieved by cutting parameters, rounding numbers, and reading letter by letter."
-       },
-       {
-        "type": "lab",
-        "text": "A 7B model at 16-bit precision overflows an 8 GB laptop. Cut parameters or round each weight to fewer bits—just like shrinking a model for a floppy.",
-        "inputs": [
-         {
-          "id": "P",
-          "label": "Parameters",
-          "unit": "billion",
-          "min": 1.0,
-          "max": 14.0,
-          "step": 0.2,
-          "value": 7.0
-         },
-         {
-          "id": "bits",
-          "label": "Bits per weight (quantization)",
-          "unit": "bits",
-          "min": 2.0,
-          "max": 16.0,
-          "step": 0.5,
-          "value": 16.0
-         }
-        ],
-        "outputs": [
-         {
-          "id": "size",
-          "label": "Memory needed (incl. ~10% extra)",
-          "unit": "GB",
-          "expr": "P*bits/8*1.1",
-          "digits": 1,
-          "lo": 0.275,
-          "hi": 30.800000000000004
-         },
-         {
-          "id": "free",
-          "label": "Left over on an 8 GB laptop",
-          "unit": "GB",
-          "expr": "8-size",
-          "digits": 1,
-          "lo": -22.800000000000004,
-          "hi": 7.725
-         },
-         {
-          "id": "speed",
-          "label": "Tokens per second, at best",
-          "unit": "",
-          "expr": "100/(P*1*bits/8)",
-          "digits": 0,
-          "lo": 3.5714285714285716,
-          "hi": 400.0
-         }
-        ],
-        "goal": {
-         "target": "free",
-         "min": 1.0,
-         "max": 5.0,
-         "text": "Get it to fit with 1 to 5 GB of memory to spare.",
-         "success": "Dropping precision or parameter count shrinks memory fast—though rounding weights trades fine micrometer precision for a rough wooden ruler."
-        },
-        "template": "model_memory",
-        "view": {
-         "kind": "memory",
-         "size": "size",
-         "speed": "speed",
-         "vram": 8.0,
-         "device": "an 8 GB laptop",
-         "model": "a 7B open model"
-        }
-       }
-      ],
-      "takeaway": "Shrinking a language model onto a floppy disk strips away reasoning, leaving a compressed lookup table for memorized facts."
-     },
-     {
-      "title": "A Gene Edit That Still Works Four Years Later",
-      "bet": {
-       "claim": "The one-day infusion injects tiny DNA-cutting scissors straight into the bloodstream to edit the liver.",
-       "truth": false,
-       "why": "It ships temporary genetic instructions inside tiny fat droplets. The liver absorbs them and builds the cutting tool itself, which then disables the target gene."
-      },
-      "rounds": [
-       {
-        "type": "estimate",
-        "q": "How much can existing ongoing drugs cost per month for one patient with this rare swelling disorder?",
-        "answer": 75000.0,
-        "unit": "USD/month",
-        "lo": 5000,
-        "hi": 250000,
-        "log": true,
-        "why": "Existing treatments for hereditary angioedema can run around $75,000 a month per person, which is why a permanent one-day fix is so tempting."
-       },
-       {
-        "type": "duel",
-        "q": "Which number is bigger?",
-        "unit": "months",
-        "a": {
-         "label": "Months the one-day edit has kept working",
-         "value": 48.0
-        },
-        "b": {
-         "label": "Months of old drugs to cost $900,000",
-         "value": 12.0
-        },
-        "why": "At $75,000 a month, ongoing drugs burn through $900,000 in just 12 months, while the one-day edit is still working 48 months in."
-       }
-      ],
-      "takeaway": "A one-day liver infusion avoids harsh chemo, but editing inside the body means you cannot inspect cells beforehand."
-     }
-    ],
-    "words": [
-     {
-      "term": "Parameters",
-      "means": "Adjustable numbers inside a model, like tuning dials, that store learned patterns."
-     },
-     {
-      "term": "Attention",
-      "means": "A trick letting models scan all words at once to weigh what matters."
-     },
-     {
-      "term": "Transformer",
-      "means": "The modern AI blueprint built to spot patterns across whole stretches of text."
-     },
-     {
-      "term": "CRISPR",
-      "means": "A gene-editing tool that acts like tiny scissors to cut and disable DNA."
-     },
-     {
-      "term": "Hereditary angioedema",
-      "means": "A rare inherited disorder where blood vessels leak fluid, causing dangerous swelling."
-     },
-     {
-      "term": "In-body editing",
-      "means": "Modifying DNA directly inside the patient, rather than removing cells to a lab."
-     }
-    ],
-    "chips": [
-     "More bare-metal breakdowns",
-     "Too skeptical of the demo",
-     "Loved the QA angle",
-     "Show me the code"
-    ]
-   },
-   "quiz": [
-    {
-     "q": "In the episode, Laura compares the transformer's attention mechanism to troubleshooting a defect on a manufacturing line. What does this analogy illustrate about how a transformer processes text?",
-     "options": [
-      "It examines every part of the input simultaneously to score which earlier pieces are most relevant.",
-      "It reads text strictly in order, passing a summary forward like a game of telephone.",
-      "It stores the entire input as a compressed lookup table before predicting.",
-      "It relies on high-precision decimal parameters to hold tight tolerances."
-     ],
-     "answer": 0,
-     "explain": "Earlier models read sequentially like a game of telephone, losing early details. Attention lets the model weigh all input pieces at once, similar to checking the whole upstream process for a fault.",
-     "segment": "A Language Model That Fits on a Floppy Disk"
-    },
-    {
-     "q": "The poster admitted the floppy-disk model works on seen facts but fails on complex or new material. Laura says this behavior is more like memorization than general reasoning. What is the best way to test whether it is truly generalizing?",
-     "options": [
-      "Measure how many kilobytes the program occupies on the disk.",
-      "Feed it rephrased facts, combined ideas, or new math numbers it has never seen.",
-      "Ask it to repeat the exact practice facts it was trained on.",
-      "Compare its parameter count to modern frontier models with billions of parameters."
-     ],
-     "answer": 1,
-     "explain": "If it collapses on fresh, rephrased, or combined inputs, it is likely just parroting memorized patterns rather than reasoning. Generalization means performing well on examples outside the training set.",
-     "segment": "A Language Model That Fits on a Floppy Disk"
-    },
-    {
-     "q": "Laura compares approved ex vivo CRISPR therapy to pulling an assembly out for a cleanroom rebuild, while Intellia's in-body approach is like sending a repair agent through the fluid line. What critical quality step is lost when editing happens directly inside the body?",
-     "options": [
-      "The need for chemotherapy to clear space for edited cells.",
-      "The ability to infuse fatty droplets into the bloodstream.",
-      "The ability to inspect edited cells and discard batches with unwanted edits before returning them to the patient.",
-      "The requirement to disable a specific liver gene permanently."
-     ],
-     "answer": 2,
-     "explain": "Ex vivo editing lets teams quality-check cells before reinfusion, but in-body editing offers no pre-implementation screening for off-target cuts or abnormal cells. That missing inspection step is a key regulatory and safety concern.",
-     "segment": "A Gene Edit That Still Works Four Years Later"
-    },
-    {
-     "q": "The Reddit post claimed Intellia's therapy is poised to become the first in-body CRISPR medicine to win regulatory approval. Based on the Nature report discussed, what is the accurate status of this claim?",
-     "options": [
-      "It has already received full FDA approval based on four-year independent data.",
-      "The FDA permanently halted the program after a participant death last year.",
-      "The four-year data comes from a brand-new independent peer-reviewed study, not the company.",
-      "Intellia has filed for FDA approval, with a decision due by March 10, but it is not yet approved."
-     ],
-     "answer": 3,
-     "explain": "Intellia has submitted an application and the FDA decision is pending; the therapy is not yet approved. The four-year results are company-released data reported by Nature, not an independent publication or final regulatory green light.",
-     "segment": "A Gene Edit That Still Works Four Years Later"
-    }
-   ],
-   "transcript": "transcripts/ai_2026-11-16_evening_1500.txt"
   }
  ]
 }
