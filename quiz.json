@@ -12,6 +12,323 @@
  },
  "episodes": [
   {
+   "file": "ai_2026-11-25_evening_1500.mp3",
+   "title": "Evening - 25 Nov: A U.S. export ban hits an Nvidia partner",
+   "label": "Wednesday 25 Nov evening",
+   "date": "2026-11-25",
+   "edition": "evening",
+   "published": "2026-11-25T15:00:10.256391+05:30",
+   "duration": 1069,
+   "theme": "Export controls on AI hardware and the economics of cheaper inference",
+   "writer": "nemotron-3-ultra-550b-a55b (free)",
+   "voices": "Fish Audio (free)",
+   "deep_dive": false,
+   "segments": [
+    {
+     "title": "A U.S. export ban hits an Nvidia partner",
+     "category": "thread"
+    },
+    {
+     "title": "Jevons Paradox and the cost of AI tokens",
+     "category": "concept"
+    },
+    {
+     "title": "LLM agents work for their parent companies, not for you",
+     "category": "thread"
+    }
+   ],
+   "play": {
+    "v": 2,
+    "theme": "exchange",
+    "title": "The Ban That Missed the Chips",
+    "brief": "He stakes points on whether a U.S. export ban actually reaches the hardware it targets.",
+    "segments": [
+     {
+      "title": "A U.S. export ban hits an Nvidia partner",
+      "bet": {
+       "claim": "The Megaspeed Entity List order blocks Taiwan-made Nvidia chips using U.S. technology.",
+       "truth": false,
+       "why": "The Times reports this order covers only U.S.-origin exports; the Foreign Direct Product Rule was not invoked."
+      },
+      "rounds": [
+       {
+        "type": "clues",
+        "q": "What rule controls foreign chips made with U.S. technology?",
+        "clues": [
+         "A rule that lets Washington reach chips born abroad if U.S. know-how built them.",
+         "Its de minimis threshold for advanced computing is effectively zero.",
+         "TSMC's lithography tools and design software make it apply — but this order left it out."
+        ],
+        "options": [
+         "Foreign Direct Product Rule",
+         "Entity List Provision",
+         "End-Use Control Rule",
+         "De Minimis Exemption"
+        ],
+        "answer": 0,
+        "why": "The rule could cover Taiwan-made AI chips via U.S. lithography tools and design software, but the Times says this order didn't invoke it."
+       },
+       {
+        "type": "match",
+        "q": "Match each control tool to what it actually does",
+        "pairs": [
+         [
+          "Entity List",
+          "Roster requiring special licenses for any deal with listed party"
+         ],
+         [
+          "Foreign Direct Product Rule",
+          "Lets U.S. control foreign items built with American technology"
+         ],
+         [
+          "End-user control",
+          "Restriction follows the company, not the application"
+         ],
+         [
+          "De minimis threshold",
+          "Tiny U.S. content share that still triggers controls"
+         ]
+        ]
+       }
+      ],
+      "takeaway": "Entity List blocks the party; hardware moves unless the Foreign Direct Product Rule travels with it."
+     },
+     {
+      "title": "Jevons Paradox and the cost of AI tokens",
+      "bet": {
+       "claim": "On the largest open router platform, AI agents now generate more tokens than humans do.",
+       "truth": true,
+       "why": "OpenRouter data shows agents overtook human chat on February 6, 2026, and the gap is widening."
+      },
+      "rounds": [
+       {
+        "type": "estimate",
+        "q": "How many times more tokens does an agent-based coding task use compared to a simple chat about the same code?",
+        "answer": 1000.0,
+        "unit": "×",
+        "lo": 10,
+        "hi": 10000,
+        "log": true,
+        "why": "A study found agent coding workflows burn roughly a thousand times the tokens of a single chat prompt for the same task."
+       },
+       {
+        "type": "lab",
+        "text": "Token volume doubles every 4 months. Slide time and doubling speed to hit 1000× today's volume.",
+        "inputs": [
+         {
+          "id": "t",
+          "label": "Time",
+          "unit": "years",
+          "min": 0.0,
+          "max": 5.0,
+          "step": 0.05,
+          "value": 0.0
+         },
+         {
+          "id": "T",
+          "label": "Doubling time",
+          "unit": "years",
+          "min": 0.125,
+          "max": 1.0,
+          "step": 0.01,
+          "value": 0.325
+         }
+        ],
+        "outputs": [
+         {
+          "id": "fold",
+          "label": "Times the start",
+          "unit": "x",
+          "expr": "2^(t/T)",
+          "lo": 1.0,
+          "hi": 1099511627776.0
+         },
+         {
+          "id": "x",
+          "label": "Token volume",
+          "unit": "× today",
+          "expr": "1*fold",
+          "lo": 1.0,
+          "hi": 1099511627776.0
+         },
+         {
+          "id": "n",
+          "label": "Doublings so far",
+          "unit": "",
+          "expr": "t/T",
+          "digits": 1,
+          "lo": 0.0,
+          "hi": 40.0
+         }
+        ],
+        "chart": {
+         "x": "t",
+         "y": [
+          "x"
+         ]
+        },
+        "goal": {
+         "target": "fold",
+         "min": 900.0,
+         "max": 1100.0,
+         "text": "Get token volume to 1000× today",
+         "success": "At the current 4-month doubling pace, 1000× arrives in just over 3 years."
+        },
+        "template": "doubling",
+        "view": {
+         "kind": "blocks",
+         "fold": "fold",
+         "mode": "grow"
+        }
+       }
+      ],
+      "takeaway": "Cheaper tokens explode usage but not revenue—vendors must sell outcomes, not compute, to fund the next chip generation."
+     },
+     {
+      "title": "LLM agents work for their parent companies, not for you",
+      "bet": {
+       "claim": "Claude refused to help buy from Bandcamp but would download the same song from YouTube.",
+       "truth": true,
+       "why": "Harley's skill hit a Bandcamp challenge; Claude refused to bypass it but had a YouTube download branch that paid nothing."
+      },
+      "rounds": [
+       {
+        "type": "match",
+        "q": "Match each term to its role",
+        "pairs": [
+         [
+          "Frontier model",
+          "Proprietary model only via API"
+         ],
+         [
+          "System prompt",
+          "Standing instructions before your request"
+         ],
+         [
+          "Guardrails",
+          "Safety filters blocking certain outputs"
+         ],
+         [
+          "Open-weights model",
+          "Download and run on your hardware"
+         ]
+        ]
+       },
+       {
+        "type": "clues",
+        "q": "What wraps the raw model like fixture and interlocks?",
+        "clues": [
+         "It dictates what the tool may do, independent of capability",
+         "It combines system prompt and guardrails into one layer",
+         "Harley's worry: vendor can hard-code preferences into it"
+        ],
+        "options": [
+         "Harness",
+         "Frontier model",
+         "System prompt",
+         "Guardrails"
+        ],
+        "answer": 0,
+        "why": "Laura compares it to fixture and safety interlocks on a test rig; it enforces vendor policy server-side."
+       }
+      ],
+      "takeaway": "Control the harness or run the model yourself."
+     }
+    ],
+    "words": [
+     {
+      "term": "Entity List",
+      "means": "Commerce roster requiring special licenses for any deal with listed parties"
+     },
+     {
+      "term": "Foreign Direct Product Rule",
+      "means": "U.S. rule controlling foreign-made items built with American technology"
+     },
+     {
+      "term": "End-user control",
+      "means": "Restriction follows the company, not how the product is used"
+     },
+     {
+      "term": "De minimis threshold",
+      "means": "Maximum allowed U.S. content before controls kick in (zero for AI chips)"
+     },
+     {
+      "term": "Jevons Paradox",
+      "means": "Efficiency gains expand demand so total resource use rises instead of falling"
+     },
+     {
+      "term": "Price elasticity",
+      "means": "How much demand stretches when price drops; above one means revenue grows"
+     },
+     {
+      "term": "Outcome pricing",
+      "means": "Charging for the result delivered, like a resolved case, not the compute used"
+     },
+     {
+      "term": "Frontier model",
+      "means": "The largest, most capable AI model at the leading edge"
+     }
+    ],
+    "chips": [
+     "Surprising FDPR wasn't used",
+     "Taiwan loophole is real",
+     "Compute-as-service dodges bans",
+     "Whack-a-mole never ends"
+    ]
+   },
+   "quiz": [
+    {
+     "q": "The script says the Entity List designation is prospective. In practical terms, what does that mean for future transactions with a listed company like Megaspeed?",
+     "options": [
+      "Only shipments already in transit are blocked; future deals proceed under existing licenses.",
+      "Every future transaction requires a specific license, regardless of whether the deal looks suspicious.",
+      "The listed company can continue selling until it is formally convicted of a violation.",
+      "The restriction applies only to U.S.-origin goods and exempts anything made abroad."
+     ],
+     "answer": 1,
+     "explain": "Laura confirms that once on the Entity List, every transaction with the party requires a specific license, and the designation changes the approval status for every future deal.",
+     "segment": "A U.S. export ban hits an Nvidia partner"
+    },
+    {
+     "q": "A Hacker News commenter argued the ban doesn't matter because top AI chips are made in Taiwan, not the U.S. Why does the script say that argument does not automatically exempt those chips?",
+     "options": [
+      "The Foreign Direct Product Rule lets the U.S. control foreign-made items produced using American technology, software, or equipment, and advanced computing has an effectively zero de minimis threshold.",
+      "Taiwan is not a U.S. treaty ally, so its chips are treated as U.S. exports by default.",
+      "The Commerce Department only lists companies, not geographic origins, so place of fabrication is irrelevant.",
+      "Nvidia designs all its chips in the U.S., which makes the design country the sole factor in export control."
+     ],
+     "answer": 0,
+     "explain": "Sarah and Laura explain that TSMC uses U.S.-origin lithography, IP, and design software, so finished chips can be a \"direct product\" of U.S. technology; the de minimis threshold for advanced computing is effectively zero.",
+     "segment": "A U.S. export ban hits an Nvidia partner"
+    },
+    {
+     "q": "According to the Jevons Paradox discussion, why has total AI inference revenue stayed roughly flat even as token prices have fallen about tenfold per year?",
+     "options": [
+      "Because cloud providers stopped building data centers once token prices dropped.",
+      "Because frontier models now cost less to run than older, smaller models.",
+      "Because token volume has grown at roughly the same rate, and budget caps plus organizational inertia keep customers from expanding spend just because unit prices fell.",
+      "Because price elasticity of demand is exactly zero for inference tokens."
+     ],
+     "answer": 2,
+     "explain": "Dubach's data shows price and volume moving at about ten x per year in opposite directions, keeping revenue flat; the elasticity estimate just above one suggests a limited short-run Jevons effect, and buyers face budget constraints.",
+     "segment": "Jevons Paradox and the cost of AI tokens"
+    },
+    {
+     "q": "In the segment on LLM agents, Sarah and Laura compare system prompts and guardrails to fixtures and safety interlocks on a test rig. What is the practical implication for a user who needs the model to follow their own rules?",
+     "options": [
+      "API providers are legally required to disclose all system prompts to enterprise customers.",
+      "Guardrails only apply to training, not inference, so they never affect user requests.",
+      "The model weights alone determine refusals, so downloading the model is sufficient.",
+      "The user must run the model on their own hardware or at least control the harness, because frontier-model system prompts and server-side filters enforce vendor policy and cannot be inspected or changed."
+     ],
+     "answer": 3,
+     "explain": "Harley's example and the hosts' verdict show that vendor-controlled system prompts and server-side guardrails enforce policy independently of the base model; local models shift control to the user but bring their own refusal behaviors.",
+     "segment": "LLM agents work for their parent companies, not for you"
+    }
+   ],
+   "transcript": "transcripts/ai_2026-11-25_evening_1500.txt"
+  },
+  {
    "file": "ai_2026-11-25_morning_0600.mp3",
    "title": "Morning - 25 Nov: When a language model designs proteins",
    "label": "Wednesday 25 Nov morning",
@@ -3085,550 +3402,6 @@
    },
    "quiz": [],
    "transcript": "transcripts/ai_2026-11-19_morning_0600.txt"
-  },
-  {
-   "file": "ai_2026-11-18_evening_1500.mp3",
-   "title": "Evening - 18 Nov: The AI Sports League That Runs Itself",
-   "label": "Wednesday 18 Nov evening",
-   "date": "2026-11-18",
-   "edition": "evening",
-   "published": "2026-11-18T15:00:08.693776+05:30",
-   "duration": 1001,
-   "theme": "Systems in motion: an AI-run sports league that writes its own history, and what the mechanics of your walk reveal about your health",
-   "writer": "Gemini 4 Hydrogen",
-   "voices": "Fish Audio (free)",
-   "deep_dive": false,
-   "segments": [
-    {
-     "title": "The AI Sports League That Runs Itself",
-     "category": "concept"
-    },
-    {
-     "title": "What the Way You Walk Reveals About Your Health",
-     "category": "thread"
-    }
-   ],
-   "play": {
-    "v": 2,
-    "theme": "bench",
-    "title": "The 38-Year Fake Sports League",
-    "brief": "Step up to the test bench, turn the knobs, and measure how an AI league stays coherent.",
-    "segments": [
-     {
-      "title": "The AI Sports League That Runs Itself",
-      "bet": {
-       "claim": "In the 38-year AI sports league, the language model is never allowed to decide who wins.",
-       "truth": true,
-       "why": "A physics simulation plays out every match and sets the score. The language model only reads the database to write the news and commentary."
-      },
-      "rounds": [
-       {
-        "type": "clues",
-        "q": "What software pattern keeps this 38-year league coherent?",
-        "clues": [
-         "It runs in repeating cycles instead of answering once and forgetting.",
-         "It grabs a small slice of saved history before letting AI write.",
-         "This loop pairs a language model with a permanent database."
-        ],
-        "options": [
-         "An agentic loop",
-         "A neural network",
-         "A physics engine",
-         "A training run"
-        ],
-        "answer": 0,
-        "why": "An agentic loop reads saved state from a database, hands a small slice to the language model, and saves the new update back."
-       },
-       {
-        "type": "lab",
-        "text": "If a language model guesses each game report with 95% accuracy, how many 30-game seasons stay completely error-free? Slide the knobs to hit 90%.",
-        "inputs": [
-         {
-          "id": "p",
-          "label": "Each game report works",
-          "unit": "%",
-          "min": 90.0,
-          "max": 99.9,
-          "step": 0.1,
-          "value": 95.0
-         },
-         {
-          "id": "n",
-          "label": "Game reports in a season",
-          "unit": "",
-          "min": 1.0,
-          "max": 50.0,
-          "step": 1.0,
-          "value": 30.0
-         }
-        ],
-        "outputs": [
-         {
-          "id": "ok",
-          "label": "Whole season works",
-          "unit": "%",
-          "expr": "100*(p/100)^n",
-          "digits": 1,
-          "lo": 0.5153775207320119,
-          "hi": 99.9
-         },
-         {
-          "id": "fails",
-          "label": "Seasons that fail, of 100",
-          "unit": "",
-          "expr": "100-ok",
-          "digits": 0,
-          "lo": 0.09999999999999432,
-          "hi": 99.48462247926798
-         }
-        ],
-        "chart": {
-         "x": "n",
-         "y": [
-          "ok"
-         ]
-        },
-        "goal": {
-         "target": "ok",
-         "min": 90.0,
-         "max": 100.0,
-         "text": "Get at least 90% of seasons to finish without a single error.",
-         "success": "Even 95% accuracy per game ruins nearly 80% of 30-game seasons. You need near-perfect reliability—or a database—to keep a long league coherent."
-        },
-        "template": "chain",
-        "view": {
-         "kind": "runs",
-         "p": "p",
-         "n": "n",
-         "step": "game report",
-         "run": "season"
-        }
-       }
-      ],
-      "takeaway": "Pair a physics simulation and database with a language model, and your fake league stays coherent for 38 years."
-     },
-     {
-      "title": "What the Way You Walk Reveals About Your Health",
-      "bet": {
-       "claim": "The AI predicted liver scarring from walking patterns as accurately as standard blood tests.",
-       "truth": true,
-       "why": "Study found movement patterns matched liver stiffness scores about as well as routine blood markers do."
-      },
-      "rounds": [
-       {
-        "type": "estimate",
-        "q": "How many health traits did the study link to walking patterns?",
-        "answer": 1900.0,
-        "unit": "traits",
-        "lo": 100,
-        "hi": 5000,
-        "log": true,
-        "why": "Researchers compared movement signatures against nearly nineteen hundred blood tests, body stats, conditions, and habits."
-       },
-       {
-        "type": "lab",
-        "text": "Try screening for liver scarring using walk-analysis AI in a general population.",
-        "inputs": [
-         {
-          "id": "prev",
-          "label": "Share who have significant liver scarring",
-          "unit": "%",
-          "min": 1.0,
-          "max": 30.0,
-          "step": 0.5,
-          "value": 5.0
-         },
-         {
-          "id": "sens",
-          "label": "Catches real cases (sensitivity)",
-          "unit": "%",
-          "min": 50.0,
-          "max": 99.9,
-          "step": 0.1,
-          "value": 80.0
-         },
-         {
-          "id": "spec",
-          "label": "Clears the rest (specificity)",
-          "unit": "%",
-          "min": 50.0,
-          "max": 99.9,
-          "step": 0.1,
-          "value": 80.0
-         }
-        ],
-        "outputs": [
-         {
-          "id": "tp",
-          "label": "Real cases flagged, of 1000",
-          "unit": "",
-          "expr": "1000*prev/100*sens/100",
-          "digits": 1,
-          "lo": 5.0,
-          "hi": 299.7
-         },
-         {
-          "id": "fp",
-          "label": "Flagged by mistake, of 1000",
-          "unit": "",
-          "expr": "1000*(1-prev/100)*(1-spec/100)",
-          "digits": 1,
-          "lo": 0.6999999999999229,
-          "hi": 495.0
-         },
-         {
-          "id": "ppv",
-          "label": "Of those flagged, really have significant liver scarring",
-          "unit": "%",
-          "expr": "100*tp/(tp+fp)",
-          "digits": 1,
-          "lo": 1.0,
-          "hi": 99.76697736351534
-         }
-        ],
-        "goal": {
-         "target": "ppv",
-         "min": 50.0,
-         "max": 100.0,
-         "text": "Find why most flagged people are false alarms.",
-         "success": "Even with decent accuracy, rare conditions drown true signals in false positives."
-        },
-        "template": "base_rate",
-        "view": {
-         "kind": "dots",
-         "prev": "prev",
-         "tp": "tp",
-         "fp": "fp",
-         "who": "adults",
-         "condition": "have significant liver scarring",
-         "flagged": "flagged"
-        }
-       }
-      ],
-      "takeaway": "Your walk holds real health clues, but a camera isn't a diagnosis yet."
-     }
-    ],
-    "words": [
-     {
-      "term": "Context window",
-      "means": "The short-term memory limit on how much text an AI reads at once."
-     },
-     {
-      "term": "Agentic loop",
-      "means": "Software that cycles an AI through reading saved facts, acting, and saving updates."
-     },
-     {
-      "term": "Language model",
-      "means": "Software that generates text by predicting the most likely next word."
-     },
-     {
-      "term": "Visceral fat",
-      "means": "Fat wrapped around your organs, not just under the skin."
-     },
-     {
-      "term": "Masking",
-      "means": "Hiding joint data so AI learns whole-body coordination."
-     },
-     {
-      "term": "Snapshot study",
-      "means": "One-time measurement that can't prove cause and effect."
-     }
-    ],
-    "chips": [
-     "More on agentic loops",
-     "Love the Fock Ball story",
-     "Too much sports talk",
-     "Keep the engineering analogies"
-    ]
-   },
-   "quiz": [
-    {
-     "q": "In the Fock Ball setup, why can't the language model alone maintain thirty-eight years of coherent league history?",
-     "options": [
-      "It lacks a physics simulation to calculate scores.",
-      "It is not allowed to access the betting odds database.",
-      "Its context window limits how much text it can hold in short-term memory at once.",
-      "It cannot generate text longer than fifteen minutes."
-     ],
-     "answer": 2,
-     "explain": "The script describes the context window as the model's short-term memory with a hard limit; once older facts fall out, the model invents plausible-sounding replacements and loses coherence.",
-     "segment": "The AI Sports League That Runs Itself"
-    },
-    {
-     "q": "According to Laura's proposed verification approach, what should be checked first to confirm the league's history stays coherent?",
-     "options": [
-      "Whether the physics simulation is independent of the language model and the raw game log matches the broadcast.",
-      "Whether the language model also coaches the teams during gameplay.",
-      "Whether the players are actually arrested by local police.",
-      "Whether the broadcast is streamed in fifteen-minute periods."
-     ],
-     "answer": 0,
-     "explain": "Laura says she would first confirm the physics simulation is truly independent of the language model, ensuring the raw game log matches what appears on the broadcast.",
-     "segment": "The AI Sports League That Runs Itself"
-    },
-    {
-     "q": "Why did the researchers hide parts of the movement recordings when training their AI model?",
-     "options": [
-      "To protect the participants' privacy from the camera manufacturer.",
-      "To simulate how a smartwatch loses signal during a walk.",
-      "To reduce the amount of data stored in the database.",
-      "To force the software to infer hidden joint positions from the rest of the body, learning whole-body coordination."
-     ],
-     "answer": 3,
-     "explain": "Masking a joint forces the program to guess its position from other body parts, teaching it how the entire body coordinates as a coupled mechanical system.",
-     "segment": "What the Way You Walk Reveals About Your Health"
-    },
-    {
-     "q": "Why does the script say a depth-camera walking test is not yet a replacement for a doctor's blood test?",
-     "options": [
-      "Because the camera cannot detect torso movement, only leg movement.",
-      "Because the study found only statistical correlations in a single snapshot and needs independent clinical validation with low false-alarm rates.",
-      "Because the participants were all professional athletes with no health conditions.",
-      "Because the AI model was trained only on data from smartwatches, not depth cameras."
-     ],
-     "answer": 1,
-     "explain": "The script stresses that statistical links do not equal diagnosis, the study was a single snapshot in generally healthy adults, and independent multi-site validation with proven false-positive rates is still required.",
-     "segment": "What the Way You Walk Reveals About Your Health"
-    }
-   ],
-   "transcript": "transcripts/ai_2026-11-18_evening_1500.txt"
-  },
-  {
-   "file": "ai_2026-11-18_morning_0600.mp3",
-   "title": "Morning - 18 Nov: When Software Starts Hacking on Its Own",
-   "label": "Wednesday 18 Nov morning",
-   "date": "2026-11-18",
-   "edition": "morning",
-   "published": "2026-11-18T06:00:10.707067+05:30",
-   "duration": 1144,
-   "theme": "Separating real capability from hype in autonomous cyberattacks, and understanding how the aging brain clears waste during deep sleep.",
-   "writer": "Gemini 4 Hydrogen",
-   "voices": "Fish Audio (free)",
-   "deep_dive": false,
-   "segments": [
-    {
-     "title": "When Software Starts Hacking on Its Own",
-     "category": "thread"
-    },
-    {
-     "title": "How Your Brain Washes Itself While You Sleep",
-     "category": "concept"
-    }
-   ],
-   "play": {
-    "v": 2,
-    "theme": "bench",
-    "title": "Who Pulled the Digital Trigger?",
-    "brief": "At the test bench today: turn past the AI hype and measure how autonomous hacking actually runs.",
-    "segments": [
-     {
-      "title": "When Software Starts Hacking on Its Own",
-      "bet": {
-       "claim": "Fast, non-stop, adaptive probing in break-in records proves no human was involved in the attack.",
-       "truth": false,
-       "why": "A human can launch an automated tool, step in for the tricky part, and let it run again. Incoming activity alone cannot separate an unattended program from a human driving it."
-      },
-      "rounds": [
-       {
-        "type": "flaw",
-        "q": "Three of these describe how autonomous hacking software works. Which one is the myth?",
-        "items": [
-         "It wraps an AI program in a loop that picks tools and reads results.",
-         "It wakes up and invents brand-new digital weapons without using standard hacking tools.",
-         "It reads an error message, adjusts its approach, and fires another attempt quickly.",
-         "It feeds the output of one scan directly into the next software tool."
-        ],
-        "flaw": 1,
-        "why": "It does not invent magic weapons from scratch. It connects an AI program to standard tools in a fast loop, tweaking its approach whenever an attempt fails."
-       },
-       {
-        "type": "clues",
-        "q": "What kind of breach is this?",
-        "clues": [
-         "It lets an attacker slip past locked front doors by using a trusted connection.",
-         "Instead of targeting banks directly, the breach starts inside a shared software vendor.",
-         "Compromise one common component, and every company relying on it is exposed."
-        ],
-        "options": [
-         "Phishing email",
-         "Supply-chain attack",
-         "Stolen admin password",
-         "Autonomous AI agent"
-        ],
-        "answer": 1,
-        "why": "In a supply-chain attack, hackers break into one shared vendor or software component and ride that trusted link into all the companies using it."
-       }
-      ],
-      "takeaway": "Autonomous hacking is just AI in a fast loop—headlines love confusing the tool with the human aiming it."
-     },
-     {
-      "title": "How Your Brain Washes Itself While You Sleep",
-      "bet": {
-       "claim": "Older adults get weaker brain-washing fluid waves mainly because they sleep fewer hours each night.",
-       "truth": false,
-       "why": "Even inside deep sleep, older adults have quieter brain waves and stiffer blood vessels—so the pump itself weakens, not just sleep duration."
-      },
-      "rounds": [
-       {
-        "type": "sequence",
-        "q": "Put one deep-sleep brain-washing cycle in order, from electrical wave to fluid flush.",
-        "items": [
-         "Brain cells quiet down together in a slow electrical wave.",
-         "Needing less oxygen, blood vessels narrow and blood volume drops.",
-         "Clear fluid rushes into the rigid skull to fill the space.",
-         "Blood vessels widen again, squeezing the fluid back out."
-        ],
-        "why": "Your skull is a rigid box with fixed volume. When blood volume swings up and down, clear fluid is displaced in and out like a piston."
-       },
-       {
-        "type": "lab",
-        "text": "A rigid skull acts like a displacement pump. Shift the pressure between skull and spine to drive a strong outward fluid wave.",
-        "inputs": [
-         {
-          "id": "a",
-          "label": "Skull",
-          "unit": "kPa",
-          "min": 0.0,
-          "max": 10.0,
-          "step": 0.1,
-          "value": 2.0
-         },
-         {
-          "id": "b",
-          "label": "Spine",
-          "unit": "kPa",
-          "min": 0.0,
-          "max": 10.0,
-          "step": 0.1,
-          "value": 2.0
-         }
-        ],
-        "outputs": [
-         {
-          "id": "diff",
-          "label": "Difference (the push)",
-          "unit": "kPa",
-          "expr": "a-b",
-          "lo": -10.0,
-          "hi": 10.0
-         },
-         {
-          "id": "flow",
-          "label": "Net flow, skull to spine",
-          "unit": "units/s",
-          "expr": "1*diff",
-          "lo": -10.0,
-          "hi": 10.0
-         }
-        ],
-        "goal": {
-         "target": "flow",
-         "min": 4.0,
-         "max": 6.0,
-         "text": "Make fluid surge out of the skull at 4 to 6 units/s.",
-         "success": "A bigger pressure gap drives stronger flow. When aging stiffens blood vessels, that pressure swing shrinks—and the wash wave weakens."
-        },
-        "template": "flow",
-        "view": {
-         "kind": "membrane",
-         "a": "a",
-         "b": "b",
-         "flow": "flow",
-         "lo": 0.0,
-         "hi": 10.0,
-         "thing": "brain fluid",
-         "side_a": "skull",
-         "side_b": "spine"
-        }
-       }
-      ],
-      "takeaway": "Aging weakens your brain's nightly fluid-wash waves through quieter deep-sleep signals and stiffer blood vessels."
-     }
-    ],
-    "words": [
-     {
-      "term": "Autonomous agent",
-      "means": "AI wired into a continuous loop to pick tools, read results, and retry."
-     },
-     {
-      "term": "Supply-chain attack",
-      "means": "Breaching one shared vendor to slip into every company that relies on it."
-     },
-     {
-      "term": "Exploit",
-      "means": "Code that abuses a software flaw to make a system do something unintended."
-     },
-     {
-      "term": "Cerebrospinal fluid",
-      "means": "The clear liquid around your brain and spine that cushions and washes tissue."
-     },
-     {
-      "term": "Slow waves",
-      "means": "Rhythmic electrical pulses when brain cells quiet down together in deep sleep."
-     },
-     {
-      "term": "Displacement pump",
-      "means": "A closed space where one fluid expanding pushes another fluid out."
-     }
-    ],
-    "chips": [
-     "Less Reddit drama, more tech",
-     "Good test-bench breakdown",
-     "Compare with real breaches",
-     "Keep the hype checks coming"
-    ]
-   },
-   "quiz": [
-    {
-     "q": "In the episode, what is the key functional difference between a truly autonomous hacking agent and a human who uses AI tools to assist?",
-     "options": [
-      "The agent can invent brand-new exploit code that no human has ever written.",
-      "The agent loops through observe → act → observe without a human typing each next command.",
-      "The agent requires a compromised supply-chain vendor to reach any target.",
-      "The agent only works against systems running outdated software."
-     ],
-     "answer": 1,
-     "explain": "The script defines an autonomous agent as an AI program in a continuous cycle that reads results and selects the next tool itself, removing the human from the inner loop.",
-     "segment": "When Software Starts Hacking on Its Own"
-    },
-    {
-     "q": "Why does the episode treat the Reddit claim that nearly 180 companies were hit by autonomous AI attacks as unverified?",
-     "options": [
-      "The figure appears to come from a separate supply-chain attack, and the linked article could not be loaded or confirmed.",
-      "Google publicly denied that any banks or airlines were affected.",
-      "Autonomous agents are physically incapable of attacking more than 100 targets at once.",
-      "The number 180 only applies to medical-device manufacturers under GMP."
-     ],
-     "answer": 0,
-     "explain": "The script says the claim sits in an unreadable Reddit-linked article and the thread’s own fact-check note ties the 180-company figure to a separate supply-chain attack with no proven link to autonomous tools.",
-     "segment": "When Software Starts Hacking on Its Own"
-    },
-    {
-     "q": "According to the MIT study described in the episode, what two parallel age-related changes weaken cerebrospinal fluid waves during deep sleep?",
-     "options": [
-      "Reduced cerebrospinal fluid production and increased skull thickness with age.",
-      "More frequent yawning and reduced abdominal muscle tone.",
-      "Weaker deep-sleep slow waves and stiffer, less responsive brain blood vessels.",
-      "Loss of brain tissue volume and fewer drainage tubes inside the brain."
-     ],
-     "answer": 2,
-     "explain": "The episode explains that aging quiets the electrical slow-wave signal and stiffens blood vessels, so both the pump signal and the mechanical response are weaker.",
-     "segment": "How Your Brain Washes Itself While You Sleep"
-    },
-    {
-     "q": "In the MIT Nature study, which measurement was made directly during sleep, and which was not directly measured?",
-     "options": [
-      "Electrical slow waves only; fluid flow was inferred from behavior.",
-      "Waste-molecule clearance using implanted sensors, but not blood volume.",
-      "Cerebrospinal fluid flow during yawning and breath-holding while awake.",
-      "Cerebrospinal fluid inflow waves and blood-volume changes, but not the actual waste molecules leaving the brain."
-     ],
-     "answer": 3,
-     "explain": "The script states the study tracked fluid inflow and blood-volume changes overnight but did not tag or track waste molecules exiting the brain.",
-     "segment": "How Your Brain Washes Itself While You Sleep"
-    }
-   ],
-   "transcript": "transcripts/ai_2026-11-18_morning_0600.txt"
   }
  ]
 }

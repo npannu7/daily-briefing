@@ -8,9 +8,26 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Wed, 25 Nov 2026 01:34:59 GMT</lastBuildDate>
+<lastBuildDate>Wed, 25 Nov 2026 10:23:08 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Evening - 25 Nov: A U.S. export ban hits an Nvidia partner</title>
+<description>Evening edition - Wednesday, 25 November 2026
+Export controls on AI hardware and the economics of cheaper inference
+
+00:48  A U.S. export ban hits an Nvidia partner
+06:24  Jevons Paradox and the cost of AI tokens
+14:29  LLM agents work for their parent companies, not for you
+
+Play "The Ban That Missed the Chips", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-25_evening_1500.mp3
+Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Hacker News (no Reddit data: Reddit, collected hourly (0 threads); no snapshot from the office PC yet)</description>
+<pubDate>Wed, 25 Nov 2026 15:00:10 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-11-25_evening_1500.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-25_evening_1500.mp3" length="8559754" type="audio/mpeg"/>
+<itunes:duration>1069</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Morning - 25 Nov: When a language model designs proteins</title>
 <description>Morning edition - Wednesday, 25 November 2026
@@ -232,38 +249,6 @@ Written by: Gemini 4 Hydrogen · Voices: Fish Audio (free) · Discussions: Hacke
 <guid isPermaLink="false">ai_2026-11-19_morning_0600.mp3</guid>
 <enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-19_morning_0600.mp3" length="9457292" type="audio/mpeg"/>
 <itunes:duration>1182</itunes:duration>
-<itunes:episodeType>full</itunes:episodeType>
-</item>
-<item>
-<title>Evening - 18 Nov: The AI Sports League That Runs Itself</title>
-<description>Evening edition - Wednesday, 18 November 2026
-Systems in motion: an AI-run sports league that writes its own history, and what the mechanics of your walk reveal about your health
-
-00:27  The AI Sports League That Runs Itself
-08:07  What the Way You Walk Reveals About Your Health
-
-Play "The 38-Year Fake Sports League", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-18_evening_1500.mp3
-Written by: Gemini 4 Hydrogen · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (48 threads)</description>
-<pubDate>Wed, 18 Nov 2026 15:00:08 +0530</pubDate>
-<guid isPermaLink="false">ai_2026-11-18_evening_1500.mp3</guid>
-<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-18_evening_1500.mp3" length="8016870" type="audio/mpeg"/>
-<itunes:duration>1001</itunes:duration>
-<itunes:episodeType>full</itunes:episodeType>
-</item>
-<item>
-<title>Morning - 18 Nov: When Software Starts Hacking on Its Own</title>
-<description>Morning edition - Wednesday, 18 November 2026
-Separating real capability from hype in autonomous cyberattacks, and understanding how the aging brain clears waste during deep sleep.
-
-00:32  When Software Starts Hacking on Its Own
-09:07  How Your Brain Washes Itself While You Sleep
-
-Play "Who Pulled the Digital Trigger?", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-18_morning_0600.mp3
-Written by: Gemini 4 Hydrogen · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (121 threads)</description>
-<pubDate>Wed, 18 Nov 2026 06:00:10 +0530</pubDate>
-<guid isPermaLink="false">ai_2026-11-18_morning_0600.mp3</guid>
-<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-18_morning_0600.mp3" length="9154663" type="audio/mpeg"/>
-<itunes:duration>1144</itunes:duration>
 <itunes:episodeType>full</itunes:episodeType>
 </item>
 </channel>

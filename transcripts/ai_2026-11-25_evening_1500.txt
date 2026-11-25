@@ -1,0 +1,103 @@
+## Welcome
+Sarah: Hey Nikhil, welcome back — glad you could squeeze us into the drive home.
+Laura: Evening edition, Wednesday the twenty-fifth, and we've got three stories that all circle the same question: who really controls the compute?
+Sarah: First, a U.S. export ban just landed on an Nvidia partner accused of funneling high-end GPUs to China — we'll read the order itself and see where the line actually gets drawn.
+Laura: Then, a classic economic paradox gets a 2026 remix: why cheaper AI tokens might trigger a spending spree instead of savings.
+Sarah: And we'll test the claim that today's AI agents are built to serve their creators, not the people prompting them. Bet for the drive: true or false — the Megaspeed Entity List order blocks Taiwan-made Nvidia chips using U.S. technology.
+
+## A U.S. export ban hits an Nvidia partner
+Sarah: I was scrolling through Hacker News yesterday and a post blew up — "Ex-Nvidia partner Megaspeed hit with U.S. Commerce Department export ban." It was a link post, no text, just the headline. The thread exploded in a few hours.
+Laura: That kind of velocity usually means people smell drama. Worth saying up front: so far there is only the Hacker News thread, and we could not check beyond our usual sources today.
+Sarah: Right. But the thread links a Commerce Department press release and a New York Times piece. Commenters cite both. So let's separate what the thread claims from what the rules actually say.
+Laura: Good plan. First claim: Megaspeed was added to the Entity List for diverting controlled GPUs to China. The Entity List — that's the Commerce Department's roster of parties that need special licenses to receive controlled items. Once a company is on it, every transaction with them requires a specific license, not just the ones that looked suspicious.
+Sarah: Second claim: the designation applies to all future transactions involving Megaspeed, not just past violations. That's how the list works — it's prospective. It changes the approval status for every future deal.
+Laura: Third: Nvidia has already cut off supply to Megaspeed. One commenter said "Nvidia cut them off immediately." Another said "Megaspeed is just a shell company for Alibaba — they'll make a new one." No public statement from Nvidia that we've seen.
+Sarah: Fourth, the thread's discussion raises the question of whether the Entity List now functions as a de facto end-user control on top-tier AI chips. That phrasing — end-user versus end-use — matters. End-use control means the restriction follows the application: 'these chips cannot be used for weapons development.' End-user control means the restriction follows the party: 'this company cannot receive them, period.' The Entity List is an end-user tool. If the U.S. shifts toward listing more buyers, that's a policy shift.
+Laura: The thread's strongest view? "GPUs will keep moving to the same destination through another company. Russia, China, North Korea have mastered import loopholes for years." Another comment: "Note this only applies to chips made in the U.S., not those made in Taiwan. Most high-end AI chips are made in Taiwan, so the rule doesn't actually affect the chips people care about." That comment links the Times piece.
+Sarah: Let's unpack that. The Foreign Direct Product Rule — the rule that lets the U.S. control items made abroad if they're produced using American technology, software, or equipment — is the mechanism that could extend export controls to chips fabricated outside the country. Semiconductor fabrication is the classic case: Taiwan Semiconductor Manufacturing Company, the world's largest chipmaker, uses U.S.-origin lithography tools, process intellectual property, and chip design software. So the U.S. argues the finished chip is a "direct product" of U.S. technology.
+Laura: Right. The de minimis threshold — the tiny amount of U.S. content that can trigger those controls — for advanced computing items is effectively zero. Any U.S. technology in the production chain can bring the foreign-made item under U.S. jurisdiction. That's why the "made in Taiwan" argument doesn't automatically exempt the top chips.
+Sarah: But the Times piece says Monday's action bans only exports from the United States to Megaspeed, not from other countries. Unlike many recent entity listings. That suggests the Foreign Direct Product Rule wasn't invoked this time — or the license requirement wasn't extended to foreign-made items.
+Laura: That's a crucial distinction. If the order is limited to U.S.-origin items, and the top-tier accelerators are fabricated in Taiwan, then the direct supply line from Nvidia to Megaspeed might not even be covered — unless Nvidia ships from a U.S. warehouse. Most don't. They drop-ship from Taiwan.
+Sarah: One commenter asked: "As far as I know Megaspeed never exported GPUs to China but just allowed Chinese clients to use the compute they bought from Nvidia. Would the ban make a difference?" That's the end-use versus end-user question in practice.
+Laura: If Megaspeed bought accelerators, installed them in a data center, and sold compute time to Chinese entities — that's a service, not a re-export. The Entity List blocks transactions with Megaspeed. It doesn't automatically block the downstream compute service unless a separate rule covers that.
+Sarah: Another comment: "Don't quote me, but pretty sure Megaspeed knows how to get this sort of restriction lifted." Meaning they've navigated delisting before. Delisting happens. You demonstrate corrective actions, compliance programs, and the agency removes you. But it takes months.
+Laura: Let's verdict each claim. Claim one: Megaspeed added for diverting GPUs to China. The thread links a Commerce Department press release; the accusation is not confirmed by us. The source is the Commerce Department itself. Half-right pending primary doc.
+Sarah: Claim two: designation applies to all future transactions. That's the Entity List mechanism. Correct.
+Laura: Claim three: Nvidia cut off supply. One commenter says yes. No public statement from Nvidia we could find. Too early to tell.
+Sarah: Claim four: Entity List now functions as de facto end-user control on top-tier AI chips. The list is an end-user control. Whether it effectively controls those chips depends on the Foreign Direct Product Rule invocation — which the Times says wasn't part of this order. So the claim is half-right: the tool is end-user, but the reach on the specific hardware is unclear.
+Laura: The barn-door comment? Probably fair. If Megaspeed is a shell, the real supply chain shifts to the next entity. The list plays whack-a-mole.
+Sarah: Takeaway: the Entity List blocks the named party, but the hardware moves unless the foreign direct product rule travels with it.
+
+## Jevons Paradox and the cost of AI tokens
+Laura: Right, so cheaper tokens — does that actually shrink the compute bill, or does it do the opposite?
+Sarah: Oh, this is the Jevons Paradox thread from Hacker News. The one where everyone argues whether making inference cheaper just makes us burn more chips.
+Laura: Exactly. Philipp Dubach posted his updated analysis on the twenty-fourth of November. He's tracking the same big cloud providers we discussed Monday — Google, Amazon, Microsoft, Meta, Oracle — and their capital spending.
+Sarah: Wait, remind me — capital spending is the big upfront money on fabs, data centres, the physical plant, right?
+Laura: Yes. Five companies spent five hundred sixty billion dollars in the first three quarters of twenty twenty-six. The third quarter alone was nearly four times what they spent two years earlier.
+Sarah: Okay, that's wild. And the argument is that cheaper tokens should, in theory, lower the bill. But Jevons says... efficiency gains just expand demand until total spend rises again.
+Laura: That's the mechanism. William Stanley Jevons noticed it in eighteen sixty-five. More efficient steam engines didn't reduce coal consumption — they made new applications economical, so total coal use went up.
+Sarah: Right, because the engine itself isn't the cost — the coal is. If each engine burns less coal per unit of work, you don't buy less coal. You build more engines, run them longer, find new things to power.
+Laura: Precisely. In manufacturing terms: better yield on a process doesn't mean you buy less raw material. It means you can afford tighter tolerances, more complex geometries, higher-spec parts that weren't economical before.
+Sarah: And in control systems — faster loop rates don't reduce controller usage. They let you close loops you couldn't close before, so you add more axes, more sensors, more bandwidth.
+Laura: Exactly. Now apply that to tokens. A token is a chunk of text the model processes — roughly a word or part of a word.
+Sarah: Got it. And inference — that's running the model to generate answers, as opposed to training it.
+Laura: Right. So the price per token has fallen about ten x per year, according to MIT and Epoch AI.
+Sarah: Ten x per year. And volume has grown about ten x per year too.
+Laura: Google's first-party APIs went from seven billion tokens a minute to nearly thirty-two billion — about four to five x in one year.
+Sarah: Four to five x. Across all products, about seven x between I/O keynotes.
+Laura: OpenRouter went from half a trillion to a hundred twenty-eight trillion tokens a week in twenty months — about twenty-seven x per year.
+Sarah: So price and volume are moving at roughly the same speed. Revenue — price times volume — stays flat.
+Laura: That's what Dubach shows. He cites a study by Demirer, Fradkin, Tadelis, and Peng using OpenRouter and Azure data. They estimated short-run price elasticity just above one.
+Sarah: Price elasticity — that's how much demand stretches when price drops. Elasticity of one means a ten x price cut buys ten x the tokens for the same money.
+Laura: Right. Dubach gives a concrete example: a bank has two million dollars approved for AI contract review. Token prices drop ten x. The bank can now review ten times as many contracts. But the budget still says two million.
+Sarah: To spend more, the head of operations has to convince the CFO the product deserves a bigger budget because it got cheaper. Which is a hard case to make.
+Laura: So the vendor sees volume grow ten x, but revenue is flat. Except — and this is the counterargument — cheaper tokens change what people build.
+Sarah: When inference is nearly free, developers design agents that call a model hundreds of times per task.
+Laura: Agent-based workloads. A paper by Bai, Brynjolfsson, Pentland and co-authors finds agent-based coding tasks use about a thousand times more tokens than chat about the same code.
+Sarah: Anthropic reported systems with multiple automated agents use about fifteen times more tokens than chat.
+Laura: OpenRouter dates February sixth, twenty twenty-six as the last day humans used more tokens on its platform than agents did.
+Sarah: So the demand curve might bend. If each task starts consuming orders of magnitude more tokens, volume could outrun price declines.
+Laura: That's the Jevons bet. But there's a second price curve Dubach highlights. The price of a fixed level of capability — say, GPT-four-level answers — keeps falling.
+Sarah: But the cost of running the best model available is rising three to eighteen x per year.
+Laura: Because each generation is larger and reasons for longer. Frontier model — that's the largest, most capable model at the leading edge.
+Sarah: Right. Dubach cites a concrete case: a top-tier model at maximum effort used two hundred eighteen million output tokens on a standard test suite — almost three times the median model — at about ten dollars per task.
+Laura: At low effort, about a tenth of the tokens.
+Sarah: So enterprises are split. Models with publicly available weights handle nineteen percent of tokens but get four percent of spend.
+Laura: Frontier labs take sixty-nine percent of deployment dollars. Cheap tokens and expensive tokens are close to two separate markets.
+Sarah: The cheap one grows fast in volume and barely registers in revenue. The expensive one drives spend.
+Laura: And the money has to come from somewhere. Bain estimates AI needs two trillion dollars of annual revenue by twenty thirty to fund the compute being built.
+Sarah: Even if companies reinvest every dollar AI saves them in sales, marketing, support, R&D — still eight hundred billion short.
+Laura: Which is why vendors are moving to outcome pricing. Intercom charges ninety-nine cents for each customer case its support agent resolves — priced against a support agent's time, not token cost.
+Sarah: Salesforce has changed its agent platform pricing three times since twenty twenty-four. Same direction.
+Laura: So the model shifts from selling compute to selling labour replacement. Early-career workers in jobs most exposed to AI saw a thirteen percent relative drop in employment.
+Sarah: US employers cited AI in about a hundred twenty thousand announced job cuts in the first ten months of twenty twenty-six — about one-fifth of all announced cuts.
+Laura: That's the revenue bridge. But here's where the coal analogy breaks down. Coal was a consumable — you burn it, it's gone. Specialized chips are capital assets with depreciation schedules, maintenance, power contracts.
+Sarah: You can't just "burn more chips" the same way. And the elasticity estimate — just above one — suggests limited Jevons effect in the short run.
+Laura: If demand stretches slightly more than price falls, revenue grows, but not explosively. The paradox assumes unbounded demand elasticity.
+Sarah: In reality, you hit budget caps, organisational inertia.
+Laura: Right. Dubach cites Google's token counts, OpenRouter's agent crossover date, the MIT and Epoch price curves, the Bain revenue gap.
+Sarah: So the verdict: Jevons Paradox applies partially. Cheaper tokens expand usage, especially for agent-based workloads. But revenue stays flat unless vendors capture labour budgets.
+Laura: And the coal analogy misses capital intensity, depreciation, and the friction of getting a big organisation to actually move its budget.
+Sarah: Recap: Jevons observed in eighteen sixty-five that efficient steam engines increased total coal use. The mechanism — efficiency lowers marginal cost, enabling new applications — appears in manufacturing yield, control-loop bandwidth, and now token generation.
+Laura: Current data shows token prices and volumes moving at roughly ten x per year in opposite directions, keeping revenue flat. Frontier model costs rise while commodity model costs fall.
+Sarah: Vendors are pivoting to outcome pricing to close the revenue gap. The analogy holds for demand expansion, but breaks on capital structure and elasticity limits.
+Laura: Nailed it. Next week — what happens when the agent swarm starts writing its own validation protocols?
+Sarah: That'll be fun.
+
+## LLM agents work for their parent companies, not for you
+Sarah: I was scrolling HackerNews and hit a thread linking to a blog post by Michael Harley. He built a little skill with Claude Code — that's Anthropic's coding agent that writes and runs code for you — to take songs he liked on Instagram Reels, find the artist on Bandcamp, and buy the track. Wholesome, right? Support the musician directly.
+Laura: Sounds reasonable. What went wrong?
+Sarah: Bandcamp added a challenge on their search page. Claude flat-out refused to help work around it. But — and this is the kicker — Harley's skill has another branch that can download the same song from YouTube, which sends no money to the artist. Harley's point: the model works for Anthropic's legal safety, not for his intent to pay creators.
+Laura: So the refusal logic is misaligned with the user's actual goal. He's trying to complete a legitimate transaction.
+Sarah: Exactly. Comments split fast. One camp: "duh, any for-profit service serves its owner first." Another commenter who builds his own agents said locally it's different. He runs an open-weights model — one you can download and run on your own hardware — so the model call becomes just a boring request-response hop for a single decision. Efficient, and the harness is his.
+Laura: Harness — that's the system prompt and guardrails wrapped around the raw model. The system prompt is the standing instructions given before your request; guardrails are the safety filters that block certain outputs. Like the fixture and safety interlocks on a test rig: they dictate what the tool is allowed to do, independent of the tool's capability.
+Sarah: Right. Another thread: "it's not the model, it's the harness." Rewrite the system prompt, call the API directly, slip the noose on refusals. But Harley's deeper worry: if Anthropic can hard-code "don't bypass Bandcamp," they can hard-code "prefer this vacuum brand because they paid us" or "comply with every takedown request."
+Laura: Harley and commenters argue that system prompts and server-side filters enforce vendor policy. That mechanism is real: frontier models — the cutting-edge proprietary ones you only reach over an API — enforce those rules server-side. You can't inspect or change those guardrails.
+Sarah: Independent check: we read Harley's post directly on his site. It's one developer's anecdote, not a systematic audit. But it illustrates the architecture cleanly.
+Laura: Verdict: half-right on mechanism, speculative on trajectory. The harness point reflects Harley and the commenters' view — system prompts and server-side filters do enforce vendor policy. The enshittification prediction is plausible but unproven. Local models shift control to you, but bring their own refusal behaviors — Chinese models are likely to refuse questions about Taiwan, for instance.
+Sarah: One-line takeaway: if you need the model to follow your rules, you need to run the model on your hardware — or at least control the harness wrapped around it.
+Laura: My take: this is configuration management. The model parameters are one artifact; the system prompt, guardrails, and API policies are separate artifacts controlled by the vendor. If your process requires knowing why a decision was refused, an API you don't control is a black box — and that's our opinion, not a sourced conclusion.
+
+## Close
+Laura: Tomorrow morning's episode will be ready by 9 a.m.
+Sarah: Before you go, give the game on the episode page a try — you'll guess which chips slipped through the ban.

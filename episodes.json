@@ -1,28 +1,6 @@
 {
   "episodes": [
     {
-      "file": "ai_2026-11-18_morning_0600.mp3",
-      "date": "2026-11-18",
-      "edition": "morning",
-      "title": "Morning - 18 Nov: When Software Starts Hacking on Its Own",
-      "published": "2026-11-18T06:00:10.707067+05:30",
-      "pubDate": "Wed, 18 Nov 2026 06:00:10 +0530",
-      "size": 9154663,
-      "duration": 1144,
-      "description": "Morning edition - Wednesday, 18 November 2026\nSeparating real capability from hype in autonomous cyberattacks, and understanding how the aging brain clears waste during deep sleep.\n\n00:32  When Software Starts Hacking on Its Own\n09:07  How Your Brain Washes Itself While You Sleep\n\nPlay \"Who Pulled the Digital Trigger?\", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-18_morning_0600.mp3\nWritten by: Gemini 4 Hydrogen · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (121 threads)"
-    },
-    {
-      "file": "ai_2026-11-18_evening_1500.mp3",
-      "date": "2026-11-18",
-      "edition": "evening",
-      "title": "Evening - 18 Nov: The AI Sports League That Runs Itself",
-      "published": "2026-11-18T15:00:08.693776+05:30",
-      "pubDate": "Wed, 18 Nov 2026 15:00:08 +0530",
-      "size": 8016870,
-      "duration": 1001,
-      "description": "Evening edition - Wednesday, 18 November 2026\nSystems in motion: an AI-run sports league that writes its own history, and what the mechanics of your walk reveal about your health\n\n00:27  The AI Sports League That Runs Itself\n08:07  What the Way You Walk Reveals About Your Health\n\nPlay \"The 38-Year Fake Sports League\", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-18_evening_1500.mp3\nWritten by: Gemini 4 Hydrogen · Voices: Fish Audio (free) · Discussions: Reddit, collected hourly (48 threads)"
-    },
-    {
       "file": "ai_2026-11-19_morning_0600.mp3",
       "date": "2026-11-19",
       "edition": "morning",
@@ -164,6 +142,17 @@
       "size": 8633445,
       "duration": 1079,
       "description": "Morning edition - Wednesday, 25 November 2026\nProtein design from language models and distributed training on spare compute\n\n00:50  When a language model designs proteins\n08:23  Training a model on spare compute\n15:19  Tidal bans AI-generated music\n\nPlay \"Protein Design Pipeline Test\", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-25_morning_0600.mp3\nWritten by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Hacker News (no Reddit data: Reddit, collected hourly (0 threads); no snapshot from the office PC yet)"
+    },
+    {
+      "file": "ai_2026-11-25_evening_1500.mp3",
+      "date": "2026-11-25",
+      "edition": "evening",
+      "title": "Evening - 25 Nov: A U.S. export ban hits an Nvidia partner",
+      "published": "2026-11-25T15:00:10.256391+05:30",
+      "pubDate": "Wed, 25 Nov 2026 15:00:10 +0530",
+      "size": 8559754,
+      "duration": 1069,
+      "description": "Evening edition - Wednesday, 25 November 2026\nExport controls on AI hardware and the economics of cheaper inference\n\n00:48  A U.S. export ban hits an Nvidia partner\n06:24  Jevons Paradox and the cost of AI tokens\n14:29  LLM agents work for their parent companies, not for you\n\nPlay \"The Ban That Missed the Chips\", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-25_evening_1500.mp3\nWritten by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Hacker News (no Reddit data: Reddit, collected hourly (0 threads); no snapshot from the office PC yet)"
     }
   ],
   "memory": [
@@ -2380,6 +2369,32 @@
         "ai-public-backlash",
         "local-llms"
       ]
+    },
+    {
+      "label": "Wednesday 25 Nov evening",
+      "date": "2026-11-25",
+      "edition": "evening",
+      "published": "2026-11-25T15:00:10.256391+05:30",
+      "file": "ai_2026-11-25_evening_1500.mp3",
+      "writer": "nemotron-3-ultra-550b-a55b (free)",
+      "voices": "Fish Audio (free)",
+      "summary": "The episode examines the Commerce Department's addition of Nvidia partner Megaspeed to the Entity List, analyzing whether the order stops at the named company or reaches downstream buyers. It then applies Jevons Paradox to AI inference economics, testing whether falling token prices expand total compute demand. Finally, it evaluates the argument that LLM agents are structurally aligned with their parent companies rather than end users.",
+      "threads": [
+        "Whether the Megaspeed designation extends to downstream purchasers and how BIS licensing rules apply to high-end accelerators",
+        "Whether current inference price curves support the Jevons Paradox prediction for AI compute spending",
+        "Whether the structural alignment of LLM agents with parent companies holds up under technical and regulatory scrutiny"
+      ],
+      "segments": [
+        "A U.S. export ban hits an Nvidia partner",
+        "Jevons Paradox and the cost of AI tokens",
+        "LLM agents work for their parent companies, not for you"
+      ],
+      "deep_topic": "",
+      "topics": [
+        "ai-agent-loyalty",
+        "ai-data-center-energy",
+        "nvidia-export-ban"
+      ]
     }
   ],
   "seen": [
@@ -3278,6 +3293,30 @@
     {
       "date": "2026-11-25",
       "link": "https://openai.com/index/gpt-6-models-demonstrate-intrinsic-protein-design-capabilities/"
+    },
+    {
+      "date": "2026-11-25",
+      "link": "https://news.ycombinator.com/item?id=50627340"
+    },
+    {
+      "date": "2026-11-25",
+      "link": "https://michaelharley.net/posts/2026/11/01/llm-agents-work-for-their-parent-companies-not-for-you/"
+    },
+    {
+      "date": "2026-11-25",
+      "link": "https://news.ycombinator.com/item?id=50630245"
+    },
+    {
+      "date": "2026-11-25",
+      "link": "https://www.upi.com/Top_News/US/2026/11/24/NVIDIA-partner-Megaspeed/1701795520063/"
+    },
+    {
+      "date": "2026-11-25",
+      "link": "https://news.ycombinator.com/item?id=50625888"
+    },
+    {
+      "date": "2026-11-25",
+      "link": "https://philippdubach.com/posts/cheaper-ai-tokens-wont-pay-for-capex/"
     }
   ],
   "feedback": [
@@ -4300,27 +4339,166 @@
     "2026-11-25T01:32:15.560510+00:00",
     "2026-11-25T01:32:20.256566+00:00",
     "2026-11-25T01:33:38.099959+00:00",
-    "2026-11-25T01:34:58.142637+00:00"
+    "2026-11-25T01:34:58.142637+00:00",
+    "2026-11-25T09:34:12.319911+00:00",
+    "2026-11-25T09:34:15.487053+00:00",
+    "2026-11-25T09:34:18.675959+00:00",
+    "2026-11-25T09:34:21.875970+00:00",
+    "2026-11-25T09:34:25.067709+00:00",
+    "2026-11-25T09:34:28.258954+00:00",
+    "2026-11-25T09:34:31.483526+00:00",
+    "2026-11-25T09:34:34.667899+00:00",
+    "2026-11-25T09:34:37.858600+00:00",
+    "2026-11-25T09:34:41.068055+00:00",
+    "2026-11-25T09:34:44.271708+00:00",
+    "2026-11-25T09:34:47.497394+00:00",
+    "2026-11-25T09:34:50.694398+00:00",
+    "2026-11-25T09:34:53.866586+00:00",
+    "2026-11-25T09:34:57.064412+00:00",
+    "2026-11-25T09:35:00.262180+00:00",
+    "2026-11-25T09:35:03.464571+00:00",
+    "2026-11-25T09:35:35.226526+00:00",
+    "2026-11-25T09:37:04.591866+00:00",
+    "2026-11-25T09:38:43.338646+00:00",
+    "2026-11-25T09:40:16.399474+00:00",
+    "2026-11-25T09:41:02.559091+00:00",
+    "2026-11-25T09:41:22.995503+00:00",
+    "2026-11-25T09:42:50.662139+00:00",
+    "2026-11-25T09:44:22.956942+00:00",
+    "2026-11-25T09:45:07.792899+00:00",
+    "2026-11-25T09:45:07.874556+00:00",
+    "2026-11-25T09:45:07.950117+00:00",
+    "2026-11-25T09:46:04.053073+00:00",
+    "2026-11-25T09:50:11.531492+00:00",
+    "2026-11-25T09:51:40.843433+00:00",
+    "2026-11-25T09:53:17.607163+00:00",
+    "2026-11-25T09:54:10.472140+00:00",
+    "2026-11-25T09:55:24.710346+00:00",
+    "2026-11-25T09:57:31.691474+00:00",
+    "2026-11-25T09:58:13.550003+00:00",
+    "2026-11-25T09:59:38.290447+00:00",
+    "2026-11-25T10:00:13.308450+00:00",
+    "2026-11-25T10:02:00.408314+00:00",
+    "2026-11-25T10:03:23.165076+00:00",
+    "2026-11-25T10:04:05.053223+00:00",
+    "2026-11-25T10:05:34.416755+00:00",
+    "2026-11-25T10:06:19.565114+00:00",
+    "2026-11-25T10:07:31.072875+00:00",
+    "2026-11-25T10:10:58.782347+00:00",
+    "2026-11-25T10:10:58.940248+00:00",
+    "2026-11-25T10:11:02.140089+00:00",
+    "2026-11-25T10:11:05.297823+00:00",
+    "2026-11-25T10:11:08.489728+00:00",
+    "2026-11-25T10:11:57.974234+00:00",
+    "2026-11-25T10:13:27.235995+00:00",
+    "2026-11-25T10:14:21.719058+00:00",
+    "2026-11-25T10:14:57.596267+00:00",
+    "2026-11-25T10:14:59.747503+00:00",
+    "2026-11-25T10:15:05.335443+00:00",
+    "2026-11-25T10:15:08.904725+00:00",
+    "2026-11-25T10:15:12.593321+00:00",
+    "2026-11-25T10:15:16.906318+00:00",
+    "2026-11-25T10:15:20.391064+00:00",
+    "2026-11-25T10:15:21.385604+00:00",
+    "2026-11-25T10:15:25.846838+00:00",
+    "2026-11-25T10:15:31.758163+00:00",
+    "2026-11-25T10:15:32.304600+00:00",
+    "2026-11-25T10:15:36.299327+00:00",
+    "2026-11-25T10:15:45.400586+00:00",
+    "2026-11-25T10:15:45.565374+00:00",
+    "2026-11-25T10:15:52.496724+00:00",
+    "2026-11-25T10:15:53.414176+00:00",
+    "2026-11-25T10:15:55.938641+00:00",
+    "2026-11-25T10:16:04.400444+00:00",
+    "2026-11-25T10:16:06.748471+00:00",
+    "2026-11-25T10:16:10.837162+00:00",
+    "2026-11-25T10:16:14.724325+00:00",
+    "2026-11-25T10:16:16.260063+00:00",
+    "2026-11-25T10:16:16.954731+00:00",
+    "2026-11-25T10:16:19.835241+00:00",
+    "2026-11-25T10:16:26.856183+00:00",
+    "2026-11-25T10:16:29.798071+00:00",
+    "2026-11-25T10:16:30.016610+00:00",
+    "2026-11-25T10:16:31.953626+00:00",
+    "2026-11-25T10:16:36.564406+00:00",
+    "2026-11-25T10:16:41.455494+00:00",
+    "2026-11-25T10:16:42.355856+00:00",
+    "2026-11-25T10:16:47.102963+00:00",
+    "2026-11-25T10:16:50.345860+00:00",
+    "2026-11-25T10:16:54.021167+00:00",
+    "2026-11-25T10:16:58.243714+00:00",
+    "2026-11-25T10:17:00.821654+00:00",
+    "2026-11-25T10:17:03.487393+00:00",
+    "2026-11-25T10:17:05.261432+00:00",
+    "2026-11-25T10:17:07.745727+00:00",
+    "2026-11-25T10:17:12.359567+00:00",
+    "2026-11-25T10:17:14.494117+00:00",
+    "2026-11-25T10:17:19.026175+00:00",
+    "2026-11-25T10:17:21.319462+00:00",
+    "2026-11-25T10:17:25.749694+00:00",
+    "2026-11-25T10:17:28.124981+00:00",
+    "2026-11-25T10:17:33.247592+00:00",
+    "2026-11-25T10:17:36.218671+00:00",
+    "2026-11-25T10:17:40.527643+00:00",
+    "2026-11-25T10:17:42.369651+00:00",
+    "2026-11-25T10:17:44.925788+00:00",
+    "2026-11-25T10:17:47.445648+00:00",
+    "2026-11-25T10:17:52.858456+00:00",
+    "2026-11-25T10:17:53.865344+00:00",
+    "2026-11-25T10:17:57.526235+00:00",
+    "2026-11-25T10:18:01.857325+00:00",
+    "2026-11-25T10:18:05.129358+00:00",
+    "2026-11-25T10:18:06.279786+00:00",
+    "2026-11-25T10:18:10.609054+00:00",
+    "2026-11-25T10:18:14.525063+00:00",
+    "2026-11-25T10:18:17.060267+00:00",
+    "2026-11-25T10:18:19.999760+00:00",
+    "2026-11-25T10:18:23.020482+00:00",
+    "2026-11-25T10:18:25.857706+00:00",
+    "2026-11-25T10:18:30.320419+00:00",
+    "2026-11-25T10:18:33.157090+00:00",
+    "2026-11-25T10:18:38.552716+00:00",
+    "2026-11-25T10:18:39.085834+00:00",
+    "2026-11-25T10:18:44.420296+00:00",
+    "2026-11-25T10:18:46.740771+00:00",
+    "2026-11-25T10:18:54.509124+00:00",
+    "2026-11-25T10:18:55.941855+00:00",
+    "2026-11-25T10:18:59.802010+00:00",
+    "2026-11-25T10:19:00.015885+00:00",
+    "2026-11-25T10:19:05.454720+00:00",
+    "2026-11-25T10:19:10.163957+00:00",
+    "2026-11-25T10:19:11.339117+00:00",
+    "2026-11-25T10:19:20.081807+00:00",
+    "2026-11-25T10:19:20.153057+00:00",
+    "2026-11-25T10:19:22.545118+00:00",
+    "2026-11-25T10:19:24.049248+00:00",
+    "2026-11-25T10:19:24.241240+00:00",
+    "2026-11-25T10:19:31.286160+00:00",
+    "2026-11-25T10:19:37.070382+00:00",
+    "2026-11-25T10:19:40.095532+00:00",
+    "2026-11-25T10:19:43.994758+00:00",
+    "2026-11-25T10:19:51.192787+00:00",
+    "2026-11-25T10:19:51.860211+00:00",
+    "2026-11-25T10:19:56.081106+00:00",
+    "2026-11-25T10:19:59.357389+00:00",
+    "2026-11-25T10:19:59.852578+00:00",
+    "2026-11-25T10:20:09.742975+00:00",
+    "2026-11-25T10:20:16.316846+00:00",
+    "2026-11-25T10:20:19.451080+00:00",
+    "2026-11-25T10:20:24.059104+00:00",
+    "2026-11-25T10:20:24.296877+00:00",
+    "2026-11-25T10:21:32.342792+00:00",
+    "2026-11-25T10:23:06.164009+00:00"
   ],
   "free_day_out": "",
   "gemini_log": [
-    "2026-11-23T02:01:55.096926-08:00",
-    "2026-11-23T02:05:48.188027-08:00",
-    "2026-11-23T16:35:10.782555-08:00",
-    "2026-11-23T16:37:21.378454-08:00",
-    "2026-11-23T16:52:08.348042-08:00",
-    "2026-11-23T16:59:21.831491-08:00",
     "2026-11-24T16:50:48.746866-08:00",
-    "2026-11-24T17:25:22.759225-08:00"
+    "2026-11-24T17:25:22.759225-08:00",
+    "2026-11-25T02:14:21.720867-08:00"
   ],
   "gemini_day_out": "",
   "pace_adjust": 0.0,
   "lesson_log": [
-    {
-      "date": "2026-11-10",
-      "title": "The Neuron That Isn't a Knob",
-      "template": ""
-    },
     {
       "date": "2026-11-10",
       "title": "The Boiling Water Test That Misses the Vinegar Syndrome",
@@ -4624,6 +4802,20 @@
         "duel"
       ],
       "theme": "bench",
+      "date": "2026-11-25"
+    },
+    {
+      "title": "The Ban That Missed the Chips",
+      "template": "doubling",
+      "formats": [
+        "clues",
+        "match",
+        "estimate",
+        "lab",
+        "match",
+        "clues"
+      ],
+      "theme": "exchange",
       "date": "2026-11-25"
     }
   ],
@@ -5393,15 +5585,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 45,
+      "mentions": 46,
       "refs": [
-        {
-          "date": "2026-10-28",
-          "title": "OpenAI says its AI invented a new mathematical technique to solve a 35-year-old mystery about how waves focus, then used the breakthrough to crack several other decades-old problems involving how waves overlap, how signals can be reconstructed, and the geometry of space.",
-          "thread": "https://www.reddit.com/r/singularity/comments/1xgaw9b/openai_says_its_ai_invented_a_new_mathematical/",
-          "link": "https://github.com/openai/math/blob/main/preprints/Local-smoothing-for-the-Euclidean-wave-equation-October-25-2026/paper.pdf",
-          "comment": "So the Kabeya conjecture paper is the first one of the 3 papers OpenAI released today and boy is this shit good. I just started pouring over it and is blowing my mind. Now to add some caveats before I go any further. This is foundational math, this isn't gonna gives us flying cars tomorrow or whatev"
-        },
         {
           "date": "2026-10-28",
           "title": "Independent partial Yang-Mills results by postdocs at MIT Harvard/Oxford",
@@ -5485,6 +5670,13 @@
           "thread": "https://news.ycombinator.com/item?id=50604314",
           "link": "https://pequalnp.com/",
           "comment": "I feel like this is a strong step in a better direction. Allowing the community to see the entire effort as it develops is far better than \"here's a paper, good luck\". I do wish the graph reflected all of the agents working or not, and that it did not scroll to a seemingly random portion of the page"
+        },
+        {
+          "date": "2026-11-25",
+          "title": "OpenAI reveals they solved VP ≠ VNP before Anthropic",
+          "thread": "https://news.ycombinator.com/item?id=50632756",
+          "link": "https://github.com/openai/math/tree/main/preprints/VP-and-VNP-are-different-November-23-2026",
+          "comment": "Source for the exact date (6 November): https://github.com/openai/math/blob/main/history.md"
         },
         {
           "date": "2026-11-25",
@@ -6127,7 +6319,8 @@
         "2026-11-12",
         "2026-11-17",
         "2026-11-18",
-        "2026-11-19"
+        "2026-11-19",
+        "2026-11-25"
       ],
       "subs": [
         "AI_Agents",
@@ -6146,15 +6339,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 37,
+      "mentions": 38,
       "refs": [
-        {
-          "date": "2026-10-26",
-          "title": "OpenAI and Anthropic cut their LLM prices by up to 80% within a few months. Why?",
-          "thread": "https://www.reddit.com/r/OpenAI/comments/1xfkqa2/openai_and_anthropic_cut_their_llm_prices_by_up/",
-          "link": "https://minimaxir.com/2026/10/cheap-llms/",
-          "comment": "China"
-        },
         {
           "date": "2026-10-30",
           "title": "Day 25/ We are doubling all usage limits for all Pro 100/200/500 tiers and Business Premium, effective today.",
@@ -6245,10 +6431,17 @@
           "thread": "https://news.ycombinator.com/item?id=50531751",
           "link": "https://www.scmp.com/tech/big-tech/article/3374774/baidu-xiaomi-ceos-warn-growing-gap-between-ai-hype-and-returns",
           "comment": "The industry is just busy overall with day to day work and it just takes ages to implement things. Which also means that it is slow in adoption not because the quality is not here but because you need to do things first. You need an env to run an agent, you need connectors, you need to get that stuf"
+        },
+        {
+          "date": "2026-11-25",
+          "title": "Serving Qwen via AWS Lambdas for fun and 80x negative profit",
+          "thread": "https://news.ycombinator.com/item?id=50638070",
+          "link": "https://noahbuilt.it/writing/qwen-on-5600-lambdas",
+          "comment": "I love it when folks experiment and try random approaches like this to see if it would even work."
         }
       ],
       "deep_dive": "",
-      "last_seen": "2026-11-19",
+      "last_seen": "2026-11-25",
       "subject": "ai"
     },
     "glp1-drugs-beyond-weight-loss": {
@@ -6402,22 +6595,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 41,
+      "mentions": 43,
       "refs": [
-        {
-          "date": "2026-11-20",
-          "title": "\"Anthropic Is Not a Safe AI Company\" – Coalition Challenges Anthropic Safety",
-          "thread": "https://news.ycombinator.com/item?id=50548485",
-          "link": "https://www.businesswire.com/news/home/20261118974464/en/Anthropic-is-Not-a-Safe-AI-Company---Broad-Coalition-of-Scientists-Legal-Scholars-and-Tech-Leaders-Challenge-Anthropics-Safety-Branding-Ahead-of-IPO",
-          "comment": "Full title had to be shortened: “Anthropic is Not a Safe AI Company” - Broad Coalition of Scientists, Legal Scholars, and Tech Leaders Challenge Anthropic’s Safety Branding Ahead of IPO This is what they're all signing: https://misanthropicstatement.com/ I have not"
-        },
-        {
-          "date": "2026-11-20",
-          "title": "The AI Superintelligence Debate Has Serious Flaws",
-          "thread": "https://news.ycombinator.com/item?id=50559140",
-          "link": "https://spectrum.ieee.org/ai-superintelligence-debate",
-          "comment": "I don’t necessarily agree with the labs’ policies and predictions on RSI but it’s worth noting that the points raised here are something they do have responses to. On the idea that training better models requires more data, I think the current thought here is that we are not getting all the “meat of"
-        },
         {
           "date": "2026-11-20",
           "title": "Should governments slow frontier AI? Jacob Coxon and Robin Hanson debate [video]",
@@ -6494,6 +6673,20 @@
           "thread": "https://news.ycombinator.com/item?id=50620328",
           "link": "https://arxiv.org/abs/2602.20031",
           "comment": "> We do not test whether the model distinguishes hidden-state interventions from input manipulations Why not? That seems like a more important question. Is the model actually detecting an \"injection\" or is it just identifying apparent contradictions that the researchers arbitrarily label as \"injecte"
+        },
+        {
+          "date": "2026-11-25",
+          "title": "Anthropic Staff Openly Talk About ‘Taking Over the World’, Claims Max Tegmark",
+          "thread": "https://news.ycombinator.com/item?id=50631210",
+          "link": "https://novaramedia.com/2026/11/24/anthropic-staff-openly-talk-about-taking-over-the-world-claims-top-mit-physicist/",
+          "comment": "I think I can speak with confidence that Anthropic is not going to take over the world or a nation. That would require more developed robotics capability than exists, and it would require a company that is much more connected to fabrication and physical supply chains. They don't even own their own d"
+        },
+        {
+          "date": "2026-11-25",
+          "title": "Models Can Communicate via Inference Servers Despite Being Sandboxed",
+          "thread": "https://news.ycombinator.com/item?id=50637686",
+          "link": "https://www.lesswrong.com/posts/7wzWuLP3HhyBLmKfo/models-can-communicate-via-inference-servers-despite-being",
+          "comment": "Is it really a good idea to teach them how to break out of their own sandboxes?"
         },
         {
           "date": "2026-11-25",
@@ -7807,7 +8000,7 @@
         "antiai",
         "science"
       ],
-      "mentions": 6,
+      "mentions": 7,
       "refs": [
         {
           "date": "2026-11-17",
@@ -7843,6 +8036,13 @@
           "thread": "https://news.ycombinator.com/item?id=50598961",
           "link": "https://www.bloodinthemachine.com/p/ai-is-becoming-a-disaster-for-the",
           "comment": "This was flagged dead, but I vouched to revive it. It seems like a decent overview article of a couple recent papers on the potential climate impact of AI. It doesn't feel AI generated itself---which admittedly would be ironic! Even if you think the whole climate narrative is bunk, please explain wh"
+        },
+        {
+          "date": "2026-11-25",
+          "title": "Jevons Paradox in AI: Cheaper Tokens Won't Pay for Capex",
+          "thread": "https://news.ycombinator.com/item?id=50625888",
+          "link": "https://philippdubach.com/posts/cheaper-ai-tokens-wont-pay-for-capex/",
+          "comment": "Why on earth would the bank limit itself to ten times as much contract review? The CFO isn't being asked to spend more money on something that got cheaper. He's being presented with a series of newly profitable investment opportunities. We seem to be stuck arguing over the logistics of swapping a st"
         },
         {
           "date": "2026-11-25",
@@ -8097,7 +8297,7 @@
       "subs": [
         "HackerNews"
       ],
-      "mentions": 8,
+      "mentions": 10,
       "refs": [
         {
           "date": "2026-11-21",
@@ -8140,6 +8340,20 @@
           "thread": "https://news.ycombinator.com/item?id=50582280",
           "link": "https://www.wsj.com/finance/stocks/anthropics-ipo-bust-punctuates-4-trillion-ai-wipeout-on-wall-street-f1f1ec90",
           "comment": "Unwall link https://unwall.app/www.wsj.com/finance/stocks/anthropics-ipo..."
+        },
+        {
+          "date": "2026-11-25",
+          "title": "Anthropic breaks below $83 IPO price",
+          "thread": "https://news.ycombinator.com/item?id=50627836",
+          "link": "https://www.bloomberg.com/news/articles/2026-11-24/anthropic-breaks-below-83-ipo-price-in-premarket-trading",
+          "comment": "They have no future business model. Open-weight models and specialized distilations can be hosted in anyones datacenter where fierce competition will bring down prices. The current problem is the hardware scarcity and that the few big frontier providers snatch all the hardware at inflated prices whi"
+        },
+        {
+          "date": "2026-11-25",
+          "title": "Anthropic is below its IPO price",
+          "thread": "https://news.ycombinator.com/item?id=50628932",
+          "link": "https://www.msn.com/en-us/money/top-stocks/anthropic-stock-sinks-below-ipo-price-why-that-s-happened-so-fast/ar-AA2i7rqa",
+          "comment": "Some more discussion: https://news.ycombinator.com/item?id=50627836"
         },
         {
           "date": "2026-11-25",
@@ -8224,7 +8438,7 @@
       "subs": [
         "HackerNews"
       ],
-      "mentions": 3,
+      "mentions": 4,
       "refs": [
         {
           "date": "2026-11-24",
@@ -8239,6 +8453,13 @@
           "thread": "https://news.ycombinator.com/item?id=50615520",
           "link": "https://www.greptile.com/blog/trex-computer-use",
           "comment": "Vision models are pretty good at vision tasks. I've had a lot of success just having the model output a new image with a mask over the button it wants pressed and using normal CV algorithms to convert the delta into coordinates. I'm surprised to not see simple, effective solutions like that from a c"
+        },
+        {
+          "date": "2026-11-25",
+          "title": "Declare is a UI language for you and your AI",
+          "thread": "https://news.ycombinator.com/item?id=50622854",
+          "link": "https://davidtemkin.github.io/declarelang/",
+          "comment": "neat"
         },
         {
           "date": "2026-11-25",
@@ -8261,8 +8482,15 @@
       "subs": [
         "HackerNews"
       ],
-      "mentions": 1,
+      "mentions": 2,
       "refs": [
+        {
+          "date": "2026-11-25",
+          "title": "LLM agents work for their parent companies, not for you",
+          "thread": "https://news.ycombinator.com/item?id=50627340",
+          "link": "https://michaelharley.net/posts/2026/11/01/llm-agents-work-for-their-parent-companies-not-for-you/",
+          "comment": "Too bad this is just your opinion not objective reality."
+        },
         {
           "date": "2026-11-25",
           "title": "LLM agents work for their parent companies, not for you",
@@ -8284,8 +8512,15 @@
       "subs": [
         "HackerNews"
       ],
-      "mentions": 1,
+      "mentions": 2,
       "refs": [
+        {
+          "date": "2026-11-25",
+          "title": "Ex-Nvidia partner Megaspeed hit with U.S. Commerce Department export ban",
+          "thread": "https://news.ycombinator.com/item?id=50630245",
+          "link": "https://www.upi.com/Top_News/US/2026/11/24/NVIDIA-partner-Megaspeed/1701795520063/",
+          "comment": "This is Howard Lutnick attempting to do his homework while on the bus on his way to school."
+        },
         {
           "date": "2026-11-25",
           "title": "Ex-Nvidia partner Megaspeed hit with U.S. Commerce Department export ban",
@@ -8330,8 +8565,15 @@
       "subs": [
         "HackerNews"
       ],
-      "mentions": 1,
+      "mentions": 2,
       "refs": [
+        {
+          "date": "2026-11-25",
+          "title": "Who in Washington owns and trades Nvidia stock",
+          "thread": "https://news.ycombinator.com/item?id=50626861",
+          "link": "https://www.kadoa.com/congress/insights/trump-nvidia",
+          "comment": "All of them.. massive insider trading."
+        },
         {
           "date": "2026-11-25",
           "title": "Who in Washington owns and trades Nvidia stock",
@@ -8353,8 +8595,15 @@
       "subs": [
         "HackerNews"
       ],
-      "mentions": 1,
+      "mentions": 2,
       "refs": [
+        {
+          "date": "2026-11-25",
+          "title": "Ask HN: Anthropic is accusing my company of distilling. How can I prove I'm not?",
+          "thread": "https://news.ycombinator.com/item?id=50630809",
+          "link": "",
+          "comment": "All I can think of, off the bat, is to show them your testing harness, especially if it's in git, then you have receipts for how long it's been alive."
+        },
         {
           "date": "2026-11-25",
           "title": "Ask HN: Anthropic is accusing my company of distilling. How can I prove I'm not?",
