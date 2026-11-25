@@ -7,19 +7,399 @@
   "evening": "18:00"
  },
  "heard": {
-  "lines": [
-   {
-    "said": "Less like \"Nvidia Brings Back Its Chief Executive\"",
-    "did": "The editor sees this when it chooses the next episodes' stories."
-   },
-   {
-    "said": "\"Less forum drama next time\"",
-    "did": "Passed to the editor and the writers of every episode from now on."
-   }
-  ],
+  "lines": [],
   "last": "2026-11-24"
  },
  "episodes": [
+  {
+   "file": "ai_2026-11-25_morning_0600.mp3",
+   "title": "Morning - 25 Nov: When a language model designs proteins",
+   "label": "Wednesday 25 Nov morning",
+   "date": "2026-11-25",
+   "edition": "morning",
+   "published": "2026-11-25T06:00:10.582792+05:30",
+   "duration": 1079,
+   "theme": "Protein design from language models and distributed training on spare compute",
+   "writer": "nemotron-3-ultra-550b-a55b (free)",
+   "voices": "Fish Audio (free)",
+   "deep_dive": false,
+   "segments": [
+    {
+     "title": "When a language model designs proteins",
+     "category": "thread"
+    },
+    {
+     "title": "Training a model on spare compute",
+     "category": "concept"
+    },
+    {
+     "title": "Tidal bans AI-generated music",
+     "category": "thread"
+    }
+   ],
+   "play": {
+    "v": 2,
+    "theme": "bench",
+    "title": "Protein Design Pipeline Test",
+    "brief": "You test the chain from code to binding",
+    "segments": [
+     {
+      "title": "When a language model designs proteins",
+      "bet": {
+       "claim": "GPT-6 designs full proteins without specialized tools",
+       "truth": false,
+       "why": "Only designs backbone geometry; sequences and screening need specialized models"
+      },
+      "rounds": [
+       {
+        "type": "match",
+        "q": "Match each term to its job",
+        "pairs": [
+         [
+          "Backbone geometry",
+          "3D fold positioning helices and sheets"
+         ],
+         [
+          "Inverse folding",
+          "Finding sequence that folds to shape"
+         ],
+         [
+          "Prompt flexibility",
+          "Switch tasks by changing text only"
+         ],
+         [
+          "Pre-released model",
+          "Lab version not the public release"
+         ]
+        ]
+       },
+       {
+        "type": "lab",
+        "text": "Adjust step reliability and count to see full-run success",
+        "inputs": [
+         {
+          "id": "p",
+          "label": "Each pipeline step works",
+          "unit": "%",
+          "min": 70.0,
+          "max": 95.0,
+          "step": 0.1,
+          "value": 85.0
+         },
+         {
+          "id": "n",
+          "label": "Pipeline steps in a design run",
+          "unit": "",
+          "min": 1.0,
+          "max": 6.0,
+          "step": 1.0,
+          "value": 4.0
+         }
+        ],
+        "outputs": [
+         {
+          "id": "ok",
+          "label": "Whole design run works",
+          "unit": "%",
+          "expr": "100*(p/100)^n",
+          "digits": 1,
+          "lo": 11.764899999999995,
+          "hi": 95.0
+         },
+         {
+          "id": "fails",
+          "label": "Design runs that fail, of 100",
+          "unit": "",
+          "expr": "100-ok",
+          "digits": 0,
+          "lo": 5.0,
+          "hi": 88.2351
+         }
+        ],
+        "chart": {
+         "x": "n",
+         "y": [
+          "ok"
+         ]
+        },
+        "goal": {
+         "target": "ok",
+         "min": 60.0,
+         "max": 90.0,
+         "text": "Find the step reliability needed for most runs to succeed",
+         "success": "Four steps at 85% each gives only 52% full success"
+        },
+        "template": "chain",
+        "view": {
+         "kind": "runs",
+         "p": "p",
+         "n": "n",
+         "step": "pipeline step",
+         "run": "design run"
+        }
+       }
+      ],
+      "takeaway": "Model writes scaffold code; specialized tools still build and test"
+     },
+     {
+      "title": "Training a model on spare compute",
+      "bet": {
+       "claim": "Songe's local training loop uses a second model to grade the first model's work.",
+       "truth": true,
+       "why": "A separate judge model checks quality, plus saved examples prevent forgetting old skills."
+      },
+      "rounds": [
+       {
+        "type": "quickfire",
+        "q": "True or false?",
+        "items": [
+         {
+          "text": "Inference spreads across GPUs easily because each runs the full model alone.",
+          "truth": true
+         },
+         {
+          "text": "Data parallelism sends only the changed model pieces each step.",
+          "truth": false
+         },
+         {
+          "text": "Model parallelism splits the model so each GPU holds a different piece.",
+          "truth": true
+         },
+         {
+          "text": "Pipeline parallelism removes all waiting between GPUs.",
+          "truth": false
+         },
+         {
+          "text": "Songe today trains across multiple GPUs on different machines.",
+          "truth": false
+         }
+        ]
+       },
+       {
+        "type": "lab",
+        "text": "Slide each stage's speed. The slowest sets the pace. Can you hit 30 steps/min?",
+        "inputs": [
+         {
+          "id": "c1",
+          "label": "Forward pass",
+          "unit": "steps/min",
+          "min": 6.0,
+          "max": 120.0,
+          "step": 2.0,
+          "value": 60.0
+         },
+         {
+          "id": "c2",
+          "label": "Backward pass",
+          "unit": "steps/min",
+          "min": 6.0,
+          "max": 120.0,
+          "step": 2.0,
+          "value": 60.0
+         },
+         {
+          "id": "c3",
+          "label": "All-reduce sync",
+          "unit": "steps/min",
+          "min": 3.0,
+          "max": 60.0,
+          "step": 1.0,
+          "value": 3.0
+         }
+        ],
+        "outputs": [
+         {
+          "id": "thr",
+          "label": "Line output",
+          "unit": "steps/min",
+          "expr": "min(c1,c2,c3)",
+          "lo": 3.0,
+          "hi": 60.0
+         },
+         {
+          "id": "u1",
+          "label": "Forward pass busy",
+          "unit": "%",
+          "expr": "100*thr/c1",
+          "digits": 0,
+          "lo": 2.5,
+          "hi": 100.0
+         },
+         {
+          "id": "u2",
+          "label": "Backward pass busy",
+          "unit": "%",
+          "expr": "100*thr/c2",
+          "digits": 0,
+          "lo": 2.5,
+          "hi": 100.0
+         },
+         {
+          "id": "u3",
+          "label": "All-reduce sync busy",
+          "unit": "%",
+          "expr": "100*thr/c3",
+          "digits": 0,
+          "lo": 10.0,
+          "hi": 100.0
+         }
+        ],
+        "goal": {
+         "target": "thr",
+         "min": 30.0,
+         "max": 60.0,
+         "text": "Make the line output reach 30 steps/min",
+         "success": "The all-reduce is the choke point; speeding it up unlocks the whole pipeline."
+        },
+        "template": "bottleneck",
+        "view": {
+         "kind": "pipes",
+         "caps": [
+          "c1",
+          "c2",
+          "c3"
+         ],
+         "thr": "thr",
+         "labels": [
+          "Forward pass",
+          "Backward pass",
+          "All-reduce sync"
+         ],
+         "unit": "steps/min"
+        }
+       }
+      ],
+      "takeaway": "Home networks turn the all-reduce into a bottleneck that no model trick fully solves."
+     },
+     {
+      "title": "Tidal bans AI-generated music",
+      "bet": {
+       "claim": "Over ninety-five percent of tracks Tidal flags as AI-made have never been played once",
+       "truth": true,
+       "why": "Segment states ninety-six percent of flagged tracks get zero plays — detection catches mostly unheard noise."
+      },
+      "rounds": [
+       {
+        "type": "estimate",
+        "q": "What share of Tidal's current catalog is already AI-generated, per Ars Technica?",
+        "answer": 6.3,
+        "unit": "%",
+        "lo": 1.0,
+        "hi": 30,
+        "log": false,
+        "why": "Six point three percent of the catalog is AI-made — but forty-three percent of new arrivals are."
+       },
+       {
+        "type": "duel",
+        "q": "Which is bigger: Tidal's daily AI rejection rate or Spotify's daily recommendation-purge rate?",
+        "unit": "tracks/day",
+        "a": {
+         "label": "Tidal daily AI rejections",
+         "value": 85000.0
+        },
+        "b": {
+         "label": "Spotify daily recommendation purges",
+         "value": 137000.0
+        },
+        "why": "Tidal rejects up to eighty-five thousand a day; Spotify scrubs fifty million a year from recommendations — about one hundred thirty-seven thousand daily."
+       }
+      ],
+      "takeaway": "Platforms treat AI music like contamination, but the blur between human and machine sound is the real story."
+     }
+    ],
+    "words": [
+     {
+      "term": "Backbone geometry",
+      "means": "The 3D fold shape of a protein"
+     },
+     {
+      "term": "Inverse folding",
+      "means": "Finding a sequence that folds to target shape"
+     },
+     {
+      "term": "Prompt flexibility",
+      "means": "Changing tasks by rewriting the prompt only"
+     },
+     {
+      "term": "Pre-released model",
+      "means": "Version tested in lab, not the public one"
+     },
+     {
+      "term": "All-reduce",
+      "means": "The step where every computer shares its update and agrees on the average"
+     },
+     {
+      "term": "Local update collection",
+      "means": "Doing several training steps privately before sharing one combined update"
+     },
+     {
+      "term": "Heterogeneous",
+      "means": "Computers of different speeds and types working together unpredictably"
+     },
+     {
+      "term": "timbre",
+      "means": "The tone quality that lets you spot a Suno voice after a few listens"
+     }
+    ],
+    "chips": [
+     "More on the chain metaphor",
+     "Surprising gap in validation",
+     "Go deeper on prompt flexibility",
+     "Too many model versions"
+    ]
+   },
+   "quiz": [
+    {
+     "q": "In the protein design discussion, what does the language model (GPT-6) actually design when creating a protein binder?",
+     "options": [
+      "The complete amino-acid sequence that folds into the target shape",
+      "The three-dimensional backbone geometry, positioning helices, sheets, and loops",
+      "The lab protocol for growing and screening the protein",
+      "The binding affinity numbers and error bars for each candidate"
+     ],
+     "answer": 1,
+     "explain": "Sarah states the model designs the backbone—the three-dimensional fold—while specialized models handle inverse folding to turn that fold into a sequence.",
+     "segment": "When a language model designs proteins"
+    },
+    {
+     "q": "Why do Sarah and Laura say the headline claim that GPT-6 designs functional proteins \"without specialized models\" is only half right at best?",
+     "options": [
+      "Because the model designs the backbone, but sequences, candidate screening, and lab validation still depend on specialized tools",
+      "Because the model only works on proteins with exactly five helices",
+      "Because OpenAI has not released any code for the model",
+      "Because the model can only predict structures, not design new ones"
+     ],
+     "answer": 0,
+     "explain": "The script notes the model contributes geometric reasoning for a subclass of problems, while inverse folding, ranking, and wet-lab checks remain in specialized hands.",
+     "segment": "When a language model designs proteins"
+    },
+    {
+     "q": "In distributed training, why is the \"all-reduce\" step the main network bottleneck compared to inference?",
+     "options": [
+      "Because inference requires moving gigabytes of model weights between GPUs every step",
+      "Because all-reduce only works when all computers have identical GPUs",
+      "Because every device must share and agree on the average direction to update model parameters before any update happens",
+      "Because inference cannot be parallelized across multiple machines"
+     ],
+     "answer": 2,
+     "explain": "Laura explains that training requires all devices to hold the same model numbers and agree on the average change direction, moving large amounts of data each step, whereas inference is embarrassingly parallel.",
+     "segment": "Training a model on spare compute"
+    },
+    {
+     "q": "What problem do commenters raise about Tidal's plan to ban AI-generated music?",
+     "options": [
+      "Tidal lacks the storage capacity to remove twenty-nine million tracks",
+      "AI-generated music accounts for less than one percent of new track intake",
+      "The ban will only apply to tracks with more than one million plays",
+      "The detection system cannot distinguish AI music from output of traditional samplers or synthesizers"
+     ],
+     "answer": 3,
+     "explain": "Commenters argue the line between AI music and a sampler or synth someone else programmed is already blurry, and next-gen tools may create audio autonomously, making the category hard to define.",
+     "segment": "Tidal bans AI-generated music"
+    }
+   ],
+   "transcript": "transcripts/ai_2026-11-25_morning_0600.txt"
+  },
   {
    "file": "ai_2026-11-24_evening_1500.mp3",
    "title": "Evening - 24 Nov: Shirudo: a runtime that tries to shield unpatched Linux",
@@ -3249,321 +3629,6 @@
     }
    ],
    "transcript": "transcripts/ai_2026-11-18_morning_0600.txt"
-  },
-  {
-   "file": "ai_2026-11-17_evening_1501.mp3",
-   "title": "Evening - 17 Nov: Benchmarking Whether Cheaper AI Models Actually Save Money on Real Codebases",
-   "label": "Tuesday 17 Nov evening",
-   "date": "2026-11-17",
-   "edition": "evening",
-   "published": "2026-11-17T15:01:12.063068+05:30",
-   "duration": 1033,
-   "theme": "Benchmarking AI coding agents on real codebases; FDA rejects a Chinese lung-cancer drug",
-   "writer": "nemotron-3-ultra-550b-a55b (free)",
-   "voices": "Fish Audio (free)",
-   "deep_dive": false,
-   "segments": [
-    {
-     "title": "Benchmarking Whether Cheaper AI Models Actually Save Money on Real Codebases",
-     "category": "thread"
-    },
-    {
-     "title": "FDA Rejects a Closely Watched Lung Cancer Drug from China",
-     "category": "thread"
-    },
-    {
-     "title": "If elephants had gone extinct millions of years ago and we only had their fossil",
-     "category": "thread"
-    }
-   ],
-   "play": {
-    "v": 2,
-    "theme": "audit",
-    "title": "The Delegation Paradox",
-    "brief": "You audit a Reddit benchmark: 300 runs, four routing setups, and a claim that cheaper models sometimes cost more",
-    "segments": [
-     {
-      "title": "Benchmarking Whether Cheaper AI Models Actually Save Money on Real Codebases",
-      "bet": {
-       "claim": "Custom routing logic cost 14-30% more than Opus working alone",
-       "truth": true,
-       "why": "The poster's own delegation heuristic added overhead that exceeded savings across all tested codebases"
-      },
-      "rounds": [
-       {
-        "type": "quickfire",
-        "q": "True or false?",
-        "items": [
-         {
-          "text": "On 10k-line codebases, delegation saves money",
-          "truth": false
-         },
-         {
-          "text": "Haiku alone hits 5% of Opus cost on tested coding tasks",
-          "truth": true
-         },
-         {
-          "text": "Opus+Haiku read 3x more pages on the big doc check",
-          "truth": true
-         },
-         {
-          "text": "Spontaneous Opus delegated often on small repos",
-          "truth": false
-         },
-         {
-          "text": "Custom routing was the cheapest setup overall",
-          "truth": false
-         }
-        ]
-       },
-       {
-        "type": "lab",
-        "text": "Each subtask must succeed. Drag the success rate and subtask count to see how often the whole job completes.",
-        "inputs": [
-         {
-          "id": "p",
-          "label": "Each subtask works",
-          "unit": "%",
-          "min": 80.0,
-          "max": 99.0,
-          "step": 0.1,
-          "value": 92.0
-         },
-         {
-          "id": "n",
-          "label": "Subtasks in a job",
-          "unit": "",
-          "min": 1.0,
-          "max": 20.0,
-          "step": 1.0,
-          "value": 8.0
-         }
-        ],
-        "outputs": [
-         {
-          "id": "ok",
-          "label": "Whole job works",
-          "unit": "%",
-          "expr": "100*(p/100)^n",
-          "digits": 1,
-          "lo": 1.1529215046068484,
-          "hi": 99.0
-         },
-         {
-          "id": "fails",
-          "label": "Jobs that fail, of 100",
-          "unit": "",
-          "expr": "100-ok",
-          "digits": 0,
-          "lo": 1.0,
-          "hi": 98.84707849539315
-         }
-        ],
-        "chart": {
-         "x": "n",
-         "y": [
-          "ok"
-         ]
-        },
-        "goal": {
-         "target": "ok",
-         "min": 26.874389899547147,
-         "max": 36.65909774908646,
-         "auto": true,
-         "text": "Move the sliders until \"Whole job works\" reads about 31.8 %.",
-         "success": "Found it. Notice which slider moved it most - that is the mechanism in this story."
-        },
-        "template": "chain",
-        "view": {
-         "kind": "runs",
-         "p": "p",
-         "n": "n",
-         "step": "subtask",
-         "run": "job"
-        }
-       }
-      ],
-      "takeaway": "Delegation pays only when context overflows and tasks parallelize — routing logic and test quality decide if you actually save"
-     },
-     {
-      "title": "FDA Rejects a Closely Watched Lung Cancer Drug from China",
-      "bet": {
-       "claim": "Two Chinese-origin cancer drugs already earn over $1 billion yearly in the US.",
-       "truth": true,
-       "why": "The Times article notes two blood-cancer drugs invented in China are already doing over a billion dollars a year in US sales."
-      },
-      "rounds": [
-       {
-        "type": "sequence",
-        "q": "Order the steps from Chinese lab to FDA rejection",
-        "items": [
-         "Chinese lab invents bispecific antibody",
-         "Summit licenses US rights",
-         "Post-treatment trial shows tumor control",
-         "Survival benefit misses statistical significance",
-         "FDA issues Complete Response Letter"
-        ],
-        "why": "The drug hit its surrogate endpoint but failed the real one — overall survival — so the FDA said come back with more data."
-       },
-       {
-        "type": "quickfire",
-        "q": "True or false?",
-        "items": [
-         {
-          "text": "The drug blocks two cancer pathways with one antibody.",
-          "truth": true
-         },
-         {
-          "text": "FDA rejected it because the developer was Chinese.",
-          "truth": false
-         },
-         {
-          "text": "Tumor control alone does not prove longer life.",
-          "truth": true
-         },
-         {
-          "text": "After-the-fact analyses convinced the FDA to approve.",
-          "truth": false
-         },
-         {
-          "text": "Two Chinese-origin cancer drugs are already US blockbusters.",
-          "truth": true
-         }
-        ]
-       }
-      ],
-      "takeaway": "A two-in-one antibody missed the survival endpoint; FDA wants proof of longer life."
-     },
-     {
-      "title": "If elephants had gone extinct millions of years ago and we only had their fossil",
-      "bet": {
-       "claim": "Without living elephants, scientists would reconstruct a short tapir-like trunk, not a long grasping one.",
-       "truth": true,
-       "why": "The segment verdict: half right. We'd know something muscular lived there, know it's a mammal, but pick the nearest analog (tapir) and guess a short trunk — the long trunk is a stretch."
-      },
-      "rounds": [
-       {
-        "type": "duel",
-        "q": "Which is longer: a tapir's trunk, or the elephant trunk that made scientists laugh?",
-        "unit": "feet",
-        "a": {
-         "label": "Tapir trunk",
-         "value": 1.0
-        },
-        "b": {
-         "label": "Laughable trunk",
-         "value": 4.0
-        },
-        "why": "Bones suggest tapir-like (1 ft), but the real trunk (4 ft) is 4x longer — the length that got the first proposer laughed at."
-       },
-       {
-        "type": "call",
-        "q": "A fossil shows a 15-ton body with a neck reaching only 3 feet. Its modern relatives are hippos (short neck) and giraffes (long neck). What did it use to eat?",
-        "options": [
-         "Grazed on ground like a hippo",
-         "Used a long trunk to reach food",
-         "Had a giraffe-like long neck"
-        ],
-        "answer": 1,
-        "hint": "Short neck + huge body = need extra reach.",
-        "why": "Elephant necks are short and stiff; without a trunk the calorie math fails. The segment says you'd infer a long reach from the body-neck mismatch."
-       }
-      ],
-      "takeaway": "bone writes the contract, but soft tissue signs it — and without a living witness, we'll still pick the wrong template."
-     }
-    ],
-    "words": [
-     {
-      "term": "Context window",
-      "means": "How much code or text the model can hold at once"
-     },
-     {
-      "term": "Rolled throughput yield",
-      "means": "Chance a multi-step job fully succeeds — each step's risk multiplies"
-     },
-     {
-      "term": "Bispecific antibody",
-      "means": "A single antibody with two different binding arms hitting two targets"
-     },
-     {
-      "term": "Surrogate endpoint",
-      "means": "A stand-in measure like tumor control that may not predict real benefit"
-     },
-     {
-      "term": "Transportability",
-      "means": "Whether trial results in one population apply to another with different traits"
-     },
-     {
-      "term": "Sharpey's fibers",
-      "means": "Tiny collagen strands that anchor muscle to bone like microscopic bolts."
-     },
-     {
-      "term": "Wolff's law",
-      "means": "Bone rebuilds itself stronger where mechanical stress is highest."
-     },
-     {
-      "term": "Inverse problem",
-      "means": "Same bones can fit many soft-tissue shapes; no unique answer."
-     }
-    ],
-    "chips": [
-     "Surprising routing result",
-     "More on test quality",
-     "Wall time missing",
-     "Good pub-quiz pace"
-    ]
-   },
-   "quiz": [
-    {
-     "q": "Why did delegating work to cheaper Haiku helpers fail to pay off on small codebases of about ten thousand lines?",
-     "options": [
-      "Haiku lacks the context window to read code",
-      "The expensive Opus model could fit the whole codebase in its context window, so there was no need to farm out pieces",
-      "Haiku cannot write text pieces, only code",
-      "Custom routing logic was banned on small repositories"
-     ],
-     "answer": 1,
-     "explain": "On small codebases, the lead model holds the entire repository in its context window, so delegation adds coordination overhead without reducing what the lead must read.",
-     "segment": "Benchmarking Whether Cheaper AI Models Actually Save Money on Real Codebases"
-    },
-    {
-     "q": "The custom routing logic cost 14 to 30 percent more than simpler setups. What does this indicate about delegation heuristics?",
-     "options": [
-      "Cheaper models always increase routing cost",
-      "Custom routing is required by FDA validation rules",
-      "The heuristic for when to delegate is non-trivial and can add overhead exceeding savings",
-      "Opus cannot execute code without Haiku"
-     ],
-     "answer": 2,
-     "explain": "The script notes that custom routing cost more, suggesting that deciding when and to which model to delegate is difficult and poor heuristics can erase savings from cheaper helpers.",
-     "segment": "Benchmarking Whether Cheaper AI Models Actually Save Money on Real Codebases"
-    },
-    {
-     "q": "Why did the FDA reject ivonescimab in the post-treatment lung-cancer setting despite it meeting one endpoint?",
-     "options": [
-      "The trial met progression-free survival but not statistically significant overall survival, the required primary goal",
-      "Manufacturing facilities failed GMP inspection",
-      "The drug was not actually bispecific",
-      "Summit refused to test in Western patients"
-     ],
-     "answer": 0,
-     "explain": "The drug showed a benefit on progression-free survival but failed to demonstrate statistically significant overall survival, which was the primary efficacy bar for approval in this setting.",
-     "segment": "FDA Rejects a Closely Watched Lung Cancer Drug from China"
-    },
-    {
-     "q": "If elephants went extinct and only fossils remained, what could paleontologists most reliably infer about the trunk?",
-     "options": [
-      "Exact trunk length from nasal bone measurements",
-      "That elephants had no trunk because soft tissue doesn't fossilize",
-      "The precise muscle fiber type from Sharpey's fibers",
-      "That a muscular, mammal-like trunk existed, but its full length is underdetermined without soft tissue"
-     ],
-     "answer": 3,
-     "explain": "Fossil bone shows muscle attachment sites and reinforcement consistent with a muscular trunk, but without soft tissue the exact length and grasping ability remain underdetermined.",
-     "segment": "If elephants had gone extinct millions of years ago and we only had their fossil"
-    }
-   ],
-   "transcript": "transcripts/ai_2026-11-17_evening_1501.txt"
   }
  ]
 }
