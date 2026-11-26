@@ -8,9 +8,26 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Wed, 25 Nov 2026 10:23:08 GMT</lastBuildDate>
+<lastBuildDate>Thu, 26 Nov 2026 01:26:01 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Morning - 26 Nov: A Shorter Machine-Checked Proof From Anthropic</title>
+<description>Morning edition - Thursday, 26 November 2026
+Checking how AI systems verify math and how isolated models can leak signals through shared hardware
+
+00:32  A Shorter Machine-Checked Proof From Anthropic
+09:05  How Isolated Models Can Signal Each Other Through Shared Servers
+13:27  Anthropic breaks below $83 IPO price
+
+Play "The 76k-Line Proof No Human Reads", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-26_morning_0600.mp3
+Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Hacker News (no Reddit data: Reddit, collected hourly (0 threads); no snapshot from the office PC yet)</description>
+<pubDate>Thu, 26 Nov 2026 06:00:13 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-11-26_morning_0600.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-26_morning_0600.mp3" length="7928091" type="audio/mpeg"/>
+<itunes:duration>990</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Evening - 25 Nov: A U.S. export ban hits an Nvidia partner</title>
 <description>Evening edition - Wednesday, 25 November 2026
@@ -233,22 +250,6 @@ Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Di
 <guid isPermaLink="false">ai_2026-11-19_evening_1500.mp3</guid>
 <enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-19_evening_1500.mp3" length="8652638" type="audio/mpeg"/>
 <itunes:duration>1081</itunes:duration>
-<itunes:episodeType>full</itunes:episodeType>
-</item>
-<item>
-<title>Morning - 19 Nov: Can AI Agents Ask Better Questions Than Accountants?</title>
-<description>Morning edition - Thursday, 19 November 2026
-What happens when AI systems step into roles built on human judgment—first in financial auditing, and then as the front door to the open web.
-
-00:35  Can AI Agents Ask Better Questions Than Accountants?
-11:07  How AI Search Answers Are Starving Independent Websites
-
-Play "When Auditors Meet Their Match", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-19_morning_0600.mp3
-Written by: Gemini 4 Hydrogen · Voices: Fish Audio (free) · Discussions: Hacker News (no Reddit data: Reddit, collected hourly (0 threads); no snapshot from the office PC yet)</description>
-<pubDate>Thu, 19 Nov 2026 06:00:10 +0530</pubDate>
-<guid isPermaLink="false">ai_2026-11-19_morning_0600.mp3</guid>
-<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-19_morning_0600.mp3" length="9457292" type="audio/mpeg"/>
-<itunes:duration>1182</itunes:duration>
 <itunes:episodeType>full</itunes:episodeType>
 </item>
 </channel>

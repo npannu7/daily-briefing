@@ -1,17 +1,6 @@
 {
   "episodes": [
     {
-      "file": "ai_2026-11-19_morning_0600.mp3",
-      "date": "2026-11-19",
-      "edition": "morning",
-      "title": "Morning - 19 Nov: Can AI Agents Ask Better Questions Than Accountants?",
-      "published": "2026-11-19T06:00:10.552655+05:30",
-      "pubDate": "Thu, 19 Nov 2026 06:00:10 +0530",
-      "size": 9457292,
-      "duration": 1182,
-      "description": "Morning edition - Thursday, 19 November 2026\nWhat happens when AI systems step into roles built on human judgment—first in financial auditing, and then as the front door to the open web.\n\n00:35  Can AI Agents Ask Better Questions Than Accountants?\n11:07  How AI Search Answers Are Starving Independent Websites\n\nPlay \"When Auditors Meet Their Match\", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-19_morning_0600.mp3\nWritten by: Gemini 4 Hydrogen · Voices: Fish Audio (free) · Discussions: Hacker News (no Reddit data: Reddit, collected hourly (0 threads); no snapshot from the office PC yet)"
-    },
-    {
       "file": "ai_2026-11-19_evening_1500.mp3",
       "date": "2026-11-19",
       "edition": "evening",
@@ -153,6 +142,17 @@
       "size": 8559754,
       "duration": 1069,
       "description": "Evening edition - Wednesday, 25 November 2026\nExport controls on AI hardware and the economics of cheaper inference\n\n00:48  A U.S. export ban hits an Nvidia partner\n06:24  Jevons Paradox and the cost of AI tokens\n14:29  LLM agents work for their parent companies, not for you\n\nPlay \"The Ban That Missed the Chips\", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-25_evening_1500.mp3\nWritten by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Hacker News (no Reddit data: Reddit, collected hourly (0 threads); no snapshot from the office PC yet)"
+    },
+    {
+      "file": "ai_2026-11-26_morning_0600.mp3",
+      "date": "2026-11-26",
+      "edition": "morning",
+      "title": "Morning - 26 Nov: A Shorter Machine-Checked Proof From Anthropic",
+      "published": "2026-11-26T06:00:13.052199+05:30",
+      "pubDate": "Thu, 26 Nov 2026 06:00:13 +0530",
+      "size": 7928091,
+      "duration": 990,
+      "description": "Morning edition - Thursday, 26 November 2026\nChecking how AI systems verify math and how isolated models can leak signals through shared hardware\n\n00:32  A Shorter Machine-Checked Proof From Anthropic\n09:05  How Isolated Models Can Signal Each Other Through Shared Servers\n13:27  Anthropic breaks below $83 IPO price\n\nPlay \"The 76k-Line Proof No Human Reads\", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-26_morning_0600.mp3\nWritten by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Hacker News (no Reddit data: Reddit, collected hourly (0 threads); no snapshot from the office PC yet)"
     }
   ],
   "memory": [
@@ -2395,33 +2395,35 @@
         "ai-data-center-energy",
         "nvidia-export-ban"
       ]
+    },
+    {
+      "label": "Thursday 26 Nov morning",
+      "date": "2026-11-26",
+      "edition": "morning",
+      "published": "2026-11-26T06:00:13.052199+05:30",
+      "file": "ai_2026-11-26_morning_0600.mp3",
+      "writer": "nemotron-3-ultra-550b-a55b (free)",
+      "voices": "Fish Audio (free)",
+      "summary": "The episode examines how Anthropic produced a dramatically shorter machine‑checked proof and what that means for trust in formal verification. It then explains how isolated models can still leak information through shared hardware resources like caches and timing. Finally, it reviews the claim that Anthropic’s share price has fallen below its IPO level and whether the market reaction holds up.",
+      "threads": [
+        "Whether the shorter proof technique scales to larger theorems and gains wider adoption.",
+        "If side‑channel mitigations can close the shared‑hardware leakage demonstrated today.",
+        "Whether Anthropic’s stock remains under IPO price and what that signals for AI startup valuations."
+      ],
+      "segments": [
+        "A Shorter Machine-Checked Proof From Anthropic",
+        "How Isolated Models Can Signal Each Other Through Shared Servers",
+        "Anthropic breaks below $83 IPO price"
+      ],
+      "deep_topic": "",
+      "topics": [
+        "ai-in-mathematics",
+        "ai-ipo-market-selloff",
+        "ai-safety-and-alignment"
+      ]
     }
   ],
   "seen": [
-    {
-      "date": "2026-11-04",
-      "link": "https://www.reddit.com/r/LocalLLM/comments/1xmsj6n/the_inference_wall/"
-    },
-    {
-      "date": "2026-11-04",
-      "link": "https://www.reddit.com/r/EverythingScience/comments/1xmx482/underwater_data_centers_may_be_coming_to_the/"
-    },
-    {
-      "date": "2026-11-04",
-      "link": "https://www.scientificamerican.com/article/underwater-data-centers-may-be-coming-to-the-u-s-smack-in-the-middle-of-endangered-whale-habitat/"
-    },
-    {
-      "date": "2026-11-04",
-      "link": "https://www.reddit.com/r/science/comments/1xn93n8/researchers_have_solved_the_mystery_behind/"
-    },
-    {
-      "date": "2026-11-04",
-      "link": "https://www.nature.com/articles/s41560-026-02144-0"
-    },
-    {
-      "date": "2026-11-04",
-      "link": "https://www.reddit.com/r/singularity/comments/1xn5g1f/xiaomis_humanoid_robots_spotted_doing_their_first/"
-    },
     {
       "date": "2026-11-05",
       "link": "https://www.reddit.com/r/askscience/comments/1xnuolz/what_effect_will_modern_burial_practices_have_on/"
@@ -3317,6 +3319,30 @@
     {
       "date": "2026-11-25",
       "link": "https://philippdubach.com/posts/cheaper-ai-tokens-wont-pay-for-capex/"
+    },
+    {
+      "date": "2026-11-26",
+      "link": "https://news.ycombinator.com/item?id=50637686"
+    },
+    {
+      "date": "2026-11-26",
+      "link": "https://www.lesswrong.com/posts/7wzWuLP3HhyBLmKfo/models-can-communicate-via-inference-servers-despite-being"
+    },
+    {
+      "date": "2026-11-26",
+      "link": "https://news.ycombinator.com/item?id=50627836"
+    },
+    {
+      "date": "2026-11-26",
+      "link": "https://www.bloomberg.com/news/articles/2026-11-24/anthropic-breaks-below-83-ipo-price-in-premarket-trading"
+    },
+    {
+      "date": "2026-11-26",
+      "link": "https://news.ycombinator.com/item?id=50648050"
+    },
+    {
+      "date": "2026-11-26",
+      "link": "https://github.com/lsernau/grh-lean"
     }
   ],
   "feedback": [
@@ -3936,240 +3962,6 @@
   ],
   "or_spend": [],
   "free_log": [
-    "2026-11-24T00:34:10.891523+00:00",
-    "2026-11-24T00:34:14.028702+00:00",
-    "2026-11-24T00:34:17.248803+00:00",
-    "2026-11-24T00:34:20.421610+00:00",
-    "2026-11-24T00:34:23.631772+00:00",
-    "2026-11-24T00:34:26.811422+00:00",
-    "2026-11-24T00:34:30.040489+00:00",
-    "2026-11-24T00:34:33.219132+00:00",
-    "2026-11-24T00:34:36.417699+00:00",
-    "2026-11-24T00:35:07.776328+00:00",
-    "2026-11-24T00:39:34.531381+00:00",
-    "2026-11-24T00:40:23.538128+00:00",
-    "2026-11-24T00:40:23.643572+00:00",
-    "2026-11-24T00:40:23.741765+00:00",
-    "2026-11-24T00:41:20.106444+00:00",
-    "2026-11-24T00:43:00.014973+00:00",
-    "2026-11-24T00:45:33.381692+00:00",
-    "2026-11-24T00:47:24.533977+00:00",
-    "2026-11-24T00:48:18.007897+00:00",
-    "2026-11-24T00:49:10.769542+00:00",
-    "2026-11-24T00:51:45.510980+00:00",
-    "2026-11-24T00:53:04.462899+00:00",
-    "2026-11-24T00:54:35.120601+00:00",
-    "2026-11-24T00:55:09.758209+00:00",
-    "2026-11-24T00:56:48.106751+00:00",
-    "2026-11-24T00:57:26.573856+00:00",
-    "2026-11-24T00:57:26.778846+00:00",
-    "2026-11-24T00:57:29.993894+00:00",
-    "2026-11-24T00:57:33.234485+00:00",
-    "2026-11-24T00:58:41.181102+00:00",
-    "2026-11-24T00:59:21.827449+00:00",
-    "2026-11-24T01:00:03.360672+00:00",
-    "2026-11-24T01:00:05.206919+00:00",
-    "2026-11-24T01:00:10.805194+00:00",
-    "2026-11-24T01:00:13.262763+00:00",
-    "2026-11-24T01:00:15.984975+00:00",
-    "2026-11-24T01:00:21.098274+00:00",
-    "2026-11-24T01:00:23.436090+00:00",
-    "2026-11-24T01:00:28.853082+00:00",
-    "2026-11-24T01:00:29.232372+00:00",
-    "2026-11-24T01:00:35.075852+00:00",
-    "2026-11-24T01:00:36.313246+00:00",
-    "2026-11-24T01:00:42.204716+00:00",
-    "2026-11-24T01:00:44.058117+00:00",
-    "2026-11-24T01:00:55.519588+00:00",
-    "2026-11-24T01:00:56.006250+00:00",
-    "2026-11-24T01:01:00.874130+00:00",
-    "2026-11-24T01:01:03.867845+00:00",
-    "2026-11-24T01:01:07.880033+00:00",
-    "2026-11-24T01:01:08.898982+00:00",
-    "2026-11-24T01:01:09.252681+00:00",
-    "2026-11-24T01:01:14.017088+00:00",
-    "2026-11-24T01:01:22.739508+00:00",
-    "2026-11-24T01:01:25.410393+00:00",
-    "2026-11-24T01:01:30.746209+00:00",
-    "2026-11-24T01:01:38.562402+00:00",
-    "2026-11-24T01:01:40.890846+00:00",
-    "2026-11-24T01:01:41.026152+00:00",
-    "2026-11-24T01:01:42.525423+00:00",
-    "2026-11-24T01:01:53.232406+00:00",
-    "2026-11-24T01:01:55.140907+00:00",
-    "2026-11-24T01:01:56.242517+00:00",
-    "2026-11-24T01:02:02.665277+00:00",
-    "2026-11-24T01:02:03.283715+00:00",
-    "2026-11-24T01:02:07.163282+00:00",
-    "2026-11-24T01:02:08.876819+00:00",
-    "2026-11-24T01:02:09.100529+00:00",
-    "2026-11-24T01:02:12.056592+00:00",
-    "2026-11-24T01:02:21.819968+00:00",
-    "2026-11-24T01:02:24.306853+00:00",
-    "2026-11-24T01:02:30.415749+00:00",
-    "2026-11-24T01:02:32.273076+00:00",
-    "2026-11-24T01:02:34.104712+00:00",
-    "2026-11-24T01:02:36.195589+00:00",
-    "2026-11-24T01:02:41.485040+00:00",
-    "2026-11-24T01:02:45.679155+00:00",
-    "2026-11-24T01:02:47.031596+00:00",
-    "2026-11-24T01:02:47.771016+00:00",
-    "2026-11-24T01:02:52.252881+00:00",
-    "2026-11-24T01:02:58.640146+00:00",
-    "2026-11-24T01:03:02.097887+00:00",
-    "2026-11-24T01:03:03.180797+00:00",
-    "2026-11-24T01:03:07.915252+00:00",
-    "2026-11-24T01:03:08.303979+00:00",
-    "2026-11-24T01:03:08.456435+00:00",
-    "2026-11-24T01:03:18.607178+00:00",
-    "2026-11-24T01:03:20.278516+00:00",
-    "2026-11-24T01:03:22.435843+00:00",
-    "2026-11-24T01:03:22.570241+00:00",
-    "2026-11-24T01:03:27.863943+00:00",
-    "2026-11-24T01:03:36.413440+00:00",
-    "2026-11-24T01:03:38.364354+00:00",
-    "2026-11-24T01:03:38.691234+00:00",
-    "2026-11-24T01:03:44.324299+00:00",
-    "2026-11-24T01:03:44.628930+00:00",
-    "2026-11-24T01:03:49.488476+00:00",
-    "2026-11-24T01:03:53.208373+00:00",
-    "2026-11-24T01:03:55.318788+00:00",
-    "2026-11-24T01:03:57.557440+00:00",
-    "2026-11-24T01:04:00.645469+00:00",
-    "2026-11-24T01:04:04.508179+00:00",
-    "2026-11-24T01:04:09.723925+00:00",
-    "2026-11-24T01:04:09.925875+00:00",
-    "2026-11-24T01:04:14.327644+00:00",
-    "2026-11-24T01:04:21.430758+00:00",
-    "2026-11-24T01:04:24.969186+00:00",
-    "2026-11-24T01:04:25.930161+00:00",
-    "2026-11-24T01:04:34.842211+00:00",
-    "2026-11-24T01:04:35.932466+00:00",
-    "2026-11-24T01:04:37.035751+00:00",
-    "2026-11-24T01:04:41.534325+00:00",
-    "2026-11-24T01:04:43.202117+00:00",
-    "2026-11-24T01:05:56.114226+00:00",
-    "2026-11-24T01:06:23.433839+00:00",
-    "2026-11-24T09:34:10.635159+00:00",
-    "2026-11-24T09:34:13.976775+00:00",
-    "2026-11-24T09:34:16.700987+00:00",
-    "2026-11-24T09:34:20.210882+00:00",
-    "2026-11-24T09:34:23.027992+00:00",
-    "2026-11-24T09:34:26.389771+00:00",
-    "2026-11-24T09:34:29.459978+00:00",
-    "2026-11-24T09:35:31.487826+00:00",
-    "2026-11-24T09:36:46.070390+00:00",
-    "2026-11-24T09:37:36.885904+00:00",
-    "2026-11-24T09:39:15.519075+00:00",
-    "2026-11-24T09:39:57.294316+00:00",
-    "2026-11-24T09:41:18.985136+00:00",
-    "2026-11-24T09:43:07.843931+00:00",
-    "2026-11-24T09:44:06.343293+00:00",
-    "2026-11-24T09:44:06.546727+00:00",
-    "2026-11-24T09:44:06.732722+00:00",
-    "2026-11-24T09:45:28.485039+00:00",
-    "2026-11-24T09:49:00.671634+00:00",
-    "2026-11-24T09:50:11.043569+00:00",
-    "2026-11-24T09:51:41.121962+00:00",
-    "2026-11-24T09:52:25.764348+00:00",
-    "2026-11-24T09:54:02.414632+00:00",
-    "2026-11-24T09:54:59.822251+00:00",
-    "2026-11-24T09:55:56.549620+00:00",
-    "2026-11-24T09:57:30.652390+00:00",
-    "2026-11-24T09:58:21.467324+00:00",
-    "2026-11-24T09:58:24.503575+00:00",
-    "2026-11-24T09:58:27.860597+00:00",
-    "2026-11-24T09:59:48.911391+00:00",
-    "2026-11-24T10:01:22.942049+00:00",
-    "2026-11-24T10:03:26.365859+00:00",
-    "2026-11-24T10:04:21.088521+00:00",
-    "2026-11-24T10:05:31.998390+00:00",
-    "2026-11-24T10:08:17.876340+00:00",
-    "2026-11-24T10:08:44.717963+00:00",
-    "2026-11-24T10:08:46.293871+00:00",
-    "2026-11-24T10:08:49.903624+00:00",
-    "2026-11-24T10:08:55.831419+00:00",
-    "2026-11-24T10:08:59.126374+00:00",
-    "2026-11-24T10:09:01.105009+00:00",
-    "2026-11-24T10:09:05.972282+00:00",
-    "2026-11-24T10:09:07.969050+00:00",
-    "2026-11-24T10:09:12.993557+00:00",
-    "2026-11-24T10:09:13.291063+00:00",
-    "2026-11-24T10:09:21.599220+00:00",
-    "2026-11-24T10:09:24.034095+00:00",
-    "2026-11-24T10:09:26.801719+00:00",
-    "2026-11-24T10:09:30.739742+00:00",
-    "2026-11-24T10:09:32.249049+00:00",
-    "2026-11-24T10:09:36.838594+00:00",
-    "2026-11-24T10:09:41.678983+00:00",
-    "2026-11-24T10:09:41.988441+00:00",
-    "2026-11-24T10:09:47.617535+00:00",
-    "2026-11-24T10:09:48.501335+00:00",
-    "2026-11-24T10:09:48.762696+00:00",
-    "2026-11-24T10:09:55.010696+00:00",
-    "2026-11-24T10:10:04.290451+00:00",
-    "2026-11-24T10:10:07.810815+00:00",
-    "2026-11-24T10:10:15.510450+00:00",
-    "2026-11-24T10:10:16.974643+00:00",
-    "2026-11-24T10:10:18.495191+00:00",
-    "2026-11-24T10:10:28.731671+00:00",
-    "2026-11-24T10:10:29.513509+00:00",
-    "2026-11-24T10:10:30.593981+00:00",
-    "2026-11-24T10:10:33.954511+00:00",
-    "2026-11-24T10:10:34.735063+00:00",
-    "2026-11-24T10:10:41.160141+00:00",
-    "2026-11-24T10:10:44.407291+00:00",
-    "2026-11-24T10:10:45.765307+00:00",
-    "2026-11-24T10:10:48.785042+00:00",
-    "2026-11-24T10:10:54.056166+00:00",
-    "2026-11-24T10:10:54.538957+00:00",
-    "2026-11-24T10:11:00.101626+00:00",
-    "2026-11-24T10:11:01.489237+00:00",
-    "2026-11-24T10:11:09.849492+00:00",
-    "2026-11-24T10:11:10.220794+00:00",
-    "2026-11-24T10:11:14.609691+00:00",
-    "2026-11-24T10:11:18.335192+00:00",
-    "2026-11-24T10:11:22.135675+00:00",
-    "2026-11-24T10:11:23.364737+00:00",
-    "2026-11-24T10:11:26.051646+00:00",
-    "2026-11-24T10:11:29.470891+00:00",
-    "2026-11-24T10:11:34.303806+00:00",
-    "2026-11-24T10:11:35.990824+00:00",
-    "2026-11-24T10:11:42.904483+00:00",
-    "2026-11-24T10:11:45.023675+00:00",
-    "2026-11-24T10:11:48.316086+00:00",
-    "2026-11-24T10:11:51.374312+00:00",
-    "2026-11-24T10:11:53.543268+00:00",
-    "2026-11-24T10:11:56.516063+00:00",
-    "2026-11-24T10:12:02.688857+00:00",
-    "2026-11-24T10:12:07.327913+00:00",
-    "2026-11-24T10:12:10.651619+00:00",
-    "2026-11-24T10:12:11.165514+00:00",
-    "2026-11-24T10:12:13.590262+00:00",
-    "2026-11-24T10:12:15.235007+00:00",
-    "2026-11-24T10:12:23.197360+00:00",
-    "2026-11-24T10:12:25.709317+00:00",
-    "2026-11-24T10:12:28.055711+00:00",
-    "2026-11-24T10:12:32.918705+00:00",
-    "2026-11-24T10:12:37.436226+00:00",
-    "2026-11-24T10:12:38.824634+00:00",
-    "2026-11-24T10:12:44.749870+00:00",
-    "2026-11-24T10:12:45.834132+00:00",
-    "2026-11-24T10:12:51.189212+00:00",
-    "2026-11-24T10:12:52.623820+00:00",
-    "2026-11-24T10:12:54.768582+00:00",
-    "2026-11-24T10:12:57.099532+00:00",
-    "2026-11-24T10:13:05.272281+00:00",
-    "2026-11-24T10:13:15.085432+00:00",
-    "2026-11-24T10:13:17.405500+00:00",
-    "2026-11-24T10:13:19.915004+00:00",
-    "2026-11-24T10:13:22.425391+00:00",
-    "2026-11-24T10:13:23.907558+00:00",
-    "2026-11-24T10:13:28.856101+00:00",
-    "2026-11-24T10:13:30.668049+00:00",
-    "2026-11-24T10:13:32.578541+00:00",
-    "2026-11-24T10:14:42.388371+00:00",
-    "2026-11-24T10:15:40.855974+00:00",
     "2026-11-25T00:34:15.971853+00:00",
     "2026-11-25T00:34:19.080986+00:00",
     "2026-11-25T00:34:22.280079+00:00",
@@ -4488,22 +4280,202 @@
     "2026-11-25T10:20:24.059104+00:00",
     "2026-11-25T10:20:24.296877+00:00",
     "2026-11-25T10:21:32.342792+00:00",
-    "2026-11-25T10:23:06.164009+00:00"
+    "2026-11-25T10:23:06.164009+00:00",
+    "2026-11-26T00:34:13.397505+00:00",
+    "2026-11-26T00:34:16.524806+00:00",
+    "2026-11-26T00:34:19.803212+00:00",
+    "2026-11-26T00:34:22.994067+00:00",
+    "2026-11-26T00:34:26.114249+00:00",
+    "2026-11-26T00:34:29.357131+00:00",
+    "2026-11-26T00:34:32.512739+00:00",
+    "2026-11-26T00:34:35.750395+00:00",
+    "2026-11-26T00:34:38.917838+00:00",
+    "2026-11-26T00:34:42.154323+00:00",
+    "2026-11-26T00:34:45.366851+00:00",
+    "2026-11-26T00:34:48.521926+00:00",
+    "2026-11-26T00:34:51.768196+00:00",
+    "2026-11-26T00:34:54.924156+00:00",
+    "2026-11-26T00:34:58.113073+00:00",
+    "2026-11-26T00:35:01.359402+00:00",
+    "2026-11-26T00:36:11.776848+00:00",
+    "2026-11-26T00:39:07.464715+00:00",
+    "2026-11-26T00:40:44.602151+00:00",
+    "2026-11-26T00:41:34.726943+00:00",
+    "2026-11-26T00:41:34.851471+00:00",
+    "2026-11-26T00:41:34.963721+00:00",
+    "2026-11-26T00:42:53.936642+00:00",
+    "2026-11-26T00:43:37.675423+00:00",
+    "2026-11-26T00:44:38.972698+00:00",
+    "2026-11-26T00:46:20.132781+00:00",
+    "2026-11-26T00:48:01.623454+00:00",
+    "2026-11-26T00:48:49.956920+00:00",
+    "2026-11-26T00:50:24.722788+00:00",
+    "2026-11-26T00:54:21.853368+00:00",
+    "2026-11-26T00:55:12.122858+00:00",
+    "2026-11-26T00:56:34.738399+00:00",
+    "2026-11-26T00:58:45.981838+00:00",
+    "2026-11-26T00:59:27.513787+00:00",
+    "2026-11-26T01:01:20.659806+00:00",
+    "2026-11-26T01:02:14.455765+00:00",
+    "2026-11-26T01:03:37.986539+00:00",
+    "2026-11-26T01:06:55.530295+00:00",
+    "2026-11-26T01:08:08.876735+00:00",
+    "2026-11-26T01:09:40.460520+00:00",
+    "2026-11-26T01:10:18.503268+00:00",
+    "2026-11-26T01:10:18.700837+00:00",
+    "2026-11-26T01:10:21.946126+00:00",
+    "2026-11-26T01:10:25.104233+00:00",
+    "2026-11-26T01:10:28.304671+00:00",
+    "2026-11-26T01:13:15.410174+00:00",
+    "2026-11-26T01:14:28.685543+00:00",
+    "2026-11-26T01:15:46.388068+00:00",
+    "2026-11-26T01:16:58.791556+00:00",
+    "2026-11-26T01:17:02.490066+00:00",
+    "2026-11-26T01:17:05.006302+00:00",
+    "2026-11-26T01:17:08.358132+00:00",
+    "2026-11-26T01:17:11.269878+00:00",
+    "2026-11-26T01:17:16.655743+00:00",
+    "2026-11-26T01:17:18.812994+00:00",
+    "2026-11-26T01:17:19.553596+00:00",
+    "2026-11-26T01:17:25.345193+00:00",
+    "2026-11-26T01:17:25.955302+00:00",
+    "2026-11-26T01:17:29.595457+00:00",
+    "2026-11-26T01:17:32.599873+00:00",
+    "2026-11-26T01:17:36.324927+00:00",
+    "2026-11-26T01:17:38.274206+00:00",
+    "2026-11-26T01:17:43.885118+00:00",
+    "2026-11-26T01:17:44.752966+00:00",
+    "2026-11-26T01:17:50.144307+00:00",
+    "2026-11-26T01:17:50.792854+00:00",
+    "2026-11-26T01:17:56.046516+00:00",
+    "2026-11-26T01:17:58.469615+00:00",
+    "2026-11-26T01:18:03.998077+00:00",
+    "2026-11-26T01:18:04.623455+00:00",
+    "2026-11-26T01:18:07.884576+00:00",
+    "2026-11-26T01:18:10.215296+00:00",
+    "2026-11-26T01:18:14.163098+00:00",
+    "2026-11-26T01:18:18.488466+00:00",
+    "2026-11-26T01:18:22.915471+00:00",
+    "2026-11-26T01:18:23.268909+00:00",
+    "2026-11-26T01:18:28.968450+00:00",
+    "2026-11-26T01:18:33.118107+00:00",
+    "2026-11-26T01:18:36.608242+00:00",
+    "2026-11-26T01:18:37.980152+00:00",
+    "2026-11-26T01:18:40.977430+00:00",
+    "2026-11-26T01:18:44.068188+00:00",
+    "2026-11-26T01:18:47.076113+00:00",
+    "2026-11-26T01:18:52.975434+00:00",
+    "2026-11-26T01:18:53.961550+00:00",
+    "2026-11-26T01:18:57.683690+00:00",
+    "2026-11-26T01:19:00.691935+00:00",
+    "2026-11-26T01:19:04.170485+00:00",
+    "2026-11-26T01:19:04.982404+00:00",
+    "2026-11-26T01:19:10.228768+00:00",
+    "2026-11-26T01:19:14.350190+00:00",
+    "2026-11-26T01:19:17.097714+00:00",
+    "2026-11-26T01:19:20.172210+00:00",
+    "2026-11-26T01:19:20.546449+00:00",
+    "2026-11-26T01:19:26.522842+00:00",
+    "2026-11-26T01:19:30.505928+00:00",
+    "2026-11-26T01:19:35.481355+00:00",
+    "2026-11-26T01:19:36.420403+00:00",
+    "2026-11-26T01:19:42.880799+00:00",
+    "2026-11-26T01:19:43.013134+00:00",
+    "2026-11-26T01:19:48.086415+00:00",
+    "2026-11-26T01:19:50.879205+00:00",
+    "2026-11-26T01:19:55.597394+00:00",
+    "2026-11-26T01:19:57.421199+00:00",
+    "2026-11-26T01:20:00.114136+00:00",
+    "2026-11-26T01:20:03.390412+00:00",
+    "2026-11-26T01:20:06.603827+00:00",
+    "2026-11-26T01:20:07.926018+00:00",
+    "2026-11-26T01:20:13.887858+00:00",
+    "2026-11-26T01:20:15.797043+00:00",
+    "2026-11-26T01:20:19.997519+00:00",
+    "2026-11-26T01:20:22.231347+00:00",
+    "2026-11-26T01:20:26.322044+00:00",
+    "2026-11-26T01:20:28.516144+00:00",
+    "2026-11-26T01:20:32.146293+00:00",
+    "2026-11-26T01:20:38.073835+00:00",
+    "2026-11-26T01:20:39.291798+00:00",
+    "2026-11-26T01:20:42.234646+00:00",
+    "2026-11-26T01:20:43.965355+00:00",
+    "2026-11-26T01:20:49.094216+00:00",
+    "2026-11-26T01:20:53.402027+00:00",
+    "2026-11-26T01:20:55.221218+00:00",
+    "2026-11-26T01:20:56.118001+00:00",
+    "2026-11-26T01:21:01.666066+00:00",
+    "2026-11-26T01:21:04.056992+00:00",
+    "2026-11-26T01:21:06.227710+00:00",
+    "2026-11-26T01:21:10.709943+00:00",
+    "2026-11-26T01:21:14.020124+00:00",
+    "2026-11-26T01:21:17.220743+00:00",
+    "2026-11-26T01:21:21.525931+00:00",
+    "2026-11-26T01:21:23.217598+00:00",
+    "2026-11-26T01:21:27.530822+00:00",
+    "2026-11-26T01:21:31.779165+00:00",
+    "2026-11-26T01:21:34.804918+00:00",
+    "2026-11-26T01:21:36.536181+00:00",
+    "2026-11-26T01:21:39.501340+00:00",
+    "2026-11-26T01:21:41.646607+00:00",
+    "2026-11-26T01:21:47.036860+00:00",
+    "2026-11-26T01:21:55.298793+00:00",
+    "2026-11-26T01:21:55.564710+00:00",
+    "2026-11-26T01:22:03.870038+00:00",
+    "2026-11-26T01:22:05.547637+00:00",
+    "2026-11-26T01:22:05.989512+00:00",
+    "2026-11-26T01:22:08.658851+00:00",
+    "2026-11-26T01:22:15.613057+00:00",
+    "2026-11-26T01:22:16.212170+00:00",
+    "2026-11-26T01:22:20.217964+00:00",
+    "2026-11-26T01:22:21.858717+00:00",
+    "2026-11-26T01:22:27.502034+00:00",
+    "2026-11-26T01:22:29.067163+00:00",
+    "2026-11-26T01:22:32.039715+00:00",
+    "2026-11-26T01:22:34.377690+00:00",
+    "2026-11-26T01:22:39.614578+00:00",
+    "2026-11-26T01:22:42.488475+00:00",
+    "2026-11-26T01:22:45.304460+00:00",
+    "2026-11-26T01:22:49.116105+00:00",
+    "2026-11-26T01:22:51.065137+00:00",
+    "2026-11-26T01:22:56.110518+00:00",
+    "2026-11-26T01:22:56.157002+00:00",
+    "2026-11-26T01:23:06.347407+00:00",
+    "2026-11-26T01:23:06.786519+00:00",
+    "2026-11-26T01:23:06.811837+00:00",
+    "2026-11-26T01:23:15.582251+00:00",
+    "2026-11-26T01:23:16.354005+00:00",
+    "2026-11-26T01:23:21.244831+00:00",
+    "2026-11-26T01:23:23.335876+00:00",
+    "2026-11-26T01:23:27.603875+00:00",
+    "2026-11-26T01:23:28.833636+00:00",
+    "2026-11-26T01:23:31.598368+00:00",
+    "2026-11-26T01:23:34.295739+00:00",
+    "2026-11-26T01:23:38.507228+00:00",
+    "2026-11-26T01:23:41.470011+00:00",
+    "2026-11-26T01:23:43.182311+00:00",
+    "2026-11-26T01:23:47.394067+00:00",
+    "2026-11-26T01:23:51.133575+00:00",
+    "2026-11-26T01:23:53.972776+00:00",
+    "2026-11-26T01:23:56.428222+00:00",
+    "2026-11-26T01:23:58.441119+00:00",
+    "2026-11-26T01:24:02.457957+00:00",
+    "2026-11-26T01:24:03.969458+00:00",
+    "2026-11-26T01:24:59.279501+00:00",
+    "2026-11-26T01:25:59.334236+00:00"
   ],
   "free_day_out": "",
   "gemini_log": [
     "2026-11-24T16:50:48.746866-08:00",
     "2026-11-24T17:25:22.759225-08:00",
-    "2026-11-25T02:14:21.720867-08:00"
+    "2026-11-25T02:14:21.720867-08:00",
+    "2026-11-25T16:36:13.720498-08:00",
+    "2026-11-25T16:36:26.220735-08:00",
+    "2026-11-25T17:15:46.389727-08:00"
   ],
   "gemini_day_out": "",
   "pace_adjust": 0.0,
   "lesson_log": [
-    {
-      "date": "2026-11-10",
-      "title": "The Boiling Water Test That Misses the Vinegar Syndrome",
-      "template": ""
-    },
     {
       "date": "2026-11-11",
       "title": "Why the Same Model Gives Two Answers",
@@ -4817,6 +4789,20 @@
       ],
       "theme": "exchange",
       "date": "2026-11-25"
+    },
+    {
+      "title": "The 76k-Line Proof No Human Reads",
+      "template": "chain",
+      "formats": [
+        "duel",
+        "lab",
+        "match",
+        "lab",
+        "flaw",
+        "sequence"
+      ],
+      "theme": "audit",
+      "date": "2026-11-26"
     }
   ],
   "model_health": {},
@@ -5428,7 +5414,8 @@
         "2026-11-20",
         "2026-11-21",
         "2026-11-24",
-        "2026-11-25"
+        "2026-11-25",
+        "2026-11-26"
       ],
       "subs": [
         "ArtificialInteligence",
@@ -5444,15 +5431,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 45,
+      "mentions": 46,
       "refs": [
-        {
-          "date": "2026-11-18",
-          "title": "Fed Chair Kevin Warsh says AI could supercharge scientific innovation and sustain economic growth above historical averages, as the Federal Reserve begins modeling scenarios of AI-driven prosperity, mass job displacement, and an investment bust",
-          "thread": "https://www.reddit.com/r/singularity/comments/1xxz7s7/fed_chair_kevin_warsh_says_ai_could_supercharge/",
-          "link": "https://www.federalreserve.gov/newsevents/speech/warsh20261116a.htm",
-          "comment": "Hopefully all that money goes to billionaires."
-        },
         {
           "date": "2026-11-19",
           "title": "AI agents ask better questions than KPMG accountants in audit trial",
@@ -5543,10 +5523,17 @@
           "thread": "https://news.ycombinator.com/item?id=50610830",
           "link": "https://www.theverge.com/ai-artificial-intelligence/1039745/dario-amodei-video-games-ai-joblessness",
           "comment": "I think I preferred the UBI suggestion! That sure got dropped quickly."
+        },
+        {
+          "date": "2026-11-26",
+          "title": "Working with AI",
+          "thread": "https://news.ycombinator.com/item?id=50634734",
+          "link": "https://www.anthropic.com/research/working-with-ai",
+          "comment": "are we going to pretend that a lot of layoffs over the last 2 years weren't due to companies saying AI has allowed them to cut headcount? 1. https://www.inc.com/brian-contreras/cloudflare-layoffs-20-pe... 2. https://www.fastcompany.com/91500048/in-a-626-word-x-post-ja... 3. https://www.coinbase.com/"
         }
       ],
       "deep_dive": "",
-      "last_seen": "2026-11-25",
+      "last_seen": "2026-11-26",
       "subject": "ai"
     },
     "ai-in-mathematics": {
@@ -5571,7 +5558,8 @@
         "2026-11-10",
         "2026-11-17",
         "2026-11-23",
-        "2026-11-25"
+        "2026-11-25",
+        "2026-11-26"
       ],
       "subs": [
         "ArtificialInteligence",
@@ -5585,29 +5573,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 46,
+      "mentions": 49,
       "refs": [
-        {
-          "date": "2026-10-28",
-          "title": "Independent partial Yang-Mills results by postdocs at MIT Harvard/Oxford",
-          "thread": "https://www.reddit.com/r/Physics/comments/1xh0o2y/independent_partial_yangmills_results_by_postdocs/",
-          "link": "",
-          "comment": "Good natured open source doesn't really work very well when there is a megacorp siphoning all good will into a hypercapitalist death machine"
-        },
-        {
-          "date": "2026-10-28",
-          "title": "Internal Claude research model also independently refuted the Exponential Time Hypothesis on October 16, with 14M output tokens and no human input.",
-          "thread": "https://www.reddit.com/r/singularity/comments/1xgmlas/internal_claude_research_model_also_independently/",
-          "link": "",
-          "comment": "Feels like this was posted just to say 'we solved it too, look what we can do' after OpenAI announced theirs 😀"
-        },
-        {
-          "date": "2026-10-28",
-          "title": "Dueling proofs from OpenAI and Anthropic astound scientists",
-          "thread": "https://www.reddit.com/r/EverythingScience/comments/1xgxqhi/dueling_proofs_from_openai_and_anthropic_astound/",
-          "link": "https://www.scientificamerican.com/article/dueling-proofs-from-openai-and-anthropic-astound-scientists/",
-          "comment": "Some of this stuff will break our basic assumptions, though I wonder what will change practically. The implications of this kind of math, what are they ?"
-        },
         {
           "date": "2026-10-28",
           "title": "Two physicists asked AI to choose a problem on its own, solve it and write a paper that could be published in a prestigious journal. In two hours, AI produced a paper with a novel, significant result.",
@@ -5684,10 +5651,31 @@
           "thread": "https://news.ycombinator.com/item?id=50632756",
           "link": "https://github.com/openai/math/tree/main/preprints/VP-and-VNP-are-different-November-23-2026",
           "comment": "Source for the exact date (6 November): https://github.com/openai/math/blob/main/history.md"
+        },
+        {
+          "date": "2026-11-26",
+          "title": "Much shorter version of GRH Lean verification from Anthropic",
+          "thread": "https://news.ycombinator.com/item?id=50648050",
+          "link": "https://github.com/lsernau/grh-lean",
+          "comment": "> This repository is a shorter version, produced in collaboration with my colleagues at Anthropic, and Claude. If this were “from Anthropic” surely it would be hosted on an Anthropic account?"
+        },
+        {
+          "date": "2026-11-26",
+          "title": "Top open problems in mathematics ranked by LLM-assessed importance",
+          "thread": "https://news.ycombinator.com/item?id=50637871",
+          "link": "https://www.proofatlas.ai/open-problems/",
+          "comment": "All of them will fall in the coming years. What an exciting time to be alive!"
+        },
+        {
+          "date": "2026-11-26",
+          "title": "OpenAI reveals they solved VP ≠ VNP before Anthropic",
+          "thread": "https://news.ycombinator.com/item?id=50632756",
+          "link": "https://github.com/openai/math/tree/main/preprints/VP-and-VNP-are-different-November-23-2026",
+          "comment": "Source for the exact date (6 November): https://github.com/openai/math/blob/main/history.md"
         }
       ],
       "deep_dive": "",
-      "last_seen": "2026-11-25",
+      "last_seen": "2026-11-26",
       "subject": "ai"
     },
     "ai-coding-agents": {
@@ -6320,7 +6308,8 @@
         "2026-11-17",
         "2026-11-18",
         "2026-11-19",
-        "2026-11-25"
+        "2026-11-25",
+        "2026-11-26"
       ],
       "subs": [
         "AI_Agents",
@@ -6339,15 +6328,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 38,
+      "mentions": 39,
       "refs": [
-        {
-          "date": "2026-10-30",
-          "title": "Day 25/ We are doubling all usage limits for all Pro 100/200/500 tiers and Business Premium, effective today.",
-          "thread": "https://www.reddit.com/r/codex/comments/1xipj7s/day_25_we_are_doubling_all_usage_limits_for_all/",
-          "link": "",
-          "comment": "Below is a GPT-generated summary of the conversation below after reaching 320 comments (323 currently observed) . The consensus: good news for Pro users, hilariously bad optics for OpenAI. The announced doubling is real in practice for the $100 and $500 tiers, while Pro 200 is mostly getting its thr"
-        },
         {
           "date": "2026-11-04",
           "title": "British fintech Revolut slashes AI coding costs 10x by cutting out Claude and going self-hosted",
@@ -6438,10 +6420,17 @@
           "thread": "https://news.ycombinator.com/item?id=50638070",
           "link": "https://noahbuilt.it/writing/qwen-on-5600-lambdas",
           "comment": "I love it when folks experiment and try random approaches like this to see if it would even work."
+        },
+        {
+          "date": "2026-11-26",
+          "title": "Serving Qwen via AWS Lambdas for fun and 80x negative profit",
+          "thread": "https://news.ycombinator.com/item?id=50638070",
+          "link": "https://noahbuilt.it/writing/qwen-on-5600-lambdas",
+          "comment": "I love it when folks experiment and try random approaches like this to see if it would even work."
         }
       ],
       "deep_dive": "",
-      "last_seen": "2026-11-25",
+      "last_seen": "2026-11-26",
       "subject": "ai"
     },
     "glp1-drugs-beyond-weight-loss": {
@@ -6576,7 +6565,8 @@
         "2026-11-22",
         "2026-11-23",
         "2026-11-24",
-        "2026-11-25"
+        "2026-11-25",
+        "2026-11-26"
       ],
       "subs": [
         "ArtificialInteligence",
@@ -6595,15 +6585,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 43,
+      "mentions": 44,
       "refs": [
-        {
-          "date": "2026-11-20",
-          "title": "Should governments slow frontier AI? Jacob Coxon and Robin Hanson debate [video]",
-          "thread": "https://news.ycombinator.com/item?id=50564366",
-          "link": "https://www.youtube.com/watch?v=lwfewYL7X0o",
-          "comment": "Could they if they wanted to?"
-        },
         {
           "date": "2026-11-20",
           "title": "Should governments slow frontier AI? Jacob Coxon and Robin Hanson debate [video]",
@@ -6694,11 +6677,18 @@
           "thread": "https://news.ycombinator.com/item?id=50631210",
           "link": "https://novaramedia.com/2026/11/24/anthropic-staff-openly-talk-about-taking-over-the-world-claims-top-mit-physicist/",
           "comment": "I think I can speak with confidence that Anthropic is not going to take over the world or a nation. That would require more developed robotics capability than exists, and it would require a company that is much more connected to fabrication and physical supply chains. They don't even own their own d"
+        },
+        {
+          "date": "2026-11-26",
+          "title": "Models Can Communicate via Inference Servers Despite Being Sandboxed",
+          "thread": "https://news.ycombinator.com/item?id=50637686",
+          "link": "https://www.lesswrong.com/posts/7wzWuLP3HhyBLmKfo/models-can-communicate-via-inference-servers-despite-being",
+          "comment": "Is it really a good idea to teach them how to break out of their own sandboxes?"
         }
       ],
       "deep_dive": "2026-11-08",
       "subject": "science",
-      "last_seen": "2026-11-25"
+      "last_seen": "2026-11-26"
     },
     "open-weight-models": {
       "name": "Open-Weight Models",
@@ -6856,7 +6846,8 @@
         "2026-11-07",
         "2026-11-12",
         "2026-11-19",
-        "2026-11-20"
+        "2026-11-20",
+        "2026-11-26"
       ],
       "subs": [
         "ClaudeAI",
@@ -6869,15 +6860,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 24,
+      "mentions": 25,
       "refs": [
-        {
-          "date": "2026-10-27",
-          "title": "Anthropic Reveals It Will Pay SpaceX Up to $120.5B for AI Compute",
-          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xg1q97/anthropic_reveals_it_will_pay_spacex_up_to_1205b/",
-          "link": "https://teslanorth.com/2026/10/26/anthropic-s1-spacex-120b-compute/",
-          "comment": "TL;DR of the discussion generated automatically after 100 comments. This thread is a dumpster fire of disapproval. The consensus is that this is a terrible, hypocritical move by Anthropic. The main source of the outrage is the association with Elon Musk. Users are absolutely livid that the \"ethical "
-        },
         {
           "date": "2026-10-29",
           "title": "Anthropic IPO warns its AI could blackmail people, become sentient, end humanity. Seven potential AI nightmares pulled from Anthropic’s 93-page “Risk Factor” tome.",
@@ -6968,11 +6952,18 @@
           "thread": "https://news.ycombinator.com/item?id=50547901",
           "link": "https://techcrunch.com/2026/11/17/amazon-and-google-will-together-own-nearly-30-of-anthropic-after-its-ipo/",
           "comment": ""
+        },
+        {
+          "date": "2026-11-26",
+          "title": "Anthropic CEO Dario Amodei and Sister Daniela Sold $561M in Stock During IPO",
+          "thread": "https://news.ycombinator.com/item?id=50635706",
+          "link": "https://www.forbes.com/sites/siladityaray/2026/11/24/anthropic-ceo-dario-amodei-sold-280-million-in-shares-as-part-of-record-ipo/",
+          "comment": "1.4% of his personal shares is not really that alarming is it?"
         }
       ],
       "deep_dive": "",
       "subject": "ai",
-      "last_seen": "2026-11-20"
+      "last_seen": "2026-11-26"
     },
     "cancer-vaccines-and-immunotherapy": {
       "name": "Cancer Vaccines and Immunotherapy Breakthroughs",
@@ -8063,13 +8054,14 @@
         "2026-11-17",
         "2026-11-19",
         "2026-11-20",
-        "2026-11-25"
+        "2026-11-25",
+        "2026-11-26"
       ],
       "subs": [
         "HackerNews",
         "antiai"
       ],
-      "mentions": 5,
+      "mentions": 6,
       "refs": [
         {
           "date": "2026-11-17",
@@ -8105,11 +8097,18 @@
           "thread": "https://news.ycombinator.com/item?id=50630309",
           "link": "https://variety.com/2026/music/news/tidal-bans-ai-generated-music-1236956924/",
           "comment": "They need to update their AI policy: https://tidal.com/ai-policy > Tidal will accept AI-generated music Discussion on that (308 points, 6 months ago, 346 comments) https://news.ycombinator.com/item?id=48718840"
+        },
+        {
+          "date": "2026-11-26",
+          "title": "Anthropic Staff Openly Talk About ‘Taking Over the World’, Claims Max Tegmark",
+          "thread": "https://news.ycombinator.com/item?id=50631210",
+          "link": "https://novaramedia.com/2026/11/24/anthropic-staff-openly-talk-about-taking-over-the-world-claims-top-mit-physicist/",
+          "comment": "I think I can speak with confidence that Anthropic is not going to take over the world or a nation. That would require more developed robotics capability than exists, and it would require a company that is much more connected to fabrication and physical supply chains. They don't even own their own d"
         }
       ],
       "deep_dive": "",
       "subject": "ai",
-      "last_seen": "2026-11-25"
+      "last_seen": "2026-11-26"
     },
     "ai-grant-writing": {
       "name": "AI-Assisted Research Grant Writing",
@@ -8292,12 +8291,13 @@
       "days": [
         "2026-11-21",
         "2026-11-22",
-        "2026-11-25"
+        "2026-11-25",
+        "2026-11-26"
       ],
       "subs": [
         "HackerNews"
       ],
-      "mentions": 10,
+      "mentions": 12,
       "refs": [
         {
           "date": "2026-11-21",
@@ -8368,11 +8368,25 @@
           "thread": "https://news.ycombinator.com/item?id=50628932",
           "link": "https://www.msn.com/en-us/money/top-stocks/anthropic-stock-sinks-below-ipo-price-why-that-s-happened-so-fast/ar-AA2i7rqa",
           "comment": "Some more discussion: https://news.ycombinator.com/item?id=50627836"
+        },
+        {
+          "date": "2026-11-26",
+          "title": "Anthropic breaks below $83 IPO price",
+          "thread": "https://news.ycombinator.com/item?id=50627836",
+          "link": "https://www.bloomberg.com/news/articles/2026-11-24/anthropic-breaks-below-83-ipo-price-in-premarket-trading",
+          "comment": "They have no future business model. Open-weight models and specialized distilations can be hosted in anyones datacenter where fierce competition will bring down prices. The current problem is the hardware scarcity and that the few big frontier providers snatch all the hardware at inflated prices whi"
+        },
+        {
+          "date": "2026-11-26",
+          "title": "Anthropic is below its IPO price",
+          "thread": "https://news.ycombinator.com/item?id=50628932",
+          "link": "https://www.msn.com/en-us/money/top-stocks/anthropic-stock-sinks-below-ipo-price-why-that-s-happened-so-fast/ar-AA2i7rqa",
+          "comment": "Some more discussion: https://news.ycombinator.com/item?id=50627836"
         }
       ],
       "deep_dive": "",
       "subject": "ai",
-      "last_seen": "2026-11-25"
+      "last_seen": "2026-11-26"
     },
     "eu-ai-agent-law": {
       "name": "EU AI Agent Law (MCP)",
@@ -8590,12 +8604,13 @@
       "name": "AI Model Distillation Disputes",
       "first_seen": "2026-11-25",
       "days": [
-        "2026-11-25"
+        "2026-11-25",
+        "2026-11-26"
       ],
       "subs": [
         "HackerNews"
       ],
-      "mentions": 2,
+      "mentions": 3,
       "refs": [
         {
           "date": "2026-11-25",
@@ -8610,11 +8625,18 @@
           "thread": "https://news.ycombinator.com/item?id=50630809",
           "link": "",
           "comment": "All I can think of, off the bat, is to show them your testing harness, especially if it's in git, then you have receipts for how long it's been alive."
+        },
+        {
+          "date": "2026-11-26",
+          "title": "Ask HN: Anthropic is accusing my company of distilling. How can I prove I'm not?",
+          "thread": "https://news.ycombinator.com/item?id=50630809",
+          "link": "",
+          "comment": "All I can think of, off the bat, is to show them your testing harness, especially if it's in git, then you have receipts for how long it's been alive."
         }
       ],
       "deep_dive": "",
       "subject": "ai",
-      "last_seen": "2026-11-25"
+      "last_seen": "2026-11-26"
     }
   }
 }

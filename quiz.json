@@ -12,6 +12,362 @@
  },
  "episodes": [
   {
+   "file": "ai_2026-11-26_morning_0600.mp3",
+   "title": "Morning - 26 Nov: A Shorter Machine-Checked Proof From Anthropic",
+   "label": "Thursday 26 Nov morning",
+   "date": "2026-11-26",
+   "edition": "morning",
+   "published": "2026-11-26T06:00:13.052199+05:30",
+   "duration": 990,
+   "theme": "Checking how AI systems verify math and how isolated models can leak signals through shared hardware",
+   "writer": "nemotron-3-ultra-550b-a55b (free)",
+   "voices": "Fish Audio (free)",
+   "deep_dive": false,
+   "segments": [
+    {
+     "title": "A Shorter Machine-Checked Proof From Anthropic",
+     "category": "thread"
+    },
+    {
+     "title": "How Isolated Models Can Signal Each Other Through Shared Servers",
+     "category": "concept"
+    },
+    {
+     "title": "Anthropic breaks below $83 IPO price",
+     "category": "thread"
+    }
+   ],
+   "play": {
+    "v": 2,
+    "theme": "audit",
+    "title": "The 76k-Line Proof No Human Reads",
+    "brief": "Audit two GRH proof versions: one readable, one golfed. Probe claims on size, verification, and what compression hides.",
+    "segments": [
+     {
+      "title": "A Shorter Machine-Checked Proof From Anthropic",
+      "bet": {
+       "claim": "The 76k-line compact proof contains new mathematical insights absent from the 300k-line readable version.",
+       "truth": false,
+       "why": "Repository states same five theorems, same dependency graph; compact version uses aggressive automation golfing, not new math."
+      },
+      "rounds": [
+       {
+        "type": "duel",
+        "q": "Which is bigger: the original GRH proof or the entire Mathlib library?",
+        "unit": "lines",
+        "a": {
+         "label": "Original GRH proof",
+         "value": 17000000.0
+        },
+        "b": {
+         "label": "Mathlib library",
+         "value": 2000000.0
+        },
+        "why": "The 17M-line GRH proof dwarfs Mathlib's millions; one proof exceeds the whole verified library."
+       },
+       {
+        "type": "lab",
+        "text": "Each tactic in a proof script must work. Raise tactic reliability or cut script length to get most scripts fully working.",
+        "inputs": [
+         {
+          "id": "p",
+          "label": "Each tactic works",
+          "unit": "%",
+          "min": 80.0,
+          "max": 99.0,
+          "step": 0.1,
+          "value": 92.0
+         },
+         {
+          "id": "n",
+          "label": "Tactics in a proof script",
+          "unit": "",
+          "min": 1.0,
+          "max": 60.0,
+          "step": 1.0,
+          "value": 25.0
+         }
+        ],
+        "outputs": [
+         {
+          "id": "ok",
+          "label": "Whole proof script works",
+          "unit": "%",
+          "expr": "100*(p/100)^n",
+          "digits": 1,
+          "lo": 0.00015324955408658938,
+          "hi": 99.0
+         },
+         {
+          "id": "fails",
+          "label": "Proof scripts that fail, of 100",
+          "unit": "",
+          "expr": "100-ok",
+          "digits": 0,
+          "lo": 1.0,
+          "hi": 99.99984675044591
+         }
+        ],
+        "chart": {
+         "x": "n",
+         "y": [
+          "ok"
+         ]
+        },
+        "goal": {
+         "target": "ok",
+         "min": 60.0,
+         "max": 80.0,
+         "text": "Find settings where at least 60% of proof scripts fully work.",
+         "success": "Short, reliable scripts beat long fragile ones — just like readable vs compact proofs."
+        },
+        "template": "chain",
+        "view": {
+         "kind": "runs",
+         "p": "p",
+         "n": "n",
+         "step": "tactic",
+         "run": "proof script"
+        }
+       }
+      ],
+      "takeaway": "Correctness is machine-checked; understanding needs human-readable proofs. The 76k-line version is for the kernel, the 300k-line for you."
+     },
+     {
+      "title": "How Isolated Models Can Signal Each Other Through Shared Servers",
+      "bet": {
+       "claim": "vLLM flushes the KV cache between different users' requests by default",
+       "truth": false,
+       "why": "The cache isn't flushed by default; Alice's prefill data stays hot, letting Bob probe it via timing."
+      },
+      "rounds": [
+       {
+        "type": "match",
+        "q": "Match each phase or feature to its role in the covert channel",
+        "pairs": [
+         [
+          "Prefill",
+          "Prompt-eating phase that floods cache when long"
+         ],
+         [
+          "Decode",
+          "Token-by-token phase that stalls when cache is full"
+         ],
+         [
+          "KV cache",
+          "Stores attention keys and values; shared between requests"
+         ],
+         [
+          "Disaggregation",
+          "Splits prefill and decode onto separate GPUs"
+         ]
+        ]
+       },
+       {
+        "type": "lab",
+        "text": "Raise memory bandwidth until decode throughput clears 50 tokens/s",
+        "inputs": [
+         {
+          "id": "c1",
+          "label": "Memory bandwidth",
+          "unit": "tokens/s",
+          "min": 10.0,
+          "max": 200.0,
+          "step": 2.0,
+          "value": 40.0
+         },
+         {
+          "id": "c2",
+          "label": "Compute",
+          "unit": "tokens/s",
+          "min": 10.0,
+          "max": 200.0,
+          "step": 2.0,
+          "value": 120.0
+         }
+        ],
+        "outputs": [
+         {
+          "id": "thr",
+          "label": "Line output",
+          "unit": "tokens/s",
+          "expr": "min(c1,c2)",
+          "lo": 10.0,
+          "hi": 200.0
+         },
+         {
+          "id": "u1",
+          "label": "Memory bandwidth busy",
+          "unit": "%",
+          "expr": "100*thr/c1",
+          "digits": 0,
+          "lo": 5.0,
+          "hi": 100.0
+         },
+         {
+          "id": "u2",
+          "label": "Compute busy",
+          "unit": "%",
+          "expr": "100*thr/c2",
+          "digits": 0,
+          "lo": 5.0,
+          "hi": 100.0
+         }
+        ],
+        "goal": {
+         "target": "thr",
+         "min": 60.0,
+         "max": 200.0,
+         "text": "Find the memory bandwidth where decode throughput reaches 60 tokens/s",
+         "success": "KV cache traffic saturates memory bandwidth first, choking decode before compute maxes out"
+        },
+        "template": "bottleneck",
+        "view": {
+         "kind": "pipes",
+         "caps": [
+          "c1",
+          "c2"
+         ],
+         "thr": "thr",
+         "labels": [
+          "Memory bandwidth",
+          "Compute"
+         ],
+         "unit": "tokens/s"
+        }
+       }
+      ],
+      "takeaway": "Shared KV cache and compute let sandboxed models signal at 10 bps; cache flush or disaggregation closes it."
+     },
+     {
+      "title": "Anthropic breaks below $83 IPO price",
+      "bet": {
+       "claim": "Segment cites claim: most companies below IPO price at six months",
+       "truth": true,
+       "why": "Commenter counters IPO panic: most companies sit below issue price at six months, then may or may not climb"
+      },
+      "rounds": [
+       {
+        "type": "flaw",
+        "q": "Four claims about the Anthropic IPO thread — which is false?",
+        "items": [
+         "Bloomberg article confirming the price drop sits behind a paywall",
+         "Open-weight models run on any datacenter without special hardware",
+         "Distillation shrinks a giant model into a working smaller one",
+         "Verified trades show Anthropic shares below eighty-three dollars"
+        ],
+        "flaw": 3,
+        "why": "Segment says price move unconfirmed; only a Hacker News thread citing a paywalled Bloomberg link"
+       },
+       {
+        "type": "sequence",
+        "q": "Order the chain from thread appearance to host conclusion",
+        "items": [
+         "Hacker News thread claims Anthropic below IPO price",
+         "Bloomberg link returns four-oh-three paywall error",
+         "Comments debate moats, distillation, hardware economics",
+         "Hosts call it unconfirmed; watch chip supply"
+        ],
+        "why": "Thread appears, source fails, debate erupts, hosts settle on unverified status and supply-chain signal"
+       }
+      ],
+      "takeaway": "Market prices GPU scarcity today; thread bets on compute abundance tomorrow"
+     }
+    ],
+    "words": [
+     {
+      "term": "Lean",
+      "means": "A proof assistant checking every logical step from axioms up."
+     },
+     {
+      "term": "Mathlib",
+      "means": "Standard library of verified math, millions of lines, topology to number theory."
+     },
+     {
+      "term": "Golfing",
+      "means": "Compressing proofs by replacing steps with aggressive automation, not new math."
+     },
+     {
+      "term": "KV cache",
+      "means": "Stores attention keys and values so the model skips recomputing them for each new token"
+     },
+     {
+      "term": "Prefill",
+      "means": "The prompt-eating phase where the model digests your whole input at once"
+     },
+     {
+      "term": "Disaggregation",
+      "means": "Splitting prefill and decode onto separate GPUs so they don't fight for resources"
+     },
+     {
+      "term": "tokens",
+      "means": "Units of text the model processes, roughly words or word parts"
+     },
+     {
+      "term": "distillation",
+      "means": "Shrinking a giant model into a smaller one that still works"
+     }
+    ],
+    "chips": [
+     "More on proof compression tradeoffs",
+     "Go deeper on Lean kernel",
+     "Less jargon, more analogies",
+     "Loved the CNC toolpath analogy"
+    ]
+   },
+   "quiz": [
+    {
+     "q": "In the Anthropic GRH repository, what does a successful Lean build primarily guarantee about the proof?",
+     "options": [
+      "The mathematical insight is novel and human-interpretable",
+      "Every logical inference traces back to the stated axioms via the trusted kernel",
+      "The proof is shorter than any human-written proof",
+      "The model weights used to generate it are open source"
+     ],
+     "answer": 1,
+     "explain": "The Lean kernel is a minimal trusted core that checks every inference from the axioms upward; a passing build means the proof is valid relative to those axioms, not that the math is new or easily understood.",
+     "segment": "A Shorter Machine-Checked Proof From Anthropic"
+    },
+    {
+     "q": "Sarah compares the 76k-line “grh-compact” folder to optimized CNC G-code and the 300k-line “grh” folder to a dimensioned drawing. What does this analogy imply for validating the proof?",
+     "options": [
+      "The compact version contains new mathematical theorems not in the readable version",
+      "The compact version is easier for auditors to review because it is shorter",
+      "The readable version preserves design intent and inspection notes, while the compact version is machine-optimized and harder to interpret",
+      "The readable version takes longer to build because it has more lines"
+     ],
+     "answer": 2,
+     "explain": "The compact folder uses aggressive automation to eliminate intermediate lemmas, making it valid but opaque; the readable edition keeps documentation and a known/new math split, which is what an auditor needs to inspect intent.",
+     "segment": "A Shorter Machine-Checked Proof From Anthropic"
+    },
+    {
+     "q": "In the vLLM side-channel demo, how does one isolated model send bits to another on the same GPU without a network connection?",
+     "options": [
+      "By modulating prefill workload to change decode latency via shared GPU cache and compute contention",
+      "By writing to a shared file in the container's filesystem",
+      "By broadcasting Wi-Fi signals from the GPU hardware",
+      "By directly reading the other model's weights from VRAM"
+     ],
+     "answer": 0,
+     "explain": "Alice varies her prefill length to flood the shared KV cache and compute units, stalling Bob's decode loop; Bob times his own token output to detect the pattern, creating a covert timing channel with no network link.",
+     "segment": "How Isolated Models Can Signal Each Other Through Shared Servers"
+    },
+    {
+     "q": "The Hacker News discussion suggests Anthropic's premium pricing may not be sustainable because:",
+     "options": [
+      "The SEC has banned premium pricing for AI model APIs",
+      "Open-weight models and distillation reduce barriers to entry, so compute scarcity—not model quality—is the main source of pricing power",
+      "Anthropic's models are required by law to be open source",
+      "Medical device regulations cap API pricing at marginal cost"
+     ],
+     "answer": 1,
+     "explain": "Commenters argue that once GPU scarcity eases, open weights and distilled models let competitors run similar inference anywhere, collapsing pricing power to marginal cost rather than sustaining a model-quality moat.",
+     "segment": "Anthropic breaks below $83 IPO price"
+    }
+   ],
+   "transcript": "transcripts/ai_2026-11-26_morning_0600.txt"
+  },
+  {
    "file": "ai_2026-11-25_evening_1500.mp3",
    "title": "Evening - 25 Nov: A U.S. export ban hits an Nvidia partner",
    "label": "Wednesday 25 Nov evening",
@@ -3236,172 +3592,6 @@
     }
    ],
    "transcript": "transcripts/ai_2026-11-19_evening_1500.txt"
-  },
-  {
-   "file": "ai_2026-11-19_morning_0600.mp3",
-   "title": "Morning - 19 Nov: Can AI Agents Ask Better Questions Than Accountants?",
-   "label": "Thursday 19 Nov morning",
-   "date": "2026-11-19",
-   "edition": "morning",
-   "published": "2026-11-19T06:00:10.552655+05:30",
-   "duration": 1182,
-   "theme": "What happens when AI systems step into roles built on human judgment—first in financial auditing, and then as the front door to the open web.",
-   "writer": "Gemini 4 Hydrogen",
-   "voices": "Fish Audio (free)",
-   "deep_dive": false,
-   "segments": [
-    {
-     "title": "Can AI Agents Ask Better Questions Than Accountants?",
-     "category": "thread"
-    },
-    {
-     "title": "How AI Search Answers Are Starving Independent Websites",
-     "category": "thread"
-    }
-   ],
-   "play": {
-    "v": 2,
-    "theme": "exchange",
-    "title": "When Auditors Meet Their Match",
-    "brief": "He stakes points on what holds up: AI agents vs human auditors in a real trial.",
-    "segments": [
-     {
-      "title": "Can AI Agents Ask Better Questions Than Accountants?",
-      "bet": {
-       "claim": "AI agents beat human auditors on every task in KPMG's trial.",
-       "truth": false,
-       "why": "A human auditor overrode an agent that failed to match regulatory rules to company docs; the trial wasn't a full statutory audit."
-      },
-      "rounds": [
-       {
-        "type": "match",
-        "q": "Match each audit term to its role",
-        "pairs": [
-         [
-          "AI agents",
-          "Automated team that plans and runs audit steps"
-         ],
-         [
-          "Statutory audit",
-          "Legally required sign-off on company accounts"
-         ],
-         [
-          "Sampling",
-          "Checking a subset instead of every transaction"
-         ],
-         [
-          "Professional scepticism",
-          "Duty to question and verify, not assume"
-         ]
-        ]
-       },
-       {
-        "type": "clues",
-        "q": "What let the agents ask sharper questions than tired juniors?",
-        "clues": [
-         "It's a library built from thousands of past audits.",
-         "Research labs paid senior auditors to write the training tasks.",
-         "The agents learned from collective habits of experienced auditors."
-        ],
-        "options": [
-         "A shared audit checklist",
-         "The firm's training manual",
-         "Distilled knowledge from past audits",
-         "A new regulation database"
-        ],
-        "answer": 2,
-        "why": "Commenters noted labs paid big-firm consultants to write rigorous sample tasks using real workflows, so agents learned from thousands of auditors, not one junior."
-       }
-      ],
-      "takeaway": "AI agents catch what tired humans miss, but still need human judgment to separate signal from noise."
-     },
-     {
-      "title": "How AI Search Answers Are Starving Independent Websites",
-      "bet": {
-       "claim": "Being cited in Google's AI Overview sends a website meaningful traffic.",
-       "truth": false,
-       "why": "RevScope found AI assistants sent sites under one percent of traffic in March; citations yield near-zero clicks."
-      },
-      "rounds": [
-       {
-        "type": "estimate",
-        "q": "When an AI Overview appears, what share of searches end with zero outbound clicks?",
-        "answer": 75.0,
-        "unit": "%",
-        "lo": 20,
-        "hi": 95,
-        "log": false,
-        "why": "In the controlled test, nearly three quarters of searches with an AI box produced no click to any outside site."
-       },
-       {
-        "type": "quickfire",
-        "q": "True or false?",
-        "items": [
-         {
-          "text": "AI Overviews now appear on over sixty percent of tracked US searches.",
-          "truth": true
-         },
-         {
-          "text": "The forty percent click drop happens for shopping searches too.",
-          "truth": false
-         },
-         {
-          "text": "Google ad clicks fell at the same rate as organic clicks.",
-          "truth": false
-         },
-         {
-          "text": "A controlled test hid AI Overviews from half the users to measure the effect.",
-          "truth": true
-         },
-         {
-          "text": "Being cited in an AI answer sends a site almost no traffic.",
-          "truth": true
-         }
-        ]
-       }
-      ],
-      "takeaway": "AI summaries break the economic loop that pays humans to keep guides accurate."
-     }
-    ],
-    "words": [
-     {
-      "term": "AI agents",
-      "means": "Software that plans and runs multi-step tasks on its own"
-     },
-     {
-      "term": "Statutory audit",
-      "means": "The legally required sign-off that lets a company publish accounts"
-     },
-     {
-      "term": "Professional scepticism",
-      "means": "The auditor's duty to question and verify, not just assume"
-     },
-     {
-      "term": "Sampling",
-      "means": "Checking a representative subset instead of every single transaction"
-     },
-     {
-      "term": "AI Overviews",
-      "means": "Google's AI-written summary at the top of search results, above normal links."
-     },
-     {
-      "term": "Informational searches",
-      "means": "Queries seeking answers, not products or specific websites—like how-to guides."
-     },
-     {
-      "term": "Zero-click searches",
-      "means": "Searches where the user finds the answer without clicking any outside link."
-     }
-    ],
-    "chips": [
-     "More on the incentive clash",
-     "Go deeper on sampling math",
-     "Less jargon, more story",
-     "Surprising take on regulation fit"
-    ]
-   },
-   "quiz": [],
-   "transcript": "transcripts/ai_2026-11-19_morning_0600.txt"
   }
  ]
 }
