@@ -8,9 +8,26 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Thu, 26 Nov 2026 01:26:01 GMT</lastBuildDate>
+<lastBuildDate>Thu, 26 Nov 2026 10:26:30 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Evening - 26 Nov: A transformer that learns handwriting stroke by stroke</title>
+<description>Evening edition - Thursday, 26 November 2026
+How generative models learn to write by hand, and what it takes to run a large language model directly on metal without an operating system in the way.
+
+00:30  A transformer that learns handwriting stroke by stroke
+10:03  Running Qwen on bare metal: skipping the OS to cut inference latency
+15:06  The New York Times warns photographers not to update Photoshop over AI features
+
+Play "Handwriting from Traced Strokes", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-26_evening_1500.mp3
+Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Hacker News (no Reddit data: Reddit, collected hourly (0 threads); no snapshot from the office PC yet)</description>
+<pubDate>Thu, 26 Nov 2026 15:00:10 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-11-26_evening_1500.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-26_evening_1500.mp3" length="8534874" type="audio/mpeg"/>
+<itunes:duration>1066</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Morning - 26 Nov: A Shorter Machine-Checked Proof From Anthropic</title>
 <description>Morning edition - Thursday, 26 November 2026

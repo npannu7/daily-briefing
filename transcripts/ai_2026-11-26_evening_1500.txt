@@ -1,0 +1,98 @@
+## Welcome
+Sarah: Hey Nikhil, great to have you on the evening drive.
+Laura: First, we’ll look at a model that learns handwriting by predicting each pen stroke.
+Sarah: Next, a project runs a large language model directly on hardware, skipping the operating system entirely.
+Laura: Finally, the New York Times tells photographers not to update Photoshop over new AI features, and here’s the bet: The drawing model trained on image vectors alone achieves the best likelihood but only draws scribbles.
+
+## A transformer that learns handwriting stroke by stroke
+Sarah: Okay, so this showed up on HackerNews yesterday. Someone built a transformer — that's an attention-based neural network — that learns handwriting stroke by stroke. The wild part: it was trained on stroke data traced from half a million scanned handwriting samples.
+Laura: Traced from scans? They didn't record people writing?
+Sarah: Right. The author took about half a million words...
+Laura: ...from roughly twelve hundred writers — old letters, diaries, research collections — ran them through a vision-language model to transcribe, then used this thing called InkSight to trace each word back into stroke sequences. Threw out the bad traces. Kept maybe a third to a half.
+Sarah: InkSight — a model that traces raster images back into stroke sequences. So the ground truth — the real target data — is already a model's guess at stroke order. That's... a choice.
+Laura: The author admits it. Says 'stroke order is a model's guess and not a record.' But here's the thing — the resulting model writes in a style it picks up from just a few example words. No fine-tuning — extra training on a specific task — no style encoder, a separate network that extracts a style vector. You feed it a few words from a new writer and it keeps going in that hand.
+Sarah: That's the context window — how many previous tokens the model sees — doing the work. How many parameters?
+Laura: Two models. Six million for handwriting.
+Sarah: Fifty-four million for sketches. Tiny by modern standards.
+Laura: Six million. That's refreshingly small. What's the tokenization look like for continuous pen coordinates?
+Sarah: This is the clever part — they don't tokenize coordinates directly. They use a tokenizer — it breaks the pen strokes into a vocabulary of symbols. Ten stroke symbols representing pen actions like pen-down, pen-up, and directional moves, plus a merge count — a compression trick that groups frequent token pairs. Same tokenizer handles handwriting and sketches. Sequences end up about three times shorter than raw coordinates.
+Laura: So it's essentially a vector graphics format. Pen up, pen down, relative moves. Like HPGL or G-code but learned.
+Sarah: Basically. And the transformer predicts the next stroke token given all previous ones. Autoregressive — predicts each next token from all previous ones.
+Laura: Right. Autoregressive sequence modeling. For anyone who hasn't lived in this space: you factor the joint probability of a sequence into a product of conditionals. The model only ever sees "what came before" and predicts "what comes next."
+Sarah: And during training they use teacher forcing — feed the correct previous tokens even when the model would've predicted something else. But at inference it's free-run — the model's own predictions become the next input.
+Laura: Classic exposure bias problem. The model never sees its own mistakes during training, so errors compound at generation time. In control terms: you're training with perfect state feedback, then deploying open-loop. Any mechanical engineer knows what happens when you tune a controller on a simulator with no noise.
+Sarah: The author actually tested an LSTM on the same tokens. For handwriting it's only a bit behind the transformer and still picks up new hands. For sketches — where sequences are several times longer — the LSTM falls well behind.
+Laura: That tracks. Attention — lets the model look back at any previous token directly — gives you constant-time access regardless of distance. An LSTM has to compress everything into a fixed hidden state — the LSTM's compressed summary of everything so far — like trying to remember a three-hundred-step toolpath through a single summary vector. Information bottleneck — squeezing a long history into a fixed-size summary.
+Sarah: They found one attention head in layer four that puts eighty-one percent of its attention on the letter currently being written. Same head works for both print and cursive — no specialized heads for either.
+Laura: That's a clean result. One head learning a "where am I in the current character" signal that generalizes across styles. Reminds me of a phase detector in a PLL — locks onto the periodic structure regardless of amplitude variations.
+Sarah: The drawing model is wilder. It takes a SigLIP 2 vector — that's an embedding, a numerical representation that puts images and text in the same space — and generates strokes from a text prompt. But here's the catch: they tried training on picture vectors alone, no captions. Best likelihood, but it draws scribbles.
+Laura: Because the sketch vectors sit in a narrow cone nearly orthogonal to text vectors. The model never sees the text region during training, so at inference it's lost. Like calibrating a sensor only in one quadrant of its range, then expecting it to read accurately in the opposite quadrant.
+Sarah: Exactly. Captions are the expensive part of the drawing data, but they're necessary. Labels get you label drawing at seventy-eight percent.
+Laura: Captions get you phrase drawing at forty-three percent versus ten percent without.
+Sarah: The geometry of the embedding space matters more than the loss function. That's a lesson that keeps reappearing.
+Laura: The author's big takeaway — and this is straight from the blog — about eighty percent of the effort went into building the biggest, cleanest datasets possible and doing quality control on them.
+Sarah: About fifteen percent into training speed on an eight-A100 node.
+Laura: About five percent into architecture.
+Sarah: The Bitter Lesson — Rich Sutton's observation that scaling compute and data beats clever architecture over time. The author says it took them longer than they'd like to admit to embrace it.
+Laura: They even tried clever stuff — telling the model where its pen is, fancy BPE merges, vocabulary sixty times larger, doubling the model. None of it moved the needle. Data and augmentation were the only rows that mattered.
+Sarah: Drop augmentation and the drawing model stops following prompts entirely. Train on one word at a time instead of up to four per writer.
+Laura: Style pickup drops from rank 1.9 to 6.0. That's the context window teaching style consistency — "later words look like earlier ones."
+Sarah: And the model blends concepts in sketches but doesn't bind them. "Teapot with a face" works. "Who wears the hat" doesn't. "Facing left" and "facing right" give the same drawing because their text vectors have cosine similarity — a measure of how aligned two vectors are — of 0.999, essentially a bag of words.
+Laura: Single-vector conditioning can't represent relational structure. You'd need something like cross-attention — letting the model look at a separate representation like a parsed scene graph, a structured representation of objects and their relationships — or at minimum a stronger language encoder that preserves word order. The embedding space geometry is the bottleneck.
+Sarah: Sampled handwriting is also less legible than real — fifty-four percent versus sixty-six percent on their metric. And the stroke order issue from synthetic tracing means it doesn't know "proper" cursive strokes, which commenters noticed.
+Laura: So the claims check out: realistic generation from traced stroke data, discrete stroke tokens, attention enabling long-range dependencies without explicit memory. The independent check is the author's own blog post — greydanus.github.io — with samples and ablation tables — experiments where you remove one component at a time to see what matters. No paper yet, just the post.
+Sarah: The author put it well in the post: "About eighty percent of my effort went into building the biggest, cleanest datasets possible and doing lots of quality control on them." Another commenter noted the model fits in fifty megabytes.
+Laura: Fifty megabytes. That's smaller than a firmware image for a modern motor controller.
+Sarah: Someone's already building a handwriting-teaching app with AR glasses. Another commenter said it stops prematurely on garbage input — just spews nonsense until it hits an end token.
+Laura: That's the free-run problem again. No grounding, no external verification. Like a CNC machine running a toolpath with no limit switches — it'll happily crash into the workpiece if the G-code is malformed.
+Sarah: My take, for someone in QA: the data pipeline here — vision-language transcription, InkSight tracing, automated quality checks throwing out bad traces — that's a validation chain. Each stage has a false-positive and false-negative rate. The final dataset quality depends on the cascade. If you were submitting this for regulatory review, you'd want traceability from each generated stroke back to the source scan and the intermediate model outputs.
+Laura: And you'd want to know the distribution shift between traced training strokes and real human strokes. The stroke-order guess is a systematic bias. Might not matter for legibility, but it matters if you're using this to teach handwriting.
+Sarah: Exactly. The author's honest about it. "Stroke order is a model's guess and not a record." That's the kind of limitation statement you want to see.
+Laura: Quick recap: PenGPT treats handwriting as an autoregressive sequence of stroke tokens — pen up, down, directional moves — predicted by a small transformer. Traced from half a million scanned words. Attention lets it maintain style consistency over hundreds of steps without a dedicated memory module. Teacher forcing during training, free-run at inference. Data and augmentation dominate; architecture cleverness barely registers. The drawing model needs captions because text and sketch embeddings live in orthogonal cones. And the whole thing fits in fifty megabytes.
+Sarah: Nailed it. And the Bitter Lesson strikes again — clean data at scale beat every architectural trick they tried.
+Laura: Which, honestly, is the result I'd bet on every time. But it's satisfying to see the ablations laid out cleanly.
+
+## Running Qwen on bare metal: skipping the OS to cut inference latency
+Laura: So I was scrolling the LocalLLaMA subreddit yesterday and someone cross-posted a Hacker News thread about a project called Bare Metal Qwen — a twenty-three kilobyte kernel that boots straight into a quantized language model with no operating system at all.
+Sarah: Wait, twenty-three K? That's smaller than my vim config.
+Laura: It's a Multiboot-compliant ELF binary written entirely in x86-64 assembly. The author, alesha-pro, binds the model weights directly from physical memory using two-megabyte huge pages, then runs the transformer forward pass with hand-tuned AVX2 and FMA kernels — no libc, no scheduler, no device drivers.
+Sarah: Okay that's wild. So it's just... the model and the metal?
+Laura: Essentially. The repository shows cold boot to interactive prompt in seventy-four to ninety-four milliseconds on QEMU, and they report a hundred thirty-five tokens per second decode on a sixteen-core EPYC under KVM. Live on a twelve-core Xeon with two gigs of RAM it does fifty-five tokens per second.
+Sarah: Fifty-five tok/s on a decade-old Xeon with no OS overhead? That's... actually impressive.
+Laura: The HN thread had the usual spread. One commenter who runs models at home argued the speedup is real because you eliminate every context switch, every TLB shootdown, every interrupt handler between the user prompt and the first logit.
+Sarah: TLB shootdown — that's when the OS has to invalidate translation lookaside buffers across cores after a page-table change, right? Like flushing the cache on a CNC machine every time you change a tool offset.
+Laura: Exactly. And without a general-purpose scheduler you also avoid the tail latency from a random cron job or kernel thread stealing a core mid-decode. Another commenter pointed out that for frontier models the OS overhead is negligible compared to the actual matmul work — the additional layer is "incredibly minimal in terms of resource allocation."
+Sarah: Which makes sense. If you're burning megawatts on an H100 cluster, the Linux kernel isn't your bottleneck.
+Laura: Right. But there was a confident claim that this approach lets you run in System Management Mode — ring negative two — and inject the binary into a hypervisor. That's... theoretically possible but the current code doesn't do any of that. It just boots on bare metal or KVM.
+Sarah: HN gonna HN. What about the GPU claims? Several comments talked about managing GPU memory and power states without a kernel driver.
+Laura: That's where the thread drifts from the actual repo. The linked source — github.com/alesha-pro/llm.asm, read directly — shows CPU-only execution using AVX2, FMA, and F16C instructions. There's no GPU initialization, no PTX, no CUDA. The firmware manages the CPU's own power states via MSR writes, but that's a different beast.
+Sarah: So the "custom kernels in assembly or PTX" claim is half-right — assembly yes, PTX no.
+Laura: Precisely. The attention and feed-forward kernels are hand-written x86-64 assembly using twenty-five-bit integer accumulation with FP16 scaling factors — that's the FAST_Q8 path. The legacy path keeps FP32 activations. Both are bit-exact matches to the reference implementation across one to thirty-two vCPUs.
+Sarah: Bit-exact across core counts. That's... not trivial. Like getting the same dimensional inspection result whether you measure on one CMM or a fleet of them.
+Laura: The author achieves it by avoiding any non-deterministic reduction order. The KV-cache lives in a four-hundred-forty-nine megabyte arena carved from the largest usable physical memory region, zeroed with AVX2 stores. Persistent across turns — so multi-turn chat reuses the prefill without recomputing earlier tokens.
+Sarah: That's clever. Context reuse without an OS page cache.
+Laura: The verdict: the latency gains are real for small models on CPU — you're removing the entire userspace-to-kernel transition stack. But the GPU claims in the comments are projection, not measurement. And the security-angle fantasies about SMM or Blue Pill exploits are exactly that — fantasies.
+Sarah: So for someone in QA... my take: this is a beautiful stress test for deterministic inference. If you need to prove bit-exact reproducibility across hardware configurations — say for a regulated submission — a bare-metal reference build like this becomes your golden master. But you'd need a full validation package: hardware qualification, power-failure recovery, watchdog behavior, the works.
+Laura: And that validation package would be larger than the kernel itself.
+Sarah: Always is.
+Laura: One-line takeaway: stripping the OS buys you deterministic, low-latency CPU inference for small models — but the engineering cost moves from kernel maintenance to firmware validation.
+
+## The New York Times warns photographers not to update Photoshop over AI features
+Sarah: I was scrolling HackerNews yesterday — there's a thread saying the New York Times told its freelance photographers not to update to Photoshop 2027 or any later release.
+Laura: The one with the new AI-assisted editor toolbar?
+Sarah: That's the one. The Verge got the internal email. Two of the Times' photo leads, Meaghan Looram and Josh Haner, wrote that the new AI features work "in ways that may not be apparent to users" and can stamp metadata — data about the file's history — marking the photo as AI-generated.
+Laura: Adobe added C2PA support in August. That standard embeds a record showing whether generative AI was involved — AI that creates new pixels rather than just adjusting existing ones.
+Sarah: And the Times' policy is basically zero manipulation. Minimal color correction for accurate reproduction, that's it. So if a photographer uses the new recompose tool or prompt-based transformation — even once — the file could carry metadata identifying it as AI-generated. On Instagram or Facebook, that's a credibility death blow for a news org.
+Laura: The thread's top comment predicts most U.S. papers will follow. Another argues it's an opening for competitors like Affinity or ArtCraft — one-time purchase, no subscription, no forced AI pipeline.
+Sarah: There's also the "Photoshop always had tools that violate policy" angle. Clone stamp, content-aware fill — those have existed for years. One commenter called it anti-AI posturing.
+Laura: But the mechanism changed. Older tools didn't write these tags. Features like the AI upscaler or the recompose tool — any of which may declare themselves in metadata — are the likely culprits, but Adobe hasn't confirmed which ones trigger the tag. Even automated selection might now fall under the AI suite.
+Sarah: Adobe didn't clarify when The Verge asked. So the Times drew a hard line: avoid the new version entirely.
+Laura: They're blocking the entire version because they can't verify which specific tool writes the tag.
+Sarah: The community's split. Some say every editor will ship generative features within two years because that's what buyers want. Others say Europe's already moving off U.S. subscription tools. And the ArtCraft plug — turns out their "no AI" version still upsells AI subscriptions.
+Laura: Until Adobe documents exactly which features write C2PA, newsrooms have a traceability gap.
+Sarah: If you need to know exactly what touched the file, you can't use an editor that doesn't disclose its metadata behavior.
+
+## Close
+Sarah: Try the three‑minute Handwriting from Traced Strokes game and see if you can spot the real strokes.
+Laura: The next episode drops tomorrow morning, ready by 9 am.
+Sarah: See you then.

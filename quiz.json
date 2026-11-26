@@ -12,6 +12,312 @@
  },
  "episodes": [
   {
+   "file": "ai_2026-11-26_evening_1500.mp3",
+   "title": "Evening - 26 Nov: A transformer that learns handwriting stroke by stroke",
+   "label": "Thursday 26 Nov evening",
+   "date": "2026-11-26",
+   "edition": "evening",
+   "published": "2026-11-26T15:00:10.218956+05:30",
+   "duration": 1066,
+   "theme": "How generative models learn to write by hand, and what it takes to run a large language model directly on metal without an operating system in the way.",
+   "writer": "nemotron-3-ultra-550b-a55b (free)",
+   "voices": "Fish Audio (free)",
+   "deep_dive": false,
+   "segments": [
+    {
+     "title": "A transformer that learns handwriting stroke by stroke",
+     "category": "concept"
+    },
+    {
+     "title": "Running Qwen on bare metal: skipping the OS to cut inference latency",
+     "category": "thread"
+    },
+    {
+     "title": "The New York Times warns photographers not to update Photoshop over AI features",
+     "category": "thread"
+    }
+   ],
+   "play": {
+    "v": 2,
+    "theme": "bench",
+    "title": "Handwriting from Traced Strokes",
+    "brief": "You test a stroke-token transformer trained on half a million traced scans.",
+    "segments": [
+     {
+      "title": "A transformer that learns handwriting stroke by stroke",
+      "bet": {
+       "claim": "The drawing model trained on image vectors alone achieves the best likelihood but only draws scribbles.",
+       "truth": true,
+       "why": "Sketch vectors sit in a narrow cone orthogonal to text vectors; without captions the model never sees the text region during training."
+      },
+      "rounds": [
+       {
+        "type": "match",
+        "q": "Match each term to its plain job in the segment",
+        "pairs": [
+         [
+          "Teacher forcing",
+          "Feeding correct tokens during training"
+         ],
+         [
+          "Free-run",
+          "Model predictions become next input"
+         ],
+         [
+          "InkSight",
+          "Traces scans into stroke sequences"
+         ],
+         [
+          "Merge count",
+          "Groups frequent token pairs together"
+         ]
+        ]
+       },
+       {
+        "type": "lab",
+        "text": "Three quality stages filter traced handwriting samples. Raise the per-stage pass rate until at least 35% survive.",
+        "inputs": [
+         {
+          "id": "p",
+          "label": "Each stage works",
+          "unit": "%",
+          "min": 50.0,
+          "max": 95.0,
+          "step": 0.1,
+          "value": 65.0
+         },
+         {
+          "id": "n",
+          "label": "Stages in a sample",
+          "unit": "",
+          "min": 1.0,
+          "max": 5.0,
+          "step": 1.0,
+          "value": 3.0
+         }
+        ],
+        "outputs": [
+         {
+          "id": "ok",
+          "label": "Whole sample works",
+          "unit": "%",
+          "expr": "100*(p/100)^n",
+          "digits": 1,
+          "lo": 3.125,
+          "hi": 95.0
+         },
+         {
+          "id": "fails",
+          "label": "Samples that fail, of 100",
+          "unit": "",
+          "expr": "100-ok",
+          "digits": 0,
+          "lo": 5.0,
+          "hi": 96.875
+         }
+        ],
+        "chart": {
+         "x": "n",
+         "y": [
+          "ok"
+         ]
+        },
+        "goal": {
+         "target": "ok",
+         "min": 35.0,
+         "max": 100.0,
+         "text": "Find the per-stage pass rate that lets at least 35% of samples survive all three stages.",
+         "success": "At 71% per stage, only 36% survive — cascading filters lose most data even when each stage seems decent."
+        },
+        "template": "chain",
+        "view": {
+         "kind": "runs",
+         "p": "p",
+         "n": "n",
+         "step": "stage",
+         "run": "sample"
+        }
+       }
+      ],
+      "takeaway": "Clean data at scale beats architectural cleverness — 80% of effort went to data, model fits in 50MB."
+     },
+     {
+      "title": "Running Qwen on bare metal: skipping the OS to cut inference latency",
+      "bet": {
+       "claim": "The bare-metal Qwen project runs on GPU using custom PTX kernels.",
+       "truth": false,
+       "why": "The repo shows CPU-only AVX2/FMA assembly; no GPU init, PTX, or CUDA exists in the source."
+      },
+      "rounds": [
+       {
+        "type": "estimate",
+        "q": "How many kilobytes is the bare-metal kernel that boots straight into a quantized LLM?",
+        "answer": 23.0,
+        "unit": "KB",
+        "lo": 1.0,
+        "hi": 5000,
+        "log": true,
+        "why": "The 23 KB kernel binds model weights via huge pages and runs AVX2 kernels with no OS at all."
+       },
+       {
+        "type": "flaw",
+        "q": "Which claim about the bare-metal Qwen project does not hold up?",
+        "items": [
+         "The kernel is 23 KB and written in x86-64 assembly with no OS.",
+         "It achieves 55 tokens per second on a 12-core Xeon with 2 GB RAM.",
+         "The project includes custom GPU kernels written in PTX for NVIDIA cards.",
+         "The KV cache persists across turns, reusing prefill without recomputing earlier tokens."
+        ],
+        "flaw": 2,
+        "why": "The repo shows CPU-only AVX2/FMA assembly; no GPU init, PTX, or CUDA exists in the source."
+       }
+      ],
+      "takeaway": "Stripping the OS gives deterministic, low-latency CPU inference for small models — but validation cost shifts to firmware."
+     },
+     {
+      "title": "The New York Times warns photographers not to update Photoshop over AI features",
+      "bet": {
+       "claim": "Adobe tells users exactly which Photoshop tools mark files as AI-generated.",
+       "truth": false,
+       "why": "Adobe added C2PA support but hasn't confirmed which specific features trigger AI metadata tags, leaving newsrooms unable to verify file history."
+      },
+      "rounds": [
+       {
+        "type": "quickfire",
+        "q": "True or false?",
+        "items": [
+         {
+          "text": "Adobe documents which Photoshop tools write AI metadata tags.",
+          "truth": false
+         },
+         {
+          "text": "The Times blocked only the new AI-powered features.",
+          "truth": false
+         },
+         {
+          "text": "Old tools like clone stamp never tagged files as AI-generated.",
+          "truth": true
+         },
+         {
+          "text": "ArtCraft's editor includes no AI features at all.",
+          "truth": false
+         },
+         {
+          "text": "Newsrooms cannot verify which tool triggered an AI tag.",
+          "truth": true
+         }
+        ]
+       },
+       {
+        "type": "call",
+        "q": "A photo desk processes 200 images daily. New Photoshop may tag files as AI-generated; Adobe won't say which tools do it. Old version lacks speed gains. Competitor costs $50 once, no AI. Choose:",
+        "options": [
+         "Stay on old Photoshop version",
+         "Switch to competitor editor",
+         "Use new Photoshop, avoid AI tools"
+        ],
+        "answer": 0,
+        "hint": "Adobe won't confirm which tools write tags; avoidance doesn't guarantee clean metadata.",
+        "why": "Without knowing which tools trigger metadata, any new-version use risks uncontrolled AI tags — even non-AI features may now fall under the AI suite."
+       }
+      ],
+      "takeaway": "Adobe's metadata silence forces newsrooms to freeze updates."
+     }
+    ],
+    "words": [
+     {
+      "term": "Teacher forcing",
+      "means": "Training with correct history; inference runs on model's own predictions."
+     },
+     {
+      "term": "Autoregressive",
+      "means": "Predicts each next token using all previous tokens as context."
+     },
+     {
+      "term": "Cosine similarity",
+      "means": "Measures how aligned two vectors are; 1 means nearly identical."
+     },
+     {
+      "term": "Merge count",
+      "means": "Compression that groups frequent token pairs to shorten sequences."
+     },
+     {
+      "term": "Bare metal",
+      "means": "Running code directly on hardware with no operating system in between."
+     },
+     {
+      "term": "TLB shootdown",
+      "means": "OS flushing address-translation caches across cores after page-table changes."
+     },
+     {
+      "term": "Quantization",
+      "means": "Compressing model weights to fewer bits per number for speed and size."
+     },
+     {
+      "term": "KV cache",
+      "means": "Stored attention keys and values that let chat continue without re-reading history."
+     }
+    ],
+    "chips": [
+     "Data pipeline is the product",
+     "Tiny model, huge data effort",
+     "Stroke order guess is honest",
+     "Want more on embedding geometry"
+    ]
+   },
+   "quiz": [
+    {
+     "q": "The hosts compare training the handwriting transformer with teacher forcing to tuning a controller on a noise-free simulator. What is the central problem when the model switches to free-run inference?",
+     "options": [
+      "The stroke tokenizer changes from discrete symbols to raw coordinates.",
+      "Errors compound because the model's own predictions become the next input, and it never saw its own mistakes during training.",
+      "Attention heads are disabled to reduce latency.",
+      "The model must switch from AVX2 to FMA instructions."
+     ],
+     "answer": 1,
+     "explain": "Teacher forcing feeds correct previous tokens during training, but inference is open-loop: the model's own outputs feed back as inputs, so small mistakes compound—like deploying a controller without state feedback.",
+     "segment": "A transformer that learns handwriting stroke by stroke"
+    },
+    {
+     "q": "Why did the drawing model fail to follow text prompts when trained on picture vectors alone (no captions), despite achieving the best likelihood?",
+     "options": [
+      "Sketch vectors sat in a narrow cone nearly orthogonal to text vectors, so the model had never seen the text region of the embedding space.",
+      "The SigLIP encoder cannot generate embeddings for images without text.",
+      "The transformer lacked a dedicated style encoder for sketches.",
+      "Raw pen coordinates were too long for the context window."
+     ],
+     "answer": 0,
+     "explain": "Without captions, sketch vectors sat in a narrow cone nearly orthogonal to text vectors, so the model was lost when prompted from the text region—like calibrating a sensor in one quadrant and expecting accurate readings elsewhere.",
+     "segment": "A transformer that learns handwriting stroke by stroke"
+    },
+    {
+     "q": "Which capability is actually demonstrated in the Bare Metal Qwen repository, as opposed to speculation in the Hacker News comments?",
+     "options": [
+      "Running in System Management Mode (ring −2) and injecting into a hypervisor.",
+      "Managing GPU power states with custom PTX kernels.",
+      "Bit-exact transformer outputs across one to thirty-two vCPUs using deterministic reduction order.",
+      "Eliminating quantization by binding weights directly from physical memory."
+     ],
+     "answer": 2,
+     "explain": "The source code demonstrates bit-exact outputs across core counts via deterministic reduction order; SMM, hypervisor injection, and GPU/PTX claims are comment-thread speculation not present in the repo.",
+     "segment": "Running Qwen on bare metal: skipping the OS to cut inference latency"
+    },
+    {
+     "q": "Why did the New York Times tell freelance photographers to avoid updating to Photoshop 2027?",
+     "options": [
+      "The new version requires an internet connection for every edit.",
+      "The subscription cost exceeded the Times' annual software budget.",
+      "Adobe removed support for the raw camera formats used in photojournalism.",
+      "New AI features may write C2PA metadata marking files as AI-generated, and Adobe did not clarify which specific tools trigger the tag."
+     ],
+     "answer": 3,
+     "explain": "The Times' zero-manipulation policy requires knowing exactly what touched a file; because Adobe wouldn't confirm which features write C2PA tags, the paper blocked the entire version to avoid an unverifiable traceability gap.",
+     "segment": "The New York Times warns photographers not to update Photoshop over AI features"
+    }
+   ],
+   "transcript": "transcripts/ai_2026-11-26_evening_1500.txt"
+  },
+  {
    "file": "ai_2026-11-26_morning_0600.mp3",
    "title": "Morning - 26 Nov: A Shorter Machine-Checked Proof From Anthropic",
    "label": "Thursday 26 Nov morning",
