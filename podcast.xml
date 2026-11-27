@@ -8,9 +8,26 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Fri, 27 Nov 2026 01:18:33 GMT</lastBuildDate>
+<lastBuildDate>Fri, 27 Nov 2026 10:19:04 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Evening - 27 Nov: When AI agents run the compute cluster</title>
+<description>Evening edition - Friday, 27 November 2026
+AI agents managing compute infrastructure, and what uncertainty really means in machine learning
+
+00:37  When AI agents run the compute cluster
+06:17  Uncertainty in machine learning, explained from measurement first principles
+11:53  AI made self-hosting fun again
+
+Play "Agent Holds the Wheel", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-27_evening_1500.mp3
+Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Hacker News (no Reddit data: Reddit, collected hourly (0 threads); no snapshot from the office PC yet)</description>
+<pubDate>Fri, 27 Nov 2026 15:00:11 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-11-27_evening_1500.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-27_evening_1500.mp3" length="7433105" type="audio/mpeg"/>
+<itunes:duration>928</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Morning - 27 Nov: OpenAI's New Usage Limits on GPT-6.2</title>
 <description>Morning edition - Friday, 27 November 2026
@@ -233,39 +250,6 @@ Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Di
 <guid isPermaLink="false">ai_2026-11-21_morning_0600.mp3</guid>
 <enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-21_morning_0600.mp3" length="7953129" type="audio/mpeg"/>
 <itunes:duration>994</itunes:duration>
-<itunes:episodeType>full</itunes:episodeType>
-</item>
-<item>
-<title>Evening - 20 Nov: A federal court says AI-generated output cannot establish probable cause</title>
-<description>Evening edition - Friday, 20 November 2026
-When AI meets law and labor: a court ruling on AI-generated evidence, and the debate over whether AI turns jobs into gig work
-
-00:29  A federal court says AI-generated output cannot establish probable cause
-07:33  The argument that AI is turning skilled jobs into low-paid piecework
-12:35  Pete Warden on local AI, open models, voice interfaces, the future of hardware
-
-Play "The AI Warrant That Wasn't", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-20_evening_1500.mp3
-Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Hacker News (no Reddit data: Reddit, collected hourly (0 threads); no snapshot from the office PC yet)</description>
-<pubDate>Fri, 20 Nov 2026 15:00:11 +0530</pubDate>
-<guid isPermaLink="false">ai_2026-11-20_evening_1500.mp3</guid>
-<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-20_evening_1500.mp3" length="7629437" type="audio/mpeg"/>
-<itunes:duration>953</itunes:duration>
-<itunes:episodeType>full</itunes:episodeType>
-</item>
-<item>
-<title>Morning - 20 Nov: Anthropic Joins the Public Stock Market</title>
-<description>Morning edition - Friday, 20 November 2026
-What happens when artificial intelligence enters institutions built on trust—from public stock markets to scientific peer review.
-
-00:33  Anthropic Joins the Public Stock Market
-09:22  Can Scientific Peer Review Survive Machine-Written Papers
-
-Play "The Safety Lab Goes Public", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-20_morning_0600.mp3
-Written by: Gemini 4 Hydrogen · Voices: Fish Audio (free) · Discussions: Hacker News (no Reddit data: Reddit, collected hourly (0 threads); no snapshot from the office PC yet)</description>
-<pubDate>Fri, 20 Nov 2026 06:00:13 +0530</pubDate>
-<guid isPermaLink="false">ai_2026-11-20_morning_0600.mp3</guid>
-<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-20_morning_0600.mp3" length="9057332" type="audio/mpeg"/>
-<itunes:duration>1132</itunes:duration>
 <itunes:episodeType>full</itunes:episodeType>
 </item>
 </channel>

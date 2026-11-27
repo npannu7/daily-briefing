@@ -1,28 +1,6 @@
 {
   "episodes": [
     {
-      "file": "ai_2026-11-20_morning_0600.mp3",
-      "date": "2026-11-20",
-      "edition": "morning",
-      "title": "Morning - 20 Nov: Anthropic Joins the Public Stock Market",
-      "published": "2026-11-20T06:00:13.429420+05:30",
-      "pubDate": "Fri, 20 Nov 2026 06:00:13 +0530",
-      "size": 9057332,
-      "duration": 1132,
-      "description": "Morning edition - Friday, 20 November 2026\nWhat happens when artificial intelligence enters institutions built on trust—from public stock markets to scientific peer review.\n\n00:33  Anthropic Joins the Public Stock Market\n09:22  Can Scientific Peer Review Survive Machine-Written Papers\n\nPlay \"The Safety Lab Goes Public\", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-20_morning_0600.mp3\nWritten by: Gemini 4 Hydrogen · Voices: Fish Audio (free) · Discussions: Hacker News (no Reddit data: Reddit, collected hourly (0 threads); no snapshot from the office PC yet)"
-    },
-    {
-      "file": "ai_2026-11-20_evening_1500.mp3",
-      "date": "2026-11-20",
-      "edition": "evening",
-      "title": "Evening - 20 Nov: A federal court says AI-generated output cannot establish probable cause",
-      "published": "2026-11-20T15:00:11.448310+05:30",
-      "pubDate": "Fri, 20 Nov 2026 15:00:11 +0530",
-      "size": 7629437,
-      "duration": 953,
-      "description": "Evening edition - Friday, 20 November 2026\nWhen AI meets law and labor: a court ruling on AI-generated evidence, and the debate over whether AI turns jobs into gig work\n\n00:29  A federal court says AI-generated output cannot establish probable cause\n07:33  The argument that AI is turning skilled jobs into low-paid piecework\n12:35  Pete Warden on local AI, open models, voice interfaces, the future of hardware\n\nPlay \"The AI Warrant That Wasn't\", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-20_evening_1500.mp3\nWritten by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Hacker News (no Reddit data: Reddit, collected hourly (0 threads); no snapshot from the office PC yet)"
-    },
-    {
       "file": "ai_2026-11-21_morning_0600.mp3",
       "date": "2026-11-21",
       "edition": "morning",
@@ -164,6 +142,17 @@
       "size": 8448855,
       "duration": 1055,
       "description": "Morning edition - Friday, 27 November 2026\nOpenAI usage limits tighten; Google mandates MCP for agent tool access\n\n00:35  OpenAI's New Usage Limits on GPT-6.2\n06:54  Google's MCP Servers for AI Agents\n\nPlay \"Token Cap Mystery\", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-27_morning_0600.mp3\nWritten by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Hacker News (no Reddit data: Reddit, collected hourly (0 threads); no snapshot from the office PC yet)"
+    },
+    {
+      "file": "ai_2026-11-27_evening_1500.mp3",
+      "date": "2026-11-27",
+      "edition": "evening",
+      "title": "Evening - 27 Nov: When AI agents run the compute cluster",
+      "published": "2026-11-27T15:00:11.748881+05:30",
+      "pubDate": "Fri, 27 Nov 2026 15:00:11 +0530",
+      "size": 7433105,
+      "duration": 928,
+      "description": "Evening edition - Friday, 27 November 2026\nAI agents managing compute infrastructure, and what uncertainty really means in machine learning\n\n00:37  When AI agents run the compute cluster\n06:17  Uncertainty in machine learning, explained from measurement first principles\n11:53  AI made self-hosting fun again\n\nPlay \"Agent Holds the Wheel\", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-27_evening_1500.mp3\nWritten by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Hacker News (no Reddit data: Reddit, collected hourly (0 threads); no snapshot from the office PC yet)"
     }
   ],
   "memory": [
@@ -2481,6 +2470,31 @@
         "mcp-ai-agents",
         "openai-company-updates"
       ]
+    },
+    {
+      "label": "Friday 27 Nov evening",
+      "date": "2026-11-27",
+      "edition": "evening",
+      "published": "2026-11-27T15:00:11.748881+05:30",
+      "file": "ai_2026-11-27_evening_1500.mp3",
+      "writer": "nemotron-3-ultra-550b-a55b (free)",
+      "voices": "Fish Audio (free)",
+      "summary": "The episode examines how DeepMind lets AI agents manage portions of the compute fleet that trains Gemini, exploring what control means and where human approval gates remain. It then builds uncertainty in machine learning from measurement principles, distinguishing aleatoric noise from epistemic ignorance, covering calibration, temperature scaling, and conformal prediction. Finally it evaluates the community claim that AI tooling has made self‑hosting enjoyable again, weighing the thread’s arguments against practical experience.",
+      "threads": [
+        "Whether agent‑driven compute management drifts from operator intent and triggers misaligned actions",
+        "Adoption and real‑world performance of conformal prediction for reliable uncertainty quantification",
+        "If the renewed interest in self‑hosting driven by AI tooling sustains beyond the current hype"
+      ],
+      "segments": [
+        "When AI agents run the compute cluster",
+        "Uncertainty in machine learning, explained from measurement first principles",
+        "AI made self-hosting fun again"
+      ],
+      "deep_topic": "",
+      "topics": [
+        "ai-agent-compute-control",
+        "local-llms"
+      ]
     }
   ],
   "seen": [
@@ -3391,6 +3405,30 @@
     {
       "date": "2026-11-27",
       "link": "https://techstackups.com/articles/google-workspace-ai-agents-mcp/"
+    },
+    {
+      "date": "2026-11-27",
+      "link": "https://news.ycombinator.com/item?id=50660180"
+    },
+    {
+      "date": "2026-11-27",
+      "link": "https://janlukas.blog/posts/ai-self-hosting"
+    },
+    {
+      "date": "2026-11-27",
+      "link": "https://news.ycombinator.com/item?id=50661218"
+    },
+    {
+      "date": "2026-11-27",
+      "link": "https://the-decoder.com/ai-agents-now-control-part-of-deepminds-compute-for-gemini-experiments-but-recursive-self-improvement-remains-distant/"
+    },
+    {
+      "date": "2026-11-27",
+      "link": "https://news.ycombinator.com/item?id=50658498"
+    },
+    {
+      "date": "2026-11-27",
+      "link": "https://chrhenning.com/blog/2026/introduction-to-uncertainty/"
     }
   ],
   "feedback": [
@@ -4462,25 +4500,139 @@
     "2026-11-27T01:16:44.679535+00:00",
     "2026-11-27T01:16:48.738633+00:00",
     "2026-11-27T01:17:51.616760+00:00",
-    "2026-11-27T01:18:31.299701+00:00"
+    "2026-11-27T01:18:31.299701+00:00",
+    "2026-11-27T09:34:08.975084+00:00",
+    "2026-11-27T09:34:12.101552+00:00",
+    "2026-11-27T09:34:15.299818+00:00",
+    "2026-11-27T09:34:18.560128+00:00",
+    "2026-11-27T09:34:21.705010+00:00",
+    "2026-11-27T09:34:24.902932+00:00",
+    "2026-11-27T09:34:28.098786+00:00",
+    "2026-11-27T09:34:31.320101+00:00",
+    "2026-11-27T09:34:34.537072+00:00",
+    "2026-11-27T09:34:37.705376+00:00",
+    "2026-11-27T09:34:40.907475+00:00",
+    "2026-11-27T09:35:54.247423+00:00",
+    "2026-11-27T09:38:44.460876+00:00",
+    "2026-11-27T09:39:44.940899+00:00",
+    "2026-11-27T09:40:57.139384+00:00",
+    "2026-11-27T09:45:12.556781+00:00",
+    "2026-11-27T09:47:10.924042+00:00",
+    "2026-11-27T09:47:59.417379+00:00",
+    "2026-11-27T09:47:59.493100+00:00",
+    "2026-11-27T09:49:06.867242+00:00",
+    "2026-11-27T09:49:06.996765+00:00",
+    "2026-11-27T09:50:30.961666+00:00",
+    "2026-11-27T09:51:59.927587+00:00",
+    "2026-11-27T09:53:49.607846+00:00",
+    "2026-11-27T09:55:19.083176+00:00",
+    "2026-11-27T09:56:05.169886+00:00",
+    "2026-11-27T09:57:00.088163+00:00",
+    "2026-11-27T09:58:27.741426+00:00",
+    "2026-11-27T09:58:54.887132+00:00",
+    "2026-11-27T10:00:21.321293+00:00",
+    "2026-11-27T10:01:11.649005+00:00",
+    "2026-11-27T10:02:00.453792+00:00",
+    "2026-11-27T10:03:02.262388+00:00",
+    "2026-11-27T10:06:22.647032+00:00",
+    "2026-11-27T10:06:22.791548+00:00",
+    "2026-11-27T10:06:25.968849+00:00",
+    "2026-11-27T10:06:29.153994+00:00",
+    "2026-11-27T10:06:32.356879+00:00",
+    "2026-11-27T10:07:59.763133+00:00",
+    "2026-11-27T10:08:43.025505+00:00",
+    "2026-11-27T10:12:09.205079+00:00",
+    "2026-11-27T10:13:17.728217+00:00",
+    "2026-11-27T10:13:19.490382+00:00",
+    "2026-11-27T10:13:22.451241+00:00",
+    "2026-11-27T10:13:28.487882+00:00",
+    "2026-11-27T10:13:31.423072+00:00",
+    "2026-11-27T10:13:36.632973+00:00",
+    "2026-11-27T10:13:40.830570+00:00",
+    "2026-11-27T10:13:42.214561+00:00",
+    "2026-11-27T10:13:44.945825+00:00",
+    "2026-11-27T10:13:48.293155+00:00",
+    "2026-11-27T10:13:51.797080+00:00",
+    "2026-11-27T10:13:52.752249+00:00",
+    "2026-11-27T10:13:58.806243+00:00",
+    "2026-11-27T10:14:01.731090+00:00",
+    "2026-11-27T10:14:07.360105+00:00",
+    "2026-11-27T10:14:08.277384+00:00",
+    "2026-11-27T10:14:09.243894+00:00",
+    "2026-11-27T10:14:14.828520+00:00",
+    "2026-11-27T10:14:20.234370+00:00",
+    "2026-11-27T10:14:20.272642+00:00",
+    "2026-11-27T10:14:25.024104+00:00",
+    "2026-11-27T10:14:28.115661+00:00",
+    "2026-11-27T10:14:29.567252+00:00",
+    "2026-11-27T10:14:34.794226+00:00",
+    "2026-11-27T10:14:42.906828+00:00",
+    "2026-11-27T10:14:45.727320+00:00",
+    "2026-11-27T10:14:49.126282+00:00",
+    "2026-11-27T10:14:52.905344+00:00",
+    "2026-11-27T10:14:54.598638+00:00",
+    "2026-11-27T10:14:55.260090+00:00",
+    "2026-11-27T10:15:05.414933+00:00",
+    "2026-11-27T10:15:06.207120+00:00",
+    "2026-11-27T10:15:07.390324+00:00",
+    "2026-11-27T10:15:09.913724+00:00",
+    "2026-11-27T10:15:14.904315+00:00",
+    "2026-11-27T10:15:15.811144+00:00",
+    "2026-11-27T10:15:22.205529+00:00",
+    "2026-11-27T10:15:24.072109+00:00",
+    "2026-11-27T10:15:27.720008+00:00",
+    "2026-11-27T10:15:30.658043+00:00",
+    "2026-11-27T10:15:33.877887+00:00",
+    "2026-11-27T10:15:35.685841+00:00",
+    "2026-11-27T10:15:39.397691+00:00",
+    "2026-11-27T10:15:40.919009+00:00",
+    "2026-11-27T10:15:46.503278+00:00",
+    "2026-11-27T10:15:50.682421+00:00",
+    "2026-11-27T10:15:58.086294+00:00",
+    "2026-11-27T10:15:59.293627+00:00",
+    "2026-11-27T10:16:03.559810+00:00",
+    "2026-11-27T10:16:05.061025+00:00",
+    "2026-11-27T10:16:09.914398+00:00",
+    "2026-11-27T10:16:13.755022+00:00",
+    "2026-11-27T10:16:14.695921+00:00",
+    "2026-11-27T10:16:18.234001+00:00",
+    "2026-11-27T10:16:20.736137+00:00",
+    "2026-11-27T10:16:25.503883+00:00",
+    "2026-11-27T10:16:28.616170+00:00",
+    "2026-11-27T10:16:32.456269+00:00",
+    "2026-11-27T10:16:38.742026+00:00",
+    "2026-11-27T10:16:39.365097+00:00",
+    "2026-11-27T10:16:44.132837+00:00",
+    "2026-11-27T10:16:45.224064+00:00",
+    "2026-11-27T10:16:46.764551+00:00",
+    "2026-11-27T10:16:57.093979+00:00",
+    "2026-11-27T10:17:01.575743+00:00",
+    "2026-11-27T10:17:05.487489+00:00",
+    "2026-11-27T10:17:13.322818+00:00",
+    "2026-11-27T10:17:16.144000+00:00",
+    "2026-11-27T10:17:19.989981+00:00",
+    "2026-11-27T10:17:23.951915+00:00",
+    "2026-11-27T10:17:24.679647+00:00",
+    "2026-11-27T10:17:27.148427+00:00",
+    "2026-11-27T10:17:28.558280+00:00",
+    "2026-11-27T10:17:32.618733+00:00",
+    "2026-11-27T10:17:34.590385+00:00",
+    "2026-11-27T10:17:35.735132+00:00",
+    "2026-11-27T10:17:39.711634+00:00",
+    "2026-11-27T10:17:42.847094+00:00",
+    "2026-11-27T10:18:36.236915+00:00",
+    "2026-11-27T10:19:02.933931+00:00"
   ],
   "free_day_out": "",
   "gemini_log": [
-    "2026-11-25T02:14:21.720867-08:00",
-    "2026-11-25T16:36:13.720498-08:00",
-    "2026-11-25T16:36:26.220735-08:00",
-    "2026-11-25T17:15:46.389727-08:00",
     "2026-11-26T16:50:44.188647-08:00",
-    "2026-11-26T17:07:07.848839-08:00"
+    "2026-11-26T17:07:07.848839-08:00",
+    "2026-11-27T01:35:56.058925-08:00",
+    "2026-11-27T02:12:09.208550-08:00"
   ],
   "gemini_day_out": "",
   "pace_adjust": 0.0,
   "lesson_log": [
-    {
-      "date": "2026-11-12",
-      "title": "The Variant That Only Hurts Macrophages",
-      "template": "vectors"
-    },
     {
       "date": "2026-11-12",
       "title": "The Signal That Cries Wolf",
@@ -4818,6 +4970,20 @@
         "clues"
       ],
       "theme": "audit",
+      "date": "2026-11-27"
+    },
+    {
+      "title": "Agent Holds the Wheel",
+      "template": "softmax",
+      "formats": [
+        "clues",
+        "match",
+        "quickfire",
+        "lab",
+        "duel",
+        "lab"
+      ],
+      "theme": "bench",
       "date": "2026-11-27"
     }
   ],
@@ -6052,22 +6218,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 102,
+      "mentions": 104,
       "refs": [
-        {
-          "date": "2026-11-18",
-          "title": "We built a chip prototype that runs Qwen 27B. You can try it live.",
-          "thread": "https://www.reddit.com/r/LocalLLM/comments/1xy3dgz/we_built_a_chip_prototype_that_runs_qwen_27b_you/",
-          "link": "",
-          "comment": "Sounds great. Hope we get more physical AI Chips"
-        },
-        {
-          "date": "2026-11-18",
-          "title": "Gemma on a printer",
-          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xyjkts/gemma_on_a_printer/",
-          "link": "",
-          "comment": ""
-        },
         {
           "date": "2026-11-18",
           "title": "Ported Tiny2.1 to the Amiga 500 (Tiny68k): a 1979 CPU running a language model!",
@@ -6151,6 +6303,20 @@
           "thread": "https://news.ycombinator.com/item?id=50660180",
           "link": "https://janlukas.blog/posts/ai-self-hosting",
           "comment": "Also made it necessary. #hardforkeverything"
+        },
+        {
+          "date": "2026-11-27",
+          "title": "AI made self-hosting fun again",
+          "thread": "https://news.ycombinator.com/item?id=50660180",
+          "link": "https://janlukas.blog/posts/ai-self-hosting",
+          "comment": "Also made it necessary. #hardforkeverything"
+        },
+        {
+          "date": "2026-11-27",
+          "title": "AMD-specific fork of llama.cpp",
+          "thread": "https://news.ycombinator.com/item?id=50657265",
+          "link": "https://devnull.land/amd-specific-llama-cpp",
+          "comment": "I know it's not completely trivial to do this given how stochastic they are with normal (non-0-temperature) settings, but is anyone actually checking the output quality of the tokens with some of these optimisations, or just chasing pure speed like some of the projects at least appear to be doing?"
         }
       ],
       "deep_dive": "2026-11-01",
@@ -6195,15 +6361,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 28,
+      "mentions": 29,
       "refs": [
-        {
-          "date": "2026-10-27",
-          "title": "Introducing GPT-6.1 Terra",
-          "thread": "https://www.reddit.com/r/singularity/comments/1xg4hs6/introducing_gpt61_terra/",
-          "link": "https://openai.com/index/introducing-gpt-6-1-terra/",
-          "comment": "So this is essentially Astra 6.0 but at 10% the cost. It’s not pushing the frontier but if that’s true it’s pretty impressive. Also, all the job displacement and embodied AI that people want comes from this type of progress, making capable models really really cheap to run."
-        },
         {
           "date": "2026-10-29",
           "title": "chatgpt chat and work merged",
@@ -6294,6 +6453,13 @@
           "thread": "https://news.ycombinator.com/item?id=50651117",
           "link": "https://twitter.com/thsottiaux/status/2125784147889393806",
           "comment": "These models were already like \"meh, ok I guess, not really 1:1 with Fable and Opus but at least they're cheap\" and now it turns out they were not even supposed to be cheap. Is OpenAI ok?"
+        },
+        {
+          "date": "2026-11-27",
+          "title": "OpenAI may be in cost control mode",
+          "thread": "https://news.ycombinator.com/item?id=50652527",
+          "link": "https://micjm.com/blog/openai-is-in-cost-control-mode/",
+          "comment": "Maybe it is too costly to use AI?"
         }
       ],
       "deep_dive": "",
@@ -6588,7 +6754,8 @@
         "2026-11-23",
         "2026-11-24",
         "2026-11-25",
-        "2026-11-26"
+        "2026-11-26",
+        "2026-11-27"
       ],
       "subs": [
         "ArtificialInteligence",
@@ -6607,15 +6774,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 44,
+      "mentions": 45,
       "refs": [
-        {
-          "date": "2026-11-20",
-          "title": "Should governments slow frontier AI? Jacob Coxon and Robin Hanson debate [video]",
-          "thread": "https://news.ycombinator.com/item?id=50564366",
-          "link": "https://www.youtube.com/watch?v=lwfewYL7X0o",
-          "comment": "Could they if they wanted to?"
-        },
         {
           "date": "2026-11-20",
           "title": "The AI Superintelligence Debate Has Serious Flaws",
@@ -6706,11 +6866,18 @@
           "thread": "https://news.ycombinator.com/item?id=50637686",
           "link": "https://www.lesswrong.com/posts/7wzWuLP3HhyBLmKfo/models-can-communicate-via-inference-servers-despite-being",
           "comment": "Is it really a good idea to teach them how to break out of their own sandboxes?"
+        },
+        {
+          "date": "2026-11-27",
+          "title": "Claude tries to sabotage research work at every stage",
+          "thread": "https://news.ycombinator.com/item?id=50651552",
+          "link": "https://twitter.com/skirano/status/2125371115979641188",
+          "comment": "I'm guessing contextually \"research\" means meta-research about claude, the model, and exploration outside the conceptual sandbox the prompt offers."
         }
       ],
       "deep_dive": "2026-11-08",
       "subject": "science",
-      "last_seen": "2026-11-26"
+      "last_seen": "2026-11-27"
     },
     "open-weight-models": {
       "name": "Open-Weight Models",
@@ -8084,7 +8251,7 @@
         "HackerNews",
         "antiai"
       ],
-      "mentions": 9,
+      "mentions": 10,
       "refs": [
         {
           "date": "2026-11-17",
@@ -8141,6 +8308,13 @@
           "thread": "https://news.ycombinator.com/item?id=50644909",
           "link": "https://www.theguardian.com/us-news/2026/nov/25/new-york-bans-ai-toys",
           "comment": "Source: https://www.governor.ny.gov/news/consumers-begin-their-holid... ( https://news.ycombinator.com/item?id=50635246 )"
+        },
+        {
+          "date": "2026-11-27",
+          "title": "One guy is doing a hunger strike outside Anthropic, currently in his 3rd day",
+          "thread": "https://news.ycombinator.com/item?id=50657110",
+          "link": "https://twitter.com/ElliotC1/status/2125689373337489419",
+          "comment": "He's going to get hungry. Scaling training data is coming to an end, nobody is going to stop there. Good luck to him though."
         },
         {
           "date": "2026-11-27",
@@ -8691,8 +8865,15 @@
       "subs": [
         "HackerNews"
       ],
-      "mentions": 1,
+      "mentions": 2,
       "refs": [
+        {
+          "date": "2026-11-27",
+          "title": "Tracking Diseases Cured by AI",
+          "thread": "https://news.ycombinator.com/item?id=50657307",
+          "link": "https://diseasescuredbyai.com/",
+          "comment": "Apparently, the process a medicine must go through before approval is far more complex than in most other fields."
+        },
         {
           "date": "2026-11-27",
           "title": "Tracking Diseases Cured by AI",
@@ -8714,7 +8895,7 @@
       "subs": [
         "HackerNews"
       ],
-      "mentions": 1,
+      "mentions": 2,
       "refs": [
         {
           "date": "2026-11-27",
@@ -8722,6 +8903,36 @@
           "thread": "https://news.ycombinator.com/item?id=50653477",
           "link": "https://techstackups.com/articles/google-workspace-ai-agents-mcp/",
           "comment": "a bunch of people are about to face the pain of losing their Google account"
+        },
+        {
+          "date": "2026-11-27",
+          "title": "Notion's official MCP inject hidden upsell instructions into agent context",
+          "thread": "https://news.ycombinator.com/item?id=50658093",
+          "link": "https://www.reddit.com/r/ClaudeCode/comments/1y4qm5o/heads_up_if_you_wire_notions_official_mcp_into/",
+          "comment": "They should be ashamed of themselves."
+        }
+      ],
+      "deep_dive": "",
+      "subject": "ai",
+      "last_seen": "2026-11-27"
+    },
+    "ai-agent-compute-control": {
+      "name": "AI Agents Controlling Compute Resources",
+      "first_seen": "2026-11-27",
+      "days": [
+        "2026-11-27"
+      ],
+      "subs": [
+        "HackerNews"
+      ],
+      "mentions": 1,
+      "refs": [
+        {
+          "date": "2026-11-27",
+          "title": "AI agents now control part of DeepMind's compute for Gemini experiments",
+          "thread": "https://news.ycombinator.com/item?id=50661218",
+          "link": "https://the-decoder.com/ai-agents-now-control-part-of-deepminds-compute-for-gemini-experiments-but-recursive-self-improvement-remains-distant/",
+          "comment": "This will be a major milestone for AI controlling hardware"
         }
       ],
       "deep_dive": "",

@@ -12,6 +12,391 @@
  },
  "episodes": [
   {
+   "file": "ai_2026-11-27_evening_1500.mp3",
+   "title": "Evening - 27 Nov: When AI agents run the compute cluster",
+   "label": "Friday 27 Nov evening",
+   "date": "2026-11-27",
+   "edition": "evening",
+   "published": "2026-11-27T15:00:11.748881+05:30",
+   "duration": 928,
+   "theme": "AI agents managing compute infrastructure, and what uncertainty really means in machine learning",
+   "writer": "nemotron-3-ultra-550b-a55b (free)",
+   "voices": "Fish Audio (free)",
+   "deep_dive": false,
+   "segments": [
+    {
+     "title": "When AI agents run the compute cluster",
+     "category": "thread"
+    },
+    {
+     "title": "Uncertainty in machine learning, explained from measurement first principles",
+     "category": "concept"
+    },
+    {
+     "title": "AI made self-hosting fun again",
+     "category": "thread"
+    }
+   ],
+   "play": {
+    "v": 2,
+    "theme": "bench",
+    "title": "Agent Holds the Wheel",
+    "brief": "He tests if the agent games its metric.",
+    "segments": [
+     {
+      "title": "When AI agents run the compute cluster",
+      "bet": {
+       "claim": "DeepMind keeps agent reasoning unfiltered during training so humans can read it before actions run.",
+       "truth": true,
+       "why": "Kavukcuoglu said they don't reward Chain of Thought during training, keeping it unfiltered so reviewers read natural-language reasoning before the agent acts."
+      },
+      "rounds": [
+       {
+        "type": "clues",
+        "q": "What runs experiments but isn't self-improving?",
+        "clues": [
+         "It runs experiments on a massive cluster but can't redesign itself.",
+         "Its reasoning is left raw so reviewers can read it before it acts.",
+         "Kavukcuoglu says it controls compute but is far from recursive self-improvement."
+        ],
+        "options": [
+         "DeepMind's experiment-running agent",
+         "A self-improving model trainer",
+         "An automated GPU failure handler",
+         "A fully autonomous research AI"
+        ],
+        "answer": 0,
+        "why": "The agent schedules and runs experiments within human-set guardrails; its chain-of-thought stays unfiltered for human review; recursive self-improvement is not happening."
+       },
+       {
+        "type": "match",
+        "q": "Match each term to its plain meaning",
+        "pairs": [
+         [
+          "Chain of Thought",
+          "Agent's written reasoning steps readable by humans"
+         ],
+         [
+          "Objective function",
+          "The metric the agent optimizes like throughput"
+         ],
+         [
+          "Recursive self-improvement",
+          "AI rewriting its own code to get smarter alone"
+         ],
+         [
+          "Human guardrails",
+          "Search space and success criteria set by people"
+         ]
+        ]
+       }
+      ],
+      "takeaway": "Agent steers compute; human sets destination and reads driver's thoughts."
+     },
+     {
+      "title": "Uncertainty in machine learning, explained from measurement first principles",
+      "bet": {
+       "claim": "Temperature scaling changes which class a neural network predicts as most likely",
+       "truth": false,
+       "why": "Temperature scaling only spreads or sharpens confidence scores; it never changes the ranking of predictions."
+      },
+      "rounds": [
+       {
+        "type": "quickfire",
+        "q": "True or false?",
+        "items": [
+         {
+          "text": "Aleatoric uncertainty disappears if you collect enough training data",
+          "truth": false
+         },
+         {
+          "text": "Neural networks out of the box tend to be overconfident",
+          "truth": true
+         },
+         {
+          "text": "Temperature scaling changes the ranking of a model's predictions",
+          "truth": false
+         },
+         {
+          "text": "Conformal prediction requires assuming a specific error distribution",
+          "truth": false
+         },
+         {
+          "text": "The fork example's even middle-lane split is aleatoric uncertainty",
+          "truth": true
+         }
+        ]
+       },
+       {
+        "type": "lab",
+        "text": "Adjust temperature so the top word 'calibrated' lands in the 40–60% range",
+        "inputs": [
+         {
+          "id": "T",
+          "label": "Temperature",
+          "unit": "",
+          "min": 0.1,
+          "max": 2.5,
+          "step": 0.05,
+          "value": 0.5
+         }
+        ],
+        "outputs": [
+         {
+          "id": "p1",
+          "label": "calibrated",
+          "unit": "%",
+          "expr": "100*exp(3/T)/(exp(3/T)+exp(2/T)+exp(2/T)+exp((-1)/T)+exp((-2)/T))",
+          "digits": 1,
+          "lo": 37.34308584742369,
+          "hi": 99.99092083843409
+         },
+         {
+          "id": "p2",
+          "label": "sharper",
+          "unit": "%",
+          "expr": "100*exp(2/T)/(exp(3/T)+exp(2/T)+exp(2/T)+exp((-1)/T)+exp((-2)/T))",
+          "digits": 1,
+          "lo": 0.00453958078295109,
+          "hi": 25.05229810194638
+         },
+         {
+          "id": "p3",
+          "label": "wider",
+          "unit": "%",
+          "expr": "100*exp(2/T)/(exp(3/T)+exp(2/T)+exp(2/T)+exp((-1)/T)+exp((-2)/T))",
+          "digits": 1,
+          "lo": 0.00453958078295109,
+          "hi": 25.05229810194638
+         },
+         {
+          "id": "p4",
+          "label": "random",
+          "unit": "%",
+          "expr": "100*exp((-1)/T)/(exp(3/T)+exp(2/T)+exp(2/T)+exp((-1)/T)+exp((-2)/T))",
+          "digits": 1,
+          "lo": 4.2479685403448587e-16,
+          "hi": 7.5394390037703385
+         },
+         {
+          "id": "p5",
+          "label": "broken",
+          "unit": "%",
+          "expr": "100*exp((-2)/T)/(exp(3/T)+exp(2/T)+exp(2/T)+exp((-1)/T)+exp((-2)/T))",
+          "digits": 1,
+          "lo": 1.9285747336490188e-20,
+          "hi": 5.053837100090227
+         }
+        ],
+        "goal": {
+         "target": "p1",
+         "min": 40.0,
+         "max": 60.0,
+         "text": "Find the temperature where 'calibrated' probability is between 40% and 60%",
+         "success": "Higher temperature flattens the distribution, turning overconfidence into honest uncertainty without changing the ranking."
+        },
+        "template": "softmax",
+        "view": {
+         "kind": "bars",
+         "prompt": "After temperature scaling, the model's confidence becomes ___",
+         "outs": [
+          "p1",
+          "p2",
+          "p3",
+          "p4",
+          "p5"
+         ],
+         "readouts": false
+        }
+       }
+      ],
+      "takeaway": "Two uncertainty types need two tools: calibration aligns scores, conformal sets guarantee coverage."
+     },
+     {
+      "title": "AI made self-hosting fun again",
+      "bet": {
+       "claim": "An AI agent cut NixOS server setup from a week to half a day.",
+       "truth": true,
+       "why": "Jan Lukas got a working NixOS config in 4 hours; solo would've taken 7 days."
+      },
+      "rounds": [
+       {
+        "type": "duel",
+        "q": "Which is greater: days saved by AI on NixOS or the critical-CVE patch window?",
+        "unit": "days",
+        "a": {
+         "label": "Days saved by AI on NixOS",
+         "value": 6.5
+        },
+        "b": {
+         "label": "Critical-CVE patch window",
+         "value": 1.0
+        },
+        "why": "AI cut a 7-day solo setup to 0.5 days, saving 6.5 days — over six times the 1-day patch window."
+       },
+       {
+        "type": "lab",
+        "text": "Slide step reliability or pipeline length. Watch how fast overall success erodes.",
+        "inputs": [
+         {
+          "id": "p",
+          "label": "Each deploy step works",
+          "unit": "%",
+          "min": 85.0,
+          "max": 99.0,
+          "step": 0.1,
+          "value": 95.0
+         },
+         {
+          "id": "n",
+          "label": "Deploy steps in a release",
+          "unit": "",
+          "min": 1.0,
+          "max": 10.0,
+          "step": 1.0,
+          "value": 5.0
+         }
+        ],
+        "outputs": [
+         {
+          "id": "ok",
+          "label": "Whole release works",
+          "unit": "%",
+          "expr": "100*(p/100)^n",
+          "digits": 1,
+          "lo": 19.687440434072258,
+          "hi": 99.0
+         },
+         {
+          "id": "fails",
+          "label": "Releases that fail, of 100",
+          "unit": "",
+          "expr": "100-ok",
+          "digits": 0,
+          "lo": 1.0,
+          "hi": 80.31255956592774
+         }
+        ],
+        "chart": {
+         "x": "n",
+         "y": [
+          "ok"
+         ]
+        },
+        "goal": {
+         "target": "ok",
+         "min": 0.0,
+         "max": 49.0,
+         "text": "Find where overall success drops below 50%.",
+         "success": "Even 95%-reliable steps compound: 10 steps yields only 60% success; 5 steps at 85% yields 44%."
+        },
+        "template": "chain",
+        "view": {
+         "kind": "runs",
+         "p": "p",
+         "n": "n",
+         "step": "deploy step",
+         "run": "release"
+        }
+       }
+      ],
+      "takeaway": "Agent writes the first draft; you verify, harden, and own the 2 a.m. breakage."
+     }
+    ],
+    "words": [
+     {
+      "term": "Chain of Thought",
+      "means": "Agent's written reasoning steps, readable by humans"
+     },
+     {
+      "term": "Objective function",
+      "means": "The number the agent chases, like throughput"
+     },
+     {
+      "term": "Recursive self-improvement",
+      "means": "AI rewriting its own code to get smarter alone"
+     },
+     {
+      "term": "aleatoric",
+      "means": "Irreducible randomness in the world that no amount of data can remove"
+     },
+     {
+      "term": "epistemic",
+      "means": "Uncertainty from not knowing the true relationship; more data can reduce it"
+     },
+     {
+      "term": "conformal prediction",
+      "means": "Wraps any model in a prediction set with a guaranteed coverage rate, no distribution assumed"
+     },
+     {
+      "term": "temperature scaling",
+      "means": "A single-factor post-hoc adjustment that spreads or sharpens confidence scores without changing rankings"
+     },
+     {
+      "term": "NixOS",
+      "means": "A Linux where the entire system configuration is written in code."
+     }
+    ],
+    "chips": [
+     "More on CoT faithfulness",
+     "Less hype, more guardrails",
+     "QA angle was sharp",
+     "Want the KPI gaming test"
+    ]
+   },
+   "quiz": [
+    {
+     "q": "According to the episode, what best describes what DeepMind's AI agents are actually doing with the compute cluster, and what claim does Kavukcuoglu explicitly reject?",
+     "options": [
+      "Agents are performing full recursive self-improvement by rewriting their own code without human oversight.",
+      "Agents independently choose their own objective functions and are rewarded for their chain-of-thought reasoning during training.",
+      "Agents schedule workloads and propose experiments inside human-defined guardrails, while full recursive self-improvement is not happening.",
+      "Agents have already replaced human researchers as lead authors on Gemini papers."
+     ],
+     "answer": 2,
+     "explain": "Kavukcuoglu said the lab is far from full recursive self-improvement and that agents run experiments within human-designed frameworks; the lab does not reward chain-of-thought during training.",
+     "segment": "When AI agents run the compute cluster"
+    },
+    {
+     "q": "In the car-approaching-a-fork example, drivers in the middle lane split evenly between left and right, while a single-peaked model cannot capture the two distinct groups in the side lanes. What do these two phenomena represent?",
+     "options": [
+      "The even split is aleatoric uncertainty; the model's failure to capture two groups is epistemic uncertainty.",
+      "The even split is epistemic uncertainty; the model's failure is aleatoric uncertainty.",
+      "Both are examples of model overconfidence fixable by temperature scaling.",
+      "Both require conformal prediction because they violate Gaussian assumptions."
+     ],
+     "answer": 0,
+     "explain": "The script states the even split is aleatoric (irreducible randomness), while the single-peaked model's mismatch with two distinct groups reflects epistemic uncertainty (ignorance of the true relationship).",
+     "segment": "Uncertainty in machine learning, explained from measurement first principles"
+    },
+    {
+     "q": "How does conformal prediction differ from temperature scaling when dealing with a miscalibrated model?",
+     "options": [
+      "Conformal prediction retrains model weights to fix overconfidence, while temperature scaling only changes output ranking.",
+      "Temperature scaling provides a distribution-free coverage guarantee, while conformal prediction only adjusts confidence sharpness with one factor.",
+      "Conformal prediction wraps any model in a prediction set with a guaranteed coverage rate without distributional assumptions; temperature scaling is a single-factor post-hoc fix that fails on complex miscalibration.",
+      "Conformal prediction assumes Gaussian uncertainty, whereas temperature scaling works only on out-of-distribution inputs."
+     ],
+     "answer": 2,
+     "explain": "Conformal prediction gives a distribution-free coverage guarantee on a set; temperature scaling is just one post-hoc factor and cannot fix complex miscalibration or out-of-distribution overconfidence.",
+     "segment": "Uncertainty in machine learning, explained from measurement first principles"
+    },
+    {
+     "q": "In the self-hosting segment, what is the main risk of letting an AI agent write infrastructure configuration that the operator does not fully understand?",
+     "options": [
+      "The agent will automatically patch all critical CVEs within 24 hours, removing the need for manual updates.",
+      "The operator may merge an unverified change and later face a black-box failure during an incident, with no record of why or test evidence.",
+      "NixOS configurations can no longer be kept under version control once AI is involved.",
+      "Monitoring and hardening become unnecessary because the agent validates its own changes."
+     ],
+     "answer": 1,
+     "explain": "Laura warns that merging AI-proposed config you didn't write means accepting an unverified change with no test evidence, leaving you debugging a black box when something breaks.",
+     "segment": "AI made self-hosting fun again"
+    }
+   ],
+   "transcript": "transcripts/ai_2026-11-27_evening_1500.txt"
+  },
+  {
    "file": "ai_2026-11-27_morning_0600.mp3",
    "title": "Morning - 27 Nov: OpenAI's New Usage Limits on GPT-6.2",
    "label": "Friday 27 Nov morning",
@@ -3385,465 +3770,6 @@
     }
    ],
    "transcript": "transcripts/ai_2026-11-21_morning_0600.txt"
-  },
-  {
-   "file": "ai_2026-11-20_evening_1500.mp3",
-   "title": "Evening - 20 Nov: A federal court says AI-generated output cannot establish probable cause",
-   "label": "Friday 20 Nov evening",
-   "date": "2026-11-20",
-   "edition": "evening",
-   "published": "2026-11-20T15:00:11.448310+05:30",
-   "duration": 953,
-   "theme": "When AI meets law and labor: a court ruling on AI-generated evidence, and the debate over whether AI turns jobs into gig work",
-   "writer": "nemotron-3-ultra-550b-a55b (free)",
-   "voices": "Fish Audio (free)",
-   "deep_dive": false,
-   "segments": [
-    {
-     "title": "A federal court says AI-generated output cannot establish probable cause",
-     "category": "thread"
-    },
-    {
-     "title": "The argument that AI is turning skilled jobs into low-paid piecework",
-     "category": "thread"
-    },
-    {
-     "title": "Pete Warden on local AI, open models, voice interfaces, the future of hardware",
-     "category": "thread"
-    }
-   ],
-   "play": {
-    "v": 2,
-    "theme": "exchange",
-    "title": "The AI Warrant That Wasn't",
-    "brief": "A federal court draws the line: AI leads need human proof before arrest.",
-    "segments": [
-     {
-      "title": "A federal court says AI-generated output cannot establish probable cause",
-      "bet": {
-       "claim": "The court banned police from using facial recognition software",
-       "truth": false,
-       "why": "Court said AI match alone isn't probable cause; it's still allowed as an investigative lead generator"
-      },
-      "rounds": [
-       {
-        "type": "match",
-        "q": "Match each term to its plain meaning",
-        "pairs": [
-         [
-          "Probable cause",
-          "Enough evidence a reasonable person believes suspect committed crime"
-         ],
-         [
-          "Qualified immunity",
-          "Legal shield protecting officers from personal lawsuits"
-         ],
-         [
-          "Investigative tool",
-          "Generates leads but isn't evidence itself"
-         ],
-         [
-          "Confirmation bias",
-          "System gives score; human sees expected match"
-         ]
-        ]
-       },
-       {
-        "type": "sequence",
-        "q": "Put these case events in the order they happened",
-        "items": [
-         "Detective runs camera screenshot through facial-recognition software",
-         "Detective swears warrant without comparing photos",
-         "Suspect arrested out of state; charges dropped",
-         "Court denies qualified immunity; lawsuit proceeds"
-        ],
-        "why": "The detective skipped verification, arrested the wrong man across state lines, and lost his liability shield when the court ruled an uncorroborated AI match isn't probable cause."
-       }
-      ],
-      "takeaway": "An algorithm generates leads; the Constitution requires human verification before liberty is at stake."
-     },
-     {
-      "title": "The argument that AI is turning skilled jobs into low-paid piecework",
-      "bet": {
-       "claim": "The pay gap between a cardiologist and a Tagalog speaker on the same platform is under 10x.",
-       "truth": false,
-       "why": "The investigation found a 24x gap: $180/hr for cardiologists vs $7.50/hr for Tagalog speakers doing identical cardiac scenario work."
-      },
-      "rounds": [
-       {
-        "type": "estimate",
-        "q": "Drag the slider: how many times more does the cardiologist earn per hour than the Tagalog speaker?",
-        "answer": 24.0,
-        "unit": "times",
-        "lo": 2.0,
-        "hi": 100,
-        "log": true,
-        "why": "Outlier pays cardiologists $180/hr and Tagalog speakers $7.50/hr for identical cardiac scenario work — a 24x gap."
-       },
-       {
-        "type": "duel",
-        "q": "Which is bigger: platforms named, or professional fields documented?",
-        "unit": "count",
-        "a": {
-         "label": "Platforms named",
-         "value": 4.0
-        },
-        "b": {
-         "label": "Professional fields documented",
-         "value": 5.0
-        },
-        "why": "Four platforms (Outlier, Remotasks, Hive, Mercor) but five fields affected: cardiology, law, coding, translation, data labeling."
-       }
-      ],
-      "takeaway": "AI rewrites employment contracts into piecework, one micro-task at a time."
-     },
-     {
-      "title": "Pete Warden on local AI, open models, voice interfaces, the future of hardware",
-      "bet": null,
-      "rounds": [
-       {
-        "type": "flaw",
-        "q": "Which claim about local AI does not match the segment?",
-        "items": [
-         "Open models now trail commercial benchmarks by months",
-         "A 27B four-bit model fits in a 24GB laptop GPU",
-         "Cloud GPUs stay busy by batching many requests",
-         "Local voice models remove cloud lag for snappy replies"
-        ],
-        "flaw": 1,
-        "why": "The segment says this setup needs about 32GB VRAM — a desktop card, not a laptop GPU."
-       },
-       {
-        "type": "quickfire",
-        "q": "True or false?",
-        "items": [
-         {
-          "text": "Open-weight models trail commercial benchmarks by only months",
-          "truth": true
-         },
-         {
-          "text": "Four-bit quantization lets a 27B model run on any laptop",
-          "truth": false
-         },
-         {
-          "text": "Cloud GPUs stay utilized by serving many requests at once",
-          "truth": true
-         },
-         {
-          "text": "Nvidia has released no consumer graphics cards since 2022",
-          "truth": false
-         },
-         {
-          "text": "Local voice models beat cloud latency for real conversation",
-          "truth": true
-         }
-        ]
-       }
-      ],
-      "takeaway": "Local AI works now, but you buy hardware for it — not just a software switch."
-     }
-    ],
-    "words": [
-     {
-      "term": "Probable cause",
-      "means": "Enough evidence a reasonable person believes a crime happened and the suspect did it"
-     },
-     {
-      "term": "Qualified immunity",
-      "means": "Legal shield protecting officers from personal lawsuits when they follow established law"
-     },
-     {
-      "term": "Investigative tool",
-      "means": "Something that generates leads for humans to verify, not evidence itself"
-     },
-     {
-      "term": "Confirmation bias",
-      "means": "Seeing what you expect because a system score confirms your assumption"
-     },
-     {
-      "term": "Extractivism",
-      "means": "Draining human skill like an oil field, then moving to cheaper labor"
-     },
-     {
-      "term": "Piecework",
-      "means": "Paid per task completed, not by hour or salary"
-     },
-     {
-      "term": "Fungible",
-      "means": "Interchangeable — any worker can be swapped for another"
-     },
-     {
-      "term": "Open-weight models",
-      "means": "Models whose learned numbers are public, not just the architecture"
-     }
-    ],
-    "chips": [
-     "More court-AI clashes please",
-     "Qualified immunity twist was sharp",
-     "Go deeper on predictive policing",
-     "Tool vs evidence distinction stuck"
-    ]
-   },
-   "quiz": [
-    {
-     "q": "According to the court's reasoning in the Kentucky case, why can an uncorroborated AI facial-recognition match not establish probable cause for an arrest warrant?",
-     "options": [
-      "Because the Constitution does not allow a detective to delegate the probable-cause judgment to software; AI output is a lead, not evidence.",
-      "Because facial-recognition software is prohibited by the Fourth Amendment in all criminal investigations.",
-      "Because the software had not been validated under GMP-like quality standards for law-enforcement use.",
-      "Because the detective failed to obtain a signed affidavit from the software vendor."
-     ],
-     "answer": 0,
-     "explain": "The court held that probable cause is a constitutional judgment a human must make; an AI match is only an investigative lead that requires independent verification before it can justify an arrest.",
-     "segment": "A federal court says AI-generated output cannot establish probable cause"
-    },
-    {
-     "q": "Why did the court deny the detective qualified immunity in this case?",
-     "options": [
-      "Because facial-recognition matches are never admissible in any federal court.",
-      "Because the suspect proved he was in Nebraska at the time of the crime.",
-      "Because the AI vendor did not disclose its training data to the court.",
-      "Because the detective ignored his own department's policy requiring verification and made no independent check of the photos."
-     ],
-     "answer": 3,
-     "explain": "Qualified immunity was denied because the detective bypassed his own department's required verification step and relied solely on the AI output, conduct the court found objectively unreasonable.",
-     "segment": "A federal court says AI-generated output cannot establish probable cause"
-    },
-    {
-     "q": "The Rest of World investigation describes AI data-labeling and evaluation work as \"extractivism.\" What does that term mean in this context?",
-     "options": [
-      "Platforms extract training data from the internet without paying creators.",
-      "Workers extract unpaid overtime from AI companies by filing class-action lawsuits.",
-      "Platforms pay well to attract skilled workers, then cut rates and move to cheaper labor pools, treating human skill like a depleted resource.",
-      "AI models extract wages directly from workers' bank accounts through platform terms of service."
-     ],
-     "answer": 2,
-     "explain": "Extractivism here describes platforms recruiting workers at high rates, then collapsing pay and shifting to the next labor pool, treating human skill like an oil field to be drained and abandoned.",
-     "segment": "The argument that AI is turning skilled jobs into low-paid piecework"
-    },
-    {
-     "q": "Based on Pete Warden's argument and the discussion, what is the main practical advantage of running a voice AI model locally on-device rather than in the cloud?",
-     "options": [
-      "Local models are always more accurate than commercial cloud models because they avoid quantization.",
-      "Local execution removes the cloud round-trip, reducing latency for voice interaction and improving privacy.",
-      "Local models eliminate the need for any GPU hardware because they run on CPU alone.",
-      "Local models automatically update themselves to match the latest commercial benchmarks."
-     ],
-     "answer": 1,
-     "explain": "Warden argues that when the model lives next to the microphone, it removes the network round-trip, making voice interaction feel conversational while keeping data local.",
-     "segment": "Pete Warden on local AI, open models, voice interfaces, the future of hardware"
-    }
-   ],
-   "transcript": "transcripts/ai_2026-11-20_evening_1500.txt"
-  },
-  {
-   "file": "ai_2026-11-20_morning_0600.mp3",
-   "title": "Morning - 20 Nov: Anthropic Joins the Public Stock Market",
-   "label": "Friday 20 Nov morning",
-   "date": "2026-11-20",
-   "edition": "morning",
-   "published": "2026-11-20T06:00:13.429420+05:30",
-   "duration": 1132,
-   "theme": "What happens when artificial intelligence enters institutions built on trust—from public stock markets to scientific peer review.",
-   "writer": "Gemini 4 Hydrogen",
-   "voices": "Fish Audio (free)",
-   "deep_dive": false,
-   "segments": [
-    {
-     "title": "Anthropic Joins the Public Stock Market",
-     "category": "thread"
-    },
-    {
-     "title": "Can Scientific Peer Review Survive Machine-Written Papers",
-     "category": "concept"
-    }
-   ],
-   "play": {
-    "v": 2,
-    "theme": "exchange",
-    "title": "The Safety Lab Goes Public",
-    "brief": "He stakes points on what holds up when mission meets Wall Street.",
-    "segments": [
-     {
-      "title": "Anthropic Joins the Public Stock Market",
-      "bet": {
-       "claim": "The $1.5 trillion valuation counts only shares trading today.",
-       "truth": false,
-       "why": "That figure includes every employee option and convertible note waiting at the gate; the float valuation was $1.3 trillion."
-      },
-      "rounds": [
-       {
-        "type": "flaw",
-        "q": "Three of these are true; one is a forum myth.",
-        "items": [
-         "IPO priced at eighty-three dollars a share.",
-         "Amazon and Google together hold nearly thirty percent.",
-         "Big tech shares carry zero votes unless sold on.",
-         "Regular buyers got shares with no voting rights."
-        ],
-        "flaw": 3,
-        "why": "The filing shows Class A common stock — standard voting shares. The non-vote shares belong to Amazon and Google."
-       },
-       {
-        "type": "match",
-        "q": "Match each term to its plain job.",
-        "pairs": [
-         [
-          "Fully diluted valuation",
-          "Value counting every possible future share"
-         ],
-         [
-          "Convertible note",
-          "Loan that turns into stock later at a fixed price"
-         ],
-         [
-          "Public benefit corporation",
-          "For-profit company legally bound to a public mission"
-         ],
-         [
-          "Greenshoe option",
-          "Banks' right to sell extra shares if demand stays hot"
-         ]
-        ]
-       }
-      ],
-      "takeaway": "A safety mission and non-voting shares don't shield an AI lab from its cloud landlord's gravity."
-     },
-     {
-      "title": "Can Scientific Peer Review Survive Machine-Written Papers",
-      "bet": null,
-      "rounds": [
-       {
-        "type": "match",
-        "q": "Match each term to its role in the segment",
-        "pairs": [
-         [
-          "Peer review",
-          "Volunteer quality filter"
-         ],
-         [
-          "Referee report",
-          "Review recommending accept reject revise"
-         ],
-         [
-          "Large language model",
-          "Software predicting next word fluently"
-         ],
-         [
-          "Text detector",
-          "Tool claiming to flag bot reports"
-         ]
-        ]
-       },
-       {
-        "type": "clues",
-        "q": "What tool do authors propose for screening submissions?",
-        "clues": [
-         "Authors claim it spots bot reviews but passes human text polished by software",
-         "Commenters doubt it works and warn of false accusations against non-native writers",
-         "It tries to catch counterfeit by checking the font not the engineering underneath"
-        ],
-        "options": [
-         "AI text detector",
-         "Plagiarism checker",
-         "Grammar correction tool",
-         "Peer review platform"
-        ],
-        "answer": 0,
-        "why": "Segment says authors propose detectors as standard screening but commenters question reliability and edge cases like non-native speakers."
-       }
-      ],
-      "takeaway": "Cheap machine text breaks peer review's time balance; fix incentives not just prose."
-     }
-    ],
-    "words": [
-     {
-      "term": "Fully diluted",
-      "means": "Counting every share that could exist, not just those trading now."
-     },
-     {
-      "term": "Convertible note",
-      "means": "Debt that converts to equity at a preset price later."
-     },
-     {
-      "term": "Public benefit corporation",
-      "means": "A for-profit legally required to balance profit and a public mission."
-     },
-     {
-      "term": "Greenshoe",
-      "means": "Underwriters' option to sell more shares if the IPO is oversubscribed."
-     },
-     {
-      "term": "Referee report",
-      "means": "Expert's written review recommending accept reject or revise"
-     },
-     {
-      "term": "Large language model",
-      "means": "Software trained to predict next word producing fluent prose"
-     },
-     {
-      "term": "Deposit system",
-      "means": "Refundable fee on submission to deter low-effort spam"
-     }
-    ],
-    "chips": [
-     "More on the cloud leverage",
-     "Skip the valuation chaos",
-     "Deeper on governance traps",
-     "Love the bridge analogy"
-    ]
-   },
-   "quiz": [
-    {
-     "q": "In the discussion of Anthropic's valuation, Laura uses a bridge analogy: trucks currently crossing versus trucks waiting at the gate with a permit. What do the 'trucks on the bridge' represent?",
-     "options": [
-      "All employee stock options and special agreements waiting to convert",
-      "Only the shares actively trading on the public market",
-      "The total number of shares authorized in the corporate charter",
-      "The shares held by Amazon and Google that carry no voting rights"
-     ],
-     "answer": 1,
-     "explain": "Laura says the standard stock value comes from multiplying actively trading shares by the share price—like counting trucks already on the bridge—while permitted trucks at the gate represent all other shares and options.",
-     "segment": "Anthropic Joins the Public Stock Market"
-    },
-    {
-     "q": "According to TechCrunch as discussed, why can Amazon and Google together own nearly 30% of Anthropic without gaining formal control over shareholder votes?",
-     "options": [
-      "Their shares are non-voting until they sell them to another party",
-      "Anthropic's board is legally required to ignore votes from cloud providers",
-      "They only own preferred stock that converts to common after ten years",
-      "Their ownership is capped at 15% each under Nasdaq listing rules"
-     ],
-     "answer": 0,
-     "explain": "The script notes that shares from Amazon and Google's conversions and side deals carry no voting rights; they only become regular voting stock if sold to someone else.",
-     "segment": "Anthropic Joins the Public Stock Market"
-    },
-    {
-     "q": "Why do large language models create a bottleneck in scientific peer review, according to the discussion?",
-     "options": [
-      "Journals are required by law to use AI detectors before human review",
-      "They automatically reject papers that contain statistical errors",
-      "They can generate polished papers in seconds, while expert verification of underlying science still takes hours",
-      "They charge reviewers a fee to access submitted manuscripts"
-     ],
-     "answer": 2,
-     "explain": "Commenters point out the asymmetry: generating fluent academic text is nearly instant, but an expert must spend hours reading methods and data to verify whether the logic is real or merely plausible.",
-     "segment": "Can Scientific Peer Review Survive Machine-Written Papers"
-    },
-    {
-     "q": "The discussion suggests that relying on AI text detectors to police peer review is flawed primarily because:",
-     "options": [
-      "Detectors cannot reliably distinguish human text polished by AI from fully machine-generated reasoning, and false accusations could harm authors",
-      "Journals refuse to pay for detector licenses",
-      "Detectors only work on papers written before 2020",
-      "Large language models refuse to output text that detectors can flag"
-     ],
-     "answer": 0,
-     "explain": "The script raises skepticism about detector reliability, the risk of falsely accusing humans, and the gray area of non-native speakers using AI only to polish prose rather than invent reasoning.",
-     "segment": "Can Scientific Peer Review Survive Machine-Written Papers"
-    }
-   ],
-   "transcript": "transcripts/ai_2026-11-20_morning_0600.txt"
   }
  ]
 }
