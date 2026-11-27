@@ -12,6 +12,228 @@
  },
  "episodes": [
   {
+   "file": "ai_2026-11-27_morning_0600.mp3",
+   "title": "Morning - 27 Nov: OpenAI's New Usage Limits on GPT-6.2",
+   "label": "Friday 27 Nov morning",
+   "date": "2026-11-27",
+   "edition": "morning",
+   "published": "2026-11-27T06:00:09.724397+05:30",
+   "duration": 1055,
+   "theme": "OpenAI usage limits tighten; Google mandates MCP for agent tool access",
+   "writer": "nemotron-3-ultra-550b-a55b (free)",
+   "voices": "Fish Audio (free)",
+   "deep_dive": false,
+   "segments": [
+    {
+     "title": "OpenAI's New Usage Limits on GPT-6.2",
+     "category": "thread"
+    },
+    {
+     "title": "Google's MCP Servers for AI Agents",
+     "category": "thread"
+    }
+   ],
+   "play": {
+    "v": 2,
+    "theme": "audit",
+    "title": "Token Cap Mystery",
+    "brief": "You audit the token ledger: every claim a record, every gap a finding.",
+    "segments": [
+     {
+      "title": "OpenAI's New Usage Limits on GPT-6.2",
+      "bet": {
+       "claim": "The 40% and 25% faster limit claims come with zero published measurement protocol.",
+       "truth": true,
+       "why": "Only a Reddit thread and unread tweet exist; no controlled token counts, same prompts, or cache tracking."
+      },
+      "rounds": [
+       {
+        "type": "quickfire",
+        "q": "True or false?",
+        "items": [
+         {
+          "text": "Astra and Sol are confirmed distilled variants of a larger model.",
+          "truth": false
+         },
+         {
+          "text": "Token caps may have dropped, verbosity risen, or accounting changed.",
+          "truth": true
+         },
+         {
+          "text": "Using a cheaper model for grunt work makes your OpenAI token count look lower.",
+          "truth": true
+         },
+         {
+          "text": "Tokenizer changes mid-release are common for major AI labs.",
+          "truth": false
+         },
+         {
+          "text": "A rolling reset window can give bursts then a hard wall.",
+          "truth": true
+         }
+        ]
+       },
+       {
+        "type": "clues",
+        "q": "What rate-limiting trick hides the true quota?",
+        "clues": [
+         "It resets quota on a rolling clock, not a calendar day.",
+         "You get a burst, then hit a wall with no warning.",
+         "Called 'reset shenanigans' in the thread."
+        ],
+        "options": [
+         "Token bucket",
+         "Rolling window",
+         "Leaky bucket",
+         "Fixed window"
+        ],
+        "answer": 1,
+        "why": "Rolling window resets silently; you never know when the burst ends."
+       }
+      ],
+      "takeaway": "Specific usage claims, zero verification — measure your own token burn."
+     },
+     {
+      "title": "Google's MCP Servers for AI Agents",
+      "bet": {
+       "claim": "The public Gmail MCP server can draft emails but cannot send them.",
+       "truth": true,
+       "why": "Tool list confirms send, reply, forward require partner access and aren't generally available."
+      },
+      "rounds": [
+       {
+        "type": "match",
+        "q": "Match each term to its real job",
+        "pairs": [
+         [
+          "MCP server",
+          "Universal adapter for model actions"
+         ],
+         [
+          "Partner access",
+          "Write permission for approved vendors only"
+         ],
+         [
+          "Google Technical Information",
+          "Your data as searchable numbers, 30-day cap"
+         ],
+         [
+          "Agentic checkbox",
+          "Self-declared label locking you into MCP"
+         ]
+        ]
+       },
+       {
+        "type": "clues",
+        "q": "What breaks persistent memory for agents?",
+        "clues": [
+         "A monthly reset that isn't about passwords or billing.",
+         "It caps how long your assistant remembers the meaning of emails.",
+         "Vector embeddings and memory indexes from Workspace data must be rebuilt monthly."
+        ],
+        "options": [
+         "30-day retention cap",
+         "Daily request quota",
+         "OAuth token expiry",
+         "Partner access rule"
+        ],
+        "answer": 0,
+        "why": "Google caps 'Google Technical Information' retention at 30 days, forcing monthly rebuild of long-term memory indexes."
+       }
+      ],
+      "takeaway": "Google turned Workspace into two-tier: partners write, others read-only — and called it a protocol standard."
+     }
+    ],
+    "words": [
+     {
+      "term": "Token",
+      "means": "A word fragment; the billable unit for model input and output."
+     },
+     {
+      "term": "Rolling window",
+      "means": "Quota resets continuously, not at midnight — bursts then hard stops."
+     },
+     {
+      "term": "Sub-agent pattern",
+      "means": "Offload heavy work to cheap models; call pricey ones only for hard steps."
+     },
+     {
+      "term": "MCP server",
+      "means": "Universal adapter letting models use one protocol for every tool."
+     },
+     {
+      "term": "Partner access",
+      "means": "Write permission reserved for approved vendors like Anthropic."
+     },
+     {
+      "term": "Google Technical Information",
+      "means": "Your data turned into searchable numbers, capped at 30 days retention."
+     },
+     {
+      "term": "Agentic classification",
+      "means": "Self-declared checkbox deciding if your app must use MCP forever."
+     }
+    ],
+    "chips": [
+     "Measure before you trust",
+     "More measurement deep dives",
+     "Love the QA angle",
+     "Skip the Reddit drama"
+    ]
+   },
+   "quiz": [
+    {
+     "q": "Laura compares verifying the OpenAI usage-limit claim to a quality-engineering study. Which type of study does she name, and what does it assess in this context?",
+     "options": [
+      "A gauge R&R study — assessing repeatability and reproducibility of token counting across prompts and sessions.",
+      "An SPC chart — assessing whether token usage is in statistical control over time.",
+      "A capability study — assessing whether the model meets specification limits for token output.",
+      "A validation protocol — assessing whether the model is suitable for GMP production workflows."
+     ],
+     "answer": 0,
+     "explain": "Sarah explicitly likens controlled before-and-after token measurements to a gauge R&R study, which checks whether a measurement system yields consistent results.",
+     "segment": "OpenAI's New Usage Limits on GPT-6.2"
+    },
+    {
+     "q": "The script lists several reasons Astra and Sol might hit usage caps faster. Which of the following is NOT offered as a possible mechanism?",
+     "options": [
+      "The token cap itself was lowered.",
+      "The models generate more output tokens per request (verbosity).",
+      "The tokenizer vocabulary changed, altering how text is split into tokens.",
+      "OpenAI reduced the context window so less history is retained per turn."
+     ],
+     "answer": 3,
+     "explain": "The script cites lower caps, increased verbosity, and tokenizer or accounting changes as possible mechanisms; it never mentions a reduced context window as a cause for faster cap exhaustion.",
+     "segment": "OpenAI's New Usage Limits on GPT-6.2"
+    },
+    {
+     "q": "Under Google's new Workspace AI Tools Addendum, what determines whether an application must route through Google's MCP servers instead of calling Workspace REST APIs directly?",
+     "options": [
+      "Whether the app uses OAuth for authentication.",
+      "Whether the tool \"is or is driven by an AI agent\" acting autonomously on the user's behalf.",
+      "Whether the app is published on the Google Workspace Marketplace.",
+      "Whether the app processes more than 5,000 requests per day."
+     ],
+     "answer": 1,
+     "explain": "The mandate hinges on the agent classification, not OAuth usage, marketplace listing, or request volume; non-agentic deterministic scripts remain unaffected.",
+     "segment": "Google's MCP Servers for AI Agents"
+    },
+    {
+     "q": "The script describes a functional gap in Google's public Gmail MCP server. Which action can the public server perform, and which is restricted to partner access?",
+     "options": [
+      "It can send and reply to email, but cannot create drafts.",
+      "It can modify existing drafts freely, but cannot search mail threads.",
+      "It can search mail and create drafts, but cannot send, reply, or forward.",
+      "It can share Drive files, but cannot create them."
+     ],
+     "answer": 2,
+     "explain": "The public Gmail MCP server supports read and draft creation, but write actions like sending, replying, and forwarding are marked as partner-only and not generally available.",
+     "segment": "Google's MCP Servers for AI Agents"
+    }
+   ],
+   "transcript": "transcripts/ai_2026-11-27_morning_0600.txt"
+  },
+  {
    "file": "ai_2026-11-26_evening_1500.mp3",
    "title": "Evening - 26 Nov: A transformer that learns handwriting stroke by stroke",
    "label": "Thursday 26 Nov evening",
@@ -3622,282 +3844,6 @@
     }
    ],
    "transcript": "transcripts/ai_2026-11-20_morning_0600.txt"
-  },
-  {
-   "file": "ai_2026-11-19_evening_1500.mp3",
-   "title": "Evening - 19 Nov: The Doritos bag that looked like a gun",
-   "label": "Thursday 19 Nov evening",
-   "date": "2026-11-19",
-   "edition": "evening",
-   "published": "2026-11-19T15:00:12.579250+05:30",
-   "duration": 1081,
-   "theme": "When automated judgment fails: a school security camera that sees a gun in a snack bag, and AI-written code patches that crash bank systems",
-   "writer": "nemotron-3-ultra-550b-a55b (free)",
-   "voices": "Fish Audio (free)",
-   "deep_dive": false,
-   "segments": [
-    {
-     "title": "The Doritos bag that looked like a gun",
-     "category": "thread"
-    },
-    {
-     "title": "AI-written patches blamed for bank outages",
-     "category": "thread"
-    },
-    {
-     "title": "Gemini 4 Neon",
-     "category": "thread"
-    }
-   ],
-   "play": {
-    "v": 2,
-    "theme": "case",
-    "title": "The Snack Bag That Called Police",
-    "brief": "A Doritos bag triggers armed response; the failure chain reveals a missing safety interlock.",
-    "segments": [
-     {
-      "title": "The Doritos bag that looked like a gun",
-      "bet": {
-       "claim": "A 90% confidence score means a 90% chance the object is a gun.",
-       "truth": false,
-       "why": "Confidence scores reflect internal certainty, not real-world odds; with rare guns, even 90% scores can be wrong most of the time."
-      },
-      "rounds": [
-       {
-        "type": "sequence",
-        "q": "Order the failure chain from first event to last",
-        "items": [
-         "Model flags snack bag as gun",
-         "Staff review image, cancel alert",
-         "Alert system lacks cancellation interlock",
-         "Armed police dispatched anyway"
-        ],
-        "why": "Human catch failed because downstream action had no link to the cancellation."
-       },
-       {
-        "type": "call",
-        "q": "You run security for a school district. The gun-detection system gives 40 false alarms per year and misses 1 real gun. A vendor offers a software update: 10 false alarms but 3 missed guns. Do you take it?",
-        "options": [
-         "Take update, fewer false alarms",
-         "Keep current, fewer missed guns",
-         "Demand human-review interlock first"
-        ],
-        "answer": 2,
-        "hint": "The real failure was no link between cancellation and dispatch.",
-        "why": "The segment documents that cancelled alerts still triggered armed response because no interlock existed."
-       }
-      ],
-      "takeaway": "An alert without a verified interlock is just a louder alarm."
-     },
-     {
-      "title": "AI-written patches blamed for bank outages",
-      "bet": {
-       "claim": "Bank CEOs testified that AI-written patches caused the recent outages",
-       "truth": false,
-       "why": "Article cites three anonymous sources; no public testimony or named CEOs on record. NSA called it routine maintenance."
-      },
-      "rounds": [
-       {
-        "type": "flaw",
-        "q": "Which claim about the outage cause is wrong?",
-        "items": [
-         "AI models scanned codebases and found massive numbers of vulnerabilities",
-         "Human teams rushed patches faster than verification could handle",
-         "Legacy CI/CD pipelines weren't sized for the new patch throughput",
-         "AI agents autonomously wrote and deployed the faulty patches"
-        ],
-        "flaw": 3,
-        "why": "The article and HackerNews thread clarify: AI found vulnerabilities; humans wrote and rushed patches. No autonomous AI deployment."
-       },
-       {
-        "type": "lab",
-        "text": "Adjust patch-step reliability and count; see how often a full deployment succeeds.",
-        "inputs": [
-         {
-          "id": "p",
-          "label": "Each patch step works",
-          "unit": "%",
-          "min": 80.0,
-          "max": 99.0,
-          "step": 0.1,
-          "value": 92.0
-         },
-         {
-          "id": "n",
-          "label": "Patch steps in a deployment",
-          "unit": "",
-          "min": 1.0,
-          "max": 10.0,
-          "step": 1.0,
-          "value": 6.0
-         }
-        ],
-        "outputs": [
-         {
-          "id": "ok",
-          "label": "Whole deployment works",
-          "unit": "%",
-          "expr": "100*(p/100)^n",
-          "digits": 1,
-          "lo": 10.737418240000006,
-          "hi": 99.0
-         },
-         {
-          "id": "fails",
-          "label": "Deployments that fail, of 100",
-          "unit": "",
-          "expr": "100-ok",
-          "digits": 0,
-          "lo": 1.0,
-          "hi": 89.26258175999999
-         }
-        ],
-        "chart": {
-         "x": "n",
-         "y": [
-          "ok"
-         ]
-        },
-        "goal": {
-         "target": "ok",
-         "min": 90.0,
-         "max": 100.0,
-         "text": "Get ok above 90%",
-         "success": "Six steps at 92% each yields only 61% success; small error rates multiply fast."
-        },
-        "template": "chain",
-        "view": {
-         "kind": "runs",
-         "p": "p",
-         "n": "n",
-         "step": "patch step",
-         "run": "deployment"
-        }
-       }
-      ],
-      "takeaway": "AI didn't write bad patches; it found too many holes, overwhelming legacy verification pipelines."
-     },
-     {
-      "title": "Gemini 4 Neon",
-      "bet": {
-       "claim": "An independent analysis ranks Neon as Google's best-value model.",
-       "truth": false,
-       "why": "Independent analysis places Neon between Astra and Fable on the Pareto frontier — middle of Google's own pack."
-      },
-      "rounds": [
-       {
-        "type": "clues",
-        "q": "What do Google's model names resemble?",
-        "clues": [
-         "They sound like a science class and poetry slam had a baby.",
-         "Carbon, Argon, Neon, Hydrogen — that's chemistry. Sonnet, Haiku, Fable — that's literature.",
-         "The thread called it a periodic table mixed with a poetry reading."
-        ],
-        "options": [
-         "A periodic table",
-         "A poetry reading",
-         "Both mixed together",
-         "Random dictionary words"
-        ],
-        "answer": 2,
-        "why": "The names blend chemical elements (Carbon, Neon, Argon) with poetic forms (Sonnet, Haiku, Fable), leaving users unable to guess capability from name alone."
-       }
-      ],
-      "takeaway": "Neon wins on cyber benchmarks at half cost, but naming chaos and mid-tier value make picking a model a gamble."
-     }
-    ],
-    "words": [
-     {
-      "term": "Confidence score",
-      "means": "The model's self-reported certainty, not real-world probability"
-     },
-     {
-      "term": "Interlock",
-      "means": "A safety link that stops action when a check fails"
-     },
-     {
-      "term": "False positive",
-      "means": "Harmless thing wrongly flagged as a threat"
-     },
-     {
-      "term": "Velocity mismatch",
-      "means": "When discovery speed outpaces verification capacity, creating backlogs or rushed deployments"
-     },
-     {
-      "term": "Semantic error",
-      "means": "Code that compiles and passes tests but does the wrong thing under real load"
-     },
-     {
-      "term": "CI/CD pipeline",
-      "means": "Automated conveyor belt that builds, tests, and deploys code changes continuously"
-     },
-     {
-      "term": "Context compaction",
-      "means": "Summarizing conversation history so it fits in the model's memory"
-     },
-     {
-      "term": "Pareto frontier",
-      "means": "The sweet spot where you can't get more capability without paying more"
-     }
-    ],
-    "chips": [
-     "More like the first story",
-     "Go deeper on interlocks",
-     "Less vendor bashing please",
-     "Surprising confidence score insight"
-    ]
-   },
-   "quiz": [
-    {
-     "q": "In the Omnilert incident, school staff and police reviewed the camera image, identified it as a Doritos bag, and cancelled the alert—yet armed police were still dispatched. Based on the discussion, this is best characterized as:",
-     "options": [
-      "A model accuracy problem caused by an excessively high confidence threshold",
-      "A training-data problem because the model had never seen a snack bag before",
-      "A system integration failure: the human-review cancellation did not feed back into the alerting logic to block downstream dispatch",
-      "A constitutional violation that occurred only because the students were Black"
-     ],
-     "answer": 2,
-     "explain": "The hosts compare it to a PLC tripping an E-stop while the conveyor keeps running because the latch circuit was not wired to the review station; the documented failure is the missing interlock between cancellation and dispatch.",
-     "segment": "The Doritos bag that looked like a gun"
-    },
-    {
-     "q": "The lawsuit and press release confirm that Omnilert flagged a Doritos bag at 90 percent confidence and that officials knew about regular false alerts. However, claims that the confidence threshold was “too low” or that training data was biased are described by the hosts as:",
-     "options": [
-      "Proven facts admitted by the vendor in the HackerNews comments",
-      "Plausible hypotheses that cannot be verified because the threshold, ROC curve, and training-data demographics are not public",
-      "Irrelevant because the model used facial recognition, not gun detection",
-      "Automatically true given the 90 percent confidence score"
-     ],
-     "answer": 1,
-     "explain": "The hosts note that in a regulated environment you would want the ROC curve, chosen operating point, and validation demographics, but none of that is in the public record, so those specific claims remain unverified.",
-     "segment": "The Doritos bag that looked like a gun"
-    },
-    {
-     "q": "Regarding the recent bank and infrastructure outages, the article and discussion distinguish between AI writing patches and AI finding vulnerabilities. The actual mechanism described is:",
-     "options": [
-      "AI models scanned codebases and identified many vulnerabilities, creating urgency that led human teams to rush patches through CI/CD pipelines not sized for that throughput",
-      "Large language models autonomously generated and deployed code patches that crashed production systems",
-      "The NSA publicly testified that AI-written patches were responsible for grounding flights and taking down Outlook",
-      "Bank CEOs named in the Washington Sun article confirmed under oath that LLMs authored the faulty code"
-     ],
-     "answer": 0,
-     "explain": "The sources describe AI as a vulnerability scanner that increased the volume of required patches; the outages resulted from a velocity mismatch where verification, staging, and rollback did not scale with the increased patch rate.",
-     "segment": "AI-written patches blamed for bank outages"
-    },
-    {
-     "q": "In the Gemini 4 Neon discussion, the hosts suggest treating the model’s cost-per-task and capability claims with skepticism unless verified on your own workload. They single out the cybersecurity benchmarks because:",
-     "options": [
-      "They are the only benchmarks that measure conversational fluency and legal reasoning simultaneously",
-      "Google’s internal numbers were independently confirmed to be accurate across all competitor models",
-      "They use a naming convention (Carbon, Neon, etc.) that clearly indicates model size",
-      "They map to a defined engineering loop (finding, validating, exploiting, and patching vulnerabilities) with measurable outcomes, unlike proxy tasks such as tax-agent or vending benchmarks"
-     ],
-     "answer": 3,
-     "explain": "The hosts say the cyber benchmarks measure a concrete remediation loop, while other scores are still proxy tasks; cost claims should be treated like a vendor reliability spec and verified independently.",
-     "segment": "Gemini 4 Neon"
-    }
-   ],
-   "transcript": "transcripts/ai_2026-11-19_evening_1500.txt"
   }
  ]
 }

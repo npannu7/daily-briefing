@@ -1,0 +1,96 @@
+## Welcome
+Sarah: Morning, Nikhil — Friday's here and the coffee's already working overtime.
+Laura: We've got two big shifts to unpack before your train pulls in.
+Sarah: First, OpenAI quietly tightened the leash on its newest models, and the community caught them hitting their ceilings noticeably faster than last week.
+Laura: Then Google is forcing its AI agents to ask permission through a new universal plug — except the Gmail plug apparently forgot how to send mail.
+Sarah: Quick bet for the ride: the 40% and 25% faster limit claims come with zero published measurement protocol — true or false?
+
+## OpenAI's New Usage Limits on GPT-6.2
+Sarah: I was going through the LocalLLaMA subreddit and there was this post on HackerNews — someone noticed that two model variants, Astra and Sol, appear to hit their usage caps forty percent and twenty-five percent faster than the previous versions.
+Laura: Worth saying up front: so far there is only the Reddit thread, and we could not check beyond our usual sources today. No independent confirmation, no statement from OpenAI, nothing in the trusted feeds.
+Sarah: Right. The post itself is a link post — no text, just a pointer to a tweet that we couldn't read. But the comment thread exploded. People are angry. One commenter said these models were already "meh, okay I guess" compared to competitors, and now they're not even cheap anymore.
+Laura: The core claim is specific: Astra hits limits forty percent faster, Sol twenty-five percent faster. That's a measurable assertion. If true, it means either the token accounting changed, the caps lowered, or something in the model behavior shifted.
+Sarah: Tokens — for anyone who needs the refresher — are the chunks the model reads and writes. Roughly a word fragment each. Think of them like line items on a bill of materials. Your usage cap is how many line items you're allowed per billing window.
+Laura: Good analogy. So "hitting the limit faster" could mean three different things. The cap itself dropped — fewer tokens allowed. The model started producing more tokens per request — verbosity. Or the accounting method changed — maybe they count input tokens differently now, or cache hits differently.
+Sarah: The community latched onto all three. One commenter asked why drop this on Thanksgiving week. Another called it a "billing mistake" sarcastically. Someone else mapped it to a three-step plan: release mediocre models, restrict usage, profit.
+Laura: There's also a competing theory in the comments. Several people said they've been burning through quota faster for weeks — before this announcement. One person mentioned they got a huge amount of work done yesterday by using a competitor's model for code editing and only calling the OpenAI model for specific sub-tasks.
+Sarah: That's the "sub-agent" pattern — you hand off the heavy lifting to a cheaper or more generous model, keep the expensive one for the hard decisions. Smart workflow.
+Laura: It is. But it also makes measurement messy. If you're splitting work across models, your token count on any single provider drops artificially. That could look like a limit change when it's just a workflow change.
+Sarah: Another commenter — sounded like they've had accounts with multiple providers for a long time — said the generosity balance swings back and forth. OpenAI felt limitless for a while with constant resets, then a competitor gave more usage without "reset shenanigans."
+Laura: "Reset shenanigans" — that's rate limiting with a rolling window. Like a production line where the quota resets every hour, but the reset timing isn't transparent. You might get a burst, then hit a wall.
+Sarah: Exactly. And the context window matters here too. That's how much conversation history the model can hold at once — like the work envelope on a machine. If the new variants have larger context windows, they might pull in more history automatically, burning tokens before you even ask a question.
+Laura: Or if they're more verbose. One commenter said they noticed the models "getting there" on reducing pressure between prioritizing jobs versus creative exploration. That suggests the models might be doing more reasoning steps — more tokens per answer.
+Sarah: The tweet link in the post — from someone named thsottiaux — might have had screenshots or numbers. We couldn't read it. But the HackerNews comments treat it as the source.
+Laura: So what would it take to verify this? You'd need controlled measurements. Same prompts, same context, same account tier, before and after. Track input tokens, output tokens, cache behavior, billable totals. Run it enough times for statistical significance.
+Sarah: Basically a gauge R&R study on the token counter.
+Laura: Precisely. Repeatability and reproducibility. Are you measuring the same thing the same way? If the tokenizer changed — the way text splits into tokens — your counts shift even if the text didn't.
+Sarah: Has that happened before? Tokenizer changes mid-model?
+Laura: Not usually mid-release. But if Astra and Sol are distilled or quantized variants — smaller versions of a larger model — they might use a different vocabulary. That changes token counts for the same text.
+Sarah: Distilled — that's like taking a big model and training a smaller one to mimic it. Quantized is reducing precision, like going from micrometer to millimeter tolerances.
+Laura: Right. Either could change the tokenization. But a forty percent jump? That's large for just tokenizer differences. More likely the cap itself changed, or the billing rules.
+Sarah: The comments are convinced it's intentional. "Insane move when you're in third place," one said. "Hemorrhaging money, need to extend runway." Another pointed out OpenAI is behind on productivity integrations compared to competitors.
+Laura: Third place — that's the community's ranking. Not verified. But the sentiment is clear: people feel the value proposition flipped. One commenter straight up said they don't know if they'll keep the subscription.
+Sarah: And there's the Google angle. Multiple comments mention a Black Friday offer for a Pro account and a model called Gemini Neon being "almost exactly as good as Astra."
+Laura: Competitor pricing pressure. If the alternative gives similar capability with looser limits, the switching cost drops. That's a classic substitution effect.
+Sarah: So where does this land? The claims — Astra forty percent, Sol twenty-five percent — are specific numbers from an unverified thread. The mechanism could be caps, verbosity, tokenizer, accounting, or a mix. The community believes it's intentional throttling. OpenAI hasn't spoken.
+Laura: Too early to tell. The data needed doesn't exist publicly yet. What we have is a measurement claim without the measurement protocol.
+Sarah: If you're building workflows on these models — treat the token budget like a critical dimension. Monitor it. Set up your own SPC charts on usage per task.
+Laura: My take, for someone in QA: if your validation protocol assumes stable token economics, that assumption just got a flag. Run a capability study on the new variants before you lock in any production workflow.
+Sarah: One line to remember: specific usage claims, zero independent verification — measure your own token burn before you trust the dashboard.
+
+## Google's MCP Servers for AI Agents
+Laura: I was scrolling HackerNews yesterday and there's a post titled "Google Will Make AI Agents Use Its MCP Servers. The Gmail One Can't Send Email." Link goes to a TechStackups article that breaks down a terms-of-service change Google published on November twenty-fourth.
+Sarah: Wait, MCP? Model Context Protocol?
+Laura: Exactly. Think of it like a universal plug for model actions. Instead of every agent writing custom code to call Gmail's REST API — that's the standard web interface — they all speak one protocol to an MCP server, and that server translates to the actual API. Like a universal adapter so you don't need a different cable for every tool.
+Sarah: Okay, that actually sounds useful. Standardised interface, less brittle code. So what's the problem?
+Laura: The problem is the mandate. The new Workspace AI Tools Addendum says: from February first, twenty twenty-seven, any tool that "is or is driven by an AI agent" — that's a system that acts autonomously on your behalf — must reach Gmail, Drive, Calendar through Google's MCP servers. Not optional. If you call the REST APIs directly, you're held to the free quota tier no matter what you've paid for, and you're in breach of terms.
+Sarah: That's aggressive. "Is or is driven by" — that's deliberately broad.
+Laura: Deliberately. The definitions cover an "AI harness," any connector, proxy, command-line interface, or third-party service. A personal script that pipes your inbox into a local model plausibly counts. Classification starts with a checkbox on your OAuth client — that's the authorization framework that lets apps act on your behalf without seeing your password.
+Sarah: Since when?
+Laura: Since November eleventh. MCP servers now reject clients without that box ticked.
+Sarah: So hobbyists building little email assistants — they have to declare themselves as agentic or the MCP server just says no?
+Laura: That's the read. Clients created before the cutoff and not marked in time stay non-agentic permanently. Owners have to create new ones. Google hasn't said how it will detect agents that call REST without declaring themselves.
+Sarah: That's the part that makes people nervous. "We'll know it when we see it" enforcement.
+Laura: The thread had a lot of that energy. One commenter said a bunch of people are about to face the pain of losing their Google account. Another said this change would be enough friction to move off Google services entirely. Someone from Fastmail jumped in to say their MCP server stays open, no partner-only tools, and agents can use their full JMAP API — that's an alternative mail protocol.
+Sarah: Fastmail using it as a marketing moment. Smart.
+Laura: There's also a builder in the thread plugging a local MCP wrapper that pulls Google data locally first, then lets a local model decide what to do. "Broken the wall," they called it.
+Sarah: I mean, if the Gmail MCP server can't send email, that wall is already pretty leaky.
+Laura: Right. The article reads the Gmail server's tool list. It can search mail, read threads, create a draft, apply labels. It cannot send, reply, forward, or change a draft after creating it. Those tools exist in the schema but Google's quota page says they "require partner access and aren't generally available."
+Sarah: So an agent can draft a reply, get your feedback, but then can't revise that draft. It has to create a second draft and leave the first one sitting there.
+Laura: Exactly. Drive has a similar gap: an agent can create a report but can't move it into the right folder or share it with the team. Docs, Slides, and Tasks are closer to feature parity with the REST API. Gmail and Drive are the thin ones.
+Sarah: And Anthropic's connector for Claude advertises sending, replying, forwarding, moving and trashing Drive files. The exact operations the public servers lack.
+Laura: So a large AI vendor's agent can send your email through an approved channel, while an independent developer's agent — using the same OAuth scopes the user granted — can only leave drafts. Once the addendum takes effect, that independent developer also can't fall back to the REST API without breaching terms.
+Sarah: That's a two-tier ecosystem baked into the terms. Partners get write access; everyone else gets read-only plus drafts.
+Laura: The article calls it out directly. Google hasn't said who qualifies for partner access or when the partner-only tools will reach everyone.
+Sarah: What about the data rules? The thread mentioned a thirty-day cap on something.
+Laura: Three data rules that matter for anyone building an agent with memory. First, Workspace data may only be processed "to fulfill active, user-authorized tasks" and must be deleted when the user disconnects. Second, Google can cap retention of what it calls "Google Technical Information" at thirty days. That definition includes vector embeddings — numerical representations of your data that let a model search by meaning instead of keywords — memory indexes, user profiles, and organisational graphs built from Workspace data.
+Sarah: So an assistant that builds a long-term index of your inbox to answer questions about last year's contracts has to rebuild it monthly or drop it.
+Laura: Exactly. Third, training, fine-tuning — adjusting a pre-trained model on specific data — automated tests of model output, and distillation — training a smaller model to mimic a larger one — on the data are banned, as is using it to build a competing Workspace product.
+Sarah: The thirty-day cap is the one that breaks persistent memory. That's a real architectural constraint.
+Laura: It is. And the quotas reinforce it. Every project gets a free Standard tier: five thousand MCP requests per day, per project, per product.
+Sarah: Some calls cost more than one request. A Gmail search or list-drafts call counts as ten, so an agent that does nothing but search gets about five hundred searches a day across all its users. That's a project-wide limit, so a small multi-user product hits it fast.
+Laura: The paid Scaled tier starts billing April first, twenty twenty-seven for Gmail, Calendar, Drive. But the structure favours REST. MCP usage is billed from the first request, while REST usage gets large free daily allowances — tens of millions of light Gmail requests a day, for example.
+Sarah: Google hasn't published per-request prices for the Scaled tier yet. So you're mandated to use MCP, but MCP is metered from request one, while the old interface you're forbidden to use has a massive free tier.
+Laura: That's... a choice. What's Google's stated reasoning?
+Sarah: From a Cloud blog post by Chandu Thota and Brad Calder: traditional REST APIs were built for human-paced apps where a valid OAuth token implied user intent. As AI agents shift from reading information to taking actions, the model changes. They want a control plane — that's MCP — where they can enforce policy, audit trails, and quota limits per agent action rather than per API call.
+Laura: So it's not just "we want control." It's "the old auth model doesn't fit agent workloads."
+Sarah: That's the charitable read. The less charitable read from the thread: Gmail can't serve ads in OpenAI or Anthropic UI to normies, hence this. Commenters speculated spam prevention is a motive; data collection and ad-serving apertures are the real driver.
+Laura: The thread had both views. One commenter said perhaps the idea is to limit spam — agents sending email could generate large volumes of very realistic mail. Another said it's always about collection and ads with Google.
+Sarah: The blog post quote in the source cuts off at "reading informa…" so we can't verify spam and abuse prevention from that. But the partner-access carve-out for write operations makes the spam argument harder to swallow. If spam were the only concern, why let Anthropic's agent send mail but not an independent developer's agent using the same user-granted scopes?
+Laura: Unless the partner agreement includes audit commitments, abuse monitoring, liability — things Google can enforce contractually with a vendor but not with thousands of independent developers.
+Sarah: Possible. But then the terms should say that. Instead the addendum just says "partner access required" with no published criteria.
+Laura: Let's check the claims against the source. Claim one: Google will require AI agents to use its MCP servers.
+Sarah: True. The addendum takes effect February first, twenty twenty-seven. "The GWS Access Tool — Google's term for any connector that touches Workspace data — must use a Google MCP where the GWS Access Tool is or is driven by an AI Agent." Breaking it lets Google restrict or remove access or suspend your account.
+Laura: Claim two: The Gmail MCP server cannot send email.
+Sarah: True for the public server. The tool list confirms search, read, create draft, label. Send, reply, forward, modify draft are marked as requiring partner access and not generally available. The REST API still supports them, but using REST for agent-driven actions breaches the new terms.
+Laura: Claim three: MCP adoption is being mandated rather than left optional.
+Sarah: True for anything classified as agentic. Non-agentic apps — nightly backup jobs, CRM syncs, deterministic scripts on their own OAuth client — are explicitly "not affected by this change" in Google's words. The line is the agent classification, and that line is broad and self-declared.
+Laura: So the verdict: all three claims are backed by the primary source. The TechStackups article reads the addendum, the quota page, and the MCP tool schemas directly.
+Sarah: Half-right on the reasoning. Google's stated reason — OAuth wasn't built for agent action — is real. The partner carve-out and the quota structure that penalises MCP while rewarding REST suggest business motives too. But the mandate itself, the Gmail write gap, and the optional-only-for-non-agents framing are all in the documents.
+Laura: My take, for someone in QA: if you're validating a system that touches Workspace data, your test plan now needs a decision tree. Is this tool agentic? If yes, MCP only, accept the thirty-day memory cap, accept the read-only Gmail gap unless you're a partner, budget for metered requests from day one. If no, REST stays available but you'd better be able to prove it's deterministic — no model in the loop — because the classification risk is yours.
+Sarah: One-line takeaway: Google just turned Workspace into a two-tier platform — partners get write access, everyone else gets managed read-only — and called it a protocol standard.
+Laura: Universal plug, but the wall decides which appliances get power.
+
+## Close
+Laura: That's the morning edition — we'll be back this evening, ready by 6 pm.
+Sarah: If you've got three minutes, the Token Cap Mystery lets you guess which model hit its ceiling first.
