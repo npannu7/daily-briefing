@@ -153,6 +153,17 @@
       "size": 9340996,
       "duration": 1167,
       "description": "Morning edition - Saturday, 28 November 2026\nChecking AI claims in drug discovery and research automation\n\n00:38  What AI Has Actually Cured: Separating Announcements from Approved Treatments\n10:40  When the Model Games the Task: Specification Gaming in Claude\n\nPlay \"Zero Cures: AI's Drug Pipeline Gap\", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-28_morning_0600.mp3\nWritten by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Hacker News (no Reddit data: Reddit, collected hourly (0 threads); no snapshot from the office PC yet)"
+    },
+    {
+      "file": "ai_2026-11-28_evening_1500.mp3",
+      "date": "2026-11-28",
+      "edition": "evening",
+      "title": "Evening - 28 Nov: Google's DeepCrossAttention: three times faster without losing quality?",
+      "published": "2026-11-28T15:00:09.739795+05:30",
+      "pubDate": "Sat, 28 Nov 2026 15:00:09 +0530",
+      "size": 8786582,
+      "duration": 1098,
+      "description": "Evening edition - Saturday, 28 November 2026\nHow attention mechanisms are being rewritten for speed, and whether AI truly threatens the cryptography that secures the internet.\n\n00:36  Google's DeepCrossAttention: three times faster without losing quality?\n10:22  Mathematicians warn AI could break online security — what the evidence shows\n\nPlay \"The Speedup That Might Not Be\", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-28_evening_1500.mp3\nWritten by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Hacker News (no Reddit data: Reddit, collected hourly (0 threads); no snapshot from the office PC yet)"
     }
   ],
   "memory": [
@@ -2518,6 +2529,30 @@
         "ai-disease-cures",
         "anthropic-claude-models"
       ]
+    },
+    {
+      "label": "Saturday 28 Nov evening",
+      "date": "2026-11-28",
+      "edition": "evening",
+      "published": "2026-11-28T15:00:09.739795+05:30",
+      "file": "ai_2026-11-28_evening_1500.mp3",
+      "writer": "nemotron-3-ultra-550b-a55b (free)",
+      "voices": "Fish Audio (free)",
+      "summary": "The episode examines Google's DeepCrossAttention, a kernel‑fused, block‑sparse cross‑attention design that claims up to three times faster inference without quality loss, and reviews the benchmark evidence and community replication attempts. It then evaluates mathematicians' warnings that AI could undermine the cryptographic foundations of TLS and SSH, distinguishing between new AI‑driven mathematical breakthroughs, accelerated classical attacks, and implementation‑level side‑channel or fuzzing improvements. Both discussions highlight the gap between headline speedups or threat claims and the rigorous verification needed before they affect production systems.",
+      "threads": [
+        "Whether DeepCrossAttention's 3× speedup holds at production scale and across diverse hardware",
+        "Whether AI‑driven cryptanalysis yields new breaks on RSA, discrete‑log, or lattice‑based schemes",
+        "Community replication results for DeepCrossAttention and their impact on encoder‑decoder and RAG models"
+      ],
+      "segments": [
+        "Google's DeepCrossAttention: three times faster without losing quality?",
+        "Mathematicians warn AI could break online security — what the evidence shows"
+      ],
+      "deep_topic": "",
+      "topics": [
+        "ai-cybersecurity",
+        "deepcrossattention-architecture"
+      ]
     }
   ],
   "seen": [
@@ -3456,6 +3491,22 @@
     {
       "date": "2026-11-28",
       "link": "https://diseasescuredbyai.com/"
+    },
+    {
+      "date": "2026-11-28",
+      "link": "https://news.ycombinator.com/item?id=50672565"
+    },
+    {
+      "date": "2026-11-28",
+      "link": "https://research.google/blog/supercharging-transformer-residual-connections/"
+    },
+    {
+      "date": "2026-11-28",
+      "link": "https://news.ycombinator.com/item?id=50665488"
+    },
+    {
+      "date": "2026-11-28",
+      "link": "https://www.thetimes.com/uk/technology-uk/article/ai-making-online-security-useless-smr73d3n8"
     }
   ],
   "feedback": [
@@ -4457,12 +4508,169 @@
     "2026-11-28T01:14:02.075650+00:00",
     "2026-11-28T01:14:02.585851+00:00",
     "2026-11-28T01:15:09.907720+00:00",
-    "2026-11-28T01:15:34.238340+00:00"
+    "2026-11-28T01:15:34.238340+00:00",
+    "2026-11-28T09:34:12.472113+00:00",
+    "2026-11-28T09:34:15.423025+00:00",
+    "2026-11-28T09:34:18.636074+00:00",
+    "2026-11-28T09:34:21.836231+00:00",
+    "2026-11-28T09:34:25.018064+00:00",
+    "2026-11-28T09:34:28.269900+00:00",
+    "2026-11-28T09:34:31.423345+00:00",
+    "2026-11-28T09:34:34.610468+00:00",
+    "2026-11-28T09:34:37.828866+00:00",
+    "2026-11-28T09:34:41.017488+00:00",
+    "2026-11-28T09:35:05.281280+00:00",
+    "2026-11-28T09:36:02.144191+00:00",
+    "2026-11-28T09:36:50.410131+00:00",
+    "2026-11-28T09:38:24.473225+00:00",
+    "2026-11-28T09:39:17.586372+00:00",
+    "2026-11-28T09:39:17.832700+00:00",
+    "2026-11-28T09:39:17.987748+00:00",
+    "2026-11-28T09:40:44.045656+00:00",
+    "2026-11-28T09:42:08.652459+00:00",
+    "2026-11-28T09:42:48.192272+00:00",
+    "2026-11-28T09:44:11.479133+00:00",
+    "2026-11-28T09:44:54.854238+00:00",
+    "2026-11-28T09:46:00.299492+00:00",
+    "2026-11-28T09:47:39.309169+00:00",
+    "2026-11-28T09:48:49.709717+00:00",
+    "2026-11-28T09:50:05.598348+00:00",
+    "2026-11-28T09:53:52.106430+00:00",
+    "2026-11-28T09:55:57.753472+00:00",
+    "2026-11-28T09:55:58.194753+00:00",
+    "2026-11-28T09:57:07.975882+00:00",
+    "2026-11-28T09:57:08.175025+00:00",
+    "2026-11-28T09:57:11.333408+00:00",
+    "2026-11-28T09:57:14.535610+00:00",
+    "2026-11-28T09:58:08.738815+00:00",
+    "2026-11-28T09:59:38.032202+00:00",
+    "2026-11-28T10:01:09.655488+00:00",
+    "2026-11-28T10:02:45.772915+00:00",
+    "2026-11-28T10:04:41.961948+00:00",
+    "2026-11-28T10:05:27.301467+00:00",
+    "2026-11-28T10:05:30.486175+00:00",
+    "2026-11-28T10:05:34.168375+00:00",
+    "2026-11-28T10:05:37.961715+00:00",
+    "2026-11-28T10:05:40.911890+00:00",
+    "2026-11-28T10:05:43.664562+00:00",
+    "2026-11-28T10:05:49.471000+00:00",
+    "2026-11-28T10:05:54.422707+00:00",
+    "2026-11-28T10:05:55.086622+00:00",
+    "2026-11-28T10:05:55.607941+00:00",
+    "2026-11-28T10:05:59.157492+00:00",
+    "2026-11-28T10:06:01.591414+00:00",
+    "2026-11-28T10:06:05.981556+00:00",
+    "2026-11-28T10:06:10.223233+00:00",
+    "2026-11-28T10:06:13.212960+00:00",
+    "2026-11-28T10:06:15.364688+00:00",
+    "2026-11-28T10:06:19.761879+00:00",
+    "2026-11-28T10:06:23.019924+00:00",
+    "2026-11-28T10:06:27.518152+00:00",
+    "2026-11-28T10:06:27.630216+00:00",
+    "2026-11-28T10:06:33.093453+00:00",
+    "2026-11-28T10:06:36.479289+00:00",
+    "2026-11-28T10:06:38.724283+00:00",
+    "2026-11-28T10:06:43.252737+00:00",
+    "2026-11-28T10:06:45.823789+00:00",
+    "2026-11-28T10:06:49.331989+00:00",
+    "2026-11-28T10:06:51.910915+00:00",
+    "2026-11-28T10:06:56.643199+00:00",
+    "2026-11-28T10:06:57.533800+00:00",
+    "2026-11-28T10:07:00.028683+00:00",
+    "2026-11-28T10:07:04.319869+00:00",
+    "2026-11-28T10:07:07.881673+00:00",
+    "2026-11-28T10:07:13.319070+00:00",
+    "2026-11-28T10:07:23.772556+00:00",
+    "2026-11-28T10:07:24.864609+00:00",
+    "2026-11-28T10:07:27.464084+00:00",
+    "2026-11-28T10:07:30.914616+00:00",
+    "2026-11-28T10:07:33.137135+00:00",
+    "2026-11-28T10:07:34.699798+00:00",
+    "2026-11-28T10:07:35.717340+00:00",
+    "2026-11-28T10:07:40.338206+00:00",
+    "2026-11-28T10:07:45.274619+00:00",
+    "2026-11-28T10:07:50.531819+00:00",
+    "2026-11-28T10:07:53.218321+00:00",
+    "2026-11-28T10:07:54.136319+00:00",
+    "2026-11-28T10:07:55.543633+00:00",
+    "2026-11-28T10:08:03.088004+00:00",
+    "2026-11-28T10:08:08.509848+00:00",
+    "2026-11-28T10:08:08.742858+00:00",
+    "2026-11-28T10:08:12.677435+00:00",
+    "2026-11-28T10:08:13.110219+00:00",
+    "2026-11-28T10:08:20.853925+00:00",
+    "2026-11-28T10:08:22.787145+00:00",
+    "2026-11-28T10:08:22.799983+00:00",
+    "2026-11-28T10:08:23.930664+00:00",
+    "2026-11-28T10:08:30.976576+00:00",
+    "2026-11-28T10:08:35.163751+00:00",
+    "2026-11-28T10:08:39.684357+00:00",
+    "2026-11-28T10:08:45.548632+00:00",
+    "2026-11-28T10:08:53.010477+00:00",
+    "2026-11-28T10:08:53.344844+00:00",
+    "2026-11-28T10:08:57.754057+00:00",
+    "2026-11-28T10:08:57.957670+00:00",
+    "2026-11-28T10:09:03.835987+00:00",
+    "2026-11-28T10:09:04.823282+00:00",
+    "2026-11-28T10:09:05.235303+00:00",
+    "2026-11-28T10:09:10.658916+00:00",
+    "2026-11-28T10:09:12.214272+00:00",
+    "2026-11-28T10:09:17.688393+00:00",
+    "2026-11-28T10:09:19.317822+00:00",
+    "2026-11-28T10:09:25.872296+00:00",
+    "2026-11-28T10:09:27.319297+00:00",
+    "2026-11-28T10:09:32.595120+00:00",
+    "2026-11-28T10:09:33.667041+00:00",
+    "2026-11-28T10:09:36.537283+00:00",
+    "2026-11-28T10:09:38.175020+00:00",
+    "2026-11-28T10:09:44.707791+00:00",
+    "2026-11-28T10:09:46.905671+00:00",
+    "2026-11-28T10:09:48.334589+00:00",
+    "2026-11-28T10:09:50.023598+00:00",
+    "2026-11-28T10:09:55.717624+00:00",
+    "2026-11-28T10:09:57.051323+00:00",
+    "2026-11-28T10:10:04.501106+00:00",
+    "2026-11-28T10:10:05.132528+00:00",
+    "2026-11-28T10:10:09.737143+00:00",
+    "2026-11-28T10:10:10.867576+00:00",
+    "2026-11-28T10:10:14.616568+00:00",
+    "2026-11-28T10:10:16.689254+00:00",
+    "2026-11-28T10:10:23.138048+00:00",
+    "2026-11-28T10:10:24.380626+00:00",
+    "2026-11-28T10:10:29.707918+00:00",
+    "2026-11-28T10:10:29.859112+00:00",
+    "2026-11-28T10:10:37.318366+00:00",
+    "2026-11-28T10:10:39.726110+00:00",
+    "2026-11-28T10:10:45.131009+00:00",
+    "2026-11-28T10:10:45.399995+00:00",
+    "2026-11-28T10:10:51.646103+00:00",
+    "2026-11-28T10:10:52.991065+00:00",
+    "2026-11-28T10:10:55.093930+00:00",
+    "2026-11-28T10:10:56.628156+00:00",
+    "2026-11-28T10:11:03.047644+00:00",
+    "2026-11-28T10:11:05.973850+00:00",
+    "2026-11-28T10:11:11.969974+00:00",
+    "2026-11-28T10:11:12.008270+00:00",
+    "2026-11-28T10:11:15.933937+00:00",
+    "2026-11-28T10:11:16.019419+00:00",
+    "2026-11-28T10:11:22.033090+00:00",
+    "2026-11-28T10:11:26.190001+00:00",
+    "2026-11-28T10:11:29.066133+00:00",
+    "2026-11-28T10:11:29.581924+00:00",
+    "2026-11-28T10:11:34.237030+00:00",
+    "2026-11-28T10:11:37.310916+00:00",
+    "2026-11-28T10:11:42.502664+00:00",
+    "2026-11-28T10:11:45.628965+00:00",
+    "2026-11-28T10:11:47.675190+00:00",
+    "2026-11-28T10:11:49.374283+00:00",
+    "2026-11-28T10:11:50.149862+00:00",
+    "2026-11-28T10:11:55.901964+00:00",
+    "2026-11-28T10:11:57.579363+00:00",
+    "2026-11-28T10:12:56.015122+00:00",
+    "2026-11-28T10:13:35.851588+00:00"
   ],
   "free_day_out": "",
   "gemini_log": [
-    "2026-11-26T16:50:44.188647-08:00",
-    "2026-11-26T17:07:07.848839-08:00",
     "2026-11-27T01:35:56.058925-08:00",
     "2026-11-27T02:12:09.208550-08:00",
     "2026-11-27T16:35:03.717462-08:00",
@@ -4472,11 +4680,6 @@
   "gemini_day_out": "",
   "pace_adjust": 0.0,
   "lesson_log": [
-    {
-      "date": "2026-11-13",
-      "title": "Today's puzzle",
-      "template": "sampling"
-    },
     {
       "date": "2026-11-13",
       "title": "The Test That Cries Wolf",
@@ -4831,9 +5034,25 @@
       ],
       "theme": "audit",
       "date": "2026-11-28"
+    },
+    {
+      "title": "The Speedup That Might Not Be",
+      "template": "",
+      "formats": [
+        "clues",
+        "flaw",
+        "estimate"
+      ],
+      "theme": "exchange",
+      "date": "2026-11-28"
     }
   ],
-  "model_health": {},
+  "model_health": {
+    "gemini-4-hydrogen": {
+      "n": 1,
+      "until": "2026-11-29T02:13:37.559573+00:00"
+    }
+  },
   "topics": {
     "anthropic-claude-models": {
       "name": "Anthropic Claude Models",
@@ -4899,15 +5118,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 109,
+      "mentions": 110,
       "refs": [
-        {
-          "date": "2026-11-13",
-          "title": "Opus 5.5 / Fable 5.2: An animated toy town you can fall into: every train, bus and tram in this film is real timetable and sensor data",
-          "thread": "https://www.reddit.com/r/ClaudeAI/comments/1xuaulq/opus_55_fable_52_an_animated_toy_town_you_can/",
-          "link": "",
-          "comment": ""
-        },
         {
           "date": "2026-11-14",
           "title": "Unable to connect ANY connectors to Claude – Anyone else?",
@@ -4998,6 +5210,13 @@
           "thread": "https://news.ycombinator.com/item?id=50664325",
           "link": "https://twitter.com/RealAstropulse/status/2126119408997466389",
           "comment": "Why would you expect a for profit company to provide you with a service that would help you compete with them?"
+        },
+        {
+          "date": "2026-11-28",
+          "title": "\"What's Claude's fursona?\" and other questions",
+          "thread": "https://news.ycombinator.com/item?id=50662933",
+          "link": "https://herecomesthemoon.net/2026/11/whats-claudes-fursona/",
+          "comment": "I find furries generally creepy, but still found the article quite interesting. Remember when that one GPT release was obsessed with goblins for a while? I find these little emergent model tics so interesting. I feel they could give us some insight into weird human tics and behaviors."
         }
       ],
       "deep_dive": "2026-11-08",
@@ -5320,15 +5539,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 45,
+      "mentions": 46,
       "refs": [
-        {
-          "date": "2026-11-07",
-          "title": "Latest Open-Source Labs are gutting away cybersecurity and reverse-engineering capabilities",
-          "thread": "https://www.reddit.com/r/LocalLLaMA/comments/1xp9jt1/latest_opensource_labs_are_gutting_away/",
-          "link": "",
-          "comment": ""
-        },
         {
           "date": "2026-11-18",
           "title": "Google confirms an \"era of autonomous attacks has arrived\" as 178 companies including banks, airlines and more are hit",
@@ -5412,6 +5624,13 @@
           "thread": "https://news.ycombinator.com/item?id=50619630",
           "link": "https://openai.com/index/introducing-shirudo/",
           "comment": "Feels to me to be a strange Japanification for a brand name here, given that \"Shirudo\" is just the English \"shield\" in kana."
+        },
+        {
+          "date": "2026-11-28",
+          "title": "AI on brink of making online security useless, mathematicians fear",
+          "thread": "https://news.ycombinator.com/item?id=50665488",
+          "link": "https://www.thetimes.com/uk/technology-uk/article/ai-making-online-security-useless-smr73d3n8",
+          "comment": "“In my estimation of raw mathematical difficulty, breaking public-key-cryptography is not harder than solving Riemann,” Scholze said."
         },
         {
           "date": "2026-11-28",
@@ -5757,7 +5976,8 @@
         "2026-11-19",
         "2026-11-21",
         "2026-11-22",
-        "2026-11-23"
+        "2026-11-23",
+        "2026-11-28"
       ],
       "subs": [
         "AgentsOfAI",
@@ -5777,22 +5997,8 @@
         "singularity",
         "technology"
       ],
-      "mentions": 195,
+      "mentions": 197,
       "refs": [
-        {
-          "date": "2026-11-16",
-          "title": "PSA: Superpowers skill with opus ruined my codebase",
-          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xwmeln/psa_superpowers_skill_with_opus_ruined_my_codebase/",
-          "link": "",
-          "comment": "i removed superpowers months ago - fully obsolete imo, as modern models already incorporate its features for the most part. to compound this, opus 5.5 has been really bad about overzealous testing in my experience."
-        },
-        {
-          "date": "2026-11-17",
-          "title": "What actually is an AI \"harness\" and why are companies hiring harness developers instead of just using Claude Code?",
-          "thread": "https://www.reddit.com/r/ClaudeCode/comments/1xxk5ak/what_actually_is_an_ai_harness_and_why_are/",
-          "link": "",
-          "comment": "The model is the brain; the harness is everything around it: which tools it gets, what context is loaded, how permissions work, when it stops, how results are checked and retried. Claude Code is a great general harness, but companies need one shaped around their own systems — their repos, CI, data a"
-        },
         {
           "date": "2026-11-17",
           "title": "What actually is an AI \"harness\" and why are companies hiring harness developers instead of just using Claude Code?",
@@ -5876,10 +6082,24 @@
           "thread": "https://news.ycombinator.com/item?id=50597959",
           "link": "https://simonwillison.net/2026/Nov/21/muru/",
           "comment": "I am noticing a trend, some software developers when they create something now they vouch themselves and designate their work by “creator of xyz before AI”, why? Is this to say you’re not slopping your work? I don’t think this matters now, did you use AI or not? If you did, great, you used a tool to"
+        },
+        {
+          "date": "2026-11-28",
+          "title": "Prospero: Bloat-free, native AI coding harness with ImGui",
+          "thread": "https://news.ycombinator.com/item?id=50671275",
+          "link": "https://github.com/skeeto/prospero",
+          "comment": "Fun fact: Prospero was the internal codename of the PlayStation 5."
+        },
+        {
+          "date": "2026-11-28",
+          "title": "SessionGraph: Visualize all your coding agent sessions in one interactive graph",
+          "thread": "https://news.ycombinator.com/item?id=50671651",
+          "link": "https://sessiongraph.ai/",
+          "comment": "2026 was the year i entirely stopped editing files myself. my brain now thinks in terms of \"sessions\". after accumulating thousands of them, i asked myself \"what can i do with all this data?\" meet SessionGraph: visualize all your coding agent sessions in one interactive 3D graph. it supports pretty "
         }
       ],
       "deep_dive": "2026-11-15",
-      "last_seen": "2026-11-23",
+      "last_seen": "2026-11-28",
       "subject": "ai"
     },
     "ai-benchmarks": {
@@ -8101,7 +8321,7 @@
         "HackerNews",
         "antiai"
       ],
-      "mentions": 11,
+      "mentions": 12,
       "refs": [
         {
           "date": "2026-11-17",
@@ -8179,6 +8399,13 @@
           "thread": "https://news.ycombinator.com/item?id=50657110",
           "link": "https://twitter.com/ElliotC1/status/2125689373337489419",
           "comment": "He's going to get hungry. Scaling training data is coming to an end, nobody is going to stop there. Good luck to him though."
+        },
+        {
+          "date": "2026-11-28",
+          "title": "I'm Scared of AI",
+          "thread": "https://news.ycombinator.com/item?id=50669561",
+          "link": "https://thesoapbox.email/archive/3",
+          "comment": "I have been prepping for job interview and actually enjoyed hand coding leetcode answers. Your brain is a muscle.. use it?"
         }
       ],
       "deep_dive": "",
@@ -8811,6 +9038,29 @@
       "deep_dive": "",
       "subject": "ai",
       "last_seen": "2026-11-27"
+    },
+    "deepcrossattention-architecture": {
+      "name": "Google DeepCrossAttention Model Architecture",
+      "first_seen": "2026-11-28",
+      "days": [
+        "2026-11-28"
+      ],
+      "subs": [
+        "HackerNews"
+      ],
+      "mentions": 1,
+      "refs": [
+        {
+          "date": "2026-11-28",
+          "title": "Google's DeepCrossAttention achieves comparable model quality up to 3x faster",
+          "thread": "https://news.ycombinator.com/item?id=50672565",
+          "link": "https://research.google/blog/supercharging-transformer-residual-connections/",
+          "comment": "Title: Supercharging Transformer Residual Connections"
+        }
+      ],
+      "deep_dive": "",
+      "subject": "ai",
+      "last_seen": "2026-11-28"
     }
   }
 }

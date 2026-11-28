@@ -12,6 +12,185 @@
  },
  "episodes": [
   {
+   "file": "ai_2026-11-28_evening_1500.mp3",
+   "title": "Evening - 28 Nov: Google's DeepCrossAttention: three times faster without losing quality?",
+   "label": "Saturday 28 Nov evening",
+   "date": "2026-11-28",
+   "edition": "evening",
+   "published": "2026-11-28T15:00:09.739795+05:30",
+   "duration": 1098,
+   "theme": "How attention mechanisms are being rewritten for speed, and whether AI truly threatens the cryptography that secures the internet.",
+   "writer": "nemotron-3-ultra-550b-a55b (free)",
+   "voices": "Fish Audio (free)",
+   "deep_dive": false,
+   "segments": [
+    {
+     "title": "Google's DeepCrossAttention: three times faster without losing quality?",
+     "category": "concept"
+    },
+    {
+     "title": "Mathematicians warn AI could break online security — what the evidence shows",
+     "category": "thread"
+    }
+   ],
+   "play": {
+    "v": 2,
+    "theme": "exchange",
+    "title": "The Speedup That Might Not Be",
+    "brief": "Bet on whether DCA's 3× speedup survives real-world memory pressure.",
+    "segments": [
+     {
+      "title": "Google's DeepCrossAttention: three times faster without losing quality?",
+      "bet": {
+       "claim": "DCA's 3× speedup holds in real wall-clock time at scale",
+       "truth": false,
+       "why": "Blog reports steps-to-target only; each step moves more data, so wall-clock gain may shrink."
+      },
+      "rounds": [
+       {
+        "type": "clues",
+        "q": "What explains the 18-month paper-to-blog gap?",
+        "clues": [
+         "Google published the paper but stayed quiet",
+         "No open code or weights released yet",
+         "Commenters asked: if it worked, why sit on it?"
+        ],
+        "options": [
+         "Method failed at scale",
+         "Google moved past it",
+         "Benchmark didn't match production",
+         "Paper had errors"
+        ],
+        "answer": 1,
+        "why": "Commenters theorized Google already moved on; new model Neon may use it."
+       }
+      ],
+      "takeaway": "DCA cuts layers 29% but memory bandwidth may eat the speedup."
+     },
+     {
+      "title": "Mathematicians warn AI could break online security — what the evidence shows",
+      "bet": {
+       "claim": "The Times article cited zero specific AI attacks on RSA",
+       "truth": true,
+       "why": "Article quotes a Fields medalist on Riemann, then jumps to 'AI could do it' with zero citations."
+      },
+      "rounds": [
+       {
+        "type": "flaw",
+        "q": "Which claim about AI and crypto does the segment debunk?",
+        "items": [
+         "AI gives 10-20% speedup on best factoring algorithm",
+         "AI helps extract keys from power traces",
+         "AI writes better fuzz inputs to find bugs",
+         "AI has found a new math shortcut to factor large numbers"
+        ],
+        "flaw": 3,
+        "why": "Segment says AI optimizes known attacks (10-20%), aids side-channels and fuzzing — no new math shortcut published."
+       },
+       {
+        "type": "estimate",
+        "q": "How many B300 GPUs did commenters calculate for a crypto-cracking cluster?",
+        "answer": 137000.0,
+        "unit": "GPUs",
+        "lo": 42000,
+        "hi": 4200000,
+        "log": true,
+        "why": "HackerNews priced a Colossus-scale cluster at 137,000 B300s, $93B, 0.47% GDP — oddly specific hardware math."
+       }
+      ],
+      "takeaway": "AI hasn't broken the locks — it's just gotten better at picking the hinges."
+     }
+    ],
+    "words": [
+     {
+      "term": "Perplexity",
+      "means": "How surprised the model is by the next token; lower is better"
+     },
+     {
+      "term": "Residual connection",
+      "means": "A shortcut that lets data skip layers unchanged"
+     },
+     {
+      "term": "Retrofitting",
+      "means": "Adding a module to a pre-trained model and continuing training"
+     },
+     {
+      "term": "Side-channel attack",
+      "means": "Measuring power or timing to steal keys from implementation, not math"
+     },
+     {
+      "term": "Lattice cryptography",
+      "means": "Hiding a point in a high-dimensional grid — nearest grid point is hard"
+     },
+     {
+      "term": "Number Field Sieve",
+      "means": "Best classical algorithm for factoring large numbers; ML tunes its parameters"
+     },
+     {
+      "term": "Key Encapsulation Mechanism",
+      "means": "How two parties agree on a symmetric key using public-key math"
+     }
+    ],
+    "chips": [
+     "Memory bandwidth is the catch",
+     "Show me the wall-clock",
+     "Eighteen months is too long",
+     "Retrofitting result looks real"
+    ]
+   },
+   "quiz": [
+    {
+     "q": "In DeepCrossAttention, how does the residual connection differ from a standard transformer residual connection?",
+     "options": [
+      "It replaces the skip connection with a fixed average of all previous layer outputs.",
+      "It lets each token dynamically weight which earlier layer embeddings matter using depth-wise cross-attention.",
+      "It removes residual connections entirely to reduce vanishing gradients.",
+      "It applies self-attention across tokens within the same layer instead of across layers."
+     ],
+     "answer": 1,
+     "explain": "Standard residuals add the input to the output with equal weight. DCA routes each token's query to a learned mix of prior layer embeddings for that same position.",
+     "segment": "Google's DeepCrossAttention: three times faster without losing quality?"
+    },
+    {
+     "q": "Why does the script treat the “up to three times faster” claim as unverified rather than established?",
+     "options": [
+      "The blog reports steps-to-target but not wall-clock step time, there is no open-source release, and no third-party replication exists.",
+      "The paper was published at ICML 2025, which is not a reputable venue.",
+      "The experiments only used image classification, not language modeling.",
+      "The method increases parameters by over 10%, making it too slow for production."
+     ],
+     "answer": 0,
+     "explain": "The script notes that step time wasn't reported, memory bandwidth pressure increases, and there are no open weights or independent replications to confirm production-scale speedup.",
+     "segment": "Google's DeepCrossAttention: three times faster without losing quality?"
+    },
+    {
+     "q": "Which of the following correctly pairs a public-key cryptography family with the mathematical problem it relies on?",
+     "options": [
+      "RSA — finding the nearest grid point in a high-dimensional lattice.",
+      "Elliptic Curve Cryptography — factoring a large composite number into primes.",
+      "RSA — factoring a large number that is the product of two primes.",
+      "Lattice-based cryptography — solving the discrete logarithm problem on an elliptic curve."
+     ],
+     "answer": 2,
+     "explain": "RSA relies on the difficulty of integer factorization. ECC uses elliptic-curve discrete logarithms, while lattice-based schemes rely on hard problems in high-dimensional grids.",
+     "segment": "Mathematicians warn AI could break online security — what the evidence shows"
+    },
+    {
+     "q": "According to the discussion, what is the most accurate characterization of AI's current threat to internet cryptography?",
+     "options": [
+      "AI has published asymptotically faster algorithms for factoring RSA moduli and breaking elliptic-curve discrete logs.",
+      "AI has already solved the Riemann hypothesis, which directly breaks all public-key cryptography.",
+      "AI can only attack symmetric encryption, leaving public-key systems completely untouched.",
+      "AI primarily threatens implementations through side-channel analysis and smarter fuzzing, not the underlying mathematical primitives."
+     ],
+     "answer": 3,
+     "explain": "The script states there is no published AI-driven break of RSA, ECC, or lattice math. AI's demonstrated gains are in implementation attacks like side-channels and fuzzing.",
+     "segment": "Mathematicians warn AI could break online security — what the evidence shows"
+    }
+   ],
+   "transcript": "transcripts/ai_2026-11-28_evening_1500.txt"
+  },
+  {
    "file": "ai_2026-11-28_morning_0600.mp3",
    "title": "Morning - 28 Nov: What AI Has Actually Cured: Separating Announcements from Approved Treatments",
    "label": "Saturday 28 Nov morning",
