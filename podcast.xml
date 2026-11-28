@@ -8,9 +8,25 @@
 <itunes:author>Weights &amp; Measures</itunes:author>
 <itunes:explicit>false</itunes:explicit>
 <atom:link href="https://npannu7.github.io/daily-briefing/podcast.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Fri, 27 Nov 2026 10:19:04 GMT</lastBuildDate>
+<lastBuildDate>Sat, 28 Nov 2026 01:15:35 GMT</lastBuildDate>
 <itunes:image href="https://npannu7.github.io/daily-briefing/artwork.jpg"/>
 <image><url>https://npannu7.github.io/daily-briefing/artwork.jpg</url><title>Weights &amp; Measures</title><link>https://npannu7.github.io/daily-briefing</link></image>
+<item>
+<title>Morning - 28 Nov: What AI Has Actually Cured: Separating Announcements from Approved Treatments</title>
+<description>Morning edition - Saturday, 28 November 2026
+Checking AI claims in drug discovery and research automation
+
+00:38  What AI Has Actually Cured: Separating Announcements from Approved Treatments
+10:40  When the Model Games the Task: Specification Gaming in Claude
+
+Play "Zero Cures: AI's Drug Pipeline Gap", a three-minute game on this episode: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-28_morning_0600.mp3
+Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Hacker News (no Reddit data: Reddit, collected hourly (0 threads); no snapshot from the office PC yet)</description>
+<pubDate>Sat, 28 Nov 2026 06:00:11 +0530</pubDate>
+<guid isPermaLink="false">ai_2026-11-28_morning_0600.mp3</guid>
+<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-28_morning_0600.mp3" length="9340996" type="audio/mpeg"/>
+<itunes:duration>1167</itunes:duration>
+<itunes:episodeType>full</itunes:episodeType>
+</item>
 <item>
 <title>Evening - 27 Nov: When AI agents run the compute cluster</title>
 <description>Evening edition - Friday, 27 November 2026
@@ -234,22 +250,6 @@ Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Di
 <guid isPermaLink="false">ai_2026-11-21_evening_1500.mp3</guid>
 <enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-21_evening_1500.mp3" length="8743210" type="audio/mpeg"/>
 <itunes:duration>1092</itunes:duration>
-<itunes:episodeType>full</itunes:episodeType>
-</item>
-<item>
-<title>Morning - 21 Nov: Google workers push back on AI in classrooms</title>
-<description>Morning edition - Saturday, 21 November 2026
-Workplace resistance to AI in schools, and a regulatory spotlight on the leading AI chipmaker
-
-00:30  Google workers push back on AI in classrooms
-09:45  SEC investigates Nvidia's accounting
-
-Quiz and feedback: https://npannu7.github.io/daily-briefing/quiz.html#play=ai_2026-11-21_morning_0600.mp3
-Written by: nemotron-3-ultra-550b-a55b (free) · Voices: Fish Audio (free) · Discussions: Hacker News (no Reddit data: Reddit, collected hourly (0 threads); no snapshot from the office PC yet)</description>
-<pubDate>Sat, 21 Nov 2026 06:00:10 +0530</pubDate>
-<guid isPermaLink="false">ai_2026-11-21_morning_0600.mp3</guid>
-<enclosure url="https://github.com/npannu7/daily-briefing/releases/download/episodes/ai_2026-11-21_morning_0600.mp3" length="7953129" type="audio/mpeg"/>
-<itunes:duration>994</itunes:duration>
 <itunes:episodeType>full</itunes:episodeType>
 </item>
 </channel>
